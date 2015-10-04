@@ -1,0 +1,15 @@
+<h2><i class="{{$state.current.data.pageHeader.icon}}"></i> {{$state.current.data.pageHeader.title}} <span>{{$state.current.data.pageHeader.subtitle}}</span></h2>
+<div class="breadcrumb-wrapper hidden-xs">
+    <span class="label">You are here:</span>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li data-ng-repeat="breadcrumb in $state.current.data.breadcrumbs">
+            <a href="javascript:void(0);">{{breadcrumb.title}}</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+    </ol>
+</div><!-- /.breadcrumb-wrapper -->

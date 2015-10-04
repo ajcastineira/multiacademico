@@ -1,0 +1,254 @@
+{
+  "sampleTable":[
+    {
+      "image": "2.png",
+      "name": "John Kribo",
+      "location": "United State",
+      "position": "Senior Web Designer",
+      "rating": 2,
+      "progress": 45
+    },
+    {
+      "image": "3.png",
+      "name": "Jennifer Poiyem",
+      "location": "Spain",
+      "position": "Senior UX Designer",
+      "rating": 4,
+      "progress": 78
+    },
+    {
+      "image": "4.png",
+      "name": "Clara Wati",
+      "location": "United State",
+      "position": "Developer",
+      "rating": 2,
+      "progress": 45
+    },
+    {
+      "image": "6.png",
+      "name": "Bella negoro",
+      "location": "England",
+      "position": "Developer",
+      "rating": 2,
+      "progress": 23
+    },
+    {
+      "image": "7.png",
+      "name": "Kim Mbako",
+      "location": "Angola",
+      "position": "Project Manager",
+      "rating": 1,
+      "progress": 56
+    },
+    {
+      "image": "8.png",
+      "name": "Pack Suparman",
+      "location": "Indonesian",
+      "position": "CEO",
+      "rating": 5,
+      "progress": 90
+    }
+  ],
+  "basicTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "stripedTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "borderedTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "hoverTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "checkboxTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "actionTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell"
+    }
+  ],
+  "contextualClassesRowTable": [
+    {
+      "class": "active",
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell"
+    },
+    {
+      "class": "success",
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell"
+    },
+    {
+      "class": "info",
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell"
+    },
+    {
+      "class": "warning",
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell"
+    },
+    {
+      "class": "danger",
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell"
+    }
+  ],
+  "contextualClassesColumnTable": [
+    {
+      "classActive": "active",
+      "classSuccess": "success",
+      "classInfo": "info",
+      "classWarning": "warning",
+      "classDanger": "danger"
+    },
+    {
+      "classActive": "active",
+      "classSuccess": "success",
+      "classInfo": "info",
+      "classWarning": "warning",
+      "classDanger": "danger"
+    },
+    {
+      "classActive": "active",
+      "classSuccess": "success",
+      "classInfo": "info",
+      "classWarning": "warning",
+      "classDanger": "danger"
+    },
+    {
+      "classActive": "active",
+      "classSuccess": "success",
+      "classInfo": "info",
+      "classWarning": "warning",
+      "classDanger": "danger"
+    },
+    {
+      "classActive": "active",
+      "classSuccess": "success",
+      "classInfo": "info",
+      "classWarning": "warning",
+      "classDanger": "danger"
+    }
+  ],
+  "responsiveTable": [
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell",
+      "column5": "Table cell",
+      "column6": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell",
+      "column5": "Table cell",
+      "column6": "Table cell"
+    },
+    {
+      "column1": "Table cell",
+      "column2": "Table cell",
+      "column3": "Table cell",
+      "column4": "Table cell",
+      "column5": "Table cell",
+      "column6": "Table cell"
+    }
+  ]
+}

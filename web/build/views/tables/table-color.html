@@ -1,0 +1,392 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Start basic color table -->
+        <h4>Basic Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="table in tables">
+                        <td class="text-center border-right">{{$index + 1}}</td>
+                        <td>
+                            <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                            <span>{{table.name}}</span>
+                        </td>
+                        <td>{{table.location}}</td>
+                        <td>{{table.position}}</td>
+                        <td class="text-center">
+                            <div data-ng-show="table.rating != 0" class="rating">
+                                <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                                <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                                <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                                <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                                <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                            <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                            <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End basic color table -->
+
+        <!-- Start primary color table -->
+        <h4>Primary Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-primary">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End primary color table -->
+
+        <!-- Start success color table -->
+        <h4>Success Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-success">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End success color table -->
+
+        <!-- Start info color table -->
+        <h4>Info Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-info">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End info color table -->
+
+        <!-- Start warning color table -->
+        <h4>Warning Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-warning">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End warning color table -->
+
+        <!-- Start danger color table -->
+        <h4>Danger Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-danger">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End danger color table -->
+
+        <!-- Start lilac color table -->
+        <h4>Lilac Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-lilac">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End lilac color table -->
+
+        <!-- Start teal color table -->
+        <h4>Teal Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-teal">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End teal color table -->
+
+        <!-- Start inverse color table -->
+        <h4>Inverse Color</h4>
+        <div class="table-responsive mb-20">
+            <table class="table table-striped table-inverse">
+                <thead>
+                <tr>
+                    <th class="text-center border-right">No.</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="table in tables">
+                    <td class="text-center border-right">{{$index + 1}}</td>
+                    <td>
+                        <img src="http://img.djavaui.com/?create=35x35,4888E1?f=ffffff" class="img-circle img-bordered-theme" alt="{{table.name}}">
+                        <span>{{table.name}}</span>
+                    </td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.position}}</td>
+                    <td class="text-center">
+                        <div data-ng-show="table.rating != 0" class="rating">
+                            <span data-ng-class="{'active': table.rating == 5}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 4}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 3}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 2}" class="star"></span>
+                            <span data-ng-class="{'active': table.rating == 1}" class="star"></span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a data-tooltip href="#" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="View detail"><i class="fa fa-eye"></i></a>
+                        <a data-tooltip href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a data-tooltip href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- /.table-responsive -->
+        <!--/ End inverse color table -->
+
+    </div><!-- /.col-md-12 -->
+</div><!-- /.row -->

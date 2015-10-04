@@ -1,0 +1,261 @@
+/* ========================================================================
+ * SIGN
+ * ======================================================================== */
+/* line 9, ../../../app/styles/pages/sign-type-2.scss */
+body {
+  background-color: transparent !important;
+}
+/* line 11, ../../../app/styles/pages/sign-type-2.scss */
+body.page-boxed {
+  background-color: #505050;
+}
+/* line 13, ../../../app/styles/pages/sign-type-2.scss */
+body.page-boxed:before {
+  background-color: #505050;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  content: "";
+}
+/* line 23, ../../../app/styles/pages/sign-type-2.scss */
+body.page-boxed #sign-wrapper form {
+  width: 350px;
+  margin: 0px auto;
+}
+
+@media (min-width: 1200px) {
+  /* line 34, ../../../app/styles/pages/sign-type-2.scss */
+  body.page-boxed #sign-wrapper {
+    width: 1220px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 44, ../../../app/styles/pages/sign-type-2.scss */
+  body.page-boxed #sign-wrapper {
+    width: 970px;
+  }
+}
+/* line 51, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper {
+  width: 350px;
+  margin: 0px auto;
+  padding-top: 5%;
+  height: 100%;
+  position: relative;
+}
+/* line 59, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper a {
+  font-size: 13px;
+  color: #f7f7f7;
+}
+/* line 65, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper form {
+  background-color: rgba(255, 255, 255, 0.19);
+}
+/* line 68, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper form.rounded .sign-header {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+/* line 73, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper form.rounded .sign-body .form-group .error {
+  border-radius: 3px;
+}
+/* line 80, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper form.circle .sign-header {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+/* line 85, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper form.circle .sign-body .form-group .error {
+  border-radius: 50%;
+}
+/* line 94, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper input {
+  font-size: 12px !important;
+}
+/* line 96, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper input:focus {
+  box-shadow: none;
+}
+/* line 102, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 15px;
+}
+/* line 106, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group:last-child {
+  margin-bottom: 0;
+}
+/* line 110, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group .input-group .input-group-addon {
+  border: none;
+  padding-left: 0px;
+}
+/* line 114, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group .input-group input[type=text], #sign-wrapper .form-group .input-group input[type=password], #sign-wrapper .form-group .input-group input[type=email] {
+  box-shadow: none !important;
+  border: none !important;
+  color: #B6B6B6;
+}
+/* line 119, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group .input-group i {
+  font-size: 23px;
+  color: #B6B6B6;
+}
+/* line 124, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .form-group .input-group-addon {
+  background-color: white;
+}
+/* line 134, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .ckbox label {
+  color: #f7f7f7;
+}
+/* line 140, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* line 143, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .brand > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 150, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper hr {
+  margin: 5px 0px 10px;
+}
+/* line 155, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .text-muted {
+  font-size: 13px;
+}
+/* line 160, ../../../app/styles/pages/sign-type-2.scss */
+#sign-wrapper .sign-link {
+  margin-top: 20px;
+  color: #CCC9C9;
+}
+
+/* line 168, ../../../app/styles/pages/sign-type-2.scss */
+.sign-header {
+  color: white;
+  padding: 20px 15px;
+  margin-bottom: 0px;
+}
+/* line 172, ../../../app/styles/pages/sign-type-2.scss */
+.sign-header p, .sign-header strong {
+  color: white;
+}
+
+/* line 178, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body {
+  margin: 0px;
+  padding: 15px 0px;
+}
+/* line 184, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body .form-group .error {
+  position: absolute;
+  background-color: #E9573F;
+  padding: 5px 10px;
+  top: 9px;
+  color: white !important;
+}
+/* line 192, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body .form-group:first-child .error {
+  left: -205px;
+}
+/* line 194, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body .form-group:first-child .error:after {
+  content: "____";
+  position: absolute;
+  right: -20px;
+  color: #E9573F;
+  top: 0px;
+}
+/* line 204, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body .form-group:last-child .error {
+  right: -190px;
+}
+/* line 206, ../../../app/styles/pages/sign-type-2.scss */
+.sign-body .form-group:last-child .error:before {
+  content: "____";
+  position: absolute;
+  left: -20px;
+  color: #E9573F;
+  top: 0px;
+}
+
+/* line 220, ../../../app/styles/pages/sign-type-2.scss */
+.sign-footer {
+  padding: 15px 0px;
+}
+
+/* line 227, ../../../app/styles/pages/sign-type-2.scss */
+.lock .sign-text:before {
+  top: 40%;
+}
+
+/* line 234, ../../../app/styles/pages/sign-type-2.scss */
+.sign-text {
+  color: #777;
+  display: block;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+}
+/* line 243, ../../../app/styles/pages/sign-type-2.scss */
+.sign-text:before {
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+/* line 252, ../../../app/styles/pages/sign-type-2.scss */
+.sign-text span {
+  display: inline-block;
+  padding: 0 10px;
+  position: relative;
+  color: white;
+  font-weight: 300;
+}
+/* line 259, ../../../app/styles/pages/sign-type-2.scss */
+.sign-text img {
+  position: relative;
+}
+/* line 262, ../../../app/styles/pages/sign-type-2.scss */
+.sign-text p {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+@media (min-width: 1200px) {
+  /* line 272, ../../../app/styles/pages/sign-type-2.scss */
+  body.page-boxed #sign-wrapper {
+    width: 1220px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 282, ../../../app/styles/pages/sign-type-2.scss */
+  body.page-boxed #sign-wrapper {
+    width: 100%;
+  }
+}
+@media (max-width: 360px) {
+  /* line 291, ../../../app/styles/pages/sign-type-2.scss */
+  #sign-wrapper form {
+    width: 95% !important;
+  }
+}
+/* line 300, ../../../app/styles/pages/sign-type-2.scss */
+.ckbox label:before {
+  border: none;
+}

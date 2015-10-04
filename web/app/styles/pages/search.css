@@ -1,0 +1,173 @@
+/* ========================================================================
+ * SEARCH COURSES
+ * ======================================================================== */
+/* line 10, ../../../app/styles/pages/search.scss */
+.list-search {
+  background: transparent !important;
+}
+/* line 12, ../../../app/styles/pages/search.scss */
+.list-search .media {
+  background-color: #FFFFFF;
+  margin-bottom: 20px !important;
+  padding: 0px !important;
+}
+/* line 18, ../../../app/styles/pages/search.scss */
+.list-search .media.selected .meta-search .meta-action {
+  color: #8CC152;
+  cursor: default;
+}
+/* line 24, ../../../app/styles/pages/search.scss */
+.list-search .media img {
+  border-radius: 3px 0px 0px 3px;
+  width: 225px;
+}
+/* line 28, ../../../app/styles/pages/search.scss */
+.list-search .media .media-object {
+  width: 100% !important;
+  height: inherit !important;
+}
+/* line 32, ../../../app/styles/pages/search.scss */
+.list-search .media .media-left {
+  min-width: 240px;
+}
+/* line 36, ../../../app/styles/pages/search.scss */
+.list-search .media-body {
+  padding: 10px 10px 10px 0px;
+  min-height: 150px;
+  position: relative;
+  width: 100%;
+}
+/* line 42, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider {
+  position: absolute;
+  left: 0px;
+  bottom: 10px;
+  background-color: rgba(89, 103, 104, 0.44);
+  padding: 7px;
+  color: #FFFFFF;
+  margin-left: -5px;
+  font-size: 12px;
+}
+/* line 51, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider.primary {
+  border-left: 5px solid #00B1E1;
+}
+/* line 54, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider.success {
+  border-left: 5px solid #8CC152;
+}
+/* line 57, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider.info {
+  border-left: 5px solid #63D3E9;
+}
+/* line 60, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider.warning {
+  border-left: 5px solid #F6BB42;
+}
+/* line 63, ../../../app/styles/pages/search.scss */
+.list-search .meta-provider.danger {
+  border-left: 5px solid #E9573F;
+}
+/* line 67, ../../../app/styles/pages/search.scss */
+.list-search .meta-search {
+  border-top: 1px solid #DDD;
+  padding: 10px 10px 0px 0px;
+  width: 100%;
+}
+/* line 71, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-mounth, .list-search .meta-search .meta-level {
+  margin-right: 40px;
+}
+/* line 74, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-selected {
+  background-color: #EEEEEE;
+  padding: 3px 5px;
+  border-left: 3px solid #8CC152;
+}
+/* line 79, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-price {
+  margin-right: 10px;
+  font-weight: bold;
+}
+/* line 82, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-price small {
+  font-weight: 300;
+}
+/* line 86, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-action {
+  font-size: 20px;
+  border-left: 1px dotted #DDD;
+  padding-left: 10px;
+  color: #DDD;
+}
+/* line 91, ../../../app/styles/pages/search.scss */
+.list-search .meta-search .meta-action:hover {
+  color: #8CC152;
+}
+
+@media (max-width: 800px) {
+  /* line 101, ../../../app/styles/pages/search.scss */
+  .list-search .media img {
+    height: 165px !important;
+  }
+  /* line 104, ../../../app/styles/pages/search.scss */
+  .list-search .media .media-body {
+    min-height: 165px;
+  }
+  /* line 110, ../../../app/styles/pages/search.scss */
+  .list-search .selected .meta-search .meta-mounth, .list-search .selected .meta-search .meta-level {
+    display: none;
+  }
+  /* line 116, ../../../app/styles/pages/search.scss */
+  .list-search .meta-search .meta-mounth, .list-search .meta-search .meta-level {
+    margin-right: 15px !important;
+  }
+}
+@media (max-width: 768px) {
+  /* line 126, ../../../app/styles/pages/search.scss */
+  .list-search .meta-search .meta-mounth {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  /* line 136, ../../../app/styles/pages/search.scss */
+  .list-search .media > a {
+    float: none !important;
+    display: block;
+    margin: 0px;
+  }
+  /* line 140, ../../../app/styles/pages/search.scss */
+  .list-search .media > a img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 3px 3px 0px 0px;
+  }
+  /* line 146, ../../../app/styles/pages/search.scss */
+  .list-search .media .media-body {
+    padding: 10px;
+    min-height: 190px;
+  }
+  /* line 151, ../../../app/styles/pages/search.scss */
+  .list-search .meta-provider {
+    top: 20px;
+    bottom: inherit;
+  }
+  /* line 155, ../../../app/styles/pages/search.scss */
+  .list-search .meta-search {
+    margin-left: -10px;
+    padding: 10px;
+  }
+}
+@media (max-width: 360px) {
+  /* line 164, ../../../app/styles/pages/search.scss */
+  .list-search .media-left {
+    width: 100%;
+    display: block;
+    padding-right: 0px;
+  }
+  /* line 168, ../../../app/styles/pages/search.scss */
+  .list-search .media-left img {
+    width: 100% !important;
+    height: inherit !important;
+  }
+}

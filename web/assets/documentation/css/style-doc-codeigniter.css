@@ -1,0 +1,57 @@
+.navbar-custom{
+    background-color: #DD4814;
+    color: white;
+}
+.navbar-custom a{
+    color: white !important;
+}
+.navbar-nav > li > a{
+    background-color: transparent;
+}
+.navbar-nav > li > a:hover{
+    background-color: transparent;
+}
+a{
+    color: #DD4814 !important;
+}
+#getting-started img{
+    margin: 0px auto 10px;
+}
+.page-header:before{
+    border-top: 3px solid #DD4814;
+}
+.ndoboost-sidebar .nav > .active > a, .ndoboost-sidebar .nav > .active:hover > a, .ndoboost-sidebar .nav > .active:focus > a{
+    color: #DD4814;
+}
+.ndoboost-sidebar .nav > .active > a:after, .ndoboost-sidebar .nav > .active:hover > a:after, .ndoboost-sidebar .nav > .active:focus > a:after{
+    border-right: 3px solid #DD4814;
+}
+.table-theme.table-bordered{
+    border: 1px solid #DD4814;
+}
+.table-theme thead tr th{
+    background-color: #DD4814 !important;
+    border-color: #DD4814 #e64914 #f34b14 !important;
+    color: #FFF;
+}
+.snippet-menu a{
+    color: white !important;
+}
+.chosen-container .chosen-search input{
+    border: 1px solid #DD4814 !important;
+}
+.chosen-container .chosen-results li.highlighted {
+    background-color: #DD4814 !important;
+    background-image: none !important;
+}
+.pagination > .active > a, .pagination > .active > span {
+    background-color: #DD4814 !important;
+    border: 1px solid #DD4814 !important;
+    color: white !important;
+}
+.dl-horizontal.plugins dt{
+    width: 70px;
+}
+.dl-horizontal.plugins dd{
+    margin-left: 80px;
+}

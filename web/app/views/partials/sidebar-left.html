@@ -1,0 +1,408 @@
+<!-- Start left navigation - profile shortcut -->
+<div class="sidebar-content">
+    <a href="#" class="close">&times;</a>
+    <div class="media">
+        <a class="pull-left has-notif avatar" data-ng-href="page-profile">
+            <img src="http://img.djavaui.com/?create=50x50,4888E1?f=ffffff" alt="admin">
+            <i class="online"></i>
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">Hello, <span>Lee</span></h4>
+            <small>Web Designer</small>
+        </div>
+    </div>
+</div><!-- /.sidebar-content -->
+<!--/ End left navigation -  profile shortcut -->
+
+<!-- Start left navigation - menu -->
+<ul data-collapse-menu class="sidebar-menu">
+
+    <!-- Start navigation - dashboard -->
+    <li class="active">
+        <a href="#/dashboard" data-active-menu>
+            <span class="icon"><i class="fa fa-home"></i></span>
+            <span class="text">Dashboard</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <!--/ End navigation - dashboard -->
+
+    <!-- Start category apps -->
+    <li class="sidebar-category">
+        <span>APPS</span>
+        <span class="pull-right"><i class="fa fa-trophy"></i></span>
+    </li>
+    <!--/ End category apps -->
+
+    <!-- Start navigation - blog -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-globe"></i></span>
+            <span class="text">Blog</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/blog-grid" data-active-menu>Grid</a></li>
+            <li><a href="#/blog-list" data-active-menu>List</a></li>
+            <li><a href="#/blog-single" data-active-menu>Single</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - blog -->
+
+    <!-- Start navigation - mail -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-envelope"></i></span>
+            <span class="text">Mail</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/mail-inbox" data-active-menu>Inbox</a></li>
+            <li><a href="#/mail-compose" data-active-menu>Compose mail</a></li>
+            <li><a href="#/mail-view" data-active-menu>View mail</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - mail -->
+
+    <!-- Start navigation - pages -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-file-o"></i></span>
+            <span class="text">Pages</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/page-gallery" data-active-menu>Gallery</a></li>
+            <li><a href="#/page-faq" data-active-menu>FAQ <span class="label label-danger pull-right">New</span></a></li>
+            <li><a href="#/page-invoice" data-active-menu>Invoice</a></li>
+            <li><a href="#/page-messages" data-active-menu>Messages</a></li>
+            <li><a href="#/page-timeline" data-active-menu>Timeline</a></li>
+            <li><a href="#/page-profile" data-active-menu>Profile</a></li>
+            <li class="submenu">
+                <a href="javascript:void(0);">Search<span class="arrow"></span></a>
+                <ul>
+                    <li><a href="#/page-search-course" data-active-menu>Courses</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="javascript:void(0);">Error <span class="arrow"></span></a>
+                <ul>
+                    <li><a href="#/page-error-403" data-active-menu>Error 403 Type 2</a></li>
+                    <li><a href="#/page-error-404" data-active-menu>Error 404 Type 2</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Error 500 Type 2</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="javascript:void(0);">Account <span class="arrow"></span></a>
+                <ul>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in" target="_blank">Sign In</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Sign In Type 2</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-up" target="_blank">Sign Up</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lost-password" target="_blank">Lost password</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lock-screen" target="_blank">Lock Screen</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <!--/ End navigation - pages -->
+
+    <!-- Start category ui kit-->
+    <li class="sidebar-category">
+        <span>UI KIT</span>
+        <span class="pull-right"><i class="fa fa-magic"></i></span>
+    </li>
+    <!--/ End category ui kit-->
+
+    <!-- Start navigation - forms -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-list-alt"></i></span>
+            <span class="text">Forms</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/form-element" data-active-menu>Element</a></li>
+            <li><a href="#/form-advanced" data-active-menu>Advanced</a></li>
+            <li><a href="#/form-layout" data-active-menu>Layout</a></li>
+            <li><a href="#/form-validation" data-active-menu>Validation</a></li>
+            <li><a href="#/form-wizard" data-active-menu>Wizard</a></li>
+            <li><a href="#/form-wysiwyg" data-active-menu>Text Editor</a></li>
+            <li><a href="#/form-xeditable" data-active-menu>X-Editable</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - forms -->
+
+    <!-- Start navigation - tables -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-table"></i></span>
+            <span class="text">Tables</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/table-default" data-active-menu>Default</a></li>
+            <li><a href="#/table-color" data-active-menu>Color</a></li>
+            <li><a href="#/table-datatable" data-active-menu>Datatable</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - tables -->
+
+    <!-- Start navigation - maps -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-map-marker"></i></span>
+            <span class="text">Maps</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/maps-google" data-active-menu>Google</a></li>
+            <li><a href="#/maps-vector" data-active-menu>Vector</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - maps -->
+
+    <!-- Start navigation - charts -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-signal"></i></span>
+            <span class="text">Charts</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a href="#/chart-flot" data-active-menu>Flot</a></li>
+            <li><a href="#/chart-morris" data-active-menu>Morris</a></li>
+            <li><a href="#/chart-chartjs" data-active-menu>Chartjs</a></li>
+            <li><a href="#/chart-c3js" data-active-menu>C3js</a></li>
+        </ul>
+    </li>
+    <!--/ End navigation - charts -->
+
+    <!-- Start category development -->
+    <li class="sidebar-category">
+        <span>DEVELOP</span>
+        <span class="pull-right"><i class="fa fa-code"></i></span>
+    </li>
+    <!--/ End category development -->
+
+    <!-- Start development - components -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-cube"></i></span>
+            <span class="text">Components</span>
+            <span class="plus"></span>
+        </a>
+        <ul>
+            <li><a href="#/component-grid-system" data-active-menu>Grid System</a></li>
+            <li><a href="#/component-buttons" data-active-menu>Buttons</a></li>
+            <li><a href="#/component-typography" data-active-menu>Typography</a></li>
+            <li><a href="#/component-panel" data-active-menu>Panels</a></li>
+            <li><a href="#/component-alerts" data-active-menu>Alerts</a></li>
+            <li><a href="#/component-modals" data-active-menu>Modals</a></li>
+            <li><a href="#/component-video" data-active-menu>Video <span class="label label-danger pull-right">New</span></a></li>
+            <li><a href="#/component-tabsaccordion" data-active-menu>Tabs & Accordion</a></li>
+            <li><a href="#/component-sliders" data-active-menu>Sliders</a></li>
+            <li class="submenu">
+                <a href="javascript:void(0);">
+                    <span class="text">Icons</span>
+                    <span class="count label label-danger">6</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul>
+                    <li><a href="#/component-glyphicons" data-active-menu>Glyphicons</a></li>
+                    <li><a href="#/component-glyphicons-pro" data-active-menu>Glyphicons PRO</a></li>
+                    <li><a href="#/component-font-awesome" data-active-menu>Font Awesome</a></li>
+                    <li><a href="#/component-weather-icons" data-active-menu>Weather Icons</a></li>
+                    <li><a href="#/component-map-icons" data-active-menu>Map Icons</a></li>
+                    <li><a href="#/component-simple-line-icons" data-active-menu>Simple Line Icons <span class="label label-danger pull-right">NEW</span></a></li>
+                </ul>
+            </li>
+            <li><a href="#/component-other" data-active-menu>Other</a></li>
+        </ul>
+    </li>
+    <!--/ End development - components -->
+
+    <!-- Start development - sub menu -->
+    <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-align-left"></i></span>
+            <span class="text">Sub Menu</span>
+            <span class="plus"></span>
+        </a>
+        <ul>
+            <!-- Start level 1 -->
+            <li class="submenu">
+                <a href="javascript:void(0);">
+                    <span class="text">Level 1</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul>
+                    <!-- Start level 2 -->
+                    <li class="submenu">
+                        <a href="javascript:void(0);">
+                            <span class="text">Level 2</span>
+                            <span class="fa fa-angle-double-right pull-right arrow"></span>
+                        </a>
+                        <ul>
+                            <!-- Start level 3 -->
+                            <li class="submenu">
+                                <a href="javascript:void(0);">
+                                    <span class="text">Level 3</span>
+                                    <span class="fa fa-angle-double-right pull-right arrow"></span>
+                                </a>
+                                <ul>
+                                    <!-- Start level 4 -->
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);">
+                                            <span class="text">Level 4</span>
+                                            <span class="fa fa-angle-double-right pull-right arrow"></span>
+                                        </a>
+                                        <ul>
+                                            <!-- Start level 5 -->
+                                            <li>
+                                                <a href="javascript:void(0);">Level 5</a>
+                                            </li>
+                                            <!--/ End level 5 -->
+                                            <li>
+                                                <a href="javascript:void(0);">Level 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Level 5</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!--/ End level 4 -->
+                                    <li>
+                                        <a href="javascript:void(0);">Level 4</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Level 4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ End level 3 -->
+                            <li>
+                                <a href="javascript:void(0);">Level 3</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Level 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--/ End level 2 -->
+                    <li>
+                        <a href="javascript:void(0);">Level 2</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">Level 2</a>
+                    </li>
+                </ul>
+            </li>
+            <!--/ End level 1 -->
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="text">Level 1</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="text">Level 1</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <!--/ End development - sub menu -->
+
+    <!-- Start development - animate.css -->
+    <li>
+        <a href="#/animate" data-active-menu>
+            <span class="icon"><i class="fa fa-forumbee"></i></span>
+            <span class="text">Animate.css</span>
+            <span class="label label-danger pull-right">New</span>
+        </a>
+    </li>
+    <!--/ End development - animate.css -->
+
+    <!-- Start category widget -->
+    <li class="sidebar-category">
+        <span>WIDGET</span>
+        <span class="pull-right"><i class="fa fa-cubes"></i></span>
+    </li>
+    <!--/ End category widget -->
+
+    <!-- Start widget - overview -->
+    <li>
+        <a href="#/widget-overview" data-active-menu>
+            <span class="icon"><i class="fa fa-desktop"></i></span>
+            <span class="text">Overview</span>
+            <span class="label label-primary pull-right rounded">10</span>
+        </a>
+    </li>
+    <!--/ End widget - overview -->
+
+    <!-- Start widget - social -->
+    <li>
+        <a href="#/widget-social" data-active-menu>
+            <span class="icon"><i class="fa fa-group"></i></span>
+            <span class="text">Social</span>
+            <span class="label label-success pull-right rounded">28</span>
+        </a>
+    </li>
+    <!--/ End widget - social -->
+
+    <!-- Start widget - blog -->
+    <li>
+        <a href="#/widget-blog" data-active-menu>
+            <span class="icon"><i class="fa fa-pencil"></i></span>
+            <span class="text">Blog</span>
+            <span class="label label-info pull-right rounded">15</span>
+        </a>
+    </li>
+    <!--/ End widget - blog -->
+
+    <!-- Start widget - weather -->
+    <li>
+        <a href="#/widget-weather" data-active-menu>
+            <span class="icon"><i class="fa fa-sun-o"></i></span>
+            <span class="text">Weather</span>
+            <span class="label label-warning pull-right rounded">6</span>
+        </a>
+    </li>
+    <!--/ End widget - weather -->
+
+    <!-- Start widget - misc -->
+    <li>
+        <a href="#/widget-misc" data-active-menu>
+            <span class="icon"><i class="fa fa-puzzle-piece"></i></span>
+            <span class="text">Misc</span>
+            <span class="label label-danger pull-right rounded">9</span>
+        </a>
+    </li>
+    <!--/ End widget - misc -->
+
+    <!-- Start category documentation -->
+    <li class="sidebar-category">
+        <span><span class="hidden-sidebar-minimize">BLANKON</span> CORE</span>
+        <span class="pull-right"><i class="fa fa-coffee"></i></span>
+    </li>
+    <!--/ End category documentation -->
+
+    <!-- Start documentation - api documentation -->
+    <li>
+        <a href="../../../documentation/admin/angularjs/live-preview-documentation.html" target="_blank">
+            <span class="icon"><i class="fa fa-book"></i></span>
+            <span class="text">API Documentation</span>
+        </a>
+    </li>
+    <!--/ End documentation - api documentation -->
+
+</ul><!-- /.sidebar-menu -->
+<!--/ End left navigation - menu -->
+
+<!-- Start left navigation - footer -->
+<div class="sidebar-footer hidden-xs hidden-sm hidden-md">
+    <a data-setting class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Setting"><i class="fa fa-cog"></i></a>
+    <a data-fullscreen class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Fullscreen"><i class="fa fa-desktop"></i></a>
+    <a data-lock-screen  class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Lock Screen"><i class="fa fa-lock"></i></a>
+    <a data-logout class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Logout"><i class="fa fa-power-off"></i></a>
+</div><!-- /.sidebar-footer -->
+<!--/ End left navigation - footer -->

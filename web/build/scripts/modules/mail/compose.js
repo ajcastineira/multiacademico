@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.mail.compose",[]).directive("composeEditor",function(){return{restrict:"A",link:function(a,b){b.wysihtml5({})}}})}();

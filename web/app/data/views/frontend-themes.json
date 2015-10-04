@@ -1,0 +1,50 @@
+[
+  {
+    "status": "coming-soon",
+    "name": "start page",
+    "class": "",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "landing page",
+    "class": "landing-page",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "corporate",
+    "class": "corporate",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "portfolio",
+    "class": "portfolio",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "personal CV",
+    "class": "personal-cv",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "agency",
+    "class": "agency",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "blog",
+    "class": "blog",
+    "url": "#"
+  },
+  {
+    "status": "coming-soon",
+    "name": "shop",
+    "class": "shop",
+    "url": "#"
+  }
+]

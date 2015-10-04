@@ -1,0 +1,194 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info mb-20">
+            <a href="http://vitalets.github.io/angular-xeditable" target="_blank">Angular-xeditable</a> is a bundle of AngularJS directives that allows you to create editable elements.
+            Such technique is also known as click-to-edit or edit-in-place.
+            It is based on ideas of x-editable but was written from scratch to use power of angular.
+        </div>
+    </div>
+</div><!-- /.row -->
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Start X-Editable -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title">Controls</h3>
+                </div><!-- /.pull-left -->
+                <div class="pull-right">
+                    <button class="btn btn-sm" data-action="refresh" data-toggle="tooltip" data-placement="top" data-title="Refresh"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-sm" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button class="btn btn-sm" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div><!-- /.pull-right -->
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body">
+                <table class="table table-bordered table-striped" style="clear: both">
+                    <tbody>
+                    <tr>
+                        <td width="35%">Text</td>
+                        <td width="65%">
+                            <div data-ng-controller="TextSimpleCtrl">
+                                <a href="#" data-editable-text="user.name">{{ user.name || 'empty' }}</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Select local</td>
+                        <td>
+                            <div data-ng-controller="SelectLocalCtrl">
+                                <a href="#" data-editable-select="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                                    {{ showStatus() }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Textarea</td>
+                        <td>
+                            <div data-ng-controller="TextareaCtrl">
+                                <a href="#" data-editable-textarea="user.desc" data-e-rows="7" data-e-cols="40">
+                                    <pre>{{ user.desc || 'no description' }}</pre>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Checkbox</td>
+                        <td>
+                            <div data-ng-controller="CheckboxCtrl">
+                                <a href="#" data-editable-checkbox="user.remember" data-e-title="Remember?">
+                                    {{ user.remember && "Remember me!" || "Don't remember" }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Checklist</td>
+                        <td>
+                            <div data-ng-controller="ChecklistCtrl">
+                                <a href="#" data-editable-checklist="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                                    {{ showStatus() }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Radiolist</td>
+                        <td>
+                            <div data-ng-controller="RadiolistCtrl">
+                                <a href="#" data-editable-radiolist="user.status" data-e-ng-options="s.value as s.text for s in statuses">
+                                    {{ showStatus() }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title">HTML5 inputs</h3>
+                </div><!-- /.pull-left -->
+                <div class="pull-right">
+                    <button class="btn btn-sm" data-action="refresh" data-toggle="tooltip" data-placement="top" data-title="Refresh"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-sm" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button class="btn btn-sm" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div><!-- /.pull-right -->
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body">
+                <table data-ng-controller="Html5InputsCtrl" class="table table-bordered table-striped" style="clear: both">
+                    <tbody>
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <div>
+                                <a href="#" data-editable-email="user.email">{{ user.email || 'empty' }}</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tel</td>
+                        <td>
+                            <div><a href="#" data-editable-tel="user.tel" data-e-pattern="\d{3}\-\d{2}\-\d{2}" data-e-title="xxx-xx-xx">{{ user.tel || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number</td>
+                        <td>
+                            <div><a href="#" data-editable-number="user.number" data-e-min="18">{{ user.number || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Range
+                        </td>
+                        <td>
+                            <div><a href="#" data-editable-range="user.range" data-e-step="5">{{ user.range || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Url
+                        </td>
+                        <td>
+                            <div><a href="#" data-editable-url="user.url">{{ user.url || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Search</td>
+                        <td>
+                            <div><a href="#" data-editable-search="user.search">{{ user.search || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Color</td>
+                        <td>
+                            <div><a href="#" data-editable-color="user.color">{{ user.color || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date
+                        </td>
+                        <td>
+                            <div><a href="#" data-editable-date="user.date">{{ user.date || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>
+                            <div><a href="#" data-editable-time="user.time">{{ user.time || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Datetime</td>
+                        <td>
+                            <div><a href="#" data-editable-datetime="user.datetime">{{ user.datetime || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Month</td>
+                        <td>
+                            <div><a href="#" data-editable-month="user.month">{{ user.month || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Week</td>
+                        <td>
+                            <div><a href="#" data-editable-week="user.week">{{ user.week || 'empty' }}</a></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End X-Editable -->
+
+    </div>
+</div><!-- /.row -->

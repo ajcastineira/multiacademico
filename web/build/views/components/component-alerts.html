@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="callout callout-info mb-20">
+            Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+        </div>
+        <!-- Start contextual classes -->
+        <h4>Contextual classes</h4>
+        <p>Wrap any text and an optional dismiss button in <code>.alert</code> and one of the four contextual classes (e.g., <code>.alert-success</code>) for basic alert messages.</p>
+        <div class="panel panel-default rounded shadow">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div data-ng-controller="AlertCtrl">
+                            <alert data-ng-repeat="alert in alerts" data-type="{{alert.type}}">{{alert.msg}}</alert>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div data-ng-controller="AlertCtrl">
+                            <alert data-ng-repeat="alert in additionalAlerts" data-type="{{alert.type}}">{{alert.msg}}</alert>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End contextual classes -->
+
+        <!-- Start dismissable alert -->
+        <h4>Dismissable alerts</h4>
+        <p>Build on any alert by adding an optional <code>.alert-dismissable</code> and close button.</p>
+        <div class="panel panel-default rounded shadow">
+            <div class="panel-body">
+                <div data-ng-controller="AlertCtrl">
+                    <alert data-ng-repeat="alert in alerts" data-type="{{alert.type}}" data-ng-show="alert.type=='warning'" data-close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End dismissable alert -->
+
+        <!-- Start links in alerts -->
+        <h4>Links in alerts</h4>
+        <p>Use the <code>.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
+        <div class="panel panel-default rounded shadow">
+            <div class="panel-body">
+                <div data-ng-controller="AlertCtrl">
+                    <alert data-ng-repeat="alert in linkAlerts" data-type="{{alert.type}}"><span ng-bind-html="alert.msg"></span></alert>
+                </div>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End links in alerts -->
+
+        <!-- Start with icons -->
+        <h4>With icons</h4>
+        <div class="panel panel-default rounded shadow">
+            <div class="panel-body">
+                <div data-ng-controller="AlertCtrl" data-ng-repeat="alert in iconAlerts" class="alert" data-ng-class="['alert-' + (alert.type || 'warning'), closeable ? 'alert-dismissable' : null]">
+                    <span class="alert-icon"><i data-ng-class="[alert.icon]"></i></span>
+                    <div class="notification-info">
+                        <ul class="clearfix notification-meta">
+                            <li class="pull-left notification-sender" data-ng-bind-html="alert.msg"></li>
+                            <li class="pull-right notification-time">{{alert.time}}</li>
+                        </ul>
+                        <p data-ng-bind-html="alert.subMsg"></p>
+                    </div>
+                </div><!-- /.alert -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End with icons -->
+
+        <!-- Start callout alerts -->
+        <h4>Callout alerts</h4>
+        <div class="panel panel-default rounded shadow">
+            <div class="panel-body">
+                <div data-ng-controller="AlertCtrl" data-ng-repeat="callout in callouts" data-ng-bind-html="callout.msg" class="callout" data-ng-class="['callout-' + (callout.type || 'info')]"></div>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End callout alerts -->
+
+    </div>
+</div><!-- /.row -->

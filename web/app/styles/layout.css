@@ -1,0 +1,4278 @@
+/* ========================================================================
+ * TABLE OF CONTENTS
+ * ========================================================================
+
+ * ========================================================================
+ * LAYOUT VARIANT
+ * ========================================================================
+   01. BOXED
+   02. RESPONSIVE BOXED
+   03. HEADER FIXED PAGE
+ * ========================================================================
+
+ * ========================================================================
+ * LAYOUT HEADER
+ * ========================================================================
+   01. HEADER
+   02. HEADER LEFT
+   03. HEADER RIGHT
+   04. NAVBAR TOOLBAR
+   05. NAVBAR MESSAGE
+   06. NAVBAR NOTIFICATION
+   07. NAVBAR COLORS
+ * ========================================================================
+
+ * ========================================================================
+ * LAYOUT SIDEBAR LEFT
+ * ========================================================================
+   01. SIDEBAR NAVIGATION
+   02. SIDEBAR CONTENT
+   03. SIDEBAR MENU
+   04. SIDEBAR CATEGORY
+   05. SIDEBAR FOOTER
+   06. SIDEBAR LEFT
+   
+ * ========================================================================
+ * LAYOUT SIDEBAR RIGHT
+ * ========================================================================
+   01. SIDEBAR RIGHT
+   02. SIDEBAR PROFILE
+   03. SIDEBAR SETTINGS
+   04. SIDEBAR CHAT
+   05. SIDEBAR SUMMARY
+   06. SIDEBAR THEMES
+   07. SIDEBAR TASK
+ * ========================================================================
+
+ * ========================================================================
+ * LAYOUT PAGE CONTENT
+ * ========================================================================
+   01. PAGE CONTENT
+   02. PAGE CONTENT MINIMIZE
+   03. HEADER CONTENT
+   04. BODY CONTENT
+   05. FOOTER CONTENT
+   06. NAVBAR TOOLBAR
+   07. NAVBAR MESSAGE
+   08. NAVBAR NOTIFICATION
+ * ======================================================================== */
+/* ========================================================================
+ * PAGE WRAPPER
+ * ======================================================================== */
+/* line 17, ../../app/styles/layout/_variant-layout.scss */
+#wrapper {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  position: relative;
+}
+
+/* ========================================================================
+ * PAGE BOXED
+ * ======================================================================== */
+/* line 28, ../../app/styles/layout/_variant-layout.scss */
+html.page-boxed, body.page-boxed {
+  background-color: #505050;
+}
+/* line 30, ../../app/styles/layout/_variant-layout.scss */
+html.page-boxed #wrapper, body.page-boxed #wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+/* line 35, ../../app/styles/layout/_variant-layout.scss */
+html.page-boxed #back-top, body.page-boxed #back-top {
+  right: 90px;
+}
+/* line 39, ../../app/styles/layout/_variant-layout.scss */
+html.page-boxed.page-sidebar-right-show #back-top, body.page-boxed.page-sidebar-right-show #back-top {
+  right: 310px;
+}
+
+@media (min-width: 1200px) {
+  /* line 49, ../../app/styles/layout/_variant-layout.scss */
+  html.page-boxed #wrapper, body.page-boxed #wrapper {
+    width: 1220px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 59, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #wrapper {
+    width: 970px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 69, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #back-top {
+    right: 60px;
+  }
+  /* line 74, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right {
+    left: 0px;
+  }
+  /* line 78, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #sidebar-left {
+    left: 0px;
+  }
+  /* line 80, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #sidebar-left:after {
+    left: 27px;
+  }
+  /* line 84, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #page-content {
+    margin-left: 75px;
+  }
+  /* line 86, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #page-content .breadcrumb-wrapper {
+    display: none;
+  }
+  /* line 90, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #back-top {
+    right: 280px;
+  }
+}
+@media (max-width: 800px) {
+  /* line 105, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-minimize-auto #header .navbar-toolbar .navbar-form input {
+    min-width: 350px;
+  }
+  /* line 113, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #header .header-right {
+    right: 0px !important;
+  }
+  /* line 117, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #page-content {
+    margin-right: 0px;
+  }
+  /* line 120, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #page-content .header-content .breadcrumb-wrapper {
+    display: none;
+  }
+  /* line 125, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #back-top {
+    right: 30px;
+  }
+  /* line 130, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right {
+    right: 220px !important;
+  }
+  /* line 134, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right .navbar-toolbar .navbar-form input {
+    min-width: 225px !important;
+  }
+  /* line 142, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #sidebar-left:after {
+    left: 0px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 154, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #sidebar-left {
+    left: -230px;
+  }
+  /* line 157, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed #back-top {
+    right: 40px;
+  }
+  /* line 162, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right {
+    right: 0px !important;
+  }
+  /* line 166, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right .navbar-toolbar .navbar-form input {
+    min-width: 400px !important;
+  }
+  /* line 173, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #sidebar-left, body.page-boxed.page-sidebar-right-show #sidebar-left:after {
+    left: -250px;
+  }
+}
+@media (max-width: 540px) {
+  /* line 186, ../../app/styles/layout/_variant-layout.scss */
+  body.page-boxed.page-sidebar-right-show #header .header-right {
+    left: -220px !important;
+  }
+}
+/* ========================================================================
+ * PAGE HEADER FIXED
+ * ======================================================================== */
+/* line 200, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed .navbar-header, body.page-header-fixed .header-right {
+  position: fixed;
+}
+/* line 203, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed .header-right {
+  right: 0px;
+  left: 220px;
+}
+/* line 208, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed.page-sidebar-minimize .header-right, body.page-header-fixed.page-sidebar-minimize-auto .header-right {
+  left: 0px;
+}
+/* line 212, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed.page-sidebar-minimize.page-sidebar-fixed .header-right, body.page-header-fixed.page-sidebar-minimize-auto.page-sidebar-fixed .header-right {
+  right: 0px;
+}
+/* line 219, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed #sidebar-right .panel .panel-heading {
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  right: 0px;
+  width: 220px;
+}
+/* line 226, ../../app/styles/layout/_variant-layout.scss */
+body.page-header-fixed #sidebar-right .panel .panel-body {
+  margin-top: 53px;
+}
+
+@media (max-width: 768px) {
+  /* line 238, ../../app/styles/layout/_variant-layout.scss */
+  body.page-header-fixed #header .header-right {
+    left: 0px;
+  }
+  /* line 241, ../../app/styles/layout/_variant-layout.scss */
+  body.page-header-fixed #header .header-left {
+    position: fixed;
+  }
+  /* line 246, ../../app/styles/layout/_variant-layout.scss */
+  body.page-header-fixed.page-sidebar-left-show .navbar-toolbar {
+    left: 220px;
+  }
+}
+/* ========================================================================
+ * PAGE SIDEBAR FIXED
+ * ======================================================================== */
+/* line 259, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed #sidebar-left {
+  position: fixed;
+  left: 0px;
+}
+/* line 263, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed #sidebar-left .sidebar-content .close {
+  display: none;
+}
+/* line 268, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed #sidebar-right {
+  position: fixed;
+}
+/* line 274, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed.page-sidebar-minimize #sidebar-left .sidebar-menu:hover, body.page-sidebar-fixed.page-sidebar-minimize-auto #sidebar-left .sidebar-menu:hover {
+  min-width: 250px;
+}
+/* line 276, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed.page-sidebar-minimize #sidebar-left .sidebar-menu:hover > .active, body.page-sidebar-fixed.page-sidebar-minimize #sidebar-left .sidebar-menu:hover .sidebar-category, body.page-sidebar-fixed.page-sidebar-minimize-auto #sidebar-left .sidebar-menu:hover > .active, body.page-sidebar-fixed.page-sidebar-minimize-auto #sidebar-left .sidebar-menu:hover .sidebar-category {
+  width: 75px;
+}
+/* line 281, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-fixed.page-sidebar-minimize #sidebar-left .sidebar-menu > .active:hover, body.page-sidebar-fixed.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > .active:hover {
+  width: 250px;
+}
+
+@media (max-width: 768px) {
+  /* line 296, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-fixed.page-sidebar-left-show #header .header-right {
+    left: 0px;
+    right: -220px;
+  }
+  /* line 304, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-fixed.page-sidebar-right-show #header .header-right {
+    left: -220px;
+    right: 220px;
+  }
+  /* line 310, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-fixed #sidebar-left {
+    left: -220px;
+  }
+}
+/* ========================================================================
+ * PAGE SIDEBAR MINIMIZE
+ * ======================================================================== */
+/* line 323, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-left, body.page-sidebar-minimize-auto #header .header-left {
+  display: none;
+}
+/* line 326, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right, body.page-sidebar-minimize-auto #header .header-right {
+  left: 0px;
+  right: 0px;
+}
+/* line 329, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-minimize, body.page-sidebar-minimize-auto #header .header-right .navbar-minimize {
+  width: 75px;
+  text-align: center;
+  border-right: none;
+}
+/* line 335, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-toolbar:before, body.page-sidebar-minimize-auto #header .header-right .navbar-toolbar:before {
+  left: 75px;
+}
+/* line 340, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-toolbar .navbar-right .dropdown > a, body.page-sidebar-minimize-auto #header .header-right .navbar-toolbar .navbar-right .dropdown > a {
+  padding-bottom: 13px;
+}
+/* line 345, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-toolbar .navbar-right .navbar-profile > a, body.page-sidebar-minimize-auto #header .header-right .navbar-toolbar .navbar-right .navbar-profile > a {
+  padding-bottom: 9px;
+}
+/* line 350, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-toolbar .navbar-right .navbar-setting a, body.page-sidebar-minimize-auto #header .header-right .navbar-toolbar .navbar-right .navbar-setting a {
+  padding-bottom: 13px;
+}
+/* line 352, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .header-right .navbar-toolbar .navbar-right .navbar-setting a:hover, body.page-sidebar-minimize-auto #header .header-right .navbar-toolbar .navbar-right .navbar-setting a:hover {
+  background-color: #fbfbfb;
+}
+/* line 360, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .navbar-header, body.page-sidebar-minimize-auto #header .navbar-header {
+  width: 100%;
+}
+/* line 362, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #header .navbar-header .logo, body.page-sidebar-minimize-auto #header .navbar-header .logo {
+  display: none;
+}
+/* line 368, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left, body.page-sidebar-minimize-auto #sidebar-left {
+  width: 75px;
+}
+/* line 370, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left:after, body.page-sidebar-minimize-auto #sidebar-left:after {
+  width: 75px;
+}
+/* line 374, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left:hover .sidebar-menu, body.page-sidebar-minimize-auto #sidebar-left:hover .sidebar-menu {
+  width: 1025px !important;
+}
+/* line 376, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left:hover .sidebar-menu > li, body.page-sidebar-minimize-auto #sidebar-left:hover .sidebar-menu > li {
+  width: 250px;
+}
+/* line 378, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left:hover .sidebar-menu > li.sidebar-category, body.page-sidebar-minimize #sidebar-left:hover .sidebar-menu > li.active, body.page-sidebar-minimize-auto #sidebar-left:hover .sidebar-menu > li.sidebar-category, body.page-sidebar-minimize-auto #sidebar-left:hover .sidebar-menu > li.active {
+  width: 75px;
+}
+/* line 382, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left:hover .sidebar-menu > li.active:hover, body.page-sidebar-minimize-auto #sidebar-left:hover .sidebar-menu > li.active:hover {
+  width: 250px;
+}
+/* line 392, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-content .media .media-body, body.page-sidebar-minimize-auto #sidebar-left .sidebar-content .media .media-body {
+  display: none;
+}
+/* line 399, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu {
+  width: 75px !important;
+}
+/* line 401, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu:after {
+  left: 37px;
+}
+/* line 405, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover {
+  min-width: 220px;
+  background-color: #1d1d1d;
+}
+/* line 409, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover > a > .text, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover > a > .count, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover > a > .label, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover > a > .badge, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover > a > .text, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover > a > .count, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover > a > .label, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover > a > .badge {
+  display: inline-block;
+}
+/* line 413, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover.submenu, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover.submenu {
+  min-width: 250px;
+}
+/* line 415, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover.submenu > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover.submenu > ul {
+  display: block !important;
+  background-color: #222222;
+}
+/* line 419, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:hover.submenu > ul > li > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #222222;
+}
+/* line 426, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li:after {
+  left: 37px;
+}
+/* line 430, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .icon, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .icon {
+  min-width: 75px;
+  margin-left: 6px;
+  margin-right: 29px;
+}
+/* line 434, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .icon:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .icon:after {
+  left: 36px;
+}
+/* line 437, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .icon i, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .icon i {
+  line-height: 30px;
+  width: 34px;
+  font-size: 15px;
+}
+/* line 443, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .text, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .count, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .plus, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .label, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .badge, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .arrow, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .selected, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .text, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .count, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .plus, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .label, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .badge, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .arrow, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .selected {
+  display: none;
+}
+/* line 446, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .label, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .badge, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .label, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .badge {
+  margin-top: 10px;
+}
+/* line 449, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .arrow, body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .plus, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .arrow, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .plus {
+  margin-top: 3px;
+}
+/* line 452, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li > a > .count, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li > a > .count {
+  margin-top: 7px;
+}
+/* line 456, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li.sidebar-category, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li.sidebar-category {
+  text-align: center;
+  font-size: 12px;
+  padding: 0px;
+  min-width: 75px;
+  background-color: #323232;
+}
+/* line 462, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li.sidebar-category .pull-right, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li.sidebar-category .pull-right {
+  display: none;
+}
+/* line 465, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li.sidebar-category:hover, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li.sidebar-category:hover {
+  width: 75px !important;
+}
+/* line 470, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li.submenu > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li.submenu > ul {
+  z-index: 1000;
+}
+/* line 474, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu > li.active, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu > li.active {
+  min-width: 75px;
+}
+/* line 480, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu:hover > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu:hover > ul {
+  display: block !important;
+}
+/* line 484, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu > ul {
+  position: absolute;
+  left: 75px;
+  top: 42px;
+  list-style: none;
+  min-width: 175px;
+  height: auto !important;
+  padding-left: 0;
+  display: none !important;
+  transition: none;
+}
+/* line 496, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu > ul > li:last-child a, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu > ul > li:last-child a {
+  padding-bottom: 10px;
+}
+/* line 502, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu > ul > li.submenu:hover > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu > ul > li.submenu:hover > ul {
+  display: block !important;
+}
+/* line 506, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu > ul > li.submenu > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu > ul > li.submenu > ul {
+  top: 0px !important;
+  left: 175px;
+  display: none;
+  border-top: none;
+}
+/* line 516, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu ul:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu ul:after {
+  left: 13px;
+  top: 0px;
+}
+/* line 521, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu ul li:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu ul li:after {
+  left: 10px;
+}
+/* line 525, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu ul li a:before, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu ul li a:before {
+  margin-left: -7px;
+}
+/* line 532, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu.active > ul, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu.active > ul {
+  display: none !important;
+}
+/* line 538, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu.submenu-arrow a .icon, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu.submenu-arrow a .icon {
+  z-index: 1;
+}
+/* line 540, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu.submenu-arrow a .icon:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu.submenu-arrow a .icon:after {
+  content: "___";
+  position: absolute;
+  right: 0px;
+  top: 3px;
+  color: #373737;
+  z-index: -1;
+}
+/* line 550, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu.submenu-arrow .submenu-header, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu.submenu-arrow .submenu-header {
+  display: block;
+  height: 40px;
+  line-height: 38px;
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #373737;
+  padding: 0px 30px;
+  border-radius: 0px 3px 0px 0px;
+}
+/* line 559, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu .submenu.submenu-arrow .submenu-header:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu .submenu.submenu-arrow .submenu-header:after {
+  box-shadow: none;
+  background-color: transparent;
+}
+/* line 568, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-menu li.active > a:after, body.page-sidebar-minimize-auto #sidebar-left .sidebar-menu li.active > a:after {
+  border-right: none;
+}
+/* line 576, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .sidebar-footer, body.page-sidebar-minimize-auto #sidebar-left .sidebar-footer {
+  display: none;
+}
+/* line 580, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left .hidden-sidebar-minimize, body.page-sidebar-minimize-auto #sidebar-left .hidden-sidebar-minimize {
+  display: none;
+}
+/* line 587, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #sidebar-left.sidebar-box .sidebar-menu .submenu > ul, body.page-sidebar-minimize #sidebar-left.sidebar-rounded .sidebar-menu .submenu > ul, body.page-sidebar-minimize #sidebar-left.sidebar-circle .sidebar-menu .submenu > ul, body.page-sidebar-minimize-auto #sidebar-left.sidebar-box .sidebar-menu .submenu > ul, body.page-sidebar-minimize-auto #sidebar-left.sidebar-rounded .sidebar-menu .submenu > ul, body.page-sidebar-minimize-auto #sidebar-left.sidebar-circle .sidebar-menu .submenu > ul {
+  top: 46px !important;
+}
+/* line 596, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-minimize #page-content, body.page-sidebar-minimize-auto #page-content {
+  margin-left: 75px;
+}
+
+@media (max-width: 800px) {
+  /* line 608, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-minimize #header .navbar-toolbar .navbar-form input, body.page-sidebar-minimize-auto #header .navbar-toolbar .navbar-form input {
+    min-width: 400px;
+  }
+  /* line 614, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-minimize #page-content, body.page-sidebar-minimize-auto #page-content {
+    margin-right: 0px;
+  }
+  /* line 617, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-minimize #page-content .header-content .breadcrumb-wrapper, body.page-sidebar-minimize-auto #page-content .header-content .breadcrumb-wrapper {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  /* line 629, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-minimize .header-left, body.page-sidebar-minimize-auto .header-left {
+    display: block !important;
+  }
+}
+/* ========================================================================
+ * PAGE SIDEBAR LEFT SHOW
+ * ======================================================================== */
+@media (max-width: 800px) {
+  /* line 641, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show {
+    overflow-x: hidden;
+  }
+  /* line 644, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #header .header-right {
+    right: 0px;
+  }
+  /* line 649, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #header .navbar-toolbar .navbar-form input {
+    min-width: 225px;
+  }
+  /* line 655, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #page-content {
+    margin-right: -220px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 665, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #header {
+    left: 220px;
+  }
+  /* line 669, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #header .navbar-toolbar .navbar-form input {
+    min-width: 400px;
+  }
+  /* line 675, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #sidebar-left {
+    top: 0px;
+    left: 0px;
+  }
+  /* line 678, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #sidebar-left:after {
+    left: 0px;
+  }
+  /* line 682, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-left-show #page-content {
+    margin-left: 220px !important;
+  }
+}
+/* ========================================================================
+ * PAGE SIDEBAR RIGHT SHOW
+ * ======================================================================== */
+/* line 695, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-right-show #header .header-right {
+  right: 220px !important;
+}
+/* line 699, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-right-show #sidebar-right {
+  right: 0px;
+  visibility: inherit;
+}
+/* line 703, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-right-show #page-content {
+  margin-right: 220px !important;
+}
+/* line 706, ../../app/styles/layout/_variant-layout.scss */
+body.page-sidebar-right-show #back-top {
+  right: 250px;
+}
+
+@media (max-width: 800px) {
+  /* line 716, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #header .header-right {
+    left: 0px;
+    right: 220px;
+  }
+  /* line 722, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #header .navbar-toolbar .navbar-form input {
+    min-width: 225px;
+  }
+  /* line 728, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #page-content {
+    margin-left: 75px;
+  }
+  /* line 731, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #page-content .header-content .breadcrumb-wrapper {
+    display: none;
+  }
+  /* line 736, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #sidebar-left {
+    left: 0px;
+  }
+  /* line 738, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #sidebar-left:after {
+    left: -220px;
+  }
+  /* line 742, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #back-top {
+    right: 250px !important;
+  }
+}
+@media (max-width: 768px) {
+  /* line 753, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #header .header-left, body.page-sidebar-right-show #header .header-right {
+    left: -220px;
+  }
+  /* line 758, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #header .navbar-toolbar .navbar-form input {
+    min-width: 400px;
+  }
+  /* line 764, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #sidebar-left {
+    left: -220px;
+  }
+  /* line 767, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #sidebar-right {
+    top: 0px;
+    right: 0px;
+    visibility: inherit;
+  }
+  /* line 772, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #page-content {
+    margin-left: -220px !important;
+    margin-right: 0px !important;
+  }
+  /* line 776, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #page-content .header-content .breadcrumb-wrapper {
+    display: block;
+  }
+}
+@media (max-width: 640px) {
+  /* line 791, ../../app/styles/layout/_variant-layout.scss */
+  body.page-sidebar-right-show #header .navbar-toolbar .navbar-form input {
+    min-width: 270px;
+  }
+}
+/* ========================================================================
+ * PAGE FOOTER FIXED
+ * ======================================================================== */
+/* line 808, ../../app/styles/layout/_variant-layout.scss */
+body.page-footer-fixed.page-sidebar-minimize #page-content .footer-content, body.page-footer-fixed.page-sidebar-minimize-auto #page-content .footer-content {
+  left: 75px;
+}
+/* line 814, ../../app/styles/layout/_variant-layout.scss */
+body.page-footer-fixed #page-content .body-content {
+  margin-bottom: 40px;
+}
+/* line 817, ../../app/styles/layout/_variant-layout.scss */
+body.page-footer-fixed #page-content .footer-content {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 220px;
+}
+
+@media (max-width: 768px) {
+  /* line 831, ../../app/styles/layout/_variant-layout.scss */
+  body.page-footer-fixed #page-content .footer-content {
+    left: 0px;
+  }
+  /* line 837, ../../app/styles/layout/_variant-layout.scss */
+  body.page-footer-fixed.page-sidebar-left-show #page-content .footer-content {
+    left: 220px;
+    right: -220px;
+  }
+  /* line 845, ../../app/styles/layout/_variant-layout.scss */
+  body.page-footer-fixed.page-sidebar-right-show #page-content .footer-content {
+    right: 220px;
+    left: -220px;
+  }
+}
+/* ========================================================================
+ * HEADER
+ * ======================================================================== */
+/* line 16, ../../app/styles/layout/_header.scss */
+#header {
+  height: 50px;
+  margin-bottom: 0;
+  border: none;
+  position: relative;
+  z-index: 300;
+}
+
+@media (max-width: 800px) {
+  /* line 26, ../../app/styles/layout/_header.scss */
+  #header .header-right {
+    right: 0px;
+  }
+  /* line 31, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-form input {
+    min-width: 225px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 43, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-form input {
+    min-width: 400px;
+  }
+  /* line 48, ../../app/styles/layout/_header.scss */
+  #header .header-left, #header .header-right {
+    display: block;
+  }
+  /* line 51, ../../app/styles/layout/_header.scss */
+  #header .header-left {
+    width: 100%;
+  }
+  /* line 54, ../../app/styles/layout/_header.scss */
+  #header .header-right {
+    top: 50px;
+    left: 0px;
+    right: 0px;
+  }
+  /* line 58, ../../app/styles/layout/_header.scss */
+  #header .header-right .navbar-form {
+    margin: 9px 10px 2px;
+  }
+  /* line 62, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize-mobile, #header .navbar-header {
+    float: left;
+    display: block;
+    position: relative;
+  }
+  /* line 67, ../../app/styles/layout/_header.scss */
+  #header .navbar-left {
+    float: left;
+  }
+  /* line 70, ../../app/styles/layout/_header.scss */
+  #header .navbar-right {
+    float: right;
+  }
+  /* line 72, ../../app/styles/layout/_header.scss */
+  #header .navbar-right .dropdown-menu {
+    right: 0px;
+    left: inherit;
+  }
+  /* line 78, ../../app/styles/layout/_header.scss */
+  #header .nav > li {
+    float: left;
+  }
+  /* line 82, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize, #header .navbar-setting {
+    display: none;
+  }
+  /* line 85, ../../app/styles/layout/_header.scss */
+  #header .navbar-nav {
+    margin: 0px;
+  }
+  /* line 88, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize-mobile {
+    position: absolute;
+    vertical-align: top;
+    text-align: center;
+    height: 99%;
+    line-height: 43px;
+    cursor: pointer;
+    padding-top: 8px;
+    width: 65px;
+    z-index: 1;
+  }
+  /* line 98, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize-mobile.left {
+    left: 0px;
+  }
+  /* line 101, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize-mobile.right {
+    right: 0px;
+  }
+  /* line 104, ../../app/styles/layout/_header.scss */
+  #header .navbar-minimize-mobile i {
+    font-size: 25px;
+  }
+  /* line 108, ../../app/styles/layout/_header.scss */
+  #header .navbar-header {
+    width: 100%;
+    z-index: -1;
+  }
+  /* line 111, ../../app/styles/layout/_header.scss */
+  #header .navbar-header .navbar-brand {
+    width: 100%;
+  }
+  /* line 113, ../../app/styles/layout/_header.scss */
+  #header .navbar-header .navbar-brand .logo {
+    display: block !important;
+    margin: 0px auto;
+  }
+  /* line 119, ../../app/styles/layout/_header.scss */
+  #header .navbar-form {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  /* line 122, ../../app/styles/layout/_header.scss */
+  #header .navbar-form .form-group {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 600px) {
+  /* line 133, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-form input {
+    min-width: 263px;
+  }
+
+  /* line 144, ../../app/styles/layout/_header.scss */
+  body.page-sidebar-left-show #header .navbar-toolbar .navbar-form input {
+    min-width: 270px;
+  }
+}
+@media (max-width: 480px) {
+  /* line 156, ../../app/styles/layout/_header.scss */
+  #header .navbar-search {
+    display: none;
+  }
+  /* line 161, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-right .dropdown-menu {
+    right: 0px !important;
+  }
+}
+@media (max-width: 360px) {
+  /* line 173, ../../app/styles/layout/_header.scss */
+  #header .navbar-right .navbar-notification .dropdown-menu {
+    right: -45px;
+  }
+  /* line 178, ../../app/styles/layout/_header.scss */
+  #header .navbar-right .navbar-message .dropdown-menu {
+    right: -95px;
+  }
+  /* line 186, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-right .navbar-message .dropdown-menu {
+    right: -115px !important;
+  }
+  /* line 191, ../../app/styles/layout/_header.scss */
+  #header .navbar-toolbar .navbar-right .navbar-notification .dropdown-menu {
+    right: -65px !important;
+  }
+  /* line 198, ../../app/styles/layout/_header.scss */
+  #header .navbar-left .navbar-search {
+    display: none !important;
+  }
+}
+/* ========================================================================
+ * HEADER LEFT
+ * ======================================================================== */
+/* line 208, ../../app/styles/layout/_header.scss */
+.header-left {
+  float: left;
+  position: relative;
+}
+/* line 211, ../../app/styles/layout/_header.scss */
+.header-left .navbar-header {
+  height: 51px;
+  width: 220px;
+  left: 0;
+}
+/* line 215, ../../app/styles/layout/_header.scss */
+.header-left .navbar-header .navbar-brand {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+  vertical-align: middle;
+  font-size: 20px;
+  line-height: 50px;
+  text-transform: capitalize;
+}
+/* line 224, ../../app/styles/layout/_header.scss */
+.header-left .navbar-header .navbar-brand img {
+  margin: 0px auto;
+}
+/* line 229, ../../app/styles/layout/_header.scss */
+.header-left .navbar-minimize-mobile {
+  color: #FFFFFF;
+  display: none;
+}
+
+/* ========================================================================
+ * HEADER RIGHT
+ * ======================================================================== */
+/* line 239, ../../app/styles/layout/_header.scss */
+.header-right {
+  float: left;
+  position: absolute;
+  left: 220px;
+  right: 0px;
+}
+/* line 245, ../../app/styles/layout/_header.scss */
+.header-right .navbar-toolbar:before {
+  border-bottom: 1px solid #DDD;
+  position: absolute;
+  display: block;
+  content: "";
+  bottom: -1px;
+  left: 0px;
+  right: 0px;
+}
+/* line 255, ../../app/styles/layout/_header.scss */
+.header-right .navbar {
+  border: none;
+}
+
+/* ========================================================================
+ * NAVBAR TOOLBAR
+ * ======================================================================== */
+/* line 263, ../../app/styles/layout/_header.scss */
+.navbar-toolbar {
+  border-bottom: none;
+  margin-bottom: 0px;
+  background-color: #FFFFFF;
+}
+/* line 268, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-left .navbar-minimize {
+  border-right: 1px solid #DDD;
+}
+/* line 270, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-left .navbar-minimize a {
+  padding-top: 16px;
+  padding-bottom: 13px;
+}
+/* line 273, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-left .navbar-minimize a i {
+  font-size: 24px;
+  margin-top: -3px;
+}
+/* line 280, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-left .navbar-search .trigger-search {
+  font-size: 22px;
+  color: #777;
+  display: none;
+  padding: 14px;
+}
+/* line 292, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown:hover > a .count, .navbar-toolbar .navbar-right .dropdown:focus > a .count, .navbar-toolbar .navbar-right .dropdown:active > a .count {
+  animation: none;
+  -webkit-animation: none;
+}
+/* line 297, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown > a {
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
+/* line 300, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown > a .count {
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  padding: 0.4em 0.6em;
+  animation: opacity-badge 0.6s infinite;
+  -webkit-animation: opacity-badge 0.6s infinite;
+}
+@keyframes opacity-badge {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+/* line 308, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown > a > i {
+  position: relative;
+  font-size: 22px;
+  color: #777;
+}
+/* line 316, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a {
+  padding-top: 8px;
+  padding-right: 11px;
+  padding-bottom: 8px;
+}
+/* line 320, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a .meta {
+  display: table;
+  width: 100%;
+  line-height: 30px;
+}
+/* line 324, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a .meta .avatar {
+  display: table-cell;
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+}
+/* line 329, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a .meta .avatar img {
+  display: block;
+  width: 100%;
+}
+/* line 334, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a .meta .text {
+  font-size: 13px;
+  font-weight: 600;
+  padding-left: 5px;
+}
+/* line 339, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile > a .meta .caret {
+  margin-left: 5px;
+  color: gray;
+}
+/* line 345, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu {
+  width: 180px;
+  height: inherit;
+  min-height: 0;
+}
+/* line 349, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu .dropdown-header {
+  box-shadow: none;
+  border-top: 1px solid #DDD;
+  border-radius: 0px;
+}
+/* line 353, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu .dropdown-header:first-child {
+  border-top: none;
+}
+/* line 358, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu > li > a {
+  white-space: normal;
+}
+/* line 364, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu li:first-child a {
+  margin-top: 9px;
+}
+/* line 368, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu li a {
+  color: #999;
+  padding: 3px 10px;
+}
+/* line 371, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu li a:hover {
+  color: #808080;
+}
+/* line 374, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu li a i {
+  min-width: 20px;
+}
+/* line 377, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-profile .dropdown-menu li a .label {
+  margin-top: 2px;
+}
+/* line 384, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-setting {
+  border-left: 1px solid #DDD;
+}
+/* line 386, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-setting:visited {
+  background-color: transparent;
+}
+/* line 389, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-setting a {
+  padding-right: 15px;
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
+/* line 393, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .navbar-setting a i {
+  z-index: 2;
+  position: relative;
+  font-size: 22px;
+}
+/* line 400, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu {
+  top: auto;
+  width: 300px;
+  padding: 0;
+  position: absolute;
+  margin-top: 5px;
+  background-color: #FFF;
+  border: none;
+  border-radius: 3px;
+  min-height: 355px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+/* line 412, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu .dropdown-header {
+  display: table;
+  width: 100%;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #E6EBED;
+  padding: 0 15px !important;
+  height: 36px;
+  line-height: 36px;
+  color: #5E5E5E;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+/* line 425, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu .dropdown-header .title {
+  display: table-cell;
+  font-weight: 600;
+}
+/* line 429, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu .dropdown-header .option {
+  display: table-cell;
+  font-weight: 400;
+}
+/* line 434, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu .dropdown-body {
+  height: 281px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+/* line 439, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-right .dropdown-menu .dropdown-footer {
+  display: table;
+  width: 100%;
+  background-color: #F7F7F7;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  padding: 0 15px !important;
+  height: 36px;
+  line-height: 36px;
+  color: #5E5E5E;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  border-radius: 0px 0px 3px 3px;
+}
+/* line 460, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-form {
+  padding: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+/* line 465, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-form input {
+  box-shadow: none;
+  min-width: 350px;
+}
+/* line 469, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .navbar-form .form-group {
+  padding: 0px;
+}
+/* line 474, ../../app/styles/layout/_header.scss */
+.navbar-toolbar .sidebar-minimize i {
+  color: #777;
+}
+
+@media (max-width: 640px) {
+  /* line 482, ../../app/styles/layout/_header.scss */
+  .navbar-toolbar .navbar-form {
+    padding: 7px -15px 2px !important;
+    margin: 7px 10px 2px !important;
+  }
+  /* line 485, ../../app/styles/layout/_header.scss */
+  .navbar-toolbar .navbar-form input {
+    min-width: 275px;
+  }
+}
+/* ========================================================================
+ * NAVBAR MESSAGE
+ * ======================================================================== */
+/* line 496, ../../app/styles/layout/_header.scss */
+.navbar-message form {
+  padding: 6px 15px;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #E6EBED;
+}
+/* line 501, ../../app/styles/layout/_header.scss */
+.navbar-message form .has-icon .form-control-icon {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  width: 34px;
+  line-height: 33px;
+  text-align: center;
+  color: #777;
+}
+/* line 513, ../../app/styles/layout/_header.scss */
+.navbar-message > a {
+  position: relative;
+}
+/* line 516, ../../app/styles/layout/_header.scss */
+.navbar-message .media-list {
+  height: 225px;
+  width: 100%;
+}
+/* line 521, ../../app/styles/layout/_header.scss */
+.navbar-message .media-list .media .media-body .media-heading {
+  font-weight: 400;
+}
+
+/* ========================================================================
+ * NAVBAR NOTIFICATION
+ * ======================================================================== */
+/* line 534, ../../app/styles/layout/_header.scss */
+.navbar-notification .media-list i {
+  font-size: 30px;
+}
+
+/* line 540, ../../app/styles/layout/_header.scss */
+.navbar-message .indicator, .navbar-notification .indicator {
+  text-align: center;
+}
+/* line 542, ../../app/styles/layout/_header.scss */
+.navbar-message .indicator .spinner, .navbar-notification .indicator .spinner {
+  left: 26%;
+  width: 200px;
+  font-size: 13px;
+  line-height: 17px;
+  color: #999;
+}
+
+/* ========================================================================
+ * NAVBAR COLORS
+ * ======================================================================== */
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-dark {
+  background-color: #2A2A2A;
+  color: #777;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-dark:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-dark .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-minimize a:hover, .navbar-dark .navbar-left .navbar-minimize a:focus, .navbar-dark .navbar-left .navbar-minimize a:active {
+  background-color: #505050;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-minimize a:hover i, .navbar-dark .navbar-left .navbar-minimize a:focus i, .navbar-dark .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-minimize a i {
+  color: #777;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form input {
+  background-color: #505050 !important;
+  color: #777 !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #777;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #777;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #777;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #777;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #777;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .dropdown > a:hover, .navbar-dark .navbar-right .dropdown > a:focus, .navbar-dark .navbar-right .dropdown > a:active, .navbar-dark .navbar-right .dropdown > a:visited {
+  background-color: #505050 !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .dropdown > a > i {
+  color: #777;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-setting a:hover, .navbar-dark .navbar-right .navbar-setting a:focus, .navbar-dark .navbar-right .navbar-setting a:active, .navbar-dark .navbar-right .navbar-setting a:visited {
+  background-color: #505050 !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-setting a i {
+  color: #777;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-profile > a .meta .text, .navbar-dark .navbar-right .navbar-profile > a .meta .caret {
+  color: #777;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-right .navbar-chat a i {
+  color: #777;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-form input {
+  border: 1px solid #2A2A2A !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-form input:focus, .navbar-dark .navbar-form input:active {
+  border: 1px solid #2A2A2A !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-dark .navbar-form .form-group .btn {
+  background-color: #2A2A2A;
+  border: 1px solid #2A2A2A;
+}
+
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-primary {
+  background-color: #00B1E1;
+  color: #FFFFFF;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-primary:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-primary .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-minimize a:hover, .navbar-primary .navbar-left .navbar-minimize a:focus, .navbar-primary .navbar-left .navbar-minimize a:active {
+  background-color: #2fd3ff;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-minimize a:hover i, .navbar-primary .navbar-left .navbar-minimize a:focus i, .navbar-primary .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-minimize a i {
+  color: #FFFFFF;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form input {
+  background-color: #2fd3ff !important;
+  color: #FFFFFF !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #FFFFFF;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .dropdown > a:hover, .navbar-primary .navbar-right .dropdown > a:focus, .navbar-primary .navbar-right .dropdown > a:active, .navbar-primary .navbar-right .dropdown > a:visited {
+  background-color: #2fd3ff !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .dropdown > a > i {
+  color: #FFFFFF;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-setting a:hover, .navbar-primary .navbar-right .navbar-setting a:focus, .navbar-primary .navbar-right .navbar-setting a:active, .navbar-primary .navbar-right .navbar-setting a:visited {
+  background-color: #2fd3ff !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-setting a i {
+  color: #FFFFFF;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-profile > a .meta .text, .navbar-primary .navbar-right .navbar-profile > a .meta .caret {
+  color: #FFFFFF;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-right .navbar-chat a i {
+  color: #FFFFFF;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-form input {
+  border: 1px solid #00B1E1 !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-form input:focus, .navbar-primary .navbar-form input:active {
+  border: 1px solid #00B1E1 !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-primary .navbar-form .form-group .btn {
+  background-color: #00B1E1;
+  border: 1px solid #00B1E1;
+}
+
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-success {
+  background-color: #8CC152;
+  color: #FFFFFF;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-success:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-success .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-minimize a:hover, .navbar-success .navbar-left .navbar-minimize a:focus, .navbar-success .navbar-left .navbar-minimize a:active {
+  background-color: #b1d58a;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-minimize a:hover i, .navbar-success .navbar-left .navbar-minimize a:focus i, .navbar-success .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-minimize a i {
+  color: #FFFFFF;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form input {
+  background-color: #b1d58a !important;
+  color: #FFFFFF !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #FFFFFF;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .dropdown > a:hover, .navbar-success .navbar-right .dropdown > a:focus, .navbar-success .navbar-right .dropdown > a:active, .navbar-success .navbar-right .dropdown > a:visited {
+  background-color: #b1d58a !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .dropdown > a > i {
+  color: #FFFFFF;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-setting a:hover, .navbar-success .navbar-right .navbar-setting a:focus, .navbar-success .navbar-right .navbar-setting a:active, .navbar-success .navbar-right .navbar-setting a:visited {
+  background-color: #b1d58a !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-setting a i {
+  color: #FFFFFF;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-profile > a .meta .text, .navbar-success .navbar-right .navbar-profile > a .meta .caret {
+  color: #FFFFFF;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-right .navbar-chat a i {
+  color: #FFFFFF;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-form input {
+  border: 1px solid #8CC152 !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-form input:focus, .navbar-success .navbar-form input:active {
+  border: 1px solid #8CC152 !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-success .navbar-form .form-group .btn {
+  background-color: #8CC152;
+  border: 1px solid #8CC152;
+}
+
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-info {
+  background-color: #63D3E9;
+  color: #FFFFFF;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-info:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-info .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-minimize a:hover, .navbar-info .navbar-left .navbar-minimize a:focus, .navbar-info .navbar-left .navbar-minimize a:active {
+  background-color: #a6e6f2;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-minimize a:hover i, .navbar-info .navbar-left .navbar-minimize a:focus i, .navbar-info .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-minimize a i {
+  color: #FFFFFF;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form input {
+  background-color: #a6e6f2 !important;
+  color: #FFFFFF !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #FFFFFF;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .dropdown > a:hover, .navbar-info .navbar-right .dropdown > a:focus, .navbar-info .navbar-right .dropdown > a:active, .navbar-info .navbar-right .dropdown > a:visited {
+  background-color: #a6e6f2 !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .dropdown > a > i {
+  color: #FFFFFF;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-setting a:hover, .navbar-info .navbar-right .navbar-setting a:focus, .navbar-info .navbar-right .navbar-setting a:active, .navbar-info .navbar-right .navbar-setting a:visited {
+  background-color: #a6e6f2 !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-setting a i {
+  color: #FFFFFF;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-profile > a .meta .text, .navbar-info .navbar-right .navbar-profile > a .meta .caret {
+  color: #FFFFFF;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-right .navbar-chat a i {
+  color: #FFFFFF;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-form input {
+  border: 1px solid #63D3E9 !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-form input:focus, .navbar-info .navbar-form input:active {
+  border: 1px solid #63D3E9 !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-info .navbar-form .form-group .btn {
+  background-color: #63D3E9;
+  border: 1px solid #63D3E9;
+}
+
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-warning {
+  background-color: #F6BB42;
+  color: #FFFFFF;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-warning:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-warning .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-minimize a:hover, .navbar-warning .navbar-left .navbar-minimize a:focus, .navbar-warning .navbar-left .navbar-minimize a:active {
+  background-color: #f9d58b;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-minimize a:hover i, .navbar-warning .navbar-left .navbar-minimize a:focus i, .navbar-warning .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-minimize a i {
+  color: #FFFFFF;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form input {
+  background-color: #f9d58b !important;
+  color: #FFFFFF !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #FFFFFF;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .dropdown > a:hover, .navbar-warning .navbar-right .dropdown > a:focus, .navbar-warning .navbar-right .dropdown > a:active, .navbar-warning .navbar-right .dropdown > a:visited {
+  background-color: #f9d58b !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .dropdown > a > i {
+  color: #FFFFFF;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-setting a:hover, .navbar-warning .navbar-right .navbar-setting a:focus, .navbar-warning .navbar-right .navbar-setting a:active, .navbar-warning .navbar-right .navbar-setting a:visited {
+  background-color: #f9d58b !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-setting a i {
+  color: #FFFFFF;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-profile > a .meta .text, .navbar-warning .navbar-right .navbar-profile > a .meta .caret {
+  color: #FFFFFF;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-right .navbar-chat a i {
+  color: #FFFFFF;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-form input {
+  border: 1px solid #F6BB42 !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-form input:focus, .navbar-warning .navbar-form input:active {
+  border: 1px solid #F6BB42 !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-warning .navbar-form .form-group .btn {
+  background-color: #F6BB42;
+  border: 1px solid #F6BB42;
+}
+
+/* line 47, ../../app/styles/core/_functions.scss */
+.navbar-danger {
+  background-color: #E9573F;
+  color: #FFFFFF;
+}
+/* line 50, ../../app/styles/core/_functions.scss */
+.navbar-danger:before {
+  border-bottom: none !important;
+}
+/* line 54, ../../app/styles/core/_functions.scss */
+.navbar-danger .sidebar-minimize i {
+  color: #FFFFFF;
+}
+/* line 59, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-minimize {
+  border-right: none;
+}
+/* line 62, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-minimize a:hover, .navbar-danger .navbar-left .navbar-minimize a:focus, .navbar-danger .navbar-left .navbar-minimize a:active {
+  background-color: #f19384;
+}
+/* line 64, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-minimize a:hover i, .navbar-danger .navbar-left .navbar-minimize a:focus i, .navbar-danger .navbar-left .navbar-minimize a:active i {
+  color: #FFFFFF;
+}
+/* line 68, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-minimize a i {
+  color: #FFFFFF;
+}
+/* line 75, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form input {
+  background-color: #f19384 !important;
+  color: #FFFFFF !important;
+}
+/* line 78, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form input::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 79, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form input:-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 80, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form input::-moz-placeholder {
+  color: #FFFFFF;
+}
+/* line 81, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form input:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+/* line 84, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-left .navbar-search .navbar-form button[type=submit]:before {
+  color: #FFFFFF;
+}
+/* line 94, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .dropdown > a:hover, .navbar-danger .navbar-right .dropdown > a:focus, .navbar-danger .navbar-right .dropdown > a:active, .navbar-danger .navbar-right .dropdown > a:visited {
+  background-color: #f19384 !important;
+}
+/* line 97, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .dropdown > a > i {
+  color: #FFFFFF;
+}
+/* line 102, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-setting {
+  border-left: none;
+}
+/* line 105, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-setting a:hover, .navbar-danger .navbar-right .navbar-setting a:focus, .navbar-danger .navbar-right .navbar-setting a:active, .navbar-danger .navbar-right .navbar-setting a:visited {
+  background-color: #f19384 !important;
+}
+/* line 108, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-setting a i {
+  color: #FFFFFF;
+}
+/* line 116, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-profile > a .meta .text, .navbar-danger .navbar-right .navbar-profile > a .meta .caret {
+  color: #FFFFFF;
+}
+/* line 122, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-chat {
+  border-left: none;
+}
+/* line 125, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-right .navbar-chat a i {
+  color: #FFFFFF;
+}
+/* line 132, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-form input {
+  border: 1px solid #E9573F !important;
+}
+/* line 134, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-form input:focus, .navbar-danger .navbar-form input:active {
+  border: 1px solid #E9573F !important;
+}
+/* line 139, ../../app/styles/core/_functions.scss */
+.navbar-danger .navbar-form .form-group .btn {
+  background-color: #E9573F;
+  border: 1px solid #E9573F;
+}
+
+/* ========================================================================
+ * PAGE CONTENT
+ * ======================================================================== */
+/* line 14, ../../app/styles/layout/_page-content.scss */
+#page-content {
+  background-color: #F3F3F4;
+  margin-left: 220px;
+  z-index: 100;
+}
+
+@media (max-width: 1024px) {
+  /* line 24, ../../app/styles/layout/_page-content.scss */
+  #page-content .header-content h2 span {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  /* line 33, ../../app/styles/layout/_page-content.scss */
+  #page-content {
+    margin-right: 0px;
+  }
+  /* line 36, ../../app/styles/layout/_page-content.scss */
+  #page-content .header-content h2 {
+    font-size: 20px;
+  }
+  /* line 39, ../../app/styles/layout/_page-content.scss */
+  #page-content .header-content .breadcrumb-wrapper {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  /* line 47, ../../app/styles/layout/_page-content.scss */
+  #page-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-left: 0px !important;
+    margin-top: 50px;
+    margin-right: 0px !important;
+  }
+  /* line 54, ../../app/styles/layout/_page-content.scss */
+  #page-content .header-content {
+    padding: 12px 10px;
+  }
+  /* line 56, ../../app/styles/layout/_page-content.scss */
+  #page-content .header-content .breadcrumb-wrapper {
+    right: 10px;
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  /* line 67, ../../app/styles/layout/_page-content.scss */
+  #page-content .navbar-form input {
+    min-width: 230px !important;
+  }
+  /* line 70, ../../app/styles/layout/_page-content.scss */
+  #page-content .navbar-form .tt-dropdown-menu {
+    width: 300px !important;
+  }
+}
+@media (max-width: 480px) {
+  /* line 80, ../../app/styles/layout/_page-content.scss */
+  #page-content .navbar-form input {
+    min-width: 200px !important;
+  }
+  /* line 84, ../../app/styles/layout/_page-content.scss */
+  #page-content .navbar-left {
+    margin: 7.5px 0px 7.5px 5px !important;
+  }
+  /* line 87, ../../app/styles/layout/_page-content.scss */
+  #page-content .navbar-right {
+    margin: 0px !important;
+  }
+}
+/* ========================================================================
+ * HEADER CONTENT
+ * ======================================================================== */
+/* line 96, ../../app/styles/layout/_page-content.scss */
+.header-content {
+  padding: 12px 20px;
+  border-bottom: 1px solid #DDD;
+  background: #fbfbfb;
+  position: relative;
+  margin: 0px;
+}
+/* line 102, ../../app/styles/layout/_page-content.scss */
+.header-content h2 {
+  font-size: 22px;
+  color: #1D2939;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+/* line 107, ../../app/styles/layout/_page-content.scss */
+.header-content h2 i {
+  font-size: 21px;
+  margin-right: 7px;
+  border-right: 1px dotted #DDD;
+  padding-right: 10px;
+}
+/* line 113, ../../app/styles/layout/_page-content.scss */
+.header-content h2 span {
+  font-size: 13px;
+  text-transform: none;
+  color: #999;
+  font-style: italic;
+  vertical-align: middle;
+  letter-spacing: 0;
+  margin-left: 5px;
+}
+/* line 123, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+/* line 127, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .label {
+  color: #999;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: normal;
+  display: inline-block;
+}
+/* line 134, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb {
+  background: none;
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+/* line 140, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li {
+  font-size: 12px;
+  white-space: nowrap;
+}
+/* line 144, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li + li:before {
+  content: "";
+  padding: 0px;
+}
+/* line 149, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li span, .header-content .breadcrumb-wrapper .breadcrumb li i {
+  color: #999;
+  width: 1.25em;
+  text-align: center;
+}
+/* line 154, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li span {
+  padding: 0px 3px;
+}
+/* line 157, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li a {
+  color: #999;
+}
+/* line 160, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li.active {
+  color: #999;
+  padding-left: 3px;
+}
+/* line 165, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li:last-child a {
+  text-decoration: none;
+  cursor: default;
+}
+/* line 170, ../../app/styles/layout/_page-content.scss */
+.header-content .breadcrumb-wrapper .breadcrumb li:last-child i:last-child {
+  display: none;
+}
+
+/* ========================================================================
+ * BODY CONTENT
+ * ======================================================================== */
+/* line 183, ../../app/styles/layout/_page-content.scss */
+.body-content {
+  background-color: #F3F3F4;
+  padding: 20px 20px 0px 20px;
+  min-height: 1246px;
+  position: relative;
+}
+
+/* ========================================================================
+ * FOOTER CONTENT
+ * ======================================================================== */
+/* line 193, ../../app/styles/layout/_page-content.scss */
+.footer-content {
+  background-color: white;
+  padding: 8px;
+  font-size: 12px;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  color: #999;
+}
+
+@media (max-width: 800px) {
+  /* line 203, ../../app/styles/layout/_page-content.scss */
+  .footer-content {
+    text-align: center;
+  }
+  /* line 205, ../../app/styles/layout/_page-content.scss */
+  .footer-content .pull-left, .footer-content .pull-right {
+    display: none;
+  }
+}
+/* ========================================================================
+ * SIDEBAR LEFT
+ * ======================================================================== */
+/* line 29, ../../app/styles/layout/_sidebar.scss */
+#sidebar-left {
+  width: 220px;
+  float: left;
+  z-index: 200;
+  position: absolute;
+  background-color: #2A2A2A;
+}
+/* line 35, ../../app/styles/layout/_sidebar.scss */
+#sidebar-left:after {
+  background-color: #2A2A2A;
+  position: fixed;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  display: block;
+  content: "";
+  width: 220px;
+  z-index: -2;
+}
+
+@media (max-width: 768px) {
+  /* line 49, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-left {
+    top: 100px;
+    left: -220px;
+    z-index: 9999;
+    position: absolute;
+  }
+  /* line 54, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-left:after {
+    left: -220px;
+  }
+  /* line 57, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-left .sidebar-content {
+    padding: 23px 10px;
+  }
+  /* line 63, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-left .sidebar-menu > li:first-child a {
+    padding-top: 13px;
+  }
+}
+/* ========================================================================
+ * SIDEBAR RIGHT
+ * ======================================================================== */
+/* line 75, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right {
+  top: 0px;
+  right: -220px;
+  visibility: hidden;
+  width: 220px;
+  position: fixed;
+  z-index: 500;
+}
+/* line 82, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right:after {
+  background-color: #2A2A2A;
+  position: fixed;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  display: block;
+  content: "";
+  width: 220px;
+  z-index: -1;
+}
+/* line 94, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel {
+  border: none;
+}
+/* line 96, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading {
+  background-color: #2A2A2A;
+}
+/* line 101, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li.active a {
+  background-color: #2A2A2A;
+}
+/* line 103, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li.active a i {
+  color: #ffffff;
+}
+/* line 108, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li a {
+  background-color: #2A2A2A;
+}
+/* line 110, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li a:hover {
+  background-color: #323232;
+}
+/* line 114, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li i {
+  color: #7F7F7F;
+}
+/* line 121, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading ul li a {
+  padding: 12px 15px !important;
+}
+/* line 129, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list {
+  background-color: #2A2A2A;
+}
+/* line 132, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media:hover {
+  background-color: #2A2A2A;
+  opacity: 1;
+}
+/* line 136, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-heading {
+  color: #777;
+}
+/* line 139, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-body {
+  border-bottom: 1px solid #323232;
+}
+/* line 143, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media:last-child .media-body {
+  border-bottom: none;
+}
+/* line 151, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel-tab {
+  background-color: transparent;
+}
+/* line 155, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading {
+  border-bottom: none;
+  border-radius: 0px;
+}
+/* line 160, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li a {
+  cursor: pointer;
+  border: none;
+}
+/* line 163, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-heading .nav-tabs li a i {
+  font-size: 20px;
+  line-height: 30px;
+}
+/* line 171, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .panel .panel-body {
+  background-color: #2A2A2A;
+}
+/* line 177, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .sidebar-menu {
+  margin-top: 0px;
+}
+/* line 180, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .sidebar-menu > li > ul {
+  background-color: #2A2A2A;
+}
+/* line 182, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .sidebar-menu > li > ul > li {
+  border-bottom: none;
+}
+/* line 192, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-object {
+  margin-top: 10px;
+}
+/* line 194, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-object i {
+  top: 12px !important;
+}
+/* line 198, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-heading {
+  font-weight: 300;
+}
+/* line 201, ../../app/styles/layout/_sidebar.scss */
+#sidebar-right .media-list .media .media-body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  /* line 211, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-right {
+    top: 100px;
+  }
+  /* line 213, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-right.sidebar-show {
+    top: 100px;
+  }
+}
+@media (max-width: 480px) {
+  /* line 224, ../../app/styles/layout/_sidebar.scss */
+  #sidebar-right .panel-tab .panel-heading ul li {
+    width: inherit;
+  }
+}
+/* ========================================================================
+ * SIDEBAR CONTENT
+ * ======================================================================== */
+/* line 236, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content {
+  position: relative;
+  padding: 15px 10px;
+  border-bottom: 2px solid #373737;
+  min-height: 81px;
+}
+/* line 241, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .media-heading {
+  color: #777;
+}
+/* line 243, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .media-heading span {
+  color: #d0d0d0;
+}
+/* line 247, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content small {
+  color: #777;
+}
+/* line 250, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .close {
+  color: white;
+}
+/* line 253, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content:after {
+  position: absolute;
+  content: "";
+  left: 37px;
+  top: 0px;
+  bottom: 0px;
+  z-index: -1;
+}
+/* line 261, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content img {
+  width: 54px;
+  height: 54px;
+}
+/* line 265, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .media {
+  margin-top: 0;
+}
+/* line 268, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .media-heading {
+  font-weight: 300 !important;
+  margin-bottom: 2px;
+  margin-top: 5px;
+}
+/* line 273, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .close {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  font-size: 19px;
+  font-weight: normal;
+  text-shadow: 0 1px 0 #FFF;
+}
+/* line 281, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .btn {
+  opacity: .7;
+}
+/* line 283, ../../app/styles/layout/_sidebar.scss */
+.sidebar-content .btn:hover {
+  opacity: 1;
+}
+
+/* ========================================================================
+ * SIDEBAR MENU
+ * ======================================================================== */
+/* line 292, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  position: relative;
+  margin-bottom: 0px;
+}
+/* line 298, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu li:after {
+  position: absolute;
+  content: "";
+  left: 55px;
+  bottom: -1px;
+}
+/* line 306, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu li.submenu .label.pull-right, .sidebar-menu li.submenu .badge.pull-right {
+  margin-right: 10px !important;
+}
+/* line 310, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu li.submenu .fa.arrow {
+  font-size: 15px;
+  margin-right: 15px;
+}
+/* line 315, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu li .label, .sidebar-menu li .badge {
+  text-shadow: 0px 1px 1px #777;
+  color: #f7f7f7;
+  padding: 3px 4px 4px 4px;
+}
+/* line 321, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li {
+  display: block;
+  position: relative;
+}
+/* line 324, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li:after {
+  border-left: 2px solid #373737;
+}
+/* line 328, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li:first-child.active {
+  margin-top: -1px;
+}
+/* line 333, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 340, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li:last-child:after {
+  bottom: 10px;
+}
+/* line 345, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 351, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active {
+  background-color: #3c3c3c;
+}
+/* line 353, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active .icon {
+  text-shadow: 0px 1px 1px #777;
+}
+/* line 357, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active > a span {
+  color: #d0d0d0;
+}
+/* line 360, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active > a .arrow {
+  color: #777;
+}
+/* line 364, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active > a > .plus:before {
+  content: "\f147";
+}
+/* line 369, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.active > a > .icon i {
+  color: #d0d0d0;
+}
+/* line 378, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.sidebar-minimize-end > a > .icon:after {
+  bottom: 6px !important;
+}
+/* line 384, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a {
+  display: block;
+  padding: 6px 15px;
+  text-decoration: none;
+}
+/* line 389, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a:hover span {
+  color: #d0d0d0;
+}
+/* line 392, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a:hover .text, .sidebar-menu > li > a:hover .icon > i {
+  color: #d0d0d0;
+}
+/* line 396, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a:after {
+  position: absolute;
+  content: "";
+  left: 29px;
+  top: -13px;
+  bottom: 0px;
+  z-index: -1;
+}
+/* line 404, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > span {
+  display: inline;
+  color: #777;
+}
+/* line 408, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .count {
+  float: right;
+  border-radius: 50%;
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 19px;
+  background-color: #373737;
+}
+/* line 418, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .icon:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 29px;
+  z-index: -1;
+}
+/* line 426, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .icon i {
+  text-align: center;
+  line-height: 25px;
+  width: 29px;
+  font-size: 12px;
+  color: #777;
+}
+/* line 434, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .arrow, .sidebar-menu > li > a > .plus {
+  vertical-align: middle;
+  font-weight: 400;
+  text-align: center;
+  font-size: 13px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+/* line 442, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .arrow:before, .sidebar-menu > li > a > .plus:before {
+  font-family: FontAwesome;
+  font-size: 15px;
+}
+/* line 448, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .arrow:before {
+  content: "\f105";
+}
+/* line 452, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .arrow.open:before {
+  content: "\f107" !important;
+}
+/* line 457, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .selected {
+  display: block;
+  background-image: none;
+  float: right;
+  position: absolute;
+  right: 0px;
+  top: 14px;
+  background: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top: 6px double transparent;
+  border-bottom: 6px double transparent;
+  border-left: 0;
+  border-right: 6px solid #F3F3F4;
+}
+/* line 474, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .plus:before {
+  content: "\f196";
+}
+/* line 478, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .plus.open:before {
+  content: "\f147" !important;
+}
+/* line 483, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > a > .pull-right {
+  margin-top: 5px;
+}
+/* line 488, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu ul {
+  display: none;
+}
+/* line 493, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active .arrow:before {
+  content: "\f107";
+}
+/* line 497, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul {
+  display: block;
+}
+/* line 503, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active .arrow:before {
+  content: "\f103" !important;
+}
+/* line 507, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active > ul {
+  display: block;
+}
+/* line 511, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active > ul > li.active a {
+  color: #d0d0d0;
+}
+/* line 512, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active > ul > li.active a:before {
+  color: #5AADBB;
+}
+/* line 518, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active > ul > li a {
+  color: #777;
+}
+/* line 520, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li.submenu.active > ul > li.submenu.active > ul > li a:hover {
+  color: #d0d0d0;
+}
+/* line 533, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul:after {
+  position: absolute;
+  content: "";
+  left: 29px;
+  top: 39px;
+  bottom: 0;
+}
+/* line 540, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li {
+  line-height: 15px;
+  border-bottom: 1px solid #373737;
+}
+/* line 544, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > a:hover {
+  background-color: black;
+}
+/* line 547, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > a > .text {
+  min-width: 110px;
+}
+/* line 550, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > a > .arrow {
+  float: right;
+  margin-right: 21px;
+  vertical-align: middle;
+  font-weight: 400;
+  width: 30px;
+  text-align: right;
+  font-size: 13px;
+}
+/* line 558, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > a > .arrow:before {
+  font-family: FontAwesome;
+  font-size: 15px;
+  content: "\f101" !important;
+  margin-right: -6px;
+}
+/* line 565, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > a > .arrow.open:before {
+  content: "\f103" !important;
+}
+/* line 571, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul {
+  background-color: #161616;
+}
+/* line 574, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > a {
+  padding: 8px 0px 8px 30px;
+}
+/* line 576, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > a:hover {
+  background-color: black;
+}
+/* line 580, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul {
+  background-color: #111111;
+}
+/* line 583, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > a {
+  padding: 8px 0px 8px 35px;
+}
+/* line 585, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > a:hover {
+  background-color: black;
+}
+/* line 589, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul {
+  background-color: #0b0b0b;
+}
+/* line 592, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > a {
+  padding: 8px 0px 8px 40px;
+}
+/* line 594, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > a:hover {
+  background-color: black;
+}
+/* line 598, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > ul {
+  background-color: #060606;
+}
+/* line 601, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+  padding: 8px 0px 8px 45px;
+}
+/* line 603, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > ul > li > a:hover {
+  background-color: black;
+}
+/* line 615, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li.active {
+  background-color: black;
+}
+/* line 618, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu > li > ul > li.active.submenu > a {
+  background-color: #373737;
+}
+/* line 626, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul {
+  margin: 0;
+  padding: 0;
+  background-color: #1d1d1d;
+  list-style: none;
+}
+/* line 631, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li {
+  position: relative;
+}
+/* line 633, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li:after {
+  background-color: #2A2A2A;
+}
+/* line 636, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li a {
+  font-size: 12px;
+  text-decoration: none;
+  padding: 8px 0 8px 22px;
+  display: block;
+  text-transform: capitalize;
+  color: #777;
+}
+/* line 643, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li a:hover {
+  color: #b7b7b7;
+}
+/* line 646, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li a:before {
+  color: #373737;
+}
+/* line 651, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li.active a {
+  color: #b7b7b7;
+}
+/* line 653, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li.active a:before {
+  color: #373737;
+}
+/* line 660, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li.active ul li.active > a {
+  color: #b7b7b7;
+}
+/* line 664, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li.active ul li > a {
+  color: #777;
+}
+/* line 666, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu ul li.active ul li > a:hover {
+  color: #b7b7b7;
+}
+/* line 675, ../../app/styles/layout/_sidebar.scss */
+.sidebar-menu .submenu-header {
+  display: none;
+}
+
+/* ========================================================================
+ * SIDEBAR CATEGORY
+ * ======================================================================== */
+/* line 683, ../../app/styles/layout/_sidebar.scss */
+.sidebar-category {
+  padding: 0px 20px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 40px;
+  margin: 0px;
+  text-transform: uppercase;
+  background-color: #323232;
+  color: #7f7f7f;
+}
+
+/* ========================================================================
+ * SIDEBAR FOOTER
+ * ======================================================================== */
+/* line 697, ../../app/styles/layout/_sidebar.scss */
+.sidebar-footer {
+  line-height: 40px;
+  height: 40px;
+}
+/* line 700, ../../app/styles/layout/_sidebar.scss */
+.sidebar-footer a {
+  color: #777;
+}
+/* line 702, ../../app/styles/layout/_sidebar.scss */
+.sidebar-footer a:hover {
+  color: black;
+}
+/* line 706, ../../app/styles/layout/_sidebar.scss */
+.sidebar-footer .pull-left {
+  width: 25%;
+  text-align: center;
+}
+/* line 709, ../../app/styles/layout/_sidebar.scss */
+.sidebar-footer .pull-left i {
+  font-size: 12px;
+}
+
+/* ========================================================================
+ * SIDEBAR COLORS
+ * ======================================================================== */
+/* line 350, ../../app/styles/core/_functions.scss */
+.sidebar-light {
+  background-color: #FFFFFF !important;
+}
+/* line 352, ../../app/styles/core/_functions.scss */
+.sidebar-light:after {
+  background-color: #FFFFFF !important;
+}
+/* line 355, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-content {
+  border-bottom: 2px solid #DDD !important;
+}
+/* line 357, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-content img, .sidebar-light .sidebar-content .online {
+  border: 2px solid #DDD !important;
+}
+/* line 363, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:hover {
+  background-color: #e4e4e7 !important;
+}
+/* line 366, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:hover.submenu > ul {
+  background-color: #f7f7f8 !important;
+}
+/* line 370, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #f4f4f5 !important;
+}
+/* line 374, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #f7f7f8 !important;
+}
+/* line 384, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 393, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 401, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > a:hover .text, .sidebar-light .sidebar-menu > li > a:hover .icon > i {
+  color: #777;
+}
+/* line 406, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > a > .icon i {
+  color: #777;
+}
+/* line 410, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > a > .count {
+  background-color: white;
+  color: #777;
+}
+/* line 414, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > a > span {
+  color: #777;
+}
+/* line 416, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > a > span.label, .sidebar-light .sidebar-menu > li > a > span.badge {
+  color: #FFFFFF !important;
+}
+/* line 421, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li.active {
+  background-color: #fafafa !important;
+}
+/* line 424, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 426, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 430, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li.active > a span {
+  color: #777;
+}
+/* line 435, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul {
+  background-color: white;
+}
+/* line 438, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li:after {
+  background-color: white !important;
+}
+/* line 441, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li a {
+  color: #777;
+}
+/* line 443, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li a:before {
+  color: #DDD !important;
+}
+/* line 447, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li a:hover:before {
+  color: #777 !important;
+}
+/* line 453, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li.active a {
+  color: #777;
+}
+/* line 455, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li.active a:before {
+  color: white;
+}
+/* line 460, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li ul {
+  background-color: #f7f7f8;
+}
+/* line 466, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu li {
+  color: #777 !important;
+}
+/* line 468, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu li.sidebar-category {
+  background-color: #DDD !important;
+}
+/* line 473, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-content {
+  border-bottom: 2px solid white;
+}
+/* line 476, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-content .media-heading span {
+  color: #777;
+}
+/* line 480, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-content small, .sidebar-light > .sidebar-content .media-heading {
+  color: #777;
+}
+/* line 483, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-content .online {
+  border: 2px solid white;
+  background-color: #72a53b !important;
+}
+/* line 488, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-footer {
+  background-color: white;
+}
+/* line 490, ../../app/styles/core/_functions.scss */
+.sidebar-light > .sidebar-footer a {
+  color: #777;
+}
+/* line 495, ../../app/styles/core/_functions.scss */
+.sidebar-light .nicescroll-rails div {
+  background-color: white !important;
+}
+/* line 505, ../../app/styles/core/_functions.scss */
+.sidebar-light.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #DDD;
+}
+/* line 508, ../../app/styles/core/_functions.scss */
+.sidebar-light.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-light.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-light.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #DDD;
+  background-color: white;
+}
+/* line 515, ../../app/styles/core/_functions.scss */
+.sidebar-light.sidebar-box .sidebar-menu > li > ul:after, .sidebar-light.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-light.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #DDD !important;
+}
+/* line 519, ../../app/styles/core/_functions.scss */
+.sidebar-light.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-light.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-light.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #DDD;
+}
+/* line 531, ../../app/styles/core/_functions.scss */
+.sidebar-light.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-light.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-light.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 150, ../../app/styles/core/_functions.scss */
+.sidebar-primary {
+  background-color: #00a5d2 !important;
+}
+/* line 152, ../../app/styles/core/_functions.scss */
+.sidebar-primary:after {
+  background-color: #00a5d2 !important;
+}
+/* line 157, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li:hover {
+  background-color: #009dc8 !important;
+}
+/* line 163, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #0091b8 !important;
+}
+/* line 167, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #00a5d2 !important;
+}
+/* line 177, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 186, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 192, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li.sidebar-category {
+  background-color: #00bdf0 !important;
+}
+/* line 197, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > a:hover .text, .sidebar-primary > .sidebar-menu > li > a:hover .icon > i {
+  color: #FFFFFF;
+}
+/* line 202, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > a > .icon i {
+  color: #ffffff;
+}
+/* line 206, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > a > .count {
+  background-color: #00c5fb;
+  color: #FFFFFF;
+}
+/* line 210, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > a > span {
+  color: #FFFFFF;
+}
+/* line 214, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li.active {
+  background-color: #00c5fb !important;
+}
+/* line 217, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 219, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 223, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li.active > a span {
+  color: #FFFFFF;
+}
+/* line 229, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li {
+  background-color: #0089ae;
+}
+/* line 231, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li:after {
+  background-color: #00bdf0 !important;
+}
+/* line 234, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li a {
+  color: #FFFFFF;
+}
+/* line 236, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li a:before {
+  color: #00bdf0 !important;
+}
+/* line 240, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li a:hover:before {
+  color: #FFFFFF !important;
+}
+/* line 246, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li.active a {
+  color: #FFFFFF;
+}
+/* line 248, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li.active a:before {
+  color: #00c5fb;
+}
+/* line 253, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu > li > ul > li ul {
+  background-color: #00a5d2;
+}
+/* line 259, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu li {
+  color: #FFFFFF !important;
+}
+/* line 261, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-menu li.sidebar-category {
+  background-color: #00bdf0 !important;
+}
+/* line 266, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-content {
+  border-bottom: 2px solid #00c5fb;
+}
+/* line 268, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-content img, .sidebar-primary > .sidebar-content .online {
+  border: 2px solid #00c5fb !important;
+}
+/* line 272, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-content .media-heading span {
+  color: #FFFFFF;
+}
+/* line 276, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-content small, .sidebar-primary > .sidebar-content .media-heading {
+  color: #FFFFFF;
+}
+/* line 279, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-content .online {
+  background-color: #72a53b !important;
+}
+/* line 283, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-footer {
+  background-color: #00bdf0;
+}
+/* line 285, ../../app/styles/core/_functions.scss */
+.sidebar-primary > .sidebar-footer a {
+  color: #FFFFFF;
+}
+/* line 290, ../../app/styles/core/_functions.scss */
+.sidebar-primary .nicescroll-rails div {
+  background-color: #06caff !important;
+}
+/* line 301, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li.active > a > .icon i, .sidebar-primary.sidebar-rounded .sidebar-menu > li.active > a > .icon i, .sidebar-primary.sidebar-circle .sidebar-menu > li.active > a > .icon i {
+  background-color: #15cdff !important;
+}
+/* line 309, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-primary.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-primary.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #00bdf0;
+}
+/* line 312, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-primary.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-primary.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #00bdf0;
+  background-color: #00b9eb;
+}
+/* line 319, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li > ul:after, .sidebar-primary.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-primary.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #00B1E1 !important;
+}
+/* line 323, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-primary.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-primary.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #00B1E1;
+}
+/* line 335, ../../app/styles/core/_functions.scss */
+.sidebar-primary.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-primary.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-primary.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 150, ../../app/styles/core/_functions.scss */
+.sidebar-success {
+  background-color: #85bd47 !important;
+}
+/* line 152, ../../app/styles/core/_functions.scss */
+.sidebar-success:after {
+  background-color: #85bd47 !important;
+}
+/* line 157, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li:hover {
+  background-color: #7fb842 !important;
+}
+/* line 163, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #78ac3e !important;
+}
+/* line 167, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #85bd47 !important;
+}
+/* line 177, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 186, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 192, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li.sidebar-category {
+  background-color: #93c55d !important;
+}
+/* line 197, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > a:hover .text, .sidebar-success > .sidebar-menu > li > a:hover .icon > i {
+  color: #FFFFFF;
+}
+/* line 202, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > a > .icon i {
+  color: #ffffff;
+}
+/* line 206, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > a > .count {
+  background-color: #98c865;
+  color: #FFFFFF;
+}
+/* line 210, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > a > span {
+  color: #FFFFFF;
+}
+/* line 214, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li.active {
+  background-color: #98c865 !important;
+}
+/* line 217, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 219, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 223, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li.active > a span {
+  color: #FFFFFF;
+}
+/* line 229, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li {
+  background-color: #72a53b;
+}
+/* line 231, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li:after {
+  background-color: #93c55d !important;
+}
+/* line 234, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li a {
+  color: #FFFFFF;
+}
+/* line 236, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li a:before {
+  color: #93c55d !important;
+}
+/* line 240, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li a:hover:before {
+  color: #FFFFFF !important;
+}
+/* line 246, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li.active a {
+  color: #FFFFFF;
+}
+/* line 248, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li.active a:before {
+  color: #98c865;
+}
+/* line 253, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu > li > ul > li ul {
+  background-color: #85bd47;
+}
+/* line 259, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu li {
+  color: #FFFFFF !important;
+}
+/* line 261, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-menu li.sidebar-category {
+  background-color: #93c55d !important;
+}
+/* line 266, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-content {
+  border-bottom: 2px solid #98c865;
+}
+/* line 268, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-content img, .sidebar-success > .sidebar-content .online {
+  border: 2px solid #98c865 !important;
+}
+/* line 272, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-content .media-heading span {
+  color: #FFFFFF;
+}
+/* line 276, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-content small, .sidebar-success > .sidebar-content .media-heading {
+  color: #FFFFFF;
+}
+/* line 279, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-content .online {
+  background-color: #72a53b !important;
+}
+/* line 283, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-footer {
+  background-color: #93c55d;
+}
+/* line 285, ../../app/styles/core/_functions.scss */
+.sidebar-success > .sidebar-footer a {
+  color: #FFFFFF;
+}
+/* line 290, ../../app/styles/core/_functions.scss */
+.sidebar-success .nicescroll-rails div {
+  background-color: #9dca6c !important;
+}
+/* line 301, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li.active > a > .icon i, .sidebar-success.sidebar-rounded .sidebar-menu > li.active > a > .icon i, .sidebar-success.sidebar-circle .sidebar-menu > li.active > a > .icon i {
+  background-color: #a5ce78 !important;
+}
+/* line 309, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-success.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-success.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #93c55d;
+}
+/* line 312, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-success.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-success.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #93c55d;
+  background-color: #91c45a;
+}
+/* line 319, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li > ul:after, .sidebar-success.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-success.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #8CC152 !important;
+}
+/* line 323, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-success.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-success.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #8CC152;
+}
+/* line 335, ../../app/styles/core/_functions.scss */
+.sidebar-success.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-success.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-success.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 150, ../../app/styles/core/_functions.scss */
+.sidebar-info {
+  background-color: #56cfe7 !important;
+}
+/* line 152, ../../app/styles/core/_functions.scss */
+.sidebar-info:after {
+  background-color: #56cfe7 !important;
+}
+/* line 157, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li:hover {
+  background-color: #4dcde6 !important;
+}
+/* line 163, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #3fc9e4 !important;
+}
+/* line 167, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #56cfe7 !important;
+}
+/* line 177, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 186, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 192, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li.sidebar-category {
+  background-color: #70d7eb !important;
+}
+/* line 197, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > a:hover .text, .sidebar-info > .sidebar-menu > li > a:hover .icon > i {
+  color: #FFFFFF;
+}
+/* line 202, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > a > .icon i {
+  color: #ffffff;
+}
+/* line 206, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > a > .count {
+  background-color: #79d9ec;
+  color: #FFFFFF;
+}
+/* line 210, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > a > span {
+  color: #FFFFFF;
+}
+/* line 214, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li.active {
+  background-color: #79d9ec !important;
+}
+/* line 217, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 219, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 223, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li.active > a span {
+  color: #FFFFFF;
+}
+/* line 229, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li {
+  background-color: #36c6e3;
+}
+/* line 231, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li:after {
+  background-color: #70d7eb !important;
+}
+/* line 234, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li a {
+  color: #FFFFFF;
+}
+/* line 236, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li a:before {
+  color: #70d7eb !important;
+}
+/* line 240, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li a:hover:before {
+  color: #FFFFFF !important;
+}
+/* line 246, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li.active a {
+  color: #FFFFFF;
+}
+/* line 248, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li.active a:before {
+  color: #79d9ec;
+}
+/* line 253, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu > li > ul > li ul {
+  background-color: #56cfe7;
+}
+/* line 259, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu li {
+  color: #FFFFFF !important;
+}
+/* line 261, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-menu li.sidebar-category {
+  background-color: #70d7eb !important;
+}
+/* line 266, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-content {
+  border-bottom: 2px solid #79d9ec;
+}
+/* line 268, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-content img, .sidebar-info > .sidebar-content .online {
+  border: 2px solid #79d9ec !important;
+}
+/* line 272, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-content .media-heading span {
+  color: #FFFFFF;
+}
+/* line 276, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-content small, .sidebar-info > .sidebar-content .media-heading {
+  color: #FFFFFF;
+}
+/* line 279, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-content .online {
+  background-color: #72a53b !important;
+}
+/* line 283, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-footer {
+  background-color: #70d7eb;
+}
+/* line 285, ../../app/styles/core/_functions.scss */
+.sidebar-info > .sidebar-footer a {
+  color: #FFFFFF;
+}
+/* line 290, ../../app/styles/core/_functions.scss */
+.sidebar-info .nicescroll-rails div {
+  background-color: #82dced !important;
+}
+/* line 301, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li.active > a > .icon i, .sidebar-info.sidebar-rounded .sidebar-menu > li.active > a > .icon i, .sidebar-info.sidebar-circle .sidebar-menu > li.active > a > .icon i {
+  background-color: #90e0ef !important;
+}
+/* line 309, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-info.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-info.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #70d7eb;
+}
+/* line 312, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-info.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-info.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #70d7eb;
+  background-color: #6cd6ea;
+}
+/* line 319, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li > ul:after, .sidebar-info.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-info.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #63D3E9 !important;
+}
+/* line 323, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-info.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-info.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #63D3E9;
+}
+/* line 335, ../../app/styles/core/_functions.scss */
+.sidebar-info.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-info.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-info.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 150, ../../app/styles/core/_functions.scss */
+.sidebar-warning {
+  background-color: #f5b633 !important;
+}
+/* line 152, ../../app/styles/core/_functions.scss */
+.sidebar-warning:after {
+  background-color: #f5b633 !important;
+}
+/* line 157, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li:hover {
+  background-color: #f5b22a !important;
+}
+/* line 163, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #f4ad1b !important;
+}
+/* line 167, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #f5b633 !important;
+}
+/* line 177, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 186, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 192, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li.sidebar-category {
+  background-color: #f7c051 !important;
+}
+/* line 197, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > a:hover .text, .sidebar-warning > .sidebar-menu > li > a:hover .icon > i {
+  color: #FFFFFF;
+}
+/* line 202, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > a > .icon i {
+  color: #ffffff;
+}
+/* line 206, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > a > .count {
+  background-color: #f7c45a;
+  color: #FFFFFF;
+}
+/* line 210, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > a > span {
+  color: #FFFFFF;
+}
+/* line 214, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li.active {
+  background-color: #f7c45a !important;
+}
+/* line 217, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 219, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 223, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li.active > a span {
+  color: #FFFFFF;
+}
+/* line 229, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li {
+  background-color: #f4a911;
+}
+/* line 231, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li:after {
+  background-color: #f7c051 !important;
+}
+/* line 234, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li a {
+  color: #FFFFFF;
+}
+/* line 236, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li a:before {
+  color: #f7c051 !important;
+}
+/* line 240, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li a:hover:before {
+  color: #FFFFFF !important;
+}
+/* line 246, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li.active a {
+  color: #FFFFFF;
+}
+/* line 248, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li.active a:before {
+  color: #f7c45a;
+}
+/* line 253, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu > li > ul > li ul {
+  background-color: #f5b633;
+}
+/* line 259, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu li {
+  color: #FFFFFF !important;
+}
+/* line 261, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-menu li.sidebar-category {
+  background-color: #f7c051 !important;
+}
+/* line 266, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-content {
+  border-bottom: 2px solid #f7c45a;
+}
+/* line 268, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-content img, .sidebar-warning > .sidebar-content .online {
+  border: 2px solid #f7c45a !important;
+}
+/* line 272, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-content .media-heading span {
+  color: #FFFFFF;
+}
+/* line 276, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-content small, .sidebar-warning > .sidebar-content .media-heading {
+  color: #FFFFFF;
+}
+/* line 279, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-content .online {
+  background-color: #72a53b !important;
+}
+/* line 283, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-footer {
+  background-color: #f7c051;
+}
+/* line 285, ../../app/styles/core/_functions.scss */
+.sidebar-warning > .sidebar-footer a {
+  color: #FFFFFF;
+}
+/* line 290, ../../app/styles/core/_functions.scss */
+.sidebar-warning .nicescroll-rails div {
+  background-color: #f8c764 !important;
+}
+/* line 301, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li.active > a > .icon i, .sidebar-warning.sidebar-rounded .sidebar-menu > li.active > a > .icon i, .sidebar-warning.sidebar-circle .sidebar-menu > li.active > a > .icon i {
+  background-color: #f8cd73 !important;
+}
+/* line 309, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-warning.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-warning.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #f7c051;
+}
+/* line 312, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-warning.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-warning.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #f7c051;
+  background-color: #f6bf4c;
+}
+/* line 319, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li > ul:after, .sidebar-warning.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-warning.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #F6BB42 !important;
+}
+/* line 323, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-warning.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-warning.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #F6BB42;
+}
+/* line 335, ../../app/styles/core/_functions.scss */
+.sidebar-warning.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-warning.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-warning.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 150, ../../app/styles/core/_functions.scss */
+.sidebar-danger {
+  background-color: #e74b31 !important;
+}
+/* line 152, ../../app/styles/core/_functions.scss */
+.sidebar-danger:after {
+  background-color: #e74b31 !important;
+}
+/* line 157, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li:hover {
+  background-color: #e64328 !important;
+}
+/* line 163, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li:hover.submenu > ul > li:hover a {
+  background-color: #e5371a !important;
+}
+/* line 167, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li:hover.submenu > ul > li > ul {
+  background-color: #e74b31 !important;
+}
+/* line 177, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li:first-child > a > .icon:after {
+  top: -1px;
+}
+/* line 186, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li:last-child > a > .icon:after {
+  bottom: 6px;
+}
+/* line 192, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li.sidebar-category {
+  background-color: #eb634d !important;
+}
+/* line 197, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > a:hover .text, .sidebar-danger > .sidebar-menu > li > a:hover .icon > i {
+  color: #FFFFFF;
+}
+/* line 202, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > a > .icon i {
+  color: #ffffff;
+}
+/* line 206, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > a > .count {
+  background-color: #ec6b56;
+  color: #FFFFFF;
+}
+/* line 210, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > a > span {
+  color: #FFFFFF;
+}
+/* line 214, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li.active {
+  background-color: #ec6b56 !important;
+}
+/* line 217, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li.active > a > .icon {
+  text-shadow: none !important;
+}
+/* line 219, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li.active > a > .icon i {
+  color: #FFFFFF !important;
+}
+/* line 223, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li.active > a span {
+  color: #FFFFFF;
+}
+/* line 229, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li {
+  background-color: #dc3519;
+}
+/* line 231, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li:after {
+  background-color: #eb634d !important;
+}
+/* line 234, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li a {
+  color: #FFFFFF;
+}
+/* line 236, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li a:before {
+  color: #eb634d !important;
+}
+/* line 240, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li a:hover:before {
+  color: #FFFFFF !important;
+}
+/* line 246, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li.active a {
+  color: #FFFFFF;
+}
+/* line 248, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li.active a:before {
+  color: #ec6b56;
+}
+/* line 253, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu > li > ul > li ul {
+  background-color: #e74b31;
+}
+/* line 259, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu li {
+  color: #FFFFFF !important;
+}
+/* line 261, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-menu li.sidebar-category {
+  background-color: #eb634d !important;
+}
+/* line 266, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-content {
+  border-bottom: 2px solid #ec6b56;
+}
+/* line 268, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-content img, .sidebar-danger > .sidebar-content .online {
+  border: 2px solid #ec6b56 !important;
+}
+/* line 272, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-content .media-heading span {
+  color: #FFFFFF;
+}
+/* line 276, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-content small, .sidebar-danger > .sidebar-content .media-heading {
+  color: #FFFFFF;
+}
+/* line 279, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-content .online {
+  background-color: #72a53b !important;
+}
+/* line 283, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-footer {
+  background-color: #eb634d;
+}
+/* line 285, ../../app/styles/core/_functions.scss */
+.sidebar-danger > .sidebar-footer a {
+  color: #FFFFFF;
+}
+/* line 290, ../../app/styles/core/_functions.scss */
+.sidebar-danger .nicescroll-rails div {
+  background-color: #ed735f !important;
+}
+/* line 301, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li.active > a > .icon i, .sidebar-danger.sidebar-rounded .sidebar-menu > li.active > a > .icon i, .sidebar-danger.sidebar-circle .sidebar-menu > li.active > a > .icon i {
+  background-color: #ee7f6d !important;
+}
+/* line 309, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-danger.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-danger.sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #eb634d;
+}
+/* line 312, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-danger.sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-danger.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #eb634d;
+  background-color: #ea5f48;
+}
+/* line 319, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li > ul:after, .sidebar-danger.sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-danger.sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #E9573F !important;
+}
+/* line 323, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-danger.sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-danger.sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #E9573F;
+}
+/* line 335, ../../app/styles/core/_functions.scss */
+.sidebar-danger.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-danger.sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-danger.sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* ========================================================================
+ * SIDEBAR VARIANT
+ * ======================================================================== */
+/* line 733, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-circle .sidebar-menu > li > a > .icon:after {
+  border: 1px solid #373737;
+}
+/* line 736, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > a > .icon i, .sidebar-rounded .sidebar-menu > li > a > .icon i, .sidebar-circle .sidebar-menu > li > a > .icon i {
+  border: 2px solid #373737;
+  background-color: #222222;
+}
+/* line 743, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > ul:after, .sidebar-rounded .sidebar-menu > li > ul:after, .sidebar-circle .sidebar-menu > li > ul:after {
+  border-left: 2px solid #373737;
+}
+/* line 747, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > ul > li:after, .sidebar-rounded .sidebar-menu > li > ul > li:after, .sidebar-circle .sidebar-menu > li > ul > li:after {
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  left: 26px;
+  top: 13px;
+  bottom: auto;
+  border-color: transparent;
+  transition: all 0.5s ease-in-out 0s;
+  box-shadow: 0 0 0 2px #373737;
+}
+/* line 759, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > ul > li a:before, .sidebar-rounded .sidebar-menu > li > ul > li a:before, .sidebar-circle .sidebar-menu > li > ul > li a:before {
+  content: "\2014\00a0";
+  margin-left: 13px;
+}
+
+/* line 772, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-content img {
+  border-radius: 0px;
+}
+/* line 780, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > a > .icon i {
+  border-radius: 0px;
+}
+/* line 787, ../../app/styles/layout/_sidebar.scss */
+.sidebar-box .sidebar-menu > li > ul > li:after {
+  border-radius: 0px;
+}
+
+/* line 798, ../../app/styles/layout/_sidebar.scss */
+.sidebar-rounded .sidebar-content img {
+  border-radius: 3px;
+}
+/* line 806, ../../app/styles/layout/_sidebar.scss */
+.sidebar-rounded .sidebar-menu > li > a > .icon i {
+  border-radius: 3px;
+}
+/* line 813, ../../app/styles/layout/_sidebar.scss */
+.sidebar-rounded .sidebar-menu > li > ul > li:after {
+  border-radius: 3px;
+}
+
+/* line 824, ../../app/styles/layout/_sidebar.scss */
+.sidebar-circle .sidebar-content img {
+  border-radius: 50%;
+}
+/* line 832, ../../app/styles/layout/_sidebar.scss */
+.sidebar-circle .sidebar-menu > li > a > .icon i {
+  border-radius: 50%;
+}
+/* line 839, ../../app/styles/layout/_sidebar.scss */
+.sidebar-circle .sidebar-menu > li > ul > li:after {
+  border-radius: 50%;
+}
+
+/* ========================================================================
+ * SIDEBAR PROFILE
+ * ======================================================================== */
+/* line 851, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile {
+  background-color: #2A2A2A;
+}
+/* line 853, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .panel {
+  background-color: #323232;
+}
+/* line 856, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .list-unstyled {
+  margin: 15px;
+}
+/* line 858, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .list-unstyled li {
+  padding: 5px 0px;
+  font-size: 12px;
+  color: #777;
+}
+/* line 862, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .list-unstyled li:first-child {
+  padding-top: 0px;
+}
+/* line 865, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .list-unstyled li:last-child {
+  padding-bottom: 0px;
+}
+/* line 868, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .list-unstyled li i {
+  width: 15px;
+}
+/* line 875, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media .media-body .media-heading {
+  font-weight: 400;
+}
+/* line 880, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list {
+  width: 220px;
+  height: auto;
+  padding: 5px 0px;
+}
+/* line 886, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list.activity > .media .media-object {
+  width: 15px;
+  height: 15px;
+}
+/* line 889, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list.activity > .media .media-heading {
+  font-size: 13px;
+}
+/* line 893, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list.activity > .media .media-meta.time {
+  float: left !important;
+}
+/* line 897, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list.activity > .media .media-body {
+  border-bottom: none !important;
+}
+/* line 904, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list.working > .media .media-object {
+  width: 35px;
+  height: 35px;
+}
+/* line 909, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media {
+  padding: 0px 15px;
+  line-height: 18px;
+  opacity: .8;
+  transition: all 0.3s;
+}
+/* line 915, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-object i {
+  color: #777;
+}
+/* line 919, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-heading {
+  text-transform: capitalize !important;
+  font-weight: 400 !important;
+  font-size: 14px;
+  color: #777 !important;
+}
+/* line 925, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-body {
+  position: relative;
+  width: 145px;
+}
+/* line 928, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-body .media-meta {
+  color: #5a5a5a !important;
+}
+/* line 930, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-body .media-meta.status {
+  float: left;
+  text-transform: capitalize;
+  margin-top: 3px;
+}
+/* line 935, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-body .media-meta.time {
+  float: right;
+  margin-top: 3px;
+}
+/* line 939, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > .media .media-body .media-meta.device {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+}
+/* line 947, ../../app/styles/layout/_sidebar.scss */
+.sidebar-profile .media-list > a {
+  border: none;
+}
+
+/* ========================================================================
+ * SIDEBAR LAYOUT
+ * ======================================================================== */
+/* line 956, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout {
+  background-color: #2A2A2A;
+}
+/* line 958, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled {
+  margin: 15px;
+}
+/* line 960, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li {
+  padding: 3px 0px;
+  font-size: 13px;
+}
+/* line 963, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li:first-child {
+  padding-top: 0px;
+}
+/* line 966, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li:last-child {
+  padding-bottom: 0px;
+}
+/* line 969, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li i {
+  width: 15px;
+}
+/* line 972, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li .rdio {
+  margin-top: 0px;
+}
+/* line 974, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li .rdio label {
+  vertical-align: middle;
+  color: #777;
+}
+/* line 977, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li .rdio label:before {
+  border: none !important;
+  background-color: #444444;
+}
+/* line 985, ../../app/styles/layout/_sidebar.scss */
+.sidebar-layout .list-unstyled li:last-child .rdio label {
+  margin-bottom: 0px !important;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+/* ========================================================================
+ * SIDEBAR SETTINGS
+ * ======================================================================== */
+/* line 999, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting {
+  background-color: #2A2A2A;
+}
+/* line 1002, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item {
+  background-color: #2A2A2A;
+  border: none;
+  border-bottom: 2px solid #373737 !important;
+}
+/* line 1006, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item:last-child {
+  border-bottom: none;
+}
+/* line 1009, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item .progress {
+  background-color: #373737;
+}
+/* line 1014, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting > .content {
+  height: 592px;
+}
+/* line 1019, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .media .media-body .media-heading {
+  font-weight: 400;
+}
+/* line 1024, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group {
+  padding: 10px;
+}
+/* line 1026, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item {
+  padding: 10px 5px;
+  border: none;
+}
+/* line 1029, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item:first-child {
+  padding-top: 0px;
+}
+/* line 1032, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .list-group .list-group-item:last-child {
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+/* line 1038, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .details {
+  margin: 0px 0px 5px 0px;
+}
+/* line 1040, ../../app/styles/layout/_sidebar.scss */
+.sidebar-setting .details span {
+  font-size: 12px;
+  opacity: .7;
+}
+
+/* ========================================================================
+ * SIDEBAR CHAT
+ * ======================================================================== */
+/* line 1050, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat {
+  background-color: #2A2A2A;
+}
+/* line 1052, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .panel {
+  background-color: #323232;
+}
+/* line 1055, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list {
+  width: 220px;
+  height: auto;
+  padding: 10px 0px;
+}
+/* line 1059, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media {
+  padding: 5px 15px;
+  line-height: 18px;
+  opacity: .8;
+  transition: all 0.3s;
+}
+/* line 1064, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-object {
+  width: 35px;
+  height: 35px;
+}
+/* line 1068, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-heading {
+  text-transform: capitalize !important;
+  font-weight: 400 !important;
+  font-size: 14px;
+  color: #777 !important;
+}
+/* line 1074, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-body {
+  position: relative;
+  width: 145px;
+}
+/* line 1077, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-body .media-meta {
+  color: #5a5a5a !important;
+}
+/* line 1079, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-body .media-meta.status {
+  float: left;
+  text-transform: capitalize;
+  margin-top: 3px;
+}
+/* line 1084, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-body .media-meta.time {
+  float: right;
+  margin-top: 3px;
+}
+/* line 1088, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > .media .media-body .media-meta.device {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+}
+/* line 1096, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat .media-list > a {
+  border: none;
+}
+/* line 1100, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat form {
+  margin: 15px !important;
+}
+/* line 1102, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat form .form-group {
+  margin-bottom: 0px !important;
+}
+/* line 1104, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat form .form-group input {
+  background-color: #323232;
+  border: none;
+  padding-right: 33px;
+}
+/* line 1108, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat form .form-group input:focus, .sidebar-chat form .form-group input:active {
+  border: none !important;
+}
+/* line 1112, ../../app/styles/layout/_sidebar.scss */
+.sidebar-chat form .form-group .form-control-feedback {
+  right: 0px;
+  color: #777;
+}
+
+/* ========================================================================
+ * SIDEBAR SUMMARY
+ * ======================================================================== */
+/* line 1123, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary {
+  padding: 0px;
+  margin: 20px 0px 0px;
+  list-style: none outside none;
+}
+/* line 1127, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary .title {
+  color: #848484;
+}
+/* line 1130, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li {
+  padding: 5px 15px;
+}
+/* line 1132, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li:first-child {
+  padding-top: 20px;
+}
+/* line 1135, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li:last-child {
+  padding-bottom: 10px;
+}
+/* line 1138, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li .list-info {
+  float: left;
+  line-height: normal;
+}
+/* line 1141, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li .list-info span {
+  line-height: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  opacity: 0.4;
+  color: #919191;
+}
+/* line 1148, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li .list-info h4 {
+  margin: 2px 0px 0px 0px;
+  font-size: 16px;
+  opacity: 0.7;
+  color: #d0d0d0;
+}
+/* line 1155, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary li .chart {
+  float: right;
+  margin-top: 5px;
+  opacity: 0.6;
+  width: auto;
+  height: auto;
+  background-color: #373737;
+  padding: 5px;
+}
+/* line 1165, ../../app/styles/layout/_sidebar.scss */
+.sidebar-summary .sidebar-category {
+  padding: 0px 15px;
+  margin: 0px;
+}
+
+/* ========================================================================
+ * SIDEBAR THEMES
+ * ======================================================================== */
+/* line 1175, ../../app/styles/layout/_sidebar.scss */
+.sidebar-themes {
+  text-align: center;
+  padding: 15px 10px 10px 10px;
+}
+/* line 1179, ../../app/styles/layout/_sidebar.scss */
+.sidebar-themes.navbar-color a, .sidebar-themes.sidebar-color a {
+  width: 24px;
+}
+/* line 1183, ../../app/styles/layout/_sidebar.scss */
+.sidebar-themes a {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  opacity: .7;
+}
+/* line 1187, ../../app/styles/layout/_sidebar.scss */
+.sidebar-themes a:hover {
+  opacity: 1;
+}
+
+/* ========================================================================
+ * SIDEBAR TASK
+ * ======================================================================== */
+/* line 1196, ../../app/styles/layout/_sidebar.scss */
+.sidebar-task {
+  padding: 10px 10px 15px !important;
+}

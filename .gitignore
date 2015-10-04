@@ -1,0 +1,8 @@
+/node_modules
+/grunt/node_modules
+/grunt/.sass-cache
+/grunt/.tmp
+/dist
+/web/tmp
+/web/vendor
+/bower_components

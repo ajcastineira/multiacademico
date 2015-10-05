@@ -4,11 +4,15 @@
 define([
     'angular',
     'angular-couch-potato',
-    'angular-ui-router'
+    'angular-ui-router',
+    'jquery-cookie',
+    'jquery-nicescroll',
+    'sparkline'
 ], function (ng, couchPotato) {
+
 'use strict';
-return (function(){
-angular.module('blankonDirective', [])
+
+var module= ng.module('blankonDirective', [])
 
     // =========================================================================
     // REFRESH PANEL
@@ -1024,6 +1028,9 @@ angular.module('blankonDirective', [])
             }
         };
     });
-
-})();
+   couchPotato.configureApp(module);
+   module.run(function ($couchPotato) {
+        module.lazy = $couchPotato;
+    });
+   return module; 
 });

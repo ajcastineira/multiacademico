@@ -9,16 +9,28 @@
  * --------------------------------------------------------------------------
  * Plugins used : Flot chart, Gritter notification
  ============================================================================ */
+define([
+    'angular',
+    'angular-couch-potato',
+    'angular-ui-router',
+    'jquery-gritter',
+    'flot-pack',
+    'dropzone',
+    'skycons'
+], function (ng, couchPotato) {
+    
+    'use strict';
+    var module= ng.module('app.dashboard', [])
 
-'use strict';
-(function(){
-    angular.module('blankonApp.dashboard', [])
-
+        //module.config(function ($stateProvider)
+        
+ 
+ 
         // =========================================================================
         // GRITTER NOTIFICATION
         // =========================================================================
         // display marketing alert only once
-        .controller('DashboardCtrl', function ($scope, $http, settings) {
+           .controller('DashboardCtrl', function ($scope, $http, settings) {
             if($('#wrapper').css('opacity')) {
                 if (!$.cookie('intro')) {
 
@@ -285,5 +297,9 @@
                 }
             };
         });
-
-})();
+    couchPotato.configureApp(module);
+    module.run(function ($couchPotato) {
+        module.lazy = $couchPotato;
+    });
+    return module; 
+});

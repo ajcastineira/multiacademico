@@ -7,22 +7,20 @@ define([
     'angular-ui-router'
 ], function (ng, couchPotato) {
 'use strict';
-
-    var module= ng.module('blankonConfig', [])
-     
+ var module=ng.module('blankonConfig', [])
 
     // Setup global settings
     .factory('settings', ['$rootScope', function($rootScope) {
-        var baseURL = 'http://localhost/multicad', // Setting base url app
+        var baseURL = 'http://localhost/multicad/web', // Setting base url app
             settings = {
                 baseURL                 : baseURL,
-                pluginPath              : '../vendor',
+                pluginPath              : 'vendor',
                 pluginCommercialPath    : baseURL+'/assets/commercial/plugins',
                 globalImagePath         : 'img',
                 adminImagePath          : baseURL+'/assets/admin/img',
-                cssPath                 : 'styles',
-                jsPath                  : 'scripts',
-                dataPath                : 'data',
+                cssPath                 : 'app/styles',
+                jsPath                  : 'app/scripts',
+                dataPath                : 'app/data',
                 additionalPath          : baseURL+'/assets/global/plugins/bower_components'
         };
         $rootScope.settings = settings;
@@ -45,19 +43,19 @@ define([
             modules:[
                 {
                     name: 'blankonApp.core.demo',
-                    files: ['scripts/modules/core/demo.js']
+                    files: ['app/scripts/modules/core/demo.js']
                 }
             ]
         });
     }])
 
     // Configuration ocLazyLoad with ui router
-    .config(function($stateProvider, $locationProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $locationProvider, $urlRouterProvider,$couchPotatoProvider) {
         // Redirect any unmatched url
         $urlRouterProvider.otherwise('page-error-404');
 
         $stateProvider
-
+/*
             // =========================================================================
             // SIGN IN
             // =========================================================================
@@ -297,7 +295,7 @@ define([
                     }]
                 }
             })
-
+*/
             // =========================================================================
             // DASHBOARD
             // =========================================================================
@@ -314,6 +312,9 @@ define([
                 },
                 controller: 'DashboardCtrl',
                 resolve: {
+                    /*deps: [$couchPotatoProvider.resolveDependencies([
+                                'scripts/modules/dashboard'
+                            ]),*/
                     deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                         var pluginPath = settings.pluginPath, // Create variable plugin path
@@ -325,18 +326,14 @@ define([
                                     insertBefore: '#load_css_before',
                                     files: [
                                         pluginPath+'/dropzone/dist/min/dropzone.min.css',
-                                        pluginPath+'/jquery.gritter/css/jquery.gritter.css'
+                                       // pluginPath+'/jquery.gritter/css/jquery.gritter.css'
                                     ]
                                 },
                                 {
-                                    name: 'blankonApp.dashboard',
+                                    name: 'app.dashboard',
                                     files: [
-                                        pluginPath+'/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js',
-                                        pluginPath+'/flot/jquery.flot.pack.js',
-                                        pluginPath+'/dropzone/dist/min/dropzone.min.js',
-                                        pluginPath+'/jquery.gritter/js/jquery.gritter.min.js',
-                                        pluginPath+'/skycons-html5/skycons.js',
-                                        jsPath+'/modules/dashboard.js'
+                                        pluginPath+'/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js'
+                                       // jsPath+'/modules/dashboard.js'
                                     ]
                                 }
                             ]
@@ -344,7 +341,7 @@ define([
                     }]
                 }
             })
-
+/*
             // =========================================================================
             // BLOG GRID
             // =========================================================================
@@ -902,7 +899,7 @@ define([
                     }]
                 }
             })
-
+*/
             // =========================================================================
             // ERROR 404
             // =========================================================================
@@ -938,7 +935,7 @@ define([
                     }]
                 }
             })
-
+/*
             // =========================================================================
             // ERROR 500
             // =========================================================================
@@ -2385,7 +2382,8 @@ define([
                     ]
                 }
             })
-
+*/
+/*
             // =========================================================================
             // WIDGET WEATHER
             // =========================================================================
@@ -2443,7 +2441,7 @@ define([
                     ]
                 }
             });
-
+*/
     })
 
     // Init app run
@@ -2453,5 +2451,8 @@ define([
         $rootScope.settings = settings; // global settings to be accessed from view
     }]);
     couchPotato.configureApp(module);
-  return module;
+    module.run(function ($couchPotato) {
+        module.lazy = $couchPotato;
+    });
+    return module; 
 });

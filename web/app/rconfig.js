@@ -10,11 +10,11 @@ var require = {
 
         'bootstrap': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min',
 
-        'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min',
-        'angular-cookies': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-cookies.min',
-        'angular-resource': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-resource.min',
-        'angular-sanitize': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-sanitize.min',
-        'angular-animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min',
+        'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min',
+        'angular-cookies': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min',
+        'angular-resource': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min',
+        'angular-sanitize': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min',
+        'angular-animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min',
 
 
         'domReady': '../plugin/requirejs-domready/domReady',
@@ -26,6 +26,8 @@ var require = {
         'angular-couch-potato': '../plugin/angular-couch-potato/dist/angular-couch-potato',
         
         'angular-google-maps': '../plugin/angular-google-maps/dist/angular-google-maps.min',
+        
+        'angular-loading-bar': '../plugin/angular-loading-bar/build/loading-bar.min',
 
        
 
@@ -62,6 +64,7 @@ var require = {
         'flot-pie': '../plugin/flot/jquery.flot.pie.min',
         'flot-time': '../plugin/flot/jquery.flot.time.min',
         'flot-tooltip': '../plugin/flot/jquery.flot.tooltip.min',
+        'flot-pack': '../plugin/flot/jquery.flot.pack',
 
         'raphael': '../plugin/morris/raphael.min',
         'morris': '../plugin/morris/morris.min',
@@ -71,7 +74,7 @@ var require = {
 
         'chartjs': '../plugin/chartjs/chart.min',
 
-        'datatables': '../plugin/datatables/media/js/jquery.dataTables.min',
+        'datatables': '../plugin/datatables/js/jquery.dataTables.min',
         'datatables-bootstrap': '../plugin/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap',
         'datatables-tools': '../plugin/datatables-tabletools/js/dataTables.tableTools',
         'datatables-colvis': '../plugin/datatables-colvis/js/dataTables.colVis',
@@ -85,6 +88,9 @@ var require = {
         'jquery-maskedinput': '../plugin/jquery-maskedinput/dist/jquery.maskedinput.min',
         'jquery-validation': '../plugin/jquery-validation/dist/jquery.validate.min',
         'jquery-form': '../plugin/jquery-form/jquery.form',
+        'jquery-cookie': '../plugin/jquery-cookie/jquery.cookie',
+        'jquery-nicescroll': '../plugin/jquery-nicescroll/jquery.nicescroll',
+        'jquery-gritter': '../plugin/jquery.gritter/js/jquery.gritter.min',
 
         'bootstrap-validator': '../plugin/bootstrapvalidator/dist/js/bootstrapValidator.min',
 
@@ -118,9 +124,13 @@ var require = {
 
 
         'lodash': '../plugin/lodash/lodash.min',
+        
+        'ionsound': '../plugin/ionsound/js/ion.sound.min',
+        'skycons':'../plugin/skycons-html5/skycons',
 
 
         'magnific-popup': '../plugin/magnific-popup/dist/jquery.magnific-popup',
+        'oc-lazyload':'../plugin/oclazyload/dist/ocLazyLoad.require.min',
 
        // 'fullcalendar': '../smartadmin-plugin/fullcalendar/jquery.fullcalendar.min',
        // 'smartwidgets': '../smartadmin-plugin/smartwidgets/jarvis.widget.min',
@@ -141,7 +151,8 @@ var require = {
         'angular-bootstrap': { deps: ['angular'] },
         'angular-ui-router': { deps: ['angular'] },
         'angular-google-maps': { deps: ['angular'] },
-
+        'angular-loading-bar': { deps: ['angular'] },
+        
         'angular-couch-potato': { deps: ['angular'] },
 
         'socket.io': { deps: ['angular'] },
@@ -172,6 +183,7 @@ var require = {
         'flot-pie': { deps: ['flot']},
         'flot-time': { deps: ['flot']},
         'flot-tooltip': { deps: ['flot']},
+        'flot-pack': { deps: ['jquery']},
 
         'morris': {deps: ['raphael']},
 
@@ -188,6 +200,9 @@ var require = {
         'jquery-validation':{deps: ['jquery']},
         'jquery-form':{deps: ['jquery']},
         'jquery-color':{deps: ['jquery']},
+        'jquery-cookie':{deps: ['jquery']},
+        'jquery-nicescroll':{deps: ['jquery']},
+        'jquery-gritter':{deps: ['jquery']},
 
         'jcrop':{deps: ['jquery-color']},
 
@@ -223,10 +238,12 @@ var require = {
         'jquery-nestable': { deps: ['jquery']},
 
         'superbox': { deps: ['jquery']},
+        
+        'oc-lazyload': { deps: ['angular']}//,
 
-        'notification': { deps: ['jquery']},
+       // 'notification': { deps: ['jquery']},
 
-        'smartwidgets': { deps: ['jquery-ui']}
+        //'smartwidgets': { deps: ['jquery-ui']}
 
     },
     priority: [

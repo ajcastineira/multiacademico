@@ -5,7 +5,7 @@ define([
 
     // layout
 
-   // 'layout/module',
+    //'layout/module'//,
    // 'layout/actions/minifyMenu',
    // 'layout/actions/toggleMenu',
    // 'layout/actions/fullScreen',
@@ -33,7 +33,7 @@ define([
 
 
     // dashboard
-    // 'dashboard/module',
+   //  'dashboard/module'//,
 
 
     //components
@@ -72,11 +72,11 @@ define([
     
     // test
    //  'scripts/app',
-    // 'scripts/config',
-     'scripts/controllers'//,
-    // 'scripts/directives'//,
-     //'scripts/modules/dashboard',
-     //'scripts/modules/animate'
+     'scripts/config',
+     'scripts/controllers',
+     'scripts/directives',
+     'scripts/modules/dashboard'//,
+    // 'scripts/modules/animate'
     
     // cases
     // 'modules/cases/module',

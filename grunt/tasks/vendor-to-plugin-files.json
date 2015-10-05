@@ -37,6 +37,8 @@
   "/moment-timezone/builds/moment-timezone.min.js",
   "/relayfoods-jquery.sparkline/dist/jquery.sparkline.min.js",
   "/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js",
+  
+  "/flot/jquery.flot.pack.js",
 
   "/datatables/js/jquery.dataTables.min.js",
   "/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js",
@@ -48,6 +50,10 @@
   "/jquery-maskedinput/dist/jquery.maskedinput.min.js",
   "/jquery-validation/dist/jquery.validate.min.js",
   "/jquery-form/jquery.form.js",
+  "/jquery-cookie/jquery.cookie.js",
+  "/jquery-nicescroll/jquery.nicescroll.js",
+  "/jquery.gritter/js/jquery.gritter.min.js",
+  
   "/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
   "/bootstrap3-fontawesome-timepicker/js/bootstrap-timepicker.min.js",
   "/clockpicker/dist/bootstrap-clockpicker.min.js",
@@ -65,5 +71,9 @@
   "/jcrop/js/jquery.Jcrop.min.js",
   "/bootstrap-progressbar/bootstrap-progressbar.min.js",
   "/jquery-nestable/jquery.nestable.js",
-  "/lodash/lodash.min.js"
+  "/lodash/lodash.min.js",
+  "/oclazyload/dist/ocLazyLoad.require.min.js",
+  "/ionsound/js/ion.sound.min.js",
+  "/angular-loading-bar/build/loading-bar.min.js",
+  "/skycons-html5/skycons.js"
 ]

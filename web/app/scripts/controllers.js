@@ -4,14 +4,15 @@
 define([
     'angular',
     'angular-couch-potato',
-    'angular-ui-router'
+    'angular-ui-router',
+    'ionsound'
 ], function (ng, couchPotato){
 'use strict';
 
-return(function(){
-ng.module('blankonController', [])
 
-    .controller('BlankonCtrl', function($scope, $http, settings) {
+var module = ng.module('blankonController', [])
+
+     .controller('BlankonCtrl', function($scope, $http, settings) {
 
         // =========================================================================
         // SUPPORT IE
@@ -214,7 +215,4 @@ ng.module('blankonController', [])
         $scope.popover(); // Call popover
 
     });
-})();
-
-
 });

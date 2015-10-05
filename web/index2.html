@@ -12,7 +12,7 @@
     <meta name="description" content="Blankon is a theme fullpack admin template powered by Twitter bootstrap 3 front-end framework. Included are multiple example pages, elements styles, and javascript widgets to get your project started.">
     <meta name="keywords" content="admin, admin template, bootstrap3, clean, fontawesome4, good documentation, lightweight admin, responsive dashboard, webapp">
     <meta name="author" content="Djava UI">
-    <title data-ng-bind="$state.current.data.pageTitle + ' | Multiacademico App'"></title>
+   <!-- <title data-ng-bind="$state.current.data.pageTitle + ' | Multiacademico App'"></title>
     <!--/ END META SECTION -->
 
     <!-- START @FONT STYLES -->
@@ -83,8 +83,8 @@
 
   -->
 
-  <body data-ng-controller="BlankonCtrl" class="page-session page-header-fixed page-sidebar-fixed">
-    
+  <body class="page-session page-header-fixed page-sidebar-fixed">
+      
     <!-- ui-view container -->
 
 		
@@ -96,7 +96,7 @@
     <section id="wrapper">
 
       <!-- START @HEADER -->
-       <header data-ng-include="'views/partials/header.html'" id="header"></header> <!-- /#header -->
+       <!--<header data-ng-include="'views/partials/header.html'" id="header"></header> <!-- /#header -->
       <!--/ END HEADER -->
       <!--
 
@@ -110,29 +110,31 @@
       |=========================================================================================================================|
 
       -->
-      <aside data-sidebar-left-nicescroll data-sidebar-minimize data-ng-include="'views/partials/sidebar-left.html'" id="sidebar-left" class="sidebar-circle"></aside><!-- /#sidebar-left -->
+      
       <!--/ END SIDEBAR LEFT -->
 
       <!-- START @PAGE CONTENT -->
       <section id="page-content">
 
         <!-- Start page header -->
-        <div class="header-content" data-ng-include="'views/partials/header-content.html'"></div><!-- /.header-content -->
+      
         <!--/ End page header -->
 
         <!-- Start body content -->
-        <div data-ui-view class="body-content animated fadeIn"></div><!-- /.body-content -->
+        <a data-ui-sref="home" href="home" >link</a>
+        <a data-ui-sref="dashboard" href="#dashboard" >dash</a>
+        <div data-ui-view  class="body-content animated fadeIn"></div><!-- /.body-content -->
         <!--/ End body content -->
 
         <!-- Start footer content -->
-        <footer class="footer-content" data-ng-include="'views/partials/footer.html'"></footer><!-- /.footer-content -->
+      
         <!--/ End footer content -->
 
       </section><!-- /#page-content -->
       <!--/ END PAGE CONTENT -->
 
       <!-- START @SIDEBAR RIGHT -->
-        <aside data-choose-themes data-navbar-color data-sidebar-color data-layout-setting data-ng-include=" 'views/partials/sidebar-right.html' " id="sidebar-right"></aside><!-- /#sidebar-right -->
+        <!-- <aside data-choose-themes data-navbar-color data-sidebar-color data-layout-setting data-ng-include=" 'views/partials/sidebar-right.html' " id="sidebar-right"></aside><!-- /#sidebar-right -->
       <!--/ END SIDEBAR RIGHT -->
 
     </section><!-- /#wrapper -->
@@ -167,7 +169,10 @@
             <script src="app/rconfig.js"></script>
             <script src="plugin/requirejs/require.js" data-main="app/main.js"></script>
     <!--
+    
+    <script src="vendor/angular-animate/angular-animate.js"></script>
     <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
     <script src="vendor/angular-messages/angular-messages.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular-route/angular-route.js"></script>
@@ -175,6 +180,8 @@
     <script src="vendor/angular-touch/angular-touch.js"></script>
     <script src="vendor/html5shiv/dist/html5shiv.js"></script>
     <script src="vendor/respond-minmax/dest/respond.src.js"></script>
+    <script src="vendor/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendor/jquery-nicescroll/jquery.nicescroll.js"></script>
     <script src="vendor/ionsound/js/ion.sound.js"></script>
     <script src="vendor/bootbox/bootbox.js"></script>
     <script src="vendor/jquery-mousewheel/jquery.mousewheel.js"></script>-->

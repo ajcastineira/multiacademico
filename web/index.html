@@ -26,10 +26,11 @@
     <!--<script src="app/scripts/config.js" type="text/javascript"></script>-->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/plugin.css -->
-    <!-- bower:css -->
+    <!-- bower:css 
     <link rel="stylesheet" href="vendor/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="vendor/animate.css/animate.css" />
+    -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -147,7 +148,9 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <!--<script>-->
+     <!--
+     <script>
+     -->
        <!--!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){-->
        <!--(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),-->
        <!--r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)-->
@@ -160,10 +163,10 @@
     <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
 
     <!-- Use for production after building the project with grunt --> 
-		<!--<script src="build/rconfig.js"></script>
-		<script src="plugin/requirejs/require.js" data-main="build/main.js"></script>-->
+		<script src="build/rconfig.js"></script>
+		<script src="plugin/requirejs/require.js" data-main="build/main.js"></script>
 
-    <!-- Use for development -->		
+    <!-- Use ofr development -->		
             
             <script src="app/rconfig.js"></script>
             <script src="plugin/requirejs/require.js" data-main="app/main.js"></script>

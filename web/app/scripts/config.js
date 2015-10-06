@@ -326,7 +326,7 @@ define([
                                     insertBefore: '#load_css_before',
                                     files: [
                                         pluginPath+'/dropzone/dist/min/dropzone.min.css',
-                                       // pluginPath+'/jquery.gritter/css/jquery.gritter.css'
+                                        pluginPath+'/jquery.gritter/css/jquery.gritter.css'
                                     ]
                                 },
                                 {

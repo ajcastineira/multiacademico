@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: multiser_multisoft2015
+    database_user: root
+    database_password: cianuro81111AR
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 19725d90dd1749431df6e7fe7c429eb07e5a2878

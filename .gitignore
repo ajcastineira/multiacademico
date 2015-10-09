@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /app/bootstrap.php.cache
 /app/cache/*
 !app/cache/.gitkeep
@@ -16,20 +15,9 @@
 /nbproject
 /node_modules
 /vendor/
+/web/build
 /web/bundles/
 /web/node_modules/
 /web/tmp
 /web/vendor
 /web/nbproject
-=======
-/node_modules
-/grunt/node_modules
-/grunt/.sass-cache
-/grunt/.tmp
-/dist
-/nbproject
-/web/build
-/web/tmp
-/web/vendor
-/bower_components
->>>>>>> origin/master

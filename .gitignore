@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+/app/bootstrap.php.cache
+/app/cache/*
+!app/cache/.gitkeep
+/app/config/parameters.yml
+/app/logs/*
+!app/logs/.gitkeep
+/app/phpunit.xml
+/bin/
+/bower_components
+/dist
+/composer.phar
+/grunt/node_modules
+/grunt/.sass-cache
+/grunt/.tmp
+/nbproject
+/node_modules
+/vendor/
+/web/bundles/
+/web/node_modules/
+/web/tmp
+/web/vendor
+/web/nbproject
+=======
 /node_modules
 /grunt/node_modules
 /grunt/.sass-cache
@@ -7,3 +31,4 @@
 /web/tmp
 /web/vendor
 /bower_components
+>>>>>>> origin/master

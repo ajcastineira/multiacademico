@@ -312,9 +312,9 @@ define([
                 },
                 controller: 'DashboardCtrl',
                 resolve: {
-                    /*deps: [$couchPotatoProvider.resolveDependencies([
+                   /* deps: $couchPotatoProvider.resolveDependencies([
                                 'scripts/modules/dashboard'
-                            ]),*/
+                            ])}*/
                     deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                         var pluginPath = settings.pluginPath, // Create variable plugin path
@@ -328,14 +328,8 @@ define([
                                         pluginPath+'/dropzone/dist/min/dropzone.min.css',
                                         pluginPath+'/jquery.gritter/css/jquery.gritter.css'
                                     ]
-                                },
-                                {
-                                    name: 'app.dashboard',
-                                    files: [
-                                        pluginPath+'/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js'
-                                       // jsPath+'/modules/dashboard.js'
-                                    ]
                                 }
+                                
                             ]
                         );
                     }]

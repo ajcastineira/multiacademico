@@ -71,7 +71,6 @@ define([
     
     
     // test
-   //  'scripts/app',
      'scripts/config',
      'scripts/controllers',
      'scripts/directives',

@@ -48,7 +48,7 @@ var require = {
         'to-markdown': '../plugin/to-markdown/src/to-markdown',
         'markdown': '../plugin/markdown/lib/markdown',
         'bootstrap-markdown': '../plugin/bootstrap-markdown/js/bootstrap-markdown',
-
+        'bootstrap-session-timeout':'../plugin/bootstrap-session-timeout/dist/bootstrap-session-timeout.min',
         'ckeditor': '../plugin/ckeditor/ckeditor',
 
         'moment': '../plugin/moment/min/moment-with-locales.min',
@@ -127,6 +127,7 @@ var require = {
         
         'ionsound': '../plugin/ionsound/js/ion.sound.min',
         'skycons':'../plugin/skycons-html5/skycons',
+        'bootbox':'../plugin/bootbox/bootbox',
 
 
         'magnific-popup': '../plugin/magnific-popup/dist/jquery.magnific-popup',
@@ -232,6 +233,7 @@ var require = {
         'dropzone': { deps: ['jquery']},
 
         'bootstrap-progressbar': { deps: ['bootstrap']},
+        'bootstrap-session-timeout': { deps: ['bootstrap']},
 
 
         'jquery-ui': { deps: ['jquery']},

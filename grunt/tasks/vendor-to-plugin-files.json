@@ -26,6 +26,7 @@
   "/to-markdown/src/to-markdown.js",
   "/markdown/lib/markdown.js",
   "/bootstrap-markdown/js/bootstrap-markdown.js",
+  "/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js",
   "/ckeditor/ckeditor.js",
   "/ckeditor/styles.js",
   "/ckeditor/config.js",
@@ -75,5 +76,7 @@
   "/oclazyload/dist/ocLazyLoad.require.min.js",
   "/ionsound/js/ion.sound.min.js",
   "/angular-loading-bar/build/loading-bar.min.js",
-  "/skycons-html5/skycons.js"
+  "/angular-loading-bar/build/loading-bar.css",
+  "/skycons-html5/skycons.js",
+  "/bootbox/bootbox.js"
 ]

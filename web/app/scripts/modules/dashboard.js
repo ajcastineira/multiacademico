@@ -13,6 +13,7 @@ define([
     'angular',
     'angular-couch-potato',
     'angular-ui-router',
+    'bootstrap-session-timeout',
     'jquery-gritter',
     'flot-pack',
     'dropzone',
@@ -108,10 +109,10 @@ define([
 
                 // Session timeout
                 $.sessionTimeout({
-                  title: 'JUST DEMO Your session is about to expire!',
+                  title: 'Su sesion esta a punto de expirar!',
                   logoutButton: 'Logout',
-                  keepAliveButton: 'Stay Connected',
-                  message: 'Your session will be locked in 2 minute',
+                  keepAliveButton: 'Seguir Conectado',
+                  message: 'Su sesion sera bloqueada en 2 minutos',
                   keepAliveUrl: '#',
                   logoutUrl: 'account.html#/sign-in',
                   redirUrl: 'account.html#/lock-screen',

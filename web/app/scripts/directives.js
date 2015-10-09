@@ -7,6 +7,7 @@ define([
     'angular-ui-router',
     'jquery-cookie',
     'jquery-nicescroll',
+    'ionsound',
     'sparkline'
 ], function (ng, couchPotato) {
 
@@ -720,7 +721,7 @@ var module= ng.module('blankonDirective', [])
                 var selectedTheme = element.find('.theme');
                 // Check cookie for color schemes
                 if ($.cookie('color_schemes')) {
-                    $('link#theme').attr('href', '../../../assets/admin/css/themes/'+$.cookie('color_schemes')+'.theme.css');
+                    $('link#theme').attr('href', 'assets/admin/css/themes/'+$.cookie('color_schemes')+'.theme.css');
                 }
                 // Check cookie for navbar color
                 if ($.cookie('navbar_color')) {
@@ -754,7 +755,7 @@ var module= ng.module('blankonDirective', [])
                     }
 
                     // Add attribut href css theme
-                    $('link#theme').attr('href', '../../../assets/admin/css/themes/'+themename+'.theme.css');
+                    $('link#theme').attr('href', 'assets/admin/css/themes/'+themename+'.theme.css');
 
                     // Set cookie theme name value to variable themename
                     $.cookie('color_schemes',themename, {expires: 1});

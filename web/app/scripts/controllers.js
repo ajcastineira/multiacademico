@@ -4,9 +4,10 @@
 define([
     'angular',
     'angular-couch-potato',
-    'angular-ui-router',
-    'ionsound'
-], function (ng, couchPotato){
+    'ionsound',
+    'angular-ui-router'
+    
+], function (ng,couchPotato){
 'use strict';
 
 
@@ -105,10 +106,9 @@ var module = ng.module('blankonController', [])
                         {name: "water_droplet_2"},
                         {name: "water_droplet_3", volume: 0.6}
                     ],
-                    path: "../../../assets/global/plugins/bower_components/ionsound/sounds/",
+                    path: "assets/global/plugins/bower_components/ionsound/sounds/",
                     preload: true
                 });
-
                 // Add effect sound water droplet type 3
                 $('.dropdown-toggle').on('click', function(){
                     ion.sound.play("water_droplet_3");
@@ -215,4 +215,10 @@ var module = ng.module('blankonController', [])
         $scope.popover(); // Call popover
 
     });
+    couchPotato.configureApp(module);
+    module.run(function ($couchPotato) {
+        module.lazy = $couchPotato;
+    });    
+    return module;
+    
 });

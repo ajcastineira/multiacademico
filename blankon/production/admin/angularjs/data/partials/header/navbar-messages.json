@@ -1,0 +1,93 @@
+[
+  {
+    "image": "2.png",
+    "name": "John Kribo",
+    "message": "I was impressed how fast the content is loaded. Congratulations. nice design.",
+    "date": "13 minutes",
+    "meta": [
+      {
+        "attach": true,
+        "share": true,
+        "group": false
+      }
+    ]
+  },
+  {
+    "image": "3.png",
+    "name": "Jennifer Poiyem",
+    "message": "It’s Simple, Clean & Nice .. Good work Dear .. GLWS",
+    "date": "17 hours",
+    "meta": [
+      {
+        "attach": false,
+        "share": false,
+        "group": false
+      }
+    ]
+  },
+  {
+    "image": "4.png",
+    "name": "Clara Wati",
+    "message": "Great work! Do you have any plans to add loading indicators for AJAX calls that might take longer than normal?",
+    "date": "1 days",
+    "meta": [
+      {
+        "attach": false,
+        "share": false,
+        "group": false
+      }
+    ]
+  },
+  {
+    "image": "5.png",
+    "name": "Toni Mriang",
+    "message": "I am very interested in the theme and I’m thinking about buying it.",
+    "date": "2 days",
+    "meta": [
+      {
+        "attach": true,
+        "share": false,
+        "group": false
+      }
+    ]
+  },
+  {
+    "image": "6.png",
+    "name": "Bella negoro",
+    "message": "Great work! Good luck!",
+    "date": "2 days",
+    "meta": [
+      {
+        "attach": true,
+        "share": false,
+        "group": true
+      }
+    ]
+  },
+  {
+    "image": "7.png",
+    "name": "Kim Mbako",
+    "message": "Hi! First of all, thank you for the very nice theme for creating awesome web applications :)",
+    "date": "1 week",
+    "meta": [
+      {
+        "attach": true,
+        "share": false,
+        "group": false
+      }
+    ]
+  },
+  {
+    "image": "8.png",
+    "name": "Pack Suparman",
+    "message": "Apik temen kie jan template, nyong gep tuku jal..",
+    "date": "1 week",
+    "meta": [
+      {
+        "attach": true,
+        "share": false,
+        "group": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "aboutMe": {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed",
+    "sync":"Last update about 2 hours ago",
+    "timeSpent": "Total time spent 250 hrs",
+    "email":"Tol.lee@djavaui.com",
+    "phone":"1 405 777 1212"
+  },
+  "recentActivity": [
+    {
+      "title": "Added a note to Ticket #947",
+      "time":"about 2 hours ago"
+    },
+    {
+      "title": "Added a product to Ticket #948",
+      "time":"about 3 hours ago"
+    },
+    {
+      "title": "Added a service to Ticket #949",
+      "time":"about 15 hours ago"
+    }
+  ],
+  "currentlyWorking":[
+    {
+      "image":"10.png",
+      "name":"Daddy Botak",
+      "device":"desktop",
+      "status":"online",
+      "time":""
+    },
+    {
+      "image":"11.png",
+      "name":"Sarah Tingting",
+      "device":"desktop",
+      "status":"offline",
+      "time":"7 m"
+    },
+    {
+      "image":"26.png",
+      "name":"Nicolas Olivier",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    },
+    {
+      "image":"13.png",
+      "name":"Claudia Cinta",
+      "device":"mobile",
+      "status":"online",
+      "time":""
+    },
+    {
+      "image":"26.png",
+      "name":"Catherine Parker",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    }
+  ]
+}

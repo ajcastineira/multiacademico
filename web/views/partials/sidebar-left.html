@@ -16,35 +16,88 @@
 
 <!-- Start left navigation - menu -->
 <ul data-collapse-menu class="sidebar-menu">
-
-    <!-- Start navigation - dashboard -->
-    <li class="active">
-        <a data-ui-sref="dashboard" href="dashboard" data-active-menu>
+    
+      <!-- Start index -->
+  <!--   <li>
+        <a href="#/inicio" data-active-menu>
             <span class="icon"><i class="fa fa-home"></i></span>
-            <span class="text">Dashboard</span>
-            <span class="selected"></span>
+            <span class="text">Inicio</span>
+           
+        </a>
+    </li> -->
+    <!--/ End index -->
+    
+        <!-- Start User -->
+    <li>
+        <a href="#/user" data-active-menu>
+            <span class="icon"><i class="fa fa-user"></i></span>
+            <span class="text">Inicio</span>
+           
         </a>
     </li>
+    <!--/ End User -->
+
+        <!-- Start Group -->
+    <li>
+        <a href="#/group" data-active-menu>
+            <span class="text">Estudiantes</span>
+            <span class="icon"><i class="fa fa-group"></i></span>
+           
+        </a>
+    </li>
+    <!--/ End Group -->
+
+  <!-- Start matriculas -->
+    <li>
+        <a href="#/matriculas" data-active-menu>
+            <span class="text">Matriculas</span>
+            <span class="icon"><i class="fa fa-file-text-o"></i></span>
+           
+        </a>
+    </li>
+    <!--/ End matriculas -->
+
+    <!-- Start matriculas -->
+    <li>
+        <a href="#/calificacion" data-active-menu>
+            <span class="text">Calificaciones</span>
+            <span class="icon"><i class="fa flaticon-a1"></i></span>
+           
+        </a>
+    </li>
+    <!--/ End matriculas -->
+
+    <!-- Start navigation - dashboard -->
+   <!--  <li class="active">
+        <a href="#/dashboard" data-active-menu>
+            <span class="icon"><i class="fa fa-home"></i></span>
+            <span class="text">Inicio</span>
+            <span class="selected"></span>
+        </a>
+    </li> -->
     <!--/ End navigation - dashboard -->
 
     <!-- Start category apps -->
-    <li class="sidebar-category">
-        <span>APPS</span>
+   <!--  <li class="sidebar-category">
+        <span>Mi Perfil</span>
         <span class="pull-right"><i class="fa fa-trophy"></i></span>
-    </li>
+    </li> -->
     <!--/ End category apps -->
 
     <!-- Start navigation - blog -->
     <li class="submenu">
         <a href="javascript:void(0);">
             <span class="icon"><i class="fa fa-globe"></i></span>
-            <span class="text">Blog</span>
+            <span class="text">Malla</span>
             <span class="arrow"></span>
         </a>
         <ul>
-            <li><a href="#/blog-grid" data-active-menu>Grid</a></li>
-            <li><a href="#/blog-list" data-active-menu>List</a></li>
-            <li><a href="#/blog-single" data-active-menu>Single</a></li>
+            <li><a href="#/blog-grid" data-active-menu>Malla Normal</a></li>
+            <li><a href="#/blog-list" data-active-menu>Cuadro de Calificaciones</a></li>
+            <li><a href="#/blog-single" data-active-menu>Comportamiento</a></li>
+             <li><a href="#/blog-single" data-active-menu>Quimestre 1</a></li>
+              <li><a href="#/blog-single" data-active-menu>Quimestre 2</a></li>
+              <li><a href="#/blog-single" data-active-menu>Dos Quimestres</a></li>
         </ul>
     </li>
     <!--/ End navigation - blog -->
@@ -52,14 +105,17 @@
     <!-- Start navigation - mail -->
     <li class="submenu">
         <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-envelope"></i></span>
-            <span class="text">Mail</span>
+            <span class="icon"><i class="fa flaticon-university"></i></span>
+            <span class="text">Academico</span>
             <span class="arrow"></span>
         </a>
         <ul>
-            <li><a href="#/mail-inbox" data-active-menu>Inbox</a></li>
-            <li><a href="#/mail-compose" data-active-menu>Compose mail</a></li>
-            <li><a href="#/mail-view" data-active-menu>View mail</a></li>
+            <li><a href="#/mail-inbox" data-active-menu>Cursos</a></li>
+            <li><a href="#/mail-compose" data-active-menu>Especialidades </a></li>
+            <li><a href="#/mail-view" data-active-menu>Materias</a></li>
+            <li><a href="#/mail-view" data-active-menu>Docentes</a></li>
+             <li><a href="#/mail-view" data-active-menu>Distributivos</a></li>
+            <li><a href="#/mail-view" data-active-menu>Clubes</a></li>
         </ul>
     </li>
     <!--/ End navigation - mail -->
@@ -67,41 +123,75 @@
     <!-- Start navigation - pages -->
     <li class="submenu">
         <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-file-o"></i></span>
-            <span class="text">Pages</span>
+            <span class="icon"><i class="fa flaticon-a3"></i></span>
+            <span class="text">Informes</span>
             <span class="arrow"></span>
         </a>
         <ul>
-            <li><a href="#/page-gallery" data-active-menu>Gallery</a></li>
-            <li><a href="#/page-faq" data-active-menu>FAQ <span class="label label-danger pull-right">New</span></a></li>
-            <li><a href="#/page-invoice" data-active-menu>Invoice</a></li>
-            <li><a href="#/page-messages" data-active-menu>Messages</a></li>
-            <li><a href="#/page-timeline" data-active-menu>Timeline</a></li>
-            <li><a href="#/page-profile" data-active-menu>Profile</a></li>
-            <li class="submenu">
-                <a href="javascript:void(0);">Search<span class="arrow"></span></a>
+            <li><a href="#/page-gallery" data-active-menu>Informe de Aprendizaje y Comportmiento por Estudiantes</a></li>
+            <li><a href="#/page-faq" data-active-menu>Informes de Aprendizaje y Comportamiento por Cursos </a> <i class="fa flaticon-a3"></i></li>
+           </ul>
+           <li class="submenu">
+               <a href="javascript:void(0);"> <i class="flaticon-a3"></i>Reportes <span class="arrow"></span></a>
                 <ul>
-                    <li><a href="#/page-search-course" data-active-menu>Courses</a></li>
+                    <li><a href="#/page-error-403" data-active-menu>Reporte de MAtriculas Alfabeticamente</a></li>
+                    <li><a href="#/page-error-404" data-active-menu>Reporte de Metriculas Numericamente</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Reporte de Matriculas por Curso</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Reporte de Matriculas Errores</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Reporte de Matriculas Estadistico</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Libro de Matriculas</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Reporte Docentes</a></li>
+                    <li><a href="#/page-error-500" data-active-menu>Reporte Docentes Claves</a></li>
                 </ul>
             </li>
             <li class="submenu">
-                <a href="javascript:void(0);">Error <span class="arrow"></span></a>
+                <a href="javascript:void(0);"> <i class="flaticon-certificate"></i>Certificados <span class="arrow"></span></a>
                 <ul>
-                    <li><a href="#/page-error-403" data-active-menu>Error 403 Type 2</a></li>
-                    <li><a href="#/page-error-404" data-active-menu>Error 404 Type 2</a></li>
-                    <li><a href="#/page-error-500" data-active-menu>Error 500 Type 2</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in" target="_blank">Certificado de Matricula</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Certificado de Matriculas por Cursos</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-up" target="_blank">Certificado de Promocion</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lost-password" target="_blank">Certificado de Promocion</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lock-screen" target="_blank">Certificado de Promocion por Cursos</a></li>
                 </ul>
             </li>
-            <li class="submenu">
-                <a href="javascript:void(0);">Account <span class="arrow"></span></a>
+
+
+
+
+ <li class="submenu">
+                <a href="javascript:void(0);"> <i class=" fa flaticon-calendar5"></i>Periodos <span class="arrow"></span></a>
                 <ul>
-                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in" target="_blank">Sign In</a></li>
-                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Sign In Type 2</a></li>
-                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-up" target="_blank">Sign Up</a></li>
-                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lost-password" target="_blank">Lost password</a></li>
-                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/lock-screen" target="_blank">Lock Screen</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in" target="_blank">2013-2014</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">2014-2015</a></li>
                 </ul>
             </li>
+
+
+<li class="submenu">
+                <a href="javascript:void(0);"> <i class=" fa fa-cogs"></i>Panel de Control <span class="arrow"></span></a>
+                <ul>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in" target="_blank">Unidad Educativa</a></li>
+                    <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Menus</a></li>
+
+                      <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Modulos</a></li>
+
+                      <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Permisos</a></li>
+
+                      <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Permisos</a></li>
+
+                      <li><a data-ng-href="{{settings.baseURL}}/production/admin/angularjs/account.html#/sign-in-type-2" target="_blank">Usuarios</a></li>
+
+
+                </ul>
+            </li>
+<li>
+        <a href="#/calificacion" data-active-menu>
+            <span class="text">Ayuda</span>
+            <span class="icon"><i class="fa fa-question-circle"></i></span>
+           
+        </a>
+    </li>
+
         </ul>
     </li>
     <!--/ End navigation - pages -->

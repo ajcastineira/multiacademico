@@ -3,6 +3,7 @@
 /grunt/.sass-cache
 /grunt/.tmp
 /dist
+/nbproject
 /web/tmp
 /web/vendor
 /bower_components

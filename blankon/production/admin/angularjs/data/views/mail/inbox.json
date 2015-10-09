@@ -1,0 +1,212 @@
+[
+  {
+    "id":"1",
+    "status": "unread",
+    "image": "avatar/35/2.png",
+    "name": "John Kribo",
+    "title":"Commits pushed",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+    "label": "new",
+    "time": "Today at 6:16 am",
+    "selected": "selected",
+    "checked":"checked",
+    "favorite": "favorite",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"2",
+    "status": "",
+    "image": "avatar/35/3.png",
+    "name": "Jennifer Poiyem",
+    "title":"Send you gift",
+    "message": "Sed do eiusmod tempor incididunt...",
+    "label": "new",
+    "time": "Today at 1:13am",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "fa-paperclip",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"3",
+    "status": "unread",
+    "image": "avatar/35/4.png",
+    "name": "Clara Wati",
+    "title":"Follow you",
+    "message": "Ut enim ad minim veniam, quis nostrud exercitation...",
+    "label": "",
+    "time": "Jul 02",
+    "selected": "selected",
+    "checked":"checked",
+    "favorite": "favorite",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"4",
+    "status": "",
+    "image": "avatar/35/5.png",
+    "name": "Toni Mriang",
+    "title":"Check out new template",
+    "message": "Laboris nisi ut aliquip ex ea commodo consequat...",
+    "label": "urgent",
+    "time": "Jul 02",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "attach",
+        "warning": "",
+        "group": "",
+        "share": "share"
+      }
+    ]
+  },
+  {
+    "id":"5",
+    "status": "",
+    "image": "avatar/35/6.png",
+    "name": "Bella negoro",
+    "title":"Monthly sales report",
+    "message": "Excepteur sint occaecat cupidatat non proident...",
+    "label": "",
+    "time": "Jul 02",
+    "selected": "selected",
+    "checked":"checked",
+    "favorite": "favorite",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"6",
+    "status": "unread",
+    "image": "avatar/35/7.png",
+    "name": "Kim Mbako",
+    "title":"1 New job",
+    "message": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem...",
+    "label": "promotion",
+    "time": "Jul 01",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "attach",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"7",
+    "status": "",
+    "image": "avatar/35/8.png",
+    "name": "Pack Suparman",
+    "title":"You sold a item!",
+    "message": "Ut enim ad minim veniam, quis nostrud exercitation...",
+    "label": "",
+    "time": "Jul 01",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "",
+        "group": "group",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"8",
+    "status": "",
+    "image": "avatar/35/9.png",
+    "name": "Jeddy Mentri",
+    "title":"IOS Developer",
+    "message": "Ut enim ad minim veniam, quis nostrud exercitation...",
+    "label": "",
+    "time": "Jun 25",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"9",
+    "status": "",
+    "image": "avatar/35/10.png",
+    "name": "Daddy Botak",
+    "title":"User interface Status",
+    "message": "Ut enim ad minim veniam, quis nostrud exercitation...",
+    "label": "",
+    "time": "Jun 23",
+    "selected": "",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "attach",
+        "warning": "",
+        "group": "",
+        "share": ""
+      }
+    ]
+  },
+  {
+    "id":"10",
+    "status": "",
+    "image": "avatar/35/11.png",
+    "name": "Sarah Tingting",
+    "title":"Java Developer + 2 new jobs",
+    "message": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur...",
+    "label": "",
+    "time": "Jun 05",
+    "selected": "selected",
+    "checked":"",
+    "favorite": "",
+    "additionals": [
+      {
+        "attach": "",
+        "warning": "warning",
+        "group": "",
+        "share": ""
+      }
+    ]
+  }
+]

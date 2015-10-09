@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "fa fa-share-alt fg-info",
+    "image": "",
+    "notification": "Dolanan Remi : Chris Job, Denny Puk and Joko Fernandes sent you 5 free energy boosts and other request",
+    "date": "3 minutes"
+  },
+  {
+    "icon": "fa fa-cogs fg-success",
+    "image": "",
+    "notification": "Your sistem is updated",
+    "date": "5 minutes"
+  },
+  {
+    "icon": "fa fa-ban fg-danger",
+    "image": "",
+    "notification": "3 Member is BANNED",
+    "date": "5 minutes"
+  },
+  {
+    "icon": "",
+    "image": "10.png",
+    "notification": "daddy pushed to project Blankon version 1.0.0",
+    "date": "45 minutes"
+  },
+  {
+    "icon": "fa fa-user fg-info",
+    "image": "",
+    "notification": "Change your user profile",
+    "date": "1 days"
+  },
+  {
+    "icon": "fa fa-book fg-info",
+    "image": "",
+    "notification": "Added new article",
+    "date": "1 days"
+  }
+]

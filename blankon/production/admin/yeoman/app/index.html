@@ -1,0 +1,191 @@
+<!doctype html>
+<!--[if IE 8]> <html lang="en" class="ie8" data-ng-app="blankonApp" class="no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9" data-ng-app="blankonApp" class="no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" data-ng-app="blankonApp" class="no-js"> <!--<![endif]-->
+
+  <!-- START @HEAD -->
+  <head>
+
+    <!-- START @META SECTION -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Blankon is a theme fullpack admin template powered by Twitter bootstrap 3 front-end framework. Included are multiple example pages, elements styles, and javascript widgets to get your project started.">
+    <meta name="keywords" content="admin, admin template, bootstrap3, clean, fontawesome4, good documentation, lightweight admin, responsive dashboard, webapp">
+    <meta name="author" content="Djava UI">
+    <title data-ng-bind="$state.current.data.pageTitle + ' | BLANKON AngularJS'"></title>
+    <!--/ END META SECTION -->
+
+    <!-- START @FONT STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Oswald:700,400" rel="stylesheet">
+    <!--/ END FONT STYLES -->
+
+    <!-- START @PAGE LEVEL STYLES -->
+    <link id="load_css_before"/>
+    <!--/ END PAGE LEVEL STYLES -->
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <!--/ END HEAD -->
+
+<!--
+
+  |=========================================================================================================================|
+  |  TABLE OF CONTENTS (Use search to find needed section)                                                                  |
+  |=========================================================================================================================|
+  |  01. @HEAD                        |  Container for all the head elements                                                |
+  |  02. @META SECTION                |  The meta tag provides metadata about the HTML document                             |
+  |  03. @FAVICONS                    |  Short for favorite icon, shortcut icon, website icon, tab icon or bookmark icon    |
+  |  04. @FONT STYLES                 |  Font from google fonts                                                             |
+  |  05. @GLOBAL MANDATORY STYLES     |  The main 3rd party plugins css file                                                |
+  |  06. @PAGE LEVEL STYLES           |  Specific 3rd party plugins css file                                                |
+  |  07. @THEME STYLES                |  The main theme css file                                                            |
+  |  08. @ANGULARJS STYLES            |  Customize AngularJS style                                                          |
+  |  09. @IE SUPPORT                  |  IE support of HTML5 elements and media queries                                     |
+  |=========================================================================================================================|
+  |  10. @BODY                        |  Contains all the contents of an HTML document                                      |
+  |  11. @LOADING ANIMATION           |  Loading animation when the page reload                                             |
+  |  12. @WRAPPER                     |  Wrapping page section                                                              |
+  |  13. @HEADER                      |  Header page section contains about logo, top navigation, notification menu         |
+  |  14. @SIDEBAR LEFT                |  Sidebar page section contains all sidebar menu left                                |
+  |  15. @PAGE CONTENT                |  Contents page section contains breadcrumb, content page, footer page               |
+  |  16. @SIDEBAR RIGHT               |  Sidebar page section contains all sidebar menu right                               |
+  |  17. @BACK TOP                    |  Element back to top and action                                                     |
+  |=========================================================================================================================|
+  |  18. @CORE PLUGINS                |  The main 3rd party plugins script file                                             |
+  |  19. @CORE ANGULARJS PLUGINS      |  The main 3rd party AngularJS plugins script file                                   |
+  |  20. @PAGE LEVEL PLUGINS          |  Specific 3rd party plugins script file                                             |
+  |  21. @PAGE LEVEL SCRIPTS          |  The main theme script file                                                         |
+  |=========================================================================================================================|
+
+  START @BODY
+  |=========================================================================================================================|
+  |  TABLE OF CONTENTS (Apply to body class)                                                                                |
+  |=========================================================================================================================|
+  |  01. page-boxed                   |  Page into the box is not full width screen                                         |
+  |  02. page-header-fixed            |  Header element become fixed position                                               |
+  |  03. page-sidebar-fixed           |  Sidebar element become fixed position with scroll support                          |
+  |  04. page-sidebar-minimize        |  Sidebar element become minimize style width sidebar                                |
+  |  05. page-footer-fixed            |  Footer element become fixed position with scroll support on page content           |
+  |  06. page-sound                   |  For playing sounds on user actions and page events                                 |
+  |=========================================================================================================================|
+
+  -->
+
+  <body data-ng-controller="BlankonCtrl" class="page-session page-header-fixed page-sidebar-fixed">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- START @WRAPPER -->
+    <section id="wrapper">
+
+      <!-- START @HEADER -->
+      <header data-ng-include="'views/partials/header.html'" id="header"></header> <!-- /#header -->
+      <!--/ END HEADER -->
+      <!--
+
+      START @SIDEBAR LEFT
+      |=========================================================================================================================|
+      |  TABLE OF CONTENTS (Apply to sidebar left class)                                                                        |
+      |=========================================================================================================================|
+      |  01. sidebar-box               |  Variant style sidebar left with box icon                                              |
+      |  02. sidebar-rounded           |  Variant style sidebar left with rounded icon                                          |
+      |  03. sidebar-circle            |  Variant style sidebar left with circle icon                                           |
+      |=========================================================================================================================|
+
+      -->
+      <aside data-sidebar-left-nicescroll data-sidebar-minimize data-ng-include="'views/partials/sidebar-left.html'" id="sidebar-left" class="sidebar-circle"></aside><!-- /#sidebar-left -->
+      <!--/ END SIDEBAR LEFT -->
+
+      <!-- START @PAGE CONTENT -->
+      <section id="page-content">
+
+        <!-- Start page header -->
+        <div class="header-content" data-ng-include="'views/partials/header-content.html'"></div><!-- /.header-content -->
+        <!--/ End page header -->
+
+        <!-- Start body content -->
+        <div data-ui-view class="body-content animated fadeIn"></div><!-- /.body-content -->
+        <!--/ End body content -->
+
+        <!-- Start footer content -->
+        <footer class="footer-content" data-ng-include="'views/partials/footer.html'"></footer><!-- /.footer-content -->
+        <!--/ End footer content -->
+
+      </section><!-- /#page-content -->
+      <!--/ END PAGE CONTENT -->
+
+      <!-- START @SIDEBAR RIGHT -->
+      <aside data-choose-themes data-navbar-color data-sidebar-color data-layout-setting data-ng-include=" 'views/partials/sidebar-right.html' " id="sidebar-right"></aside><!-- /#sidebar-right -->
+      <!--/ END SIDEBAR RIGHT -->
+
+    </section><!-- /#wrapper -->
+    <!--/ END WRAPPER -->
+
+    <!-- START @BACK TOP -->
+    <div data-back-top id="back-top" class="animated pulse circle">
+      <i class="fa fa-angle-up"></i>
+    </div><!-- /#back-top -->
+    <!--/ END BACK TOP -->
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <!--<script>-->
+       <!--!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){-->
+       <!--(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),-->
+       <!--r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)-->
+       <!--}(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+
+       <!--ga('create', 'UA-XXXXX-X');-->
+       <!--ga('send', 'pageview');-->
+    <!--</script>-->
+
+    <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="bower_components/respond-minmax/dest/respond.src.js"></script>
+    <script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
+    <script src="bower_components/jquery-nicescroll/jquery.nicescroll.js"></script>
+    <script src="bower_components/ionsound/js/ion.sound.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootbox/bootbox.js"></script>
+    <script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="bower_components/jquery.sparkline.min/index.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/config.js"></script>
+        <script src="scripts/directives.js"></script>
+        <script src="scripts/controllers.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

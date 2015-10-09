@@ -1,0 +1,57 @@
+.navbar-custom{
+    background-color: #6880B0;
+    color: white;
+}
+.navbar-custom a{
+    color: white !important;
+}
+.navbar-nav > li > a{
+    background-color: transparent;
+}
+.navbar-nav > li > a:hover{
+    background-color: transparent;
+}
+a{
+    color: #6880B0 !important;
+}
+#getting-started img{
+    margin: 0px auto 10px;
+}
+.page-header:before{
+    border-top: 3px solid #6880B0;
+}
+.ndoboost-sidebar .nav > .active > a, .ndoboost-sidebar .nav > .active:hover > a, .ndoboost-sidebar .nav > .active:focus > a{
+    color: #6880B0;
+}
+.ndoboost-sidebar .nav > .active > a:after, .ndoboost-sidebar .nav > .active:hover > a:after, .ndoboost-sidebar .nav > .active:focus > a:after{
+    border-right: 3px solid #6880B0;
+}
+.table-theme.table-bordered{
+    border: 1px solid #6880B0;
+}
+.table-theme thead tr th{
+    background-color: #6880B0 !important;
+    border-color: #6880B0 #728abb #768ebe !important;
+    color: #FFF;
+}
+.snippet-menu a{
+    color: white !important;
+}
+.chosen-container .chosen-search input{
+    border: 1px solid #6880B0 !important;
+}
+.chosen-container .chosen-results li.highlighted {
+    background-color: #6880B0 !important;
+    background-image: none !important;
+}
+.pagination > .active > a, .pagination > .active > span {
+    background-color: #6880B0 !important;
+    border: 1px solid #6880B0 !important;
+    color: white !important;
+}
+.dl-horizontal.plugins dt{
+    width: 70px;
+}
+.dl-horizontal.plugins dd{
+    margin-left: 80px;
+}

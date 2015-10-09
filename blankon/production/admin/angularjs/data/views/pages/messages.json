@@ -1,0 +1,62 @@
+{
+  "conversations": [
+    {
+      "name": "Jeck Joko",
+      "date": "Yesterday at 15:45",
+      "ticket": 78,
+      "note": "Problems with custom CSS3",
+      "status": "SOLVED",
+      "additionalClass": ""
+    },
+    {
+      "name": "Toni Miring",
+      "date": "Sunday at 12:33",
+      "ticket": 43,
+      "note": "How do i use something",
+      "status": "SOLVED",
+      "additionalClass": ""
+    },
+    {
+      "name": "Bella Negoro",
+      "date": "Sunday at 12:33",
+      "ticket": 15,
+      "note": "Why doesn't my cheese work properly? :(",
+      "status": "OPEN",
+      "additionalClass": "circle"
+    },
+    {
+      "name": "Daddy Botak",
+      "date": "Sunday at 12:33",
+      "ticket": "",
+      "note": "Can i have longer on my free trial please?",
+      "status": "",
+      "additionalClass": ""
+    }
+  ],
+  "messages": [
+    {
+      "firstname": "Rebecca",
+      "fullname": "Rebecca Cabean",
+      "image": "18.png",
+      "job": "Sales Manager",
+      "rewrite": "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+      "title": "",
+      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "Thursday 5th July 2014",
+      "via": "Intercom",
+      "share": "#"
+    },
+    {
+      "firstname": "",
+      "fullname": "Sarah Tingting",
+      "image": "11.png",
+      "job": "",
+      "rewrite": "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+      "title": "Hi Tol Lee",
+      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "date": "Thursday 5th July 2014",
+      "via": "Intercom",
+      "share": null
+    }
+  ]
+}

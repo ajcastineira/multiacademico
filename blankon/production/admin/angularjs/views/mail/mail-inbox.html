@@ -1,0 +1,172 @@
+<!-- Start mail page -->
+<div class="row">
+    <div class="col-sm-3">
+        <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email rounded">Compose Email</a>
+        <ul class="nav nav-pills nav-stacked nav-email rounded shadow mb-20">
+            <li class="active">
+                <a href="mail-inbox.html">
+                    <i class="fa fa-inbox"></i> Inbox  <span class="label pull-right">7</span>
+                </a>
+            </li>
+            <li>
+                <a href="mail-compose.html"><i class="fa fa-envelope-o"></i> Send Mail</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-certificate"></i> Important</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-file-text-o"></i> Drafts <span class="label label-info pull-right inbox-notification">35</span>
+                </a>
+            </li>
+            <li><a href="#"> <i class="fa fa-trash-o"></i> Trash</a></li>
+        </ul><!-- /.nav -->
+
+        <h5 class="nav-email-subtitle">More</h5>
+        <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
+            <li>
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> Promotions  <span class="label label-danger pull-right">3</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> Job list
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> Backup
+                </a>
+            </li>
+        </ul><!-- /.nav -->
+    </div>
+    <div class="col-sm-9">
+        <div class="panel rounded shadow panel-teal">
+        <div class="panel-heading">
+            <div class="pull-left">
+                <h3 class="panel-title">Inbox (7)</h3>
+            </div>
+            <div class="pull-right">
+                <form action="#" class="form-horizontal mr-5 mt-3">
+                    <div class="form-group no-margin no-padding has-feedback">
+                        <input type="text" class="form-control" placeholder="Search mail">
+                        <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.panel-heading -->
+        <div class="panel-sub-heading inner-all">
+            <div class="pull-left">
+                <ul class="list-inline no-margin">
+                    <li>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                All <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">None</a></li>
+                                <li><a href="#">Read</a></li>
+                                <li><a href="#">Unread</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group">
+                            <button data-tooltip class="btn btn-default btn-sm tooltips" type="button" data-toggle="tooltip" data-container="body" title="Archive"><i class="fa fa-inbox"></i></button>
+                            <button data-tooltip class="btn btn-default btn-sm tooltips" type="button" data-toggle="tooltip" data-container="body" title="Report Spam"><i class="fa fa-warning"></i></button>
+                            <button data-tooltip class="btn btn-default btn-sm tooltips" type="button" data-toggle="tooltip" data-container="body" title="Delete"><i class="fa fa-trash-o"></i></button>
+                        </div>
+                    </li>
+                    <li class="hidden-xs">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm">More</button>
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-edit"></i> Mark as read</a></li>
+                                <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <ul class="list-inline no-margin">
+                    <li class="hidden-xs"><span class="text-muted">Showing 1-50 of 2,051 messages</span></li>
+                    <li>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i></a>
+                            <a href="#" class="btn btn-sm btn-default"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </li>
+                    <li class="hidden-xs">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li class="dropdown-header">Display density :</li>
+                                <li class="active"><a href="#">Comfortable</a></li>
+                                <li><a href="#">Cozy</a></li>
+                                <li><a href="#">Compact</a></li>
+                                <li class="dropdown-header">Configure inbox</li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Themes</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.panel-sub-heading -->
+        <div class="panel-body no-padding">
+
+        <div class="table-responsive">
+        <table class="table table-hover table-email">
+            <tbody>
+                <tr data-ng-repeat="mail in mails" class="{{mail.status}} {{mail.selected}}">
+                    <td>
+                        <div class="ckbox ckbox-theme">
+                            <input data-check-action id="checkbox{{mail.id}}" type="checkbox" data-ng-checked="mail.checked">
+                            <label for="checkbox{{mail.id}}"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <a data-star-action href="" data-ng-class="{'star-checked': mail.favorite == 'favorite'}" class="star"><i class="fa fa-star"></i></a>
+                    </td>
+                    <td>
+                        <div data-read-mail class="media">
+                            <a href="#" class="pull-left">
+                                <img alt="..." src="http://img.djavaui.com/?create=35x35,6880B0?f=ffffff" class="media-object">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="text-primary">{{mail.name}}</h4>
+                                <p class="email-summary"><strong data-ng-show="mail.title">{{mail.title}}</strong> {{mail.message}} <span data-ng-show="mail.label" data-ng-class="{'label-success': mail.label == 'new', 'label-warning': mail.label == 'urgent', 'label-danger': mail.label == 'promotion'}" class="label">{{mail.label}}</span> </p>
+                                <span class="media-meta">{{mail.time}}</span>
+                                <span class="media-attach">
+                                    <i data-ng-repeat="additional in mail.additionals" data-ng-show="additional.attach" class="fa fa-paperclip"></i>
+                                    <i data-ng-repeat="additional in mail.additionals" data-ng-show="additional.warning" class="fa fa-warning"></i>
+                                    <i data-ng-repeat="additional in mail.additionals" data-ng-show="additional.group" class="fa fa-users"></i>
+                                    <i data-ng-repeat="additional in mail.additionals" data-ng-show="additional.share" class="fa fa-share"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div><!-- /.table-responsive -->
+
+        </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+    </div>
+</div><!-- /.row -->
+<!--/ End mail page -->

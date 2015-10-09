@@ -1,1 +1,0 @@
-"use strict";!function(){angular.module("blankonApp.frontendThemes",[]).controller("FrontendThemesCtrl",["$scope","$http","settings",function(a,b,c){a.themes=[],b.get(c.dataPath+"/views/frontend-themes.json").success(function(b){a.themes=b}).error(function(a,b,c,d){})}])}();

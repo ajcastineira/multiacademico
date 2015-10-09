@@ -1,1 +1,0 @@
-"use strict";!function(){var a=angular.module("blankonApp.sign",[]);a.controller("xxx",function(){this.header=[{test:"hello world"}]})}();

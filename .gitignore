@@ -28,6 +28,7 @@
 /grunt/.tmp
 /dist
 /nbproject
+/web/build
 /web/tmp
 /web/vendor
 /bower_components

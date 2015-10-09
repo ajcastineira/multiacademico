@@ -1,1 +1,0 @@
-define(["app","jquery"],function(a,b){"use strict"});

@@ -1,2 +1,0 @@
-define('app',["angular","angular-couch-potato","angular-ui-router","angular-animate","angular-bootstrap"],function(a,b){var c=a.module("app",["ngSanitize","ngAnimate","scs.couch-potato","ui.router","ui.bootstrap","angular-loading-bar","oc.lazyLoad","smart-templates"]);return c});
-window.name="NG_DEFER_BOOTSTRAP!",define('main',["require","jquery","angular","domReady","bootstrap","app"],function(a,b,c,d){"use strict";d(function(a){c.bootstrap(a,["app"]),c.resumeBootstrap()})});

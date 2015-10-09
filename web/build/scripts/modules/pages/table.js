@@ -1,1 +1,0 @@
-"use strict";!function(){var a=angular.module("blankonApp.table",[]);a.controller("xxx",function(){this.header=[{test:"hello world"}]})}();

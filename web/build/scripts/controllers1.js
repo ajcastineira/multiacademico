@@ -1,1 +1,0 @@
-define(["app"],function(a){"use strict";function b(a){a.supportIE=1}return b.$inject=["$scope"],a.controller("BlankonCtrl",b)});

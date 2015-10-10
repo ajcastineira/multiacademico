@@ -1,0 +1,60 @@
+@page {
+      size: auto;
+      
+     margin-left: 0.5cm;
+      margin-right: 0.5cm;
+      margin-top: 0.1cm;
+
+}
+@page rotated { size : landscape;
+                margin-left: 0.5cm;
+                margin-right: 0.5cm;
+                margin-top: 0.1cm;
+}
+#cabecera {
+  display: none !important;
+}
+.pagina {
+     width:20cm;
+     //height:20cm;
+     margin-left: auto;
+     margin-right: auto;
+     line-height: 15px;
+}
+.paginah {
+     width:100%;
+     //height:20cm;
+     margin-left: auto;
+     margin-right: auto;
+     line-height: 15px;
+}
+#menu
+{
+  display: none !important;
+}
+#imprimir {
+  display: none !important;
+}
+.noprint
+{
+ display: none !important;
+}
+body, #contenido, #principal, #pie {
+  float: none !important;
+  width: auto !important;
+  //height: auto !important;
+  margin:  0 !important;
+  padding: 0 !important;
+}
+.letraprint1
+{
+    font-size:8.0pt;
+    font-family:Tahoma;
+    color:#000000
+}
+.letraprint2
+{
+    font-size:7.0pt;
+    font-family:Tahoma;
+    color:#000000
+}

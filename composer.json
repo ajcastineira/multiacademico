@@ -17,7 +17,20 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        
+        "friendsofsymfony/jsrouting-bundle": "^1.5",
+        "fresh/doctrine-enum-bundle": "~3.2",
+        "google/apiclient":"1.*@beta",
+        
+        "components/jquery": "1.11.1",
+        "datatables/datatables": "1.10.4",
+        "moment/moment": "2.8.4",
+        "renearias/arxis-datatables-bundle": "dev-master",
+        
+        "jms/serializer-bundle": "^1.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "ircmaxell/password-compat": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

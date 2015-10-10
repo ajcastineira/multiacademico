@@ -1,0 +1,339 @@
+ <div class="row">
+
+	<div class="col-sm-12">
+
+
+			<div class="well well-sm">
+
+				<div class="row">
+
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="well well-light well-sm no-margin no-padding">
+
+							<div class="row">
+
+								<div class="col-sm-12">
+									<div id="myCarousel" class="carousel fade profile-carousel">
+										<div class="air air-bottom-right padding-10">
+                                                                                        {#<a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i> Conectar</a>#}
+                                                                                        <a href="{{path('secured_user_edit',{'id':entity.id})}}" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-edit"></i> Editar</a>&nbsp;
+										</div>
+										<div class="air air-top-left padding-10">
+											<h4 class="txt-color-white font-md">{{entity.created| date('M d, y')}}</h4>
+										</div>
+										<ol class="carousel-indicators">
+											<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+											<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+											<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+										</ol>
+										<div class="carousel-inner">
+											<!-- Slide 1 -->
+											<div class="item active">
+												<img src="{{asset('styles/img/demo/s1.jpg')}}" alt="">
+											</div>
+											<!-- Slide 2 -->
+											<div class="item">
+												<img src="{{asset('styles/img/demo/s2.jpg')}}" alt="">
+											</div>
+											<!-- Slide 3 -->
+											<div class="item">
+												<img src="{{asset('styles/img/demo/m3.jpg')}}" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-12">
+
+									<div class="row">
+
+										<div class="col-sm-3 profile-pic">
+                                                                                        <img src="{{entity.getWebPath()?asset(entity.getWebPath()):asset('styles/img/avatars/sunny-big.png')}}">
+											<div class="padding-10">
+												<h4 class="font-md"><strong>1,543</strong>
+												<br>
+												<small>Seguidores</small></h4>
+												<br>
+												<h4 class="font-md"><strong>419</strong>
+												<br>
+												<small>Conexiones</small></h4>
+											</div>
+										</div>
+										<div class="col-sm-6">
+                                                                                    {% set nombre = entity.name|split(' ') %}
+											<h1>{% for nom in nombre[0:1]%} {{ nom }} {%endfor%} <span class="semi-bold">{% for nom in nombre[1:]%} {{ nom }} {%endfor%} </span>
+											<br>
+											<small> {{entity.cargo}}, Arxis LA</small></h1>
+
+											<ul class="list-unstyled">
+												<li>
+													<p class="text-muted">
+                                                                                                            <i class="fa fa-phone"></i>&nbsp;&nbsp; <span class="txt-color-darken">{{entity.telefono|default('Aun no ha regitrado telefono')}}</span>
+													</p>
+												</li>
+                                                                                                <li>
+													<p class="text-muted">
+														<i class="fa fa-home"></i>&nbsp;&nbsp;<span class="txt-color-darken">{{entity.direccion|default('Aun no ha regitrado direccion')}}</span>
+													</p>
+												</li>
+												<li>
+													<p class="text-muted">
+														<i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{entity.mail}}">{{entity.mail}}</a>
+													</p>
+												</li>
+												
+                                                                                                {#<li>
+													<p class="text-muted">
+														<i class="fa fa-signal"></i>&nbsp;&nbsp;<span class="txt-color-darken"  rel="tooltip" title="" data-placement="top" data-original-title="Estado">{{entity.estado|readablehtml('EstadoClienteType')|raw}}</span>
+													</p>
+												</li>#}
+												{#<li>
+													<p class="text-muted">
+														<i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Free after <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">4:30 PM</a></span>
+													</p>
+												</li>#}
+											</ul>
+											<br>
+											{#<p class="font-md">
+												<i>Acerca de mi...</i>
+											</p>
+											<p>
+
+												Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+												cumque nihil impedit quo minus id quod maxime placeat facere
+
+											</p>
+											<br>
+											<a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Enviar Mensaje</a>
+											<br>
+											<br>
+                                                                                         #}
+										</div>
+										<div class="col-sm-3">
+											<h1><small>Conexiones</small></h1>
+											<ul class="list-inline friends-list">
+												<li><img src="{{asset('styles/img/avatars/1.png')}}" alt="friend-1">
+												</li>
+												<li><img src="{{asset('styles/img/avatars/2.png')}}" alt="friend-2">
+												</li>
+												<li><img src="{{asset('styles/img/avatars/3.png')}}" alt="friend-3">
+												</li>
+												<li><img src="{{asset('styles/img/avatars/4.png')}}" alt="friend-4">
+												</li>
+												<li><img src="{{asset('styles/img/avatars/5.png')}}" alt="friend-5">
+												</li>
+												<li><img src="{{asset('styles/img/avatars/male.png')}}" alt="friend-6">
+												</li>
+												<li>
+													<a href="javascript:void(0);">413 more</a>
+												</li>
+											</ul>
+
+											<h1><small>Visitas Recientes</small></h1>
+											<ul class="list-inline friends-list">
+												<li><img src="{{asset('img/avatars/male.png')}}" alt="friend-1">
+												</li>
+												<li><img src="{{asset('img/avatars/female.png')}}" alt="friend-2">
+												</li>
+												<li><img src="{{asset('img/avatars/female.png')}}" alt="friend-3">
+												</li>
+											</ul>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="row">
+
+								<div class="col-sm-12">
+
+									<hr>
+
+									<div class="padding-10">
+
+										<ul class="nav nav-tabs tabs-pull-right">
+											<li class="active">
+												<a href="#a1" data-toggle="tab">Proyectos Asignados</a>
+                                                                                              
+											</li>
+											<li>
+												<a href="#a2" data-toggle="tab">Tareas</a>
+											</li>
+                                                                                        {#<li>
+												<a href="#a3" data-toggle="tab">Nuevos Miembros</a>
+											</li>#}
+											<li class="pull-left">
+												<span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i> Actividad</span>
+											</li>
+										</ul>
+
+										<div class="tab-content padding-top-10">
+											<div class="tab-pane fade in active" id="a1">
+
+												<div class="row">
+                                                                                                        
+                                                                                                        {#{%for movimiento in entity.historialequipos%}
+                                                                                                         
+                                                                                                          
+                                                                                                            
+                                                                                                            <div class="col-xs-2 col-sm-1">
+														<time datetime="{{movimiento.fecha|date('Y-m-d')}}" class="icon">
+															<strong>{{movimiento.fecha|date('M')}}</strong>
+															<span>{{movimiento.fecha|date('d')}}</span>
+														</time>
+													</div>
+                                                                                                                
+													<div class="col-xs-10 col-sm-11">
+														<h6 class="no-margin"><a href="#{{path('articulosdetalleclientehistorial_show',{'id':movimiento.id})}}">{{movimiento.tipo}}</a></h6>
+														<p>
+															{{movimiento.codarticulodetalle}} - {{movimiento.observacion}}
+														</p>
+													</div>
+
+													<div class="col-sm-12">
+
+														<hr>
+
+													</div>
+                                                                                                            
+                                                                                                        {%else%}    
+                                                                                                            <div class="col-sm-12">
+
+														ESTE CLIENTE NO REGISTRA MOVIMIENTOS EN SU CUENTA
+
+                                                                                                            </div>
+                                                                                                        {%endfor%}#}
+
+												</div>
+
+											</div>
+                                                                                        
+											<div class="tab-pane fade" id="a3">
+
+												<div class="alert alert-info fade in">
+													<button class="close" data-dismiss="alert">
+														×
+													</button>
+													<i class="fa-fw fa fa-info"></i>
+													<strong>51 new members </strong>joined today!
+												</div>
+
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/female.png"><a href="javascript:void(0);">Jenn Wilson</a>
+													<div class="email">
+														travis@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Marshall Hitt</a>
+													<div class="email">
+														marshall@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Joe Cadena</a>
+													<div class="email">
+														joe@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Mike McBride</a>
+													<div class="email">
+														mike@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Travis Wilson</a>
+													<div class="email">
+														travis@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Marshall Hitt</a>
+													<div class="email">
+														marshall@company.com
+													</div>
+												</div>
+												<div class="user" title="Joe Cadena joe@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Joe Cadena</a>
+													<div class="email">
+														joe@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Mike McBride</a>
+													<div class="email">
+														mike@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Marshall Hitt</a>
+													<div class="email">
+														marshall@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);">Joe Cadena</a>
+													<div class="email">
+														joe@company.com
+													</div>
+												</div>
+												<div class="user" title="email@company.com">
+													<img src="img/avatars/male.png"><a href="javascript:void(0);"> Mike McBride</a>
+													<div class="email">
+														mike@company.com
+													</div>
+												</div>
+
+												<div class="text-center">
+													<ul class="pagination pagination-sm">
+														<li class="disabled">
+															<a href="javascript:void(0);">Prev</a>
+														</li>
+														<li class="active">
+															<a href="javascript:void(0);">1</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);">2</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);">3</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);">...</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);">99</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);">Next</a>
+														</li>
+													</ul>
+												</div>
+
+											</div><!-- end tab -->
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- end row -->
+
+						</div>
+
+					</div>
+					
+				</div>
+
+			</div>
+
+
+	</div>
+
+</div>

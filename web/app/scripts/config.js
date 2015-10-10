@@ -11,7 +11,7 @@ define([
 
     // Setup global settings
     .factory('settings', ['$rootScope', function($rootScope) {
-        var baseURL = 'http://localhost/multicad/web', // Setting base url app
+        var baseURL = 'http://localhost/multiacademico/web', // Setting base url app
             settings = {
                 baseURL                 : baseURL,
                 pluginPath              : 'vendor',

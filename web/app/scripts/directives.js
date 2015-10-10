@@ -4,12 +4,14 @@
 define([
     'angular',
     'angular-couch-potato',
+    'bootbox',
     'angular-ui-router',
     'jquery-cookie',
     'jquery-nicescroll',
     'ionsound',
+    
     'sparkline'
-], function (ng, couchPotato) {
+], function (ng, couchPotato, bootbox) {
 
 'use strict';
 

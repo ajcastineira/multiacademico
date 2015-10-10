@@ -1,0 +1,4 @@
+NotifyAnnotations:
+   resource: "@NotifyBundle/Controller/"
+   type:     annotation
+   prefix:   /

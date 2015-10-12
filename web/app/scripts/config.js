@@ -2494,12 +2494,12 @@ define([
 
           .state('malla-normal', {
                 url: '/malla-normal',
-                templateUrl: 'views/malla-normal.html',
+                templateUrl: 'views/multiacademico/malla/malla-normal.html',
                 data: {
                     pageTitle: 'malla-normal',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'malla-normal',
+                        title: 'Malla Normal',
                         subtitle: 'malla-normal and more'
                     },
                     breadcrumbs: [

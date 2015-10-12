@@ -74,8 +74,12 @@ define([
      'scripts/config',
      'scripts/controllers',
      'scripts/directives',
-     'scripts/modules/dashboard'//,
+     'scripts/modules/dashboard',
     // 'scripts/modules/animate'
+    
+    
+    //multiacademico
+     'multiacademico/multiacademico'
     
     // cases
     // 'modules/cases/module',

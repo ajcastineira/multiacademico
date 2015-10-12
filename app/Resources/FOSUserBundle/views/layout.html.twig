@@ -1,0 +1,42 @@
+{% extends  '::baseaccount.html.twig'%}
+{% block content %}
+    <!-- Brand -->
+<div class="brand">
+    {#<img src="http://img.djavaui.com/?create=220x100,4888E1?f=ffffff" alt="brand logo"/>
+    <img src="{{ asset('logoline.png') }}" alt="Multiacademico Logo">#}
+    <h2><i class='flaticon-university2 fa-lg' style="vertical-align: bottom"></i> Multiacad&eacute;mico</h2>
+</div>
+<!--/ Brand -->
+
+{#<span id="extr-page-header-space"> 
+                        
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            {% endif %}
+                        
+                            
+                        </span>#}
+                        
+ {% for type, messages in app.session.flashBag.all %}
+                            {% for message in messages %}
+                                <div class="{{ type }}">
+                                    {{ message|trans({}, 'FOSUserBundle') }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %} 
+                        
+     {% block fos_user_content %}
+        <!-- content -->
+    {% endblock fos_user_content %}
+  
+<!-- Content text -->
+{#<p class="text-muted text-center sign-link">Need an account? <a data-ng-href="#/sign-up"> Sign up free</a></p>#}
+<p class="text-muted text-center sign-link">Necesitas una cuenta? <a data-ng-href="{{path('fos_user_registration_register')}}"> Registrate aqui</a></p>
+<!--/ Content text -->
+        
+{% endblock content %}  

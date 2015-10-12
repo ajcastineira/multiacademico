@@ -34,6 +34,7 @@ define([
         'blankonDirective',
         //app
         'app.dashboard'
+
     ]);
         
    couchPotato.configureApp(app);

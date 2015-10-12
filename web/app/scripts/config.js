@@ -2511,7 +2511,7 @@ define([
 
           .state('cuadro-de-calificaciones', {
                 url: '/cuadro-de-calificaciones',
-                templateUrl: 'views/cuadro-de-calificaciones.html',
+                templateUrl: 'views/multiacademico/malla/cuadro-de-calificaciones.html',
                 data: {
                     pageTitle: 'cuadro-de-calificaciones',
                     pageHeader: {

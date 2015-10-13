@@ -1,0 +1,29 @@
+/* ========================================================================
+ * ACCORDION
+ * ======================================================================== */
+.ng-accordion .panel-group {
+  margin-bottom: 0px;
+}
+.ng-accordion .panel-group .panel .panel-heading {
+  border-bottom: none;
+}
+/* ========================================================================
+ * LOADING BAR
+ * ======================================================================== */
+#loading-bar .bar {
+  background: #a90329;
+  height: 4px;
+}
+#loading-bar-spinner .spinner-icon {
+  width: 18px;
+  height: 18px;
+  border: solid 4px transparent;
+  border-top-color: #f4043b;
+  border-left-color: #f4043b;
+}
+/* ========================================================================
+ * MISC
+ * ======================================================================== */
+.ng-leave {
+  display: none;
+}

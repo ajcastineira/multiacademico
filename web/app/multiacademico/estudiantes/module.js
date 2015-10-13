@@ -20,20 +20,25 @@ define(['angular',
                     state_updated:'multiacademico.estudiantes.show'
                      };
         $stateProvider
-            .state ('multiacademico.estudiantes', {abstract:true})
+            .state ('multiacademico.estudiantes', {
+                abstract:true,
+                data: {
+                        pageTitle: 'Estudiantes',
+                        pageHeader: {
+                            icon: 'fa fa-users',
+                            title: 'Estudiantes',
+                            subtitle: 'Lista'
+                        },
+                        breadcrumbs: [
+                            {title: 'Estudiantes'},{title: 'lista'}
+                        ]
+                    }
+            })
            
             .state('multiacademico.estudiantes.list', {
                 url: '/estudiantes',
                 data: {
-                        pageTitle: 'matriculas',
-                        pageHeader: {
-                            icon: 'fa fa-pencil',
-                            title: 'matriculas',
-                            subtitle: 'matriculas and more'
-                        },
-                        breadcrumbs: [
-                            {title: 'matriculas'},{title: 'matriculas'}
-                        ]
+                        pageTitle: 'Estudiantes'
                     },
                  views: {
                     "content@multiacademico": {
@@ -67,19 +72,27 @@ define(['angular',
                   submited:false,
                   formData:null
                 },
-                data: {
-                    title: 'Nuevo'
-                },
+                 data: {
+                        pageTitle: 'Estudiantes',
+                        pageHeader: {
+                            icon: 'fa fa-users',
+                            title: 'Estudiantes',
+                            subtitle: 'Nuevo'
+                        },
+                        breadcrumbs: [
+                            {title: 'Estudiantes'},{title: 'nuevo'}
+                        ]
+                    },
                 views: {
-                    "": {
+                    "content@multiacademico": {
                          templateProvider:function($stateParams,FormsCrud){
                                   return FormsCrud.nuevo($stateParams,rutas);
                              },
                         controller: 'FormsCrudCtrl',
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
+                              //  'modules/forms/directives/input/smartSelect2',
+                                'modules/forms/controllers/FormsCrudCtrl'//,
                             ])
                         }
                     }

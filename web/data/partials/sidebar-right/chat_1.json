@@ -1,0 +1,99 @@
+{
+  "family":[
+    {
+      "image":"10.png",
+      "name":"Daddy Botak",
+      "device":"desktop",
+      "status":"online",
+      "time":""
+    },
+    {
+      "image":"11.png",
+      "name":"Sarah Tingting",
+      "device":"desktop",
+      "status":"offline",
+      "time":"7 m"
+    },
+    {
+      "image":"26.png",
+      "name":"Nicolas Olivier",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    },
+    {
+      "image":"12.png",
+      "name":"Harry Potret",
+      "device":"mobile",
+      "status":"online",
+      "time":""
+    },
+    {
+      "image":"26.png",
+      "name":"Catherine Parker",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    }
+  ],
+  "friend": [
+    {
+      "image":"15.png",
+      "name":"Jeck Joko",
+      "device":"dekstop",
+      "status":"online",
+      "time":""
+    },
+    {
+      "image":"16.png",
+      "name":"Tenny Imoet",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    },
+    {
+      "image":"17.png",
+      "name":"Leli Madang",
+      "device":"mobile",
+      "status":"offline",
+      "time":"2 m"
+    },
+    {
+      "image":"18.png",
+      "name":"Rebecca Cabean",
+      "device":"mobile",
+      "status":"offline",
+      "time":"8 m"
+    },
+    {
+      "image":"26.png",
+      "name":"Ondoel Return",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    }
+  ],
+  "others":[
+    {
+      "image":"19.png",
+      "name":"Sishy Mawar",
+      "device":"mobile",
+      "status":"offline",
+      "time":"23 m"
+    },
+    {
+      "image":"20.png",
+      "name":"Mbah Roso",
+      "device":"mobile",
+      "status":"away",
+      "time":"2 h"
+    },
+    {
+      "image":"26.png",
+      "name":"Alma Butoi",
+      "device":"mobile",
+      "status":"busy",
+      "time":""
+    }
+  ]
+}

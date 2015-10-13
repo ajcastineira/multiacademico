@@ -1,0 +1,37 @@
+[
+  {
+    "image": "2.png",
+    "name": "John Kribo",
+    "location": "United State",
+    "position": "Senior Web Designer",
+    "rating": 2
+  },
+  {
+    "image": "3.png",
+    "name": "Jennifer Poiyem",
+    "location": "Spain",
+    "position": "Senior UX Designer",
+    "rating": 4
+  },
+  {
+    "image": "4.png",
+    "name": "Clara Wati",
+    "location": "United State",
+    "position": "Developer",
+    "rating": 2
+  },
+  {
+    "image": "5.png",
+    "name": "Toni Mriang",
+    "location": "Germany",
+    "position": "Assistant",
+    "rating": 4
+  },
+  {
+    "image": "6.png",
+    "name": "Bella negoro",
+    "location": "England",
+    "position": "Developer",
+    "rating": 2
+  }
+]

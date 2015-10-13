@@ -1,0 +1,60 @@
+{
+  "invoiceCode": "PR9KL",
+  "companyInformation": {
+    "name": "Djava UI, Inc",
+    "address": "Tambak bayan no.13, Babarsari, Sleman",
+    "city": "Yogyakarta, DIY",
+    "posCode": 53282,
+    "phone": "(777) 777-66666"
+  },
+  "clientInformation": {
+    "name": "Twitter, Inc",
+    "address": "795 Folsom Ave, Suite 600",
+    "city": "San Francisco, CA",
+    "posCode": 94107,
+    "phone": "(123) 456-7890"
+  },
+  "invoiceDate": "June 07, 2014",
+  "dueDate": "June 08, 2014",
+  "underContract": 777,
+  "underContractDate": "12.08.2013",
+  "productDescription": [
+    {
+      "id": 1,
+      "numberType": "",
+      "title": "Wordpress Theme Development",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "qty": 2,
+      "unitPrice": 600,
+      "taxRate": "Reverse Charge",
+      "tax": 0.00,
+      "totalPrice": 1200
+    },
+    {
+      "id": 2,
+      "numberType": "rounded",
+      "title": "Logo design and custom graphics design",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "qty": 1,
+      "unitPrice": 400,
+      "taxRate": "Reverse Charge",
+      "tax": 0.00,
+      "totalPrice": 400
+    },
+    {
+      "id": 3,
+      "numberType": "circle",
+      "title": "Maintenance Contract",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "qty": 3,
+      "unitPrice": 200,
+      "taxRate": "Reverse Charge",
+      "tax": 0.00,
+      "totalPrice": 600
+    }
+  ],
+  "totalNet": 2000,
+  "vat": 0.00,
+  "total": 2200,
+  "accountNumber": 7564534
+}

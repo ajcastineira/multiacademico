@@ -79,7 +79,8 @@ define([
     
     
     //multiacademico
-     'multiacademico/multiacademico'
+     'multiacademico/multiacademico',
+     'multiacademico/estudiantes/module'
     
     // cases
     // 'modules/cases/module',

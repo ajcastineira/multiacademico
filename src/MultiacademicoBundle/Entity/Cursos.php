@@ -43,5 +43,86 @@ class Cursos
     private $cursoestado;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cursoabreviatura
+     *
+     * @param string $cursoabreviatura
+     *
+     * @return Cursos
+     */
+    public function setCursoabreviatura($cursoabreviatura)
+    {
+        $this->cursoabreviatura = $cursoabreviatura;
+
+        return $this;
+    }
+
+    /**
+     * Get cursoabreviatura
+     *
+     * @return string
+     */
+    public function getCursoabreviatura()
+    {
+        return $this->cursoabreviatura;
+    }
+
+    /**
+     * Set curso
+     *
+     * @param string $curso
+     *
+     * @return Cursos
+     */
+    public function setCurso($curso)
+    {
+        $this->curso = $curso;
+
+        return $this;
+    }
+
+    /**
+     * Get curso
+     *
+     * @return string
+     */
+    public function getCurso()
+    {
+        return $this->curso;
+    }
+
+    /**
+     * Set cursoestado
+     *
+     * @param string $cursoestado
+     *
+     * @return Cursos
+     */
+    public function setCursoestado($cursoestado)
+    {
+        $this->cursoestado = $cursoestado;
+
+        return $this;
+    }
+
+    /**
+     * Get cursoestado
+     *
+     * @return string
+     */
+    public function getCursoestado()
+    {
+        return $this->cursoestado;
+    }
+}

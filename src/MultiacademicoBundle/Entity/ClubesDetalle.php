@@ -77,5 +77,196 @@ class ClubesDetalle
     private $clubescodestudiante;
 
 
-}
 
+    /**
+     * Set notaQ1P1
+     *
+     * @param string $notaQ1P1
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ1P1($notaQ1P1)
+    {
+        $this->notaQ1P1 = $notaQ1P1;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ1P1
+     *
+     * @return string
+     */
+    public function getNotaQ1P1()
+    {
+        return $this->notaQ1P1;
+    }
+
+    /**
+     * Set notaQ1P2
+     *
+     * @param string $notaQ1P2
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ1P2($notaQ1P2)
+    {
+        $this->notaQ1P2 = $notaQ1P2;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ1P2
+     *
+     * @return string
+     */
+    public function getNotaQ1P2()
+    {
+        return $this->notaQ1P2;
+    }
+
+    /**
+     * Set notaQ1P3
+     *
+     * @param string $notaQ1P3
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ1P3($notaQ1P3)
+    {
+        $this->notaQ1P3 = $notaQ1P3;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ1P3
+     *
+     * @return string
+     */
+    public function getNotaQ1P3()
+    {
+        return $this->notaQ1P3;
+    }
+
+    /**
+     * Set notaQ2P1
+     *
+     * @param string $notaQ2P1
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ2P1($notaQ2P1)
+    {
+        $this->notaQ2P1 = $notaQ2P1;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ2P1
+     *
+     * @return string
+     */
+    public function getNotaQ2P1()
+    {
+        return $this->notaQ2P1;
+    }
+
+    /**
+     * Set notaQ2P2
+     *
+     * @param string $notaQ2P2
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ2P2($notaQ2P2)
+    {
+        $this->notaQ2P2 = $notaQ2P2;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ2P2
+     *
+     * @return string
+     */
+    public function getNotaQ2P2()
+    {
+        return $this->notaQ2P2;
+    }
+
+    /**
+     * Set notaQ2P3
+     *
+     * @param string $notaQ2P3
+     *
+     * @return ClubesDetalle
+     */
+    public function setNotaQ2P3($notaQ2P3)
+    {
+        $this->notaQ2P3 = $notaQ2P3;
+
+        return $this;
+    }
+
+    /**
+     * Get notaQ2P3
+     *
+     * @return string
+     */
+    public function getNotaQ2P3()
+    {
+        return $this->notaQ2P3;
+    }
+
+    /**
+     * Set codclub
+     *
+     * @param \MultiacademicoBundle\Entity\Clubes $codclub
+     *
+     * @return ClubesDetalle
+     */
+    public function setCodclub(\MultiacademicoBundle\Entity\Clubes $codclub)
+    {
+        $this->codclub = $codclub;
+
+        return $this;
+    }
+
+    /**
+     * Get codclub
+     *
+     * @return \MultiacademicoBundle\Entity\Clubes
+     */
+    public function getCodclub()
+    {
+        return $this->codclub;
+    }
+
+    /**
+     * Set clubescodestudiante
+     *
+     * @param \MultiacademicoBundle\Entity\Estudiantes $clubescodestudiante
+     *
+     * @return ClubesDetalle
+     */
+    public function setClubescodestudiante(\MultiacademicoBundle\Entity\Estudiantes $clubescodestudiante)
+    {
+        $this->clubescodestudiante = $clubescodestudiante;
+
+        return $this;
+    }
+
+    /**
+     * Get clubescodestudiante
+     *
+     * @return \MultiacademicoBundle\Entity\Estudiantes
+     */
+    public function getClubescodestudiante()
+    {
+        return $this->clubescodestudiante;
+    }
+}

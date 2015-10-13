@@ -1,0 +1,176 @@
+{% block content -%}
+<style>
+        label{
+            display: table;
+        }
+        div.dataTables_filter input {
+          margin-left: 0px; 
+        }
+    </style>
+    <div class="row">
+        <big-breadcrumbs items="['Estudiantes', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+     {{ datatable_render_html(datatable) }}
+    {#<table class="table records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Estudiantecedula</th>
+                <th>Estudiante</th>
+                <th>Estudiantefechanacimiento</th>
+                <th>Estudiantenacionalidad</th>
+                <th>Estudiantelugarnacimiento</th>
+                <th>Estudianteprovincian</th>
+                <th>Estudiantecantonn</th>
+                <th>Estudianteparroquian</th>
+                <th>Estudiantedomicilio</th>
+                <th>Estudianteprovinciad</th>
+                <th>Estudiantecantond</th>
+                <th>Estudianteparroquiad</th>
+                <th>Estudiantegenero</th>
+                <th>Estudiantediscapacidad</th>
+                <th>Estudianteconae</th>
+                <th>Estudianteetnia</th>
+                <th>Estudianteplantel</th>
+                <th>Estudiantecorreo</th>
+                <th>Estudiantecarnet</th>
+                <th>Estudiantefoto</th>
+                <th>Estudianteestado</th>
+                <th>Estudiantenumeroacta</th>
+                <th>Madre</th>
+                <th>Madrecedula</th>
+                <th>Madreestadocivil</th>
+                <th>Madretelefono</th>
+                <th>Madredomicilio</th>
+                <th>Madrebono</th>
+                <th>Padre</th>
+                <th>Padrecedula</th>
+                <th>Padreestadocivil</th>
+                <th>Padretelefono</th>
+                <th>Padredomicilio</th>
+                <th>Representantecedula</th>
+                <th>Representante</th>
+                <th>Representantedomicilio</th>
+                <th>Representantetelefono</th>
+                <th>Representantetipo</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Path</th>
+                <th>Theme</th>
+                <th>Signature</th>
+                <th>Signatureformat</th>
+                <th>Created</th>
+                <th>Access</th>
+                <th>Lastlogin</th>
+                <th>Lastactivity</th>
+                <th>Status</th>
+                <th>Timezone</th>
+                <th>Language</th>
+                <th>Picture</th>
+                <th>Init</th>
+                <th>Data</th>
+                <th>Mail</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('estudiantes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.estudianteCedula }}</td>
+                <td>{{ entity.estudiante }}</td>
+                <td>{{ entity.estudianteFechanacimiento }}</td>
+                <td>{{ entity.estudianteNacionalidad }}</td>
+                <td>{{ entity.estudianteLugarnacimiento }}</td>
+                <td>{{ entity.estudianteProvinciaN }}</td>
+                <td>{{ entity.estudianteCantonN }}</td>
+                <td>{{ entity.estudianteParroquiaN }}</td>
+                <td>{{ entity.estudianteDomicilio }}</td>
+                <td>{{ entity.estudianteProvinciaD }}</td>
+                <td>{{ entity.estudianteCantonD }}</td>
+                <td>{{ entity.estudianteParroquiaD }}</td>
+                <td>{{ entity.estudianteGenero }}</td>
+                <td>{{ entity.estudianteDiscapacidad }}</td>
+                <td>{{ entity.estudianteConae }}</td>
+                <td>{{ entity.estudianteEtnia }}</td>
+                <td>{{ entity.estudiantePlantel }}</td>
+                <td>{{ entity.estudianteCorreo }}</td>
+                <td>{{ entity.estudianteCarnet }}</td>
+                <td>{{ entity.estudianteFoto }}</td>
+                <td>{{ entity.estudianteEstado }}</td>
+                <td>{{ entity.estudianteNumeroacta }}</td>
+                <td>{{ entity.madre }}</td>
+                <td>{{ entity.madreCedula }}</td>
+                <td>{{ entity.madreEstadocivil }}</td>
+                <td>{{ entity.madreTelefono }}</td>
+                <td>{{ entity.madreDomicilio }}</td>
+                <td>{{ entity.madreBono }}</td>
+                <td>{{ entity.padre }}</td>
+                <td>{{ entity.padreCedula }}</td>
+                <td>{{ entity.padreEstadocivil }}</td>
+                <td>{{ entity.padreTelefono }}</td>
+                <td>{{ entity.padreDomicilio }}</td>
+                <td>{{ entity.representanteCedula }}</td>
+                <td>{{ entity.representante }}</td>
+                <td>{{ entity.representanteDomicilio }}</td>
+                <td>{{ entity.representanteTelefono }}</td>
+                <td>{{ entity.representanteTipo }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.salt }}</td>
+                <td>{{ entity.path }}</td>
+                <td>{{ entity.theme }}</td>
+                <td>{{ entity.signature }}</td>
+                <td>{{ entity.signatureFormat }}</td>
+                <td>{{ entity.created }}</td>
+                <td>{{ entity.access }}</td>
+                <td>{{ entity.lastlogin }}</td>
+                <td>{{ entity.lastactivity }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{{ entity.timezone }}</td>
+                <td>{{ entity.language }}</td>
+                <td>{{ entity.picture }}</td>
+                <td>{{ entity.init }}</td>
+                <td>{{ entity.data }}</td>
+                <td>{{ entity.mail }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('estudiantes_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('estudiantes_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>#}
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('estudiantes_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+{{ datatable_render_js(datatable) }}
+{% endblock %}

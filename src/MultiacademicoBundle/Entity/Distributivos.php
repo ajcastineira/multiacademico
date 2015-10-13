@@ -114,5 +114,278 @@ class Distributivos
     private $distributivocodespecializacion;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set distributivoparalelo
+     *
+     * @param string $distributivoparalelo
+     *
+     * @return Distributivos
+     */
+    public function setDistributivoparalelo($distributivoparalelo)
+    {
+        $this->distributivoparalelo = $distributivoparalelo;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivoparalelo
+     *
+     * @return string
+     */
+    public function getDistributivoparalelo()
+    {
+        return $this->distributivoparalelo;
+    }
+
+    /**
+     * Set distributivoseccion
+     *
+     * @param string $distributivoseccion
+     *
+     * @return Distributivos
+     */
+    public function setDistributivoseccion($distributivoseccion)
+    {
+        $this->distributivoseccion = $distributivoseccion;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivoseccion
+     *
+     * @return string
+     */
+    public function getDistributivoseccion()
+    {
+        return $this->distributivoseccion;
+    }
+
+    /**
+     * Set distributivohora
+     *
+     * @param string $distributivohora
+     *
+     * @return Distributivos
+     */
+    public function setDistributivohora($distributivohora)
+    {
+        $this->distributivohora = $distributivohora;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivohora
+     *
+     * @return string
+     */
+    public function getDistributivohora()
+    {
+        return $this->distributivohora;
+    }
+
+    /**
+     * Set distributivofecha
+     *
+     * @param string $distributivofecha
+     *
+     * @return Distributivos
+     */
+    public function setDistributivofecha($distributivofecha)
+    {
+        $this->distributivofecha = $distributivofecha;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivofecha
+     *
+     * @return string
+     */
+    public function getDistributivofecha()
+    {
+        return $this->distributivofecha;
+    }
+
+    /**
+     * Set distributivoestado
+     *
+     * @param string $distributivoestado
+     *
+     * @return Distributivos
+     */
+    public function setDistributivoestado($distributivoestado)
+    {
+        $this->distributivoestado = $distributivoestado;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivoestado
+     *
+     * @return string
+     */
+    public function getDistributivoestado()
+    {
+        return $this->distributivoestado;
+    }
+
+    /**
+     * Set distributivogrado
+     *
+     * @param string $distributivogrado
+     *
+     * @return Distributivos
+     */
+    public function setDistributivogrado($distributivogrado)
+    {
+        $this->distributivogrado = $distributivogrado;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivogrado
+     *
+     * @return string
+     */
+    public function getDistributivogrado()
+    {
+        return $this->distributivogrado;
+    }
+
+    /**
+     * Set distributivocodperiodo
+     *
+     * @param \MultiacademicoBundle\Entity\Periodos $distributivocodperiodo
+     *
+     * @return Distributivos
+     */
+    public function setDistributivocodperiodo(\MultiacademicoBundle\Entity\Periodos $distributivocodperiodo)
+    {
+        $this->distributivocodperiodo = $distributivocodperiodo;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivocodperiodo
+     *
+     * @return \MultiacademicoBundle\Entity\Periodos
+     */
+    public function getDistributivocodperiodo()
+    {
+        return $this->distributivocodperiodo;
+    }
+
+    /**
+     * Set distributivocoddocente
+     *
+     * @param \MultiacademicoBundle\Entity\Docentes $distributivocoddocente
+     *
+     * @return Distributivos
+     */
+    public function setDistributivocoddocente(\MultiacademicoBundle\Entity\Docentes $distributivocoddocente)
+    {
+        $this->distributivocoddocente = $distributivocoddocente;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivocoddocente
+     *
+     * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function getDistributivocoddocente()
+    {
+        return $this->distributivocoddocente;
+    }
+
+    /**
+     * Set distributivocodmateria
+     *
+     * @param \MultiacademicoBundle\Entity\Materias $distributivocodmateria
+     *
+     * @return Distributivos
+     */
+    public function setDistributivocodmateria(\MultiacademicoBundle\Entity\Materias $distributivocodmateria)
+    {
+        $this->distributivocodmateria = $distributivocodmateria;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivocodmateria
+     *
+     * @return \MultiacademicoBundle\Entity\Materias
+     */
+    public function getDistributivocodmateria()
+    {
+        return $this->distributivocodmateria;
+    }
+
+    /**
+     * Set distributivocodcurso
+     *
+     * @param \MultiacademicoBundle\Entity\Cursos $distributivocodcurso
+     *
+     * @return Distributivos
+     */
+    public function setDistributivocodcurso(\MultiacademicoBundle\Entity\Cursos $distributivocodcurso)
+    {
+        $this->distributivocodcurso = $distributivocodcurso;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivocodcurso
+     *
+     * @return \MultiacademicoBundle\Entity\Cursos
+     */
+    public function getDistributivocodcurso()
+    {
+        return $this->distributivocodcurso;
+    }
+
+    /**
+     * Set distributivocodespecializacion
+     *
+     * @param \MultiacademicoBundle\Entity\Especializaciones $distributivocodespecializacion
+     *
+     * @return Distributivos
+     */
+    public function setDistributivocodespecializacion(\MultiacademicoBundle\Entity\Especializaciones $distributivocodespecializacion)
+    {
+        $this->distributivocodespecializacion = $distributivocodespecializacion;
+
+        return $this;
+    }
+
+    /**
+     * Get distributivocodespecializacion
+     *
+     * @return \MultiacademicoBundle\Entity\Especializaciones
+     */
+    public function getDistributivocodespecializacion()
+    {
+        return $this->distributivocodespecializacion;
+    }
+}

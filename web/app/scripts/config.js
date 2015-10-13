@@ -2500,10 +2500,10 @@ define([
                     pageHeader: {
                         icon: 'fa fa-pencil',
                         title: 'Malla Normal',
-                        subtitle: 'malla-normal and more'
+                        subtitle: 'Cursos'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'malla-normal'}
+                        {title: 'Malla'},{title: 'Malla normal'}
                     ]
                 }
             })
@@ -2516,11 +2516,11 @@ define([
                     pageTitle: 'cuadro-de-calificaciones',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'Blog Widget',
-                        subtitle: 'blog widget cuadro-de-calificaciones'
+                        title: 'Cuadro de Calificaciones',
+                        subtitle: 'Calificaciones'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'Blog'}
+                        {title: 'Malla'},{title: 'Cuadro de Calificaciones'}
                     ]
                 }
             })
@@ -2529,17 +2529,17 @@ define([
 
           .state('comportamiento', {
                 url: '/comportamiento',
-                templateUrl: 'views/comportamiento.html',
+                templateUrl: 'views/multiacademico/malla/comportamiento.html',
 
                 data: {
                     pageTitle: 'comportamiento',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'Blog Widget',
-                        subtitle: 'blog widget comportamiento'
+                        title: 'Comportamiento',
+                        subtitle: 'Comportamiento'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'Blog'}
+                        {title: 'Malla'},{title: 'Comportamiento'}
                     ]
                 }
             })
@@ -2548,16 +2548,16 @@ define([
 
           .state('quimestre', {
                 url: '/quimestre',
-                templateUrl: 'views/quimestre.html',
+                templateUrl: 'views/multiacademico/malla/quimestre.html',
                 data: {
                     pageTitle: 'quimestre',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'quimestre',
-                        subtitle: 'quimestre and more'
+                        title: 'Quimestre',
+                        subtitle: 'quimestre'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'quimestre'}
+                        {title: 'Malla'},{title: 'Quimestre'}
                     ]
                 }
             })
@@ -2566,16 +2566,16 @@ define([
 
           .state('quimestre2', {
                 url: '/quimestre2',
-                templateUrl: 'views/quimestre2.html',
+                templateUrl: 'views/multiacademico/malla/quimestre2.html',
                 data: {
                     pageTitle: 'quimestre2',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'quimestre2',
-                        subtitle: 'quimestre2 and more'
+                        title: 'Quimestre 2',
+                        subtitle: 'quimestre 2'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'quimestre2'}
+                        {title: 'Malla'},{title: 'Quimestre 2'}
                     ]
                 }
             })
@@ -2584,16 +2584,16 @@ define([
 
           .state('dos-quimestre', {
                 url: '/dos-quimestre',
-                templateUrl: 'views/dos-quimestre.html',
+                templateUrl: 'views/multiacademico/malla/dos-quimestre.html',
                 data: {
                     pageTitle: 'dos-quimestre',
                     pageHeader: {
                         icon: 'fa fa-pencil',
-                        title: 'Blog Widget',
-                        subtitle: 'blog widget dos-quimestre'
+                        title: 'Dos Quimestre',
+                        subtitle: 'dos quimestre'
                     },
                     breadcrumbs: [
-                        {title: 'Widget'},{title: 'Blog'}
+                        {title: 'Malla'},{title: 'Dos Quimestre'}
                     ]
                 }
          })

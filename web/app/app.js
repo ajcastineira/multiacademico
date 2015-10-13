@@ -34,6 +34,7 @@ define([
         'blankonDirective',
         //app
         'app.dashboard',
+        'app.forms',
         'multiacademico',
         'multiacademico.estudiantes'
 

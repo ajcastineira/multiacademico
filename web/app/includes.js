@@ -80,7 +80,7 @@ define([
     
     //multiacademico
      'multiacademico/multiacademico',
-     'multiacademico/estudiantes/module'
+     'multiacademico/estudiantes/module',
     
     // cases
     // 'modules/cases/module',
@@ -96,8 +96,8 @@ define([
     // 'modules/tables/module',
 
     // forms
-    // 'modules/forms/module',
-    // 'modules/forms/models/FormsCrud',
+     'modules/forms/module',
+     'modules/forms/models/FormsCrud'//,
 
     // ui
     // 'modules/ui/module',

@@ -17,7 +17,7 @@ class EstudiantesType extends AbstractType
         $builder
             ->add('estudianteCedula')
             ->add('estudiante')
-            ->add('estudianteFechanacimiento')
+           /* ->add('estudianteFechanacimiento')
             ->add('estudianteNacionalidad')
             ->add('estudianteLugarnacimiento')
             ->add('estudianteProvinciaN')
@@ -70,7 +70,7 @@ class EstudiantesType extends AbstractType
             ->add('picture')
             ->add('init')
             ->add('data')
-            ->add('mail')
+            ->add('mail')*/
         ;
     }
     
@@ -81,7 +81,8 @@ class EstudiantesType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Entity\Estudiantes',
-            'attr' => array('ng-submit'=>"processForm('".$this->getName()."')")
+            'attr' => array('ng-submit'=>"processForm(\$event,'".$this->getName()."')")
+                            
         ));
     }
 

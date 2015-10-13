@@ -1,13 +1,13 @@
 {% block content -%}
-<div id="content">
-    <div class="row">
-        <big-breadcrumbs items="['Estudiantes', 'Nuevo']" icon="file"
-                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+
+    <div class="row" ng-controller="FormsCrudCtrl">
+        {{'{{controlador}}'}}
             </div>
     <div class="row">
 
     {{ form(form) }}
     </div>
+    
     <div class="row">
         <ul class="record_actions">
     <li>
@@ -17,5 +17,5 @@
     </li>
 </ul>
     </div>
-</div>
+
 {% endblock %}

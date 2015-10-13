@@ -20,36 +20,10 @@ define(['angular',
                     state_updated:'multiacademico.estudiantes.show'
                      };
         $stateProvider
-           .state('estudiantes', {
-                url: '/estudiantes',
-                data: {
-                        pageTitle: 'Estudiantes',
-                        pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'Estudiantes',
-                            subtitle: 'Lista'
-                        },
-                        breadcrumbs: [
-                            {title: 'Estudiantes'},{title: 'lista'}
-                        ]
-                    },
-               views:{
-                    "":{
-                        templateUrl: Routing.generate('estudiantes_api'),
-                        
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                //'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])}
-                    }                    
-                }    
-                
-            })
+            .state ('multiacademico.estudiantes', {abstract:true})
            
             .state('multiacademico.estudiantes.list', {
                 url: '/estudiantes',
-                templateUrl: Routing.generate('estudiantes_api'),
                 data: {
                         pageTitle: 'matriculas',
                         pageHeader: {
@@ -60,7 +34,18 @@ define(['angular',
                         breadcrumbs: [
                             {title: 'matriculas'},{title: 'matriculas'}
                         ]
+                    },
+                 views: {
+                    "content@multiacademico": {
+                        templateUrl: Routing.generate('estudiantes_api'),
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
                     }
+                }    
                 
             })
             .state('multiacademico.estudiantes.show', {
@@ -69,7 +54,7 @@ define(['angular',
                     title: 'Mostrando Estudiante'
                 },
                 views: {
-                    "": {
+                    "content@multiacademico": {
                         templateUrl: function($stateParams){
                             return Routing.generate('estudiantes_api_show',{id:$stateParams.id});
                         }
@@ -108,7 +93,7 @@ define(['angular',
                     formData:null
                 },
                 data: {
-                    title: 'Nuevo'
+                    title: 'Editar'
                 },
                 views: {
                     "": {

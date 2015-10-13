@@ -19,7 +19,7 @@ define([
         $stateProvider
     
 
-            
+             .state ('multiacademico', {abstract:true,template:'<div data-ui-view="content" />'})
 
 
 

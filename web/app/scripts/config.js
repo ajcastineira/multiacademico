@@ -57,7 +57,7 @@ define([
         $stateProvider
 
 
-
+             .state ('app', {abstract:true,template:'<div data-ui-view="content" data-autoscroll="false" />'})
             // =========================================================================
             // SIGN IN
             // =========================================================================

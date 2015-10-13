@@ -43,7 +43,7 @@ define([
    
     app.config(function ($provide, $httpProvider, $locationProvider) {
 
-       //$locationProvider.html5Mode(true);
+       $locationProvider.html5Mode(true);
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         // Intercept http calls.
         $provide.factory('ErrorHttpInterceptor', function ($q) {

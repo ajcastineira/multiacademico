@@ -190,4 +190,7 @@ class Clubes
     {
         return $this->clubcoddocente;
     }
+    public function __toString() {
+        return $this->club;
+    }
 }

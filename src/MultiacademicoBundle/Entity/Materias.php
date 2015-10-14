@@ -156,4 +156,8 @@ class Materias
     {
         return $this->prioridad;
     }
+    
+    public function __toString() {
+        return $this->materia;
+    }
 }

@@ -60,5 +60,134 @@ class Clubes
     private $clubcoddocente;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set club
+     *
+     * @param string $club
+     *
+     * @return Clubes
+     */
+    public function setClub($club)
+    {
+        $this->club = $club;
+
+        return $this;
+    }
+
+    /**
+     * Get club
+     *
+     * @return string
+     */
+    public function getClub()
+    {
+        return $this->club;
+    }
+
+    /**
+     * Set clubabreviatura
+     *
+     * @param string $clubabreviatura
+     *
+     * @return Clubes
+     */
+    public function setClubabreviatura($clubabreviatura)
+    {
+        $this->clubabreviatura = $clubabreviatura;
+
+        return $this;
+    }
+
+    /**
+     * Get clubabreviatura
+     *
+     * @return string
+     */
+    public function getClubabreviatura()
+    {
+        return $this->clubabreviatura;
+    }
+
+    /**
+     * Set clubestado
+     *
+     * @param string $clubestado
+     *
+     * @return Clubes
+     */
+    public function setClubestado($clubestado)
+    {
+        $this->clubestado = $clubestado;
+
+        return $this;
+    }
+
+    /**
+     * Get clubestado
+     *
+     * @return string
+     */
+    public function getClubestado()
+    {
+        return $this->clubestado;
+    }
+
+    /**
+     * Set campoaccion
+     *
+     * @param string $campoaccion
+     *
+     * @return Clubes
+     */
+    public function setCampoaccion($campoaccion)
+    {
+        $this->campoaccion = $campoaccion;
+
+        return $this;
+    }
+
+    /**
+     * Get campoaccion
+     *
+     * @return string
+     */
+    public function getCampoaccion()
+    {
+        return $this->campoaccion;
+    }
+
+    /**
+     * Set clubcoddocente
+     *
+     * @param \MultiacademicoBundle\Entity\Docentes $clubcoddocente
+     *
+     * @return Clubes
+     */
+    public function setClubcoddocente(\MultiacademicoBundle\Entity\Docentes $clubcoddocente)
+    {
+        $this->clubcoddocente = $clubcoddocente;
+
+        return $this;
+    }
+
+    /**
+     * Get clubcoddocente
+     *
+     * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function getClubcoddocente()
+    {
+        return $this->clubcoddocente;
+    }
+}

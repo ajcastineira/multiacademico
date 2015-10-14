@@ -74,7 +74,7 @@ var require = {
 
         'chartjs': '../plugin/chartjs/chart.min',
 
-        'datatables': '../plugin/datatables/js/jquery.dataTables.min',
+        'datatables': '../plugin/datatables/media/js/jquery.dataTables.min',
         'datatables-bootstrap': '../plugin/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap',
         'datatables-tools': '../plugin/datatables-tabletools/js/dataTables.tableTools',
         'datatables-colvis': '../plugin/datatables-colvis/js/dataTables.colVis',

@@ -1,3 +1,6 @@
 multiacademico_homepage:
     path:     /hello/{name}
     defaults: { _controller: MultiacademicoBundle:Default:index }
+MultiacademicoAnnotations:
+    resource: "@MultiacademicoBundle/Controller/"
+    type:     annotation

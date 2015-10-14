@@ -2,3 +2,7 @@ services:
 #    multiacademico.example:
 #        class: MultiacademicoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    multiacademico.estudiantes:
+        class: MultiacademicoBundle\Datatables\EstudiantesDatatable
+        tags:
+            - { name: sg.datatable.view }        

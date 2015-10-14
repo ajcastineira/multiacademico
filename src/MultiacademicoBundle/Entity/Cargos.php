@@ -36,5 +36,62 @@ class Cargos
     private $cargoestado;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cargo
+     *
+     * @param string $cargo
+     *
+     * @return Cargos
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+
+        return $this;
+    }
+
+    /**
+     * Get cargo
+     *
+     * @return string
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * Set cargoestado
+     *
+     * @param string $cargoestado
+     *
+     * @return Cargos
+     */
+    public function setCargoestado($cargoestado)
+    {
+        $this->cargoestado = $cargoestado;
+
+        return $this;
+    }
+
+    /**
+     * Get cargoestado
+     *
+     * @return string
+     */
+    public function getCargoestado()
+    {
+        return $this->cargoestado;
+    }
+}

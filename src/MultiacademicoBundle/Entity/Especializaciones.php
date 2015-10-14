@@ -36,5 +36,62 @@ class Especializaciones
     private $especializacionestado;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set especializacion
+     *
+     * @param string $especializacion
+     *
+     * @return Especializaciones
+     */
+    public function setEspecializacion($especializacion)
+    {
+        $this->especializacion = $especializacion;
+
+        return $this;
+    }
+
+    /**
+     * Get especializacion
+     *
+     * @return string
+     */
+    public function getEspecializacion()
+    {
+        return $this->especializacion;
+    }
+
+    /**
+     * Set especializacionestado
+     *
+     * @param string $especializacionestado
+     *
+     * @return Especializaciones
+     */
+    public function setEspecializacionestado($especializacionestado)
+    {
+        $this->especializacionestado = $especializacionestado;
+
+        return $this;
+    }
+
+    /**
+     * Get especializacionestado
+     *
+     * @return string
+     */
+    public function getEspecializacionestado()
+    {
+        return $this->especializacionestado;
+    }
+}

@@ -1,0 +1,258 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['Estudiantes', 'Mostrar']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantecedula</th>
+                <td>{{ entity.estudianteCedula }}</td>
+            </tr>
+            <tr>
+                <th>Estudiante</th>
+                <td>{{ entity.estudiante }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantefechanacimiento</th>
+                <td>{{ entity.estudianteFechanacimiento }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantenacionalidad</th>
+                <td>{{ entity.estudianteNacionalidad }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantelugarnacimiento</th>
+                <td>{{ entity.estudianteLugarnacimiento }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteprovincian</th>
+                <td>{{ entity.estudianteProvinciaN }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantecantonn</th>
+                <td>{{ entity.estudianteCantonN }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteparroquian</th>
+                <td>{{ entity.estudianteParroquiaN }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantedomicilio</th>
+                <td>{{ entity.estudianteDomicilio }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteprovinciad</th>
+                <td>{{ entity.estudianteProvinciaD }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantecantond</th>
+                <td>{{ entity.estudianteCantonD }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteparroquiad</th>
+                <td>{{ entity.estudianteParroquiaD }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantegenero</th>
+                <td>{{ entity.estudianteGenero }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantediscapacidad</th>
+                <td>{{ entity.estudianteDiscapacidad }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteconae</th>
+                <td>{{ entity.estudianteConae }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteetnia</th>
+                <td>{{ entity.estudianteEtnia }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteplantel</th>
+                <td>{{ entity.estudiantePlantel }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantecorreo</th>
+                <td>{{ entity.estudianteCorreo }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantecarnet</th>
+                <td>{{ entity.estudianteCarnet }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantefoto</th>
+                <td>{{ entity.estudianteFoto }}</td>
+            </tr>
+            <tr>
+                <th>Estudianteestado</th>
+                <td>{{ entity.estudianteEstado }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantenumeroacta</th>
+                <td>{{ entity.estudianteNumeroacta }}</td>
+            </tr>
+            <tr>
+                <th>Madre</th>
+                <td>{{ entity.madre }}</td>
+            </tr>
+            <tr>
+                <th>Madrecedula</th>
+                <td>{{ entity.madreCedula }}</td>
+            </tr>
+            <tr>
+                <th>Madreestadocivil</th>
+                <td>{{ entity.madreEstadocivil }}</td>
+            </tr>
+            <tr>
+                <th>Madretelefono</th>
+                <td>{{ entity.madreTelefono }}</td>
+            </tr>
+            <tr>
+                <th>Madredomicilio</th>
+                <td>{{ entity.madreDomicilio }}</td>
+            </tr>
+            <tr>
+                <th>Madrebono</th>
+                <td>{{ entity.madreBono }}</td>
+            </tr>
+            <tr>
+                <th>Padre</th>
+                <td>{{ entity.padre }}</td>
+            </tr>
+            <tr>
+                <th>Padrecedula</th>
+                <td>{{ entity.padreCedula }}</td>
+            </tr>
+            <tr>
+                <th>Padreestadocivil</th>
+                <td>{{ entity.padreEstadocivil }}</td>
+            </tr>
+            <tr>
+                <th>Padretelefono</th>
+                <td>{{ entity.padreTelefono }}</td>
+            </tr>
+            <tr>
+                <th>Padredomicilio</th>
+                <td>{{ entity.padreDomicilio }}</td>
+            </tr>
+            <tr>
+                <th>Representantecedula</th>
+                <td>{{ entity.representanteCedula }}</td>
+            </tr>
+            <tr>
+                <th>Representante</th>
+                <td>{{ entity.representante }}</td>
+            </tr>
+            <tr>
+                <th>Representantedomicilio</th>
+                <td>{{ entity.representanteDomicilio }}</td>
+            </tr>
+            <tr>
+                <th>Representantetelefono</th>
+                <td>{{ entity.representanteTelefono }}</td>
+            </tr>
+            <tr>
+                <th>Representantetipo</th>
+                <td>{{ entity.representanteTipo }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ entity.salt }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ entity.path }}</td>
+            </tr>
+            <tr>
+                <th>Theme</th>
+                <td>{{ entity.theme }}</td>
+            </tr>
+            <tr>
+                <th>Signature</th>
+                <td>{{ entity.signature }}</td>
+            </tr>
+            <tr>
+                <th>Signatureformat</th>
+                <td>{{ entity.signatureFormat }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ entity.created }}</td>
+            </tr>
+            <tr>
+                <th>Access</th>
+                <td>{{ entity.access }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{{ entity.lastlogin }}</td>
+            </tr>
+            <tr>
+                <th>Lastactivity</th>
+                <td>{{ entity.lastactivity }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>Timezone</th>
+                <td>{{ entity.timezone }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ entity.language }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ entity.picture }}</td>
+            </tr>
+            <tr>
+                <th>Init</th>
+                <td>{{ entity.init }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ entity.data }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ entity.mail }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('estudiantes') }}">
+            Regresar a la lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('estudiantes_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@ define([
                 adminImagePath          : baseURL+'/assets/admin/img',
                 cssPath                 : 'app/styles',
                 jsPath                  : 'app/scripts',
-                dataPath                : 'app/data',
+                dataPath                : 'data',
                 additionalPath          : baseURL+'/assets/global/plugins/bower_components'
         };
         $rootScope.settings = settings;
@@ -303,7 +303,6 @@ define([
             // =========================================================================
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html',
                 data: {
                     pageTitle: 'DASHBOARD',
                     pageHeader: {
@@ -312,29 +311,11 @@ define([
                         subtitle: 'dashboard & statistics'
                     }
                 },
-                controller: 'DashboardCtrl',
-                resolve: {
-                   /* deps: $couchPotatoProvider.resolveDependencies([
-                                'scripts/modules/dashboard'
-                            ])}*/
-                    deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
-
-                        var pluginPath = settings.pluginPath, // Create variable plugin path
-                            jsPath = settings.jsPath;
-
-                        return $ocLazyLoad.load( // you can lazy load files for an existing module
-                            [
-                                {
-                                    insertBefore: '#load_css_before',
-                                    files: [
-                                        pluginPath+'/dropzone/dist/min/dropzone.min.css',
-                                        pluginPath+'/jquery.gritter/css/jquery.gritter.css'
-                                    ]
-                                }
-                                
-                            ]
-                        );
-                    }]
+                views:{
+                "":{
+                    templateUrl: 'views/dashboard.html',
+                    //controller: 'DashboardCtrl',
+                    }
                 }
             })
 /*

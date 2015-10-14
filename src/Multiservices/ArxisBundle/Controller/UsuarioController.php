@@ -89,7 +89,7 @@ class UsuarioController extends Controller
     private function createCreateForm(Usuario $entity)
     {
         $form = $this->createForm(new UsuarioType(), $entity, array(
-            //'action' => $this->generateUrl('secured_user_create'),
+            'action' => $this->generateUrl('secured_user_create'),
             'method' => 'POST',
         ));
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))

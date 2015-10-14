@@ -36,5 +36,62 @@ class Periodos
     private $periodoestado;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set periodo
+     *
+     * @param string $periodo
+     *
+     * @return Periodos
+     */
+    public function setPeriodo($periodo)
+    {
+        $this->periodo = $periodo;
+
+        return $this;
+    }
+
+    /**
+     * Get periodo
+     *
+     * @return string
+     */
+    public function getPeriodo()
+    {
+        return $this->periodo;
+    }
+
+    /**
+     * Set periodoestado
+     *
+     * @param string $periodoestado
+     *
+     * @return Periodos
+     */
+    public function setPeriodoestado($periodoestado)
+    {
+        $this->periodoestado = $periodoestado;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoestado
+     *
+     * @return string
+     */
+    public function getPeriodoestado()
+    {
+        return $this->periodoestado;
+    }
+}

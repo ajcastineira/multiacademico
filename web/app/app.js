@@ -35,10 +35,12 @@ define([
         //app
         'app.auth',
         'app.dashboard',
+        //'app.users',
        // 'app.layout',
         'app.forms',
         'multiacademico',
-        'multiacademico.estudiantes'
+        'multiacademico.estudiantes',
+        'multiacademico.docentes.midistributivo'
 
     ]);
         

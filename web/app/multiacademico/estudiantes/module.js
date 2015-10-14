@@ -55,9 +55,16 @@ define(['angular',
             })
             .state('multiacademico.estudiantes.show', {
                 url: '/estudiantes/{id:[0-9]{1,11}}',
-                data: {
-                    title: 'Mostrando Estudiante'
-                },
+                 data: {
+                        pageHeader: {
+                            icon: 'fa fa-users',
+                            title: 'Estudiantes',
+                            subtitle: 'Mostrar'
+                        },
+                        breadcrumbs: [
+                            {title: 'Estudiantes'},{title: 'mostrar'}
+                        ]
+                    },
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
@@ -91,7 +98,7 @@ define(['angular',
                         controller: 'FormsCrudCtrl',
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
-                              //  'modules/forms/directives/input/smartSelect2',
+                                'modules/forms/directives/input/smartSelect2',
                                 'modules/forms/controllers/FormsCrudCtrl'//,
                             ])
                         }
@@ -106,10 +113,17 @@ define(['angular',
                     formData:null
                 },
                 data: {
-                    title: 'Editar'
-                },
+                        pageHeader: {
+                            icon: 'fa fa-users',
+                            title: 'Estudiantes',
+                            subtitle: 'Editar'
+                        },
+                        breadcrumbs: [
+                            {title: 'Estudiantes'},{title: 'editar'}
+                        ]
+                    },
                 views: {
-                    "": {
+                    "content@multiacademico": {
                          templateProvider:function($stateParams,FormsCrud){
                                   return FormsCrud.edit($stateParams,rutas);
                              },

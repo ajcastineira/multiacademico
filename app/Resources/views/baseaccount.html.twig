@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8" data-ng-app="blankonApp"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9" data-ng-app="blankonApp"> <![endif]-->
@@ -5,6 +6,12 @@
 
     <!-- START @HEAD -->
     <head>
+        {% if(app.environment=='dev') %}     
+                 <base href="{{asset('/')~'app_dev.php/'}}">
+                 {#<base href="{{asset('/')~''}}">#}
+             {%else%}
+                  <base href="{{asset('/')~''}}">
+      {%endif%}
         <!-- START @META SECTION -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -113,13 +120,18 @@
 
         <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
         <!-- Use for production after building the project with grunt --> 
-		<!--<script src="build/rconfig.js"></script>
-		<script src="plugin/requirejs/require.js" data-main="build/main.js"></script>
-
-        <!-- Use ofr development -->    
-            
-            <script src="{{asset('app/rconfig.js')}}"></script>
-            <script src="{{asset('plugin/requirejs/require.js')}}" data-main="{{asset('app/main.js')}}"></script>
+                {% if(app.environment=='dev') %}     
+                <!-- Use for development -->		
+                <script src="{{asset('app/rconfig.js')}}"></script>
+		<script src="{{asset('plugin/requirejs/require.js')}}" data-main="{{asset('app/main.js')}}"></script>
+                {% else %}     
+                <!-- Use for production after building the project with grunt --> 
+		<script src="{{asset('build/rconfig.js')}}"></script>
+		<script src="{{asset('plugin/requirejs/require.js')}}" data-main="{{asset('build/main.js')}}"></script>
+		
+		{%endif%}
+		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         
 
         <!--/ END JAVASCRIPT SECTION -->

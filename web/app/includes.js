@@ -1,11 +1,13 @@
 define([
     // account
-    //'auth/module',
-    //'auth/models/User',
+    'auth/module',
+    'auth/models/User',
+    'auth/directives/loginInfo',
+    'auth/directives/loginInfoLine',
 
     // layout
 
-    //'layout/module'//,
+      //'layout/module',
    // 'layout/actions/minifyMenu',
    // 'layout/actions/toggleMenu',
    // 'layout/actions/fullScreen',

@@ -33,7 +33,9 @@ define([
         'blankonController',
         'blankonDirective',
         //app
+        'app.auth',
         'app.dashboard',
+       // 'app.layout',
         'app.forms',
         'multiacademico',
         'multiacademico.estudiantes'

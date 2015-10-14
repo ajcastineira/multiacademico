@@ -64,7 +64,7 @@ class LayoutController extends Controller
     
     /**
      * @Route("/partials/navigation.tpl.html", name="layout-navigation")
-     * @Cache(expires="tomorrow")
+     * Cache(expires="tomorrow")
      */
     public function layoutnavigationAction()
     {

@@ -125,9 +125,16 @@
                             </thead>
                             <tbody>
                             {%for calificacion in form.calificaciones %}
+                                
                                 <tr>
                                     <td>
                                          {%set nummat=listado[loop.index0].calificacionnummatricula.id %}    
+                                         {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
+                                         {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                         {%set promediopt='PPTM'~nummat~'q'~qactivo %}
+                                        {%set promediopt80='PPT80M'~nummat~'q'~qactivo %}
+                                        {%set ppval=listado[loop.index0].getPromedioParcial(qactivo,pactivo)%}
+                                        {%set pptval=listado[loop.index0].getPromedioParciales(qactivo)%}
                                           {{nummat }}
                                      </td>   
                                      <td>
@@ -138,50 +145,55 @@
                                         <div style="display:flex">
                                          {%set notavar='q'~qactivo~'P'~pactivo~'N'~i %}
                                         {{ form_errors(calificacion[notavar]) }}
-                                        {{ form_widget(calificacion[notavar],{'attr':{'ng-model':'M'~nummat~notavar,'ng-init':'M'~nummat~notavar~'='~(calificacion[notavar].vars.value|replace(',','.'))}}) }}
+                                        {{ form_widget(calificacion[notavar],{'attr':
+                                                                                    {'ng-model':'M'~nummat~notavar,
+                                                                                     'ng-init':'M'~nummat~notavar~'='~(calificacion[notavar].vars.value|replace(',','.')),
+                                                                                     'ng-change':promediopv~'=((('~notares~'1+'~
+                                                                                                                notares~'2+'~
+                                                                                                                notares~'3+'~
+                                                                                                                notares~'4+'~    
+                                                                                                                notares~'5)/5)|number:2);'~
+                                                                                                 promediopt~'='~(pptval-ppval)~'*1+'~promediopv~'*1;'
+                                                                                                    
+                                                                                    }
+                                                                              })
+                                         }}
                                         </div>
                                     </td>
                                     {%endfor%}
-                                    <td>
-                                            {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
-                                            {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
-                                         {#<div data-ng-init="{{promediopv}}=((
-                                                {%for i in 1..5%}
-                                                    {{notares~i}}{%if not(loop.last)%}{{'+'}}
-                                                     {%endif%}
-                                                {%endfor%})/5)"> 
-                                             {{'{{'}}{{promediopv}}{{'}}'}}
-                                          </div>#}
-                                         <div>{{'{{'}}(({%for i in 1..5%}
-                                                    {{notares~i}}{%if not(loop.last)%}{{'+'}}
-                                                     {%endif%}
-                                                {%endfor%})/5)|number:2{{'}}'}}
-                                          </div>
+                                    <td data-ng-init="{{promediopv}}={{ppval}}">
+                                        {{'{{'}}{{promediopv}}{{'}}'}} 
                                     </td>
                                     {% if pactivo==3 %}
-                                    <td>
-                                           1
+                                        
+                                    <td data-ng-init="{{promediopt}}={{pptval}}">
+                                           {{'{{'}}{{promediopt}}{{'}}'}}
                                     </td>
-                                    <td>
-                                            2
+                                    <td data-ng-init="{{promediopt80}}=({{promediopt}}*0.8|number:2)">
+                                           {{'{{'}}{{promediopt80}}{{'}}'}}
                                     </td>
                                     
                                     <td>
                                         {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
                                         {%set exvar='q'~qactivo~'Ex' %}
                                         {%set exres='M'~nummat~exvar%}
-                                        
+                                        {%set exres20=exres~'V20'%}
+                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}
                                         {{ form_widget(calificacion[exvar],
-                                                {'attr':    {'ng-model':exres,    'ng-init':exres~'='~(calificacion[exvar].vars.value|replace(',','.'))    }
+                                                {'attr':    {'ng-model':exres,
+                                                             'ng-init':exres~'='~(calificacion[exvar].vars.value|replace(',','.')),
+                                                             'ng-change':exres20~'='~exres~'*0.2;'~promedioqv~'='~exres20~'*1+1*'~promediopt80~';'
+                                                            }
                                                     })
                                         }} 
                                     </td>
                                     
-                                    <td>
-                                        {{'{{'}}{{exres}}{{'*0.2|number:2}}'}}
+                                    <td data-ng-init="{{exres20}}={{exres}}*0.2">
+                                        {{'{{'}}{{exres20}}{{'|number:2}}'}}
                                     </td>
-                                    <td>
-                                            4
+                                    <td data-ng-init="{{promedioqv}}={{listado[loop.index0].getPromedioQuimestre(qactivo)}}">
+                                        {{'{{'}}{{promedioqv}}{{'|number:2}}'}}
+                                        
                                     </td>
                                     {% endif %}
                                 </tr>    

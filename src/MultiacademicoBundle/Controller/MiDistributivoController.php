@@ -142,7 +142,7 @@ class MiDistributivoController extends Controller
     private function createCalificarForm(CursoACalificar $cursoACalificar,$q,$p)
     {
         $form = $this->createForm(new CalificarCursoType($q,$p), $cursoACalificar, array(
-            'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
+          //  'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
             'method' => 'PUT',
         ));
 

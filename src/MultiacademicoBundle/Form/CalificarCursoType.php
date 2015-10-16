@@ -39,7 +39,7 @@ class CalificarCursoType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Calificar\CursoACalificar',
-            //'attr' => array('ng-submit'=>"processForm(\$event,'".$this->getName()."')")
+            'attr' => array('ng-submit'=>"processForm(\$event,'".$this->getName()."')")
         ));
     }
 

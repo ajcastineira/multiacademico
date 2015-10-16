@@ -1,5 +1,4 @@
 {% extends '::basesimple.html.twig' %}
-
 {% form_theme form _self %}
 {% block nota_widget %}
 {% spaceless %}
@@ -8,9 +7,8 @@
     <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %} value="{{ value|replace(',','.') }}" {% endif %}/>
 {% endspaceless %}
 {% endblock  %}
-
 {%- block _multiacademicobundle_calificar_guardar_widget -%}
-   {% set attr = attr|merge({class: (attr.class|default('btn-default') ~ ' btn')|trim}) %}
+   {% set attr = attr|merge({class: (attr.class|default('btn-success') ~ ' btn')|trim}) %}
    {%- set type = type|default('submit') -%}
     {%- if label is empty -%}
         {%- if label_format is not empty -%}
@@ -26,9 +24,8 @@
 {%- endblock -%}
 
 {% block body -%}
-    {#<script src="https://code.jquery.com/jquery-2.1.4.min.js">
-     </script>#}   
-      <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
+    <div id="content">
+    <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
      <div class="row">
     <div class=" col-md-12">
 
@@ -52,5 +49,5 @@
         <!--/ End inline form -->
     </div>
 </div><!-- /.row -->
-   
+</div>   
 {% endblock %}

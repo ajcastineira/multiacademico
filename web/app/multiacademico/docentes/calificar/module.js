@@ -92,6 +92,35 @@ define(['angular',
                 }        
                 
             })
+            .state ('multiacademico.docentes.midistributivo.menu.calificaciones', {
+               // abstract:true,
+                url:'/calificaciones/:q/:p',
+                data: {
+                        pageTitle: 'Calificaciones',
+                        pageHeader: {
+                            icon: 'flaticon-a1',
+                            title: 'Calificaciones',
+                            subtitle: 'Curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Calificaciones'},{title: 'calificar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateUrl: function($stateParams){
+                            return Routing.generate('calificaciones_api',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
            
             
     });

@@ -5,4 +5,8 @@ services:
     multiacademico.estudiantes:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         tags:
-            - { name: sg.datatable.view }        
+            - { name: sg.datatable.view }
+    multiacademico.form.type.nota:
+        class: MultiacademicoBundle\Form\Type\NotaType
+        tags:
+            - { name: form.type, alias: nota }           

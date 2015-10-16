@@ -24,7 +24,7 @@ class Matriculas
     /**
      * @var string
      *
-     * @ORM\Column(name="matriculaseccion", type="string", length=15, nullable=false)
+     * @ORM\Column(name="matriculaseccion", type="string", length=20, nullable=false)
      */
     private $matriculaseccion;
 
@@ -163,7 +163,36 @@ class Matriculas
     private $matriculacodperiodo;
 
 
-
+    /**
+     * @var \Aula
+     *
+     * @ORM\ManyToOne(targetEntity="Aula", inversedBy="matriculados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodperiodo", referencedColumnName="codperiodo"),
+     *   @ORM\JoinColumn(name="matriculacodcurso", referencedColumnName="codcurso"),
+     *   @ORM\JoinColumn(name="matriculacodespecializacion", referencedColumnName="codespecializacion"),
+     *   @ORM\JoinColumn(name="matriculaparalelo", referencedColumnName="paralelo"),
+     *   @ORM\JoinColumn(name="matriculaseccion", referencedColumnName="seccion")
+     * })
+     */
+    private $aula;
+    
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="Calificaciones", mappedBy="calificacionnummatricula")
+     */
+    private $calificaciones;
+    
+    
+    
+    
+    
+    
+    public function __construct()
+    {
+        $this->calificaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -605,4 +634,48 @@ class Matriculas
     {
         return $this->matriculacodperiodo;
     }
+    /**
+     * 
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getCalificaciones() {
+        return $this->calificaciones;
+    }
+    /**
+     * 
+     * @param \Doctrine\Common\Collections\ArrayCollection $calificaciones
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setCalificaciones(\Doctrine\Common\Collections\ArrayCollection $calificaciones) {
+        $this->calificaciones = $calificaciones;
+        return $this;
+    }
+    /**
+     * 
+     * @return \MultiacademicoBundle\Entity\Aula
+     */
+    public function getAula() {
+        return $this->aula;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Aula $aula
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setAula(\MultiacademicoBundle\Entity\Aula $aula) {
+        $this->aula = $aula;
+        return $this;
+    }
+
+        
+    public function getCursoName()
+    {
+        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
+    }
+    
+    public function __toString() {
+        return $this->matriculacodestudiante->getEstudiante();
+    }
+    
+    
 }

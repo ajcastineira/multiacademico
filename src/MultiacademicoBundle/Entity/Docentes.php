@@ -889,7 +889,7 @@ class Docentes
         return $this->usuario;
     }
     /**
-     * @var \Multiservices\ArxisBundle\Entity\Usuario
+     * 
      * @param \Multiservices\ArxisBundle\Entity\Usuario $usuario
      * @return \MultiacademicoBundle\Entity\Docentes
      */

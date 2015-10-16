@@ -14,13 +14,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 class CursoACalificar {
     /**
      *
-     * @var array;
+     * @var integer
+     */
+    private $distributivoId;
+    /**
+     *
+     * @var array
      */
     private $calificaciones;
     
-    public function __construct() {
-        //$this->calificaciones= new ArrayCollection();
-        //$this->calificaciones= [];
+    public function __construct($distributivoId) {
+        
+        $this->distributivoId=$distributivoId;
     }
     
     public function getCalificaciones() {
@@ -34,6 +39,22 @@ class CursoACalificar {
 
     public function setCalificaciones($calificaciones) {
         $this->calificaciones = $calificaciones;
+        return $this;
+    }
+    /**
+     * 
+     * @return integer
+     */
+    public function getDistributivoId() {
+        return $this->distributivoId;
+    }
+    /**
+     * 
+     * @param integer $distributivoId
+     * @return \MultiacademicoBundle\Calificar\CursoACalificar
+     */
+    public function setDistributivoId($distributivoId) {
+        $this->distributivoId = $distributivoId;
         return $this;
     }
 

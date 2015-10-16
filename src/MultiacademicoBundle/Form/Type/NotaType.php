@@ -21,6 +21,7 @@ class NotaType extends AbstractType
             'attr'=>array(
                 'min'=> '0' ,
                 'max'=> '10' ,
+                'step'=>'0.01',
                 'style'=>'width: 5em;',)
                 //'maxlength'=>4,
                 

@@ -12,6 +12,7 @@ use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Form\DistributivosType;
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
+use MultiacademicoBundle\Libs\Parcial;
 
 /**
  * Distributivos controller.
@@ -112,7 +113,8 @@ class MiDistributivoController extends Controller
             throw $this->createNotFoundException('Unable to find Distributivos entity.');
         }
         $qactivo=$q;   $pactivo=$p;
-        $cursoACalificar=new CursoACalificar();
+        $parcial=new Parcial($qactivo,$pactivo);
+        $cursoACalificar=new CursoACalificar($id);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
@@ -122,7 +124,7 @@ class MiDistributivoController extends Controller
         return array(
             
             'curso'=>$curso, 'materia'=>$materia,
-            'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
+            'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,
             'form'   => $form->createView(),
         );
@@ -140,14 +142,54 @@ class MiDistributivoController extends Controller
     private function createCalificarForm(CursoACalificar $cursoACalificar,$q,$p)
     {
         $form = $this->createForm(new CalificarCursoType($q,$p), $cursoACalificar, array(
-            //'action' => $this->generateUrl('calificaciones_create'),
-            'method' => 'POST',
+            'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
+            'method' => 'PUT',
         ));
 
         $form->add('guardar', 'submit', array('label' => 'Guardar'));
 
         return $form;
     }
+    /**
+     * Edits an existing Calificaciones entity.
+     *
+     * @Route("/menu/{id}/calificaciones/{q}/{p}/api", name="pasar_calificaciones_api", options={"expose":true})
+     * @Method("PUT")
+     * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
+     */
+    public function pasarCalificacionesAction(Request $request,$id,$q,$p)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        if (!$distributivo) {
+            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+        }
+        $qactivo=$q;   $pactivo=$p;
+        $parcial=new Parcial($qactivo,$pactivo);
+        $cursoACalificar=new CursoACalificar($id);
+        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
+        $cursoACalificar->setCalificaciones($listado);
+        $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('calificaciones_api', array('id'=>$id,'q'=>$q,'p'=>$p)));
+            
+        }
+        $curso=$distributivo->getCursoName();
+        $materia=$distributivo->getDistributivocodmateria();
+        return array(
+            'curso'=>$curso, 'materia'=>$materia,
+            'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
+            'listado' => $listado,
+            'form'   => $form->createView(),
+        );
+        
+    }
+        
     
+
     
 }

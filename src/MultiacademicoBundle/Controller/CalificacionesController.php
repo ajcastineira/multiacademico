@@ -22,7 +22,7 @@ class CalificacionesController extends Controller
     /**
      * Lists all Calificaciones entities.
      *
-     * @Route("", name="calificaciones")
+     * @Route("", name="calificaciones1")
      * @Method("GET")
      */
     public function indexAction()
@@ -33,7 +33,7 @@ class CalificacionesController extends Controller
     /**
      * Lists all Calificaciones entities.
      *
-     * @Route("/api", name="calificaciones_api", options={"expose":true})
+     * @Route("/api", name="calificaciones_api1", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Calificaciones:index.html.twig")
      */

@@ -1,11 +1,9 @@
 <div class="row">
                   {{ form_start(form) }}
-                        
-                  
-                        {# ... #}
-                    <div class="row">
+
+                  <div class="row">
                         {# store the prototype on the data-prototype attribute #}
-                        <table class="table" id="calificaciones-fields-list">
+                        <table class="table table-striped" id="calificaciones-fields-list">
                             <thead class="thin-border-bottom">
                                 <tr class="text-center center">
                                     <td colspan="5" style="vertical-align:middle">
@@ -14,7 +12,7 @@
                                        
                                     </td>
                                     <td colspan="9">
-                                        <a href="">
+                                        <a data-ui-sref="^">
                                             <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
                                         
                                         {{form_widget(form.guardar)}}
@@ -26,12 +24,12 @@
 
                                 </tr>
                                  <tr>    
-                                     <th colspan="14">SEGUNDO QUIMESTRE</th>
+                                     <th colspan="14">{{parcial.text_quimestre()}}</th>
                                   </tr> 
                                   <tr>
 
 
-                                        <th rowspan="2">
+                                        <th rowspan="2" style="width:4em">
                                                     <i class="ace-icon fa fa-file-text-o"></i>
                                                     Matricula
                                             </th>
@@ -40,7 +38,10 @@
                                                     Estudiante
                                             </th>
 
-                                                  <th colspan="6" class="text-center">Tercer Parcial</th><th colspan="5" class="text-center hidden-480">Totales del Parcial</th>										
+                                                  <th colspan="6" class="text-center">{{parcial.textalt_parcial()}}</th>
+                                                  {% if pactivo==3 %}
+                                                  <th colspan="5" class="text-center hidden-480">Totales del Parcial</th>										
+                                                  {% endif%}
                                            </tr>
 
 
@@ -130,13 +131,11 @@
                                                     })
                                         }} 
                                     </td>
-                                    
                                     <td data-ng-init="{{exres20}}={{exres}}*0.2">
                                         {{'{{'}}{{exres20}}{{'|number:2}}'}}
                                     </td>
                                     <td data-ng-init="{{promedioqv}}={{listado[loop.index0].getPromedioQuimestre(qactivo)}}">
                                         {{'{{'}}{{promedioqv}}{{'|number:2}}'}}
-                                        
                                     </td>
                                     {% endif %}
                                 </tr>    

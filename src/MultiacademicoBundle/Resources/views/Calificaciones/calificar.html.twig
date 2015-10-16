@@ -135,6 +135,11 @@
                                         {%set promediopt80='PPT80M'~nummat~'q'~qactivo %}
                                         {%set ppval=listado[loop.index0].getPromedioParcial(qactivo,pactivo)%}
                                         {%set pptval=listado[loop.index0].getPromedioParciales(qactivo)%}
+                                        {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                        {%set exvar='q'~qactivo~'Ex' %}
+                                        {%set exres='M'~nummat~exvar%}
+                                        {%set exres20=exres~'V20'%}
+                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}
                                           {{nummat }}
                                      </td>   
                                      <td>
@@ -153,7 +158,9 @@
                                                                                                                 notares~'3+'~
                                                                                                                 notares~'4+'~    
                                                                                                                 notares~'5)/5)|number:2);'~
-                                                                                                 promediopt~'='~(pptval-(ppval/3))~'*1+'~promediopv~'/3;'
+                                                                                                 promediopt~'=(('~(pptval-(ppval/3))~'*1+'~promediopv~'/3)|number:2);'~
+                                                                                                 promediopt80~'=(('~promediopt~'*0.8)|number:2);'~
+                                                                                                 promedioqv~'=('~exres20~'*1+1*'~promediopt80~');'   
                                                                                                     
                                                                                     }
                                                                               })
@@ -174,11 +181,7 @@
                                     </td>
                                     
                                     <td>
-                                        {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
-                                        {%set exvar='q'~qactivo~'Ex' %}
-                                        {%set exres='M'~nummat~exvar%}
-                                        {%set exres20=exres~'V20'%}
-                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}
+                                        
                                         {{ form_widget(calificacion[exvar],
                                                 {'attr':    {'ng-model':exres,
                                                              'ng-init':exres~'='~(calificacion[exvar].vars.value|replace(',','.')),

@@ -119,13 +119,8 @@ class MiDistributivoController extends Controller
         
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
-        $c1=$listado[0]->getPromedioParcial($qactivo,1);
-        $c2=$listado[0]->getPromedioParcial($qactivo,2);
-        $c3=$listado[0]->getPromedioParcial($qactivo,3);
-        $c=$listado[0]->getPromedioParciales($qactivo,$pactivo);
-        var_dump($c1,$c2,$c3,$c);
-        
         return array(
+            
             'curso'=>$curso, 'materia'=>$materia,
             'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,

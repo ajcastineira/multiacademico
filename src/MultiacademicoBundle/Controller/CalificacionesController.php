@@ -135,7 +135,20 @@ class CalificacionesController extends Controller
      */
     public function showAction($matricula,$materia)
     {
+
        return $this->render('::baseangular.html.twig');
+    }
+
+  /**
+     * Finds and displays a Calificaciones entity.
+     *
+     * @Route("/imprimir/{matricula}/{materia}", name="calificaciones_imprimir", requirements={"matricula":"\d+","materia":"\d+"}, options={"expose":true})
+     * @Method("GET")
+     */
+    public function imprimirAction($matricula,$materia)
+    {
+     $container->get('knp_snappy.image')->generate('http://www.google.fr', '/path/to/the/image.jpg');   
+       // return $this->render('::baseangular.html.twig');
     }
 
     /**

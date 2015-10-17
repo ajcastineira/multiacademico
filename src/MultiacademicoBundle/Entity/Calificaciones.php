@@ -1961,4 +1961,14 @@ class Calificaciones
                        
           return $this->redondear_dos_decimal($sumpar/3);
     }
+    public function getPromedioQuimestre($q)
+    {
+                $promedio_parciales=$this->getPromedioParciales( $q);
+
+             $promedio_q_80=$this->redondear_dos_decimal($promedio_parciales*0.8);
+             $promedio_q_ex_20=$this->redondear_dos_decimal($this->{'q'.$q.'Ex'}*0.2);
+             $promedio_q=$this->redondear_dos_decimal(($promedio_q_80+$promedio_q_ex_20));
+                       
+          return $promedio_q;
+    }
 }

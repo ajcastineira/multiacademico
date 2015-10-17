@@ -33,10 +33,14 @@ define([
         'blankonController',
         'blankonDirective',
         //app
+        'app.auth',
         'app.dashboard',
+        //'app.users',
+       // 'app.layout',
         'app.forms',
         'multiacademico'//,
-      //  'multiacademico.estudiantes'
+        //'multiacademico.estudiantes', //este modulo no funciona cuando se ejecuta index.html
+        //'multiacademico.docentes.midistributivo' //este tampoco
 
     ]);
         

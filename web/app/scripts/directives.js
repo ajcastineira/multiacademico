@@ -450,7 +450,7 @@ var module= ng.module('blankonDirective', [])
     // DIRECTIVE SIDEBAR LEFT
     //---------------------------------------------------------------
     // Add class active on current MENU selected
-    .directive('activeMenu', function ($location) {
+    .directive('activeMenu', function ($location,$state) {
         return {
             link: function postLink(scope, element, attrs) {
                 scope.$on("$stateChangeSuccess", function (event, current, previous) {
@@ -458,9 +458,12 @@ var module= ng.module('blankonDirective', [])
                         // this var grabs the tab-level off the attribute, or defaults to 1
                         var pathLevel = attrs.activeTab || 1,
                         // this var finds what the path is at the level specified
-                            pathToCheck = $location.path().split('/')[pathLevel],
+                            //pathToCheck = $location.path().split('/')[pathLevel],
+                            pathToCheck = $location.absUrl(),
                         // this var finds grabs the same level of the href attribute
-                            tabLink = attrs.href.split('/')[pathLevel];
+                            //tabLink = attrs.href.split('/')[pathLevel];
+                             tabLink = $state.href(attrs.uiSref,null,{absolute:true});
+                            //console.log(pathToCheck,tabLink);
                         // now compare the two:
                         if (pathToCheck === tabLink) {
                             if(element.closest('.submenu').length){

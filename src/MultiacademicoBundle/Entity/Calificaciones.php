@@ -8,18 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Calificaciones
  *
  * @ORM\Table(name="calificaciones", indexes={@ORM\Index(name="calificacionnummatricula", columns={"calificacionnummatricula"}), @ORM\Index(name="calificacioncodmateria", columns={"calificacioncodmateria"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\CalificacionesRepository")
  */
 class Calificaciones
 {
-    /**
+    /*/**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    /*private $id;*/
 
     /**
      * @var float
@@ -436,7 +436,7 @@ class Calificaciones
 
     /**
      * @var \Materias
-     *
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Materias")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="calificacioncodmateria", referencedColumnName="id", nullable=false)
@@ -446,25 +446,28 @@ class Calificaciones
 
     /**
      * @var \Matriculas
-     *
-     * @ORM\ManyToOne(targetEntity="Matriculas")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Matriculas", inversedBy="calificaciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="calificacionnummatricula", referencedColumnName="id", nullable=false)
      * })
      */
     private $calificacionnummatricula;
 
+    public function __construct($matricula=NULL,$materia=NULL) {
+        $this->calificacioncodmateria=$materia;
+        $this->calificacionnummatricula=$matricula;
+    }
 
-
-    /**
+    /*/**
      * Get id
      *
      * @return integer
      */
-    public function getId()
+   /* public function getId()
     {
         return $this->id;
-    }
+    }*/
 
     /**
      * Set q1P1N1
@@ -1928,5 +1931,34 @@ class Calificaciones
     public function getCalificacionnummatricula()
     {
         return $this->calificacionnummatricula;
+    }
+    
+    function redondear_dos_decimal($valor) { 
+        //$float_redondeado=floor($valor * 100) / 100;
+        $float_redondeado=round($valor,2,PHP_ROUND_HALF_DOWN);
+    return $float_redondeado; 
+    } 
+    
+     public function getPromedioParcial($q,$p)
+    {
+        $sumpar=0; 
+        for ($n=1;$n<=5;$n++)
+                           {
+                               $nvar="q".$q."P".$p."N".$n;
+                               ${"$nvar"}=$this->$nvar;
+                               $sumpar+=${"$nvar"};
+                       }
+          return $this->redondear_dos_decimal($sumpar/5);
+    }
+    public function getPromedioParciales($q)
+    {
+        $sumpar=0;     
+        for($p=1;$p<=3;$p++)
+                 {
+                    $promedio_p=$this->getPromedioParcial($q, $p);
+                    $sumpar+=$promedio_p;
+                 }
+                       
+          return $this->redondear_dos_decimal($sumpar/3);
     }
 }

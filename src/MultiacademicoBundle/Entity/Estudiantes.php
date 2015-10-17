@@ -1776,4 +1776,8 @@ class Estudiantes
     {
         return $this->mail;
     }
+    
+    public function __toString() {
+        return $this->estudiante;
+    }
 }

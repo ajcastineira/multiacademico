@@ -10,9 +10,9 @@ define([
 
     var module = ng.module('app.auth', [
         'ui.router'
-//        ,
-//        'ezfb',
-//        'googleplus'
+        ,
+        'ezfb',
+        'googleplus'
     ]);
 
     couchPotato.configureApp(module);
@@ -59,7 +59,7 @@ define([
 
         })
 
-        .state('login', {
+        /*.state('login', {
             url: '/login',
             views: {
                 root: {
@@ -124,10 +124,10 @@ define([
                 title: 'Locked Screen',
                 htmlId: 'lock-page'
             }
-        })
+        })*/
 
 
-    }).constant('authKeys', authKeys);
+    })//.constant('authKeys', authKeys);
 
     module.run(function($couchPotato){
         module.lazy = $couchPotato;

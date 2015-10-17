@@ -1,11 +1,13 @@
 define([
     // account
-    //'auth/module',
-    //'auth/models/User',
+    'auth/module',
+    'auth/models/User',
+    'auth/directives/loginInfo',
+    'auth/directives/loginInfoLine',
 
     // layout
 
-    //'layout/module'//,
+      //'layout/module',
    // 'layout/actions/minifyMenu',
    // 'layout/actions/toggleMenu',
    // 'layout/actions/fullScreen',
@@ -81,6 +83,7 @@ define([
     //multiacademico
      'multiacademico/multiacademico',
      'multiacademico/estudiantes/module',
+     'multiacademico/docentes/calificar/module',
     
     // cases
     // 'modules/cases/module',
@@ -98,6 +101,9 @@ define([
     // forms
      'modules/forms/module',
      'modules/forms/models/FormsCrud'//,
+     
+     // users
+    // 'modules/users/module',
 
     // ui
     // 'modules/ui/module',

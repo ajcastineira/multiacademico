@@ -94,4 +94,8 @@ class Periodos
     {
         return $this->periodoestado;
     }
+    
+    public function __toString() {
+        return $this->periodo;
+    }
 }

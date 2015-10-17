@@ -125,4 +125,8 @@ class Cursos
     {
         return $this->cursoestado;
     }
+    
+    public function __toString() {
+        return $this->curso;
+    }
 }

@@ -1,4 +1,4 @@
-// =========================================================================
+ // =========================================================================
 // CONFIGURATION ROUTE
 // =========================================================================
 define([
@@ -57,7 +57,17 @@ define([
         $stateProvider
 
 
-             .state ('app', {abstract:true,template:'<div data-ui-view="content" data-autoscroll="false" />'})
+             .state ('app', {abstract:true,
+                        template:'<div data-ui-view="root" data-autoscroll="false" />',
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'auth/directives/loginInfo',
+                                //'modules/graphs/directives/inline/sparklineContainer',
+                                //'components/inbox/directives/unreadMessagesCount',
+                                //'components/chat/api/ChatApi',
+                                //'components/chat/directives/asideChatWidget'
+                            ])}
+                    })
             // =========================================================================
             // SIGN IN
             // =========================================================================

@@ -94,4 +94,7 @@ class Especializaciones
     {
         return $this->especializacionestado;
     }
+    public function __toString() {
+        return $this->especializacion;
+    }
 }

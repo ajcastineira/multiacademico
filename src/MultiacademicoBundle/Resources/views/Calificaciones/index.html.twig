@@ -1,0 +1,175 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['Calificaciones', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Q1p1n1</th>
+                <th>Q1p1n2</th>
+                <th>Q1p1n3</th>
+                <th>Q1p1n4</th>
+                <th>Q1p1n5</th>
+                <th>Q1p1recomendacion</th>
+                <th>Q1p1planmejora</th>
+                <th>Q1p1co</th>
+                <th>Q1p2n1</th>
+                <th>Q1p2n2</th>
+                <th>Q1p2n3</th>
+                <th>Q1p2n4</th>
+                <th>Q1p2n5</th>
+                <th>Q1p2recomendacion</th>
+                <th>Q1p2planmejora</th>
+                <th>Q1p2co</th>
+                <th>Q1p3n1</th>
+                <th>Q1p3n2</th>
+                <th>Q1p3n3</th>
+                <th>Q1p3n4</th>
+                <th>Q1p3n5</th>
+                <th>Q1p3recomendacion</th>
+                <th>Q1p3planmejora</th>
+                <th>Q1p3co</th>
+                <th>Q1ex</th>
+                <th>Q1recomendacion</th>
+                <th>Q1planmejora</th>
+                <th>Q2p1n1</th>
+                <th>Q2p1n2</th>
+                <th>Q2p1n3</th>
+                <th>Q2p1n4</th>
+                <th>Q2p1n5</th>
+                <th>Q2p1recomendacion</th>
+                <th>Q2p1planmejora</th>
+                <th>Q2p1co</th>
+                <th>Q2p2n1</th>
+                <th>Q2p2n2</th>
+                <th>Q2p2n3</th>
+                <th>Q2p2n4</th>
+                <th>Q2p2n5</th>
+                <th>Q2p2recomendacion</th>
+                <th>Q2p2planmejora</th>
+                <th>Q2p2co</th>
+                <th>Q2p3n1</th>
+                <th>Q2p3n2</th>
+                <th>Q2p3n3</th>
+                <th>Q2p3n4</th>
+                <th>Q2p3n5</th>
+                <th>Q2p3recomendacion</th>
+                <th>Q2p3planmejora</th>
+                <th>Q2p3co</th>
+                <th>Q2ex</th>
+                <th>Q2recomendacion</th>
+                <th>Q2planmejora</th>
+                <th>Mejoramiento</th>
+                <th>Supletorio</th>
+                <th>Remedial</th>
+                <th>Gracia</th>
+                <th>Grado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('calificaciones_show', { 'matricula': entity.calificacionnummatricula,'materia':entity.calificacioncodmateria }) }}">{{ entity.calificacionnummatricula ~' '~ entity.calificacioncodmateria  }}</a></td>
+                <td>{{ entity.q1P1N1 }}</td>
+                <td>{{ entity.q1P1N2 }}</td>
+                <td>{{ entity.q1P1N3 }}</td>
+                <td>{{ entity.q1P1N4 }}</td>
+                <td>{{ entity.q1P1N5 }}</td>
+                <td>{{ entity.q1P1Recomendacion }}</td>
+                <td>{{ entity.q1P1Planmejora }}</td>
+                <td>{{ entity.q1P1Co }}</td>
+                <td>{{ entity.q1P2N1 }}</td>
+                <td>{{ entity.q1P2N2 }}</td>
+                <td>{{ entity.q1P2N3 }}</td>
+                <td>{{ entity.q1P2N4 }}</td>
+                <td>{{ entity.q1P2N5 }}</td>
+                <td>{{ entity.q1P2Recomendacion }}</td>
+                <td>{{ entity.q1P2Planmejora }}</td>
+                <td>{{ entity.q1P2Co }}</td>
+                <td>{{ entity.q1P3N1 }}</td>
+                <td>{{ entity.q1P3N2 }}</td>
+                <td>{{ entity.q1P3N3 }}</td>
+                <td>{{ entity.q1P3N4 }}</td>
+                <td>{{ entity.q1P3N5 }}</td>
+                <td>{{ entity.q1P3Recomendacion }}</td>
+                <td>{{ entity.q1P3Planmejora }}</td>
+                <td>{{ entity.q1P3Co }}</td>
+                <td>{{ entity.q1Ex }}</td>
+                <td>{{ entity.q1Recomendacion }}</td>
+                <td>{{ entity.q1Planmejora }}</td>
+                <td>{{ entity.q2P1N1 }}</td>
+                <td>{{ entity.q2P1N2 }}</td>
+                <td>{{ entity.q2P1N3 }}</td>
+                <td>{{ entity.q2P1N4 }}</td>
+                <td>{{ entity.q2P1N5 }}</td>
+                <td>{{ entity.q2P1Recomendacion }}</td>
+                <td>{{ entity.q2P1Planmejora }}</td>
+                <td>{{ entity.q2P1Co }}</td>
+                <td>{{ entity.q2P2N1 }}</td>
+                <td>{{ entity.q2P2N2 }}</td>
+                <td>{{ entity.q2P2N3 }}</td>
+                <td>{{ entity.q2P2N4 }}</td>
+                <td>{{ entity.q2P2N5 }}</td>
+                <td>{{ entity.q2P2Recomendacion }}</td>
+                <td>{{ entity.q2P2Planmejora }}</td>
+                <td>{{ entity.q2P2Co }}</td>
+                <td>{{ entity.q2P3N1 }}</td>
+                <td>{{ entity.q2P3N2 }}</td>
+                <td>{{ entity.q2P3N3 }}</td>
+                <td>{{ entity.q2P3N4 }}</td>
+                <td>{{ entity.q2P3N5 }}</td>
+                <td>{{ entity.q2P3Recomendacion }}</td>
+                <td>{{ entity.q2P3Planmejora }}</td>
+                <td>{{ entity.q2P3Co }}</td>
+                <td>{{ entity.q2Ex }}</td>
+                <td>{{ entity.q2Recomendacion }}</td>
+                <td>{{ entity.q2Planmejora }}</td>
+                <td>{{ entity.mejoramiento }}</td>
+                <td>{{ entity.supletorio }}</td>
+                <td>{{ entity.remedial }}</td>
+                <td>{{ entity.gracia }}</td>
+                <td>{{ entity.grado }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('calificaciones_show', { 'matricula': entity.calificacionnummatricula,'materia':entity.calificacioncodmateria }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('calificaciones_edit', { 'matricula': entity.calificacionnummatricula,'materia':entity.calificacioncodmateria }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('calificaciones_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+</div>    
+{% endblock %}

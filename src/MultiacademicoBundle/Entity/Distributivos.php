@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Distributivos
  *
  * @ORM\Table(name="distributivos", indexes={@ORM\Index(name="FK_asignaturasprofesores", columns={"distributivocodperiodo"}), @ORM\Index(name="distributivocoddocente", columns={"distributivocoddocente"}), @ORM\Index(name="distributivocodmateria", columns={"distributivocodmateria"}), @ORM\Index(name="distributivocodcurso", columns={"distributivocodcurso"}), @ORM\Index(name="distributivocodespecializacion", columns={"distributivocodespecializacion"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\DistributivosRepository")
  */
 class Distributivos
 {
@@ -112,7 +112,19 @@ class Distributivos
      * })
      */
     private $distributivocodespecializacion;
-
+    /**
+     * @var \Aula
+     *
+     * @ORM\ManyToOne(targetEntity="Aula")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="distributivocodperiodo", referencedColumnName="codperiodo"),
+     *   @ORM\JoinColumn(name="distributivocodcurso", referencedColumnName="codcurso"),
+     *   @ORM\JoinColumn(name="distributivocodespecializacion", referencedColumnName="codespecializacion"),
+     *   @ORM\JoinColumn(name="distributivoparalelo", referencedColumnName="paralelo"),
+     *   @ORM\JoinColumn(name="distributivoseccion", referencedColumnName="seccion")
+     * })
+     */
+    private $aula;
 
 
     /**
@@ -387,5 +399,26 @@ class Distributivos
     public function getDistributivocodespecializacion()
     {
         return $this->distributivocodespecializacion;
+    }
+
+    /**
+     * 
+     * @return \MultiacademicoBundle\Entity\Aula
+     */
+    public function getAula() {
+        return $this->aula;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Aula $aula
+     * @return \MultiacademicoBundle\Entity\Distributivos
+     */
+    public function setAula(\MultiacademicoBundle\Entity\Aula $aula) {
+        $this->aula = $aula;
+        return $this;
+    }
+    public function getCursoName()
+    {
+        return $this->distributivocodcurso." ".$this->distributivoparalelo." ".$this->distributivocodespecializacion." ".$this->distributivoseccion;
     }
 }

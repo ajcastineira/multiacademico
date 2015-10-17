@@ -123,6 +123,48 @@ class EstudiantesDatatable extends AbstractDatatableView
                // ->add('init', 'column', array('title' => 'Init',))
               //  ->add('data', 'column', array('title' => 'Data',))
                 ->add('mail', 'column', array('title' => 'Mail',))
+                ->add(null, 'action', array(
+                'title' => 'Acciones',
+                'start_html' => '<div class="wrapper">',
+                'end_html' => '</div>',
+                'actions' => array(
+                    array(
+                        'route' => 'estudiantes_show',
+                        'route_parameters' => array(
+                            'id' => 'id'
+                        ),
+                        'label' => 'Mostrar',
+                       // 'toajax'=>true,
+                        'icon' => 'glyphicon glyphicon-eye-open',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Mostrar',
+                            'class' => 'btn btn-warning btn-xs',
+                            'role' => 'button'
+                        ),
+                        'role' => 'ROLE_USER',
+                        //'render_if' => array('visible')
+                    ),
+                    array(
+                        'route' => 'estudiantes_edit',
+                        'route_parameters' => array(
+                            'id' => 'id'
+                        ),
+                        'label' => 'Editar',
+                       // 'toajax'=>true,
+                        'icon' => 'glyphicon glyphicon-edit',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Editar',
+                            'class' => 'btn btn-primary btn-xs',
+                            'role' => 'button'
+                        ),
+                        //'confirm' => true,
+                        //'confirm_message' => 'Esta Seguro?',
+                        'role' => 'ROLE_ADMIN',
+                    )
+                )
+            ))
                 ;
     }
 

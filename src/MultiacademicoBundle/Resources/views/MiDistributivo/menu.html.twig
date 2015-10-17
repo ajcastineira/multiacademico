@@ -1,0 +1,59 @@
+{% block content -%}
+    <div class="row">
+    <div class="col-md-push-3 col-md-6">
+
+        <!-- Start inline form -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title"><i class="flaticon-canvas"></i> Mi distributivo Calificar</h3>
+                </div>
+                <div class="pull-right">
+                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body no-padding">
+
+               <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Calificar</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calificaciones</td>
+                <td>
+                        <a class="btn btn-primary" data-ui-sref="multiacademico.docentes.midistributivo.menu.calificaciones">Seleccionar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Informe de Aprendizaje</td>
+                <td>
+                        <a class="btn btn-primary" href="#">Seleccionar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Lista de Control diario de Calificaciones</td>
+                <td>
+                        <a class="btn btn-primary" href="#">Seleccionar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Lista de Control diario de Asisencias</td>
+                <td>
+                        <a class="btn btn-primary" href="#">Seleccionar</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End inline form -->
+    </div>
+</div><!-- /.row -->
+{% endblock %}

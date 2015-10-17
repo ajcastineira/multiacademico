@@ -1,0 +1,16 @@
+{#<div class="login-info ng-cloak">
+    <a href="#" class="close">&times;</a>
+    <div class="media">
+        <a class="pull-left has-notif avatar" data-ng-href="page-profile">
+            <img src="{{asset(app.user.getWebPath())}}" alt="me">
+            <i class="online"></i>
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">Hola, <span>{%verbatim%}{{user.username}}{%endverbatim%}</span></h4>
+            <small>{%verbatim%}{{user.cargo}}{%endverbatim%}</small>
+        </div>
+    </div>
+</div>#}
+<div class="login-info-line ng-cloak">
+<span class="meta"><span class="avatar"><img src="{{asset(app.user.getWebPath())}}" class="img-circle" alt="admin"></span><span class="text hidden-xs hidden-sm text-muted">{%verbatim%}{{user.username}}{%endverbatim%}</span><span class="caret"></span></span>
+</div>

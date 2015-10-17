@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Matriculas
  *
- * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"})})
+ * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
  * @ORM\Entity
  */
 class Matriculas
@@ -22,41 +22,9 @@ class Matriculas
     private $id;
 
     /**
-     * @var \Estudiantes
-     *
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\ManyToOne(targetEntity="Estudiantes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $matriculacodestudiante;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="matriculacodperiodo", type="string", length=2, nullable=false)
-     */
-    private $matriculacodperiodo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="matriculacodcurso", type="string", length=2, nullable=false)
-     */
-    private $matriculacodcurso;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="matriculacodespecializacion", type="string", length=2, nullable=false)
-     */
-    private $matriculacodespecializacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="matriculaseccion", type="string", length=15, nullable=false)
+     * @ORM\Column(name="matriculaseccion", type="string", length=20, nullable=false)
      */
     private $matriculaseccion;
 
@@ -70,14 +38,7 @@ class Matriculas
     /**
      * @var string
      *
-     * @ORM\Column(name="matriculausuario", type="string", length=2, nullable=false)
-     */
-    private $matriculausuario;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="matriculafecha", type="string", length=10, nullable=false)
+     * @ORM\Column(name="matriculafecha", type="datetime", length=10, nullable=false)
      */
     private $matriculafecha;
 
@@ -112,47 +73,126 @@ class Matriculas
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q1_laborada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q1_laborada", type="string", length=2, nullable=true)
      */
     private $matriculaQ1Laborada;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q1_jutificada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q1_jutificada", type="string", length=2, nullable=true)
      */
     private $matriculaQ1Jutificada;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q1_injustificada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q1_injustificada", type="string", length=2, nullable=true)
      */
     private $matriculaQ1Injustificada;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q2_laborada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q2_laborada", type="string", length=2, nullable=true)
      */
     private $matriculaQ2Laborada;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q2_jutificada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q2_jutificada", type="string", length=2, nullable=true)
      */
     private $matriculaQ2Jutificada;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_q2_injustificada", type="string", length=2, nullable=false)
+     * @ORM\Column(name="matricula_q2_injustificada", type="string", length=2, nullable=true)
      */
     private $matriculaQ2Injustificada;
 
+    /**
+     * @var \Multiservices\ArxisBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculausuario", referencedColumnName="id",nullable=false)
+     * })
+     */
+    private $matriculausuario;
+
+    /**
+     * @var \Estudiantes
+     *
+     * @ORM\ManyToOne(targetEntity="Estudiantes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id",nullable=false)
+     * })
+     */
+    private $matriculacodestudiante;
+
+    /**
+     * @var \Especializaciones
+     *
+     * @ORM\ManyToOne(targetEntity="Especializaciones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodespecializacion", referencedColumnName="id",nullable=false)
+     * })
+     */
+    private $matriculacodespecializacion;
+
+    /**
+     * @var \Cursos
+     *
+     * @ORM\ManyToOne(targetEntity="Cursos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodcurso", referencedColumnName="id",nullable=false)
+     * })
+     */
+    private $matriculacodcurso;
+
+    /**
+     * @var \Periodos
+     *
+     * @ORM\ManyToOne(targetEntity="Periodos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodperiodo", referencedColumnName="id",nullable=false)
+     * })
+     */
+    private $matriculacodperiodo;
 
 
+    /**
+     * @var \Aula
+     *
+     * @ORM\ManyToOne(targetEntity="Aula", inversedBy="matriculados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="matriculacodperiodo", referencedColumnName="codperiodo"),
+     *   @ORM\JoinColumn(name="matriculacodcurso", referencedColumnName="codcurso"),
+     *   @ORM\JoinColumn(name="matriculacodespecializacion", referencedColumnName="codespecializacion"),
+     *   @ORM\JoinColumn(name="matriculaparalelo", referencedColumnName="paralelo"),
+     *   @ORM\JoinColumn(name="matriculaseccion", referencedColumnName="seccion")
+     * })
+     */
+    private $aula;
+    
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="Calificaciones", mappedBy="calificacionnummatricula")
+     */
+    private $calificaciones;
+    
+    
+    
+    
+    
+    
+    public function __construct()
+    {
+        $this->calificaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -161,78 +201,6 @@ class Matriculas
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set matriculacodperiodo
-     *
-     * @param string $matriculacodperiodo
-     *
-     * @return Matriculas
-     */
-    public function setMatriculacodperiodo($matriculacodperiodo)
-    {
-        $this->matriculacodperiodo = $matriculacodperiodo;
-
-        return $this;
-    }
-
-    /**
-     * Get matriculacodperiodo
-     *
-     * @return string
-     */
-    public function getMatriculacodperiodo()
-    {
-        return $this->matriculacodperiodo;
-    }
-
-    /**
-     * Set matriculacodcurso
-     *
-     * @param string $matriculacodcurso
-     *
-     * @return Matriculas
-     */
-    public function setMatriculacodcurso($matriculacodcurso)
-    {
-        $this->matriculacodcurso = $matriculacodcurso;
-
-        return $this;
-    }
-
-    /**
-     * Get matriculacodcurso
-     *
-     * @return string
-     */
-    public function getMatriculacodcurso()
-    {
-        return $this->matriculacodcurso;
-    }
-
-    /**
-     * Set matriculacodespecializacion
-     *
-     * @param string $matriculacodespecializacion
-     *
-     * @return Matriculas
-     */
-    public function setMatriculacodespecializacion($matriculacodespecializacion)
-    {
-        $this->matriculacodespecializacion = $matriculacodespecializacion;
-
-        return $this;
-    }
-
-    /**
-     * Get matriculacodespecializacion
-     *
-     * @return string
-     */
-    public function getMatriculacodespecializacion()
-    {
-        return $this->matriculacodespecializacion;
     }
 
     /**
@@ -281,30 +249,6 @@ class Matriculas
     public function getMatriculaparalelo()
     {
         return $this->matriculaparalelo;
-    }
-
-    /**
-     * Set matriculausuario
-     *
-     * @param string $matriculausuario
-     *
-     * @return Matriculas
-     */
-    public function setMatriculausuario($matriculausuario)
-    {
-        $this->matriculausuario = $matriculausuario;
-
-        return $this;
-    }
-
-    /**
-     * Get matriculausuario
-     *
-     * @return string
-     */
-    public function getMatriculausuario()
-    {
-        return $this->matriculausuario;
     }
 
     /**
@@ -572,13 +516,37 @@ class Matriculas
     }
 
     /**
+     * Set matriculausuario
+     *
+     * @param \Multiservices\ArxisBundle\Entity\Usuario $matriculausuario
+     *
+     * @return Matriculas
+     */
+    public function setMatriculausuario(\Multiservices\ArxisBundle\Entity\Usuario $matriculausuario = null)
+    {
+        $this->matriculausuario = $matriculausuario;
+
+        return $this;
+    }
+
+    /**
+     * Get matriculausuario
+     *
+     * @return \Multiservices\ArxisBundle\Entity\Usuario
+     */
+    public function getMatriculausuario()
+    {
+        return $this->matriculausuario;
+    }
+
+    /**
      * Set matriculacodestudiante
      *
      * @param \MultiacademicoBundle\Entity\Estudiantes $matriculacodestudiante
      *
      * @return Matriculas
      */
-    public function setMatriculacodestudiante(\MultiacademicoBundle\Entity\Estudiantes $matriculacodestudiante)
+    public function setMatriculacodestudiante(\MultiacademicoBundle\Entity\Estudiantes $matriculacodestudiante = null)
     {
         $this->matriculacodestudiante = $matriculacodestudiante;
 
@@ -594,4 +562,120 @@ class Matriculas
     {
         return $this->matriculacodestudiante;
     }
+
+    /**
+     * Set matriculacodespecializacion
+     *
+     * @param \MultiacademicoBundle\Entity\Especializaciones $matriculacodespecializacion
+     *
+     * @return Matriculas
+     */
+    public function setMatriculacodespecializacion(\MultiacademicoBundle\Entity\Especializaciones $matriculacodespecializacion = null)
+    {
+        $this->matriculacodespecializacion = $matriculacodespecializacion;
+
+        return $this;
+    }
+
+    /**
+     * Get matriculacodespecializacion
+     *
+     * @return \MultiacademicoBundle\Entity\Especializaciones
+     */
+    public function getMatriculacodespecializacion()
+    {
+        return $this->matriculacodespecializacion;
+    }
+
+    /**
+     * Set matriculacodcurso
+     *
+     * @param \MultiacademicoBundle\Entity\Cursos $matriculacodcurso
+     *
+     * @return Matriculas
+     */
+    public function setMatriculacodcurso(\MultiacademicoBundle\Entity\Cursos $matriculacodcurso = null)
+    {
+        $this->matriculacodcurso = $matriculacodcurso;
+
+        return $this;
+    }
+
+    /**
+     * Get matriculacodcurso
+     *
+     * @return \MultiacademicoBundle\Entity\Cursos
+     */
+    public function getMatriculacodcurso()
+    {
+        return $this->matriculacodcurso;
+    }
+
+    /**
+     * Set matriculacodperiodo
+     *
+     * @param \MultiacademicoBundle\Entity\Periodos $matriculacodperiodo
+     *
+     * @return Matriculas
+     */
+    public function setMatriculacodperiodo(\MultiacademicoBundle\Entity\Periodos $matriculacodperiodo = null)
+    {
+        $this->matriculacodperiodo = $matriculacodperiodo;
+
+        return $this;
+    }
+
+    /**
+     * Get matriculacodperiodo
+     *
+     * @return \MultiacademicoBundle\Entity\Periodos
+     */
+    public function getMatriculacodperiodo()
+    {
+        return $this->matriculacodperiodo;
+    }
+    /**
+     * 
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getCalificaciones() {
+        return $this->calificaciones;
+    }
+    /**
+     * 
+     * @param \Doctrine\Common\Collections\ArrayCollection $calificaciones
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setCalificaciones(\Doctrine\Common\Collections\ArrayCollection $calificaciones) {
+        $this->calificaciones = $calificaciones;
+        return $this;
+    }
+    /**
+     * 
+     * @return \MultiacademicoBundle\Entity\Aula
+     */
+    public function getAula() {
+        return $this->aula;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Aula $aula
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setAula(\MultiacademicoBundle\Entity\Aula $aula) {
+        $this->aula = $aula;
+        return $this;
+    }
+
+        
+    public function getCursoName()
+    {
+        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
+    }
+    
+    public function __toString() {
+        return $this->matriculacodestudiante->getEstudiante();
+    }
+    
+    
 }

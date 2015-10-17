@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Docentes
  *
@@ -209,6 +210,17 @@ class Docentes
      * @ORM\Column(name="mail", type="string", length=255, nullable=false)
      */
     private $mail;
+    
+    /**
+     * @var \Multiservices\ArxisBundle\Entity\Usuario
+     *
+     *
+     * @ORM\OneToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codusuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
 
 
@@ -869,4 +881,26 @@ class Docentes
     {
         return $this->mail;
     }
+    /**
+     * 
+     * @return \Multiservices\ArxisBundle\Entity\Usuario
+     */
+    public function getUsuario() {
+        return $this->usuario;
+    }
+    /**
+     * 
+     * @param \Multiservices\ArxisBundle\Entity\Usuario $usuario
+     * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function setUsuario(\Multiservices\ArxisBundle\Entity\Usuario $usuario) {
+        $this->usuario = $usuario;
+        return $this;
+    }
+    
+    
+    public function __toString() {
+        return $this->docente;
+    }
+
 }

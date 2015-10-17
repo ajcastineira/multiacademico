@@ -35,8 +35,8 @@ define([
         //app
         'app.dashboard',
         'app.forms',
-        'multiacademico',
-        'multiacademico.estudiantes'
+        'multiacademico'//,
+      //  'multiacademico.estudiantes'
 
     ]);
         

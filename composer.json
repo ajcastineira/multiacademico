@@ -18,7 +18,7 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        
+        "knplabs/knp-snappy-bundle": "dev-master",        
         "friendsofsymfony/jsrouting-bundle": "^1.5",
         "fresh/doctrine-enum-bundle": "~3.2",
         "google/apiclient":"1.*@beta",

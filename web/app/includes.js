@@ -103,7 +103,7 @@ define([
      'modules/forms/module',
      'modules/forms/models/FormsCrud'//,
      
-     // users
+    // users
     // 'modules/users/module',
 
     // ui
@@ -123,7 +123,7 @@ define([
 
     // smartAdmin
     // 'modules/smart-admin/module'
-
+    
 ], function () {
     'use strict';
 });

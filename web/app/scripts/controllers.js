@@ -13,7 +13,7 @@ define([
 
 var module = ng.module('blankonController', [])
 
-     .controller('BlankonCtrl', function($scope, $http, settings) {
+     .controller('BlankonCtrl',['$scope', '$http', 'settings', function($scope, $http, settings) {
 
         // =========================================================================
         // SUPPORT IE
@@ -214,7 +214,7 @@ var module = ng.module('blankonController', [])
         $scope.tooltip(); // Call tooltip
         $scope.popover(); // Call popover
 
-    });
+    }]);
     couchPotato.configureApp(module);
     module.run(function ($couchPotato) {
         module.lazy = $couchPotato;

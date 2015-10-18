@@ -14,24 +14,25 @@ define(['angular',
 
 
         $stateProvider
-            .state('app', {
+            .state('app2', {
                 abstract: true,
                 views: {
                     root: {
-                        templateUrl: Routing.generate('layout',{_format:'html'}),
-                        resolve: {
+                        //templateUrl: Routing.generate('layout',{_format:'html'}),
+                        template: "<b>Nothing</b>"//,
+                        /*resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
-                                'auth/directives/loginInfo',
-                                'modules/graphs/directives/inline/sparklineContainer',
-                                'components/inbox/directives/unreadMessagesCount',
-                                'components/chat/api/ChatApi',
-                                'components/chat/directives/asideChatWidget'
+                               // 'auth/directives/loginInfo',
+                              //  'modules/graphs/directives/inline/sparklineContainer',
+                              //  'components/inbox/directives/unreadMessagesCount',
+                               // 'components/chat/api/ChatApi',
+                               // 'components/chat/directives/asideChatWidget'
                             ])
-                        }
+                        }*/
                     }
                 }
             });
-        $urlRouterProvider.otherwise('/inicio');
+        //$urlRouterProvider.otherwise('/inicio');
 
     });
 

@@ -36,7 +36,7 @@ define([
         'app.auth',
         'app.dashboard',
         //'app.users',
-       // 'app.layout',
+        'app.layout',
         'app.forms',
         'multiacademico',
         'multiacademico.estudiantes',

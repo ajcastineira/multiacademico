@@ -48,7 +48,7 @@ define(['modules/forms/module'], function(module){
                                                       return response.data;  
                                                     }else if(response.status===201)
                                                     {   
-                                                        $state.go(state_updated,{id:response.data.id});
+                                                        $state.go(rutas.state_updated,{id:response.data.id});
                                                         return "<div>se ha actualizado correctamente</div>";
                                                     }
                                                   });

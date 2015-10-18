@@ -19,7 +19,12 @@ define([
         $stateProvider
     
 
-             .state ('multiacademico', {abstract:true,template:'<div data-ui-view="content" />'})
+             .state ('multiacademico', {
+                        abstract:true,
+                        template:'<div data-smart-router-animation-wrap="content content@multiacademico" data-wrap-for="#content">'+
+                                        '<div data-ui-view="content" data-autoscroll="false"></div>'+
+                                  '</div>'
+                    })
 
 
 

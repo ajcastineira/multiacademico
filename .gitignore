@@ -7,7 +7,6 @@
 /app/phpunit.xml
 /bin/
 /bower_components
-/dist
 /composer.phar
 /grunt/node_modules
 /grunt/.sass-cache

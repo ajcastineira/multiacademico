@@ -11,14 +11,14 @@ define(['angular',
 
     module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
       //  $urlRouterProvider.when('/estudiantes/', '/estudiantes');
-       /* var rutas={create:'estudiantes_create',
-                    new:'estudiantes_api_new',
-                    edit:'estudiantes_api_edit',
-                    update:'estudiantes_update',
-                    list:'estudiantes_api',
-                    state_created:'multiacademico.estudiantes.show',
-                    state_updated:'multiacademico.estudiantes.show'
-                     };*/
+        var rutas={//create:'estudiantes_create',
+                   // new:'estudiantes_api_new',
+                    edit:'calificaciones_api',
+                    update:'calificaciones_api',
+                    //list:'estudiantes_api',
+                    state_created:'multiacademico.docentes.midistributivo.menu.calificaciones',
+                    state_updated:'multiacademico.docentes.midistributivo.menu.calificaciones'
+                     };
         $stateProvider
             .state ('multiacademico.docentes', {
                 abstract:true,
@@ -95,6 +95,10 @@ define(['angular',
             .state ('multiacademico.docentes.midistributivo.menu.calificaciones', {
                // abstract:true,
                 url:'/calificaciones/:q/:p',
+                params:{
+                  submited:false,
+                  formData:null
+                },
                 data: {
                         pageTitle: 'Calificaciones',
                         pageHeader: {
@@ -108,12 +112,15 @@ define(['angular',
                     },
                 views: {
                     "content@multiacademico": {
-                        templateUrl: function($stateParams){
-                            return Routing.generate('calificaciones_api',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p});
-                        },
+                        templateProvider:function($stateParams,CalificarForm){
+                                
+                                  return CalificarForm.calificar($stateParams,rutas);
+                             },
+                        controller: 'CalificarCtrl',    
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
                                 'modules/tables/directives/datatables/datatableBasic'
                             ])
                         }

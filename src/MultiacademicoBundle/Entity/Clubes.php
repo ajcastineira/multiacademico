@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Clubes
  *
  * @ORM\Table(name="clubes", uniqueConstraints={@ORM\UniqueConstraint(name="club", columns={"club"})}, indexes={@ORM\Index(name="clubcoddocente", columns={"clubcoddocente"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\ClubesRepository")
  */
 class Clubes
 {

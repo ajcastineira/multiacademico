@@ -70,7 +70,7 @@ class ClubesDetalle
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Estudiantes")
+     * @ORM\OneToOne(targetEntity="Estudiantes",inversedBy="registrados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id")
      * })

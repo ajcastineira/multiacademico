@@ -58,7 +58,7 @@ class ClubesDetalle
     /**
      * @var \Clubes
      *
-     * @ORM\ManyToOne(targetEntity="Clubes")
+     * @ORM\ManyToOne(targetEntity="Clubes", inversedBy="registrados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codclub", referencedColumnName="id", nullable=false)
      * })
@@ -70,7 +70,7 @@ class ClubesDetalle
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Estudiantes",inversedBy="registrados")
+     * @ORM\OneToOne(targetEntity="Estudiantes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id")
      * })

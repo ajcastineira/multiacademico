@@ -15,11 +15,18 @@ class ClubesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('club')
-            ->add('clubabreviatura')
-            ->add('clubestado')
-            ->add('campoaccion')
-            ->add('clubcoddocente')
+            ->add('club',null,array('label'=>'Nombre Proyecto Escolar'))
+           //->add('clubabreviatura')
+            //->add('clubestado')
+            ->add('campoaccion',null,array('label'=>'Campo de Accion'))
+            ->add('clubcoddocente',null,array('label'=>'Docente Encargado'))
+            ->add('registrados','collection',array(
+                'label'=>'Alumnos Registrados en Club',
+                'allow_add'=>true,
+                'allow_delete'=>true,
+                'by_reference'=>false,
+                'type'   => new ClubesEstudianteType(),
+            ))
         ;
     }
     

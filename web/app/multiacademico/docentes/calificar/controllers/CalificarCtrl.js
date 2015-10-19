@@ -4,6 +4,38 @@
 define(['multiacademico/docentes/calificar/module'], function (module) {
 
     'use strict';
+    
+    function retornaletra(cantidad){
+
+    var letra="";
+     if (cantidad  <= 4 )
+     {
+         letra="E";
+     }
+
+     if ((cantidad > 4 )&&(cantidad < 7 )) 
+     {
+       letra="D";
+     }
+
+     if ((cantidad >= 7 )&&(cantidad < 9)) 
+     {
+          letra="C";
+     }
+
+
+     if ((cantidad >= 9 )&&(cantidad < 10))
+     {
+         letra="B";
+     }
+
+     if (cantidad == 10 ){
+         letra="A";
+     }
+
+
+     return (letra);
+    }
 
     module.registerController('CalificarCtrl', function ($scope,$http,$state,$stateParams) {
                             
@@ -21,9 +53,26 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                                   //  {id:4,label:"Total Parciales"},
                                  //   {id:5,label:"Total Quimestre"}
                             ];
+                            $scope.letras={
+                                            'A':10,
+                                            'B':9,
+                                            'C':8,
+                                            'D':6,
+                                            'E':4,
+                                            'F':3,
+                                            '':0
+                                          };   
+                            
+                            $scope.promedioletras=function(a,b,c){
+                                var promedio=(($scope.letras[a]+$scope.letras[b]+$scope.letras[c])/3)
+                                var pl=retornaletra(promedio)
+                                return pl;
+                            }
+                                
+                            
                              
                             $scope.changeq=function(){
-                                    $state.go($state.$current,{q:$scope.q,p:$scope.p});
+                                    $state.go($state.$current,{submited:false,q:$scope.q,p:$scope.p});
                                 };
                             $scope.formData={};
                             // process the form

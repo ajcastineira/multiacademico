@@ -4,9 +4,24 @@
         <big-breadcrumbs items="['Clubes', 'Editar']" icon="file"
                          class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
             </div>
-    
+   
     <div class="row">
-    {{ form(edit_form) }}
+     {{ form_start(edit_form) }}
+    {{ form_row(edit_form.club) }}
+     {{ form_row(edit_form.campoaccion) }}
+     {{ form_row(edit_form.clubcoddocente) }}
+     
+           Alumnos Registrados en este Proyecto
+     
+    <ul class="registrados" data-prototype="{{ form_widget(edit_form.registrados.vars.prototype.children.clubescodestudiante)|e }}" collection-form>
+        {# iterate over each existing tag and render its only field: name #}
+        {% for registrado in edit_form.registrados %}
+            <li>{{ form_widget(registrado.clubescodestudiante) }}</li>
+        {% endfor %}
+    </ul>
+    
+    
+    {{ form_end(edit_form) }}
     </div>
     <div class="row">
         <ul class="record_actions">

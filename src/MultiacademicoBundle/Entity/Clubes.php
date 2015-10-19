@@ -61,7 +61,7 @@ class Clubes
     /**
      *
      * @var \Doctrine\Common\Collections\ArrayCollection;
-     * @ORM\OneToMany(targetEntity="ClubesDetalle",mappedBy="clubescodestudiante")
+     * @ORM\OneToMany(targetEntity="ClubesDetalle",mappedBy="codclub", cascade={"persist"})
      */
     private $registrados;
     

@@ -83,6 +83,7 @@ define([
     //multiacademico
      'multiacademico/multiacademico',
      'multiacademico/estudiantes/module',
+     'multiacademico/proyectosescolares/module',
      'multiacademico/docentes/calificar/module',
      'multiacademico/docentes/calificar/factory/CalificarForm',
     

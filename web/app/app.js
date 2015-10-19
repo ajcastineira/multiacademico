@@ -40,7 +40,8 @@ define([
         'app.forms',
         'multiacademico',
         'multiacademico.estudiantes',
-        'multiacademico.docentes.midistributivo'
+        'multiacademico.docentes.midistributivo',
+        'multiacademico.proyectosescolares'
 
     ]);
         

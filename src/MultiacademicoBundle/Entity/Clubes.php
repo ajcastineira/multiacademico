@@ -58,8 +58,16 @@ class Clubes
      * })
      */
     private $clubcoddocente;
-
-
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection;
+     * @ORM\OneToMany(targetEntity="ClubesDetalle",mappedBy="clubescodestudiante")
+     */
+    private $registrados;
+    
+    public function __construct() {
+        $this->registrados=new \Doctrine\Common\Collections\ArrayCollection;
+    }
 
     /**
      * Get id
@@ -192,5 +200,39 @@ class Clubes
     }
     public function __toString() {
         return $this->club;
+    }
+
+    /**
+     * Add registrado
+     *
+     * @param \MultiacademicoBundle\Entity\ClubesDetalle $registrado
+     *
+     * @return Clubes
+     */
+    public function addRegistrado(\MultiacademicoBundle\Entity\ClubesDetalle $registrado)
+    {
+        $this->registrados[] = $registrado;
+
+        return $this;
+    }
+
+    /**
+     * Remove registrado
+     *
+     * @param \MultiacademicoBundle\Entity\ClubesDetalle $registrado
+     */
+    public function removeRegistrado(\MultiacademicoBundle\Entity\ClubesDetalle $registrado)
+    {
+        $this->registrados->removeElement($registrado);
+    }
+
+    /**
+     * Get registrados
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRegistrados()
+    {
+        return $this->registrados;
     }
 }

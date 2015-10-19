@@ -1,0 +1,5 @@
+ <div><b>Quimestre Activo: {{'{{q}}'}} </b>
+     
+       <select data-ng-model="q" data-ng-init="p=1;q=q||qop[{{qactivo-1}}].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
+       </select> 
+            </div>

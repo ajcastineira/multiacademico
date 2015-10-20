@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.forms.element",[]).controller("FormsCtrl",function(){})}();

@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.blog.single",[]).controller("BlogSingleCtrl",["$scope","$http","settings",function(a,b,c){a.blogs=[],b.get(c.dataPath+"/views/blog/single.json").success(function(b){a.blogs=b}).error(function(a,b,c,d){})}]).directive("wysihtml5Textarea",function(){return{restrict:"A",link:function(a,b){b.wysihtml5()}}})}();

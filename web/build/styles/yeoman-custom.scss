@@ -1,0 +1,69 @@
+// CORE
+@import "core/variable";
+@import "core/functions";
+
+/* ========================================================================
+ * ACCORDION
+ * ======================================================================== */
+.ng-accordion{
+  .panel-group{
+    margin-bottom: 0px;
+    .panel{
+      .panel-heading{
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+/* ========================================================================
+ * FRONTEND THEMES PAGE
+ * ======================================================================== */
+.list-frontend-theme{
+  .image-scroll{
+    &.landing-page{
+      background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    }
+    //&.corporate{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    //&.portfolio{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    //&.personal-cv{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    //&.agency{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    //&.blog{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    //&.shop{
+    //  background-image: url('#{$assetPathImageAdmin}/frontend-themes/start-page.jpg');
+    //}
+    .image-ribbon{
+      background:url("#{$assetPathImageAdmin}/frontend-themes/ribbon.png") no-repeat scroll right top rgba(0, 0, 0, 0);
+    }
+  }
+}
+
+/* ========================================================================
+ * LOADING BAR
+ * ======================================================================== */
+#loading-bar{
+  .bar {
+    background: $color-theme-yeoman;
+    height: 4px;
+  }
+}
+
+#loading-bar-spinner{
+  .spinner-icon {
+    width: 18px;
+    height: 18px;
+    border: solid 4px transparent;
+    border-top-color: lighten($color-theme-yeoman, 15%);
+    border-left-color: lighten($color-theme-yeoman, 15%);
+  }
+}

@@ -39,7 +39,7 @@ define([
 
         $ocLazyLoadProvider.config({
             events: true,
-            debug: true,
+            debug: false,
             cache:false,
             cssFilesInsertBefore: 'ng_load_plugins_before',
             modules:[

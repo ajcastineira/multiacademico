@@ -76,9 +76,9 @@ class ClubesDetalle
      * })
      */
     private $clubescodestudiante;
-
-
-
+    
+  
+    
     /**
      * Set notaQ1P1
      *
@@ -270,7 +270,7 @@ class ClubesDetalle
     {
         return $this->clubescodestudiante;
     }
-    
+
     public function getClubNotaQuimestral($q)
     {
         

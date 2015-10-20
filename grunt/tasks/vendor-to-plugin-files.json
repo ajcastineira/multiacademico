@@ -54,6 +54,7 @@
   "/jquery-cookie/jquery.cookie.js",
   "/jquery-nicescroll/jquery.nicescroll.js",
   "/jquery.gritter/js/jquery.gritter.min.js",
+  "/chosen/chosen.jquery.min.js",
   
   "/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
   "/bootstrap3-fontawesome-timepicker/js/bootstrap-timepicker.min.js",

@@ -19,7 +19,10 @@ class ClubesType extends AbstractType
            //->add('clubabreviatura')
             //->add('clubestado')
             ->add('campoaccion',null,array('label'=>'Campo de Accion'))
-            ->add('clubcoddocente',null,array('label'=>'Docente Encargado'))
+            ->add('clubcoddocente',null,array('label'=>'Docente Encargado',
+                                              'attr'=>array(
+                                                                'class'=>'chosen-select ','data-chosen-select'=>null)
+                                                    ))
             ->add('registrados','collection',array(
                 'label'=>'Alumnos Registrados en Club',
                 'allow_add'=>true,

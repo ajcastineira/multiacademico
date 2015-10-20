@@ -9,7 +9,7 @@ define([
     'jquery-cookie',
     'jquery-nicescroll',
     'ionsound',
-    
+    'chosen',
     'sparkline'
 ], function (ng, couchPotato, bootbox) {
 

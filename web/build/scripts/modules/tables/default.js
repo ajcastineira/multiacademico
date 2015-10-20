@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.tables.default",[]).controller("TableDefaultCtrl",["$scope","$http","settings",function(a,b,c){a.tables=[],b.get(c.dataPath+"/views/tables/default.json").success(function(b){a.tables=b}).error(function(a,b,c,d){})}])}();

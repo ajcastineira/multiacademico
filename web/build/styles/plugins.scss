@@ -1,0 +1,1653 @@
+// CORE
+@import "core/variable";
+@import "core/mixins";
+@import "core/functions";
+
+/* ========================================================================
+ * CUSTOMIZE 3RD PARTY PLUGINS
+ * ======================================================================== */
+
+/* ========================================================================
+ * TABLE OF CONTENTS
+ * ========================================================================
+   01. JQUERY SPARKLINE
+   02. GMAP3
+   03. ICONS MAP
+   04. JQVMAP
+   05. FlOT CHART
+   06. MORRIS CHART
+   07. C3JS CHART
+   08. CHARTJS CHART
+   10. CHOOSE THEMES
+   11. DROPZONE
+   12. BOOTSTRAP TAG INPUT
+   13. BOOTSTRAP FILE UPLOAD
+   14. TYPEAHEAD
+   15. CALENDAR
+   16. BOOTSTRAP SWITCH
+   17. BOOTSTRAP DATEPICKER
+   18. JQUERY COLORPICKER
+   19. JASNY BOOTSTRAP
+   20. CHOSEN SELECT
+   21. ION RANGESLIDER
+   22. SUMMERNOTE
+   23. WYSIHTML5
+   24. DATATABLE
+   25. FONT AWESOME
+   26. GRITTER NOTIFICATION
+   27. NICESCROLL
+   28. FUEL UX
+   29. CODE PRETTIFY
+   30. BLOCKUI
+ * ======================================================================== */
+
+/* ========================================================================
+ * JQUERY SPARKLINE
+ * ======================================================================== */
+.jqstooltip{min-width:30px;height:25px!important;text-align: center}
+
+/* ========================================================================
+ * GMAP3
+ * ======================================================================== */
+#panel-box{
+  background-color: rgba(255, 255, 255, 0.51);
+  width:180px;
+  height:64px;
+  font-size:11px;
+  padding: 5px;
+  &:hover{
+    background: $white;
+  }
+  .line-panel{
+    overflow:auto;
+    clear:both;
+    height:18px
+  }
+  #lng-west{
+    border-bottom:0px;
+  }
+  .name{
+    width:50px;
+    float:left;
+    font-size:13px;
+    line-height:16px;
+  }
+  .value{
+    float:left;
+    font-size:11px;
+    line-height:15px;
+    &:before{
+      content: ": ";
+    }
+  }
+}
+
+.map{
+  width: 100%;
+  height: 300px;
+  &.map-lg{
+    height: 400px;
+  }
+}
+.map-continent{
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+}
+
+/* ========================================================================
+ * ICONS MAP
+ * ======================================================================== */
+.marker-label,
+.marker-icon {
+  z-index: 99;
+  position: absolute;
+  display: block;
+  margin-top: -50px;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  font-size: 30px !important;
+  text-align: center;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+.icon-maps-example{
+  font-size: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  span{
+    font-size: 20px;
+    vertical-align: middle;
+  }
+}
+
+/* ========================================================================
+ * JQVMAP
+ * ======================================================================== */
+.resize-map{
+  width: 100%;
+  height: 450px;
+}
+.jqvmap-label {
+  position: absolute;
+  display: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 0px;
+  background: lighten($black, 15%);
+  color: white;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  border-top: 5px solid $black;
+}
+.jqvmap-zoomin,
+.jqvmap-zoomout {
+  position: absolute !important;
+  left: 10px !important;
+  @include border-radius(50% !important);
+  padding: 3px !important;
+  color: #969fa1 !important;
+  width: 30px !important;
+  height: 30px !important;
+  cursor: pointer !important;
+  line-height: 0px !important;
+  font-size: 0px !important;
+  text-align: center !important;
+  transition: background 0.2s;
+}
+.jqvmap-zoomin {
+  top: 10px !important;
+  &:before{
+    font-family: FontAwesome;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    font-size: 16px;
+    content: "\f067";
+  }
+}
+.jqvmap-zoomout {
+  top: 45px !important;
+  &:before{
+    font-family: FontAwesome;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    font-size: 16px;
+    content: "\f068";
+  }
+}
+.jqvmap-region {
+  cursor: pointer;
+}
+.jqvmap-ajax_response {
+  width: 100%;
+  height: 500px;
+}
+
+/* ========================================================================
+ * FlOT CHART
+ * ======================================================================== */
+#flotTip{
+  font-size: 12px !important;
+  font-weight: 600;
+  position: relative;
+  z-index: 5;
+  padding: 4px 5px !important;
+  border-radius: 3px !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  background-color: #444 !important;
+  color: #EEE !important;
+}
+
+.tooltipflot{
+  background-color: $black;
+  color: $white !important;
+  padding: 2px 4px;
+  @include border-radius(2px);
+  font-size: 12px;
+}
+
+.flot{
+  .legendColorBox{
+    > div{
+      margin-right: 5px;
+      border: none !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * MORRIS CHART
+ * ======================================================================== */
+.morris-hover{
+  padding: 0px 0px 10px 0px;
+  text-align: center;
+  &.morris-default-style{
+    background-color: $white !important;
+    position: absolute !important;
+    min-width: 100px;
+    .morris-hover-row-label{
+      margin-bottom: 10px;
+      padding: 5px 0px;
+    }
+    .morris-hover-point{
+      padding: 0px 10px;
+    }
+  }
+}
+
+/* ========================================================================
+ * C3JS CHART
+ * ======================================================================== */
+.c3-region.success {
+  background-color: $green;
+}
+.c3-region.warning {
+  background-color: $yellow;
+}
+.c3-region.danger {
+  background-color: $red;
+}
+
+/* ========================================================================
+ * CHARTJS CHART
+ * ======================================================================== */
+canvas{
+  &.chartjs{
+    width: 100% !important;
+    max-width: 800px;
+    height: auto !important;
+  }
+}
+
+/* ========================================================================
+ * DROPZONE
+ * ======================================================================== */
+.dropzone{
+  padding: 20px 0px 0px 0px !important;
+  .dz-preview{
+    @include border-radius(3px !important);
+    padding: 0px !important;
+    margin: 0px 0px 20px 20px !important;
+    .dz-filename{
+      text-align: center !important;
+    }
+    .dz-details {
+      height: 110px !important;
+      img {
+        position: absolute !important;
+        top: 5px !important;
+        width: 90px !important;
+        height: 100px !important;
+      }
+      .dz-size{
+        line-height: 32px !important;
+      }
+    }
+    .dz-error-message{
+      min-width: 100px !important;
+      padding: 0px 10px !important;
+      overflow: hidden !important;
+      height: 0px !important;
+    }
+  }
+  .dz-error{
+    width: 102px !important;
+    height: 134px !important;
+  }
+}
+
+.dz-size{
+  left: 0px !important;
+  right: 0px !important;
+  text-align: center !important;
+}
+
+.dropzone{
+  @include border-radius(0px !important);
+  &.dz-started{
+    .dz-default.dz-message{
+      display: none !important;
+    }
+  }
+  .dz-default.dz-message{
+    position: relative !important;
+    width: 265px !important;
+    height: 257px !important;
+    top: inherit !important;
+    left: inherit !important;
+    margin: 25px auto !important;
+    background-image: url('#{$assetPathImageGlobal}/plugins/dropzone/uploadfile.png') !important;
+  }
+}
+
+@media (max-width: 320px){
+  .dropzone {
+    .dz-default{
+      &.dz-message{
+        background-position: -15px 0px !important;
+        background-size: 205px;
+        margin-left: 50px !important;
+      }
+    }
+  }
+}
+
+.dropzone .dz-preview, .dropzone-previews .dz-preview{
+  @include box-shadow(none !important);
+  border: 1px solid $border-color !important;
+}
+
+.dz-file-preview{
+  .dz-details{
+    &:before{
+      font-family: "Glyphicons Halflings" !important;
+      content: "\e117" !important;
+      font-size: 45px !important;
+      position: absolute !important;
+      top: 50px !important;
+      left: 27px !important;
+    }
+  }
+}
+
+@media (max-width: 360px){
+  .dropzone{
+    .dz-preview{
+      margin-bottom: 30px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block !important;
+      width: 114px !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * BOOTSTRAP TAG INPUT
+ * ======================================================================== */
+input{
+  &.rounded{
+    + .bootstrap-tagsinput{
+      @include border-radius($rounded);
+      .tag{
+        @include border-radius($rounded);
+      }
+    }
+  }
+}
+
+.bootstrap-tagsinput{
+  padding: 5px 7px 7px;
+  @include box-shadow(none !important);
+  @include border-radius(0px);
+  width: 100%;
+  input{
+    border: none !important;
+    &:focus{
+      border: none !important;
+    }
+  }
+  .tag{
+    display: inline-block;
+    padding: 5px 7px 8px;
+  }
+}
+
+@media (max-width: 360px){
+  .bootstrap-tagsinput{
+    .tag{
+      margin-bottom: 4px;
+    }
+  }
+}
+
+/* ========================================================================
+ * BOOTSTRAP FILE UPLOAD
+ * ======================================================================== */
+.fileupload{
+  .btn{
+    margin-left: 0px;
+    line-height: 20px;
+  }
+}
+.fileupload-new{
+  .input-append{
+    .btn-file{
+      @include border-radius(0px);
+    }
+  }
+}
+.uneditable-input{
+  width: 155px !important;
+  @include border-radius(0px);
+  height: 32px;
+}
+
+/* ========================================================================
+ * TYPEAHEAD
+ * ======================================================================== */
+.tt-hint {
+  color: #999
+}
+
+.empty-message{
+  padding: 20px;
+}
+
+.tt-dropdown-menu {
+  top: 45px !important;
+  width: 350px;
+  max-height: 360px;
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  overflow-y: auto;
+  @include border-radius-bottom(3px !important);
+  a.media {
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid $border-color;
+    &:hover {
+      background-color: $hover-color-default;
+    }
+  }
+  .media {
+    position: relative;
+    padding: 8px 15px;
+    &.border-dotted {
+      &:after {
+        border-bottom-style: dotted;
+      }
+    }
+    .media-heading{
+      text-transform: capitalize;
+    }
+    .media-object {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      margin-top: 10px;
+      i {
+        display: block;
+        width: 34px;
+        height: 34px;
+        margin: 0 auto;
+        line-height: 33px;
+        text-align: center;
+        color: #ffffff;
+        border-radius: 50%;
+        &.bg-default{
+          background-color: gray;
+        }
+      }
+    }
+    .pull-left {
+      margin-right: 10px;
+      display: table-cell;
+    }
+    .media-body {
+      display: table-cell;
+      .media-text {
+        display: block;
+        color: #999;
+        font-size: 13px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.tt-suggestions {
+  .repo-language {
+    float: right;
+    font-style: italic;
+  }
+  .repo-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .repo-description {
+    margin: 0;
+    color: red !important;
+  }
+}
+
+/* ========================================================================
+ * CALENDAR
+ * ======================================================================== */
+
+// CALENDAR ---------------------------------------------------
+.calendar-toolbar{
+  border-bottom: 5px dotted $border-color;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+// YEAR,MONTH,WEEK,DAY ----------------------------------
+.cal-month-box, .cal-year-box, .cal-week-box{
+  border: none !important;
+}
+.cal-month-box, .cal-week-box, .cal-year-box{
+  background-color: white;
+}
+.cal-year-box .row-fluid, .cal-month-box .cal-row-fluid{
+  border-bottom: 1px solid lighten($border-color,10%) !important;
+}
+.cal-year-box [class*="span"], .cal-month-box [class*="cal-cell"]{
+  border-right: 1px solid lighten($border-color,10%) !important;
+}
+.cal-year-box{
+  .row-fluid{
+    [class*="span"]{
+      &:last-child{
+        border-right: none !important;
+      }
+    }
+  }
+}
+.cal-month-box{
+  .cal-row-fluid{
+    [class*="cal-cell"]{
+      &:last-child{
+        border-right: none !important;
+      }
+    }
+  }
+}
+.cal-month-box, .cal-month-day{
+  span[data-cal-date]{
+    font-size: 25px;
+  }
+  [data-cal-row="-day1"]{
+    .cal-day-weekend{
+      span[data-cal-date]{
+        color: $color-danger;
+      }
+    }
+  }
+}
+
+// YEAR ----------------------------------
+.cal-year-box{
+  color: $color-inverse;
+  .col-md-3{
+    width: 25%;
+    span[data-cal-date]{
+      margin-right: auto !important;
+    }
+  }
+}
+
+// MONTH ----------------------------------
+
+// WEEK ----------------------------------
+#cal-week-box{
+  display: none !important;
+}
+
+// DAY ----------------------------------
+#cal-day-box{
+  .day-highlight{
+    border: none !important;
+  }
+  .day-event{
+    margin-left: 23px !important;
+  }
+}
+#cal-day-panel{
+  #cal-day-panel-hour{
+    .cal-day-hour{
+      .cal-day-hour-part{
+        .span1{
+          padding-top: 4px;
+        }
+        b{
+          &:before{
+            font-family: "fontawesome";
+            content: "\f017";
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MISC CALENDAR ----------------------------------
+#cal-slide-content{
+  background-color: #F5F5F5 !important;
+  @include box-shadow(none !important);
+  color: #999;
+  border-bottom: 1px solid $border-color;
+  background-image: none !important;
+  a.event-item{
+    color: #999;
+  }
+}
+#cal-day-tick{
+  background-color: #F5F5F5;
+  display: none;
+}
+#cal-slide-tick{
+  display: none !important;
+}
+.cal-row-head{
+  [class*="cal-cell"]{
+    padding: 10px 3px;
+    font-weight: 400;
+    &:first-child{
+      padding: 10px 0px;
+      font-weight: 400;
+    }
+  }
+}
+.cal-row-head + .cal-day-hour{
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  [class*="col-xs-"]{
+    padding-left: 0px;
+    padding-right: 0px;
+    &.span1{
+      text-align: center;
+    }
+  }
+}
+
+// EVENTS ---------------------------------------------------
+.event{
+  @include resize(15px !important);
+  @include box-shadow(none !important);
+  @include border-radius(10px !important);
+  border: none !important;
+}
+@include event-color(important,$color-danger);
+@include event-color(info,$color-info);
+@include event-color(warning,$color-warning);
+@include event-color(inverse,$color-inverse);
+@include event-color(success,$color-success);
+@include event-color(special,$color-lilac);
+
+// EVENT LIST---------------------------------------------------
+#eventlist{
+  li{
+    position: relative;
+    display: block;
+    font-size: 13px;
+    &:first-child{
+      border-top: none;
+    }
+    a{
+      padding: 0px;
+      margin-bottom: 10px;
+      i{
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        display: inline-block;
+        line-height: 28px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// EVENT LIST---------------------------------------------------
+#events-modal{
+  z-index: 9999;
+}
+
+// HIGHLIGHTS -----------------------------------------------------
+.day-highlight{
+  @include dh-event-color(important,$color-danger);
+  @include dh-event-color(info,$color-info);
+  @include dh-event-color(warning,$color-warning);
+  @include dh-event-color(inverse,$color-inverse);
+  @include dh-event-color(success,$color-success);
+  @include dh-event-color(special,$color-lilac);
+}
+
+@media (max-width: 800px) {
+  .cal-month-box, .cal-month-day{
+    span[data-cal-date]{
+      font-size: 15px;
+      margin-top: 5px !important;
+      margin-right: 10px !important;
+    }
+  }
+}
+
+@media (max-width: 480px){
+  .cal-year-box{
+    .col-md-3{
+      width: 50%;
+    }
+  }
+  .events-list{
+    max-height: 60px !important;
+  }
+}
+
+/* ========================================================================
+ * BOOTSTRAP SWITCH
+ * ======================================================================== */
+
+.bootstrap-switch{
+  min-width: 60px !important;
+  border: none !important;
+  @include border-radius(0px !important);
+  &.bootstrap-switch-on {
+    .bootstrap-switch-label{
+      @include border-radius(0px);
+    }
+  }
+  .bootstrap-switch-container, .bootstrap-switch-on .bootstrap-switch-label, .bootstrap-switch-handle-off, .bootstrap-switch-handle-on{
+    @include border-radius(0px !important);
+  }
+  .bootstrap-switch-handle-on, .bootstrap-switch-handle-off, .bootstrap-switch-label{
+    line-height: 15px !important;
+    font-size: 11px !important;
+    // CONTEXTUAL CLASSES BOOTSTRAP SWITCH ---------------------------------------------------
+    @include bootstrap-switch-color(default,$color-default);
+    @include bootstrap-switch-color(primary,$color-primary);
+    @include bootstrap-switch-color(success,$color-success);
+    @include bootstrap-switch-color(info,$color-info);
+    @include bootstrap-switch-color(warning,$color-warning);
+    @include bootstrap-switch-color(danger,$color-danger);
+    @include bootstrap-switch-color(lilac,$color-lilac);
+    @include bootstrap-switch-color(inverse,$color-inverse);
+
+    &.bootstrap-switch-default{
+      color: gray !important;
+      border: 1px solid $color-default !important;
+    }
+    &.bootstrap-switch-default + .bootstrap-switch-label{
+      border: 1px solid $color-default !important;
+    }
+    &.bootstrap-switch-default + .bootstrap-switch-label + .bootstrap-switch-handle-off{
+      border: 1px solid $color-default !important;
+      border-left: none !important;
+    }
+    &.bootstrap-switch-teal{
+      background: $color-teal !important;
+      border: 1px solid $color-teal !important;
+      color: white !important;
+    }
+    &.bootstrap-switch-teal + .bootstrap-switch-label{
+      border: 1px solid $color-teal !important;
+    }
+    &.bootstrap-switch-teal + .bootstrap-switch-label + .bootstrap-switch-handle-off{
+      border: 1px solid $color-teal !important;
+      border-left: none !important;
+    }
+  }
+  &.bootstrap-switch-focused{
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  &.bootstrap-switch-off {
+    .bootstrap-switch-label{
+      @include border-radius(0px !important);
+    }
+  }
+  .bootstrap-switch{
+    &bootstrap-switch-handle-on
+    &.bootstrap-switch-on {
+      .bootstrap-switch-label{
+        @include border-radius(0px !important);
+      }
+    }
+  }
+}
+
+
+/* ========================================================================
+ * BOOTSTRAP DATEPICKER
+ * ======================================================================== */
+.datepicker{
+  padding: 0px;
+  table{
+    thead{
+      tr{
+        color: white;
+        &:first-child{
+          @include border-radius-top(3px);
+          th{
+            border-bottom: none;
+          }
+          &:first-child{
+            th{
+              @include border-radius-top-left(3px);
+            }
+          }
+          &:last-child{
+            th{
+              @include border-radius-top-right(3px);
+            }
+          }
+        }
+        th{
+          font-weight: 300;
+          min-width: 40px;
+          vertical-align: middle;
+          border-width: 1px 1px 7px;
+          border-style: solid;
+          @include border-radius(0px !important);
+        }
+        .prev, .switch, .next{
+          @include border-radius(0px);
+        }
+      }
+    }
+    tbody{
+      tr{
+        &:first-child{
+          td{
+            border-top: none;
+          }
+        }
+        td{
+          min-width: 40px;
+          background-color: $color-default;
+          @include border-radius(0px);
+          padding: 9px;
+          &:first-child{
+            color: $color-danger;
+          }
+          &.old, &.new{
+            background-color: darken($color-default,3%);
+          }
+          &.active, &.active:hover, &.active:disabled, &.active.disabled:hover{
+            text-shadow: none;
+          }
+          &.active{
+            &.active{
+              text-shadow: none;
+              background-image: none;
+              background-repeat: no-repeat;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+    tfoot{
+      tr{
+        .today{
+          background-color: darken($color-default,10%);
+          @include border-radius(0px);
+          &:hover{
+            background-color: darken($color-default,5%);
+          }
+        }
+      }
+    }
+  }
+  .icon-arrow-left{
+    &:before{
+      font-family: "FontAwesome";
+      content: "\f104";
+    }
+  }
+  .icon-arrow-right{
+    &:before{
+      font-family: "FontAwesome";
+      content: "\f105";
+    }
+  }
+}
+
+.datepicker-dropdown{
+  border: none;
+  box-shadow: none;
+}
+
+@media (max-width: 320px){
+  .datepicker-inline{
+    table{
+      margin-left: -14px !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * JASNY BOOTSTRAP
+ * ======================================================================== */
+.fileinput-new{
+  .form-control{
+    border-right: none;
+  }
+  .btn-file{
+    @include border-radius(0px);
+  }
+  &.input-group {
+    .btn-file{
+      @include border-radius(0px);
+    }
+  }
+  .input-group {
+    .btn-file{
+      @include border-radius(0px);
+    }
+  }
+}
+
+.close {
+  &.fileinput-exists{
+    color: $color-danger;
+  }
+}
+
+/* ========================================================================
+ * CHOSEN SELECT
+ * ======================================================================= */
+.chosen-select{
+  &.rounded{
+    + .chosen-container-single{
+      .chosen-single{
+        @include border-radius($rounded !important);
+      }
+    }
+  }
+  &.circle{
+    + .chosen-container-single{
+      .chosen-single{
+        @include border-radius($circle !important);
+      }
+    }
+  }
+}
+
+.chosen-container{
+  width: 100% !important;
+  margin-bottom: 10px !important;
+  &:last-child{
+    margin-bottom: 0px;
+  }
+  .chosen-drop{
+    border: 1px solid $border-color !important;
+    @include box-shadow(none !important);
+  }
+  .chosen-results{
+    li{
+      &.group-result{
+        background-color: $gray;
+      }
+    }
+  }
+}
+
+.chosen-container-single{
+  .chosen-single{
+    color: #A2A2A2 !important;
+    @include border-radius(0px !important);
+  }
+  .chosen-drop{
+    @include border-radius(0px !important);
+  }
+}
+
+.chosen-container-single, .chosen-container-single.chosen-with-drop {
+  .chosen-single{
+    background: $white !important;
+    @include box-shadow(none !important);
+    border: 1px solid $border-color !important;
+    height: 28px !important;
+    line-height: 26px !important;
+    div{
+      b{
+        background-position: 0px 4px !important;
+      }
+    }
+  }
+}
+
+.chosen-container-multi {
+  .chosen-choices {
+    background-image: none !important;
+  }
+}
+
+.chosen-container-multi {
+  .chosen-choices {
+    border: 1px solid $border-color;
+    li.search-field {
+      input[type="text"]{
+        height: 25px;
+      }
+    }
+  }
+}
+
+.chosen-container-active {
+  .chosen-choices{
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    @include box-shadow(none !important);
+  }
+}
+
+.chosen-container-multi {
+  .chosen-choices {
+    li{
+      &.search-choice{
+        border: none;
+        background: $gray;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px){
+  .chosen-container{
+    margin-bottom: 15px;
+  }
+}
+
+/* ========================================================================
+ * ION RANGESLIDER
+ * ======================================================================= */
+#result-rangeSlider{
+  position: relative;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.irs-line-mid,
+.irs-line-left,
+.irs-line-right,
+.irs-diapason,
+.irs-slider {
+  background-color: #e1e4e9;
+  background-repeat: repeat-x;
+  @include border-radius(2px);
+}
+
+.irs {
+  height: 40px;
+}
+.irs-with-grid {
+  height: 60px;
+}
+.irs-line {
+  height: 12px; top: 25px;
+}
+.irs-line-left {
+  height: 12px;
+  background-color: #e1e4e9;
+}
+.irs-line-mid {
+  height: 12px;
+  background-color: #e1e4e9;
+}
+.irs-line-right {
+  height: 12px;
+  background-color: #e1e4e9;
+}
+
+.irs-diapason {
+  height: 12px; top: 25px;
+}
+
+.irs-slider {
+  width: 16px;
+  height: 18px;
+  top: 22px;
+}
+
+.irs-min, .irs-max {
+  color: #999;
+  font-size: 10px; line-height: 1.333;
+  text-shadow: none;
+  top: 0; padding: 1px 3px;
+  background: #e1e4e9;
+  border-radius: 4px;
+}
+
+.irs-from, .irs-to, .irs-single {
+  color: #fff;
+  font-size: 10px; line-height: 1.333;
+  text-shadow: none;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.irs-from:after, .irs-to:after, .irs-single:after {
+  position: absolute; display: block; content: "";
+  bottom: -6px; left: 50%;
+  width: 0; height: 0;
+  margin-left: -3px;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.irs-grid-pol {
+  background: #e1e4e9;
+}
+.irs-grid-text {
+  color: #999;
+}
+
+.irs-disabled {
+}
+
+
+.slider-teal{
+  .irs-line-mid,
+  .irs-line-left,
+  .irs-line-right,
+  .irs-diapason,
+  .irs-slider {
+    background-color: #e1e4e9;
+    background-repeat: repeat-x;
+    @include border-radius(2px);
+  }
+
+  .irs {
+    height: 40px;
+  }
+  .irs-with-grid {
+    height: 60px;
+  }
+  .irs-line {
+    height: 12px; top: 25px;
+  }
+  .irs-line-left {
+    height: 12px;
+    background-color: #e1e4e9;
+  }
+  .irs-line-mid {
+    height: 12px;
+    background-color: #e1e4e9;
+  }
+  .irs-line-right {
+    height: 12px;
+    background-color: #e1e4e9;
+  }
+
+  .irs-diapason {
+    height: 12px; top: 25px;
+    background-color: lighten($color-teal,5%);
+  }
+
+  .irs-slider {
+    width: 16px; height: 18px;
+    top: 22px;
+    background-color: $color-teal;
+  }
+  #irs-active-slider, .irs-slider:hover {
+    background-color: $color-teal;
+  }
+
+  .irs-min, .irs-max {
+    color: #999;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    top: 0; padding: 1px 3px;
+    background: #e1e4e9;
+    border-radius: 4px;
+  }
+
+  .irs-from, .irs-to, .irs-single {
+    color: #fff;
+    font-size: 10px; line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background-color: $color-teal;
+    border-radius: 4px;
+  }
+  .irs-from:after, .irs-to:after, .irs-single:after {
+    position: absolute; display: block; content: "";
+    bottom: -6px; left: 50%;
+    width: 0; height: 0;
+    margin-left: -3px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-top-color: $color-teal;
+  }
+
+
+  .irs-grid-pol {
+    background: #e1e4e9;
+  }
+  .irs-grid-text {
+    color: #999;
+  }
+
+  .irs-disabled {
+  }
+
+  &.circle{
+    .irs-slider {
+      top: 21px;
+      @include resize(20px);
+      @include border-radius(50%);
+    }
+  }
+}
+
+// CONTEXTUAL CLASSES SLIDER ---------------------------------------------------
+@include slider-color(primary,$color-primary);
+@include slider-color(success,$color-success);
+@include slider-color(info,$color-info);
+@include slider-color(warning,$color-warning);
+@include slider-color(danger,$color-danger);
+@include slider-color(lilac,$color-lilac);
+@include slider-color(inverse,$color-inverse);
+
+/* ========================================================================
+ * SUMMERNOTE
+ * ======================================================================= */
+
+.note-editor{
+  border: 1px solid $border-color;
+  .note-toolbar{
+    border-bottom: 1px solid $border-color;
+  }
+  .note-editable{
+    min-height: 200px;
+  }
+}
+
+/* ========================================================================
+ * WYSIHTML5
+ * ======================================================================= */
+textarea{
+  &.rounded{
+    + input{
+      + .wysihtml5-sandbox{
+        @include border-radius($rounded !important);
+      }
+    }
+  }
+  &.circle{
+    + input{
+      + .wysihtml5-sandbox{
+        @include border-radius($circle !important);
+      }
+    }
+  }
+  + input{
+    + .wysihtml5-sandbox{
+      @include border-radius(0px !important);
+      border: 1px solid $border-color !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * DATATABLE
+ * ======================================================================= */
+table.dataTable{
+  tbody{
+    tr{
+      td{
+        &.sorting_1{
+          background: $color-default;
+          border-bottom: 1px solid $border-color;
+        }
+      }
+    }
+  }
+}
+
+table.has-columns-hidden{
+  > tbody{
+    > tr{
+      > td{
+        > span{
+          &.responsiveExpander{
+            vertical-align: middle;
+            &:before{
+              font-family: "fontawesome";
+              content: "\f0fe";
+              margin-right: 10px;
+              cursor: pointer;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+table.has-columns-hidden{
+  > tbody{
+    > tr.detail-show{
+      > td{
+        span{
+          &.responsiveExpander{
+            vertical-align: middle;
+            &:before{
+              font-family: "fontawesome";
+              content: "\f146";
+              margin-right: 10px;
+              cursor: pointer;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+div.dataTables_filter{
+  input{
+    margin-left: 10px;
+  }
+}
+
+div.dataTables_length{
+  select{
+    margin-right: 10px;
+  }
+}
+
+.dataTable{
+  thead{
+    tr{
+      th{
+        &:first-child{
+          min-width: 150px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px){
+
+  div.dataTables_length{
+    label{
+      width: 93%;
+    }
+    select{
+      display: inline-block;
+    }
+  }
+
+  div.dataTables_filter{
+    label {
+      line-height: 30px;
+    }
+    input{
+      display: inline-block;
+      float: right;
+      width: 13em !important;
+      margin-right: 0px;
+    }
+  }
+
+  div.dataTables_info{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  div.dataTables_paginate{
+    float: none !important;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 480px){
+
+  table.dataTable{
+    thead{
+      tr{
+        th{
+          &:first-child{
+            @include border-radius(3px 3px 0px 0px !important);
+          }
+        }
+      }
+    }
+    tfoot{
+      tr{
+        th{
+          &:first-child{
+            @include border-radius(0px 0px 3px 3px !important);
+          }
+        }
+      }
+    }
+  }
+
+  .dataTables_wrapper{
+    .col-xs-6{
+      width: 100%;
+    }
+  }
+
+  div.dataTables_length{
+    label{
+      display: none;
+    }
+  }
+
+}
+
+@media (max-width: 360px){
+
+  .dataTables_paginate{
+    .pagination{
+      .previous{
+        display: none;
+      }
+      > li{
+        &:nth-child(2){
+          a{
+            @include border-radius(3px 0px 0px 3px);
+          }
+        }
+      }
+    }
+  }
+
+  div.dataTables_filter{
+    input{
+      width: 19em;
+    }
+  }
+
+}
+
+@media (max-width: 320px){
+  div.dataTables_filter{
+    input {
+      width: 16em !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * FONT AWESOME
+ * ======================================================================= */
+.fontawesome-icon-list{
+  .fa-hover{
+    a{
+      display: block;
+      line-height: 32px;
+      height: 32px;
+      color: $body-fg;
+      text-decoration: none;
+      padding-left: 10px;
+      &:hover{
+        background-color: $gray;
+      }
+      .fa{
+        font-size: 14px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+/* ========================================================================
+ * GRITTER NOTIFICATION
+ * ======================================================================= */
+.gritter-item-wrapper, .gritter-item, .gritter-top, .gritter-bottom{
+  background: fadeout(#2A2A2A, 35% !important);
+  @include border-radius($rounded !important);
+}
+#gritter-notice-wrapper {
+  top: 70px !important;
+  right: 20px !important;
+  z-index: 1030 !important;
+}
+.gritter-close {
+  left: auto !important;
+  right: 3px !important;
+}
+.gritter-title {
+  font-size: 18px;
+  font-weight: 300;
+  text-shadow: none;
+}
+.gritter-item{
+  font-family: 'Open Sans';
+}
+
+/* ========================================================================
+ * NICESCROLL
+ * ======================================================================= */
+.nicescroll-rails{
+  &#ascrail2000-hr{
+    display: none !important;
+  }
+  div{
+    @include border-radius(0px !important);
+  }
+}
+
+/* ========================================================================
+ * FUEL UX
+ * ======================================================================= */
+.fuelux{
+  .repeater-thumbnail{
+    width: 109px;
+    img{
+      margin-top: 0px;
+    }
+  }
+  .repeater-thumbnail-cont{
+    &.align-left {
+      .repeater-thumbnail{
+        font-size: 13px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+  .repeater, .repeater-header{
+    @include border-radius(0px);
+  }
+  .repeater-list-header{
+    td{
+      &.sortable{
+        &:last-child{
+          text-align: center;
+        }
+        &:hover{
+          background: transparent;
+        }
+      }
+    }
+  }
+  .repeater-list-items{
+    td{
+      &:last-child{
+        text-align: center;
+      }
+    }
+  }
+  .repeater-list {
+    table {
+      thead {
+        > tr {
+          > th{
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+  .repeater{
+    table{
+      thead{
+        tr{
+          th{
+            &:nth-child(1), &:nth-child(3), &:nth-child(6){
+              text-align: center;
+            }
+            &:nth-child(2){
+              width: 200px !important;
+            }
+            &:nth-child(4){
+              text-align: right;
+            }
+            &:last-child{
+              text-align: center;
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            vertical-align: middle;
+            font-size: 12px;
+            &:nth-child(1), &:nth-child(3), &:nth-child(6){
+              text-align: center;
+            }
+            &:nth-child(4){
+              text-align: right;
+            }
+            &:last-child{
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.repeater-header-right{
+  .repeater-filters{
+    > button{
+      width: 150px !important;
+      text-align: left !important;
+    }
+  }
+}
+
+/* ========================================================================
+ * CODE PRETIFFY
+ * ======================================================================= */
+ol{
+  &.linenums{
+    padding: 0px;
+  }
+}
+
+/* ========================================================================
+ * BLOCKUI
+ * ======================================================================= */
+.blockUI{
+  &.blockOverlay{
+    background-color: lighten($white, 5%) !important;
+  }
+}
+.blockMsg {
+  h1{
+    font-size: 15px;
+    margin: 10px 0px;
+  }
+}

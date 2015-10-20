@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.pages.invoice",[]).controller("InvoiceCtrl",["$scope","$http","settings",function(a,b,c){a.invoice=[],b.get(c.dataPath+"/views/pages/invoice.json").success(function(b){a.invoice=b}).error(function(a,b,c,d){})}])}();

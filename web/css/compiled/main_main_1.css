@@ -23185,7 +23185,7 @@ input.rounded + .bootstrap-tagsinput .tag {
 
 /* line 984, ../../app/styles/plugins.scss */
 .chosen-container-single .chosen-single {
-  color: #A2A2A2 !important;
+  //color: #A2A2A2 !important;
   border-radius: 0px !important;
 }
 /* line 988, ../../app/styles/plugins.scss */

@@ -92,12 +92,13 @@ class MiDistributivoController extends Controller
     /**
      * printer pdf file.
      *
-     * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones"  , options={"expose":true})
+     * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:MiDistributivo:imprimir.html.twig")
      */
     public function imprimirAction($id,$q,$p)
-    {
+    { 
+                $url ='midistributivo/menu/'.$id.'/calificaciones/'.$q.'/'.$p.'/imprimir';
       // return new Response('<html><body>Hello test!</body></html>');
       $em = $this->getDoctrine()->getManager();
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
@@ -119,6 +120,9 @@ class MiDistributivoController extends Controller
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,
             'form'   => $form->createView(),
+            'url' => $url,
+            // 'q' => $q,
+            // 'p' => $p,
         );
 
     }
@@ -147,6 +151,11 @@ class MiDistributivoController extends Controller
      */
     public function calificacionesApiAction($id,$q,$p)
     {
+
+ /*         $url = $this->container->get('router')->generate(
+            'imprimir_calificaciones',
+            array('id' => '1')
+        ); */ 
         $em = $this->getDoctrine()->getManager();
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
         if (!$distributivo) {
@@ -161,11 +170,14 @@ class MiDistributivoController extends Controller
         
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
+        $url ='midistributivo/menu/'.$id.'/calificaciones/'.$q.'/'.$p.'/imprimir';
+             //midistributivo/menu/259/calificaciones/1/1/api
         return array(
             
             'curso'=>$curso, 'materia'=>$materia,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,
+            'url' => $url,
             'form'   => $form->createView(),
         );
     }

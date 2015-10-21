@@ -98,7 +98,7 @@ body.page-boxed #sign-wrapper form {
 #sign-wrapper .form-group .input-group input[type=text], #sign-wrapper .form-group .input-group input[type=password], #sign-wrapper .form-group .input-group input[type=email] {
   box-shadow: none !important;
   border: none !important;
-  color: #B6B6B6;
+ // color: #B6B6B6;
 }
 /* line 118, ../../../app/styles/pages/sign.scss */
 #sign-wrapper .form-group .input-group i {

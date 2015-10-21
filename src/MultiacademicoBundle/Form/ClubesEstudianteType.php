@@ -25,7 +25,9 @@ class ClubesEstudianteType extends AbstractType
         $builder
             
            // ->add('codclub')
-            ->add('clubescodestudiante')
+            ->add('clubescodestudiante',null,array('attr'=>array(
+                                                                'class'=>'chosen-select ','data-chosen-select'=>null)
+                                                    ))
             //->add('notaQ'.$this->q.'P1',new LetraType())
             //->add('notaQ'.$this->q.'P2',new LetraType())
             //->add('notaQ'.$this->q.'P3',new LetraType())

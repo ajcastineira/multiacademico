@@ -1,16 +1,16 @@
 
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8" data-ng-app="blankonApp"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9" data-ng-app="blankonApp"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8" > <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9" > <![endif]-->
 <!--[if !IE]><!--> <html lang="es"> <!--<![endif]-->
 
     <!-- START @HEAD -->
     <head>
         {% if(app.environment=='dev') %}     
-                 <base href="{{asset('/')~'app_dev.php/'}}">
+                 <base href="{{asset('/')~'app_dev.php/'}}" />
                  {#<base href="{{asset('/')~''}}">#}
              {%else%}
-                  <base href="{{asset('/')~''}}">
+                  <base href="{{asset('/')~''}}" />
       {%endif%}
         <!-- START @META SECTION -->
         <meta charset="utf-8">
@@ -30,7 +30,7 @@
         <!--/ END FAVICONS -->
 
         <!-- START @FONT STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet">
         <!--/ END FONT STYLES -->
         {%endverbatim%}
         <!-- START @GLOBAL MANDATORY STYLES -->
@@ -48,7 +48,7 @@
 
         <!-- START @THEME STYLES -->
         {%endverbatim%}
-        <link data-ng-href="{{asset('css/compiled/main.css')}}" rel="stylesheet">
+        
         <link data-ng-href="{{asset('css/compiled/blue.theme.css')}}" rel="stylesheet" id="theme">
         
         <!--/ END THEME STYLES -->

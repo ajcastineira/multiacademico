@@ -41,6 +41,7 @@ var require = {
         'jquery-color': '../plugin/jquery-color/jquery.color',
 
         'select2': '../plugin/select2/dist/js/select2.min',
+        'chosen': '../plugin/chosen/chosen.jquery.min',
 
         'summernote': '../plugin/summernote/dist/summernote.min',
 
@@ -163,6 +164,8 @@ var require = {
         'angular-google-plus': { deps: ['angular'] },
 
         'select2': { deps: ['jquery']},
+        'chosen': { deps: ['jquery']},
+        
         'summernote': { deps: ['jquery']},
 
         'to-markdown': {deps: ['he']},

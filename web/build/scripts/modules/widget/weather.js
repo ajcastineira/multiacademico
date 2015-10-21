@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.widget.weather",[]).controller("widgetWeatherCtrl",function(){var a,b=new Skycons({color:"white"},{resizeClear:!0}),c=["clear-day","clear-night","partly-cloudy-day","partly-cloudy-night","cloudy","rain","sleet","snow","wind","fog"];for(a=c.length;a--;)b.set(c[a],c[a]);b.play()})}();

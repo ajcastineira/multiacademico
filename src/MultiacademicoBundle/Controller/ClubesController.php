@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Clubes;
 use MultiacademicoBundle\Form\ClubesType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Clubes controller.
@@ -234,12 +235,35 @@ class ClubesController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Clubes entity.');
         }
+        
+        $originalRegistrados = new ArrayCollection();
+
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($entity->getRegistrados() as $registrado) {
+        $originalRegistrados->add($registrado);
+        }
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            
+             // remove the relationship between the tag and the Task
+                foreach ($originalRegistrados as $registrado) {
+                    if (false === $entity->getRegistrados()->contains($registrado)) {
+                        // remove the Club from the Registro
+                        // if it was a many-to-one relationship, remove the relationship like this
+                       // $registrado->setCodClub(null);
+
+                        //$em->persist($registrado);
+
+                        
+                         $em->remove($registrado);
+                    }
+                }
+            
+            $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('proyectosescolares_api_edit', array('id' => $id)));

@@ -83,6 +83,14 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/vendor/jquery.gritter/css/jquery.gritter.css 
             output: vendor/jquery.gritter/css/jquery.gritter.css 
+        chosen_css:
+            inputs:
+                - %kernel.root_dir%/../web/vendor/chosen/chosen.min.css 
+            output: vendor/chosen/chosen.min.css    
+        chosen_sprite_png:
+            inputs:
+                - %kernel.root_dir%/../web/vendor/chosen/chosen-sprite.png 
+            output: vendor/chosen/chosen-sprite.png     
         sign_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/pages/sign.css    

@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            
+            //probado commit
             new AppBundle\AppBundle(),
             new MultiacademicoBundle\MultiacademicoBundle(),
             new Multiservices\ArxisBundle\MultiservicesArxisBundle(),

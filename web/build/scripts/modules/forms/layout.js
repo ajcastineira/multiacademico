@@ -1,0 +1,1 @@
+"use strict";!function(){angular.module("blankonApp.forms.layout",[]).directive("chosenSelect",function(){return{restrict:"A",link:function(a,b){b.chosen()}}})}();

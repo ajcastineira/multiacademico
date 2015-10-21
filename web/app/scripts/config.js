@@ -13,7 +13,7 @@ define([
 
     // Setup global settings
     .factory('settings', ['$rootScope', function($rootScope) {
-        var baseURL = 'http://localhost/multiacademico/web', // Setting base url app
+        var baseURL = '', // Setting base url app
             settings = {
                 baseURL                 : baseURL,
                 pluginPath              : 'vendor',
@@ -39,7 +39,7 @@ define([
 
         $ocLazyLoadProvider.config({
             events: true,
-            debug: true,
+            debug: false,
             cache:false,
             cssFilesInsertBefore: 'ng_load_plugins_before',
             modules:[

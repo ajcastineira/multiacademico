@@ -36,11 +36,12 @@ define([
         'app.auth',
         'app.dashboard',
         //'app.users',
-       // 'app.layout',
+        'app.layout',
         'app.forms',
-        'multiacademico'//,
-        //'multiacademico.estudiantes', //este modulo no funciona cuando se ejecuta index.html
-        //'multiacademico.docentes.midistributivo' //este tampoco
+        'multiacademico',
+        'multiacademico.estudiantes',
+        'multiacademico.docentes.midistributivo',
+        'multiacademico.proyectosescolares'
 
     ]);
         

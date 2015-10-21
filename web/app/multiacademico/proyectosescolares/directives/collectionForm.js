@@ -6,7 +6,7 @@ define(['multiacademico/proyectosescolares/module', 'jquery'], function (module)
     "use strict";
 
     function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">quitar este alumno</a>');
+    var $removeFormA = $('<td><a class="btn btn-danger btn-xs" href="#"><i class="fa fa-times"></i> Quitar Estudiante</a></td>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -32,9 +32,11 @@ define(['multiacademico/proyectosescolares/module', 'jquery'], function (module)
     $collectionHolder.data('index', index + 1);
 
     // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
+    var $newFormLi = $('<tr></tr>').append('<td>'+newForm+'</td>');
     addTagFormDeleteLink($newFormLi);
+    $newLinkLi.before($newFormLi);
+    
+    
     
 }
 
@@ -48,8 +50,8 @@ define(['multiacademico/proyectosescolares/module', 'jquery'], function (module)
         var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<a href="#" class="add_tag_link">Agregar estudiante</a>');
-var $newLinkLi = $('<li></li>').append($addTagLink);
+var $addTagLink = $('<td><a class="btn btn-success btn-xs"  href="#" class="add_tag_link"><i class="fa fa-plus"></i>Agregar Estudiante</a></td>');
+var $newLinkLi = $('<tr></tr>').append($addTagLink);
 
 
     // Get the ul that holds the collection of tags
@@ -57,7 +59,7 @@ var $newLinkLi = $('<li></li>').append($addTagLink);
 
     // add the "add a tag" anchor and li to the tags ul
    
-    $collectionHolder.find('li').each(function() {
+    $collectionHolder.find('tbody tr').each(function() {
      addTagFormDeleteLink($(this));
     });
      $collectionHolder.append($newLinkLi);

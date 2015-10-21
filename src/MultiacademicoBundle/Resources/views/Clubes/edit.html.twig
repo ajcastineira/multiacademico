@@ -1,29 +1,47 @@
 {% block content -%}
-<div id="content">
+    <div id="content">
+        {#<link rel="stylesheet" href="{{asset('vendor/chosen/chosen.min.css')}}"/>#}
     <div class="row">
-        <big-breadcrumbs items="['Clubes', 'Editar']" icon="file"
-                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
-            </div>
-   
-    <div class="row">
+    <div class=" col-md-12">
+
+        <!-- Start inline form -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title"><i class="flaticon-canvas"></i> Mi distributivo Proyectos Escolares</h3>
+                </div>
+                <div class="pull-right">
+                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body ">
+
+                <div >
      {{ form_start(edit_form) }}
     {{ form_row(edit_form.club) }}
      {{ form_row(edit_form.campoaccion) }}
      {{ form_row(edit_form.clubcoddocente) }}
      
-           Alumnos Registrados en este Proyecto
-     
-    <ul class="registrados" data-prototype="{{ form_widget(edit_form.registrados.vars.prototype.children.clubescodestudiante)|e }}" collection-form>
+     <div class="table-responsive">
+    <table class="table table-striped table-primary registrados" data-prototype="{{ form_widget(edit_form.registrados.vars.prototype.children.clubescodestudiante)|e }}" collection-form>
+        <thead>
+             <tr><th colspan="2">Alumnos Registrados en este Proyecto</th><tr>
+       </thead>     
         {# iterate over each existing tag and render its only field: name #}
+        <tbody>
         {% for registrado in edit_form.registrados %}
-            <li>{{ form_widget(registrado.clubescodestudiante) }}</li>
+            <tr><td>{{ form_widget(registrado.clubescodestudiante) }}</td></tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    </table>
+    </div>
     
     
     {{ form_end(edit_form) }}
     </div>
-    <div class="row">
+     <div >
         <ul class="record_actions">
     <li>
         <a href="{{ path('proyectosescolares') }}">
@@ -33,5 +51,11 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
     </div>
+              
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!--/ End inline form -->
+    </div>
+</div><!-- /.row -->
 </div>
 {% endblock %}

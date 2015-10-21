@@ -3,6 +3,8 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Clubes
@@ -62,6 +64,7 @@ class Clubes
      *
      * @var \Doctrine\Common\Collections\ArrayCollection;
      * @ORM\OneToMany(targetEntity="ClubesDetalle",mappedBy="codclub", cascade={"persist"})
+     * ORM\OrderBy({"clubescodestudiante" = "ASC"})
      */
     private $registrados;
     
@@ -211,8 +214,12 @@ class Clubes
      */
     public function addRegistrado(\MultiacademicoBundle\Entity\ClubesDetalle $registrado)
     {
-        $this->registrados[] = $registrado;
-
+        $registrado->setCodclub($this);
+        if (!$this->registrados->contains($registrado)) {
+            $this->registrados->add($registrado);
+        }
+        
+        
         return $this;
     }
 
@@ -233,6 +240,12 @@ class Clubes
      */
     public function getRegistrados()
     {
+        $iterator = $this->registrados->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getClubescodestudiante()->getEstudiante() < $b->getClubescodestudiante()->getEstudiante()) ? -1 : 1;
+        });
+        $this->registrados = new ArrayCollection(iterator_to_array($iterator));
+        
         return $this->registrados;
     }
 }

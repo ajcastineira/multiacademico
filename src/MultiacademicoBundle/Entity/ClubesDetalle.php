@@ -3,6 +3,7 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use MultiacademicoBundle\Libs\Letra;
 
 /**
  * ClubesDetalle
@@ -57,7 +58,7 @@ class ClubesDetalle
     /**
      * @var \Clubes
      *
-     * @ORM\ManyToOne(targetEntity="Clubes")
+     * @ORM\ManyToOne(targetEntity="Clubes", inversedBy="registrados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codclub", referencedColumnName="id", nullable=false)
      * })
@@ -269,4 +270,33 @@ class ClubesDetalle
     {
         return $this->clubescodestudiante;
     }
+    
+    public function getClubNotaQuimestral($q)
+    {
+        
+       $sumq=0;
+       
+        for($p=1;$p<=3;$p++)
+                  {
+                           $notavar="notaQ".$q."P".$p;
+                           
+                           ${"$notavar"}=$this->$notavar;
+                          $sumq+=Letra::letranumero(${"$notavar"});
+                   }
+                   
+                   return Letra::retornaletra(Letra::retornaentero($sumq/3));
+         
+         
+
+    }
+    
+    
+    public function getClubNotaAnual()
+    {
+            $q1=Letra::letranumero($this->getClubNotaQuimestral(1));
+            $q2=Letra::letranumero($this->getClubNotaQuimestral(2));
+            return Letra::retornaletra(Letra::retornaentero(($q1+$q2)/2));
+        
+    }
+    
 }

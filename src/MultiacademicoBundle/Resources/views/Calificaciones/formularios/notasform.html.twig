@@ -1,0 +1,151 @@
+<div class="row">
+                  {{ form_start(form) }}
+
+                  <div class="row">
+                        {# store the prototype on the data-prototype attribute #}
+                        <table class="table table-striped" id="calificaciones-fields-list">
+                            <thead class="thin-border-bottom">
+                                <tr class="text-center center">
+                                    <td colspan="5" style="vertical-align:middle">
+                                        
+                                        {{include('MultiacademicoBundle:Calificaciones:formularios/intercambiador.html.twig')}}
+                                       
+                                    </td>
+                                    <td colspan="9">
+                                        <a data-ui-sref="^">
+                                            <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
+                                        
+                                        {{form_widget(form.guardar)}}
+                                        <a href="">
+                                            <button type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button></a>
+                                    </td></tr>
+                                <tr><td colspan="4"><b>Curso: </b>{{curso}}</td>
+                                    <td colspan="10"><b>Materia: </b>{{materia}} </td> 
+
+                                </tr>
+                                 <tr>    
+                                     <th colspan="14">{{parcial.text_quimestre()}}</th>
+                                  </tr> 
+                                  <tr>
+
+
+                                        <th rowspan="2" style="width:4em">
+                                                    <i class="ace-icon fa fa-file-text-o"></i>
+                                                    Matricula
+                                            </th>
+                                            <th rowspan="2">
+                                                    <i class="ace-icon flaticon-student"></i>	
+                                                    Estudiante
+                                            </th>
+
+                                                  <th colspan="6" class="text-center">{{parcial.textalt_parcial()}}</th>
+                                                  {% if pactivo==3 %}
+                                                  <th colspan="5" class="text-center hidden-480">Totales del Parcial</th>										
+                                                  {% endif%}
+                                           </tr>
+
+
+                                           <tr class="rotar-texto">
+                                                <th class="rotar-texto" style="vertical-align:bottom">
+                                                        <div class="letterP4">Tareas<br>Investigaciones</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Actividades Individuales</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Actividades<br>Grupales</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;Lecciones</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">EVALUACION SUMATIVA</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;PROMEDIO</div></th>
+                                                {% if pactivo==3 %}
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">PROMEDIO PARCIALES</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;PROMEDIO&nbsp;80%</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;EXAMEN</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;EXAMEN&nbsp;20%</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">&nbsp;&nbsp;&nbsp;NOTA&nbsp;QUIMESTRE</div></th>
+                                                {%endif%}
+                                            </tr>
+
+
+                            </thead>
+                            <tbody>
+                            {%for calificacion in form.calificaciones %}
+                                
+                                <tr>
+                                    <td>
+                                         {%set nummat=listado[loop.index0].calificacionnummatricula.id %}    
+                                         {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
+                                         {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                         {%set promediopt='PPTM'~nummat~'q'~qactivo %}
+                                        {%set promediopt80='PPT80M'~nummat~'q'~qactivo %}
+                                        {%set ppval=listado[loop.index0].getPromedioParcial(qactivo,pactivo)%}
+                                        {%set pptval=listado[loop.index0].getPromedioParciales(qactivo)%}
+                                        {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                        {%set exvar='q'~qactivo~'Ex' %}
+                                        {%set exres='M'~nummat~exvar%}
+                                        {%set exres20=exres~'V20'%}
+                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}
+                                          {{nummat }}
+                                     </td>   
+                                     <td>
+                                            {{listado[loop.index0].calificacionnummatricula }}
+                                     </td>
+                                     {%for i in 1..5%}
+                                     <td>
+                                        <div style="display:flex">
+                                         {%set notavar='q'~qactivo~'P'~pactivo~'N'~i %}
+                                        {{ form_errors(calificacion[notavar]) }}
+                                        {{ form_widget(calificacion[notavar],{'attr':
+                                                                                    {'ng-model':'M'~nummat~notavar,
+                                                                                     'ng-init':'M'~nummat~notavar~'='~(calificacion[notavar].vars.value|replace(',','.')),
+                                                                                     'ng-change':promediopv~'=((('~notares~'1+'~
+                                                                                                                notares~'2+'~
+                                                                                                                notares~'3+'~
+                                                                                                                notares~'4+'~    
+                                                                                                                notares~'5)/5)|number:2);'~
+                                                                                                 promediopt~'=(('~(pptval-(ppval/3))~'*1+'~promediopv~'/3)|number:2);'~
+                                                                                                 promediopt80~'=(('~promediopt~'*0.8)|number:2);'~
+                                                                                                 promedioqv~'=('~exres20~'*1+1*'~promediopt80~');'   
+                                                                                                    
+                                                                                    }
+                                                                              })
+                                         }}
+                                        </div>
+                                    </td>
+                                    {%endfor%}
+                                    <td data-ng-init="{{promediopv}}={{ppval}}">
+                                        {{'{{'}}{{promediopv}}{{'}}'}} 
+                                    </td>
+                                    {% if pactivo==3 %}
+                                        
+                                    <td data-ng-init="{{promediopt}}={{pptval}}">
+                                           {{'{{'}}{{promediopt}}{{'}}'}}
+                                    </td>
+                                    <td data-ng-init="{{promediopt80}}=({{promediopt}}*0.8|number:2)">
+                                           {{'{{'}}{{promediopt80}}{{'}}'}}
+                                    </td>
+                                    
+                                    <td>
+                                        
+                                        {{ form_widget(calificacion[exvar],
+                                                {'attr':    {'ng-model':exres,
+                                                             'ng-init':exres~'='~(calificacion[exvar].vars.value|replace(',','.')),
+                                                             'ng-change':exres20~'='~exres~'*0.2;'~promedioqv~'='~exres20~'*1+1*'~promediopt80~';'
+                                                            }
+                                                    })
+                                        }} 
+                                    </td>
+                                    <td data-ng-init="{{exres20}}={{exres}}*0.2">
+                                        {{'{{'}}{{exres20}}{{'|number:2}}'}}
+                                    </td>
+                                    <td data-ng-init="{{promedioqv}}={{listado[loop.index0].getPromedioQuimestre(qactivo)}}">
+                                        {{'{{'}}{{promedioqv}}{{'|number:2}}'}}
+                                    </td>
+                                    {% endif %}
+                                </tr>    
+                            {%endfor%}    
+                            </tbody>
+                        </table>
+
+
+                            </div >
+                        {# ... #}
+                    {{ form_end(form) }}
+
+              </div>

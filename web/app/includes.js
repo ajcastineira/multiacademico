@@ -7,7 +7,7 @@ define([
 
     // layout
 
-      //'layout/module',
+      'layout/module',
    // 'layout/actions/minifyMenu',
    // 'layout/actions/toggleMenu',
    // 'layout/actions/fullScreen',
@@ -20,7 +20,7 @@ define([
    // 'layout/directives/smartFastClick',
    // 'layout/directives/smartLayout',
    // 'layout/directives/smartSpeech',
-   // 'layout/directives/smartRouterAnimationWrap',
+    'layout/directives/smartRouterAnimationWrap',
    // 'layout/directives/smartFitAppView',
    // 'layout/directives/radioToggle',
    // 'layout/directives/dismisser',
@@ -83,7 +83,9 @@ define([
     //multiacademico
      'multiacademico/multiacademico',
      'multiacademico/estudiantes/module',
+     'multiacademico/proyectosescolares/module',
      'multiacademico/docentes/calificar/module',
+     'multiacademico/docentes/calificar/factory/CalificarForm',
     
     // cases
     // 'modules/cases/module',
@@ -102,7 +104,7 @@ define([
      'modules/forms/module',
      'modules/forms/models/FormsCrud'//,
      
-     // users
+    // users
     // 'modules/users/module',
 
     // ui
@@ -122,7 +124,7 @@ define([
 
     // smartAdmin
     // 'modules/smart-admin/module'
-
+    
 ], function () {
     'use strict';
 });

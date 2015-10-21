@@ -300,7 +300,7 @@ var module= ng.module('blankonDirective', [])
         }
     })
 
-    .directive('lockScreen', function(settings){
+    .directive('lockScreen', ['settings',function(settings){
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -328,9 +328,9 @@ var module= ng.module('blankonDirective', [])
                 });
             }
         }
-    })
+    }])
 
-    .directive('logout', function(settings){
+    .directive('logout', ['settings',function(settings){
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -358,7 +358,7 @@ var module= ng.module('blankonDirective', [])
                 });
             }
         }
-    })
+    }])
 
     //---------------------------------------------------------------
     // SPARKLINE
@@ -450,7 +450,7 @@ var module= ng.module('blankonDirective', [])
     // DIRECTIVE SIDEBAR LEFT
     //---------------------------------------------------------------
     // Add class active on current MENU selected
-    .directive('activeMenu', function ($location,$state) {
+    .directive('activeMenu',['$location','$state', function ($location,$state) {
         return {
             link: function postLink(scope, element, attrs) {
                 scope.$on("$stateChangeSuccess", function (event, current, previous) {
@@ -482,7 +482,7 @@ var module= ng.module('blankonDirective', [])
                 });
             }
         };
-    })
+    }])
 
     // Trigger dropdown sidebar menu
     .directive('collapseMenu', ['settings', function(settings){

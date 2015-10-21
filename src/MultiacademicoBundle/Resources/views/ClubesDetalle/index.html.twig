@@ -1,0 +1,67 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['ClubesDetalle', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Notaq1p1</th>
+                <th>Notaq1p2</th>
+                <th>Notaq1p3</th>
+                <th>Notaq2p1</th>
+                <th>Notaq2p2</th>
+                <th>Notaq2p3</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('proyectosescolares_notas_show', { 'id': entity.clubescodestudiante }) }}">{{ entity.notaQ1P1 }}</a></td>
+                <td>{{ entity.notaQ1P2 }}</td>
+                <td>{{ entity.notaQ1P3 }}</td>
+                <td>{{ entity.notaQ2P1 }}</td>
+                <td>{{ entity.notaQ2P2 }}</td>
+                <td>{{ entity.notaQ2P3 }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('proyectosescolares_notas_show', { 'id': entity.clubescodestudiante }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('proyectosescolares_notas_edit', { 'id': entity.clubescodestudiante }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('proyectosescolares_notas_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+</div>    
+{% endblock %}

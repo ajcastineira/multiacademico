@@ -1,0 +1,10 @@
+ <div><b>Quimestre Activo: {{'{{q}}'}} </b>
+     
+       <select data-ng-model="q" data-ng-init="q=q||qop[{{qactivo-1}}].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
+       </select> 
+            </div>
+            <div>
+            <b>Parcial Activo:{{'{{p}}'}} </b>
+                <select data-ng-model="p" data-ng-init="p=p||pop[{{pactivo-1}}].id" data-ng-options="p.id as p.label for p in pop" data-ng-change="changeq()" >
+                </select>
+            </div>

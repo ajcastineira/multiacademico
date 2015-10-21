@@ -1,0 +1,54 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['ClubesDetalle', 'Mostrar']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table record_properties">
+        <tbody>
+            <tr>
+                <th>Notaq1p1</th>
+                <td>{{ entity.notaQ1P1 }}</td>
+            </tr>
+            <tr>
+                <th>Notaq1p2</th>
+                <td>{{ entity.notaQ1P2 }}</td>
+            </tr>
+            <tr>
+                <th>Notaq1p3</th>
+                <td>{{ entity.notaQ1P3 }}</td>
+            </tr>
+            <tr>
+                <th>Notaq2p1</th>
+                <td>{{ entity.notaQ2P1 }}</td>
+            </tr>
+            <tr>
+                <th>Notaq2p2</th>
+                <td>{{ entity.notaQ2P2 }}</td>
+            </tr>
+            <tr>
+                <th>Notaq2p3</th>
+                <td>{{ entity.notaQ2P3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('proyectosescolares_notas') }}">
+            Regresar a la lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('proyectosescolares_notas_edit', { 'id': entity.clubescodestudiante }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+</div>
+{% endblock %}

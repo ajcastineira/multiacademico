@@ -13,7 +13,7 @@ use MultiacademicoBundle\Form\DistributivosType;
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
-
+use Symfony\Component\HttpFoundation\Response;
 /**
  * Distributivos controller.
  *
@@ -89,7 +89,44 @@ class MiDistributivoController extends Controller
         );
     }
     
-    
+    /**
+     * printer pdf file.
+     *
+     * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones"  , options={"expose":true})
+     * @Method("GET")
+     * @Template("MultiacademicoBundle:MiDistributivo:imprimir.html.twig")
+     */
+    public function imprimirAction($id,$q,$p)
+    {
+      // return new Response('<html><body>Hello test!</body></html>');
+      $em = $this->getDoctrine()->getManager();
+        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        if (!$distributivo) {
+            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+        }
+        $qactivo=$q;   $pactivo=$p;
+        $parcial=new Parcial($qactivo,$pactivo);
+        $cursoACalificar=new CursoACalificar($id);
+        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
+        $cursoACalificar->setCalificaciones($listado);
+        $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
+        
+        $curso=$distributivo->getCursoName();
+        $materia=$distributivo->getDistributivocodmateria();
+        return array(
+            
+            'curso'=>$curso, 'materia'=>$materia,
+            'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
+            'listado' => $listado,
+            'form'   => $form->createView(),
+        );
+
+    }
+
+
+
+
+
     /**
      * Lists all Distributivos entities.
      *

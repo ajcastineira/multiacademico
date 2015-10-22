@@ -3,6 +3,7 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use MultiacademicoBundle\Libs\Equivalencia;
 
 /**
  * Calificaciones
@@ -1933,6 +1934,22 @@ class Calificaciones
         return $this->calificacionnummatricula;
     }
     
+    public function esrojo($nota){
+     if ($nota  < 7 ){
+         //$color="#FF0000";
+         return true;
+     }else
+      {
+         //$color="#000000";
+         return false;
+      }
+    }
+    
+    public function getSiglasEquivalencia($nota)
+    {
+      return Equivalencia::retornasiglascualidad($nota);
+    }
+            
     function redondear_dos_decimal($valor) { 
         //$float_redondeado=floor($valor * 100) / 100;
         $float_redondeado=round($valor,2,PHP_ROUND_HALF_DOWN);

@@ -11,6 +11,8 @@
                 margin-right: 0.5cm;
                 margin-top: 0.1cm;
 }
+.printable{display:none;}
+@media print {
 #cabecera {
   display: none !important;
 }
@@ -39,6 +41,7 @@
 {
  display: none !important;
 }
+
 body, #contenido, #principal, #pie {
   float: none !important;
   width: auto !important;
@@ -46,6 +49,18 @@ body, #contenido, #principal, #pie {
   margin:  0 !important;
   padding: 0 !important;
 }
+
+ .printable {
+     display:block;
+     width: 18cm;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ .screen {display:none;}
+}
+
+
+
 .letraprint1
 {
     font-size:8.0pt;

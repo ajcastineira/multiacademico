@@ -115,7 +115,7 @@
     <section id="wrapper">
 
       <!-- START @HEADER -->
-       <header data-ng-include="'{{asset('views/partials/header.html')}}'" id="header"></header> <!-- /#header -->
+       <header data-ng-include="'{{asset('views/partials/header.html')}}'" id="header" class="noprint"></header> <!-- /#header -->
       <!--/ END HEADER -->
       <!--
 
@@ -129,14 +129,14 @@
       |=========================================================================================================================|
 
       -->
-      <aside data-sidebar-left-nicescroll data-sidebar-minimize data-ng-include="'{{path('layout-navigation')}}'" id="sidebar-left" class="sidebar-circle sidebar-light"></aside><!-- /#sidebar-left -->
+      <aside data-sidebar-left-nicescroll data-sidebar-minimize data-ng-include="'{{path('layout-navigation')}}'" id="sidebar-left" class="sidebar-circle sidebar-light noprint"></aside><!-- /#sidebar-left -->
       <!--/ END SIDEBAR LEFT -->
 
       <!-- START @PAGE CONTENT -->
       <section id="page-content">
 
         <!-- Start page header -->
-        <div class="header-content" data-ng-include="'{{asset('views/partials/header-content.html')}}'"></div><!-- /.header-content -->
+        <div class="header-content noprint" data-ng-include="'{{asset('views/partials/header-content.html')}}'"></div><!-- /.header-content -->
         <!--/ End page header -->
 
         <!-- Start body content -->

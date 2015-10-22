@@ -16,8 +16,9 @@
                                             <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
                                         
                                         {{form_widget(form.guardar)}}
-                                        <a href="{{ url }}">
-                                            <button type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button></a>
+                                        
+                                            <button data-ng-click="openModal()" type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button>
+                                       
                                     </td></tr>
                                 <tr><td colspan="4"><b>Curso: </b>{{curso}}</td>
                                     <td colspan="10"><b>Materia: </b>{{materia}} </td> 

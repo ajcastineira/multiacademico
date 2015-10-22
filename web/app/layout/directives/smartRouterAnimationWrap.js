@@ -11,7 +11,7 @@ define(['layout/module', 'lodash'], function (module, _) {
                 element.addClass('router-animation-container');
 
 
-                $('<div class="router-animation-loader"><i class="fa fa-gear fa-4x fa-spin"></i></div>').appendTo(element);
+                $('<div class="router-animation-loader noprint"><i class="fa fa-gear fa-4x fa-spin"></i></div>').appendTo(element);
 
 
                 var animateElementSelector = attributes.wrapFor;

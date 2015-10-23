@@ -22,5 +22,7 @@
 /web/escudo.png
 /web/node_modules/
 /web/tmp
+/web/uploads/*
+!web/uploads/.gitkeep
 /web/vendor
 /web/nbproject

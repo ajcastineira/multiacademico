@@ -1,58 +1,3 @@
-<<<<<<< HEAD
-{% extends '::basesimple.html.twig' %}
-{% form_theme form _self %}
-{% block nota_widget %}
-{% spaceless %}
-    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
-    {%- set type = type|default('number') -%}
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %} value="{{ value|replace(',','.') }}" {% endif %}/>
-{% endspaceless %}
-{% endblock  %}
-{%- block _multiacademicobundle_calificar_guardar_widget -%}
-   {% set attr = attr|merge({class: (attr.class|default('btn-success') ~ ' btn')|trim}) %}
-   {%- set type = type|default('submit') -%}
-    {%- if label is empty -%}
-        {%- if label_format is not empty -%}
-            {% set label = label_format|replace({
-                '%name%': name,
-                '%id%': id,
-            }) %}
-        {%- else -%}
-            {% set label = name|humanize%}
-        {%- endif -%}
-    {%- endif -%}
-    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}><i class="fa fa-floppy-o bigger-160"></i> {{ label|trans({}, translation_domain) }}</button>
-{%- endblock -%}
-
-{% block body -%}
-    <div id="content">
-    <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
-     <div class="row">
-    <div class=" col-md-12">
-
-        <!-- Start inline form -->
-        <div class="panel rounded shadow">
-            <div class="panel-heading">
-                <div class="pull-left">
-                    <h3 class="panel-title"><i class="flaticon-canvas"></i> Calificaciones</h3>
-                </div>
-                <div class="pull-right">
-                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
-                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
-                </div>
-                <div class="clearfix"></div>
-            </div><!-- /.panel-heading -->
-            <div class="panel-body no-padding">
-
-             {{include('MultiacademicoBundle:Calificaciones:formularios/notasform.html.twig')}}
-            </div><!-- /.panel-body -->
-        </div><!-- /.panel -->
-        <!--/ End inline form -->
-    </div>
-</div><!-- /.row -->
-</div>   
-{% endblock %}
-=======
 {% extends '::basesimple.html.twig' %}
 {% form_theme form _self %}
 {% block nota_widget %}
@@ -120,4 +65,3 @@
         </div>  
     </div>#}
 {% endblock %}
->>>>>>> 919f3af996c3f9ec39eb2a18bb0c0bcd9d29cc50

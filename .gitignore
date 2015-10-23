@@ -16,6 +16,7 @@
 /grunt/.tmp
 /nbproject
 /node_modules
+/sistemaantiguo
 /vendor/
 /web/bundles/
 /web/escudo.png

@@ -43,9 +43,9 @@ define([
         'multiacademico.docentes.midistributivo',
         'multiacademico.proyectosescolares',
         'multiacademico.cursos',
-        'multiacademico.especializaciones',
-        'multiacademico.materias',
-        'multiacademico.periodo'
+       // 'multiacademico.especializaciones',
+        'multiacademico.materias'//,
+       // 'multiacademico.periodo'
                 
 
     ]);

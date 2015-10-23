@@ -1,0 +1,65 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['Materias', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Materia</th>
+                <th>Materiatipo</th>
+                <th>Materiaestado</th>
+                <th>Prioridad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('materias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.materia }}</td>
+                <td>{{ entity.materiatipo }}</td>
+                <td>{{ entity.materiaestado }}</td>
+                <td>{{ entity.prioridad }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('materias_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('materias_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('materias_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+</div>    
+{% endblock %}

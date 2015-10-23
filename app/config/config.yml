@@ -162,7 +162,11 @@ assetic:
         clicmalla:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/clic_malla-normal.html
-            output: /views/multiacademico/malla/clic_malla-normal.html
+            output: /views/multiacademico/malla/clic_malla-normal.htmlhtml
+        perfilclic:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/perfil.html
+            output: /views/multiacademico/perfil.html
             
             
                 

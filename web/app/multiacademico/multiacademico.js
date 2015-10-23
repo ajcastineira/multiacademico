@@ -193,6 +193,24 @@ define([
 
 
 
+              .state('perfil', {
+                    url: '/perfil',
+                    templateUrl: '/views/multiacademico/perfil.html',
+                    data: {
+                        pageTitle: 'Perfil',
+                        pageHeader: {
+                            icon: 'fa fa-pencil',
+                            title: 'Dos quimestre',
+                            subtitle: 'Perfil'
+                        },
+                        breadcrumbs: [
+                            {title: 'Malla'},{title: 'Dos quimestre'}
+                        ]
+                    }
+             })
+
+
+
               .state('cursos', {
                     url: '/cursos',
                     templateUrl: 'views/cursos.html',

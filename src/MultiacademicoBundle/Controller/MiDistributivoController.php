@@ -13,7 +13,7 @@ use MultiacademicoBundle\Form\DistributivosType;
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
-
+use Symfony\Component\HttpFoundation\Response;
 /**
  * Distributivos controller.
  *
@@ -89,7 +89,50 @@ class MiDistributivoController extends Controller
         );
     }
     
-    
+    /**
+     * printer pdf file.
+     *
+     * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones", options={"expose":true})
+     * @Method("GET")
+     * @Template("MultiacademicoBundle:Calificaciones:imprimir.html.twig")
+     */
+    public function imprimirAction($id,$q,$p)
+    { 
+                
+        $em = $this->getDoctrine()->getManager();
+        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
+        }
+        $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('El periodo no esta configurado.');
+        }
+        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        if (!$distributivo) {
+            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+        }
+        $qactivo=$q;   $pactivo=$p;
+        $parcial=new Parcial($qactivo,$pactivo);
+        
+        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
+        $curso=$distributivo->getCursoName();
+        $materia=$distributivo->getDistributivocodmateria();
+        $docente=$distributivo->getDistributivocoddocente();
+        return array(
+            'entidad'=>$entidad,
+            'periodo'=>$periodo,
+            'curso'=>$curso, 'materia'=>$materia, 'docente'=>$docente,
+            'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
+            'listado' => $listado
+        );
+
+    }
+
+
+
+
+
     /**
      * Lists all Distributivos entities.
      *
@@ -110,6 +153,7 @@ class MiDistributivoController extends Controller
      */
     public function calificacionesApiAction($id,$q,$p)
     {
+
         $em = $this->getDoctrine()->getManager();
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
         if (!$distributivo) {

@@ -135,6 +135,37 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/views/matriculas.html
             output: /views/matriculas.html
+        mallasnormalhtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/malla-normal.html
+            output: /views/multiacademico/malla/malla-normal.html 
+        cuadrocalificacioneshtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/cuadro-de-calificaciones.html
+            output: /views/multiacademico/malla/cuadro-de-calificaciones.html
+        comportamientohtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/comportamiento.html
+            output: /views/multiacademico/malla/comportamiento.html
+        quimestrehtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre.html
+            output: /views/multiacademico/malla/quimestre.html
+        quimestre2html:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre2.html
+            output: /views/multiacademico/malla/quimestre2.html
+        dosquimestrehtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
+            output: /views/multiacademico/malla/dos-quimestre.html
+        clicmalla:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/clic_malla-normal.html
+            output: /views/multiacademico/malla/clic_malla-normal.html
+            
+            
+                
             
             
 

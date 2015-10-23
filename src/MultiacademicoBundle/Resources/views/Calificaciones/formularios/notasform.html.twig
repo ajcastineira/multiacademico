@@ -13,11 +13,13 @@
                                     </td>
                                     <td colspan="9">
                                         <a data-ui-sref="^">
-                                            <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
+                                            <button type="button" class="btn btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
                                         
                                         {{form_widget(form.guardar)}}
-                                        <a href="{{ url }}">
-                                            <button type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button></a>
+                                        
+                                            <a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning "><i class="fa fa-print bigger-160"></i>Imprimir</a>
+                                            {#<a id="imprimircontratobtn" ng-click="imprimirCalificaciones()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" data-toggle="modal" data-target="#remoteModalCalificaciones" class="btn btn-warning">
+                                                <i class="fa fa-print fa-lg"></i> Imprimir</a>#}
                                     </td></tr>
                                 <tr><td colspan="4"><b>Curso: </b>{{curso}}</td>
                                     <td colspan="10"><b>Materia: </b>{{materia}} </td> 

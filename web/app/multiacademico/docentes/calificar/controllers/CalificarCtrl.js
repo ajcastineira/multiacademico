@@ -37,10 +37,10 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
      return (letra);
     }
 
-    module.registerController('CalificarCtrl', function ($scope,$http,$state,$stateParams) {
+    module.registerController('CalificarCtrl', function ($scope,$modal,$log,$http,$state,$stateParams) {
                             
                             $scope.state=$stateParams;
-                          //  $scope.controlador="holamundo";
+                          
                             $scope.qop=[
                                     {id:1,label:"PRIMER QUIMESTRE"},
                                     {id:2,label:"SEGUNDO QUIMESTRE"},
@@ -70,10 +70,40 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                             }
                                 
                             
-                             
                             $scope.changeq=function(){
                                     $state.go($state.$current,{submited:false,q:$scope.q,p:$scope.p});
                                 };
+                             $scope.urlCalificacionesPrint=function(){
+                                    return Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p});
+                                };
+                            $scope.imprimirCalificaciones = function () {
+                                angular.element(".printable").html(angular.element("#remoteModalCalificaciones .modal-content").html());
+                             };     
+                             $scope.openModal = function () {
+                                var modalInstance = $modal.open({
+                                    templateUrl: Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p}),
+                                     size: 'lg',
+                                     controller: function($scope, $modalInstance){
+                                        $scope.closeModal = function(){
+                                            $modalInstance.close();
+                                        }
+                                    }
+                                });
+                                 modalInstance.rendered.then(function () {
+                                    angular.element(".modal-dialog").addClass("noprint");
+                                    angular.element(".printable").html(angular.element(".modal-content").html());
+                                    $log.info('Modal rendered at: ' + new Date());
+                                   
+                                });
+                                modalInstance.result.then(function () {
+                                    $log.info('Modal closed at: ' + new Date());
+
+                                }, function () {
+                                    $log.info('Modal dismissed at: ' + new Date());
+                                });
+
+
+                            };    
                             $scope.formData={};
                             // process the form
                             $scope.processForm = function(e,formulario) {

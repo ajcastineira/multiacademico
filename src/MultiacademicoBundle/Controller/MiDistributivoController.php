@@ -94,35 +94,37 @@ class MiDistributivoController extends Controller
      *
      * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones", options={"expose":true})
      * @Method("GET")
-     * @Template("MultiacademicoBundle:MiDistributivo:imprimir.html.twig")
+     * @Template("MultiacademicoBundle:Calificaciones:imprimir.html.twig")
      */
     public function imprimirAction($id,$q,$p)
     { 
-                $url ='midistributivo/menu/'.$id.'/calificaciones/'.$q.'/'.$p.'/imprimir';
-      // return new Response('<html><body>Hello test!</body></html>');
-      $em = $this->getDoctrine()->getManager();
+                
+        $em = $this->getDoctrine()->getManager();
+        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
+        }
+        $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('El periodo no esta configurado.');
+        }
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
         if (!$distributivo) {
             throw $this->createNotFoundException('Unable to find Distributivos entity.');
         }
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $cursoACalificar=new CursoACalificar($id);
-        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
-        $cursoACalificar->setCalificaciones($listado);
-        $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
         
+        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
+        $docente=$distributivo->getDistributivocoddocente();
         return array(
-            
-            'curso'=>$curso, 'materia'=>$materia,
+            'entidad'=>$entidad,
+            'periodo'=>$periodo,
+            'curso'=>$curso, 'materia'=>$materia, 'docente'=>$docente,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
-            'listado' => $listado,
-            'form'   => $form->createView(),
-            'url' => $url,
-            // 'q' => $q,
-            // 'p' => $p,
+            'listado' => $listado
         );
 
     }
@@ -152,10 +154,6 @@ class MiDistributivoController extends Controller
     public function calificacionesApiAction($id,$q,$p)
     {
 
- /*         $url = $this->container->get('router')->generate(
-            'imprimir_calificaciones',
-            array('id' => '1')
-        ); */ 
         $em = $this->getDoctrine()->getManager();
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
         if (!$distributivo) {
@@ -170,14 +168,11 @@ class MiDistributivoController extends Controller
         
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
-        $url ='midistributivo/menu/'.$id.'/calificaciones/'.$q.'/'.$p.'/imprimir';
-             //midistributivo/menu/259/calificaciones/1/1/api
         return array(
             
             'curso'=>$curso, 'materia'=>$materia,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,
-            'url' => $url,
             'form'   => $form->createView(),
         );
     }

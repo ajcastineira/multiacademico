@@ -1,0 +1,61 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['Periodos', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Periodo</th>
+                <th>Periodoestado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('periodos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.periodo }}</td>
+                <td>{{ entity.periodoestado }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('periodos_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('periodos_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('periodos_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+</div>    
+{% endblock %}

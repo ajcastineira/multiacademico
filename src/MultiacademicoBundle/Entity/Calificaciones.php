@@ -1,5 +1,4 @@
 <?php
-
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

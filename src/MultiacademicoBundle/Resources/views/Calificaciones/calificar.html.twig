@@ -24,8 +24,9 @@
 {%- endblock -%}
 
 {% block body -%}
-    <div id="content">
     <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
+    <div id="content">
+    
      <div class="row">
     <div class=" col-md-12">
 
@@ -49,5 +50,18 @@
         <!--/ End inline form -->
     </div>
 </div><!-- /.row -->
-</div>   
+    
+</div> 
+            
+    <!--area imprimible test -->
+    <div class="printable"></div>
+    <!-- fin area imprimible test -->
+
+    {#<div class="modal fade noprint"  id="remoteModalCalificaciones" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true">  
+        <div class="modal-dialog modal-lg">  
+            <div class="modal-content">
+                    <!-- content will be filled here from "ajax/modal-content/model-content-1.html" -->
+            </div>  
+        </div>  
+    </div>#}
 {% endblock %}

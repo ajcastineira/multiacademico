@@ -73,6 +73,12 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                             $scope.changeq=function(){
                                     $state.go($state.$current,{submited:false,q:$scope.q,p:$scope.p});
                                 };
+                             $scope.urlCalificacionesPrint=function(){
+                                    return Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p});
+                                };
+                            $scope.imprimirCalificaciones = function () {
+                                angular.element(".printable").html(angular.element("#remoteModalCalificaciones .modal-content").html());
+                             };     
                              $scope.openModal = function () {
                                 var modalInstance = $modal.open({
                                     templateUrl: Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p}),
@@ -83,7 +89,12 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                                         }
                                     }
                                 });
-
+                                 modalInstance.rendered.then(function () {
+                                    angular.element(".modal-dialog").addClass("noprint");
+                                    angular.element(".printable").html(angular.element(".modal-content").html());
+                                    $log.info('Modal rendered at: ' + new Date());
+                                   
+                                });
                                 modalInstance.result.then(function () {
                                     $log.info('Modal closed at: ' + new Date());
 

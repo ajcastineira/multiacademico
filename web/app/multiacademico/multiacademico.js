@@ -79,6 +79,27 @@ define([
                         ]
                     }
                 })
+                
+                
+                .state('malla-normal.comosellame', {
+                    url: '/comosellame',
+                    data: {
+                        pageTitle: 'Titulo de la PAginal',
+                        pageHeader: {
+                            icon: 'fa fa-pencil',
+                            title: 'Malla Normal',
+                            subtitle: 'subtitulo'
+                        },
+                        breadcrumbs: [
+                            {title: 'Malla'},{title: 'Malla Normal'},{title: 'xyz'}
+                        ]
+                    },
+                    views:{
+                        'content@malla-normal':{
+                            templateUrl: 'views/multiacademico/malla/clic_malla-normal.html'
+                        }
+                    }
+                })
 
 
               .state('cuadro-de-calificaciones', {

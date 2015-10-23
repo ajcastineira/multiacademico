@@ -41,7 +41,12 @@ define([
         'multiacademico',
         'multiacademico.estudiantes',
         'multiacademico.docentes.midistributivo',
-        'multiacademico.proyectosescolares'
+        'multiacademico.proyectosescolares',
+        'multiacademico.cursos',
+        'multiacademico.especializaciones',
+        'multiacademico.materias',
+        'multiacademico.periodo'
+                
 
     ]);
         

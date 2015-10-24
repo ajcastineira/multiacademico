@@ -39,15 +39,16 @@ define([
                             templateUrl: 'views/multiacademico/malla/malla-normal.html',
                             controller: function ($scope, aulas) {
                             $scope.aulas = aulas;
+                            $scope.cursos = aulas;
                            },
                            resolve:{
                                aulas: function ($http) {
                                  return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
-                                            return response.data;
+                                             return response.data.aulas;
                                          });
-                                            }
+                                         }
                                      }
                            }
                         }

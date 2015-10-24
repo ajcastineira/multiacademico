@@ -61,6 +61,16 @@ class Aula
      */
     private $periodo;
     
+     /**
+     * @var \Docentes
+     
+     * @ORM\ManyToOne(targetEntity="Docentes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="coddocentetutor", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $tutor;
+    
     /**
      * @var string
      *
@@ -231,7 +241,27 @@ class Aula
     {
         return $this->periodo;
     }
+    /**
+     * 
+     * @param \Docentes $tutor
+     * @return \MultiacademicoBundle\Entity\Aula
+     */
+    public function setTutor(\Docentes $tutor) {
+        $this->tutor = $tutor;
+        return $this;
+    }
 
+     /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("tutor")
+    
+     * @Serializer\Groups({"list"})
+     * @return \Docentes
+     */
+    public function getTutor()
+    {
+        return $this->tutor;
+    }   
     /**
      * Add matriculado
      *
@@ -309,6 +339,17 @@ class Aula
     public function getAulaName()
     {
         return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion;
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("totalalumnos")
+    
+     * @Serializer\Groups({"list"})
+     * @return string
+     */
+    public function getTotalAlumnosAula()
+    {
+        return count($this->matriculados);
     }
     
     public function __toString()

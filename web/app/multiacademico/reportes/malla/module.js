@@ -57,8 +57,8 @@ define([
                 })
                 
                 
-                .state('multiacademico.malla-normal.comosellame', {
-                    url: '/aula',
+                .state('multiacademico.malla-normal.aula', {
+                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
                     data: {
                         pageTitle: 'Cuadro de Calificaciones',
                         pageHeader: {

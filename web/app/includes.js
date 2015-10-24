@@ -90,6 +90,7 @@ define([
      'multiacademico/proyectosescolares/module',
      'multiacademico/docentes/calificar/module',
      'multiacademico/docentes/calificar/factory/CalificarForm',
+     'multiacademico/reportes/malla/module',
     
     // cases
     // 'modules/cases/module',

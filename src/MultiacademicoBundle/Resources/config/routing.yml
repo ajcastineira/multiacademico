@@ -1,6 +1,12 @@
 MultiacademicoAnnotations:
     resource: "@MultiacademicoBundle/Controller/"
     type:     annotation
+aulas:
+    type: rest
+    resource: MultiacademicoBundle\Controller\AulasController
+    options:
+        expose: true
+    prefix: api
 reportes:
     type: rest
     resource: MultiacademicoBundle\Controller\ReportesController

@@ -23,13 +23,14 @@
                                 <th class="text-center">Opción</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody ng-repeat="(aula, aula) in aulas">
+                            
                             <tr>
                                     <td>5</td>
-                                    <td>Quintessa</td>
+                                    <td>{{aula}}</td>
                                     <td>Nehru</td>
                                     <td>5</td>
-                                    <td class="text-center"><a class="btn btn-info" ui-sref="malla-normal.comosellame" role="button">Seleccionar</a></td>
+                                    <td class="text-center"><a class="btn btn-info" ui-sref="multiacademico.malla-normal.comosellame" role="button">Seleccionar</a></td>
                             </tr>
                         </tbody>
                     </table>

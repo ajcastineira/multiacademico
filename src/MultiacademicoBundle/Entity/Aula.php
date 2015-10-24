@@ -3,12 +3,14 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Distributivos
  *
  * @ORM\Table(name="aulas")
  * @ORM\Entity()
+ * @Serializer\ExclusionPolicy("all")
  */
 class Aula
 {
@@ -63,6 +65,7 @@ class Aula
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=8, nullable=false)
+     * 
      */
     private $estado;
 
@@ -296,6 +299,13 @@ class Aula
     {
         return $this->distributivos;
     }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("aula")
+    
+     * @Serializer\Groups({"list"})
+     * @return string
+     */
     public function getAulaName()
     {
         return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion;

@@ -211,21 +211,7 @@ define([
 
 
 
-              .state('cursos', {
-                    url: '/cursos',
-                    templateUrl: 'views/cursos.html',
-                    data: {
-                        pageTitle: 'cursos',
-                        pageHeader: {
-                            icon: 'fa fa-pencil',
-                            title: 'cursos',
-                            subtitle: 'cursos and more'
-                        },
-                        breadcrumbs: [
-                            {title: 'Widget'},{title: 'cursos'}
-                        ]
-                    }
-                })
+              
 
 
 

@@ -213,3 +213,15 @@ fos_user:
             type: app_user_registration
     group:
         group_class: Multiservices\ArxisBundle\Entity\Grupo
+#sensio_framework_extra:
+#    view:
+#        annotations: false
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+          
+    view:
+        view_response_listener:
+            enabled:              true
+            force:                false
+            

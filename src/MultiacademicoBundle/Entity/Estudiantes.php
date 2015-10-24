@@ -3,12 +3,14 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Estudiantes
  *
  * @ORM\Table(name="estudiantes",  indexes={@ORM\Index(name="estudiante", columns={"estudiante"})})
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("all")
  */
 class Estudiantes
 {
@@ -18,6 +20,8 @@ class Estudiantes
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $id;
 
@@ -32,6 +36,8 @@ class Estudiantes
      * @var string
      *
      * @ORM\Column(name="estudiante", type="string", length=50, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $estudiante;
 

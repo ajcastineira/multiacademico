@@ -3,7 +3,9 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Distributivos
@@ -23,6 +25,9 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codcurso", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Type("MultiacademicoBundle\Entity\Cursos")
      */
     private $curso;
 
@@ -33,6 +38,8 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codespecializacion", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $especializacion;
     
@@ -41,6 +48,8 @@ class Aula
      * @var string
      * @ORM\Id
      * @ORM\Column(name="paralelo", type="string", length=1, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $paralelo;
 
@@ -48,6 +57,8 @@ class Aula
      * @var string
      * @ORM\Id
      * @ORM\Column(name="seccion", type="string", length=20, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $seccion;
     
@@ -58,6 +69,8 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codperiodo", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $periodo;
     
@@ -80,12 +93,21 @@ class Aula
     private $estado;
 
     /**
-     * * @ORM\OneToMany(targetEntity="Matriculas", mappedBy="aula")
+     * @ORM\OneToMany(targetEntity="Matriculas", mappedBy="aula")
+     * @Serializer\Expose
+     * @Serializer\Groups({"detail"})
+     * @Serializer\Accessor(getter="getMatriculados")
+     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Matriculas>")
      */
     private $matriculados;
     
     /**
-     * * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="aula")
+     * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="aula")
+     * @Serializer\Expose
+     * @Serializer\Accessor(getter="getDistributivos")
+     * @Serializer\Groups({"detail"})
+     
+     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Distributivos>")
      */
     private $distributivos;
 
@@ -243,25 +265,36 @@ class Aula
     }
     /**
      * 
-     * @param \Docentes $tutor
+     * @param \MultiacademicoBundle\Entity\Docentes $tutor
      * @return \MultiacademicoBundle\Entity\Aula
      */
-    public function setTutor(\Docentes $tutor) {
+    public function setTutor(\MultiacademicoBundle\Entity\Docentes $tutor) {
         $this->tutor = $tutor;
         return $this;
     }
 
      /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("tutor")
     
-     * @Serializer\Groups({"list"})
-     * @return \Docentes
+      * @return \MultiacademicoBundle\Entity\Docentes
      */
     public function getTutor()
     {
         return $this->tutor;
-    }   
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("tutor")
+     * @Serializer\Groups({"list"})
+     * @return string
+     */
+    public function getTutorName()
+    {
+        if (isset($this->tutor))
+        {return $this->tutor->getDocente();}
+        else
+        {return "No se ha asignado";}
+    }
+
     /**
      * Add matriculado
      *
@@ -293,6 +326,12 @@ class Aula
      */
     public function getMatriculados()
     {
+        $iterator = $this->matriculados->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getMatriculacodestudiante()->getEstudiante() < $b->getMatriculacodestudiante()->getEstudiante()) ? -1 : 1;
+        });
+        $this->matriculados = new ArrayCollection(iterator_to_array($iterator));
+        
         return $this->matriculados;
     }
     
@@ -327,13 +366,23 @@ class Aula
      */
     public function getDistributivos()
     {
+        $idsToFilter=array(998);
+       $filter= $this->distributivos->filter(
+               function($entry) use ($idsToFilter) {
+                 return in_array($entry->getId(), $idsToFilter);
+                }
+               );
+       
+               $this->distributivos= new ArrayCollection($filter);
+ 
+        
         return $this->distributivos;
     }
     /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("aula")
     
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list","detail"})
      * @return string
      */
     public function getAulaName()

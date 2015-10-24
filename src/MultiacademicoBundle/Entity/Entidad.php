@@ -3,12 +3,14 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Entidad
  *
  * @ORM\Table(name="entidad")
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("none")
  */
 class Entidad
 {

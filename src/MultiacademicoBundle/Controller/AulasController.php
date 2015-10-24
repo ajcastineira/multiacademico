@@ -47,6 +47,35 @@ class AulasController extends FOSRestController
         );
     }
     
+    
+    /**
+     * Lists aula.
+     * @Rest\Get("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
+     * @Rest\View(serializerGroups={"detail"})
+     */
+    public function getAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+                                                                    array(
+                                                                          'curso'=>$curso,
+                                                                          'especializacion'=>$especializacion,
+                                                                          'paralelo'=>$paralelo,
+                                                                          'seccion'=>$seccion,
+                                                                          'periodo'=>$periodo
+                                                                           )
+                                                                    );
+        if (!$aula) {
+            throw $this->createNotFoundException('Unable to find Aula.');
+        }
+       
+
+        return array(
+            'aula' => $aula,
+           
+        );
+    }
    
     
 }

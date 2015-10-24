@@ -3,12 +3,14 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Distributivos
  *
  * @ORM\Table(name="distributivos", indexes={@ORM\Index(name="FK_asignaturasprofesores", columns={"distributivocodperiodo"}), @ORM\Index(name="distributivocoddocente", columns={"distributivocoddocente"}), @ORM\Index(name="distributivocodmateria", columns={"distributivocodmateria"}), @ORM\Index(name="distributivocodcurso", columns={"distributivocodcurso"}), @ORM\Index(name="distributivocodespecializacion", columns={"distributivocodespecializacion"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\DistributivosRepository")
+ * @Serializer\ExclusionPolicy("none")
  */
 class Distributivos
 {
@@ -18,6 +20,7 @@ class Distributivos
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Groups({"detail"})
      */
     private $id;
 
@@ -90,6 +93,7 @@ class Distributivos
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="distributivocodmateria", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Groups({"list","detail"})
      */
     private $distributivocodmateria;
 

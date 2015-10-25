@@ -36,7 +36,7 @@ define([
                     
                     views:{
                         'content@multiacademico':{
-                            templateUrl: 'views/multiacademico/malla/malla-normal.html',
+                            templateUrl: 'views/multiacademico/malla/seleccionar-aula-malla-normal.html',
                             controller: function ($scope, aulas) {
                             $scope.aulas = aulas;
                             $scope.cursos = aulas;

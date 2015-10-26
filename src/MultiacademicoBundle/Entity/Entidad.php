@@ -103,7 +103,7 @@ class Entidad
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="blob", nullable=true)
+     * @ORM\Column(name="data", type="json_array", nullable=true)
      */
     private $data;
 

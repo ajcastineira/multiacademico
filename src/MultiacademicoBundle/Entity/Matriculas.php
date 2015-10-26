@@ -190,13 +190,24 @@ class Matriculas
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\OneToMany(targetEntity="Calificaciones", mappedBy="calificacionnummatricula")
      * @Serializer\Expose
+     * @Serializer\Accessor(getter="indexCalificaciones")
      * @Serializer\Groups({"detail"})
-     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
+     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
      */
     private $calificaciones;
     
-    
-    
+    public function indexCalificaciones()
+    {
+        foreach ($this->getCalificaciones() as $calificacionmateria)
+        {
+            $claves[]=$calificacionmateria->getCalificacioncodmateria()->getId();
+        }
+        $calificaciones=new \Doctrine\Common\Collections\ArrayCollection(array_combine ( $claves , $this->calificaciones->toArray()));
+        return $calificaciones;
+    }
+          
+
+
     
     
     

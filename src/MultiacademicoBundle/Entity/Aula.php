@@ -330,7 +330,7 @@ class Aula
         $iterator->uasort(function ($a, $b) {
             return ($a->getMatriculacodestudiante()->getEstudiante() < $b->getMatriculacodestudiante()->getEstudiante()) ? -1 : 1;
         });
-        $this->matriculados = new ArrayCollection(iterator_to_array($iterator));
+        $this->matriculados = new ArrayCollection(iterator_to_array($iterator,false));
         
         return $this->matriculados;
     }
@@ -366,16 +366,13 @@ class Aula
      */
     public function getDistributivos()
     {
-        $idsToFilter=array(998);
-       $filter= $this->distributivos->filter(
-               function($entry) use ($idsToFilter) {
-                 return in_array($entry->getId(), $idsToFilter);
+        
+       $this->distributivos= $this->distributivos->filter(
+               function($entry)  {
+                if ($entry->getDistributivocodmateria()->getMateria()!= 'Tutor/a'&&$entry->getDistributivocodmateria()->getMateria()!= 'Inspector/a')
+                return array($entry);
                 }
                );
-       
-               $this->distributivos= new ArrayCollection($filter);
- 
-        
         return $this->distributivos;
     }
     /**

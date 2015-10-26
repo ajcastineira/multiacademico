@@ -39,7 +39,6 @@ define([
                             templateUrl: 'views/multiacademico/malla/seleccionar-aula-malla-normal.html',
                             controller: function ($scope, aulas) {
                             $scope.aulas = aulas;
-                            $scope.cursos = aulas;
                            },
                            resolve:{
                                aulas: function ($http) {
@@ -58,7 +57,8 @@ define([
                 
                 
                 .state('multiacademico.malla-normal.aula', {
-                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/{q}/{p}',
+                    reloadOnSearch: false,
                     data: {
                         pageTitle: 'Cuadro de Calificaciones',
                         pageHeader: {
@@ -72,7 +72,22 @@ define([
                     },
                     views:{
                         'content@multiacademico':{
-                            templateUrl: Routing.generate('malla-normal-api')
+                            templateUrl: Routing.generate('malla-normal-api'),
+                            controller: 'MallaCtrl',
+                           resolve:{
+                               deps: $couchPotatoProvider.resolveDependencies([
+                                'multiacademico/reportes/malla/controllers/MallaCtrl'//,
+                               // 'multiacademico/calificaciones/Calificaciones'
+                               
+                                ]),
+                               aula: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data.aula;
+                                         });
+                                         }
+                                     }   
                         }
                     }
                 })

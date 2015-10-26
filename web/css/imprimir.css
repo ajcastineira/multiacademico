@@ -12,6 +12,13 @@
                 margin-top: 0.1cm;
 }
 .printable{display:none;}
+.body-content {
+    background-color: #FFFFFF;
+    }
+#imprimir{
+    text-align: right;
+    padding-right: 100px;
+}
 @media print {
 #cabecera {
   display: none !important;
@@ -49,7 +56,12 @@ body, #contenido, #principal, #pie {
   margin:  0 !important;
   padding: 0 !important;
 }
-
+#page-content {
+    margin-left: 0px;
+}
+body.page-sidebar-minimize #page-content, body.page-sidebar-minimize-auto #page-content {
+  margin-left: 0px;
+}
  .printable {
      display:block;
      width: 18cm;

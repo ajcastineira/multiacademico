@@ -252,6 +252,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n2", type="float", precision=10, scale=2, nullable=false)
+     * @Serializer\Groups({"list","detail"})
      */
     private $q2P1N2;
 

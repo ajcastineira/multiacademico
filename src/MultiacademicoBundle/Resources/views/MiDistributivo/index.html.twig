@@ -45,9 +45,29 @@
                 </td>
             </tr>
         {% endfor %}
-        
+         {% for aula in misaulas %}
+            <tr>
+            <td>
+                <a href="{{ path('menu_tutor', {'curso': aula.curso.id,'especializacion':aula.especializacion.id,'paralelo':aula.paralelo,'seccion':aula.seccion,'periodo':aula.periodo.id}) }}">
+                    {{ aula}}
+                </a>
+            </td>
+                <td>Tutor/a</td>
+                <td>
+                <ul>                    
+                    
+                    <li>
+                        
+                        <a class="btn btn-primary" href="{{ path('menu_tutor', {'curso': aula.curso.id,'especializacion':aula.especializacion.id,'paralelo':aula.paralelo,'seccion':aula.seccion,'periodo':aula.periodo.id}) }}">
+                            Seleccionar <i class="fa fa-arrow-right icon-on-right"></i>
+                        </a>
+                    </li>                    
+                </ul>
+                </td>
+             </tr>   
+        {%endfor%}    
         {% for club in misclubes %}
-            
+            <tr>
             <td>
                 <a href="{{ path('menu_proyectos_escolares', { 'id': club.id }) }}">
                     {{ club.club}}
@@ -65,7 +85,7 @@
                     </li>                    
                 </ul>
                 </td>
-                
+             </tr>   
         {%endfor%}    
         </tbody>
     </table>

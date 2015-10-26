@@ -50,10 +50,12 @@ class MiDistributivoController extends Controller
         $entities = $em->getRepository('MultiacademicoBundle:Distributivos')->miDistributivo($docente);
         
         $misclubes= $em->getRepository('MultiacademicoBundle:Clubes')->misClubes($docente);
+        $misaulas= $em->getRepository('MultiacademicoBundle:Aula')->misAulas($docente);
 
         return array(
             'entities' => $entities,
             'misclubes' => $misclubes,
+            'misaulas' => $misaulas,
         );
     }
     
@@ -75,7 +77,42 @@ class MiDistributivoController extends Controller
      * @Method("GET")
      * @Template("MultiacademicoBundle:MiDistributivo:menu.html.twig")
      */
+    
     public function menuCalificarApiAction($id)
+    {
+        //$em = $this->getDoctrine()->getManager();
+        
+        //$user = $this->get('security.token_storage')->getToken()->getUser();
+        //var_dump($user);
+        //$docente=$em->getRepository('MultiacademicoBundle:Docentes')->findByUsuario($user);
+        //$entities = $em->getRepository('MultiacademicoBundle:Distributivos')->miDistributivo($docente);
+
+        return array(
+            null
+        );
+    }
+    
+     /**
+     * Lists all Distributivos entities.
+     *
+     * @Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="menu_tutor", options={"expose":true})
+     * Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/", name="menu_tutor", options={"expose":true})
+     * @Method("GET")
+     */
+    public function menuTutorAction()
+    {
+        return $this->render('::baseangular.html.twig');
+    }
+    
+    /**
+     * Lists all Distributivos entities.
+     *
+     * @Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/api", name="menu_tutor_api", options={"expose":true})
+     * @Method("GET")
+     * @Template("MultiacademicoBundle:MiDistributivo:menututor.html.twig")
+     */
+    
+    public function menuTutorApiAction()
     {
         //$em = $this->getDoctrine()->getManager();
         

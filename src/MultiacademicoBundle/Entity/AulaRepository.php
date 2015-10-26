@@ -8,32 +8,29 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class DistributivosRepository extends EntityRepository
+class AulaRepository extends EntityRepository
 {
     
-   public function miDistributivo($docente)
+   public function misAulas($docente)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT d'
-                    . ' FROM MultiacademicoBundle:Distributivos d '
-                    . ' join d.distributivocodmateria m '
-                    . ' where d.distributivocoddocente=:docente and '
-                    . ' m.materia != :materia'
+            ->createQuery('SELECT a'
+                    . ' FROM MultiacademicoBundle:Aula a '
+                    . ' where a.tutor= :docente'
                     //. ' ORDER BY n.notificaciontimestamp DESC'
                     )
             ->setParameter(":docente", $docente)
-            ->setParameter(":materia", "Tutor/a")
             ->getResult();
     }
     
-   public function alumnosDistributivo(Distributivos $distributivo)
+   /*public function alumnosClub(Clubes $club)
     {
         $curso=$distributivo->getDistributivocodcurso();
         $especializacion=$distributivo->getDistributivocodespecializacion();
         $paralelo=$distributivo->getDistributivoparalelo();
         $periodo=$distributivo->getDistributivocodperiodo();
-        $seccion=$distributivo->getDistributivoseccion();
-        return $this->getEntityManager()
+        $seccion=$distributivo->getDistributivoseccion();*/
+        /*return $this->getEntityManager()
             ->createQuery('SELECT m'
                     . ' FROM MultiacademicoBundle:Matriculas m '
                     . ' where m.matriculacodcurso=:curso and'
@@ -49,5 +46,5 @@ class DistributivosRepository extends EntityRepository
             ->setParameter(":periodo", $periodo)
             ->setParameter(":seccion", $seccion)
             ->getResult();
-    }  
+    }  */
 }

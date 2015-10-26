@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Criteria;
  * Distributivos
  *
  * @ORM\Table(name="aulas")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\AulaRepository")
  * @Serializer\ExclusionPolicy("all")
  */
 class Aula

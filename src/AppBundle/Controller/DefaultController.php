@@ -23,4 +23,14 @@ class DefaultController extends Controller
         return $this->render('baseangular.html.twig');
     }
     
+     /**
+     * Finds and displays a Usuario entity.
+     *
+     * @Route("/me", name="miperfil", options={"expose":true})
+     * @Method("GET")
+     */
+    public function showMeAction()
+    {
+       return $this->render('::baseangular.html.twig');
+    }
 }

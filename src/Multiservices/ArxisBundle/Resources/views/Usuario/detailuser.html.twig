@@ -8,11 +8,11 @@
                                 <div class="inner-all">
                                     <ul class="list-unstyled">
                                         <li class="text-center">
-                                            <img class="img-circle img-bordered-primary" src="/multiacademico/web/uploads/documents/images/profile/male.png"  data-pin-nopin="true">
+                                            <img class="img-circle img-bordered-primary" src="{{asset(usuario.getWebPath())}}" alt='img' data-pin-nopin="true">
                                         </li>
                                         <li class="text-center">
-                                            <h4 class="text-capitalize">Estudiante</h4>
-                                            <p class="text-muted text-capitalize">semestre</p>
+                                            <h4 class="text-capitalize">{{usuario.name}}</h4>
+                                            <p class="text-muted text-capitalize">{{usuario.cargo}}</p>
                                         </li>
                                         <li>
                                             <a href="" class="btn btn-primary text-center btn-block">Cuenta PRO</a>
@@ -20,8 +20,8 @@
                                         <li><br></li>
                                         <li>
                                             <div class="btn-group-vertical btn-block">
-                                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Editar Cuenta</a>
-                                                <a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
+                                                {#<a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Editar Cuenta</a>#}
+                                                <a data-ng-href="logout" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -43,9 +43,9 @@
                             </div><!-- /.panel-heading -->
                             <div class="panel-body no-padding rounded">
                                 <ul class="list-group no-margin">
-                                    <li class="list-group-item"><i class="fa fa-envelope mr-5"></i> estudiante@correo.com</li>
-                                    <li class="list-group-item"><i class="fa fa-globe mr-5"></i> www.multiacademico.com</li>
-                                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i> +6281 903 xxx xxx</li>
+                                    <li class="list-group-item"><i class="fa fa-envelope mr-5"></i> {{usuario.email}}</li>
+                                    <li class="list-group-item"><i class="fa fa-globe mr-5"></i> {{usuario}}</li>
+                                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i> {{usuario.telefono}}</li>
                                 </ul>
                             </div><!-- /.panel-body -->
                         </div><!-- /.panel -->

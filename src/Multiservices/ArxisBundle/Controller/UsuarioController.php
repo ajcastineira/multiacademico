@@ -182,11 +182,10 @@ class UsuarioController extends Controller
         
         $me=$this->get('security.token_storage')->getToken()->getUser();
         
-        //$entity = $em->getRepository('MultiservicesArxisBundle:Usuario')->find($me->getId());
-        $entity = $me;
+        $usuario = $me;
 
         return array(
-            'entity'      => $entity,
+            'usuario'      => $usuario,
         );
     }
 

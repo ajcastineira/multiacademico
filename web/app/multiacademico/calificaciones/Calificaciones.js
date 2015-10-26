@@ -84,11 +84,17 @@ define(['multiacademico/multiacademico'], function(module){
                     getPromedioParciales:function (q,calificacion)
                           {
                              
-                              var sum=getPromedioParcial(q,1,calificacion)+
-                                      getPromedioParcial(q,2,calificacion)+
-                                      getPromedioParcial(q,3,calificacion);
+                              var sum=this.getPromedioParcial(q,1,calificacion)+
+                                      this.getPromedioParcial(q,2,calificacion)+
+                                      this.getPromedioParcial(q,3,calificacion);
                                 return redondear(sum/3,2);
                                 },
+                    getPromedioParciales80:function (q,calificacion)
+                          {
+                             
+                              var r=this.getPromedioParciales(q,calificacion)*0.8;
+                                return redondear(r,2);
+                                },            
                    getNotaCualitativa:function(nota)
                    {
                        return retornasiglascualidad(nota);

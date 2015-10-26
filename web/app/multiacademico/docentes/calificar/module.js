@@ -197,6 +197,75 @@ define(['angular',
                 }        
                 
             })
+            .state ('multiacademico.docentes.midistributivo.tutor', {
+                url: '/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                data: {
+                        pageTitle: 'Menu Tutor',
+                        pageHeader: {
+                            icon: 'flaticon-a1',
+                            title: 'Tutor',
+                            subtitle: 'Menu'
+                        },
+                        breadcrumbs: [
+                            {title: 'Tutor'},{title: 'menu'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateUrl: function($stateParams){
+                            return Routing.generate('menu_tutor_api',{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
+            .state ('multiacademico.docentes.midistributivo.tutor.calificaciones', {
+               // abstract:true,
+                url:'/calificaciones/:q/:p',
+                params:{
+                  submited:false,
+                  formData:null
+                },
+                data: {
+                        pageTitle: 'Calificaciones Proyecto Escolar',
+                        pageHeader: {
+                            icon: 'flaticon-a1',
+                            title: 'Calificaciones Proyecto Escolar',
+                            subtitle: 'Curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Calificaciones Proyecto Escolar'},{title: 'calificar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateProvider:function($stateParams,CalificarForm){
+                                var rutas2={
+                                            edit:'calificaciones_proyecto_api',
+                                            update:'calificaciones_proyecto_api',
+                                            state_created:'multiacademico.docentes.midistributivo.proyectos.calificaciones',
+                                            state_updated:'multiacademico.docentes.midistributivo.proyectos.calificaciones'
+                                             };
+                                  return CalificarForm.calificar($stateParams,rutas2);
+                             },
+                        controller: 'CalificarCtrl',    
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
             
     });
 

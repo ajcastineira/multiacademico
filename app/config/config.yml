@@ -135,10 +135,10 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/views/matriculas.html
             output: /views/matriculas.html
-        mallasnormalhtml:
+        seleccionaraulamallasnormalhtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/malla-normal.html
-            output: /views/multiacademico/malla/malla-normal.html 
+                -  %kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html
+            output: /views/multiacademico/malla/seleccionar-aula-malla-normal.html 
         cuadrocalificacioneshtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/cuadro-de-calificaciones.html
@@ -159,10 +159,6 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
             output: /views/multiacademico/malla/dos-quimestre.html
-        clicmalla:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/clic_malla-normal.html
-            output: /views/multiacademico/malla/clic_malla-normal.htmlhtml
         perfilclic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/perfil.html
@@ -213,3 +209,18 @@ fos_user:
             type: app_user_registration
     group:
         group_class: Multiservices\ArxisBundle\Entity\Grupo
+#sensio_framework_extra:
+#    view:
+#        annotations: false
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+          
+    view:
+        view_response_listener:
+            enabled:              true
+            force:                false
+        serialize_null:       false
+    serializer:
+        serialize_null:       false
+            

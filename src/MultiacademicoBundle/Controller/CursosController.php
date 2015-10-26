@@ -10,13 +10,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Cursos;
 use MultiacademicoBundle\Form\CursosType;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
  * Cursos controller.
  *
  * @Route("/cursos")
  */
-class CursosController extends Controller
+class CursosController extends FOSRestController
 {
 
     /**

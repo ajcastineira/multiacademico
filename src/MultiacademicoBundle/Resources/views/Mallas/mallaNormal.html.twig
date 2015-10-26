@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+<style media="print" type="text/css">
+@page rotated { size : landscape!important }
+table { page : rotated!important }
+</style>
+<page>
+  <div class="paginah">
+     {{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
+       
+     <div class="info-aula">
+              {%verbatim%}
+              <div class="curso"><b>{{aula.curso.curso}} {{aula.especializacion.especializacion}}</b></div>
+             
+              <div class="curso"><b>Paralelo: "{{aula.paralelo}}"</b></div>
+             
+              <div class="curso"><b>Jornada {{(aula.seccion|limitTo:(aula.seccion.length-1))+'a'}}</b></div>
+             {%endverbatim%}
+              <div class="curso"><b>AÑO LECTIVO {{periodo.periodo}}</b></div>
+      </div>
+       <div id="imprimir" class="form-group">
+           
+                            {%verbatim%}
+                                <div class="ckbox ckbox-primary" data-ng-repeat="distributivo in aula.distributivos" style="display:inline-flex;">
+                                
+                                <input id="M{{distributivo.distributivocodmateria.id}}" type="checkbox" data-ng-model="Materias[distributivo.distributivocodmateria.id]"  ng-init="Materias[distributivo.distributivocodmateria.id]=true" title="{{distributivo.distributivocodmateria.materia}}"  />
+                                <label for="M{{distributivo.distributivocodmateria.id}}">{{distributivo.distributivocodmateria.materia}}</label>
+                                </div>
+                                
+                                 
+                             {%endverbatim%}
+           
+            <b>Quimestre Activo: {{'{{q}}'}} </b>
+       <select data-ng-model="q" data-ng-init="q=qop[q-1].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
+       </select> 
+
+
+            <b>Parcial Activo:{{'{{p}}'}} </b>
+                <select data-ng-model="p" data-ng-init="p=pop[p-1].id" data-ng-options="p.id as p.label for p in pop" data-ng-change="changeq()" >
+                </select>
+
+           <button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button>
+       </div>
+          <div class="detalle">
+         <p class="textodetalle">
+
+         </p>
+     </div>
+      <table class="letraprint1" border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF" style="text-align:center">
+          <thead>
+             <tr> 
+                 <th></th>    
+          <th></th>
+          {#<th rowspan="2" style="height: 140px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>#}
+                             {%verbatim%}
+                                <th colspan="{{encabezado.materiacolspan()}}" data-ng-repeat="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]">
+                                 {{distributivo.distributivocodmateria.materia}} </th> 
+                             {%endverbatim%}
+                     <!-- <th rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">SUMA</div></th>
+             <th rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO</div></th>
+             
+            <th rowspan="2" style="background-color: orange;vertical-align:bottom;">CLUBES: CAMPO&nbsp;DE&nbsp;ACCION</th>
+            <th rowspan="2" style="background-color: orange;vertical-align:bottom;">NOTA</th>-->
+                
+             </tr>
+             <tr> 
+                 <th></th>
+                  
+          <th style="width: 600px">
+             <div style="display:inline-block;vertical-align:-webkit-baseline-middle;width:250px;height:15px;font-size:8.0pt;font-family:Tahoma;color:#000000">
+              Apellidos y nombres
+             </div></th>
+                    
+                   <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3"  style="height:100px;vertical-align:bottom;" ><div class="solo-rotar" style="width: 30px">Tareas Investigaciones</div></td> 
+                   <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style="height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px" >Actividades Individuales</div></td> 
+                   <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style=";height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px" >Actividades Grupales</div></td> 
+                   <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style="height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px" >Lecciones</div></td> 
+                   <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style="height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px" >E.&nbsp;SUMATIVA</div></td> 
+                   <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style="background-color: gainsboro;height:100px;vertical-align:bottom;" ><div class="solo-rotar" style="width: 30px">PROMEDIO</div></td> 
+                   <td data-ng-repeat-end ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3"  style="background-color: gainsboro;height:100px;vertical-align:bottom;" ><div class="solo-rotar" style="width: 30px">E.&nbsp;Cualitativa</div></td> 
+                <!-- Quimestrales -->   
+                <td  data-ng-repeat-start="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">I&nbsp;PARCIAL</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">II&nbsp;PARCIAL</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">III&nbsp;PARCIAL</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">PROMEDIO PARCIAL</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">80%&nbsp;DE&nbsp;LOS PARCIALES</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">EXAMEN</div></td>
+                <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">20%&nbsp;DEL EXAMEN</div></td>
+                <td data-ng-repeat-end ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4"  style="background-color: gainsboro;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">N&nbsp;O&nbsp;T&nbsp;A QUIMESTRAL</div></td>
+
+                   
+                   {#<td data-ng-repeat-start="distributivo in aula.distributivos" style="background-color: gainsboro;height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px">PROMEDIO ANUAL</div></td> 
+                   <td style="background-color: gainsboro;height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px">EXAMEN RECUPERAC</div></td> 
+                   <td style="background-color: gainsboro;height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px">EXAMEN SUPLETORIO</div></td> 
+                   <td style="background-color: gainsboro;height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px">EXAMEN REMEDIAL</div></td> 
+                   <td data-ng-repeat-end style="background-color: gainsboro;height:100px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px">PROMEDIO FINAL</div></td> #}
+                                      
+            </tr>
+          </thead>
+          <tbody>   
+              
+                   {%verbatim%}
+                  
+                   <tr data-ng-repeat="alumno in aula.matriculados">
+                   <td>{{alumno.id}}</td>   
+                   <td>
+                        <div class="letraprint1" style="text-align: left;display:inline-block;width:250px;height:15px;">{{alumno.matriculacodestudiante.estudiante}}</div>
+                   </td>
+                                      
+                   <!--<td>E</td>-->
+                               <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_p'+p+'_n1']}}</td> 
+                               <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_p'+p+'_n2']}}</td> 
+                               <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_p'+p+'_n3']}}</td> 
+                               <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_p'+p+'_n4']}}</td> 
+                               <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_p'+p+'_n5']}}</td> 
+                               <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;" >{{prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id)}}</td> 
+                               <td data-ng-repeat-end ng-if="Materias[distributivo.distributivocodmateria.id]&&p<=3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{cualitativa(prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id))}}</td> 
+                                                          
+                            
+                            
+                            
+                            
+                            <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" >{{prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id,q,1)}}</td>
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4"  >{{prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id,q,2)}}</td>
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" >{{prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id,q,3)}}</td>
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" >{{prparciales($parent.$parent.$index,distributivo.distributivocodmateria.id,q)}}</td>
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" >{{prparciales80($parent.$parent.$index,distributivo.distributivocodmateria.id,q)}}</td>
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['q'+q+'_ex']}}</td> 
+                            <td ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" >{{ex20($parent.$parent.$index,distributivo.distributivocodmateria.id,q)}}</td>
+                            <td data-ng-repeat-end ng-if="Materias[distributivo.distributivocodmateria.id]&&p==4" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{prq($parent.$parent.$index,distributivo.distributivocodmateria.id,q)}}</td>
+                               <!--
+                               <td style=" -webkit-print-color-adjust:exact;background-color: gainsboro;">2.51</td> 
+                                                        <td>9.37</td> 
+                            <td style=" -webkit-print-color-adjust:exact;background-color:yellow;">1.34</td> 
+                                                        <td colspan="2">PIERDE AÑO</td>-->
+                             
+                                   
+                                         </tr>
+                   {%endverbatim%} 
+                           
+                    </tbody>
+          <tfoot>
+              <tr style="height: 2cm;vertical-align: bottom;">
+                  <td colspan="2">
+                      DIRECTOR / RECTOR     (firma y sello)
+                  </td>    
+              </tr>
+          </tfoot>
+          </table>
+      <!--malla-->
+ <!--<div style="page-break-after: always;"></div>
+<!-- </div>
+</div>    -->
+
+
+
+
+
+
+
+</div></page>

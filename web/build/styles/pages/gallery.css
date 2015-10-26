@@ -1,0 +1,112 @@
+/* ========================================================================
+ * GALLERY
+ * ======================================================================== */
+/* line 9, ../../../app/styles/pages/gallery.scss */
+.gallery-img {
+  display: block;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+/* line 14, ../../../app/styles/pages/gallery.scss */
+.gallery-item {
+  background: #fcfcfc;
+  margin-bottom: 20px;
+  position: relative;
+}
+/* line 18, ../../../app/styles/pages/gallery.scss */
+.gallery-item p {
+  margin: 0px;
+}
+
+/* line 22, ../../../app/styles/pages/gallery.scss */
+.gallery-details {
+  padding: 10px;
+}
+
+/* line 25, ../../../app/styles/pages/gallery.scss */
+.gallery-summary {
+  font-size: 13px;
+}
+/* line 27, ../../../app/styles/pages/gallery.scss */
+.gallery-summary .btn {
+  margin-top: 10px;
+}
+
+/* line 31, ../../../app/styles/pages/gallery.scss */
+.gallery-love {
+  background-color: #5d5d5d;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  line-height: 30px;
+}
+/* line 40, ../../../app/styles/pages/gallery.scss */
+.gallery-love i {
+  color: #E9573F;
+}
+
+/* line 44, ../../../app/styles/pages/gallery.scss */
+.gallery-author {
+  padding: 0px 10px 10px 10px;
+}
+/* line 46, ../../../app/styles/pages/gallery.scss */
+.gallery-author h4 {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+/* line 50, ../../../app/styles/pages/gallery.scss */
+.gallery-author span {
+  font-size: 12px;
+  color: #98a1ac;
+}
+
+/* line 55, ../../../app/styles/pages/gallery.scss */
+#gallery {
+  margin-top: 20px;
+  min-height: 1300px;
+}
+/* line 58, ../../../app/styles/pages/gallery.scss */
+#gallery .mix {
+  text-align: left;
+  display: none;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 50% 0;
+}
+
+/* line 65, ../../../app/styles/pages/gallery.scss */
+#gallery {
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
+  column-count: 4;
+  padding-left: 0px;
+}
+
+@media (max-width: 900px) {
+  /* line 70, ../../../app/styles/pages/gallery.scss */
+  #gallery {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+@media (max-width: 550px) {
+  /* line 75, ../../../app/styles/pages/gallery.scss */
+  #gallery {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+@media (max-width: 400px) {
+  /* line 80, ../../../app/styles/pages/gallery.scss */
+  #gallery {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}

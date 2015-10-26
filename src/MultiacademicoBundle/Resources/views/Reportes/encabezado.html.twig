@@ -1,0 +1,16 @@
+<div class="reporte-header" style="line-height: normal;">
+             <img src="{{asset(entidad.data.logoiz|default("bundles/multiacademico/img/ministerio.png"))}}" height="50" border="0" alt="LogoIZ">
+             <div style="width:60%;height:50;display:-webkit-inline-box"></div>
+               <img src="{{asset(entidad.data.logoder|default("escudo.png"))}}" height="50" border="0" alt="LogoDER"><br>
+
+             <span class="entidad"><b>{{entidad.entidad}} "{{entidad.titulo}}"</b></span><br>
+             <span class="subt2">AMIE {{entidad.data.codamie|default("__H______")}}</span><br>
+             
+             <span class="subt2"><b>Dirección:</b> {{entidad.direccion}} </span><br>
+             <span class="subt2"><b>Telefono:</b> {{entidad.telefono}} | <b> Mail:</b> {{entidad.email}} </span><br>
+             <span class="subt2"><b>{{entidad.lugar}}</b></span><br><br>
+             
+             
+             <span class="titulo"><b>{{'{{encabezado.titulo}}'}}</b></span><br>
+          
+</div>

@@ -1,0 +1,116 @@
+/* ========================================================================
+ * FRONTEND THEMES PAGE
+ * ======================================================================== */
+/* line 9, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme {
+  text-decoration: none !important;
+}
+/* line 11, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg {
+  background-image: url("http://localhost/blankon-fullpack-admin-theme/1.0.8/assets/admin/img/frontend-themes/bg-macbook.png");
+  background-size: 470px;
+  width: 470px;
+  height: 280px;
+  display: inline-block;
+  position: relative;
+}
+/* line 18, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg.coming-soon {
+  background-image: url("http://localhost/blankon-fullpack-admin-theme/1.0.8/assets/admin/img/frontend-themes/bg-macbook-empty.png");
+  background-size: 470px;
+}
+/* line 21, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg.coming-soon .img-scroll {
+  background-image: none !important;
+}
+/* line 25, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg .image-scroll {
+  background-position: center 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 339px;
+  height: 217px;
+  top: 24px;
+  left: 68px;
+  border-radius: 4px;
+}
+/* line 36, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg .image-scroll.available {
+  transition: all 10s ease-out 0s;
+}
+/* line 39, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg .image-scroll.start-page {
+  background-image: url("http://localhost/blankon-fullpack-admin-theme/1.0.8/assets/admin/img/frontend-themes/start-page.jpg");
+}
+/* line 63, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg .image-scroll .image-ribbon {
+  background: url("http://localhost/blankon-fullpack-admin-theme/1.0.8/assets/admin/img/frontend-themes/ribbon.png") no-repeat scroll right top transparent;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0px -40px 0 0;
+  border-radius: 0px 3px 0px 0px;
+}
+/* line 74, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-bg:hover .image-scroll.available {
+  background-position: center 100% !important;
+}
+/* line 80, ../../../app/styles/pages/frontend-themes.scss */
+.list-frontend-theme .image-title {
+  text-transform: capitalize;
+  text-align: center;
+  margin: 0px 0px 40px 0px;
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) and (min-width: 801px) {
+  /* line 91, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-bg {
+    margin-left: 175px !important;
+  }
+}
+@media (max-width: 800px) {
+  /* line 98, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-bg {
+    margin-left: 90px !important;
+  }
+}
+@media (max-width: 360px) {
+  /* line 105, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-bg {
+    background-size: 335px auto !important;
+    width: 320px;
+    height: 205px;
+    margin-left: 0px !important;
+  }
+  /* line 111, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-scroll {
+    width: 235px !important;
+    height: 150px !important;
+    top: 20px !important;
+    left: 50px !important;
+  }
+  /* line 116, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-scroll.start-page {
+    background-size: 300px;
+  }
+}
+@media (max-width: 320px) {
+  /* line 124, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-scroll {
+    width: 194px !important;
+    height: 121px !important;
+    top: 18px !important;
+    left: 40px !important;
+  }
+  /* line 130, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-bg {
+    background-size: 272px auto !important;
+    width: 270px !important;
+    height: 157px !important;
+  }
+  /* line 135, ../../../app/styles/pages/frontend-themes.scss */
+  .list-frontend-theme .image-bg .image-scroll .image-ribbon {
+    background-size: 65px;
+  }
+}

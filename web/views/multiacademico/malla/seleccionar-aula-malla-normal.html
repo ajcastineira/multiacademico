@@ -23,15 +23,15 @@
                                 <th class="text-center">Opción</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                    <td>5</td>
-                                    <td>Quintessa</td>
-                                    <td>Nehru</td>
-                                    <td>5</td>
-                                    <td class="text-center"><a class="btn btn-info" ui-sref="malla-normal.comosellame" role="button">Seleccionar</a></td>
+                        <tbody >                            
+                            <tr data-ng-repeat="aula in aulas">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{aula.aula}}</td>
+                                    <td>{{aula.tutor}}</td>
+                                    <td>{{aula.totalalumnos}}</td>
+                                    <td class="text-center"><a class="btn btn-info" ui-sref="multiacademico.malla-normal.aula({curso: aula.curso.id,especializacion:aula.especializacion.id, paralelo:aula.paralelo,seccion: aula.seccion,periodo:aula.periodo.id,q:1,p:1})" role="button">Seleccionar</a></td>
                             </tr>
-                        </tbody>
+                        </tbody >
                     </table>
                 </div>
         </div> 

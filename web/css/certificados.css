@@ -4,7 +4,7 @@
      margin-right: auto;
 
 }
-.header  {
+.reporte-header  {
   
   text-align:center;
   vertical-align:middle;
@@ -39,7 +39,17 @@
   color:#000000;
   vertical-align:middle;
 }
-
+.info-aula
+{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.curso
+{
+  padding-right: 15px;
+  display: inline-flex;
+}
 .tablacabecera{
 
   text-align:center;

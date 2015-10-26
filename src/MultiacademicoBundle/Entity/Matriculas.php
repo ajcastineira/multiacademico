@@ -3,12 +3,14 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Matriculas
  *
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("all")
  */
 class Matriculas
 {
@@ -18,6 +20,8 @@ class Matriculas
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $id;
 
@@ -129,6 +133,10 @@ class Matriculas
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id",nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Type("MultiacademicoBundle\Entity\Estudiantes")
+   
      */
     private $matriculacodestudiante;
 
@@ -181,11 +189,25 @@ class Matriculas
      *
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\OneToMany(targetEntity="Calificaciones", mappedBy="calificacionnummatricula")
+     * @Serializer\Expose
+     * @Serializer\Accessor(getter="indexCalificaciones")
+     * @Serializer\Groups({"detail"})
+     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
      */
     private $calificaciones;
     
-    
-    
+    public function indexCalificaciones()
+    {
+        foreach ($this->getCalificaciones() as $calificacionmateria)
+        {
+            $claves[]=$calificacionmateria->getCalificacioncodmateria()->getId();
+        }
+        $calificaciones=new \Doctrine\Common\Collections\ArrayCollection(array_combine ( $claves , $this->calificaciones->toArray()));
+        return $calificaciones;
+    }
+          
+
+
     
     
     

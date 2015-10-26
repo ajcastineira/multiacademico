@@ -3,12 +3,16 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Distributivos
  *
  * @ORM\Table(name="aulas")
  * @ORM\Entity()
+ * @Serializer\ExclusionPolicy("all")
  */
 class Aula
 {
@@ -21,6 +25,9 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codcurso", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Type("MultiacademicoBundle\Entity\Cursos")
      */
     private $curso;
 
@@ -31,6 +38,8 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codespecializacion", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $especializacion;
     
@@ -39,6 +48,8 @@ class Aula
      * @var string
      * @ORM\Id
      * @ORM\Column(name="paralelo", type="string", length=1, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $paralelo;
 
@@ -46,6 +57,8 @@ class Aula
      * @var string
      * @ORM\Id
      * @ORM\Column(name="seccion", type="string", length=20, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $seccion;
     
@@ -56,23 +69,45 @@ class Aula
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codperiodo", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $periodo;
+    
+     /**
+     * @var \Docentes
+     
+     * @ORM\ManyToOne(targetEntity="Docentes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="coddocentetutor", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $tutor;
     
     /**
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=8, nullable=false)
+     * 
      */
     private $estado;
 
     /**
-     * * @ORM\OneToMany(targetEntity="Matriculas", mappedBy="aula")
+     * @ORM\OneToMany(targetEntity="Matriculas", mappedBy="aula")
+     * @Serializer\Expose
+     * @Serializer\Groups({"detail"})
+     * @Serializer\Accessor(getter="getMatriculados")
+     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Matriculas>")
      */
     private $matriculados;
     
     /**
-     * * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="aula")
+     * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="aula")
+     * @Serializer\Expose
+     * @Serializer\Accessor(getter="getDistributivos")
+     * @Serializer\Groups({"detail"})
+     
+     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Distributivos>")
      */
     private $distributivos;
 
@@ -228,6 +263,37 @@ class Aula
     {
         return $this->periodo;
     }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Docentes $tutor
+     * @return \MultiacademicoBundle\Entity\Aula
+     */
+    public function setTutor(\MultiacademicoBundle\Entity\Docentes $tutor) {
+        $this->tutor = $tutor;
+        return $this;
+    }
+
+     /**
+    
+      * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function getTutor()
+    {
+        return $this->tutor;
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("tutor")
+     * @Serializer\Groups({"list"})
+     * @return string
+     */
+    public function getTutorName()
+    {
+        if (isset($this->tutor))
+        {return $this->tutor->getDocente();}
+        else
+        {return "No se ha asignado";}
+    }
 
     /**
      * Add matriculado
@@ -260,6 +326,12 @@ class Aula
      */
     public function getMatriculados()
     {
+        $iterator = $this->matriculados->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getMatriculacodestudiante()->getEstudiante() < $b->getMatriculacodestudiante()->getEstudiante()) ? -1 : 1;
+        });
+        $this->matriculados = new ArrayCollection(iterator_to_array($iterator,false));
+        
         return $this->matriculados;
     }
     
@@ -294,11 +366,36 @@ class Aula
      */
     public function getDistributivos()
     {
+        
+       $this->distributivos= $this->distributivos->filter(
+               function($entry)  {
+                if ($entry->getDistributivocodmateria()->getMateria()!= 'Tutor/a'&&$entry->getDistributivocodmateria()->getMateria()!= 'Inspector/a')
+                return array($entry);
+                }
+               );
         return $this->distributivos;
     }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("aula")
+    
+     * @Serializer\Groups({"list","detail"})
+     * @return string
+     */
     public function getAulaName()
     {
         return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion;
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("totalalumnos")
+    
+     * @Serializer\Groups({"list"})
+     * @return string
+     */
+    public function getTotalAlumnosAula()
+    {
+        return count($this->matriculados);
     }
     
     public function __toString()

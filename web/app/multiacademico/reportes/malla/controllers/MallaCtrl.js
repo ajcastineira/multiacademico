@@ -15,7 +15,18 @@ define(['multiacademico/reportes/malla/module',
                             $scope.p = $stateParams.p;
                             $scope.encabezado={
                                 titulo:"CUADRO DE CALIFICACIONES DEL PARCIAL"+$scope.p,
-                                materiacolspan:7
+                                materiacolspan:function()
+                                {
+                                    if ($scope.p<=3)
+                                    {    
+                                        return 7;
+                                    }
+                                    if ($scope.p==4)
+                                    {    
+                                        return 8;
+                                    }
+                                    return 7
+                                }
                             };
                             $scope.Calificaciones=Calificaciones;
                             $scope.Materias={};
@@ -40,6 +51,19 @@ define(['multiacademico/reportes/malla/module',
                                 var calificacion=$scope.aula.matriculados[i].calificaciones[m];
                                 return Calificaciones.getPromedioParciales80(q,calificacion);
                             };
+                            $scope.ex20=function(i,m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getExamen20(q,calificacion);
+                            };
+                            
+                            $scope.prq=function(i,m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getPromedioQuimestre(q,calificacion);
+                            };
                             
                             $scope.cualitativa=function(nota)
                             {
@@ -49,12 +73,12 @@ define(['multiacademico/reportes/malla/module',
                                    
                                     if ($scope.p<=3)
                                     {    
-                                    $scope.encabezado.materiacolspan=7;
+                                    
                                     $scope.encabezado.titulo="CUADRO DE CALIFICACIONES DEL PARCIAL "+$scope.p;
                                     }
-                                    if ($scope.p===4)
+                                    if ($scope.p==4)
                                     {    
-                                    $scope.encabezado.materiacolspan=8;
+                                    
                                     $scope.encabezado.titulo="CUADRO DE CALIFICACIONES DEL QUIMESTRE "+$scope.q;
                                     }
                                 

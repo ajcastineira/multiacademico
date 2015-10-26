@@ -83,7 +83,7 @@ define(['multiacademico/multiacademico'], function(module){
                                 },
                     getPromedioParciales:function (q,calificacion)
                           {
-                             
+                             if(typeof calificacion === 'undefined'){return('N/A');}
                               var sum=this.getPromedioParcial(q,1,calificacion)+
                                       this.getPromedioParcial(q,2,calificacion)+
                                       this.getPromedioParcial(q,3,calificacion);
@@ -91,10 +91,22 @@ define(['multiacademico/multiacademico'], function(module){
                                 },
                     getPromedioParciales80:function (q,calificacion)
                           {
-                             
+                             if(typeof calificacion === 'undefined'){return('N/A');}
                               var r=this.getPromedioParciales(q,calificacion)*0.8;
                                 return redondear(r,2);
-                                },            
+                                },  
+                    getExamen20:function (q,calificacion)
+                          {
+                            if(typeof calificacion === 'undefined'){return('N/A');}
+                            var r=calificacion['q'+q+'_ex']*0.20
+                                return redondear(r,2);
+                                },
+                    getPromedioQuimestre:function (q,calificacion)
+                          {
+                             if(typeof calificacion === 'undefined'){return('N/A');}
+                              var r=this.getPromedioParciales80(q,calificacion)+this.getExamen20(q,calificacion);
+                                return redondear(r,2);
+                                },              
                    getNotaCualitativa:function(nota)
                    {
                        return retornasiglascualidad(nota);

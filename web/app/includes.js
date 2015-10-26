@@ -107,10 +107,10 @@ define([
 
     // forms
      'modules/forms/module',
-     'modules/forms/models/FormsCrud'//,
+     'modules/forms/models/FormsCrud',
      
     // users
-    // 'modules/users/module',
+     'modules/users/module'//,
 
     // ui
     // 'modules/ui/module',

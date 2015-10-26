@@ -35,7 +35,7 @@ define([
         //app
         'app.auth',
         'app.dashboard',
-        //'app.users',
+        'app.users',
         'app.layout',
         'app.forms',
         'multiacademico',

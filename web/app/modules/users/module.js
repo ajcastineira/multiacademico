@@ -24,14 +24,22 @@ define(['angular',
             .state('app.me', {
                 url: '/me',
                 data: {
-                    title: 'Mi Perfil'
-                },
+                        pageTitle: 'Mi perfil',
+                        pageHeader: {
+                            icon: 'fa fa-user',
+                            title: 'Mi perfil',
+                            subtitle: 'Mi Perfil'
+                        },
+                        breadcrumbs: [
+                            {title: 'Mi Perfil'}
+                        ]
+                    },
                 views: {
-                    "content@app": {
+                    "root": {
                         templateUrl: function($stateParams){
                             return Routing.generate('secured_user_api_showme');
-                        },
-                        controller: function ($scope, contact) {
+                        }//,
+                        /*controller: function ($scope, contact) {
                             $scope.contact = contact;
                         },
                         resolve: {
@@ -39,7 +47,7 @@ define(['angular',
                                 //return $http.get('api/project-list.json')
                                 return 0
                             }
-                        }
+                        }*/
                     }
                 }
             })    

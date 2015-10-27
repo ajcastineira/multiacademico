@@ -47,8 +47,11 @@
 
         <!-- START @THEME STYLES -->
         {%endverbatim%}
-        
-        <link data-ng-href="{{asset('css/compiled/blue.theme.css')}}" rel="stylesheet" id="theme">
+        {% if(app.environment=='dev') %}    
+        <link data-ng-href="{{asset('app/styles/themes/blue.theme.css')}}" rel="stylesheet" id="theme">
+        {%else%}
+        <link data-ng-href="{{asset('build/styles/themes/blue.theme.css')}}" rel="stylesheet" id="theme">
+        {%endif%}
         
         <!--/ END THEME STYLES -->
 

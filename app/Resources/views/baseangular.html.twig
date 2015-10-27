@@ -45,7 +45,11 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    {% if(app.environment=='dev') %}    
     <link rel="stylesheet" href="{{asset('app/styles/main.css')}}">
+    {%else%}
+    <link rel="stylesheet" href="{{asset('build/styles/main.css')}}">
+    {%endif%}
     
     {#<link data-ng-href="{{settings.cssPath}}/themes/blue.theme.css">#}
     {% stylesheets '@theme_blue_css' filter='cssrewrite' %}

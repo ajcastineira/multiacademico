@@ -55,10 +55,6 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
     assets:
-        main_css:
-            inputs:
-                - %kernel.root_dir%/../web/app/styles/main.css
-            output: css/compiled/main.css
         blankon_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/reset.css

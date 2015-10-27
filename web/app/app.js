@@ -45,6 +45,7 @@ define([
         'multiacademico.cursos',
         'multiacademico.malla',
        // 'multiacademico.especializaciones',
+       'multiacademico.informes',
         'multiacademico.materias'//,
        // 'multiacademico.periodo'
                 

@@ -23,12 +23,19 @@ define(['multiacademico/multiacademico'], function(module){
                                   //  {id:3,label:"ANUAL"}
                             ];
         var parciales=[
-                               {id:1,label:"Primer Parcial"},
-                               {id:2,label:"Segundo Parcial"},
-                                {id:3,label:"Tercer Parcial"},
-                                {id:4,label:"Resumen Parciales"}
+                               {id:1,label:"Primer Parcial",labelabrv:"1er Parcial"},
+                               {id:2,label:"Segundo Parcial",labelabrv:"2do Parcial"},
+                                {id:3,label:"Tercer Parcial",labelabrv:"3er Parcial"},
+                                {id:4,label:"Resumen Parciales",labelabrv:"Total Parciales"}
                                 //   {id:5,label:"Total Quimestre"}
                             ]; 
+        var parcialesnotas={
+                               1:{label:"Primera Nota Parcial"},
+                               2:{label:"Segunda Nota Parcial"},
+                               3:{label:"Tercera Nota Parcial"},
+                               4:{label:"PROMEDIO PARCIALES"}
+                                //   {id:5,label:"Total Quimestre"}
+                                };                     
         function redondear(value, decimals) {
             //return Number(Math.round(value+'e'+decimals)+'e-'+decimals); //HALF_UP
              return ((value+'e'+decimals)%0.5 === 0) ? Number(Math.floor(value+'e'+decimals)+'e-'+decimals) : Number(Math.round(value+'e'+decimals)+'e-'+decimals); //HALF_DOWN
@@ -62,10 +69,35 @@ define(['multiacademico/multiacademico'], function(module){
              return (letra);
          }
                     
-        
+        function retornacualidad(cantidad){
+
+             var letra="";
+             if (cantidad  < 4 ){
+                 letra="No alcanza los aprendizajes requeridos";
+             }
+
+             if ((cantidad >= 4 )&&(cantidad < 7 )){
+               letra="Esta proximo a alcanzar los aprendizajes requeridos";
+             }
+
+             if ((cantidad >= 7 )&&(cantidad < 9)){
+                  letra="Alcanza los aprendizajes requeridos";
+             }
+
+
+             if ((cantidad >= 9 )&&(cantidad < 10)){
+                 letra="Domina los aprendizajes requeridos";
+             }
+
+             if (cantidad == 10 ){
+                 letra="Domina los aprendizajes requeridos";
+             }
+             return (letra);
+         }
         return {
                     quimestres:quimestres, 
-                    parciales:parciales, 
+                    parciales:parciales,
+                    parcialesnotas:parcialesnotas,
                     getPromedioParcial:function (q,p,calificacion)
                           {
                            
@@ -110,6 +142,10 @@ define(['multiacademico/multiacademico'], function(module){
                    getNotaCualitativa:function(nota)
                    {
                        return retornasiglascualidad(nota);
+                   },
+                   getCualitativa:function(nota)
+                   {
+                       return retornacualidad(nota);
                    }
                };
             }

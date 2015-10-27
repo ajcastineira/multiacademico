@@ -1,0 +1,1 @@
+<iframe id="frame" src="http://static.infomaniak.ch/infomaniak/radio/html/ch1_player.html" width="340" height="90" scrolling="no" frameborder="0"></iframe>

@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Matriculas
@@ -195,6 +196,23 @@ class Matriculas
      * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
      */
     private $calificaciones;
+    
+    /**
+     *
+     * @var \Comportamiento
+     * @ORM\OneToOne(targetEntity="Comportamiento", mappedBy="comportamientonummatricula")
+     * @Serializer\Expose
+     * @Serializer\Groups({"detail"})
+     */
+    private $comportamiento;
+    /**
+     *
+     * @var \Asistencia
+     * @ORM\OneToOne(targetEntity="Asistencia", mappedBy="asistencianummatricula")
+     * @Serializer\Expose
+     
+     */
+    private $asistencia;
     
     public function indexCalificaciones()
     {
@@ -661,6 +679,13 @@ class Matriculas
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getCalificaciones() {
+
+        $iterator = $this->calificaciones->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getCalificacioncodmateria()->getPrioridad() < $b->getCalificacioncodmateria()->getPrioridad()) ? -1 : 1;
+        });
+        $this->calificaciones = new ArrayCollection(iterator_to_array($iterator,false));
+        
         return $this->calificaciones;
     }
     /**
@@ -689,8 +714,40 @@ class Matriculas
         return $this;
     }
 
-        
-    public function getCursoName()
+    /**
+     * 
+     * @return \Comportamiento
+     */    
+    public function getComportamiento() {
+        return $this->comportamiento;
+    }
+    /**
+     * 
+     * @return Asistencia
+     */
+    public function getAsistencia() {
+        return $this->asistencia;
+    }
+    /**
+     * 
+     * @param \Comportamiento $comportamiento
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setComportamiento(\Comportamiento $comportamiento) {
+        $this->comportamiento = $comportamiento;
+        return $this;
+    }
+    /**
+     * 
+     * @param \Asistencia $asistencia
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setAsistencia(\Asistencia $asistencia) {
+        $this->asistencia = $asistencia;
+        return $this;
+    }
+
+        public function getCursoName()
     {
         return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
     }

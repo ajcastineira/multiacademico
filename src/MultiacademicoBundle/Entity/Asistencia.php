@@ -143,7 +143,7 @@ class Asistencia
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Matriculas")
+     * @ORM\OneToOne(targetEntity="Matriculas", inversedBy="asistencia")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="asistencianummatricula", referencedColumnName="id")
      * })

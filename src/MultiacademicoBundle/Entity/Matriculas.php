@@ -199,7 +199,7 @@ class Matriculas
     
     /**
      *
-     * @var \Comportamiento
+     * @var \MultiacademicoBundle\Entity\Comportamiento
      * @ORM\OneToOne(targetEntity="Comportamiento", mappedBy="comportamientonummatricula")
      * @Serializer\Expose
      * @Serializer\Groups({"detail"})
@@ -207,7 +207,7 @@ class Matriculas
     private $comportamiento;
     /**
      *
-     * @var \Asistencia
+     * @var \MultiacademicoBundle\Entity\Asistencia
      * @ORM\OneToOne(targetEntity="Asistencia", mappedBy="asistencianummatricula")
      * @Serializer\Expose
      
@@ -730,19 +730,19 @@ class Matriculas
     }
     /**
      * 
-     * @param \Comportamiento $comportamiento
+     * @param \MultiacademicoBundle\Entity\Comportamiento $comportamiento
      * @return \MultiacademicoBundle\Entity\Matriculas
      */
-    public function setComportamiento(\Comportamiento $comportamiento) {
+    public function setComportamiento(\MultiacademicoBundle\Entity\Comportamiento $comportamiento) {
         $this->comportamiento = $comportamiento;
         return $this;
     }
     /**
      * 
-     * @param \Asistencia $asistencia
+     * @param \MultiacademicoBundle\Entity\Asistencia $asistencia
      * @return \MultiacademicoBundle\Entity\Matriculas
      */
-    public function setAsistencia(\Asistencia $asistencia) {
+    public function setAsistencia(\MultiacademicoBundle\Entity\Asistencia $asistencia) {
         $this->asistencia = $asistencia;
         return $this;
     }

@@ -139,30 +139,21 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html
             output: /views/multiacademico/malla/seleccionar-aula-malla-normal.html 
-        cuadrocalificacioneshtml:
+        seleccionaraulainformeshtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/cuadro-de-calificaciones.html
-            output: /views/multiacademico/malla/cuadro-de-calificaciones.html
+                -  %kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html
+            output: /views/multiacademico/informes/seleccionar-aula-informes.html
+        
         comportamientohtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/comportamiento.html
             output: /views/multiacademico/malla/comportamiento.html
-        quimestrehtml:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre.html
-            output: /views/multiacademico/malla/quimestre.html
-        quimestre2html:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre2.html
-            output: /views/multiacademico/malla/quimestre2.html
+        
         dosquimestrehtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
             output: /views/multiacademico/malla/dos-quimestre.html
-        perfilclic:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/perfil.html
-            output: /views/multiacademico/perfil.html
+
             
             
                 

@@ -425,4 +425,7 @@ class Distributivos
     {
         return $this->distributivocodcurso." ".$this->distributivoparalelo." ".$this->distributivocodespecializacion." ".$this->distributivoseccion;
     }
+    public function getOwner(){
+        return $this->distributivocoddocente->getUsuario();
+    }
 }

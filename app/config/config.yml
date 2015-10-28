@@ -63,6 +63,10 @@ assetic:
                 - %kernel.root_dir%/../web/app/styles/plugins.css
                 - %kernel.root_dir%/../web/app/styles/custom.css
             output: css/compiled/rlcpc.css
+        error404_css:
+            inputs:
+                - %kernel.root_dir%/../web/app/styles/pages/error-page.css
+            output: app/styles/pages/error-page.css
         theme_blue_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/themes/blue.theme.css
@@ -149,6 +153,10 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
             output: /views/multiacademico/malla/dos-quimestre.html
+        error404_html:
+            inputs:
+                - %kernel.root_dir%/../web/views/pages/page-error-404.html
+            output: views/pages/page-error-404.html
 
             
             

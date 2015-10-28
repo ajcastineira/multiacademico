@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Form\DistributivosType;
 
@@ -15,6 +16,7 @@ use MultiacademicoBundle\Form\DistributivosType;
  * Distributivos controller.
  *
  * @Route("/distributivos")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class DistributivosController extends Controller
 {

@@ -110,7 +110,7 @@ class Aula
      * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Distributivos>")
      */
     private $distributivos;
-
+    
     /**
      * Constructor
      */

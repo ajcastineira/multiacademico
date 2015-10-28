@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Estudiantes;
 use MultiacademicoBundle\Form\EstudiantesType;
 
@@ -15,6 +16,7 @@ use MultiacademicoBundle\Form\EstudiantesType;
  * Estudiantes controller.
  *
  * @Route("/estudiantes")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class EstudiantesController extends Controller
 {

@@ -14,6 +14,19 @@ define(['angular',
 
 
         $stateProvider
+            $stateProvider
+             .state ('app', {
+                        abstract:true,
+                        template:'<div data-ui-view="root" data-autoscroll="false" />',
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'auth/directives/loginInfo'//,
+                                //'modules/graphs/directives/inline/sparklineContainer',
+                                //'components/inbox/directives/unreadMessagesCount',
+                                //'components/chat/api/ChatApi',
+                                //'components/chat/directives/asideChatWidget'
+                            ])}
+                    })
             .state('app2', {
                 abstract: true,
                 views: {
@@ -32,7 +45,8 @@ define(['angular',
                     }
                 }
             });
-        //$urlRouterProvider.otherwise('/inicio');
+       // $urlRouterProvider.otherwise('/inicio');
+        //$urlRouterProvider.otherwise('/page-error-404');
 
     });
 

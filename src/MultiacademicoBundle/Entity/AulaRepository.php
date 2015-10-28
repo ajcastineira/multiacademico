@@ -23,6 +23,17 @@ class AulaRepository extends EntityRepository
             ->getResult();
     }
     
+    public function misAulasByUser($user)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT a'
+                    . ' FROM MultiacademicoBundle:Aula a JOIN a.tutor u '
+                    . ' where u.usuario= :usuario'
+                    //. ' ORDER BY n.notificaciontimestamp DESC'
+                    )
+            ->setParameter(":usuario", $user)
+            ->getResult();
+    }
    /*public function alumnosClub(Clubes $club)
     {
         $curso=$distributivo->getDistributivocodcurso();

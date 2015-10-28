@@ -1,0 +1,125 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+    <div class=" col-md-12">
+
+        <!-- Start inline form -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title"><i class="fa fa-file"></i> Docentes  Resumen</h3>
+                </div>
+                <div class="pull-right">
+                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body ">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Docentecedula</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Docentetrato</th>
+                <th>Docente</th>
+                <th>Docentedomicilio</th>
+                <th>Docenteemail</th>
+                <th>Docentetelefono</th>
+                <th>Docentecargo</th>
+                <th>Docenteestado</th>
+                <th>Username</th>
+                <th>Salt</th>
+                <th>Path</th>
+                <th>Theme</th>
+                <th>Signature</th>
+                <th>Signatureformat</th>
+                <th>Created</th>
+                <th>Access</th>
+                <th>Lastlogin</th>
+                <th>Lastactivity</th>
+                <th>Status</th>
+                <th>Timezone</th>
+                <th>Language</th>
+                <th>Picture</th>
+                <th>Init</th>
+                <th>Data</th>
+                <th>Mail</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('docentes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.docentecedula }}</td>
+                <td>{{ entity.login }}</td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.docentetrato }}</td>
+                <td>{{ entity.docente }}</td>
+                <td>{{ entity.docentedomicilio }}</td>
+                <td>{{ entity.docenteemail }}</td>
+                <td>{{ entity.docentetelefono }}</td>
+                <td>{{ entity.docentecargo }}</td>
+                <td>{{ entity.docenteestado }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.salt }}</td>
+                <td>{{ entity.path }}</td>
+                <td>{{ entity.theme }}</td>
+                <td>{{ entity.signature }}</td>
+                <td>{{ entity.signatureFormat }}</td>
+                <td>{{ entity.created }}</td>
+                <td>{{ entity.access }}</td>
+                <td>{{ entity.lastlogin }}</td>
+                <td>{{ entity.lastactivity }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{{ entity.timezone }}</td>
+                <td>{{ entity.language }}</td>
+                <td>{{ entity.picture }}</td>
+                <td>{{ entity.init }}</td>
+                <td>{{ entity.data }}</td>
+                <td>{{ entity.mail }}</td>
+                <td>
+                <ul>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('docentes_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>                    
+                    
+                    
+                    
+                    
+                                                                                                            
+                                             
+                    <li>
+                        <a href="{{ path('docentes_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>    
+    </div>
+    <div class="row">    
+        <ul>
+        <li>
+            <a href="{{ path('docentes_new') }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+        </div>
+</div>    
+{% endblock %}

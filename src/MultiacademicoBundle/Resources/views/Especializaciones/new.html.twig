@@ -7,7 +7,7 @@
         <div class="panel rounded shadow">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h3 class="panel-title"><i class="fa fa-file"></i> Cursos Mostrar</h3>
+                    <h3 class="panel-title"><i class="fa fa-file"></i> Especializaciones Nuevo</h3>
                 </div>
                 <div class="pull-right">
                     <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
@@ -17,43 +17,19 @@
             </div><!-- /.panel-heading -->
             <div class="panel-body ">
 
-    <table class="table record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Cursoabreviatura</th>
-                <td>{{ entity.cursoabreviatura }}</td>
-            </tr>
-            <tr>
-                <th>Curso</th>
-                <td>{{ entity.curso }}</td>
-            </tr>
-            <tr>
-                <th>Cursoestado</th>
-                <td>{{ entity.cursoestado }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ form(form) }}
             </div>
         </div>
-        </div>
+       </div>     
+    </div>
     </div>
     <div class="row">
         <ul class="record_actions">
     <li>
-        <a href="{{ path('cursos') }}">
+        <a href="{{ path('especializaciones') }}">
             Regresar a la lista
         </a>
     </li>
-    <li>
-        <a href="{{ path('cursos_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
 </ul>
     </div>
 </div>

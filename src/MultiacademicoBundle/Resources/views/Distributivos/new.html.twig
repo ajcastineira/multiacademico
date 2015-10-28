@@ -1,12 +1,27 @@
 {% block content -%}
 <div id="content">
     <div class="row">
-        <big-breadcrumbs items="['Distributivos', 'Nuevo']" icon="file"
-                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
-            </div>
-    <div class="row">
+    <div class=" col-md-12">
+
+        <!-- Start inline form -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title"><i class="fa fa-file"></i> Distributivos Nuevo</h3>
+                </div>
+                <div class="pull-right">
+                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body ">
 
     {{ form(form) }}
+            </div>
+        </div>
+       </div>     
+    </div>
     </div>
     <div class="row">
         <ul class="record_actions">

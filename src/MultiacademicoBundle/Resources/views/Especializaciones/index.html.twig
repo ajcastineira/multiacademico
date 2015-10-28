@@ -7,7 +7,7 @@
         <div class="panel rounded shadow">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h3 class="panel-title"><i class="fa fa-file"></i> Cursos  Resumen</h3>
+                    <h3 class="panel-title"><i class="fa fa-file"></i> Especializaciones  Resumen</h3>
                 </div>
                 <div class="pull-right">
                     <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
@@ -21,19 +21,17 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Cursoabreviatura</th>
-                <th>Curso</th>
-                <th>Cursoestado</th>
+                <th>Especializacion</th>
+                <th>Especializacionestado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('cursos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.cursoabreviatura }}</td>
-                <td>{{ entity.curso }}</td>
-                <td>{{ entity.cursoestado }}</td>
+                <td><a href="{{ path('especializaciones_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.especializacion }}</td>
+                <td>{{ entity.especializacionestado }}</td>
                 <td>
                 <ul>                    
                     
@@ -43,7 +41,7 @@
                                                                                                             
                                              
                     <li>
-                        <a href="{{ path('cursos_show', { 'id': entity.id }) }}">mostrar</a>
+                        <a href="{{ path('especializaciones_show', { 'id': entity.id }) }}">mostrar</a>
                     </li>                    
                     
                     
@@ -52,7 +50,7 @@
                                                                                                             
                                              
                     <li>
-                        <a href="{{ path('cursos_edit', { 'id': entity.id }) }}">editar</a>
+                        <a href="{{ path('especializaciones_edit', { 'id': entity.id }) }}">editar</a>
                     </li>
                 </ul>
                 </td>
@@ -67,7 +65,7 @@
     <div class="row">    
         <ul>
         <li>
-            <a href="{{ path('cursos_new') }}">
+            <a href="{{ path('especializaciones_new') }}">
                 Crear nueva entrada
             </a>
         </li>

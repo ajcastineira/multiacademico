@@ -8,21 +8,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MultiacademicoBundle\Entity\Distributivos;
-use MultiacademicoBundle\Form\DistributivosType;
+use MultiacademicoBundle\Entity\Especializaciones;
+use MultiacademicoBundle\Form\EspecializacionesType;
 
 /**
- * Distributivos controller.
+ * Especializaciones controller.
  *
- * @Route("/distributivos")
+ * @Route("/especializaciones")
  */
-class DistributivosController extends Controller
+class EspecializacionesController extends Controller
 {
 
     /**
-     * Lists all Distributivos entities.
+     * Lists all Especializaciones entities.
      *
-     * @Route("", name="distributivos")
+     * @Route("", name="especializaciones")
      * @Method("GET")
      */
     public function indexAction()
@@ -31,51 +31,32 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Lists all Distributivos entities.
+     * Lists all Especializaciones entities.
      *
-     * @Route("/api", name="distributivos_api", options={"expose":true})
+     * @Route("/api", name="especializaciones_api", options={"expose":true})
      * @Method("GET")
-     * @Template("MultiacademicoBundle:Distributivos:index.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:index.html.twig")
      */
     public function indexApiAction()
     {
-        $distributivosDatatable = $this->get("multiacademico.distributivos");
-        $distributivosDatatable->buildDatatable();
-        
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MultiacademicoBundle:Especializaciones')->findAll();
+
         return array(
-           'datatable'=>$distributivosDatatable
+            'entities' => $entities,
         );
     }
-    
-     /**
-     * Get results distributivos entities.
-     *
-     * @Route("/results", name="distributivos_results")
-     *
-     * @return Response
-     */
-    
-    public function distributivosResultsAction()
-    {
-        /**
-         * @var \Sg\DatatablesBundle\Datatable\Data\DatatableData $datatable
-         */
-        $datatable = $this->get('multiacademico.distributivos');
-         $datatable->buildDatatable();
-         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
-
-        return $query->getResponse();
-    }
     /**
-     * Creates a new Distributivos entity.
+     * Creates a new Especializaciones entity.
      *
-     * @Route("/", name="distributivos_create", options={"expose":true})
+     * @Route("/", name="especializaciones_create", options={"expose":true})
      * @Method("POST")
-     * @Template("MultiacademicoBundle:Distributivos:new.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Distributivos();
+        $entity = new Especializaciones();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -84,7 +65,7 @@ class DistributivosController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            //return $this->redirect($this->generateUrl('distributivos_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('especializaciones_show', array('id' => $entity->getId())));
                 $response_redir=new JsonResponse();
                 $response_redir->setData(array('id'=>$entity->getId()));
                 $response_redir->setStatusCode(201);
@@ -98,16 +79,16 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Creates a form to create a Distributivos entity.
+     * Creates a form to create a Especializaciones entity.
      *
-     * @param Distributivos $entity The entity
+     * @param Especializaciones $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Distributivos $entity)
+    private function createCreateForm(Especializaciones $entity)
     {
-        $form = $this->createForm(new DistributivosType(), $entity, array(
-            //'action' => $this->generateUrl('distributivos_create'),
+        $form = $this->createForm(new EspecializacionesType(), $entity, array(
+            //'action' => $this->generateUrl('especializaciones_create'),
             'method' => 'POST',
         ));
 
@@ -117,9 +98,9 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Displays a form to create a new Distributivos entity.
+     * Displays a form to create a new Especializaciones entity.
      *
-     * @Route("/new", name="distributivos_new")
+     * @Route("/new", name="especializaciones_new")
      * @Method("GET")
      * @Template()
      */
@@ -129,15 +110,15 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Displays a form to create a new Distributivos entity.
+     * Displays a form to create a new Especializaciones entity.
      *
-     * @Route("/api/new", name="distributivos_api_new", options={"expose":true})
+     * @Route("/api/new", name="especializaciones_api_new", options={"expose":true})
      * @Method("GET")
-     * @Template("MultiacademicoBundle:Distributivos:new.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:new.html.twig")
      */
     public function newApiAction()
     {
-        $entity = new Distributivos();
+        $entity = new Especializaciones();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -147,9 +128,9 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Finds and displays a Distributivos entity.
+     * Finds and displays a Especializaciones entity.
      *
-     * @Route("/{id}", name="distributivos_show", requirements={"id":"\d+"}, options={"expose":true})
+     * @Route("/{id}", name="especializaciones_show", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
      */
     public function showAction($id)
@@ -158,20 +139,20 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Finds and displays a Distributivos entity.
+     * Finds and displays a Especializaciones entity.
      *
-     * @Route("/api/{id}", name="distributivos_api_show", options={"expose":true})
+     * @Route("/api/{id}", name="especializaciones_api_show", options={"expose":true})
      * @Method("GET")
-     * @Template("MultiacademicoBundle:Distributivos:show.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:show.html.twig")
      */
     public function showApiAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        $entity = $em->getRepository('MultiacademicoBundle:Especializaciones')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+            throw $this->createNotFoundException('Unable to find Especializaciones entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -183,9 +164,9 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Distributivos entity.
+     * Displays a form to edit an existing Especializaciones entity.
      *
-     * @Route("/{id}/edit", name="distributivos_edit", requirements={"id":"\d+"}, options={"expose":true})
+     * @Route("/{id}/edit", name="especializaciones_edit", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
      */
     public function editAction($id)
@@ -194,16 +175,16 @@ class DistributivosController extends Controller
     }
 
     /**
-    * Creates a form to edit a Distributivos entity.
+    * Creates a form to edit a Especializaciones entity.
     *
-    * @param Distributivos $entity The entity
+    * @param Especializaciones $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Distributivos $entity)
+    private function createEditForm(Especializaciones $entity)
     {
-        $form = $this->createForm(new DistributivosType(), $entity, array(
-            //'action' => $this->generateUrl('distributivos_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new EspecializacionesType(), $entity, array(
+            //'action' => $this->generateUrl('especializaciones_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -213,20 +194,20 @@ class DistributivosController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Distributivos entity.
+     * Displays a form to edit an existing Especializaciones entity.
      *
-     * @Route("/api/{id}/edit", name="distributivos_api_edit", requirements={"id":"\d+"}, options={"expose":true})
+     * @Route("/api/{id}/edit", name="especializaciones_api_edit", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
-     * @Template("MultiacademicoBundle:Distributivos:edit.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:edit.html.twig")
      */
     public function editApiAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        $entity = $em->getRepository('MultiacademicoBundle:Especializaciones')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+            throw $this->createNotFoundException('Unable to find Especializaciones entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -238,20 +219,20 @@ class DistributivosController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }    /**
-     * Edits an existing Distributivos entity.
+     * Edits an existing Especializaciones entity.
      *
-     * @Route("/{id}", name="distributivos_update", options={"expose":true})
+     * @Route("/{id}", name="especializaciones_update", options={"expose":true})
      * @Method("PUT")
-     * @Template("MultiacademicoBundle:Distributivos:edit.html.twig")
+     * @Template("MultiacademicoBundle:Especializaciones:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+        $entity = $em->getRepository('MultiacademicoBundle:Especializaciones')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Distributivos entity.');
+            throw $this->createNotFoundException('Unable to find Especializaciones entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -261,7 +242,7 @@ class DistributivosController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('distributivos_api_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('especializaciones_api_edit', array('id' => $id)));
         }
 
         return array(
@@ -271,9 +252,9 @@ class DistributivosController extends Controller
         );
     }
     /**
-     * Deletes a Distributivos entity.
+     * Deletes a Especializaciones entity.
      *
-     * @Route("/{id}", name="distributivos_delete")
+     * @Route("/{id}", name="especializaciones_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -283,21 +264,21 @@ class DistributivosController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
+            $entity = $em->getRepository('MultiacademicoBundle:Especializaciones')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Distributivos entity.');
+                throw $this->createNotFoundException('Unable to find Especializaciones entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('distributivos'));
+        return $this->redirect($this->generateUrl('especializaciones'));
     }
 
     /**
-     * Creates a form to delete a Distributivos entity by id.
+     * Creates a form to delete a Especializaciones entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -306,7 +287,7 @@ class DistributivosController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('distributivos_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('especializaciones_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Eliminar'))
             ->getForm()

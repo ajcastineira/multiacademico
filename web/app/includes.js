@@ -86,6 +86,7 @@ define([
      'multiacademico/materias/module',
      'multiacademico/periodo/module',
      'multiacademico/cursos/module',
+     'multiacademico/distributivos/module',
      'multiacademico/especializaciones/module',
      'multiacademico/proyectosescolares/module',
      'multiacademico/docentes/calificar/module',

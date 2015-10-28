@@ -6,6 +6,10 @@ services:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         tags:
             - { name: sg.datatable.view }
+    multiacademico.distributivos:
+        class: MultiacademicoBundle\Datatables\DistributivosDatatable
+        tags:
+            - { name: sg.datatable.view }        
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:

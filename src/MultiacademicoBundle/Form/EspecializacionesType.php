@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DistributivosType extends AbstractType
+class EspecializacionesType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,18 +15,8 @@ class DistributivosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('distributivoparalelo')
-            ->add('distributivoseccion')
-            ->add('distributivohora')
-            ->add('distributivofecha')
-            ->add('distributivoestado')
-            ->add('distributivogrado')
-            ->add('distributivocodperiodo')
-            ->add('distributivocoddocente')
-            ->add('distributivocodmateria')
-            ->add('distributivocodcurso')
-            ->add('distributivocodespecializacion')
-            //->add('aula')
+            ->add('especializacion')
+            ->add('especializacionestado')
         ;
     }
     
@@ -36,7 +26,7 @@ class DistributivosType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MultiacademicoBundle\Entity\Distributivos',
+            'data_class' => 'MultiacademicoBundle\Entity\Especializaciones',
             'attr' => array('ng-submit'=>"processForm(\$event,'".$this->getName()."')")
         ));
     }
@@ -46,6 +36,6 @@ class DistributivosType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_distributivos';
+        return 'multiacademicobundle_especializaciones';
     }
 }

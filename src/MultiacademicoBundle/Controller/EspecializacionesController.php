@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Especializaciones;
 use MultiacademicoBundle\Form\EspecializacionesType;
 
@@ -15,6 +16,7 @@ use MultiacademicoBundle\Form\EspecializacionesType;
  * Especializaciones controller.
  *
  * @Route("/especializaciones")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class EspecializacionesController extends Controller
 {

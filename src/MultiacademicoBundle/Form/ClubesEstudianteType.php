@@ -26,7 +26,10 @@ class ClubesEstudianteType extends AbstractType
             
            // ->add('codclub')
             ->add('clubescodestudiante',null,array('attr'=>array(
-                                                                'class'=>'chosen-select ','data-chosen-select'=>null)
+                                                                'class'=>'chosen-select ',
+                                                                'data-chosen-select'=>null,
+                                                                'data-placeholder'=>'Buscar Estudiante...'),
+                                                    'placeholder'=>''
                                                     ))
             //->add('notaQ'.$this->q.'P1',new LetraType())
             //->add('notaQ'.$this->q.'P2',new LetraType())

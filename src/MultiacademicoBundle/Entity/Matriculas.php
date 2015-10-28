@@ -128,9 +128,9 @@ class Matriculas
     private $matriculausuario;
 
     /**
-     * @var \Estudiantes
+     * @var \MultiacademicoBundle\Entity\Estudiantes
      *
-     * @ORM\ManyToOne(targetEntity="Estudiantes")
+     * @ORM\ManyToOne(targetEntity="Estudiantes", inversedBy="matriculas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id",nullable=false)
      * })

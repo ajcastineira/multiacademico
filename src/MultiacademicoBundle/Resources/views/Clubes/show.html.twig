@@ -13,20 +13,42 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Club</th>
+                <th>Proyecto Escolar</th>
                 <td>{{ entity.club }}</td>
             </tr>
             <tr>
-                <th>Clubabreviatura</th>
+                <th>Proyecto Escolar Abreviatura</th>
                 <td>{{ entity.clubabreviatura }}</td>
             </tr>
             <tr>
-                <th>Clubestado</th>
+                <th>Docente</th>
+                <td>{{ entity.clubcoddocente }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
                 <td>{{ entity.clubestado }}</td>
             </tr>
             <tr>
-                <th>Campoaccion</th>
+                <th>Campo de Accion</th>
                 <td>{{ entity.campoaccion }}</td>
+            </tr>
+            <tr>
+                <th>Estudiantes Registrados</th>
+                <td>
+                    <table class="table">
+                    <tr>    
+                       <th>Estudiante</th>
+                       <th>Curso</th>
+                    </tr>    
+                    {% for estudiante in entity.getRegistrados() %}
+                        <tr>    
+                        <td>{{estudiante.clubescodestudiante}}</td>
+                       <td>{{estudiante.getClubescodestudiante().getMatriculaVigente().getCursoName()}}</td>
+                       </tr>
+                    {%endfor%}  
+                    </table>
+                </td>
+                
             </tr>
         </tbody>
     </table>

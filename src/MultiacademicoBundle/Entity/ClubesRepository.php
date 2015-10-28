@@ -23,6 +23,33 @@ class ClubesRepository extends EntityRepository
             ->getResult();
     }
     
+    public function misClubesByUser($user)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c'
+                    . ' FROM MultiacademicoBundle:Clubes c join c.clubcoddocente d'
+                    . ' where d.usuario=:usuario'
+                    //. ' ORDER BY n.notificaciontimestamp DESC'
+                    )
+            ->setParameter(":usuario", $user)
+            ->getResult();
+    }
+    
+    public function mostrarClub($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c, l , e, m '
+                    . ' FROM MultiacademicoBundle:Clubes c '
+                    . ' join c.registrados l '
+                    . ' join l.clubescodestudiante e '
+                    . ' join e.matriculas m '
+                    . ' where c=:club'
+                    //. ' ORDER BY n.notificaciontimestamp DESC'
+                    )
+            ->setParameter(":club", $id)
+            ->getOneOrNullResult();
+    }
+    
    /*public function alumnosClub(Clubes $club)
     {
         $curso=$distributivo->getDistributivocodcurso();

@@ -22,7 +22,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 /**
  * Reportes controller.
  *  @Rest\RouteResource("Aula")
- * @Security("has_role('ROLE_DOCENTE','ROLE_ADMIN')")
+ * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_ADMIN')")
  */
 class AulasController extends FOSRestController
 {

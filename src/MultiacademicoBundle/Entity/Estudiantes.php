@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Estudiantes
@@ -418,14 +419,20 @@ class Estudiantes
      * @ORM\Column(name="mail", type="string", length=255, nullable=false)
      */
     private $mail;
-
-
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="\MultiacademicoBundle\Entity\Matriculas", mappedBy="matriculacodestudiante")
+     */
+    private $matriculas;
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->codclub = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->codclub = new ArrayCollection();
+        $this->matriculas = new ArrayCollection();
     }
 
 
@@ -1783,6 +1790,37 @@ class Estudiantes
         return $this->mail;
     }
     
+    /**
+     * 
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getMatriculas() {
+        
+        return $this->matriculas;
+    }
+    
+    /**
+     * 
+     * @param \Doctrine\Common\Collections\ArrayCollection $matriculas
+     * @return \MultiacademicoBundle\Entity\Estudiantes
+     */
+    public function setMatriculas(\Doctrine\Common\Collections\ArrayCollection $matriculas) {
+        $this->matriculas = $matriculas;
+        return $this;
+    }
+    
+        /**
+     * 
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function getMatriculaVigente() {
+        $matriculas=$this->matriculas->toArray();
+        if (isset($matriculas[0]))
+        {return $matriculas[0];}
+            else
+            {return null;}
+    }
+
     public function __toString() {
         return $this->estudiante;
     }

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Clubes;
 use MultiacademicoBundle\Form\ClubesType;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,6 +26,7 @@ class ClubesController extends Controller
      *
      * @Route("", name="proyectosescolares")
      * @Method("GET")
+     * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_SECRETARIA') or has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
@@ -37,13 +39,20 @@ class ClubesController extends Controller
      * @Route("/api", name="proyectosescolares_api", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Clubes:index.html.twig")
+     * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_SECRETARIA') or has_role('ROLE_ADMIN')")
      */
     public function indexApiAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        //var_dump($user);
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        {
         $entities = $em->getRepository('MultiacademicoBundle:Clubes')->findAll();
-
+        }else
+        {
+        $entities = $em->getRepository('MultiacademicoBundle:Clubes')->MisClubesByUser($user);    
+        }    
         return array(
             'entities' => $entities,
         );
@@ -133,10 +142,11 @@ class ClubesController extends Controller
      *
      * @Route("/{id}", name="proyectosescolares_show", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
+     * @Security("(is_granted('PROYECTO_VIEW',id) and has_role('ROLE_DOCENTE'))or has_role('ROLE_ADMIN')")
      */
-    public function showAction($id)
+    public function showAction(Clubes $id)
     {
-       return $this->render('::baseangular.html.twig');
+        return $this->render('::baseangular.html.twig');
     }
 
     /**
@@ -145,15 +155,19 @@ class ClubesController extends Controller
      * @Route("/api/{id}", name="proyectosescolares_api_show", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Clubes:show.html.twig")
+     * @Security("(is_granted('PROYECTO_VIEW',id) and has_role('ROLE_DOCENTE'))or has_role('ROLE_ADMIN')")
      */
-    public function showApiAction($id)
+    public function showApiAction(Clubes $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MultiacademicoBundle:Clubes')->find($id);
-
+        $entity = $em->getRepository('MultiacademicoBundle:Clubes')->mostrarClub($id);
+        
         if (!$entity) {
+            $entity = $em->getRepository('MultiacademicoBundle:Clubes')->find($id);
+            if (!$entity){
             throw $this->createNotFoundException('Unable to find Clubes entity.');
+            }
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -169,8 +183,9 @@ class ClubesController extends Controller
      *
      * @Route("/{id}/edit", name="proyectosescolares_edit", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
+     * @Security("(is_granted('PROYECTO_EDIT',id) and has_role('ROLE_DOCENTE'))or has_role('ROLE_ADMIN')")
      */
-    public function editAction($id)
+    public function editAction(Clubes $id)
     {
        return $this->render('::baseangular.html.twig');
     }
@@ -200,8 +215,9 @@ class ClubesController extends Controller
      * @Route("/api/{id}/edit", name="proyectosescolares_api_edit", requirements={"id":"\d+"}, options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Clubes:edit.html.twig")
+     * @Security("(is_granted('PROYECTO_EDIT',id) and has_role('ROLE_DOCENTE'))or has_role('ROLE_ADMIN')")
      */
-    public function editApiAction($id)
+    public function editApiAction(Clubes $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -225,6 +241,7 @@ class ClubesController extends Controller
      * @Route("/{id}", name="proyectosescolares_update", options={"expose":true})
      * @Method("PUT")
      * @Template("MultiacademicoBundle:Clubes:edit.html.twig")
+     * @Security("has_role('ROLE_DOCENTE')or has_role('ROLE_ADMIN')")
      */
     public function updateAction(Request $request, $id)
     {
@@ -235,7 +252,10 @@ class ClubesController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Clubes entity.');
         }
-        
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        {
+        $this->denyAccessUnlessGranted('PROYECTO_EDIT', $entity, 'Usted solo puede editar los alumnos de su propio club!');
+        }
         $originalRegistrados = new ArrayCollection();
 
         // Create an ArrayCollection of the current Tag objects in the database
@@ -280,6 +300,7 @@ class ClubesController extends Controller
      *
      * @Route("/{id}", name="proyectosescolares_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, $id)
     {

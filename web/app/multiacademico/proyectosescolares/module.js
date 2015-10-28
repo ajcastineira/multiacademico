@@ -100,7 +100,20 @@ define(['angular',
                             deps: $couchPotatoProvider.resolveDependencies([
                                 'modules/forms/directives/input/smartSelect2',
                                 'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
+                            ]),
+                            deps2: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                                    var pluginPath   = settings.pluginPath  ; // Create variable JS path
+                                    return $ocLazyLoad.load( // You can lazy load files for an existing module
+                                    [
+                                        {
+                                            insertBefore: '#load_css_before',
+                                            files: [
+                                                pluginPath+'/chosen/chosen.min.css'
+                                            ]
+                                        }
+                                    ]
+                                    )}]
                         }
                     }
                 }

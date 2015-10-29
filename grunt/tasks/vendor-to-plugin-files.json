@@ -54,6 +54,9 @@
   "/jquery-cookie/jquery.cookie.js",
   "/jquery-nicescroll/jquery.nicescroll.js",
   "/jquery.gritter/js/jquery.gritter.min.js",
+  "/jquery-autosize/dist/autosize.min.js",
+  
+  
   "/chosen/chosen.jquery.min.js",
   
   "/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
@@ -79,5 +82,14 @@
   "/angular-loading-bar/build/loading-bar.min.js",
   "/angular-loading-bar/build/loading-bar.css",
   "/skycons-html5/skycons.js",
-  "/bootbox/bootbox.js"
+  "/bootbox/bootbox.js",
+  
+  "/angular-mocks/angular-mocks.js",
+  "/bootstrap-tagsinput/dist/bootstrap-tagsinput-angular.min.js",
+  "/bootstrap-tagsinput/dist/bootstrap-tagsinput.css",
+  "/jasny-bootstrap-fileinput/js/jasny-bootstrap.fileinput.min.js",
+  "/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css",
+  "/holderjs/holder.js",
+  "/bootstrap-maxlength/bootstrap-maxlength.min.js"
+  
 ]

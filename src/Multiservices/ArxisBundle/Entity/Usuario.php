@@ -602,7 +602,9 @@ class Usuario extends BaseUser
     }
     
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="6000000",
+                   mimeTypes = {"image/*"},
+                   mimeTypesMessage = "Por favor suba una imagen valida")
      */
     private $file;
 

@@ -67,6 +67,22 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/pages/error-page.css
             output: app/styles/pages/error-page.css
+        xeditable_css:
+            inputs:
+                - %kernel.root_dir%/../web/vendor/angular-xeditable/dist/css/xeditable.css
+            output: vendor/angular-xeditable/dist/css/xeditable.css  
+        bootstrapinputcss:
+            inputs:
+            - %kernel.root_dir%/../web/plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
+            output: plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
+        jasny-bootstrapcss:
+            inputs:
+            - %kernel.root_dir%/../web/plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
+            output: plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
+        chosen120css:
+            inputs:
+            - %kernel.root_dir%/../web/vendor/chosen_v1.2.0/chosen.min.css
+            output: vendor/chosen_v1.2.0/chosen.min.css
         theme_blue_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/themes/blue.theme.css

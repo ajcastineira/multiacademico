@@ -13,11 +13,12 @@ define(['angular',
     module.config(function ($stateProvider, $couchPotatoProvider, $urlRouterProvider) {
 
 
-        $stateProvider
-            $stateProvider
+         $stateProvider
              .state ('app', {
                         abstract:true,
-                        template:'<div data-ui-view="root" data-autoscroll="false" />',
+                        template:'<div data-smart-router-animation-wrap="content content@app" data-wrap-for="#content">'+
+                                        '<div data-ui-view="content" data-autoscroll="false"></div>'+
+                                  '</div>',
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                 'auth/directives/loginInfo'//,
@@ -27,12 +28,12 @@ define(['angular',
                                 //'components/chat/directives/asideChatWidget'
                             ])}
                     })
-            .state('app2', {
-                abstract: true,
-                views: {
-                    root: {
+            //.state('app2', {
+               // abstract: true,
+                //views: {
+                   // root: {
                         //templateUrl: Routing.generate('layout',{_format:'html'}),
-                        template: "<b>Nothing</b>"//,
+                       // template: "<b>Nothing</b>"//,
                         /*resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                // 'auth/directives/loginInfo',
@@ -42,9 +43,9 @@ define(['angular',
                                // 'components/chat/directives/asideChatWidget'
                             ])
                         }*/
-                    }
-                }
-            });
+               //     }
+              //  }
+          //  });*/
        // $urlRouterProvider.otherwise('/inicio');
         //$urlRouterProvider.otherwise('/page-error-404');
 

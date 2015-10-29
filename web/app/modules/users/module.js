@@ -1,15 +1,18 @@
 define(['angular',
     'angular-couch-potato',
-    'angular-ui-router'], function (ng, couchPotato) {
+    'angular-ui-router',
+    'angular-x-editable',
+    'angular-mocks','bootstrap-taginput','jasny-bootstrap-fileinput','holderjs','jquery-autosize'],
+function (ng, couchPotato) {
 
     "use strict";
 
-    var module = ng.module('app.users', ['ui.router']);
+    var module = ng.module('app.users', ['ui.router','xeditable']);
 
     couchPotato.configureApp(module);
 
     module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
-        $urlRouterProvider.when('/arxis/user/', '/arxis/user');
+       // $urlRouterProvider.when('/arxis/user/', '/arxis/user');
         var rutas={create:'secured_user_create',
                     new:'secured_user_api_new',
                     edit:'secured_user_api_edit',
@@ -20,8 +23,7 @@ define(['angular',
                     state_updated:'app.users.profile'
                      };
         $stateProvider
-            
-            .state('app.me', {
+           .state('app.me', {
                 url: '/me',
                 data: {
                         pageTitle: 'Mi perfil',
@@ -34,24 +36,47 @@ define(['angular',
                             {title: 'Mi Perfil'}
                         ]
                     },
+                resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/users/controllers/MeCtrl'
+                            ])
+                        },  
                 views: {
-                    "root": {
+                    "content@app": {
+                       
                         templateUrl: function($stateParams){
                             return Routing.generate('secured_user_api_showme');
-                        }//,
+                        },
+                        controller: "MeCtrl",
                         /*controller: function ($scope, contact) {
                             $scope.contact = contact;
-                        },
+                        },*/
                         resolve: {
-                            contact: function($http){
-                                //return $http.get('api/project-list.json')
-                                return 0
-                            }
-                        }*/
+                            deps2: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                                var pluginPath = settings.pluginPath; // Create variable plugin path
+                                var pluginProdPath=settings.pluginProdPath;
+                                    return $ocLazyLoad.load( // You can lazy load files for an existing module
+                                        [
+                                            {
+                                                insertBefore: '#load_css_before',
+                                                files: [
+                                                    pluginPath+'/angular-xeditable/dist/css/xeditable.css',
+                                                    pluginProdPath+'/bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
+                                                    pluginProdPath+'/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css',
+                                                    pluginPath+'/chosen_v1.2.0/chosen.min.css'
+                                                ]
+                                            }
+
+                                        ]
+                                    );
+                                }]
+                          
+                        }
                     }
                 }
-            })    
-            .state('app.users', {
+            });
+           /* .state('app.users', {
                 abstract: true,
                 data: {
                     title: 'Usuarios'
@@ -145,11 +170,12 @@ define(['angular',
                         }
                     }
                 }
-            })
+            });*/
     });
 
-    module.run(function ($couchPotato) {
+    module.run(function ($couchPotato,editableOptions) {
         module.lazy = $couchPotato;
+        editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
     });
 
     return module;

@@ -28,6 +28,8 @@ var require = {
         'angular-google-maps': '../plugin/angular-google-maps/dist/angular-google-maps.min',
         
         'angular-loading-bar': '../plugin/angular-loading-bar/build/loading-bar.min',
+        
+        'angular-mocks': '../plugin/angular-mocks/angular-mocks',
 
        
 
@@ -50,6 +52,12 @@ var require = {
         'markdown': '../plugin/markdown/lib/markdown',
         'bootstrap-markdown': '../plugin/bootstrap-markdown/js/bootstrap-markdown',
         'bootstrap-session-timeout':'../plugin/bootstrap-session-timeout/dist/bootstrap-session-timeout.min',
+        
+        'bootstrap-taginput':'../plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput-angular.min',
+        'jasny-bootstrap-fileinput':'../plugin/jasny-bootstrap-fileinput/js/jasny-bootstrap.fileinput.min',
+        'holderjs':'../plugin/holderjs/holder',
+        'bootstrap-maxlength':'../plugin/bootstrap-maxlength/bootstrap-maxlength.min',
+
         'ckeditor': '../plugin/ckeditor/ckeditor',
 
         'moment': '../plugin/moment/min/moment-with-locales.min',
@@ -92,7 +100,8 @@ var require = {
         'jquery-cookie': '../plugin/jquery-cookie/jquery.cookie',
         'jquery-nicescroll': '../plugin/jquery-nicescroll/jquery.nicescroll',
         'jquery-gritter': '../plugin/jquery.gritter/js/jquery.gritter.min',
-
+        'jquery-autosize':'../plugin/jquery-autosize/dist/autosize.min',
+         
         'bootstrap-validator': '../plugin/bootstrapvalidator/dist/js/bootstrapValidator.min',
 
         'bootstrap-timepicker': '../plugin/bootstrap3-fontawesome-timepicker/js/bootstrap-timepicker.min',
@@ -105,7 +114,7 @@ var require = {
         'bootstrap-slider': '../plugin/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
         'bootstrap-tagsinput': '../plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.min',
         'x-editable': '../plugin/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min',
-        // 'angular-x-editable': '../plugin/angular-xeditable/dist/js/xeditable.min',
+        'angular-x-editable': '../plugin/angular-xeditable/dist/js/xeditable.min',
 
         'fuelux-wizard': '../plugin/fuelux/js/wizard',
 
@@ -154,9 +163,12 @@ var require = {
         'angular-ui-router': { deps: ['angular'] },
         'angular-google-maps': { deps: ['angular'] },
         'angular-loading-bar': { deps: ['angular'] },
+        'angular-mocks': { deps: ['angular'] },
         
         'angular-couch-potato': { deps: ['angular'] },
-
+        
+        'angular-x-editable': { deps: ['angular'] },
+        
         'socket.io': { deps: ['angular'] },
 
         'anim-in-out': { deps: ['angular-animate'] },
@@ -207,6 +219,7 @@ var require = {
         'jquery-cookie':{deps: ['jquery']},
         'jquery-nicescroll':{deps: ['jquery']},
         'jquery-gritter':{deps: ['jquery']},
+        'jquery-autosize':{deps: ['jquery']},
 
         'jcrop':{deps: ['jquery-color']},
 
@@ -222,7 +235,9 @@ var require = {
         'bootstrap-slider':{deps: ['jquery']},
         'bootstrap-tagsinput':{deps: ['jquery']},
         'x-editable':{deps: ['jquery']},
-
+        
+        'bootstrap-taginput':{deps: ['angular','bootstrap']},
+        'jasny-bootstrap-fileinput':{deps: ['bootstrap']},
         'fuelux-wizard':{deps: ['jquery']},
         'bootstrap':{deps: ['jquery']},
 

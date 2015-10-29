@@ -17,6 +17,7 @@ define([
             settings = {
                 baseURL                 : baseURL,
                 pluginPath              : 'vendor',
+                pluginProdPath          : 'plugin',
                 pluginCommercialPath    : baseURL+'/assets/commercial/plugins',
                 globalImagePath         : 'img',
                 adminImagePath          : baseURL+'/assets/admin/img',

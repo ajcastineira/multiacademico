@@ -9,11 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use MultiacademicoBundle\Entity\Distributivos;
-use MultiacademicoBundle\Form\DistributivosType;
-use MultiacademicoBundle\Form\CalificarCursoType;
-use MultiacademicoBundle\Calificar\CursoACalificar;
-use MultiacademicoBundle\Libs\Parcial;
+
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -39,7 +35,7 @@ class AulasController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        //var_dump($user);
+        
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
         {
         $aulas=$em->getRepository('MultiacademicoBundle:Aula')->findAll();

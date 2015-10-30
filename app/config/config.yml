@@ -159,6 +159,11 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html
             output: /views/multiacademico/informes/seleccionar-aula-informes.html
+            
+        menucalificacionesedtudianteshtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/estudiantes/menu-calificaciones.html
+            output: /views/multiacademico/estudiantes/menu-calificaciones.html
         
         comportamientohtml:
             inputs:

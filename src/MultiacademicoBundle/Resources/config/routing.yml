@@ -13,4 +13,9 @@ reportes:
     options:
         expose: true
     prefix: api
-    
+miscalificaciones:
+    type: rest
+    resource: MultiacademicoBundle\Controller\MisCalificacionesController
+    options:
+        expose: true
+    prefix: api    

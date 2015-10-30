@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Matriculas
  *
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\MatriculasRepository")
  * @Serializer\ExclusionPolicy("all")
  */
 class Matriculas
@@ -746,7 +746,13 @@ class Matriculas
         $this->asistencia = $asistencia;
         return $this;
     }
-
+    /**
+     * 
+     
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("cursoname")
+     * @Serializer\Groups({"list","detail"})
+     */
         public function getCursoName()
     {
         return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;

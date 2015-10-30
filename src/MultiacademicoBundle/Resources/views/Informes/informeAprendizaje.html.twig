@@ -1,21 +1,4 @@
-<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
-<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
-<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
-<div id="imprimir" class="row form-group" style="text-align:center">
-           
-        <b>Quimestre Activo: {{'{{q}}'}} </b>
-       <select data-ng-model="q" data-ng-init="q=qop[q-1].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
-       </select> 
-
-
-            <b>Parcial Activo:{{'{{p}}'}} </b>
-                <select data-ng-model="p" data-ng-init="p=pop[p-1].id" data-ng-options="p.id as p.label for p in pop" data-ng-change="changeq()" >
-                </select>
-
-           <button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button>
-       </div>
-<div class="pagina" data-ng-repeat-start="estudiante in aula.matriculados">
-      {{include('MultiacademicoBundle:Informes:encabezado.html.twig')}}
+ {{include('MultiacademicoBundle:Informes:encabezado.html.twig')}}
      <div class="detalle">
          <p class="textodetalle">
               </p>
@@ -159,6 +142,3 @@
              </table>
          </center>
      </div>
-   </div>
-<div style="page-break-after: always"></div>
-<div data-ng-repeat-end style="height: 1.5cm;"></div>

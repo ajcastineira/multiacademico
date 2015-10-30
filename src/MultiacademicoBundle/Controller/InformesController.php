@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * Materias controller.
  *
  * @Route("")
- * @Security("has_role('ROLE_ADMIN')")
+ * 
  */
 class InformesController extends Controller
 {
@@ -39,8 +39,9 @@ class InformesController extends Controller
      * @Route("/api/informeaprendizaje", name="informe-aprendizaje-api", options={"expose":true})
      * @Method("GET")
      * @Template()
+     * @Security("has_role('ROLE_ADMIN')")
      */
-    public function informeAprendizajeAction()
+    public function informeAprendizajeCursoAction()
     {
        $em = $this->getDoctrine()->getManager();
         $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);

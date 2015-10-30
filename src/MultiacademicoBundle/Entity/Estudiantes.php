@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCol
  * Estudiantes
  *
  * @ORM\Table(name="estudiantes",  indexes={@ORM\Index(name="estudiante", columns={"estudiante"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\EstudiantesRepository")
  * @Serializer\ExclusionPolicy("all")
  */
 class Estudiantes
@@ -425,6 +425,17 @@ class Estudiantes
      * @ORM\OneToMany(targetEntity="\MultiacademicoBundle\Entity\Matriculas", mappedBy="matriculacodestudiante")
      */
     private $matriculas;
+    
+    /**
+     * @var \Multiservices\ArxisBundle\Entity\Usuario
+     *
+     *
+     * @ORM\OneToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codusuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
     
     /**
      * Constructor
@@ -1808,8 +1819,23 @@ class Estudiantes
         $this->matriculas = $matriculas;
         return $this;
     }
-    
-        /**
+    /**
+     * 
+     * @return \Multiservices\ArxisBundle\Entity\Usuario
+     */
+    public function getUsuario() {
+        return $this->usuario;
+    }
+    /**
+     * 
+     * @param \Multiservices\ArxisBundle\Entity\Usuario $usuario
+     * @return \MultiacademicoBundle\Entity\Estudiantes
+     */
+    public function setUsuario(\Multiservices\ArxisBundle\Entity\Usuario $usuario) {
+        $this->usuario = $usuario;
+        return $this;
+    }
+    /**
      * 
      * @return \MultiacademicoBundle\Entity\Matriculas
      */
@@ -1820,7 +1846,7 @@ class Estudiantes
             else
             {return null;}
     }
-
+    
     public function __toString() {
         return $this->estudiante;
     }

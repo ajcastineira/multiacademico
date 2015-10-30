@@ -138,7 +138,19 @@ define(['multiacademico/multiacademico'], function(module){
                              if(typeof calificacion === 'undefined'){return('N/A');}
                               var r=this.getPromedioParciales80(q,calificacion)+this.getExamen20(q,calificacion);
                                 return redondear(r,2);
-                                },              
+                                },
+                    getPromedioTotalQuimestre:function (q,calificaciones)
+                          {
+                               var s=0,i=0;
+                               for (var index in calificaciones)
+                               {
+                                    i++;
+                                    var calificacion = calificaciones[index]; 
+                                    s+=this.getPromedioQuimestre(q,calificacion);
+                            };
+                            var r=(s/i);
+                                return redondear(r,2);
+                           },                          
                    getNotaCualitativa:function(nota)
                    {
                        return retornasiglascualidad(nota);

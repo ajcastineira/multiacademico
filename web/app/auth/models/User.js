@@ -2,7 +2,7 @@ define(['auth/module'], function (module) {
 
     'use strict';
 
-   return module.registerFactory('User', function ($http, $q) {
+   return module.registerFactory('User', function ($http, $q,$browser) {
         var dfd = $q.defer();
 
         var UserModel = {
@@ -12,7 +12,11 @@ define(['auth/module'], function (module) {
         };
          $http.get(Routing.generate('api_user',{'_format':'json'})).then(function(response){
              UserModel.username = response.data.username;
-             UserModel.picture= response.data.picture;
+              var base=$browser.baseHref();
+              
+              base=base.replace("app_dev.php/","");
+              
+             UserModel.picture= base+response.data.picture;
              UserModel.cargo= response.data.cargo;
              dfd.resolve(UserModel);
          });

@@ -1,18 +1,16 @@
 define(['modules/users/module'], function(module){
     "use strict";
 
-    return module.registerController('MeCtrl', function($scope, $log,$http,$browser){
+    return module.registerController('MeCtrl', function($scope,$log,$http,$browser,User){
 
-      
-            $scope.user = {
-                name: 'Rene Arias',
-                avatar:''
-            };
+            $scope.loading = false;
+            
+            $scope.user = User;
              $scope.processForm=function(e,formulario){
                  e.preventDefault();
                  //console.log($('.fileinput'));
                 // $('.fileinput').fileinput('reset')
-                 
+                 $scope.loading = true;
                  var ruta_avatar_update='secured_user_api_me_update_avatar';
                  var dataForm;
                   dataForm =new FormData(document.getElementsByName(formulario)[0]);
@@ -33,13 +31,13 @@ define(['modules/users/module'], function(module){
                                                       {
                                                           base=base.substr(0,base.length-12);
                                                       }
-                                                      $('#avatar').attr("src",base+avatarpath);
-                                                      $('.avatar img').attr("src",base+avatarpath);
-                                                      
+                                                    
+                                                      User.picture=base+avatarpath;
                                                       $('.fileinput').fileinput('clear');
                                                       //return response.data;  
                                                     }
-                                                    
+                                                     $scope.loading=false;
+                                                     
                                                   },function(response){
                                                       if(response.status===400)
                                                       {
@@ -52,50 +50,14 @@ define(['modules/users/module'], function(module){
                                                       else
                                                       {    
                                                       alert("Ocurrio Un Error Al subir la foto");
+                                                       
                                                         }
+                                                       $scope.loading=false;
                                                   });
-                  //$state.go($state.$current,{submited:true,formData:dataForm},{reload:true});
-                 //console.log($('#avatar'));
-                 
+
                  
              }
-       
-       /* $scope.username = 'superuser';
-        $scope.firstname = null;
-        $scope.sex = 'not selected';
-        $scope.group = "Admin";
-        $scope.vacation = "25.02.2013";
-        $scope.combodate = "15/05/1984";
-        $scope.event = null;
-        $scope.comments = 'awesome user!';
-        $scope.state2 = 'California';
-        $scope.fruits = 'peach<br/>apple';
-        
-
-        $scope.fruits_data = [
-            {value: 'banana', text: 'banana'},
-            {value: 'peach', text: 'peach'},
-            {value: 'apple', text: 'apple'},
-            {value: 'watermelon', text: 'watermelon'},
-            {value: 'orange', text: 'orange'}]
-        ;
-
-
-        $scope.genders =  [
-            {value: 'not selected', text: 'not selected'},
-            {value: 'Male', text: 'Male'},
-            {value: 'Female', text: 'Female'}
-        ];
-
-        $scope.groups =  [
-            {value: 'Guest', text: 'Guest'},
-            {value: 'Service', text: 'Service'},
-            {value: 'Customer', text: 'Customer'},
-            {value: 'Operator', text: 'Operator'},
-            {value: 'Support', text: 'Support'},
-            {value: 'Admin', text: 'Admin'}
-        ]; */
-
+   
     })
 
 });

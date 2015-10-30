@@ -2,7 +2,7 @@ define(['angular',
     'angular-couch-potato',
     'angular-ui-router',
     'angular-x-editable',
-    'angular-mocks','bootstrap-taginput','jasny-bootstrap-fileinput','holderjs','jquery-autosize'],
+    'angular-mocks','jasny-bootstrap-fileinput','jquery-autosize'],
 function (ng, couchPotato) {
 
     "use strict";
@@ -38,7 +38,8 @@ function (ng, couchPotato) {
                     },
                 resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/users/controllers/MeCtrl'
+                                'modules/users/controllers/MeCtrl',
+                                'modules/users/directives/loadingspiner'
                             ])
                         },  
                 views: {

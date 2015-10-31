@@ -583,7 +583,8 @@ class Usuario extends BaseUser
     public function getWebPath()
     {
         return null === $this->path
-            ? null
+            //? null
+            ? $this->getUploadDir().'/male.png'
             : $this->getUploadDir().'/'.$this->path;
     }
 

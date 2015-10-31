@@ -25,14 +25,14 @@ function ValorEnLetras($x, $Moneda )
     $Signo="";
 
     if(floatVal($x) < 0)
-     $Signo = $this->Neg . " ";
+    {$Signo = $this->Neg . " ";}
     else
-     $Signo = "";
+    {$Signo = "";}
 
     if(intval(number_format($x,2,'.','') )!=$x) //<- averiguar si tiene decimales
-      $s = number_format($x,2,'.','');
+    {$s = number_format($x,2,'.','');}
     else
-      $s = number_format($x,1,'.','');
+    {$s = number_format($x,1,'.','');}
 
     $Pto = strpos($s, $this->Dot);
 
@@ -48,7 +48,7 @@ function ValorEnLetras($x, $Moneda )
     }
 
     if($Ent == $this->Zero || $Ent == $this->Void)
-       $s = "Cero ";
+    {$s = "Cero ";}
     elseif( strlen($Ent) > 7)
     {
        $s = $this->SubValLetra(intval( substr($Ent, 0,  strlen($Ent) - 6))) .
@@ -60,7 +60,7 @@ function ValorEnLetras($x, $Moneda )
     }
 
     if (substr($s,-9, 9) == "Millones " || substr($s,-7, 7) == "Millón ")
-       $s = $s . "de ";
+    {$s = $s . "de ";}
 
     $s = $s . $Moneda;
 

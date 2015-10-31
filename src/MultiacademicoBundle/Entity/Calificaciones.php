@@ -2052,4 +2052,85 @@ class Calificaciones
                        
           return $promedio_q;
     }
+    public function getPromedioAnual()
+    {
+        $sumq=0;
+        for($q=1;$q<=2;$q++)
+        {
+            $promq=$this->getPromedioQuimestre($q);
+            $sumq+=$promq;
+        }
+        $promedio_a=$this->redondear_dos_decimal($sumq/2);
+        return $promedio_a;
+    }
+    
+    public function getPromedioFinal()
+    {
+        $quimestre1=$this->getPromedioQuimestre(1);
+        $quimestre2=$this->getPromedioQuimestre(2);
+        
+        $promedio_quimestres=$this->getPromedioAnual();
+        $quimestre_mayor=0;
+        $quimestre_menor=0;
+        $quimestre_mejorado=0;
+        if ($quimestre1>$quimestre2)
+        {
+            $quimestre_mayor=$quimestre1;
+            $quimestre_menor=$quimestre2;
+        }
+        else
+        {
+            $quimestre_mayor=$quimestre2;
+            $quimestre_menor=$quimestre1;
+        }
+
+              if ($quimestre_menor<$this->mejoramiento)
+              {
+                $quimestre_mejorado=$this->mejoramiento;
+              }
+              else
+              {
+                $quimestre_mejorado=$quimestre_menor;
+              }
+
+              $promedio_mejorado=$this->redondear_dos_decimal(($quimestre_mayor+$quimestre_mejorado)/2);
+
+              if($promedio_quimestres>=7)
+              {
+              return $promedio_quimestres;
+              }
+              elseif($promedio_mejorado>=7)
+              {
+               return $promedio_mejorado;
+              }
+              elseif($promedio_mejorado>=4)
+              {
+                 if ($this->supletorio>=7)
+                  {return 7;}
+                 elseif ($this->remedial>=7)
+                  {return 7;}
+                 elseif ($this->gracia>=7)
+                  {return 7;}
+                 else
+                   {return $promedio_mejorado;}          
+
+               }
+
+
+              elseif($promedio_mejorado<4)
+              {
+                if ($this->remedial>=7)
+                   {return 7;}
+                   elseif ($this->gracia>=7)
+                  {return 7;}
+                  else
+                   {return $promedio_mejorado;}
+              }
+              else
+              {
+                return $promedio_mejorado;
+              }
+        
+    }
+    
 }

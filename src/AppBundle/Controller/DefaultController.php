@@ -54,10 +54,12 @@ class DefaultController extends Controller
         $application = new Application($kernel);
         $application->setAutoExit(false);
         $content="";
+        $r=new \Multiservices\ArxisBundle\Entity\Usuario();
         foreach ($matriculas as $matricula) {
             $user=$matricula->getId();
             $pass=$user;
-            if($matricula->getMatriculacodestudiante()->getUsuario()->getPassword()=="")
+            $userest=$matricula->getMatriculacodestudiante()->getUsuario();
+            if (isset($userest)&&($userest->getPassword()==""))
             {
                 $input = new ArrayInput(array(
                 'command' => 'fos:user:change-password',

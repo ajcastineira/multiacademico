@@ -57,13 +57,14 @@ class DefaultController extends Controller
         $c=0;
          $output = new BufferedOutput();
         foreach ($matriculas as $matricula) {
-            $user=$matricula->getId();
-            $pass=$user;
+            
             $userest=$matricula->getMatriculacodestudiante()->getUsuario();
             
             echo $c;
             if (isset($userest)&&($userest->getPassword()==""))
             {
+                $user=$matricula->getId();
+                    $pass=$user;
                 $input = new ArrayInput(array(
                 'command' => 'fos:user:change-password',
                 'username' => $user,

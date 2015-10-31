@@ -49,16 +49,19 @@ class DefaultController extends Controller
     public function updateUsersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $matriculas = $em->getRepository('MultiacademicoBundle:Matriculas')->findAll();
+        $matriculas = $em->getRepository('MultiacademicoBundle:Matriculas')->matriculadosSinClave();
         $kernel = $this->get('kernel');
         $application = new Application($kernel);
         $application->setAutoExit(false);
         $content="";
-        $r=new \Multiservices\ArxisBundle\Entity\Usuario();
+        $c=0;
+         $output = new BufferedOutput();
         foreach ($matriculas as $matricula) {
             $user=$matricula->getId();
             $pass=$user;
             $userest=$matricula->getMatriculacodestudiante()->getUsuario();
+            
+            echo $c;
             if (isset($userest)&&($userest->getPassword()==""))
             {
                 $input = new ArrayInput(array(
@@ -66,14 +69,20 @@ class DefaultController extends Controller
                 'username' => $user,
                 'password' => $pass
                 ));
-                // You can use NullOutput() if you don't need the output
                 $output = new BufferedOutput();
+                // You can use NullOutput() if you don't need the output
+               
                 $application->run($input, $output);
-        
+                $content = $output->fetch();
+                echo $content;
                 // return the output, don't use if you used NullOutput()
-                $content .= $output->fetch();
+               
             }
+            if ($c>100){break;}
+            $c++;
+             
         }
+        
         // return new Response(""), if you used NullOutput()
         return new Response($content);
         

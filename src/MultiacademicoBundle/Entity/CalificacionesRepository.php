@@ -72,4 +72,60 @@ class CalificacionesRepository extends EntityRepository
             ->setParameter(":seccion", $seccion)
             ->getResult();
     } 
+    
+    public function MejoresEstudiantesGeneralParcial($q,$p)
+    {
+        $sump="";
+        for ($n=1;$n<=5;$n++)
+        {
+          $sump.='c.q'.$q.'P'.$p.'N'.$n;
+          $sump.='+';
+        }
+        $sump.='0';
+        
+        
+        return $this->getEntityManager()
+            ->createQuery('SELECT e.estudiante, avg(('.$sump.')/5) as promp, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
+                    . ' FROM MultiacademicoBundle:Calificaciones c '
+                    . ' join c.calificacionnummatricula m  '
+                    . ' join m.matriculacodestudiante e  '
+                    . ' join m.matriculacodcurso cur  '
+                    . ' join m.matriculacodespecializacion esp  '
+                    //. ' where c.q1P1N1 '
+                    . ' GROUP BY c.calificacionnummatricula '
+                    . ' ORDER BY promp  DESC'
+                    )
+            //->setParameter(":pass", "")
+           ->setMaxResults(5)
+           ->getResult();
+    }
+    
+    public function MejoresEstudiantesGeneralQuimestre($q)
+    {
+        $sump="";
+        for ($p=1;$p<=3;$p++)
+        {
+        for ($n=1;$n<=5;$n++)
+        {
+          $sump.='c.q'.$q.'P'.$p.'N'.$n;
+          $sump.='+';
+        }
+        }
+        $sump.='0';
+        $sumq='((('.$sump.')/15)*0.8)+(c.q'.$q.'Ex*0.2)';//+((c.q".$q."Ex)*0.2)";
+         return $this->getEntityManager()
+            ->createQuery('SELECT e.estudiante, avg('.$sumq.') as promq, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
+                    . ' FROM MultiacademicoBundle:Calificaciones c '
+                    . ' join c.calificacionnummatricula m  '
+                    . ' join m.matriculacodestudiante e  '
+                    . ' join m.matriculacodcurso cur  '
+                    . ' join m.matriculacodespecializacion esp  '
+                    //. ' where c.q1P1N1 '
+                    . ' GROUP BY c.calificacionnummatricula '
+                    . ' ORDER BY promq DESC'
+                    )
+            //->setParameter(":pass", "")
+           ->setMaxResults(5)
+           ->getResult();
+    }
 }

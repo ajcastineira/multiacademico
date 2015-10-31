@@ -26,5 +26,5 @@ class MatriculasRepository extends EntityRepository
            ->getResult();
     }
     
-    
+   
 }

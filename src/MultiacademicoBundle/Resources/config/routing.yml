@@ -18,4 +18,10 @@ miscalificaciones:
     resource: MultiacademicoBundle\Controller\MisCalificacionesController
     options:
         expose: true
-    prefix: api    
+    prefix: api 
+estadisticas:
+    type: rest
+    resource: MultiacademicoBundle\Controller\EstadisticasController
+    options:
+        expose: true
+    prefix: api       

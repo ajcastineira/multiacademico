@@ -25,13 +25,16 @@
         <link data-ng-href="{{settings.globalImagePath}}/ico/angularjs/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114">
         <link data-ng-href="{{settings.globalImagePath}}/ico/angularjs/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72">
         <link data-ng-href="{{settings.globalImagePath}}/ico/angularjs/apple-touch-icon-57x57-precomposed.png" rel="apple-touch-icon-precomposed" sizes="57x57">
-        <link data-ng-href="{{settings.globalImagePath}}/ico/angularjs/apple-touch-icon.png" rel="shortcut icon" sizes="16x16">
+        <!--<link data-ng-href="{{settings.globalImagePath}}/ico/angularjs/apple-touch-icon.png" rel="shortcut icon" sizes="16x16">-->
+        
         <!--/ END FAVICONS -->
 
         <!-- START @FONT STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet">
         <!--/ END FONT STYLES -->
         {%endverbatim%}
+        <link href="{{asset('favicon.ico')}}" rel="shortcut icon" type="image/x-icon" >
+	<link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
         <!-- START @GLOBAL MANDATORY STYLES -->
         <link data-ng-href="{{asset('vendor/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('plugin/font-awesome/css/font-awesome.css')}}" />

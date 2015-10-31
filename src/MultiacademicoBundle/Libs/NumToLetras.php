@@ -9,7 +9,7 @@ namespace MultiacademicoBundle\Libs;
  * @author Rene Arias <renearias@arxis.la>
  */
 
-class EnLetras
+class NumToLetras
 {
   var $Void = "";
   var $SP = " ";
@@ -237,4 +237,3 @@ function Parte($x)
 }
 
 }
-

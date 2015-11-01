@@ -31,7 +31,7 @@ define([
         // GRITTER NOTIFICATION
         // =========================================================================
         // display marketing alert only once
-           .controller('DashboardCtrl', function ($scope, $http,$browser, settings,ResumenInicio) {
+           .controller('DashboardCtrl',['$scope', '$http','$browser', 'settings','ResumenInicio', function ($scope, $http,$browser, settings,ResumenInicio) {
             if($('#wrapper').css('opacity')) {
                 if (!$.cookie('intro')) {
 
@@ -108,7 +108,7 @@ define([
                   redirAfter: 360000
                 });
 
-        })
+        }])
 
         // =========================================================================
         // VISITOR CHART & SERVER STATUS

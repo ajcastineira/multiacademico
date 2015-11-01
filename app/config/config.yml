@@ -95,10 +95,19 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/vendor/dropzone/dist/min/dropzone.min.css 
             output: vendor/dropzone/dist/min/dropzone.min.css  
+        griter_img:
+            inputs:
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/gritter.png
+            output: plugin/jquery.gritter/images/gritter.png 
+        griter_img1:
+            inputs:
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/ie-spacer.gif
+            output: plugin/jquery.gritter/images/ie-spacer.gif
         griter_css:
             inputs:
-                - %kernel.root_dir%/../web/vendor/jquery.gritter/css/jquery.gritter.css 
-            output: vendor/jquery.gritter/css/jquery.gritter.css 
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/css/jquery.gritter.css 
+            output: plugin/jquery.gritter/css/jquery.gritter.css     
+        
         chosen_css:
             inputs:
                 - %kernel.root_dir%/../web/vendor/chosen/chosen.min.css 

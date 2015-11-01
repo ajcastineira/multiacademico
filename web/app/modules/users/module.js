@@ -63,9 +63,9 @@ function (ng, couchPotato) {
                                                 insertBefore: '#load_css_before',
                                                 files: [
                                                     pluginPath+'/angular-xeditable/dist/css/xeditable.css',
-                                                    pluginProdPath+'/bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
+                                                 
                                                     pluginProdPath+'/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css',
-                                                    pluginPath+'/chosen_v1.2.0/chosen.min.css'
+                                               
                                                 ]
                                             }
 
@@ -76,12 +76,20 @@ function (ng, couchPotato) {
                         }
                     }
                 }
-            });
-           /* .state('app.users', {
+            })
+           .state('app.users', {
                 abstract: true,
                 data: {
-                    title: 'Usuarios'
-                }
+                        pageTitle: 'Usuarios',
+                        pageHeader: {
+                            icon: 'fa fa-user',
+                            title: 'Usuarios',
+                            subtitle: 'Usuarios'
+                        },
+                        breadcrumbs: [
+                            {title: 'Usuarios'}
+                        ]
+                    }
             })
            
             .state('app.users.list', {
@@ -102,24 +110,53 @@ function (ng, couchPotato) {
                 }
             })
             .state('app.users.profile', {
-                url: '/arxis/user/{id:[0-9]{1,11}}',
+                url: '/perfil/{id:[0-9]{1,11}}',
                 data: {
-                    title: 'Perfil Usuario'
-                },
+                        pageTitle: 'Perfil',
+                        pageHeader: {
+                            icon: 'fa fa-user',
+                            title: 'Perfil',
+                            subtitle: 'perfil'
+                        },
+                        breadcrumbs: [
+                            {title: 'Perfil'}
+                        ]
+                    },
+                resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/users/controllers/MeCtrl',
+                                'modules/users/directives/loadingspiner'
+                            ])
+                        },      
                 views: {
                     "content@app": {
                         templateUrl: function($stateParams){
                             return Routing.generate(rutas.show,{id:$stateParams.id});
                         },
-                        controller: function ($scope, contact) {
-                            $scope.contact = contact;
-                        },
+                        controller:"MeCtrl",
                         resolve: {
-                            contact: function($http){
-                                //return $http.get('api/project-list.json')
-                                return 0
-                            }
+                            deps2: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                                var pluginPath = settings.pluginPath; // Create variable plugin path
+                                var pluginProdPath=settings.pluginProdPath;
+                                    return $ocLazyLoad.load( // You can lazy load files for an existing module
+                                        [
+                                            {
+                                                insertBefore: '#load_css_before',
+                                                files: [
+                                                    pluginPath+'/angular-xeditable/dist/css/xeditable.css',
+                                                 
+                                                    pluginProdPath+'/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css',
+                                               
+                                                ]
+                                            }
+
+                                        ]
+                                    );
+                                }]
+                          
                         }
+                        
                     }
                 }
             })
@@ -171,7 +208,7 @@ function (ng, couchPotato) {
                         }
                     }
                 }
-            });*/
+            });
     });
 
     module.run(function ($couchPotato,editableOptions) {

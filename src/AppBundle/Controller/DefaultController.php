@@ -33,6 +33,7 @@ class DefaultController extends Controller
      * Finds and displays a Usuario entity.
      *
      * @Route("/me", name="miperfil", options={"expose":true})
+     * @Route("/perfil/{id}", name="perfil_user", options={"expose":true})
      * @Method("GET")
      */
     public function showMeAction()

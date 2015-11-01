@@ -2908,7 +2908,7 @@ body.page-footer-fixed #page-content .footer-content {
 }
 /* line 495, ../../app/styles/core/_functions.scss */
 .sidebar-light .nicescroll-rails div {
-  background-color: white !important;
+  background-color: white;
 }
 /* line 505, ../../app/styles/core/_functions.scss */
 .sidebar-light.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-circle .sidebar-menu > li > a > .icon:after {

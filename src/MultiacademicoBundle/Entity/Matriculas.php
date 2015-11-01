@@ -135,7 +135,7 @@ class Matriculas
      *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id",nullable=false)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","estadisticas"})
      * @Serializer\Type("MultiacademicoBundle\Entity\Estudiantes")
    
      */

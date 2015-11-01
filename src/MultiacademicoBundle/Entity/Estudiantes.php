@@ -434,6 +434,8 @@ class Estudiantes
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codusuario", referencedColumnName="id")
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"estadisticas"})
      */
     private $usuario;
     

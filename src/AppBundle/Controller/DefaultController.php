@@ -89,4 +89,14 @@ class DefaultController extends Controller
         return new Response($content);
         
     }
+    
+     /**
+     * @Route("/loginprueba", name="homepagelogin")
+     * @Method("GET")
+     * Cache(expires="+1 minute") 
+     **/
+    public function loginpruebaAction()
+    {
+        return $this->render('baselogin.html.twig');
+    }
 }

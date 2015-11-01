@@ -24,5 +24,6 @@
 /web/tmp
 /web/uploads/*
 !web/uploads/.gitkeep
+!web/uploads/documents/images/profile/male.png
 /web/vendor
 /web/nbproject

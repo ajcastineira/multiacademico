@@ -17,7 +17,9 @@
                 </div><!-- /.ribbon-wrapper -->
                 <ul class="inner-all list-unstyled">
                     <li class="text-center">
-                        <img class="img-circle img-bordered-success" src="{{mejorestudianteparcialfoto}}" alt="{{mejorestudianteparcial.estudiante}}">
+                        <a data-ui-sref="app.users.profile({id:mejorestudianteparcial.uid})"> 
+                            <img class="img-circle img-bordered-success" src="{{mejorestudianteparcialfoto}}" alt="{{mejorestudianteparcial.estudiante}}">
+                            </a>
                     </li>
                     <li class="text-center">
                         <h4 class="text-capitalize">{{mejorestudianteparcial.estudiante}}</h4>
@@ -29,7 +31,7 @@
                     <li><br/></li>
                     <li>
                         <div class="btn-group-vertical btn-block">
-                            <a href="" class="btn btn-default"><i class="fa fa-cog pull-right text-success"></i>Ver Perfil</a>
+                            <a data-ui-sref="app.users.profile({id:mejorestudianteparcial.uid})" class="btn btn-default">Ver Perfil</a>
                             <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
                         </div>
                     </li>
@@ -96,11 +98,12 @@
         <div class="panel rounded shadow">
             <div class="panel-body bg-facebook">
                 <div class="ribbon-wrapper">
-                    <a class="ribbon transparent"><i class="fa fa-star"></i> 1</a>
+                    <a class="ribbon bg-twitter transparent"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 1</a>
                 </div><!-- /.ribbon-wrapper -->
                 <ul class="inner-all list-unstyled">
                     <li class="text-center">
-                        <img class="img-circle img-bordered-success" src="{{mejorestudiantequimestrefoto}}" alt="{{mejorestudiantequimestre.estudiante}}">
+                        <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})"><img class="img-circle img-bordered-success" src="{{mejorestudiantequimestrefoto}}" alt="{{mejorestudiantequimestre.estudiante}}">
+                            </a>
                     </li>
                     <li class="text-center">
                         <h4 class="text-capitalize">{{mejorestudiantequimestre.estudiante}}</h4>
@@ -112,7 +115,7 @@
                     <li><br/></li>
                     <li>
                         <div class="btn-group-vertical btn-block">
-                            <a href="" class="btn btn-default"><i class="fa fa-cog pull-right text-success"></i>Ver Perfil</a>
+                            <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})" class="btn btn-default">Ver Perfil</a>
                             <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
                         </div>
                     </li>

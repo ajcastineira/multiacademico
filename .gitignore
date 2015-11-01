@@ -25,5 +25,6 @@
 /web/uploads/*
 !web/uploads/.gitkeep
 !web/uploads/documents/images/profile/male.png
+!web/uploads/documents/images/profile/.gitkeep
 /web/vendor
 /web/nbproject

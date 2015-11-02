@@ -4,6 +4,7 @@ namespace Multiservices\NotifyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Multiservices\NotifyBundle\TimerService\timeago;
 /**
  * Notificaciones
  *
@@ -62,6 +63,18 @@ class Notificaciones
           return $actionParams['icon'];
          
      }
+     
+     /**
+    
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("date")
+     */
+     public function getDate()
+     {
+          $timeago=new timeago($this->notificaciontimestamp);
+          return $timeago->tiempo;
+         
+     }
   
 
 
@@ -110,8 +123,21 @@ class Notificaciones
      * @var string
      *
      * @ORM\Column(name="notificacionestado", type="string", length=8, nullable=false)
+     * 
+     * @Serializer\Expose()
+     * @Serializer\SerializedName("read")
+     * @Serializer\Accessor(getter="isRead")
+     * @Serializer\Type("boolean")
+     
      */
     private $notificacionestado;
+    
+    public function isRead() {
+        if (intval($this->notificacionestado)==1)
+        {return true;}
+        else
+        {return false;}
+    }
 
     /**
      * @var \Multiservices\ArxisBundle\Entity\Usuario

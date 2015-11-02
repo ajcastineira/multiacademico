@@ -75,13 +75,10 @@ class NotificacionesController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $entities = $em->getRepository('NotifyBundle:Notificaciones')->inbox($user);
-        $tempo = $this->get('timeago');
+        
         $notifyBox=new NotifyBox();
         
-        foreach($entities as $notificacion)
-        {
-            $notificacion->timeago=New $tempo($notificacion->getNotificaciontimestamp());
-        }
+        
         $notifyBox->setData($entities);
         $serializer = $this->get('jms_serializer');
         $dataNotifyBox=$serializer->serialize($notifyBox, 'json');

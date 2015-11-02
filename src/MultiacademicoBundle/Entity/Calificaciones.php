@@ -515,7 +515,8 @@ class Calificaciones
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="calificacionnummatricula", referencedColumnName="id", nullable=false)
      * })
-     * @Serializer\Groups({"list","detail"})
+     * 
+     * @Serializer\Groups({"list","detail","estadisticas"})
      */
     private $calificacionnummatricula;
 

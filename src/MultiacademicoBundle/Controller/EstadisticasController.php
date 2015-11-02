@@ -28,7 +28,7 @@ class EstadisticasController extends FOSRestController
      * Lists all Distributivos entities.
      *
      * @Method("GET")
-     * @Rest\View(serializerGroups={"list"})
+     * @Rest\View(serializerGroups={"estadisticas"})
      */
     public function cgetAllAction(Request $request)
     {

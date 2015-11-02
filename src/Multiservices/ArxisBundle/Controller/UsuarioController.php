@@ -162,11 +162,15 @@ class UsuarioController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-
+        $avatarform = $this->createForm(new  UsuarioChangeAvatarType(),$entity, array(
+            //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'usuario'      => $entity,
+            'changeavatarform' => $avatarform->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

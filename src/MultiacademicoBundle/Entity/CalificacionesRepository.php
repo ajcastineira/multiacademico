@@ -85,10 +85,11 @@ class CalificacionesRepository extends EntityRepository
         
         
         return $this->getEntityManager()
-            ->createQuery('SELECT e.estudiante, avg(('.$sump.')/5) as promp, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
+            ->createQuery('SELECT u.id as uid, c as calificaciones, e.estudiante as estudiante, avg(('.$sump.')/5) as promp, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
                     . ' FROM MultiacademicoBundle:Calificaciones c '
                     . ' join c.calificacionnummatricula m  '
                     . ' join m.matriculacodestudiante e  '
+                    . ' join e.usuario u '
                     . ' join m.matriculacodcurso cur  '
                     . ' join m.matriculacodespecializacion esp  '
                     //. ' where c.q1P1N1 '
@@ -114,12 +115,13 @@ class CalificacionesRepository extends EntityRepository
         $sump.='0';
         $sumq='((('.$sump.')/15)*0.8)+(c.q'.$q.'Ex*0.2)';//+((c.q".$q."Ex)*0.2)";
          return $this->getEntityManager()
-            ->createQuery('SELECT e.estudiante, avg('.$sumq.') as promq, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
+            ->createQuery('SELECT u.id as uid, c as calificaciones, e.estudiante, avg('.$sumq.') as promq, cur.curso, m.matriculaparalelo as paralelo , esp.especializacion , m.matriculaseccion as seccion '
                     . ' FROM MultiacademicoBundle:Calificaciones c '
                     . ' join c.calificacionnummatricula m  '
                     . ' join m.matriculacodestudiante e  '
                     . ' join m.matriculacodcurso cur  '
                     . ' join m.matriculacodespecializacion esp  '
+                     . ' join e.usuario u '
                     //. ' where c.q1P1N1 '
                     . ' GROUP BY c.calificacionnummatricula '
                     . ' ORDER BY promq DESC'

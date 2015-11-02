@@ -14471,7 +14471,9 @@ input.spinner[type="color"].flat {
   width: 38px;
   height: 38px;
 }
-
+.media.unread{
+    background-color: lightgoldenrodyellow;
+}
 /* line 108, ../../app/styles/components/_media-image.scss */
 .media-details {
   padding: 20px;
@@ -17432,7 +17434,7 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
   margin-left: -9px;
   width: 18px;
   height: 18px;
-  background-image: url("../../../assets/global/img/loader/general/1.gif");
+  background-image: url("../../assets/global/img/loader/general/1.gif");
   background-repeat: no-repeat;
 }
 
@@ -20575,7 +20577,7 @@ body.page-footer-fixed #page-content .footer-content {
 }
 /* line 495, ../../app/styles/core/_functions.scss */
 .sidebar-light .nicescroll-rails div {
-  background-color: white !important;
+  background-color: white ;
 }
 /* line 505, ../../app/styles/core/_functions.scss */
 .sidebar-light.sidebar-box .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-rounded .sidebar-menu > li > a > .icon:after, .sidebar-light.sidebar-circle .sidebar-menu > li > a > .icon:after {

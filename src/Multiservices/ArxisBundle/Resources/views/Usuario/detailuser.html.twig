@@ -20,6 +20,7 @@
                                 <div class="inner-all">
                                     <ul class="list-unstyled">
                                         <li class="text-center">
+                                          {%if app.user.id== usuario.id%}
                                           {{form_start(changeavatarform)}}
                                                <div class="form-group">
                                                    <div class="loading-spiner-holder" data-loadingspiner >
@@ -43,8 +44,10 @@
                                                     </div>
                                                 </div>
                                                </div>
-                                            {{form_end(changeavatarform)}}            
-                                            
+                                            {{form_end(changeavatarform)}} 
+                                            {%else%}
+                                                <img class=" img-circle img-bordered-primary "   ng-src="{{asset(usuario.getWebPath())}}" alt='img' data-pin-nopin="true" />
+                                            {%endif %}
                                         </li>
                                          
                                         <li class="text-center">

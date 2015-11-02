@@ -33,6 +33,7 @@ class DefaultController extends Controller
      * Finds and displays a Usuario entity.
      *
      * @Route("/me", name="miperfil", options={"expose":true})
+     * @Route("/perfil/{id}", name="perfil_user", options={"expose":true})
      * @Method("GET")
      */
     public function showMeAction()
@@ -87,5 +88,15 @@ class DefaultController extends Controller
         // return new Response(""), if you used NullOutput()
         return new Response($content);
         
+    }
+    
+     /**
+     * @Route("/loginprueba", name="homepagelogin")
+     * @Method("GET")
+     * Cache(expires="+1 minute") 
+     **/
+    public function loginpruebaAction()
+    {
+        return $this->render('baselogin.html.twig');
     }
 }

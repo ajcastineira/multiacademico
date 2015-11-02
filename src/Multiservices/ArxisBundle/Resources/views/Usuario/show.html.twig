@@ -1,98 +1,13 @@
 {% block content -%}
 <div id="content">
-    <div class="row">
+    {#<div class="row">
         <big-breadcrumbs items="['Usuario', 'Mostrar']" icon="user"
                          class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
         <div smart-include="{{path('layout-sub-header')}}"></div>
-    </div>
+    </div>#}
     {{include('MultiservicesArxisBundle:Usuario:detailuser.html.twig')}}
-    <div class="row">
 
-    {#<table class="table record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Cargo</th>
-                <td>{{ entity.cargo }}</td>
-            </tr>
-            <tr>
-                <th>Path</th>
-                <td>{{ entity.path }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ entity.username }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ entity.password }}</td>
-            </tr>
-            <tr>
-                <th>Salt</th>
-                <td>{{ entity.salt }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ entity.mail }}</td>
-            </tr>
-            <tr>
-                <th>Theme</th>
-                <td>{{ entity.theme }}</td>
-            </tr>
-            <tr>
-                <th>Signature</th>
-                <td>{{ entity.signature }}</td>
-            </tr>
-            <tr>
-                <th>Signatureformat</th>
-                <td>{{ entity.signatureFormat }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ entity.created }}</td>
-            </tr>
-            <tr>
-                <th>Access</th>
-                <td>{{ entity.access }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ entity.login }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ entity.status }}</td>
-            </tr>
-            <tr>
-                <th>Timezone</th>
-                <td>{{ entity.timezone }}</td>
-            </tr>
-            <tr>
-                <th>Language</th>
-                <td>{{ entity.language }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ entity.picture }}</td>
-            </tr>
-            <tr>
-                <th>Init</th>
-                <td>{{ entity.init }}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{ entity.data }}</td>
-            </tr>
-        </tbody>
-    </table>#}
-    </div>
+    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
     <div class="row">
         <ul class="record_actions">
     <li>
@@ -101,7 +16,8 @@
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+    </ul>
     </div>
+    {%endif%}
 </div>
 {% endblock %}

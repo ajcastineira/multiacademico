@@ -54,7 +54,16 @@ class NotifyBox extends \AppBundle\Activity\ActivityBox
         $this->data = $data;
         return $this;
     }
-
+    public function getUnread() {
+        $u=0;
+        foreach ($this->data as $notificacion)
+        {
+            if (!$notificacion->isRead())
+            {$u++;}
+        }
+        return $u;
+    }
+    
 
     
 }

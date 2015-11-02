@@ -176,7 +176,7 @@ var module= ng.module('blankonDirective', [])
             restrict: 'A',
             link: function (scope, element) {
                 element.niceScroll({
-                    cursorwidth: '3px',
+                    cursorwidth: '9px',
                     cursorborder: '0px'
                 });
             }
@@ -551,7 +551,7 @@ var module= ng.module('blankonDirective', [])
                             heightSidebarRightChat  = $(window).outerHeight() - $('#sidebar-right .panel-heading').outerHeight() - $('#sidebar-chat .form-horizontal').outerHeight();
                         $('#sidebar-left .sidebar-menu').height(heightSidebarLeft)
                             .niceScroll({
-                                cursorwidth: '3px',
+                                cursorwidth: '9px',
                                 cursorborder: '0px',
                                 railalign: 'left'
                             });

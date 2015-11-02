@@ -315,8 +315,33 @@ define([
                 views:{
                 "":{
                     templateUrl: 'views/dashboard.html',
-                    //controller: 'DashboardCtrl',
+                    controller: 'DashboardCtrl',
+                    resolve: {
+                    deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                        var pluginProdPath = settings.pluginProdPath; // Create variable plugin path
+                            
+
+                        return $ocLazyLoad.load( // you can lazy load files for an existing module
+                            [
+                                {
+                                    insertBefore: '#load_css_before',
+                                    files: [
+                                       
+                                        pluginProdPath+'/jquery.gritter/css/jquery.gritter.css'
+                                    ]
+                                }
+                            ]);
+                        }],
+                    ResumenInicio:['$http',function($http){
+                                return $http.get(Routing.generate('get_estadisticas_all',{'_format':'json'}))
+                                .then(function(response){
+                       
+                                return response.data;
+                            });
+                        }]
                     }
+                 }
                 }
             })
 /*

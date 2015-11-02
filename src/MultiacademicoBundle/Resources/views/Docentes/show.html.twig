@@ -1,0 +1,156 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+    <div class=" col-md-12">
+
+        <!-- Start inline form -->
+        <div class="panel rounded shadow">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <h3 class="panel-title"><i class="fa fa-file"></i> Docentes Mostrar</h3>
+                </div>
+                <div class="pull-right">
+                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
+                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body ">
+
+    <table class="table record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Docentecedula</th>
+                <td>{{ entity.docentecedula }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ entity.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Docentetrato</th>
+                <td>{{ entity.docentetrato }}</td>
+            </tr>
+            <tr>
+                <th>Docente</th>
+                <td>{{ entity.docente }}</td>
+            </tr>
+            <tr>
+                <th>Docentedomicilio</th>
+                <td>{{ entity.docentedomicilio }}</td>
+            </tr>
+            <tr>
+                <th>Docenteemail</th>
+                <td>{{ entity.docenteemail }}</td>
+            </tr>
+            <tr>
+                <th>Docentetelefono</th>
+                <td>{{ entity.docentetelefono }}</td>
+            </tr>
+            <tr>
+                <th>Docentecargo</th>
+                <td>{{ entity.docentecargo }}</td>
+            </tr>
+            <tr>
+                <th>Docenteestado</th>
+                <td>{{ entity.docenteestado }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ entity.salt }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ entity.path }}</td>
+            </tr>
+            <tr>
+                <th>Theme</th>
+                <td>{{ entity.theme }}</td>
+            </tr>
+            <tr>
+                <th>Signature</th>
+                <td>{{ entity.signature }}</td>
+            </tr>
+            <tr>
+                <th>Signatureformat</th>
+                <td>{{ entity.signatureFormat }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ entity.created }}</td>
+            </tr>
+            <tr>
+                <th>Access</th>
+                <td>{{ entity.access }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{{ entity.lastlogin }}</td>
+            </tr>
+            <tr>
+                <th>Lastactivity</th>
+                <td>{{ entity.lastactivity }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>Timezone</th>
+                <td>{{ entity.timezone }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ entity.language }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ entity.picture }}</td>
+            </tr>
+            <tr>
+                <th>Init</th>
+                <td>{{ entity.init }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ entity.data }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ entity.mail }}</td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('docentes') }}">
+            Regresar a la lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('docentes_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+</div>
+{% endblock %}

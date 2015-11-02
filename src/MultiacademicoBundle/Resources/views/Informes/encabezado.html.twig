@@ -1,0 +1,23 @@
+        <div class="reporte-header" style="height: 120px;display: flex;">
+      
+            <div style="width: 30%;vertical-align: middle">
+            <img style="width: 80%;" src="{{asset(entidad.data.logoiz|default("bundles/multiacademico/img/ministerio.png"))}}"  />
+            </div>
+         
+             <div style="width:40%;display:table-cell;vertical-align: top;">
+                  <span class="entidad" style="font-size:15.0pt;font-family:Tahoma;color:#000000"><b>{{entidad.entidad}}</b></span><br>
+                  <span class="entidad" style="font-size:18.0pt;font-family:Tahoma;color:#000000"><b>{{entidad.titulo}}</b></span><br>
+             
+             <p style="margin:5"><span class="subt1"><b>Periodo Lectivo {{periodo.periodo}}</b></span><br>
+                <span class="subt1"><b>{{'{{encabezado.titulo()'}}}}</b></span>
+             </p>
+                 </div>
+                 <div style="width: 30%;vertical-align: middle">
+         <img style="width: 80%;" src="{{asset(entidad.data.logoder|default("escudo.png"))}}" />
+      </div>
+      
+       <br/>
+
+            
+
+     </div>

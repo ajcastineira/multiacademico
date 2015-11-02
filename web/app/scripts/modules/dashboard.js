@@ -31,19 +31,19 @@ define([
         // GRITTER NOTIFICATION
         // =========================================================================
         // display marketing alert only once
-           .controller('DashboardCtrl', function ($scope, $http, settings) {
+           .controller('DashboardCtrl',['$scope', '$http','$browser', 'settings','ResumenInicio', function ($scope, $http,$browser, settings,ResumenInicio) {
             if($('#wrapper').css('opacity')) {
                 if (!$.cookie('intro')) {
 
                     // Gritter notification intro 1
-                    setTimeout(function () {
+                    /*setTimeout(function () {
                         var uniqueId = $.gritter.add({
                             // (string | mandatory) the heading of the notification
-                            title: 'Welcome to Blankon',
+                            title: 'Bienvenido a Multiacademico',
                             // (string | mandatory) the text inside the notification
-                            text: 'Blankon is a theme fullpack admin template powered by Twitter bootstrap 3 front-end framework.',
+                            text: 'Multiacademico te notificará las nuevas actualizaciones, para un mejor soporte no dudes en contactarnos.',
                             // (string | optional) the image to display on the left
-                            image: settings.globalImagePath+'/icon/64/contact.png',
+                            //image: settings.globalImagePath+'/icon/64/contact.png',
                             // (bool | optional) if you want it to fade out on its own or just sit there
                             sticky: false,
                             // (int | optional) the time you want it to be alive for before fading out
@@ -57,56 +57,43 @@ define([
                                 speed: 'slow'
                             });
                         }, 12000);
-                    }, 5000);
+                    }, 5000);*/
 
                     // Gritter notification intro 2
                     setTimeout(function () {
                         $.gritter.add({
                             // (string | mandatory) the heading of the notification
-                            title: 'Playing sounds',
+                            title: 'Bienvenido a Multiacademico',
                             // (string | mandatory) the text inside the notification
-                            text: 'Blankon made for playing small sounds, will help you with this task. Please make your sound system is active',
+                            text: 'Multiacademico te notificará las nuevas actualizaciones, para un mejor soporte no dudes en contactarnos.',
                             // (string | optional) the image to display on the left
-                            image: settings.globalImagePath+'/icon/64/sound.png',
+                            //image: settings.globalImagePath+'/icon/64/sound.png',
                             // (bool | optional) if you want it to fade out on its own or just sit there
                             sticky: true,
                             // (int | optional) the time you want it to be alive for before fading out
                             time: ''
                         });
-                    }, 8000);
+                    }, 5000);
 
                     // Set cookie intro
                     $.cookie('intro',1, {expires: 1});
                 }
             }
-
-            // weather icons
-            var icons = new Skycons({'color': 'white'},{'resizeClear': true}),
-                list  = [
-                    'clear-day', 'clear-night', 'partly-cloudy-day',
-                    'partly-cloudy-night', 'cloudy', 'rain', 'sleet', 'snow', 'wind',
-                    'fog'
-                ],
-                i;
-
-            for(i = list.length; i--; )
-                icons.set(list[i], list[i]);
-
-            icons.play();
-
-            // Sample table
-            $scope.tables = [];
-            $http.get(settings.dataPath+'/views/tables/color.json') // Simple GET request example :
-                .success(function(data) {
-                    // this callback will be called asynchronously
-                    // when the response is available
-                    $scope.tables = data;
-                })
-                .error(function() { // parameters data, status, headers, config
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                });
-
+                
+               var base=$browser.baseHref();
+              
+                base=base.replace("app_dev.php/","");
+                $scope.resumen=ResumenInicio;
+                
+                $scope.mejorestudianteparcial=ResumenInicio.mejoresparcial[0];
+                $scope.mejorestudianteparcialfoto=base+$scope.mejorestudianteparcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                $scope.mejorestudiante2parcial=ResumenInicio.mejoresparcial[1];
+                $scope.mejorestudiante2parcialfoto=base+$scope.mejorestudiante2parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                $scope.mejorestudiante3parcial=ResumenInicio.mejoresparcial[2];
+                $scope.mejorestudiante3parcialfoto=base+$scope.mejorestudiante3parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                
+                $scope.mejorestudiantequimestre=ResumenInicio.mejoresquimestre[0];
+                $scope.mejorestudiantequimestrefoto=base+$scope.mejorestudiantequimestre.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
                 // Session timeout
                 $.sessionTimeout({
                   title: 'Su sesion esta a punto de expirar!',
@@ -114,19 +101,19 @@ define([
                   keepAliveButton: 'Seguir Conectado',
                   message: 'Su sesion sera bloqueada en 2 minutos',
                   keepAliveUrl: '#',
-                  logoutUrl: 'account.html#/sign-in',
-                  redirUrl: 'account.html#/lock-screen',
-                  ignoreUserActivity: true,
-                  warnAfter: 120000,
-                  redirAfter: 240000
+                  logoutUrl: 'logout',
+                  redirUrl: 'login',
+                  ignoreUserActivity: false,
+                  warnAfter: 240000,
+                  redirAfter: 360000
                 });
 
-        })
+        }])
 
         // =========================================================================
         // VISITOR CHART & SERVER STATUS
         // =========================================================================
-        .directive('visitorChart', function () {
+        /*.directive('visitorChart', function () {
             return {
                 restrict: 'A',
                 link: function (scope, element) {
@@ -185,12 +172,12 @@ define([
                     });
                 }
             };
-        })
+        })*/
 
         // =========================================================================
         // REAL TIME STATUS
         // =========================================================================
-        .directive('realtimeStatus', function () {
+        /*.directive('realtimeStatus', function () {
             return {
                 restrict: 'A',
                 link: function(scope, element){
@@ -263,12 +250,12 @@ define([
                     update();
                 }
             };
-        })
+        })*/
 
         // =========================================================================
         // DEMO COUNT NUMBER
         // =========================================================================
-        .directive('countNumber', function () {
+        /*.directive('countNumber', function () {
             return {
                 restrict: 'A',
                 link: function (){
@@ -297,7 +284,7 @@ define([
                     }
                 }
             };
-        });
+        });*/
     couchPotato.configureApp(module);
     module.run(function ($couchPotato) {
         module.lazy = $couchPotato;

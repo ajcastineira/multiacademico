@@ -26,6 +26,7 @@ class DistributivosType extends AbstractType
             ->add('distributivocodmateria')
             ->add('distributivocodcurso')
             ->add('distributivocodespecializacion')
+            //->add('aula')
         ;
     }
     

@@ -4,12 +4,13 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Matriculas
  *
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\MatriculasRepository")
  * @Serializer\ExclusionPolicy("all")
  */
 class Matriculas
@@ -127,14 +128,14 @@ class Matriculas
     private $matriculausuario;
 
     /**
-     * @var \Estudiantes
+     * @var \MultiacademicoBundle\Entity\Estudiantes
      *
-     * @ORM\ManyToOne(targetEntity="Estudiantes")
+     * @ORM\ManyToOne(targetEntity="Estudiantes", inversedBy="matriculas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="matriculacodestudiante", referencedColumnName="id",nullable=false)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","estadisticas"})
      * @Serializer\Type("MultiacademicoBundle\Entity\Estudiantes")
    
      */
@@ -195,6 +196,23 @@ class Matriculas
      * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
      */
     private $calificaciones;
+    
+    /**
+     *
+     * @var \MultiacademicoBundle\Entity\Comportamiento
+     * @ORM\OneToOne(targetEntity="Comportamiento", mappedBy="comportamientonummatricula")
+     * @Serializer\Expose
+     * @Serializer\Groups({"detail"})
+     */
+    private $comportamiento;
+    /**
+     *
+     * @var \MultiacademicoBundle\Entity\Asistencia
+     * @ORM\OneToOne(targetEntity="Asistencia", mappedBy="asistencianummatricula")
+     * @Serializer\Expose
+     
+     */
+    private $asistencia;
     
     public function indexCalificaciones()
     {
@@ -661,6 +679,13 @@ class Matriculas
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getCalificaciones() {
+
+        $iterator = $this->calificaciones->getIterator();
+        $iterator->uasort(function ($a, $b) {
+            return ($a->getCalificacioncodmateria()->getPrioridad() < $b->getCalificacioncodmateria()->getPrioridad()) ? -1 : 1;
+        });
+        $this->calificaciones = new ArrayCollection(iterator_to_array($iterator,false));
+        
         return $this->calificaciones;
     }
     /**
@@ -689,8 +714,46 @@ class Matriculas
         return $this;
     }
 
-        
-    public function getCursoName()
+    /**
+     * 
+     * @return \Comportamiento
+     */    
+    public function getComportamiento() {
+        return $this->comportamiento;
+    }
+    /**
+     * 
+     * @return Asistencia
+     */
+    public function getAsistencia() {
+        return $this->asistencia;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Comportamiento $comportamiento
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setComportamiento(\MultiacademicoBundle\Entity\Comportamiento $comportamiento) {
+        $this->comportamiento = $comportamiento;
+        return $this;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\Asistencia $asistencia
+     * @return \MultiacademicoBundle\Entity\Matriculas
+     */
+    public function setAsistencia(\MultiacademicoBundle\Entity\Asistencia $asistencia) {
+        $this->asistencia = $asistencia;
+        return $this;
+    }
+    /**
+     * 
+     
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("cursoname")
+     * @Serializer\Groups({"list","detail"})
+     */
+        public function getCursoName()
     {
         return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
     }

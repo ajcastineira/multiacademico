@@ -8,11 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MultiacademicoBundle\Entity\Distributivos;
-use MultiacademicoBundle\Form\DistributivosType;
-use MultiacademicoBundle\Form\CalificarCursoType;
-use MultiacademicoBundle\Calificar\CursoACalificar;
-use MultiacademicoBundle\Libs\Parcial;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -21,6 +18,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 /**
  * Reportes controller.
  *  @Rest\RouteResource("Aula")
+ * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_ADMIN')")
  */
 class AulasController extends FOSRestController
 {
@@ -37,9 +35,14 @@ class AulasController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        //var_dump($user);
+        
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        {
         $aulas=$em->getRepository('MultiacademicoBundle:Aula')->findAll();
-       
+        }else
+        {
+          $aulas=$em->getRepository('MultiacademicoBundle:Aula')->misAulasByUser($user);  
+        }    
 
         return array(
             'aulas' => $aulas,

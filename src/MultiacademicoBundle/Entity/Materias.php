@@ -43,6 +43,7 @@ class Materias
      * @var string
      *
      * @ORM\Column(name="materiaestado", type="string", length=8, nullable=false)
+     * 
      */
     private $materiaestado;
 
@@ -50,8 +51,10 @@ class Materias
      * @var integer
      *
      * @ORM\Column(name="prioridad", type="integer", nullable=false)
+     * @Serializer\Groups({"list","detail"})
+     * 
      */
-    private $prioridad = '20';
+    private $prioridad = 20;
 
 
 

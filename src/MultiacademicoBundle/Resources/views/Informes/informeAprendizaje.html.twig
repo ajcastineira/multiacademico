@@ -1,0 +1,144 @@
+ {{include('MultiacademicoBundle:Informes:encabezado.html.twig')}}
+     <div class="detalle">
+         <p class="textodetalle">
+              </p>
+              <table border="0" width="630" cellpadding="1" cellspacing="1" bgcolor="FFFFFF">
+              <tbody>
+                  <tr height="20" bgcolor="FFFFFF"><td width="57"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Fecha:</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{'now'|date()}}</b></span></td></tr>
+              </tbody>
+              </table>
+               <table border="0" width="630" cellpadding="1" cellspacing="1" bgcolor="000000">
+               <tbody>
+                   {%verbatim%}
+                   <tr height="20" bgcolor="FFFFFF">
+                       <td width="60"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Curso: </b></span></td>
+                       <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b> {{aula.aula}}</b></span></td>
+                       <td width="70"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Matrícula#:</b></span></td>
+                       <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b> {{estudiante.id}}</b></span></td>
+                   </tr>
+                   
+               <tr height="20" bgcolor="FFFFFF"><td width="60"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Estudiante: </b></span></td>
+                   <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"> <b> {{estudiante.matriculacodestudiante.estudiante}}</b></span></td>
+                   <td width="70"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{pop[p-1].labelabrv}}</b></span></td>
+                   <td width="225"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{qop[q-1].label}}</b></span></td>
+               </tr>
+                  {%endverbatim%}
+               </tbody></table>
+         <p></p>
+     </div>
+     <div class="detallenotas">
+
+
+     <table border="1" width="100%" cellpadding="1" cellspacing="0" style="text-align:center;">
+       <thead style="font-size:8.0pt;font-family:Tahoma;color:#000000;"> 
+        <tr>
+           <td rowspan="2"><b>Nº</b></td>
+              <td rowspan="2"><b>Asignatura</b></td>
+              <td colspan="{{'{{encabezado.colspan()}}'}}"><b>{{'{{parnot[p].label}}'}}</b></td>
+              <td rowspan="2" data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">80%&nbsp;DE&nbsp;LOS PARCIALES</div></td>
+                <td rowspan="2" data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">EXAMEN</div></td>
+                <td rowspan="2" data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">20%&nbsp;DEL EXAMEN</div></td>
+                <td rowspan="2" data-ng-if="p==4"  style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">N&nbsp;O&nbsp;T&nbsp;A QUIMESTRAL</div></td>
+                <td rowspan="2" data-ng-if="p==4"  style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">Cualitativa</div></td>
+                
+                <td rowspan="2" data-ng-if="p<=3"><b>Recomendaciones</b><br>Se las aplicará a partir del siguiente parcial</td>
+                <td rowspan="2" data-ng-if="p==4"><b>Recomendaciones</b><br>Se las aplicará a partir del siguiente quimestre</td>
+              <td rowspan="2"><b>Plan de Mejora Academico</b><br>¿Que es lo que el docente planeará para conseguir la mejora con sus estudiantes?</td>
+                   
+                                              
+              </tr>
+             <tr>
+                  
+                 <td data-ng-if="p<=3"><b>Cualitativa</b></td>
+                 <td data-ng-if="p<=3"><b>Cuantitativa</b></td>
+                 
+                 <td data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">I&nbsp;PARCIAL</div></td>
+                 <td data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">II&nbsp;PARCIAL</div></td>
+                 <td data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">III&nbsp;PARCIAL</div></td>
+                 <td data-ng-if="p==4" style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">PROMEDIO PARCIAL</div></td>
+                
+                 
+                 
+                                          
+              </tr>
+         </thead> 
+         <tbody>
+      <tr data-ng-repeat="calificacion in estudiante.calificaciones|ordenarCalificaciones">
+          {%verbatim%}
+          <td >{{$index+1}}</td>
+          <td>{{calificacion.calificacioncodmateria.materia}}</td>
+          <td data-ng-if="p<=3" style="color:#000000">{{cualitativa(prparcial(q,p,calificacion))}}</td>
+          <td data-ng-if="p<=3" style="color:#000000">{{prparcial(q,p,calificacion)}}</td>
+          <td data-ng-if="p<=3" >{{calificacion['q'+q+'_p'+p+'_planmejora']}}</td>
+          <td data-ng-if="p<=3" >{{calificacion['q'+q+'_p'+p+'_recomendacion']}}</td>
+          
+          
+          <td data-ng-if="p==4" style="color:#000000">{{prparcial(q,1,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{prparcial(q,2,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{prparcial(q,3,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{prparciales(q,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{prparciales80(q,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{calificacion['q'+q+'_ex']}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{ex20(q,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{prq(q,calificacion)}}</td>
+          <td data-ng-if="p==4" style="color:#000000">{{cualitativasiglas(prq(q,calificacion))}}</td>
+          <td data-ng-if="p==4">{{calificacion['q'+q+'_planmejora']}}</td>
+          <td data-ng-if="p==4" >{{calificacion['q'+q+'_recomendacion']}}</td>
+          {%endverbatim%}
+          
+      </tr>
+      <!--   <tr class='promediogeneral'>
+           <td><span><b>PROMEDIO GLOBAL RENDIMIENTO</b></span></td>
+            <td style='text-align:center;'><span>0,00</span></td>
+             <td><span></span></td>
+              </tr>
+          <tr class='comportamiento'>
+           <td><span><b>PROMEDIO GLOBAL COMPORTAMIENTO</b></span></td>
+            <td style='text-align:center;'><span></span></td>
+             <td><span style='font-size:9.0pt'></span></td>
+              </tr>
+                  <!-- comportamiento -->
+         </tbody>          
+     </table>
+
+     <br>
+     </div>
+     <div class="footer_certificado">
+       <div class="separador"></div>
+       <p class="textodetalle">
+             
+         </p>
+
+        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td><center><span style="font-size:10.0pt;font-family:Tahoma;color:#000000"><b>Informe de Comportamiento</b></span></center></td>
+            </tr></tbody></table>
+         <br><center>
+             <table border="1" width="630" cellpadding="1" cellspacing="0" bgcolor="000000">
+                 <tbody>
+                     <tr height="30" bgcolor="FFFFFF">
+                                    <th><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>ESTUDIANTE</b></span></th>
+                                    <th width="15"><span style="font-size:7.0pt;font-family:Tahoma;color:000000"><b>APRECIACION GENERAL DEL COMPORTAMIENTO (A,B,C,D,E)</b></span></th>
+                                        <th><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b>LO QUE ESTÁ BIEN</b></span></th>
+                                        <th><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b><center>LO QUE HAY QUE MEJORAR</center></b></span></th>
+                                        <th><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b><center>RECOMENDACIONES PARA LO QUE HAY QUE MEJORAR</center></b></span></th>
+                     </tr>
+                     {%verbatim%}
+                     <tr height="20">
+                        <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.matriculacodestudiante.estudiante}}</span></td>
+                        <td data-ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['agdc_q'+q+'_p'+p]}}</span></td>
+                        <td data-ng-if="p<=3"> <span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['estabien_q'+q+'_p'+p]}}</span></td>
+                        <td data-ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['mejorar_q'+q+'_p'+p]}}</span></td>
+                         <td data-ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['crecomendacion_q'+q+'_p'+p]}}</span></td>
+                         
+                         <td data-ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['agdc_q'+q]}}</span></td>
+                        <td data-ng-if="p==4"> <span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['estabien_q'+q]}}</span></td>
+                        <td data-ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['mejorar_q'+q]}}</span></td>
+                         <td data-ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.comportamiento['crecomendacion_q'+q]}}</span></td>
+                     </tr>
+                     {%endverbatim%}
+                 </tbody>
+             </table>
+         </center>
+     </div>

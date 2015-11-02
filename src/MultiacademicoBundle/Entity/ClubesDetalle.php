@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MultiacademicoBundle\Libs\Letra;
+use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ClubesDetalle

@@ -2,6 +2,7 @@
 namespace Multiservices\ArxisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,6 +12,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 * @ORM\Entity
 * @ORM\HasLifecycleCallbacks
 * @ORM\Table(name="usuarios")
+* @Serializer\ExclusionPolicy("all")
 */
 class Usuario extends BaseUser
 {
@@ -24,6 +26,8 @@ class Usuario extends BaseUser
     protected $id;
     /**
     * @ORM\Column(type="string",length=255)
+    * @Serializer\Expose
+    * @Serializer\Groups({"list","detail","estadisticas"})
     */
     private $name='';
     /**
@@ -579,11 +583,16 @@ class Usuario extends BaseUser
             ? null
             : $this->getUploadRootDir().'/'.$this->path;
     }
-
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("picture")
+     * @Serializer\Groups({"estadisticas"})
+     */
     public function getWebPath()
     {
         return null === $this->path
-            ? null
+            //? null
+            ? $this->getUploadDir().'/male.png'
             : $this->getUploadDir().'/'.$this->path;
     }
 
@@ -602,7 +611,9 @@ class Usuario extends BaseUser
     }
     
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="6000000",
+                   mimeTypes = {"image/*"},
+                   mimeTypesMessage = "Por favor suba una imagen valida")
      */
     private $file;
 

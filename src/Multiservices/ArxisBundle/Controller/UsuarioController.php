@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Multiservices\ArxisBundle\Entity\Usuario;
 use Multiservices\ArxisBundle\Form\UsuarioType;
+use Multiservices\ArxisBundle\Form\UsuarioChangeAvatarType;
 
 /**
  * Usuario controller.
@@ -161,11 +162,15 @@ class UsuarioController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-
+        $avatarform = $this->createForm(new  UsuarioChangeAvatarType(),$entity, array(
+            //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'usuario'      => $entity,
+            'changeavatarform' => $avatarform->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -182,12 +187,62 @@ class UsuarioController extends Controller
         
         $me=$this->get('security.token_storage')->getToken()->getUser();
         
-        //$entity = $em->getRepository('MultiservicesArxisBundle:Usuario')->find($me->getId());
-        $entity = $me;
+        $usuario = $me;
+        $form = $this->createForm(new  UsuarioChangeAvatarType(),$me, array(
+            //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+       
 
         return array(
-            'entity'      => $entity,
+            'usuario'      => $usuario,
+            'changeavatarform' => $form->createView()
         );
+    }
+    
+    /** Edits an existing Usuario avatat entity.
+     *
+     * @Route("api/me/updateavatar", name="secured_user_api_me_update_avatar", options={"expose":true})
+     * @Method("PUT")
+     * 
+     */
+    public function updateAvatarAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $me=$this->get('security.token_storage')->getToken()->getUser();
+
+        $form = $this->createForm(new  UsuarioChangeAvatarType(),$me, array(
+            //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            
+            $em->persist($me);
+            $em->flush();
+
+            $response=new JsonResponse();
+             $response->setData(array('path'=>$me->getWebPath()));
+             $response->setStatusCode(202);
+             //return $this->redirect($this->generateUrl('secured_user_api_showme'));
+            return $response;
+        }
+        $errores=$form->getErrors(true);
+        $response= new JsonResponse();
+        $erroresarray=[];
+        foreach ($errores as $error)
+        {
+            $erroresarray[]=$error->getMessage();
+        }
+        
+        $response->setData(array('errores' => $erroresarray));
+        $response->setStatusCode(400);
+        
+        return $response;
+       
     }
 
     /**

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Form\DistributivosType;
 
@@ -15,6 +16,7 @@ use MultiacademicoBundle\Form\DistributivosType;
  * Distributivos controller.
  *
  * @Route("/distributivos")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class DistributivosController extends Controller
 {
@@ -39,13 +41,32 @@ class DistributivosController extends Controller
      */
     public function indexApiAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MultiacademicoBundle:Distributivos')->findAll();
-
+        $distributivosDatatable = $this->get("multiacademico.distributivos");
+        $distributivosDatatable->buildDatatable();
+        
         return array(
-            'entities' => $entities,
+           'datatable'=>$distributivosDatatable
         );
+    }
+    
+     /**
+     * Get results distributivos entities.
+     *
+     * @Route("/results", name="distributivos_results")
+     *
+     * @return Response
+     */
+    
+    public function distributivosResultsAction()
+    {
+        /**
+         * @var \Sg\DatatablesBundle\Datatable\Data\DatatableData $datatable
+         */
+        $datatable = $this->get('multiacademico.distributivos');
+         $datatable->buildDatatable();
+         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
     /**
      * Creates a new Distributivos entity.

@@ -6,7 +6,21 @@ services:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         tags:
             - { name: sg.datatable.view }
+    multiacademico.distributivos:
+        class: MultiacademicoBundle\Datatables\DistributivosDatatable
+        tags:
+            - { name: sg.datatable.view }        
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:
-            - { name: form.type, alias: nota }           
+            - { name: form.type, alias: nota }  
+    security.access.distributivo_voter : 
+        class :       MultiacademicoBundle\Security\Authorization\Voter\DistributivoVoter 
+        public :      false 
+        tags : 
+            -  {  name :  security.voter  }
+    security.access.proyectosescolares_voter : 
+        class :       MultiacademicoBundle\Security\Authorization\Voter\ProyectosEscolaresVoter 
+        public :      false 
+        tags : 
+            -  {  name :  security.voter  }        

@@ -86,11 +86,13 @@ define([
      'multiacademico/materias/module',
      'multiacademico/periodo/module',
      'multiacademico/cursos/module',
+     'multiacademico/distributivos/module',
      'multiacademico/especializaciones/module',
      'multiacademico/proyectosescolares/module',
      'multiacademico/docentes/calificar/module',
      'multiacademico/docentes/calificar/factory/CalificarForm',
      'multiacademico/reportes/malla/module',
+     'multiacademico/informes/module',
     
     // cases
     // 'modules/cases/module',
@@ -107,10 +109,10 @@ define([
 
     // forms
      'modules/forms/module',
-     'modules/forms/models/FormsCrud'//,
+     'modules/forms/models/FormsCrud',
      
     // users
-    // 'modules/users/module',
+     'modules/users/module'//,
 
     // ui
     // 'modules/ui/module',

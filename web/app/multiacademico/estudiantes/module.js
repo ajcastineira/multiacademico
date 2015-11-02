@@ -137,6 +137,62 @@ define(['angular',
                     }
                 }
             })
+            .state('multiacademico.estudiantes.miscalificaciones', {
+                url: '/miscalificaciones',
+                 data: {
+                        pageTitle: 'Mis Calificaciones',
+                        pageHeader: {
+                            icon: 'flaticon-a1',
+                            title: 'Mis Calificaciones',
+                            subtitle: 'Menu'
+                        },
+                        breadcrumbs: [
+                            {title: 'Mis Calificaciones'},{title: 'menu'}
+                        ]
+                    },
+                 views: {
+                    "content@multiacademico": {
+                        templateUrl: "views/multiacademico/estudiantes/menu-calificaciones.html"
+                    }
+                }    
+                
+            })
+            .state('multiacademico.estudiantes.miscalificaciones.informe', {
+                url: '/{q}/{p}',
+                 data: {
+                        pageTitle: 'Mis Calificaciones',
+                        pageHeader: {
+                            icon: 'flaticon-a1',
+                            title: 'Mis Calificaciones',
+                            subtitle: 'Informe'
+                        },
+                        breadcrumbs: [
+                            {title: 'Mis Calificaciones'},{title: 'informe'}
+                        ]
+                    },
+                 views: {
+                    "content@multiacademico": {
+                        templateUrl: Routing.generate('miscalificaciones_informe_api'),
+                        controller:"MisCalificacionesCtrl",
+                        resolve:{
+                               deps: $couchPotatoProvider.resolveDependencies([
+                                    'multiacademico/estudiantes/controllers/MisCalificacionesCtrl'//,
+                                // 'multiacademico/calificaciones/Calificaciones'
+                                    ]),
+                                estudiante: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('get_miscalificaciones',{'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data.estudiante;
+                                         });
+                                         }
+                                            
+                                }
+                    }   
+                    
+                }    
+                
+            })
     });
 
     module.run(function ($couchPotato) {

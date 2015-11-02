@@ -1,7 +1,7 @@
 /* 
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/proyectosescolares/module', 'jquery'], function (module) {
+define(['multiacademico/proyectosescolares/module', 'jquery','chosen'], function (module) {
 
     "use strict";
 
@@ -27,12 +27,14 @@ define(['multiacademico/proyectosescolares/module', 'jquery'], function (module)
     // Replace '__name__' in the prototype's HTML to
     // instead be a number based on how many items we have
     var newForm = prototype.replace(/__name__/g, index);
+  
 
     // increase the index with one for the next item
     $collectionHolder.data('index', index + 1);
-
+    
     // Display the form in the page in an li, before the "Add a tag" link li
     var $newFormLi = $('<tr></tr>').append('<td>'+newForm+'</td>');
+    $newFormLi.find('select').chosen();
     addTagFormDeleteLink($newFormLi);
     $newLinkLi.before($newFormLi);
     

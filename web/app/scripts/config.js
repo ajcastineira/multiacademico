@@ -17,6 +17,7 @@ define([
             settings = {
                 baseURL                 : baseURL,
                 pluginPath              : 'vendor',
+                pluginProdPath          : 'plugin',
                 pluginCommercialPath    : baseURL+'/assets/commercial/plugins',
                 globalImagePath         : 'img',
                 adminImagePath          : baseURL+'/assets/admin/img',
@@ -54,33 +55,21 @@ define([
     // Configuration ocLazyLoad with ui router
     .config(["$stateProvider", "$couchPotatoProvider",function($stateProvider, $couchPotatoProvider, $urlRouterProvider) {
         // Redirect any unmatched url
-        // $urlRouterProvider.otherwise('page-error-404');
+        // $urlRouterProvider.otherwise('/page-error-404');
 
         $stateProvider
-
-
-             .state ('app', {abstract:true,
-                        template:'<div data-ui-view="root" data-autoscroll="false" />',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'auth/directives/loginInfo'//,
-                                //'modules/graphs/directives/inline/sparklineContainer',
-                                //'components/inbox/directives/unreadMessagesCount',
-                                //'components/chat/api/ChatApi',
-                                //'components/chat/directives/asideChatWidget'
-                            ])}
-                    })
+            
             // =========================================================================
             // SIGN IN
             // =========================================================================
             .state('signin', {
-                url: '/sign-in',
-                templateUrl: 'views/sign/sign-in.html',
+                url: '/login',
+                //templateUrl: 'views/sign/sign-in.html',
                 data: {
-                    pageTitle: 'SIGN IN'
+                    pageTitle: 'Iniciar Sesion'
                 },
-                controller: 'SigninCtrl',
-                resolve: {
+                //controller: 'SigninCtrl',
+               /* resolve: {
                     deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
         
                         var cssPath = settings.cssPath, // Create variable css path
@@ -110,7 +99,7 @@ define([
                             ]
                         );
                     }]
-                }
+                }*/
             })
 /*
             // =========================================================================
@@ -314,20 +303,45 @@ define([
             // DASHBOARD
             // =========================================================================
             .state('dashboard', {
-                url: '/dashboard',
+                url: '/',
                 data: {
-                    pageTitle: 'DASHBOARD',
+                    pageTitle: 'Inicio',
                     pageHeader: {
                         icon: 'fa fa-home',
-                        title: 'Dashboard',
-                        subtitle: 'dashboard & statistics'
+                        title: 'Inicio',
+                        subtitle: 'inicio & resumen'
                     }
                 },
                 views:{
                 "":{
                     templateUrl: 'views/dashboard.html',
-                    //controller: 'DashboardCtrl',
+                    controller: 'DashboardCtrl',
+                    resolve: {
+                    deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                        var pluginProdPath = settings.pluginProdPath; // Create variable plugin path
+                            
+
+                        return $ocLazyLoad.load( // you can lazy load files for an existing module
+                            [
+                                {
+                                    insertBefore: '#load_css_before',
+                                    files: [
+                                       
+                                        pluginProdPath+'/jquery.gritter/css/jquery.gritter.css'
+                                    ]
+                                }
+                            ]);
+                        }],
+                    ResumenInicio:['$http',function($http){
+                                return $http.get(Routing.generate('get_estadisticas_all',{'_format':'json'}))
+                                .then(function(response){
+                       
+                                return response.data;
+                            });
+                        }]
                     }
+                 }
                 }
             })
 /*
@@ -961,8 +975,9 @@ define([
                 }
             })
 */
+        ;
      
-
+       
     }])
 
     // Init app run

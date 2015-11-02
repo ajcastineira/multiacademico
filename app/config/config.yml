@@ -55,10 +55,6 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
     assets:
-        main_css:
-            inputs:
-                - %kernel.root_dir%/../web/app/styles/main.css
-            output: css/compiled/main.css
         blankon_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/reset.css
@@ -67,6 +63,26 @@ assetic:
                 - %kernel.root_dir%/../web/app/styles/plugins.css
                 - %kernel.root_dir%/../web/app/styles/custom.css
             output: css/compiled/rlcpc.css
+        error404_css:
+            inputs:
+                - %kernel.root_dir%/../web/app/styles/pages/error-page.css
+            output: app/styles/pages/error-page.css
+        xeditable_css:
+            inputs:
+                - %kernel.root_dir%/../web/vendor/angular-xeditable/dist/css/xeditable.css
+            output: vendor/angular-xeditable/dist/css/xeditable.css  
+        bootstrapinputcss:
+            inputs:
+            - %kernel.root_dir%/../web/plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
+            output: plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
+        jasny-bootstrapcss:
+            inputs:
+            - %kernel.root_dir%/../web/plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
+            output: plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
+        chosen120css:
+            inputs:
+            - %kernel.root_dir%/../web/vendor/chosen_v1.2.0/chosen.min.css
+            output: vendor/chosen_v1.2.0/chosen.min.css
         theme_blue_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/themes/blue.theme.css
@@ -79,10 +95,19 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/vendor/dropzone/dist/min/dropzone.min.css 
             output: vendor/dropzone/dist/min/dropzone.min.css  
+        griter_img:
+            inputs:
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/gritter.png
+            output: plugin/jquery.gritter/images/gritter.png 
+        griter_img1:
+            inputs:
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/ie-spacer.gif
+            output: plugin/jquery.gritter/images/ie-spacer.gif
         griter_css:
             inputs:
-                - %kernel.root_dir%/../web/vendor/jquery.gritter/css/jquery.gritter.css 
-            output: vendor/jquery.gritter/css/jquery.gritter.css 
+                - %kernel.root_dir%/../web/plugin/jquery.gritter/css/jquery.gritter.css 
+            output: plugin/jquery.gritter/css/jquery.gritter.css     
+        
         chosen_css:
             inputs:
                 - %kernel.root_dir%/../web/vendor/chosen/chosen.min.css 
@@ -139,30 +164,30 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html
             output: /views/multiacademico/malla/seleccionar-aula-malla-normal.html 
-        cuadrocalificacioneshtml:
+        seleccionaraulainformeshtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/cuadro-de-calificaciones.html
-            output: /views/multiacademico/malla/cuadro-de-calificaciones.html
+                -  %kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html
+            output: /views/multiacademico/informes/seleccionar-aula-informes.html
+            
+        menucalificacionesedtudianteshtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/estudiantes/menu-calificaciones.html
+            output: /views/multiacademico/estudiantes/menu-calificaciones.html
+        
         comportamientohtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/comportamiento.html
             output: /views/multiacademico/malla/comportamiento.html
-        quimestrehtml:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre.html
-            output: /views/multiacademico/malla/quimestre.html
-        quimestre2html:
-            inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/quimestre2.html
-            output: /views/multiacademico/malla/quimestre2.html
+        
         dosquimestrehtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
             output: /views/multiacademico/malla/dos-quimestre.html
-        perfilclic:
+        error404_html:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/perfil.html
-            output: /views/multiacademico/perfil.html
+                - %kernel.root_dir%/../web/views/pages/page-error-404.html
+            output: views/pages/page-error-404.html
+
             
             
                 

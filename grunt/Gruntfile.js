@@ -87,6 +87,30 @@ module.exports = function (grunt) {
             }
 
         },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+                
+              },
+            target: {
+                    files: [{
+                      expand: true,
+                      cwd: tmp+'styles',
+                      src: ['**/*.css','!**/*.theme.css', '!*.min.css'],
+                      dest: tmp+'styles',
+                      ext: '.css'
+                    },
+                    {
+                      expand: true,
+                      cwd: tmp+'styles',
+                      src: ['**/*.theme.css'],
+                      dest: tmp+'styles',
+                      ext: '.theme.css'
+                    }
+                    ]
+                  }
+            },
         uglify: {
             tmp: {
                 expand: true,
@@ -98,7 +122,7 @@ module.exports = function (grunt) {
                 ext: '.js'
             }
         },
-
+        
         clean: {
             pre: {
                 options: {
@@ -168,9 +192,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-
+    
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    
     grunt.loadNpmTasks('grunt-html2js');
-
+    
     grunt.loadTasks('tasks');
 
 
@@ -182,10 +208,14 @@ module.exports = function (grunt) {
         'turnOnPotatoDeclaration',
         'adjustTemplateUrls',
         'html2js',
+      
         'addIncludes',
         'uglify',
+        'cssmin',
         'requirejs',
+        
         'copy:post',
+        
         'clean:post'
     ]);
 

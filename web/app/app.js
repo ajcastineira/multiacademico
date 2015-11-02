@@ -35,7 +35,7 @@ define([
         //app
         'app.auth',
         'app.dashboard',
-        //'app.users',
+        'app.users',
         'app.layout',
         'app.forms',
         'multiacademico',
@@ -43,8 +43,10 @@ define([
         'multiacademico.docentes.midistributivo',
         'multiacademico.proyectosescolares',
         'multiacademico.cursos',
+        'multiacademico.distributivos',
         'multiacademico.malla',
-       // 'multiacademico.especializaciones',
+        'multiacademico.especializaciones',
+       'multiacademico.informes',
         'multiacademico.materias'//,
        // 'multiacademico.periodo'
                 

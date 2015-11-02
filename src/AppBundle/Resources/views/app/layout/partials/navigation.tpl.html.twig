@@ -73,11 +73,10 @@
         </a>
         <ul>
             <li><a data-ui-sref="multiacademico.cursos.list" data-active-menu>Cursos</a></li>
-            <li><a href="#/especialidades" data-active-menu>Especialidades </a></li>
-            <li><a href="#/materias" data-active-menu>Materias</a></li>
+            <li><a data-ui-sref="multiacademico.especializaciones.list" data-active-menu>Especializaciones </a></li>
+            <li><a data-ui-sref="multiacademico.materias.list" data-active-menu>Materias</a></li>
             <li><a href="#/docentes" data-active-menu>Docentes</a></li>
-             <li><a href="#/distributivos" data-active-menu>Distributivos</a></li>
-            <li><a href="#/clubes" data-active-menu>Clubes</a></li>
+             <li><a data-ui-sref="multiacademico.distributivos.list" data-active-menu>Distributivos</a></li>
         </ul>
     </li>
     <li>
@@ -124,12 +123,12 @@
             <span class="arrow"></span>
         </a>
         <ul>
-            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Malla Normal</a></li>
-            <li><a data-ui-sref="cuadro-de-calificaciones" data-active-menu>Cuadro de Calificaciones</a></li>
-            <li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
+            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Cuadro de Calificaciones</a></li>
+            
+            <!--<li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
              <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
               <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>
-              <li><a data-ui-sref="dos-quimestre" data-active-menu>Dos Quimestres</a></li>
+              <li><a data-ui-sref="dos-quimestre" data-active-menu>Dos Quimestres</a></li>-->
         </ul>
     </li>
     <!--/ End navigation - blog -->
@@ -149,8 +148,7 @@
             <span class="arrow"></span>
         </a>
         <ul>
-            <li><a href="#/ínformesortalf" data-active-menu>Informe de Aprendizaje y Comportmiento por Estudiantes</a></li>
-            <li><a href="#/informesortnum" data-active-menu>Informes de Aprendizaje y Comportamiento por Cursos </a> <i class="fa flaticon-a3"></i></li>
+            <li><a data-ui-sref="multiacademico.informes" data-active-menu>Informes de Aprendizaje y Comportamiento</a></li>
         </ul>
     </li>
     <li class="submenu">
@@ -210,243 +208,12 @@
 
                 </ul>
             </li>
-    {% endif%}        
-        <li>
-            <a href="#/ayuda" data-active-menu>
-                <span class="icon"><i class="fa fa-question-circle"></i></span>
-                <span class="text">Ayuda</span>
-            </a>
-        </li>
-
-    <!--/ End navigation - pages -->
-
-</ul><!-- /.sidebar-menu -->
-<!--/ End left navigation - menu -->
-
-<!-- Start left navigation - footer -->
-<div class="sidebar-footer hidden-xs hidden-sm hidden-md">
-    <a data-setting class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Setting"><i class="fa fa-cog"></i></a>
-    <a data-fullscreen class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Fullscreen"><i class="fa fa-desktop"></i></a>
-    <a data-lock-screen  class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Lock Screen"><i class="fa fa-lock"></i></a>
-    <a data-logout class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Logout"><i class="fa fa-power-off"></i></a>
-</div><!-- /.sidebar-footer -->
-<!--/ End left navigation - footer -->
-
-<!-- Start left navigation - profile shortcut -->
-<div class="sidebar-content">
-    <!-- User info -->
-    <div login-info></div>
-    <!-- end user info -->
-</div><!-- /.sidebar-content -->
-<!--/ End left navigation -  profile shortcut -->
-
-<!-- Start left navigation - menu -->
-<ul data-collapse-menu class="sidebar-menu ">
-    
-      <!-- Start index -->
-  <!--   <li>
-        <a href="#/inicio" data-active-menu>
-            <span class="icon"><i class="fa fa-home"></i></span>
-            <span class="text">Inicio</span>
-           
-        </a>
-    </li> -->
-    <!--/ End index -->
-    
-        <!-- Start User -->
-    <li>
-
-        <a data-ui-sref="dashboard" data-active-menu>
-            <span class="icon"><i class="fa fa-home"></i></span>
-            <span class="text">Inicio</span>
-           
-        </a>
-    </li>
-    <!--/ End User -->
-    {% if is_granted('ROLE_ADMIN')%}
-    <!-- Start category ui kit-->
-    <li class="sidebar-category">
-        <span>Estudiantes</span>
-        <span class="pull-right"><i class="fa fa-users"></i></span>
-    </li>
-    <!--/ End category ui kit-->
-    <!-- Start Group -->
-    <li>
-        <a data-ui-sref="multiacademico.estudiantes.list" data-active-menu>
-            <span class="icon"><i class="fa fa-group"></i></span>
-            <span class="text">Estudiantes</span>
-            
-           
-        </a>
-    </li>
-    <!--/ End Group -->
-
-  <!-- Start matriculas -->
-    <li>
-        <a data-ui-sref="matriculas" data-active-menu>
-            <span class="icon"><i class="fa fa-file-text-o"></i></span>
-            <span class="text">Matriculas</span>
-            
-           
-        </a>
-    </li>
-    <!--/ End matriculas -->
-    
-        <!-- Start category ui kit-->
-    <li class="sidebar-category">
-        <span>Academico</span>
-        <span class="pull-right"><i class="fa flaticon-university"></i></span>
-    </li>
-    <!--/ End category ui kit-->
-    <!-- Start navigation - mail -->
-    <li class="submenu">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa flaticon-university"></i></span>
-            <span class="text">Academico</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#/cursos" data-active-menu>Cursos</a></li>
-            <li><a href="#/especialidades" data-active-menu>Especialidades </a></li>
-            <li><a href="#/materias" data-active-menu>Materias</a></li>
-            <li><a href="#/docentes" data-active-menu>Docentes</a></li>
-             <li><a href="#/distributivos" data-active-menu>Distributivos</a></li>
-            <li><a href="#/clubes" data-active-menu>Clubes</a></li>
-        </ul>
-    </li>
-    <li>
-        <a data-ui-sref="multiacademico.proyectosescolares.list" data-active-menu>
-            <span class="icon"><i class="fa flaticon-meeting"></i></span>
-            <span class="text">Proyectos Escolares</span>
-            
-           
-        </a>
-    </li>
-    
-    <!-- Start category apps -->
-    <li class="sidebar-category">
-        <span>Calificaciones</span>
-        <span class="pull-right"><i class="fa fa-trophy"></i></span>
-    </li> 
-    <!--/ End category apps -->
-    <!-- Start matriculas -->
-    <li>
-        <a href="#/calificaciones" data-active-menu>
-            <span class="icon"><i class="fa flaticon-a1"></i></span>
-            <span class="text">Calificaciones</span>
-        </a>
-    </li>
-    <!--/ End matriculas -->
-
-    <!-- Start navigation - dashboard -->
-   <!--  <li class="active">
-        <a href="#/dashboard" data-active-menu>
-            <span class="icon"><i class="fa fa-home"></i></span>
-            <span class="text">Inicio</span>
-            <span class="selected"></span>
-        </a>
-    </li> -->
-    <!--/ End navigation - dashboard -->
-
-   
-
-    <!-- Start navigation - blog -->
-    <li class="submenu">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-globe"></i></span>
-            <span class="text">Malla</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li><a data-ui-sref="malla-normal" data-active-menu>Malla Normal</a></li>
-            <li><a data-ui-sref="cuadro-de-calificaciones" data-active-menu>Cuadro de Calificaciones</a></li>
-            <li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
-             <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
-              <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>
-              <li><a data-ui-sref="dos-quimestre" data-active-menu>Dos Quimestres</a></li>
-        </ul>
-    </li>
-    <!--/ End navigation - blog -->
- 
-    <!--/ End navigation - mail -->
-    <!-- Start category apps -->
-    <li class="sidebar-category">
-        <span>Reportes</span>
-        <span class="pull-right"><i class="fa fa-paper-o"></i></span>
-    </li> 
-    <!--/ End category apps -->
-    <!-- Start navigation - pages -->
-    <li class="submenu">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa flaticon-a3"></i></span>
-            <span class="text">Informes</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li><a href="#/ínformesortalf" data-active-menu>Informe de Aprendizaje y Comportmiento por Estudiantes</a></li>
-            <li><a href="#/informesortnum" data-active-menu>Informes de Aprendizaje y Comportamiento por Cursos </a> <i class="fa flaticon-a3"></i></li>
-        </ul>
-    </li>
-    <li class="submenu">
-         <a href="javascript:void(0);"><span class="icon"> <i class="fa fa-print"></i></span>
-             <span class="text">Reportes</span> <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="#/ínformesortalf" data-active-menu>Reporte de Matriculas Alfabeticamente</a></li>
-                    <li><a href="#/informesortnum" data-active-menu>Reporte de Matriculas Numericamente</a></li>
-                    <li><a href="#/informesortnum" data-active-menu>Reporte de Matriculas por Curso</a></li>
-                    <li><a href="#/reportesorterror" data-active-menu>Reporte de Matriculas Errores</a></li>
-                    <li><a href="#/dos-quimestre" data-active-menu>xxReporte de Matriculas Estadistico</a></li>
-                    <li><a href="#/reportelibro" data-active-menu>Libro de Matriculas</a></li>
-                    <li><a href="#/reportedocente" data-active-menu>Reporte Docentes</a></li>
-                    <li><a href="#/reportedocenteclave" data-active-menu>Reporte Docentes Claves</a></li>
-                </ul>
-    </li>
-    <li class="submenu">
-                <a href="javascript:void(0);"> <span class="icon"><i class="flaticon-certificate"></i></span>
-                    <span class="text">Certificados</span> <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="#/certificadomatricula">Certificado de Matricula</a></li>
-                    <li><a  href="#/certificadomatriculacurso">Certificado de Matriculas por Cursos</a></li>
-                    <li><a href="#/certificadopromocion">Certificado de Promocion</a></li>
-                    <li><a href="#/certificadopromocioncurso">Certificado de Promocion</a></li>
-                    <li><a href="#/certificadomatricula">xxCertificado de Promocion por Cursos</a></li>
-                </ul>
-    </li>
- <li class="submenu">
-                <a href="javascript:void(0);"><span class="icon"> <i class=" fa flaticon-calendar5"></i></span>
-                    <span class="text">Periodos</span> <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="../sistemaantiguo/usuario_login.php">2013-2014</a></li>
-                    <li><a href="../sistemaantiguo/usuario_login.php">2014-2015</a></li>
-                </ul>
-            </li>
-
-{% endif %}
-   {% if is_granted('ROLE_DOCENTE')%}
-       {{include('AppBundle:app:layout/partials/menus/docentesmenu.html.twig')}}
+    {% endif%}
+    {% if is_granted('ROLE_ESTUDIANTE')%}
+       {{include('AppBundle:app:layout/partials/menus/estudiantesmenu.html.twig')}}
    {% endif%}
-   {% if is_granted('ROLE_ADMIN')%}
-<li class="submenu">
-                <a href="javascript:void(0);">
-                    <span class="icon"> <i class=" fa fa-cogs"></i></span>
-                    <span class="text">Panel de Control</span>
-                    <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="#/menus">Unidad Educativa</a></li>
-                    <li><a href="#/modulos">Menus</a></li>
-
-                      <li><a  href="#/permisos">Modulos</a></li>
-
-                      <li><a  href="#/usuarios">Permisos</a></li>
-
-                      <li><a  href="#/ayuda">Usuarios</a></li>
-
-
-                </ul>
-            </li>
-    {% endif%}        
         <li>
-            <a href="#/ayuda" data-active-menu>
+            <a href="https://arxis.la" target="_blank" data-active-menu>
                 <span class="icon"><i class="fa fa-question-circle"></i></span>
                 <span class="text">Ayuda</span>
             </a>

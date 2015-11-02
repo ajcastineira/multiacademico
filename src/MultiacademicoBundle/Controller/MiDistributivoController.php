@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Form\DistributivosType;
 use MultiacademicoBundle\Form\CalificarCursoType;
@@ -61,11 +62,12 @@ class MiDistributivoController extends Controller
     
     /**
      * Lists all Distributivos entities.
-     *
+     
      * @Route("/menu/{id}", name="menu_calificar", options={"expose":true})
      * @Method("GET")
+     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
      */
-    public function menuCalificarAction($id)
+    public function menuCalificarAction(Distributivos $id)
     {
         return $this->render('::baseangular.html.twig');
     }
@@ -76,9 +78,10 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/api", name="menu_calificar_api", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:MiDistributivo:menu.html.twig")
+     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
      */
     
-    public function menuCalificarApiAction($id)
+    public function menuCalificarApiAction(Distributivos $id)
     {
         //$em = $this->getDoctrine()->getManager();
         
@@ -132,8 +135,9 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Calificaciones:imprimir.html.twig")
+     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
      */
-    public function imprimirAction($id,$q,$p)
+    public function imprimirAction(Distributivos $id,$q,$p)
     { 
                 
         $em = $this->getDoctrine()->getManager();
@@ -175,8 +179,10 @@ class MiDistributivoController extends Controller
      *
      * @Route("/menu/{id}/calificaciones/{q}/{p}", name="calificaciones", options={"expose":true})
      * @Method("GET")
+     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
+     * 
      */
-    public function calificacionesAction($id)
+    public function calificacionesAction(Distributivos $id)
     {
         return $this->render('::baseangular.html.twig');
     }
@@ -187,8 +193,9 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/calificaciones/{q}/{p}/api", name="calificaciones_api", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
+     * @Security("('ROLE_DOCENTE')")
      */
-    public function calificacionesApiAction($id,$q,$p)
+    public function calificacionesApiAction(Distributivos $id,$q,$p)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -196,6 +203,7 @@ class MiDistributivoController extends Controller
         if (!$distributivo) {
             throw $this->createNotFoundException('Unable to find Distributivos entity.');
         }
+        $this->denyAccessUnlessGranted('DISTRIBUTIVO_VIEW', $distributivo, 'Usted solo puede escribir calificaciones en los cursos asignados a su distributivo!');
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
         $cursoACalificar=new CursoACalificar($id);
@@ -240,6 +248,7 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/calificaciones/{q}/{p}/api", name="pasar_calificaciones_api", options={"expose":true})
      * @Method("PUT")
      * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
+     * @Security("has_role('ROLE_DOCENTE')")
      */
     public function pasarCalificacionesAction(Request $request,$id,$q,$p)
     {
@@ -248,6 +257,7 @@ class MiDistributivoController extends Controller
         if (!$distributivo) {
             throw $this->createNotFoundException('Unable to find Distributivos entity.');
         }
+        $this->denyAccessUnlessGranted('DISTRIBUTIVO_VIEW', $distributivo, 'Usted solo puede escribir calificaciones en sus cursos asignados!');
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
         $cursoACalificar=new CursoACalificar($id);

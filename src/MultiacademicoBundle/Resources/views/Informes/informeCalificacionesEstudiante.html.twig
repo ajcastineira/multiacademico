@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+<style>
+    .table-striped > tbody > tr:nth-of-type(odd) {
+       background-color: #F1EFE2;
+    }
+</style>
+{{include('MultiacademicoBundle:Informes:seleccionador.html.twig')}}
+<div class="pagina">
+    {{include('MultiacademicoBundle:Informes:encabezado.html.twig')}}
+
+  
+    <table border="0" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                        <tbody>
+                            <tr height="25" bgcolor="FFFFFF">
+                                {%verbatim%}
+                                <td width="100"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Estudiante</b></span></td>
+                                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"> {{estudiante.matriculacodestudiante.estudiante}} </span></td>
+                                <td width="100"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nº Matricula</b> </span></td>
+                                <td width="75"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.id}}</span></td></tr><tr height="25" bgcolor="FFFFFF">
+                                <td width="100"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Curso</b></span></td>
+                                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"> {{estudiante.cursoname}} </span></td>
+                                {%endverbatim%}
+                                <td width="100"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Periodo Lectivo </b> </span></td>
+                                <td width="75"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{periodo}}</span></td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                
+    
+        <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+            <tbody>
+                {%verbatim%}
+                <tr height="25" bgcolor="FFFFFF">
+                    <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{qop[q-1].label}}</b></span></td>
+                    <td width="315" style="text-align:center">
+                        <span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{pop[p-1].label}}</b></span>
+                    </td>
+                </tr>
+                {%endverbatim%}
+            </tbody>
+        </table>
+        <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+            <tbody>
+                <tr bgcolor="FFFFFF">
+                    <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Materias</b></span></td>
+                    <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p1.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p2.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p3.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pps.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_pa_80.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex_20.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_100.png')}}" border="0"></td>
+            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cu.png')}}" border="0"></td>
+            <!--<td width="35"  style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;font-size:8.0pt;font-family:Tahoma;color:#000000">Comportamiento</div></td>-->
+            </tr>
+            </tbody></table>
+            
+            <table class="table-striped" border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                <tbody>
+                    <tr bgcolor="FFFFFF" height="20" data-ng-repeat="calificacion in estudiante.calificaciones">
+                        {%verbatim%}
+                        <td>
+                            <span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion.calificacioncodmateria.materia}}</span>
+                        </td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,1,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,2,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,3,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales(q,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales80(q,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_ex']}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{ex20(q,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(q,calificacion)}}</span></td>
+                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{cualitativasiglas(prq(q,calificacion))}}</span></td>
+                        <!--<td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">E</span></td>-->
+                        {%endverbatim%}
+                    </tr>
+                </tbody>
+            </table>
+            <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                <tbody>
+                    <tr height="25" bgcolor="FFFFFF">
+            <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>NOTA PROMEDIAL</b></span></td>
+            {%verbatim%}
+            <td width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td></tr></tbody></table>
+            {%endverbatim%}
+                            
+<br>
+{#<table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+        <tbody>
+            <tr height="25" bgcolor="FFFFFF">
+                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">
+                        <b>Atrasos y Faltas</b></span></td></tr>
+        </tbody>
+    </table>
+    <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+            <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Atrasos</b></span></td>
+                    <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Justificadas</b></span></td>
+                    <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Injustificadas</b></span></td>
+                    <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Total Faltas</b></span></td>
+                </tr><tr bgcolor="FFFFFF" height="20"><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td></tr>
+                <tr></tr>
+            </tbody></table>
+    <br>#}
+        {#<table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+            <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Proyectos Escolares (No tiene asignado Club)</b></span></td></tr></tbody>
+        </table>
+            <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nota del Club Quimestral</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Sin Nota</b></span></td></tr></tbody>
+            </table><br>#}
+                <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                    <tbody><tr height="25" bgcolor="FFFFFF">
+                            <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Comportamiento</b></span>
+                            </td>
+                            </tr>
+                    </tbody>
+                </table>
+            
+                <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                    <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>APRECIACION GENERAL DEL COMPORTAMIENTO (A,B,C,D,E)</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b></b></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE ESTÁ BIEN</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE HAY QUE MEJORAR)</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>RECOMENDACIONES PARA LO QUE HAY QUE MEJORAR </b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr></tbody>
+                </table><br>
+                    <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                        <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Rango de Calificación</b></span></td></tr></tbody>
+                    </table>
+                        <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                            <tbody>
+                                <tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>DAR</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Domina los aprendizajes requeridos</span></td><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">9 - 10</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>AAR</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Alcanza los aprendizajes requerido </span></td><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">7 - 8</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>PAR</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Esta próxima a alcanzar los aprendizajes requeridos</span></td><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">5 - 6</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>NAR</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">No alcanza los aprendizajes requeridos</span></td><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">&lt;= 4</span></td></tr></tbody>
+                        </table><br>
+                        <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                            <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Parámetros de Comportamiento</b></span></td></tr></tbody></table>
+                        <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
+                            <tbody><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>A</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Lidera el cumplimiento de los compromisos establecidos para la sana convivencia social</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>B</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Cumple con los compromisos establecidos para la sana convivencia social</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>C</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Falla ocasionalmente en el cumplimiento de los compromisos establecidos para la sana convivencia social</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>D</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">Falla reiteradamente en el cumplimiento de los compromisos establecidos para la sana convivencia social</span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="30"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>E</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">No cumple con los compromisos establecidos para la sana convivencia social</span></td>
+                                </tr></tbody></table>
+</div>

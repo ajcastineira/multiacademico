@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+ {{include('MultiacademicoBundle:Informes:seleccionador.html.twig')}}
+<div class="pagina" data-ng-repeat-start="estudiante in aula.matriculados">
+      {{include('MultiacademicoBundle:Informes:informeAprendizaje.html.twig')}}
+</div>
+<div style="page-break-after: always"></div>
+<div data-ng-repeat-end style="height: 1.5cm;"></div>

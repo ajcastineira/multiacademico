@@ -104,6 +104,7 @@
                         <!--    </a><!-- /.media -->
 
                             <!-- Start message indicator -->
+                            
                        <!--     <a href="#" class="media indicator inline">
                                 <span class="spinner">Load more messages...</span>
                             </a>
@@ -123,57 +124,57 @@
             <!--/ End messages -->
 
             <!-- Start notifications -->
-        <!--    <li class="dropdown navbar-notification">
+           <li class="dropdown navbar-notification">
 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="count label label-danger rounded">6</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="count label label-danger rounded" style="{{navbarNotifications.unread>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarNotifications.unread}}</span></a>
 
                 <!-- Start dropdown menu -->
-        <!--        <div class="dropdown-menu animated flipInX">
+               <div class="dropdown-menu animated flipInX">
                     <div class="dropdown-header">
-                        <span class="title">Notifications <strong>(10)</strong></span>
-                        <span class="option text-right"><a href="#"><i class="fa fa-cog"></i> Setting</a></span>
+                        <span class="title">Notificationes <strong>({{navbarNotifications.length}})</strong></span>
+                        <!--<span class="option text-right"><a href="#"><i class="fa fa-cog"></i> Setting</a></span>-->
                     </div>
                     <div data-nicescroll class="dropdown-body niceScroll">
 
                         <!-- Start notification list -->
-        <!--                <div class="media-list small">
+                        <div class="media-list small">
 
-                            <a data-ng-repeat="notification in navbarNotifications" href="#" class="media">
+                            <a data-ng-repeat="notification in navbarNotifications.data" href="#" class="media {{notification.read ?'':'unread'}}">
                                 <div class="media-object pull-left">
                                     <i data-ng-show="notification.icon" class="{{notification.icon}}"></i>
                                     <img data-ng-show="notification.image" class="img-circle" src="http://img.djavaui.com/?create=30x30,4888E1?f=ffffff" alt="{{notification.image}}"/>
                                 </div>
                                 <div class="media-body">
-                                    <span class="media-text">{{notification.notification}}</span>
+                                    <span class="media-text" ng-bind-html="notification.message"></span>
                                     <!-- Start meta icon -->
-         <!--                           <span class="media-meta">{{notification.date}}</span>
+                                    <span class="media-meta">{{notification.date}}</span>
                                     <!--/ End meta icon -->
-         <!--                       </div><!-- /.media-body -->
-        <!--                    </a><!-- /.media -->
+                               </div><!-- /.media-body -->
+                            </a><!-- /.media -->
 
                             <!-- Start notification indicator -->
-       <!--                     <a href="#" class="media indicator inline">
-                                <span class="spinner">Load more notifications...</span>
-                            </a>
+                            <!--<a href="#" class="media indicator inline">
+                                <span class="spinner">&nbsp;&nbsp;Cargar mas notificaciones...</span>
+                            </a>-->
                             <!--/ End notification indicator -->
 
-      <!--                  </div>
+                        </div>
                         <!--/ End notification list -->
 
-       <!--             </div>
+                    </div>
                     <div class="dropdown-footer">
-                        <a href="#">See All</a>
+                        <a href="#">Ver Todas</a>
                     </div>
                 </div>
                 <!--/ End dropdown menu -->
 
-       <!--     </li><!-- /.dropdown navbar-notification -->
+            </li><!-- /.dropdown navbar-notification -->
             <!--/ End notifications -->
 
             <!-- Start profile -->
             <li class="dropdown navbar-profile">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                   <div login-info-line></div>
+                   <div data-login-info-line></div>
                 </a>
                 <!-- Start dropdown menu -->
                 <ul class="dropdown-menu animated flipInX">

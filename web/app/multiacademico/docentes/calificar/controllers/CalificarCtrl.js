@@ -110,7 +110,7 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                                 e.preventDefault();
                                 var dataForm;
                                 dataForm =new FormData(document.getElementsByName(formulario)[0]);
-                               $state.go($state.$current,{submited:true,formData:dataForm});
+                               $state.go($state.$current,{submited:true,formData:dataForm},{reload:true});
                             };
                         });
 });

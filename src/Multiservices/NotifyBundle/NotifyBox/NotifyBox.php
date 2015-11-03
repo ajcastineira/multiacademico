@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @author Rene Arias <renearias@multiservices.com.ec>
  */
-class NotifyBox extends \AppBundle\Activity\ActivityBox
+class NotifyBox extends \Multiservices\NotifyBundle\Activity\ActivityBox
 {
     /**
      *
@@ -54,7 +54,16 @@ class NotifyBox extends \AppBundle\Activity\ActivityBox
         $this->data = $data;
         return $this;
     }
-
+    public function getUnread() {
+        $u=0;
+        foreach ($this->data as $notificacion)
+        {
+            if (!$notificacion->isRead())
+            {$u++;}
+        }
+        return $u;
+    }
+    
 
     
 }

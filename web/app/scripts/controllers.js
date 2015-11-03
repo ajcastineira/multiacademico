@@ -156,7 +156,7 @@ var module = ng.module('blankonController', [])
         // NAVBAR NOTIFICATIONS
         // =========================================================================
         $scope.navbarNotifications = [];
-        $http.get(settings.dataPath+'/partials/header/navbar-notifications.json') // Simple GET request example :
+        $http.get(Routing.generate('activity-notify',{_format:'json'})) // Simple GET request example :
             .success(function(data) {
                 $scope.navbarNotifications = data;
             })

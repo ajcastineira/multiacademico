@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Activity;
+namespace Multiservices\NotifyBundle\Activity;
 /*
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
@@ -18,6 +18,8 @@ class ActivityBox {
     /**
      *
      * @var integer
+     * 
+     * @Serializer\Accessor(getter="getLength")
      */
     private $length=0;
     /**
@@ -57,7 +59,7 @@ class ActivityBox {
     /**
      * 
      * @param string $title
-     * @return \Multiservices\TaskBundle\ActivityBox\ActivityBox
+     * @return \Multiservices\NotifyBundle\ActivityBox\ActivityBox
      */
     public function setTitle($title) {
         $this->title = $title;
@@ -66,7 +68,7 @@ class ActivityBox {
     /**
      * 
      * @param integer $length
-     * @return \Multiservices\TaskBundle\ActivityBox\ActivityBox
+     * @return \Multiservices\NotifyBundle\ActivityBox\ActivityBox
      */
     public function setLength($length) {
         $this->length = $length;
@@ -82,7 +84,7 @@ class ActivityBox {
     /**
      * 
      * @param integer $unread
-     * @return \AppBundle\Activity\ActivityBox
+     * @return Multiservices\NotifyBundle\Activity\ActivityBox
      */
     public function setUnread($unread) {
         $this->unread = $unread;
@@ -92,7 +94,7 @@ class ActivityBox {
         /**
      * 
      * @param array $data
-     * @return \Multiservices\TaskBundle\ActivityBox\ActivityBox
+     * @return \Multiservices\NotifyBundle\ActivityBox\ActivityBox
      */
     public function setData($data) {
         $this->data = $data;

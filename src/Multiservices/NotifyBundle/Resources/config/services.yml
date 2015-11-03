@@ -8,3 +8,9 @@ services:
     timeago:
         class: Multiservices\NotifyBundle\TimerService\timeago
         arguments: ["%timeago.timestamp%"]
+    notificador:
+        class: Multiservices\NotifyBundle\Servicios\Notificador
+        arguments: ["@doctrine.orm.entity_manager"]
+    notificadorlisten:
+        class: Multiservices\NotifyBundle\Servicios\NotificadorListen
+        arguments: ["@doctrine.orm.entity_manager"]

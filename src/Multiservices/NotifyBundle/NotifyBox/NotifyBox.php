@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @author Rene Arias <renearias@multiservices.com.ec>
  */
-class NotifyBox extends \AppBundle\Activity\ActivityBox
+class NotifyBox extends \Multiservices\NotifyBundle\Activity\ActivityBox
 {
     /**
      *

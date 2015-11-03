@@ -77,8 +77,8 @@ class NotificacionesController extends Controller
         $entities = $em->getRepository('NotifyBundle:Notificaciones')->inbox($user);
         
         $notifyBox=new NotifyBox();
-        
-        
+        $c=count($entities);
+        $notifyBox->setLength($c);
         $notifyBox->setData($entities);
         $serializer = $this->get('jms_serializer');
         $dataNotifyBox=$serializer->serialize($notifyBox, 'json');

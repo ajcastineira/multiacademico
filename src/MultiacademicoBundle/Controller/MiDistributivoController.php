@@ -10,11 +10,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
-use MultiacademicoBundle\Form\DistributivosType;
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
 use Symfony\Component\HttpFoundation\Response;
+use Multiservices\NotifyBundle\Servicios\Notificador;
+
 /**
  * Distributivos controller.
  *
@@ -267,6 +268,7 @@ class MiDistributivoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            
             $em->flush();
 
             return $this->redirect($this->generateUrl('calificaciones_api', array('id'=>$id,'q'=>$q,'p'=>$p)));

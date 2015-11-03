@@ -97,6 +97,7 @@ class DefaultController extends Controller
      **/
     public function loginpruebaAction()
     {
-        return $this->render('baselogin.html.twig');
+        
+        return new Response("ok");
     }
 }

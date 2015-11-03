@@ -44,9 +44,26 @@ class Notificaciones
      */
      private $message;
      public function getMessage()
-     {
-  
+     {  
+         $parameters=$this->getActionid()->getParameters();
+          if (isset($parameters['vars'])&&(!empty($parameters['vars'])))
+          {
+              $vars=$this->getActionid()->getParameters()['vars'];
+              $message=$this->getActionid()->getLabel();
+              foreach ($vars as $var)
+              {
+                 if (isset($this->variables[$var]))
+                 {
+                     $message=str_replace('%'.$var.'%', '<strong>'.$this->variables[$var].'</strong>',$message);
+                 }
+              }
+              return $message;
+              
+          }
+          else
+          {
           return str_replace('%title%', '<strong>'.$this->notificaciontitulo.'</strong>',$this->getActionid()->getLabel());
+          }
          
      }
      

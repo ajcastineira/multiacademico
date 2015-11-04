@@ -196,18 +196,13 @@ class MiDistributivoController extends Controller
      * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
      * @Security("('ROLE_DOCENTE')")
      */
-    public function calificacionesApiAction(Distributivos $id,$q,$p)
+    public function calificacionesApiAction(Distributivos $distributivo,$q,$p)
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
-        if (!$distributivo) {
-            throw $this->createNotFoundException('Unable to find Distributivos entity.');
-        }
         $this->denyAccessUnlessGranted('DISTRIBUTIVO_VIEW', $distributivo, 'Usted solo puede escribir calificaciones en los cursos asignados a su distributivo!');
+        $em = $this->getDoctrine()->getManager();
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $cursoACalificar=new CursoACalificar($id);
+        $cursoACalificar=new CursoACalificar($distributivo->getId());
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
@@ -251,17 +246,15 @@ class MiDistributivoController extends Controller
      * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
      * @Security("has_role('ROLE_DOCENTE')")
      */
-    public function pasarCalificacionesAction(Request $request,$id,$q,$p)
+    public function pasarCalificacionesAction(Request $request,Distributivos $distributivo,$q,$p)
     {
-        $em = $this->getDoctrine()->getManager();
-        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
-        if (!$distributivo) {
-            throw $this->createNotFoundException('Unable to find Distributivos entity.');
-        }
+
         $this->denyAccessUnlessGranted('DISTRIBUTIVO_VIEW', $distributivo, 'Usted solo puede escribir calificaciones en sus cursos asignados!');
+        $em = $this->getDoctrine()->getManager();
+     
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $cursoACalificar=new CursoACalificar($id);
+        $cursoACalificar=new CursoACalificar($distributivo->getId());
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
@@ -272,7 +265,7 @@ class MiDistributivoController extends Controller
             $em->flush();
             
 
-            return $this->redirect($this->generateUrl('calificaciones_api', array('id'=>$id,'q'=>$q,'p'=>$p)));
+            return $this->redirect($this->generateUrl('calificaciones_api', array('id'=>$distributivo->getId(),'q'=>$q,'p'=>$p)));
             
         }
         $curso=$distributivo->getCursoName();
@@ -286,19 +279,5 @@ class MiDistributivoController extends Controller
         
     }
     
-    function notificarAEstudiantesPasoDeNota()
-    {
-        
-            $notificador=$this->get('notificador');
-            $usuarioanotificar=$calificacion->getCalificacionnummatricula()->getMatriculacodestudiante()->getUsuario();
-            $actiondata=new \MultiacademicoBundle\ActionData\DocenteWtriteCalificacionYou();
-            $actiondata->setDocente($user->getName());
-            $actiondata->setMateria($calificacion->getCalificacioncodmateria()->getMateria());
-            $notificador->notificarAVarios($actiondata->getActionid(), $user->getName(), $usuarioanotificar,$actiondata);
-        
-    }
-        
-    
-
-    
+   
 }

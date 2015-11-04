@@ -28,8 +28,8 @@ services:
         class: MultiacademicoBundle\EventListener\CalificacionesListener
         arguments: ['@service_container']
         tags:
-            #- { name: doctrine.orm.entity_listener }
-            - { name: doctrine.orm.event_listener, event: preUpdate, method: preUpdate }
-            - { name: doctrine.orm.event_listener, event: postFlush, method: postFlush }
+            - { name: doctrine.orm.entity_listener }
+           # - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush, method: postFlush }
             
     

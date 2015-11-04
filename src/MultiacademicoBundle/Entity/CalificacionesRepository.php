@@ -21,7 +21,7 @@ class CalificacionesRepository extends EntityRepository
         $materia=$distributivo->getDistributivocodmateria();
         
         return $this->getEntityManager()
-            ->createQuery('SELECT c '
+            ->createQuery('SELECT c, m, e '
                     . ' FROM MultiacademicoBundle:Calificaciones c'
                     . ' JOIN c.calificacionnummatricula m '
                     . ' JOIN m.matriculacodestudiante e'

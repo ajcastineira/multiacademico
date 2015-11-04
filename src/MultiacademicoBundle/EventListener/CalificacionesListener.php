@@ -25,45 +25,61 @@ class CalificacionesListener {
     
    
     protected $container;
+    private $calificacionesPorNotificar = [];
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
-    
-    
-    /**
-     * @ORM\PreUpdate
-     */
-    public function comprobar(Calificaciones $calificacion, PreUpdateEventArgs $event)
+     
+
+    public function preUpdate(PreUpdateEventArgs $args)
     {
-        
-        if ($event->hasChangedField('gracia')) {
-            //var_dump("gracia camibio");
-          //  $calificacion->setGrado(12);
-          //  $user = $this->container->get('security.token_storage')->getToken()->getUser();
-           // $notificador=$this->container->get('notificador');
-           // $notificador->notificar('docente_write_calificacion', $user->getName(), $user);
-            
-            
-        }
-    }
-    /**
-     * @ORM\PostUpdate
-     */
-    public function notificarUpdateCalificacion(Calificaciones $calificacion, LifecycleEventArgs $event)
-    {
-                
-                $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $entity = $args->getEntity();
+
+        // False check is compulsory otherwise duplication occurs
+        if (($entity instanceof Calificaciones) === false) {
+            //$userLog = new UserLog();
+            //$userLog->setDescription($entity->getId() . ' being updated.');
+            $calificacion=$entity;
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
                 $notificador=$this->container->get('notificador');
                 $usuarioanotificar=$calificacion->getCalificacionnummatricula()->getMatriculacodestudiante()->getUsuario();
-                 
-                  
-                  $actiondata=new \MultiacademicoBundle\ActionData\DocenteWtriteCalificacionYou();
+                
+                $actiondata=new \MultiacademicoBundle\ActionData\DocenteWtriteCalificacionYou();
                   $actiondata->setDocente($user->getName());
                   $actiondata->setMateria($calificacion->getCalificacioncodmateria()->getMateria());
-                  $notificador->notificar($actiondata->getActionid(), $user->getName(), $usuarioanotificar,$actiondata);
-      
+                  $n= new \Multiservices\NotifyBundle\Entity\Notificaciones();
+                  $n->setActionid($actiondata->getActionid());
+                  $n->setNotificaciontitulo($user->getName());
+                  $n->setVariables($actiondata);
+                  $n->setNotificacionuser($usuarioanotificar);
+                  //$n=$notificador->crearNotificacion($actiondata->getActionid(), $user->getName(), $usuarioanotificar,$actiondata);
+            
+
+            $this->calificacionesPorNotificar[] = $n;
+        }
+    }
+   
+    
+    public function postFlush(PostFlushEventArgs $args)
+    {
+        if (!empty($this->calificacionesPorNotificar)) {
+            $em = $args->getEntityManager();
+            foreach ($this->calificacionesPorNotificar as $notificacion) {
+                
+                
+                
+                 
+                
+                
+                $em->persist($notificacion);
+            
+                
+                
+            }
+            $em->flush();
+        }
     }
 }

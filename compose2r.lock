@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4dd64ba27f2a76b33722b54f70e03121",
-    "content-hash": "6acc7775fb20a2e3247dea3cb63b0057",
+    "hash": "f57409c223551a3a2d42d0e8e3a2ce7f",
+    "content-hash": "7ac97e9f2ae186a56b65392cf84da1f0",
     "packages": [
         {
             "name": "components/jquery",
@@ -1752,6 +1752,65 @@
                 "snappy"
             ],
             "time": "2015-08-24 21:40:00"
+        },
+        {
+            "name": "knplabs/knp-time-bundle",
+            "version": "1.5.0",
+            "target-dir": "Knp/Bundle/TimeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpTimeBundle.git",
+                "reference": "415e6f8a1b95366094dd3a5dd78e3e1c7a3a69fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/415e6f8a1b95366094dd3a5dd78e3e1c7a3a69fc",
+                "reference": "415e6f8a1b95366094dd3a5dd78e3e1c7a3a69fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.0"
+            },
+            "suggest": {
+                "symfony/twig-bundle": "to use the Twig time_diff function"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\TimeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpTimeBundle/contributors"
+                }
+            ],
+            "description": "Knplabs time bundle makes your dates look sensible and descriptive",
+            "homepage": "http://github.com/KnpLabs/KnpTimeBundle",
+            "keywords": [
+                "bundle",
+                "date",
+                "descriptive time",
+                "knp",
+                "knplabs",
+                "time"
+            ],
+            "time": "2015-10-07 13:57:19"
         },
         {
             "name": "kriswallsmith/assetic",

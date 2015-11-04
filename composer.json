@@ -32,7 +32,9 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "ircmaxell/password-compat": "^1.0",
         "friendsofsymfony/rest-bundle": "^1.7",
+        "knplabs/knp-time-bundle": "^1.5",
         "doctrine/doctrine-fixtures-bundle": "^2.2"
+
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

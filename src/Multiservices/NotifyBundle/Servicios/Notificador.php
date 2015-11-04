@@ -19,10 +19,10 @@ class Notificador
         $this->entityManager = $entityManager;
     }
 
-    function notificar($accion,$titulo="",$user,$data=null)
+    function notificar($accion,$titulo,$user,$data=null)
     {
        $em=$this->entityManager;
-       $notificacion=New Notificaciones;
+       $notificacion=New Notificaciones();
        $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
        $notificacion->setNotificacionuser($user);
        $notificacion->setNotificacionrole(1);
@@ -33,6 +33,41 @@ class Notificador
        $notificacion->setNotificacionestado(0);
        $notificacion->setVariables($data);
        $em->persist($notificacion);
+       $em->flush();
+       }
+       
+    function crearNotificacion($accion,$titulo,$user,$data=null)
+    {
+       $em=$this->entityManager;
+       $notificacion=New Notificaciones();
+       $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
+       $notificacion->setNotificacionuser($user);
+       $notificacion->setNotificacionrole(1);
+       
+       $notificacion->setNotificaciontitulo($titulo);
+       $notificacion->setNotificacion($accion);
+       $notificacion->setNotificaciontimestamp(time());
+       $notificacion->setNotificacionestado(0);
+       $notificacion->setVariables($data);
+       return $notificacion;
+    }   
+    
+    function notificarAVarios($accion,$titulo,$usuarios,$data=null)
+    {
+       $em=$this->entityManager;
+       foreach($usuarios as $user)
+       {
+       $notificacion=New Notificaciones();
+       $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
+       $notificacion->setNotificacionuser($user);
+       $notificacion->setNotificacionrole(1);
+       $notificacion->setNotificaciontitulo($titulo);
+       $notificacion->setNotificacion($accion);
+       $notificacion->setNotificaciontimestamp(time());
+       $notificacion->setNotificacionestado(0);
+       $notificacion->setVariables($data);
+       $em->persist($notificacion);
+       }
        $em->flush();  
        return $notificacion;
     }

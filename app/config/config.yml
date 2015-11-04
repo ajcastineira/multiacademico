@@ -217,6 +217,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        # entity_managers:
+        #     default:
+        #         mappings:
+        #             VNNCoreBundle: ~
+        #             VNNPressboxBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -248,4 +253,9 @@ fos_rest:
         serialize_null:       false
     serializer:
         serialize_null:       false
-            
+
+pcimagenca_chat:
+    # refresh interval in milliseconds
+    update_interval: 5000
+    # messages to be shown in chat
+    number_of_messages: 10

@@ -119,7 +119,7 @@ class Distributivos
     /**
      * @var \Aula
      *
-     * @ORM\ManyToOne(targetEntity="Aula")
+     * @ORM\ManyToOne(targetEntity="Aula", inversedBy="distributivos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="distributivocodperiodo", referencedColumnName="codperiodo"),
      *   @ORM\JoinColumn(name="distributivocodcurso", referencedColumnName="codcurso"),

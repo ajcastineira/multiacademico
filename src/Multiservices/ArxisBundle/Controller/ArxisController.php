@@ -17,12 +17,13 @@ class ArxisController extends Controller
     
     /**
      * @Route("/arxis", name="_arxis")
-     * @Template()
+     * Template()
      */
     public function indexAction(Request $request)
     {
         
-        return $this->render('MultiservicesArxisBundle:Arxis:index.html.twig');
+        //return $this->render('MultiservicesArxisBundle:Arxis:index.html.twig');
+        return new Response("OK");
         
         
     }

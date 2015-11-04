@@ -11,6 +11,3 @@ services:
     notificador:
         class: Multiservices\NotifyBundle\Servicios\Notificador
         arguments: ["@doctrine.orm.entity_manager"]
-    notificadorlisten:
-        class: Multiservices\NotifyBundle\Servicios\NotificadorListen
-        arguments: ["@doctrine.orm.entity_manager"]

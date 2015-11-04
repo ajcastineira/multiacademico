@@ -14,7 +14,7 @@ use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
 use Symfony\Component\HttpFoundation\Response;
-use Multiservices\NotifyBundle\Servicios\Notificador;
+
 
 /**
  * Distributivos controller.
@@ -270,6 +270,7 @@ class MiDistributivoController extends Controller
         if ($form->isValid()) {
             
             $em->flush();
+            
 
             return $this->redirect($this->generateUrl('calificaciones_api', array('id'=>$id,'q'=>$q,'p'=>$p)));
             
@@ -282,6 +283,18 @@ class MiDistributivoController extends Controller
             'listado' => $listado,
             'form'   => $form->createView(),
         );
+        
+    }
+    
+    function notificarAEstudiantesPasoDeNota()
+    {
+        
+            $notificador=$this->get('notificador');
+            $usuarioanotificar=$calificacion->getCalificacionnummatricula()->getMatriculacodestudiante()->getUsuario();
+            $actiondata=new \MultiacademicoBundle\ActionData\DocenteWtriteCalificacionYou();
+            $actiondata->setDocente($user->getName());
+            $actiondata->setMateria($calificacion->getCalificacioncodmateria()->getMateria());
+            $notificador->notificarAVarios($actiondata->getActionid(), $user->getName(), $usuarioanotificar,$actiondata);
         
     }
         

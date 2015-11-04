@@ -4,7 +4,7 @@ namespace MultiacademicoBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EspecializacionesType extends AbstractType
 {
@@ -21,9 +21,9 @@ class EspecializacionesType extends AbstractType
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Entity\Especializaciones',

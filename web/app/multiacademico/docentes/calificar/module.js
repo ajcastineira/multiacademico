@@ -25,7 +25,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Docentes',
                         pageHeader: {
-                            icon: 'flaticon-teacher',
+                            icon: 'flaticon-teach',
                             title: 'Docente',
                             subtitle: 'Docente'
                         },
@@ -69,7 +69,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Calificar',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Calificar',
                             subtitle: 'Distributivo'
                         },
@@ -102,7 +102,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Calificaciones',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Calificaciones',
                             subtitle: 'Curso'
                         },
@@ -133,7 +133,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Calificar Proyecto Escolar',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Proyectos Escolares',
                             subtitle: 'Distributivo'
                         },
@@ -166,7 +166,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Calificaciones Proyecto Escolar',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Calificaciones Proyecto Escolar',
                             subtitle: 'Curso'
                         },
@@ -202,7 +202,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Menu Tutor',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Tutor',
                             subtitle: 'Menu'
                         },
@@ -235,7 +235,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Calificaciones Proyecto Escolar',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-teach',
                             title: 'Calificaciones Proyecto Escolar',
                             subtitle: 'Curso'
                         },

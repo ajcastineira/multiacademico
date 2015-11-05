@@ -25,12 +25,12 @@ define(['angular',
                 data: {
                         pageTitle: 'especializaciones',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'especializaciones',
+                            icon: 'flaticon-teacher',
+                            title: 'Especializaciones',
                             subtitle: 'Lista'
                         },
                         breadcrumbs: [
-                            {title: 'especializaciones'},{title: 'lista'}
+                            {title: 'Especializaciones'},{title: 'lista'}
                         ]
                     }
             })
@@ -57,12 +57,12 @@ define(['angular',
                 url: '/especializaciones/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'especializaciones',
+                            icon: 'flaticon-teacher',
+                            title: 'Especializaciones',
                             subtitle: 'Mostrar'
                         },
                         breadcrumbs: [
-                            {title: 'especializaciones'},{title: 'mostrar'}
+                            {title: 'Especializaciones'},{title: 'mostrar'}
                         ]
                     },
                 views: {
@@ -82,12 +82,12 @@ define(['angular',
                  data: {
                         pageTitle: 'especializaciones',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'especializaciones',
+                            icon: 'flaticon-teacher',
+                            title: 'Especializaciones',
                             subtitle: 'Nuevo'
                         },
                         breadcrumbs: [
-                            {title: 'especializaciones'},{title: 'nuevo'}
+                            {title: 'Especializaciones'},{title: 'nuevo'}
                         ]
                     },
                 views: {
@@ -114,7 +114,7 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-teacher',
                             title: 'especializaciones',
                             subtitle: 'Editar'
                         },

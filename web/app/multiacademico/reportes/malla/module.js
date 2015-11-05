@@ -26,8 +26,8 @@ define([
                         pageTitle: 'malla-normal',
                         pageHeader: {
                             icon: 'fa fa-pencil',
-                            title: 'Malla Normal',
-                            subtitle: 'malla normal'
+                            title: 'Cuadro de calificaiones',
+                            subtitle: 'Lista'
                         },
                         breadcrumbs: [
                             {title: 'Malla'},{title: 'Malla Normal'}

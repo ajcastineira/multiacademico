@@ -25,7 +25,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Proyectos Escolares',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-meeting',
                             title: 'Proyectos Escolares',
                             subtitle: 'Lista'
                         },
@@ -57,7 +57,7 @@ define(['angular',
                 url: '/proyectosescolares/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-meeting',
                             title: 'Proyectos Escolares',
                             subtitle: 'Mostrar'
                         },
@@ -82,7 +82,7 @@ define(['angular',
                  data: {
                         pageTitle: 'Proyectos Escolares',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-meeting',
                             title: 'Proyectos Escolares',
                             subtitle: 'Nuevo'
                         },
@@ -127,7 +127,7 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-meeting',
                             title: 'Proyectos Escolares',
                             subtitle: 'Editar'
                         },

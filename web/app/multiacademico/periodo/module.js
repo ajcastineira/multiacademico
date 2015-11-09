@@ -25,7 +25,7 @@ define(['angular',
                 data: {
                         pageTitle: 'periodo',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-calendar5',
                             title: 'periodo',
                             subtitle: 'Lista'
                         },
@@ -57,7 +57,7 @@ define(['angular',
                 url: '/periodo/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-calendar5',
                             title: 'periodo',
                             subtitle: 'Mostrar'
                         },
@@ -82,7 +82,7 @@ define(['angular',
                  data: {
                         pageTitle: 'periodo',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-calendar5',
                             title: 'periodo',
                             subtitle: 'Nuevo'
                         },
@@ -114,7 +114,7 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-calendar5',
                             title: 'periodo',
                             subtitle: 'Editar'
                         },

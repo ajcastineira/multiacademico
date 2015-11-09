@@ -25,8 +25,8 @@ define(['angular',
                 data: {
                         pageTitle: 'cursos',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'cursos',
+                            icon: 'flaticon-filing',
+                            title: 'Cursos',
                             subtitle: 'Lista'
                         },
                         breadcrumbs: [
@@ -38,7 +38,7 @@ define(['angular',
             .state('multiacademico.cursos.list', {
                 url: '/cursos',
                 data: {
-                        pageTitle: 'cursos'
+                        pageTitle: 'Cursos'
                     },
                  views: {
                     "content@multiacademico": {
@@ -57,8 +57,8 @@ define(['angular',
                 url: '/cursos/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'cursos',
+                            icon: 'flaticon-filing',
+                            title: 'Cursos',
                             subtitle: 'Mostrar'
                         },
                         breadcrumbs: [
@@ -82,8 +82,8 @@ define(['angular',
                  data: {
                         pageTitle: 'cursos',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'cursos',
+                            icon: 'flaticon-filing',
+                            title: 'Cursos',
                             subtitle: 'Nuevo'
                         },
                         breadcrumbs: [
@@ -114,8 +114,8 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'cursos',
+                            icon: 'flaticon-filing',
+                            title: 'Cursos',
                             subtitle: 'Editar'
                         },
                         breadcrumbs: [

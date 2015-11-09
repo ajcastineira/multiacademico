@@ -25,8 +25,8 @@ define(['angular',
                 data: {
                         pageTitle: 'materias',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'materias',
+                            icon: 'flaticon-library',
+                            title: 'Materias',
                             subtitle: 'Lista'
                         },
                         breadcrumbs: [
@@ -57,8 +57,8 @@ define(['angular',
                 url: '/materias/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'materias',
+                            icon: 'flaticon-library',
+                            title: 'Materias',
                             subtitle: 'Mostrar'
                         },
                         breadcrumbs: [
@@ -82,8 +82,8 @@ define(['angular',
                  data: {
                         pageTitle: 'materias',
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'materias',
+                            icon: 'flaticon-library',
+                            title: 'Materias',
                             subtitle: 'Nuevo'
                         },
                         breadcrumbs: [
@@ -114,8 +114,8 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
-                            title: 'materias',
+                            icon: 'flaticon-library',
+                            title: 'Materias',
                             subtitle: 'Editar'
                         },
                         breadcrumbs: [

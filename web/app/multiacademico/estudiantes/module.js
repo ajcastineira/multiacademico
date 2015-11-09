@@ -142,7 +142,7 @@ define(['angular',
                  data: {
                         pageTitle: 'Mis Calificaciones',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-big57',
                             title: 'Mis Calificaciones',
                             subtitle: 'Menu'
                         },
@@ -162,7 +162,7 @@ define(['angular',
                  data: {
                         pageTitle: 'Mis Calificaciones',
                         pageHeader: {
-                            icon: 'flaticon-a1',
+                            icon: 'flaticon-schedule',
                             title: 'Mis Calificaciones',
                             subtitle: 'Informe'
                         },

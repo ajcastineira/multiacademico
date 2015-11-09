@@ -25,7 +25,7 @@ define(['angular',
                 data: {
                         pageTitle: 'Distributivos',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-teach',
                             title: 'Distributivos',
                             subtitle: 'Lista'
                         },
@@ -57,7 +57,7 @@ define(['angular',
                 url: '/distributivos/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-teach',
                             title: 'Distributivos',
                             subtitle: 'Mostrar'
                         },
@@ -82,7 +82,7 @@ define(['angular',
                  data: {
                         pageTitle: 'distributivos',
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-teach',
                             title: 'Distributivos',
                             subtitle: 'Nuevo'
                         },
@@ -114,7 +114,7 @@ define(['angular',
                 },
                 data: {
                         pageHeader: {
-                            icon: 'fa fa-users',
+                            icon: 'flaticon-teach',
                             title: 'Distributivos',
                             subtitle: 'Editar'
                         },

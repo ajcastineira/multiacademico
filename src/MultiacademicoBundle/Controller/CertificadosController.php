@@ -53,7 +53,10 @@ class CertificadosController extends Controller
         
         $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rector');
         if (!$rector) {
+            $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rectora');
+            if (!$rector) {
             throw $this->createNotFoundException('El rector no esta configurado.');
+            }
         }
         $secretaria= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Secretaria');
         if (!$secretaria) {

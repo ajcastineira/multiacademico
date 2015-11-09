@@ -168,7 +168,10 @@ assetic:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html
             output: /views/multiacademico/informes/seleccionar-aula-informes.html
-            
+        seleccionaraulacertificadomatriculahtml:
+            inputs:
+                -  %kernel.root_dir%/../web/views/multiacademico/certificados/seleccionar-aula-certificado-matricula.html
+            output: /views/multiacademico/certificados/seleccionar-aula-certificado-matricula.html
         menucalificacionesedtudianteshtml:
             inputs:
                 -  %kernel.root_dir%/../web/views/multiacademico/estudiantes/menu-calificaciones.html

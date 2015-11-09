@@ -37,6 +37,20 @@ class Especializaciones
     /**
      * @var string
      *
+     * @ORM\Column(name="tipotitulo", type="string", length=50, nullable=true)
+     */
+    private $tipotitulo;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titulo", type="string", length=150, nullable=true)
+     */
+    private $titulo;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="especializacionestado", type="string", length=8, nullable=false)
      */
     private $especializacionestado;
@@ -100,6 +114,56 @@ class Especializaciones
     {
         return $this->especializacionestado;
     }
+    
+    /**
+     * Set titulo
+     *
+     * @param string $titulo
+     *
+     * @return Especializaciones
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * Get titulo
+     *
+     * @return string
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+    
+    
+    /**
+     * Set tipotitulo
+     *
+     * @param string $tipotitulo
+     *
+     * @return Especializaciones
+     */
+    public function setTipotitulo($tipotitulo)
+    {
+        $this->tipotitulo = $tipotitulo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipotitulo
+     *
+     * @return string
+     */
+    public function getTipotitulo()
+    {
+        return $this->tipotitulo;
+    }
+    
     public function __toString() {
         return $this->especializacion;
     }

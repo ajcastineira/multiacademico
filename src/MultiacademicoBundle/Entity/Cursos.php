@@ -40,6 +40,15 @@ class Cursos
      * @Serializer\Groups({"list","detail"})
      */
     private $curso;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=10, nullable=false)
+     * Serializer\Expose
+     * Serializer\Groups({"list","detail"})
+     */
+    private $tipo;
 
     /**
      * @var string
@@ -106,6 +115,30 @@ class Cursos
     public function getCurso()
     {
         return $this->curso;
+    }
+    
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     *
+     * @return Tipos
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
     }
 
     /**

@@ -45,10 +45,28 @@ class Cursos
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=10, nullable=false)
-     * Serializer\Expose
-     * Serializer\Groups({"list","detail"})
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $tipo;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel", type="integer", length=2, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
+     */
+    private $nivel;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="grado", type="integer", length=2, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
+     */
+    private $grado;
 
     /**
      * @var string
@@ -122,7 +140,7 @@ class Cursos
      *
      * @param string $tipo
      *
-     * @return Tipos
+     * @return Cursos
      */
     public function setTipo($tipo)
     {
@@ -139,6 +157,54 @@ class Cursos
     public function getTipo()
     {
         return $this->tipo;
+    }
+    
+    /**
+     * Set nivel
+     *
+     * @param string $nivel
+     *
+     * @return Cursos
+     */
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return string
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+    
+     /**
+     * Set grado
+     *
+     * @param string $grado
+     *
+     * @return Cursos
+     */
+    public function setGrado($grado)
+    {
+        $this->grado = $grado;
+
+        return $this;
+    }
+
+    /**
+     * Get grado
+     *
+     * @return string
+     */
+    public function getGrado()
+    {
+        return $this->grado;
     }
 
     /**

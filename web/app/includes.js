@@ -92,6 +92,7 @@ define([
      'multiacademico/docentes/calificar/module',
      'multiacademico/docentes/calificar/factory/CalificarForm',
      'multiacademico/reportes/malla/module',
+     'multiacademico/certificados/module',
      'multiacademico/informes/module',
     
     // cases

@@ -46,6 +46,7 @@ define([
         'multiacademico.distributivos',
         'multiacademico.malla',
         'multiacademico.especializaciones',
+        'multiacademico.certificados',
        'multiacademico.informes',
         'multiacademico.materias'//,
        // 'multiacademico.periodo'

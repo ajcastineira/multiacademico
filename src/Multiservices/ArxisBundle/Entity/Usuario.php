@@ -35,6 +35,10 @@ class Usuario extends BaseUser
     */
     private $cargo = '';
     /**
+    * @ORM\Column(name="trato",type="string",length=50)
+    */
+    private $trato = '';
+    /**
     * @ORM\Column(type="string",length=255, nullable=true)
     */
     protected $path;
@@ -289,6 +293,27 @@ class Usuario extends BaseUser
     public function getCargo()
     {
         return $this->cargo;
+    }
+    
+    /**
+    * Set trato
+    * 
+    * @param string $trato
+    */
+     public function setTrato($trato)
+    {
+        $this->trato = $trato;
+      
+    }
+
+    /**
+     * Get trato
+     *
+     * @return string 
+     */
+    public function getTrato()
+    {
+        return $this->trato;
     }
 
     /**

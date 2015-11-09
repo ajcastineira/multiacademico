@@ -1,9 +1,9 @@
-pcimagenca_chat:
-    resource: "@PcimagencaChatBundle/Resources/config/routing.yml"
-    prefix:   /
-chat:
-    resource: "@PcimagencaChatBundle/Controller/ChatController.php"
-    type:     annotation
+#pcimagenca_chat:
+#    resource: "@PcimagencaChatBundle/Resources/config/routing.yml"
+#    prefix:   /
+#chat:
+#    resource: "@PcimagencaChatBundle/Controller/ChatController.php"
+#    type:     annotation
 
 multiacademico:
     resource: "@MultiacademicoBundle/Resources/config/routing.yml"

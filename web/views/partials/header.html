@@ -171,6 +171,60 @@
             </li><!-- /.dropdown navbar-notification -->
             <!--/ End notifications -->
 
+
+
+
+
+
+<!-- Start notifications -->
+           <li class="dropdown navbar-notification">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="count label label-danger rounded" style="{{navbarNotifications.unread>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarNotifications.unread}}</span></a>
+
+                <!-- Start dropdown menu -->
+               <div class="dropdown-menu animated flipInX">
+                    <div class="dropdown-header">
+                        <span class="title">Messages <strong>({{navbarMessages.length}})</strong></span>
+                        <!--<span class="option text-right"><a href="#"><i class="fa fa-cog"></i> Setting</a></span>-->
+                    </div>
+                    <div data-nicescroll class="dropdown-body niceScroll">
+
+                        <!-- Start message list -->
+                        <div class="media-list small">
+
+                            <a data-ng-repeat="message in navbarMessages.data" href="#" class="media {{message.read ?'':'unread'}}">
+                                <div class="media-object pull-left">
+                                    <i data-ng-show="message.icon" class="{{message.icon}}"></i>
+                                    <img data-ng-show="message.image" class="img-circle" src="http://img.djavaui.com/?create=30x30,4888E1?f=ffffff" alt="{{message.image}}"/>
+                                </div>
+                                <div class="media-body">
+                                    <span class="media-text" ng-bind-html="message.message"></span>
+                                    <!-- Start meta icon -->
+                                    <span class="media-meta">{{message.date}}</span>
+                                    <!--/ End meta icon -->
+                               </div><!-- /.media-body -->
+                            </a><!-- /.media -->
+
+                            <!-- Start message indicator -->
+                            <!--<a href="#" class="media indicator inline">
+                                <span class="spinner">&nbsp;&nbsp;Cargar mas notificaciones...</span>
+                            </a>-->
+                            <!--/ End message indicator -->
+
+                        </div>
+                        <!--/ End message list -->
+
+                    </div>
+                    <div class="dropdown-footer">
+                        <a href="#">Ver Todas</a>
+                    </div>
+                </div>
+                <!--/ End dropdown menu -->
+
+            </li><!-- /.dropdown navbar-notification -->
+            <!--/ End Messages -->
+            
+
             <!-- Start profile -->
             <li class="dropdown navbar-profile">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

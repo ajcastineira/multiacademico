@@ -4,13 +4,14 @@
 <div style="height: 1cm;"></div>
 {% for matricula in aula.matriculados %}
  {{include("MultiacademicoBundle:Certificados:certificadoMatricula.html.twig")}}
- {%if loop.index%2==1%}
+ <div style="page-break-after: always"></div>
+ <div style="height: 1cm;"></div>
+{# {%if loop.index%2==1%}
  <hr/>
  {%endif%}
  {%if loop.index%2==0%}
- <div style="page-break-after: always"></div>
- <div style="height: 1cm;"></div>
- {%endif%}
+ 
+ {%endif%}#}
  {%endfor%}
  
  

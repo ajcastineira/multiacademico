@@ -3,6 +3,8 @@
 namespace Multiservices\NotifyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use Multiservices\NotifyBundle\TimerService\timeago;
 
 /**
  * Actions
@@ -16,6 +18,7 @@ class Actions
      * @var string
      * @ORM\Id
      * @ORM\Column(name="aid", type="string", length=255, nullable=false,options={"default":"0","comment":"Primary Key: Unique actions ID."})
+     * @Serializer\Groups({"activities"})
      * 
      * 
      */
@@ -25,6 +28,7 @@ class Actions
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=32, nullable=false,options={"default":"","comment":"The object that that action acts on (node, user, comment, system or custom types.)"})
+     * @Serializer\Groups({"activities"})
      */
     private $type = '';
 
@@ -39,6 +43,7 @@ class Actions
      * @var string
      *
      * @ORM\Column(name="parameters", type="json_array", nullable=false,options={"comment":"Parameters to be passed to the callback function."})
+     * @Serializer\Groups({"activities"})
      */
     private $parameters;
 

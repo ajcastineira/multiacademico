@@ -3,12 +3,15 @@
 namespace Multiservices\NotifyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use Multiservices\NotifyBundle\TimerService\timeago;
 
 /**
  * Activity
  *
  * @ORM\Table(name="activity")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Multiservices\NotifyBundle\Entity\ActivityRepository")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Activity
 {
@@ -22,9 +25,16 @@ class Activity
     private $id;
 
     /**
-     * @var integer
+     * options={"comment":"The users.uid of the user who triggered the event."}
+     * 
+     * @var \Multiservices\ArxisBundle\Entity\Usuario
      *
-     * @ORM\Column(name="uid", type="integer", nullable=false,options={"comment":"The users.uid of the user who triggered the event."})
+     * @ORM\ManyToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="uid", referencedColumnName="id", nullable=false)
+     * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"activities"})
      */
     private $uid;
 
@@ -49,6 +59,8 @@ class Activity
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="actionid", referencedColumnName="aid")
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"activities"})
      */
     private $actionid;
 
@@ -56,6 +68,9 @@ class Activity
      * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=true,options={"comment":"Text of log message to be passed into the t() function."})
+     * @Serializer\Expose
+     * @Serializer\Accessor(getter="getMessage")
+     * @Serializer\Groups({"activities"})
      */
     private $message;
 
@@ -105,6 +120,8 @@ class Activity
      * @var integer
      *
      * @ORM\Column(name="timestamp", type="integer", nullable=true,options={"default":0,"comment":"Unix timestamp of when event occurred."})
+     * @Serializer\Expose
+     * @Serializer\Groups({"activities"})
      */
     private $timestamp = 0;
 
@@ -123,10 +140,10 @@ class Activity
     /**
      * Set uid
      *
-     * @param integer $uid
+     * @param \Multiservices\ArxisBundle\Entity\Usuario $uid
      * @return Activity
      */
-    public function setUid($uid)
+    public function setUid(\Multiservices\ArxisBundle\Entity\Usuario $uid)
     {
         $this->uid = $uid;
 
@@ -136,7 +153,7 @@ class Activity
     /**
      * Get uid
      *
-     * @return integer 
+     * @return \Multiservices\ArxisBundle\Entity\Usuario
      */
     public function getUid()
     {
@@ -389,4 +406,17 @@ class Activity
     {
         return $this->timestamp;
     }
+    
+    /**
+    
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("date")
+     * @Serializer\Groups({"activities"})
+     */
+     public function getDate()
+     {
+          $timeago=new timeago($this->timestamp);
+          return $timeago->tiempo;
+         
+     }
 }

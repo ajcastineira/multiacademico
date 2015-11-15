@@ -27,7 +27,7 @@ class Usuario extends BaseUser
     /**
     * @ORM\Column(type="string",length=255)
     * @Serializer\Expose
-    * @Serializer\Groups({"list","detail","estadisticas"})
+    * @Serializer\Groups({"list","detail","estadisticas","activities"})
     */
     private $name='';
     /**
@@ -611,7 +611,7 @@ class Usuario extends BaseUser
     /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("picture")
-     * @Serializer\Groups({"estadisticas"})
+     * @Serializer\Groups({"estadisticas","activities"})
      */
     public function getWebPath()
     {

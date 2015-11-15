@@ -12,5 +12,9 @@ namespace Multiservices\NotifyBundle\ActionData;
  */
 class ActionParameters {
     public $icon;
+    public $color;
+    public $iconbgcolor;
+    public $iconshape;
+    public $textcolor;
     public $vars=[];
 }

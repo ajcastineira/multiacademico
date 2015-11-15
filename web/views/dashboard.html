@@ -10,14 +10,28 @@
  </div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
-
+         
         <div class="profile-cover">
            
             <div class="profile-body">
+                <div class="panel rounded shadow">
+                        <form action="...">
+                            <textarea class="form-control input-lg no-border" rows="2" placeholder="¿En que estas pensando?"></textarea>
+                        </form>
+                        <div class="panel-footer">
+                            <button class="btn btn-primary pull-right mt-5">Publicar</button>
+                            <ul class="nav nav-pills">
+                                <!--<li><a href="#"><i class="fa fa-user"></i></a></li>
+                                <!--<li><a href="#"><i class="fa fa-map-marker"></i></a></li>-->
+                                <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                                <!--<li><a href="#"><i class="fa fa-smile-o"></i></a></li>-->
+                            </ul><!-- /.nav nav-pills -->
+                        </div><!-- /.panel-footer -->
+                </div><!-- /.panel -->
                 <div class="profile-timeline">
                     <!-- Start timeline -->
                     <div class="timeline">
-                        <div class="timeline-item">
+                   <!--      <div class="timeline-item">
                             <div class="text-center">
                                 <div class="time-show first">
                                     <a href="#" class="btn btn-success">Hoy</a>
@@ -138,6 +152,33 @@
     </div>
      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
         <div class="panel rounded shadow">
+            <div class="panel-body bg-facebook">
+                <div class="ribbon-wrapper">
+                    <a class="ribbon bg-twitter transparent"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 1</a>
+                </div><!-- /.ribbon-wrapper -->
+                <ul class="inner-all list-unstyled">
+                    <li class="text-center">
+                        <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})"><img class="img-circle img-bordered-success" src="{{mejorestudiantequimestrefoto}}" alt="{{mejorestudiantequimestre.estudiante}}">
+                            </a>
+                    </li>
+                    <li class="text-center">
+                        <h4 class="text-capitalize">{{mejorestudiantequimestre.estudiante}}</h4>
+                        <p class="text-muted text-capitalize">Mejor Estudiante del Quimestre</p>
+                    </li>
+                    <li>
+                        <a href="" class="btn btn-success text-center btn-block">{{mejorestudiantequimestre.curso}}, {{mejorestudiantequimestre.paralelo}}</a>
+                    </li>
+                    <li><br/></li>
+                    <li>
+                        <div class="btn-group-vertical btn-block">
+                            <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})" class="btn btn-default">Ver Perfil</a>
+                            <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
+                        </div>
+                    </li>
+                </ul><!-- /.list-unstyled -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <div class="panel rounded shadow">
             <div class="panel-body">
                 <div class="ribbon-wrapper">
                     <a class="ribbon ribbon-success"><i class="fa fa-star"></i> 1</a>
@@ -165,8 +206,6 @@
                 </ul><!-- /.list-unstyled -->
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
         <div class="panel rounded shadow">
             <div class="panel-body bg-danger">
                 <div class="ribbon-wrapper">
@@ -221,36 +260,7 @@
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->
     </div>
-     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="panel rounded shadow">
-            <div class="panel-body bg-facebook">
-                <div class="ribbon-wrapper">
-                    <a class="ribbon bg-twitter transparent"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 1</a>
-                </div><!-- /.ribbon-wrapper -->
-                <ul class="inner-all list-unstyled">
-                    <li class="text-center">
-                        <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})"><img class="img-circle img-bordered-success" src="{{mejorestudiantequimestrefoto}}" alt="{{mejorestudiantequimestre.estudiante}}">
-                            </a>
-                    </li>
-                    <li class="text-center">
-                        <h4 class="text-capitalize">{{mejorestudiantequimestre.estudiante}}</h4>
-                        <p class="text-muted text-capitalize">Mejor Estudiante del Quimestre</p>
-                    </li>
-                    <li>
-                        <a href="" class="btn btn-success text-center btn-block">{{mejorestudiantequimestre.curso}}, {{mejorestudiantequimestre.paralelo}}</a>
-                    </li>
-                    <li><br/></li>
-                    <li>
-                        <div class="btn-group-vertical btn-block">
-                            <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})" class="btn btn-default">Ver Perfil</a>
-                            <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
-                        </div>
-                    </li>
-                </ul><!-- /.list-unstyled -->
-            </div><!-- /.panel-body -->
-        </div><!-- /.panel -->
-    </div>
-   <!-- ADSENSE -->                              
+    <!-- ADSENSE -->                              
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 		<div class="text-align-center" style="text-align:center">
                         <script type="text/javascript" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -265,6 +275,8 @@
                 </div>
          </div><!-- /.col -->
       <!-- fin ADSENSE --> 
+
+   
  
    
 </div><!-- /.row -->

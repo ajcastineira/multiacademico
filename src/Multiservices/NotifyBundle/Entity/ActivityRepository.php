@@ -13,12 +13,20 @@ class ActivityRepository extends EntityRepository
     
    public function recentActivities()
     {
-        return $this->getEntityManager()
+       $fecha=New \DateTime();
+       $fechainiciohoy = new \DateTime($fecha->format('Y-m-d')); 
+       $fechainicioayer = new \DateTime('yesterday'); 
+       //$res=$fecha->diff($fechainiciohoy,true);
+       //var_dump($res);
+               
+               
+       return $this->getEntityManager()
             ->createQuery('SELECT a'
                     . ' FROM NotifyBundle:Activity a '
-                    . 'where 1=1'
+                    . 'where (a.timestamp between :fechaini and :fechafin) '
                     . ' ORDER BY a.timestamp DESC')
-            //->setParameter(":user", $user)
+            ->setParameter(":fechaini", $fechainicioayer->getTimestamp())
+            ->setParameter(":fechafin", $fecha->getTimestamp())
             ->getResult();
     }
     public function myActivities($user)

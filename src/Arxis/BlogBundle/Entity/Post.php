@@ -24,10 +24,11 @@ use Multiservices\ArxisBundle\Entity\Usuario;
  *
  * @ORM\Table(name="post")
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
  * @Serializer\ExclusionPolicy("none")
  */
 
-abstract class Post implements PostInterface
+class Post implements PostInterface
 {
     /**
      * @var integer
@@ -279,10 +280,10 @@ abstract class Post implements PostInterface
     /**
      * {inheritdoc}
      */
-    //public function getTags()
-    //{
-    //    return $this->tags;
-    //}
+    public function getTags()
+    {
+        return $this->tags;
+    }
 
     /**
      * {@inheritdoc}
@@ -291,7 +292,9 @@ abstract class Post implements PostInterface
     {
         $this->tags = $tags;
     }
-
+    /**
+     *  @ORM\PrePersist
+     */
     public function prePersist()
     {
         if (!$this->getPublicationDateStart()) {
@@ -301,7 +304,9 @@ abstract class Post implements PostInterface
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
     }
-
+    /**
+     *  @ORM\PreUpdate
+     */
     public function preUpdate()
     {
         if (!$this->getPublicationDateStart()) {

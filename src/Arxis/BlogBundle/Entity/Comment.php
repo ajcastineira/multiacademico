@@ -24,7 +24,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Multiservices\ArxisBundle\Entity\Usuario;
 
-abstract class Comment implements CommentInterface
+class Comment implements CommentInterface
 {
     /**
      * @var integer
@@ -111,6 +111,13 @@ abstract class Comment implements CommentInterface
      */
     protected $author;
 
+    /**
+     * get ID
+     */
+    public function getId() {
+        return $this->id;
+        
+    }
     /**
      * {@inheritdoc}
      */

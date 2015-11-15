@@ -315,7 +315,7 @@ define([
                 },
                 views:{
                 "":{
-                    templateUrl: 'views/dashboard.html',
+                    templateUrl: Routing.generate('dashboardview',{_format:'html'}),
                     controller: 'DashboardCtrl',
                     resolve: {
                         deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {

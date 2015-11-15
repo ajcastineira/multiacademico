@@ -12,8 +12,9 @@ define([
  var module=ng.module('blankonConfig', ['angular-loading-bar','oc.lazyLoad'])
 
     // Setup global settings
-    .factory('settings', ['$rootScope', function($rootScope) {
-        var baseURL = '', // Setting base url app
+    .factory('settings', ['$rootScope','$browser', function($rootScope,$browser) {
+
+        var baseURL = $browser.baseHref().replace("app_dev.php/",""), // Setting base url app
             settings = {
                 baseURL                 : baseURL,
                 pluginPath              : 'vendor',
@@ -21,7 +22,7 @@ define([
                 pluginCommercialPath    : baseURL+'/assets/commercial/plugins',
                 globalImagePath         : 'img',
                 adminImagePath          : baseURL+'/assets/admin/img',
-                cssPath                 : 'app/styles',
+                cssPath                 : baseURL+'app/styles',
                 jsPath                  : 'app/scripts',
                 dataPath                : 'data',
                 additionalPath          : baseURL+'/assets/global/plugins/bower_components'
@@ -317,10 +318,10 @@ define([
                     templateUrl: 'views/dashboard.html',
                     controller: 'DashboardCtrl',
                     resolve: {
-                    deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+                        deps: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                         var pluginProdPath = settings.pluginProdPath; // Create variable plugin path
-                            
+                        var cssPath = settings.cssPath;    
 
                         return $ocLazyLoad.load( // you can lazy load files for an existing module
                             [
@@ -328,18 +329,29 @@ define([
                                     insertBefore: '#load_css_before',
                                     files: [
                                        
-                                        pluginProdPath+'/jquery.gritter/css/jquery.gritter.css'
+                                        pluginProdPath+'/jquery.gritter/css/jquery.gritter.css',
+                                         cssPath+'/pages/timeline.css',
+                                        cssPath+'/pages/timeline2.css'
+                                    
+                                        
                                     ]
                                 }
                             ]);
                         }],
-                    ResumenInicio:['$http',function($http){
+                        ResumenInicio:['$http',function($http){
                                 return $http.get(Routing.generate('get_estadisticas_all',{'_format':'json'}))
                                 .then(function(response){
                        
                                 return response.data;
                             });
-                        }]
+                            }],
+                        activities:['$http',function($http){
+                                return $http.get(Routing.generate('get_activities_all',{'_format':'json'}))
+                                .then(function(response){
+                       
+                                return response.data.activities;
+                            });
+                            }]
                     }
                  }
                 }

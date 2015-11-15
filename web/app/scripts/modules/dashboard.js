@@ -31,7 +31,7 @@ define([
         // GRITTER NOTIFICATION
         // =========================================================================
         // display marketing alert only once
-           .controller('DashboardCtrl',['$scope', '$http','$browser', 'settings','ResumenInicio', function ($scope, $http,$browser, settings,ResumenInicio) {
+           .controller('DashboardCtrl',['$scope', '$http','$browser', 'settings','ResumenInicio','activities', function ($scope, $http,$browser, settings,ResumenInicio,activities) {
             if($('#wrapper').css('opacity')) {
                 if (!$.cookie('intro')) {
 
@@ -83,6 +83,7 @@ define([
                var base=$browser.baseHref();
               
                 base=base.replace("app_dev.php/","");
+               
                 $scope.resumen=ResumenInicio;
                 
                 $scope.mejorestudianteparcial=ResumenInicio.mejoresparcial[0];
@@ -94,6 +95,9 @@ define([
                 
                 $scope.mejorestudiantequimestre=ResumenInicio.mejoresquimestre[0];
                 $scope.mejorestudiantequimestrefoto=base+$scope.mejorestudiantequimestre.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                
+                
+                 $scope.activities=activities;
                 // Session timeout
                 $.sessionTimeout({
                   title: 'Su sesion esta a punto de expirar!',

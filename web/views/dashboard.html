@@ -9,6 +9,133 @@
      </div>
  </div>
 <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+
+        <div class="profile-cover">
+           
+            <div class="profile-body">
+                <div class="profile-timeline">
+                    <!-- Start timeline -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="text-center">
+                                <div class="time-show first">
+                                    <a href="#" class="btn btn-success">Hoy</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start timeline item -->
+<!--                        <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <img data-no-retina="" class="timeline-badge-userpic" src="http://img.djavaui.com/?create=80x80,81B71A?f=ffffff">
+                            </div>
+                            <div class="timeline-body">
+                                <div class="timeline-body-arrow">
+                                </div>
+                                <div class="timeline-body-head">
+                                    <div class="timeline-body-head-caption">
+                                        <a href="javascript:void(0);" class="timeline-body-title font-blue-madison">Djava UI</a>
+                                        <span class="timeline-body-time font-grey-cascade">Posted at 6:25 PM . <i class="fa fa-globe"></i></span>
+                                    </div>
+                                    <div class="timeline-body-head-actions">
+                                        <div class="btn-group">
+                                            <button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                Actions <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="javascript:void(0);">Pin to top</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Change date</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Highlight</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Embed post</a>
+                                                </li>
+                                                <li class="divider">
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Hide from timeline</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-body-content">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End timeline item -->
+
+  <!--                       <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <span class="timeline-icon bg-danger"><i class="fa fa-child"></i></span>
+                            </div>
+                              <div class="timeline-body ">
+                                <div class="timeline-body-arrow">
+                                </div>
+                                <div class="panel panel-danger shadow">
+                                     
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Your Activity</div>
+                                        
+                                    </div>
+                                        
+                                    <div class="panel-body rounded">
+                                        <ul class="list-unstyled no-margin">
+                                            <li><i class="fa fa-comment"></i> Discussion member on <a href="https://www.facebook.com/groups/twitterbootstrapindonesia/" target="_blank">Twitter Bootstrap Indonesia</a></li>
+                                            <li><i class="fa fa-book"></i> Add a resource <a href="#">Reading web design</a></li>
+                                            <li><i class="fa fa-comment"></i> Add new discussion topic feature Blankon v1.0.2</li>
+                                            <li><i class="fa fa-book"></i> Add a review <a href="#">Criminal on War</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+      -->                
+                        <div class="timeline-item" data-ng-repeat="activity in activities">
+                            <div class="timeline-badge">
+                                <span class="timeline-icon {{activity.actionid.parameters.iconbgcolor}} {{activity.actionid.parameters.iconshape}}"><i class="{{activity.actionid.parameters.icon}}"></i></span>
+                            </div>
+                              <div class="timeline-body ">
+                                <div class="timeline-body-arrow">
+                                </div>
+                                <div class="panel panel-success shadow">
+                                    <div class="panel-body timeline-desk">
+                                        
+                                        
+                                        <h1 class="{{activity.actionid.parameters.textcolor}}">{{activity.date}}</h1>
+                                        <p ng-bind-html="activity.message"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+<!--
+                        <div class="timeline-item">
+                            <div class="text-center">
+                                <div class="time-show">
+                                    <a href="#" class="btn btn-primary">Load More</a>
+                                </div>
+                            </div>
+                        </div>
+-->
+                    </div>
+                    <!--/ End timeline -->
+                </div>
+            </div><!-- /.profile-body -->
+        </div><!-- /.profile-cover -->
+
+    </div>
      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
         <div class="panel rounded shadow">
             <div class="panel-body">

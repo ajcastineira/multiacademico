@@ -1,3 +1,7 @@
+arxis_blog:
+    resource: "@ArxisBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
 #pcimagenca_chat:
 #    resource: "@PcimagencaChatBundle/Resources/config/routing.yml"
 #    prefix:   /

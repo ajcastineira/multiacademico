@@ -45,20 +45,30 @@
         </div>
         </div>
     </div>
-    <div class="row">
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('materias') }}">
-            Regresar a la lista
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('materias_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-    </div>
+
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table records_list  table table-primary">
+                <thead>
+                <tr>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <td class="text-center">
+                        <a class="btn btn-success" href="{{ path('materias') }}">
+                        Regresar a la lista
+                        </a>
+                        <a class="btn btn-primary" href="{{ path('materias_edit', { 'id': entity.id }) }}">
+                            Editar
+                        </a>
+                         {{ form(delete_form) }}                       
+                    </td>
+             </tbody>
+</table>
+</div>
+</div>      
+</div>
 </div>
 {% endblock %}

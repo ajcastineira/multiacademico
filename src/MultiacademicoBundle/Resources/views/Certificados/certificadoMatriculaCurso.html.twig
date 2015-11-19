@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+<div style="height: 2cm;"></div>
+{% for matricula in aula.matriculados %}
+ {{include("MultiacademicoBundle:Certificados:certificadoMatricula.html.twig")}}
+ <div style="page-break-after: always"></div>
+ <div style="height: 4cm;"></div>
+{# {%if loop.index%2==1%}
+ <hr/>
+ {%endif%}
+ {%if loop.index%2==0%}
+ 
+ {%endif%}#}
+ {%endfor%}
+ 
+ 

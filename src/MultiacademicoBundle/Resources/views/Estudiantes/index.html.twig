@@ -20,7 +20,7 @@
         <div class="panel rounded shadow">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h3 class="panel-title"><i class="flaticon-signature2"></i> Distributivos  Resumen</h3>
+                    <h3 class="panel-title"><i class="fa fa-users"></i>Listado de Estudiantes</h3>
                 </div>
                 <div class="pull-right">
                     <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
@@ -34,14 +34,11 @@
            </div>
           </div>  
     </div>
-    <div class="row">    
-        <ul>
-        <li>
-            <a href="{{ path('estudiantes_new') }}">
-                Crear nueva entrada
-            </a>
-        </li>
-    </ul>
+    <div class="row text-center">    
+        <a class="btn btn-info" href="{{ path('estudiantes_new') }}">
+            Crear nueva entrada
+        </a>
+  
         </div>
 {{ datatable_render_js(datatable) }}
 {% endblock %}

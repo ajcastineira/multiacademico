@@ -17,7 +17,7 @@
             </div><!-- /.panel-heading -->
             <div class="panel-body ">
 
-    <table class="table records_list">
+    <table class="table records_list table table-primary">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,27 +34,9 @@
                 <td>{{ entity.cursoabreviatura }}</td>
                 <td>{{ entity.curso }}</td>
                 <td>{{ entity.cursoestado }}</td>
-                <td>
-                <ul>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a class="btn btn-info" href="{{ path('cursos_show', { 'id': entity.id }) }}">mostrar</a>
-                    </li>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a class="btn btn-warning" href="{{ path('cursos_edit', { 'id': entity.id }) }}">editar</a>
-                    </li>
-                </ul>
+                <td class="text-center">
+                   <a class="btn btn-primary" href="{{ path('cursos_show', { 'id': entity.id }) }}">mostrar</a>
+                   <a class="btn btn-warning" href="{{ path('cursos_edit', { 'id': entity.id }) }}">editar</a>
                 </td>
             </tr>
         {% endfor %}
@@ -64,14 +46,10 @@
         </div>
     </div>    
     </div>
-    <div class="row">    
-        <ul>
-        <li>
-            <a href="{{ path('cursos_new') }}">
-                Crear nueva entrada
-            </a>
-        </li>
-    </ul>
-        </div>
+    <div class="row text-center" >   
+        <a class="btn btn-info" href="{{ path('cursos_new') }}">
+         Crear nueva entrada
+        </a>        
+    </div>
 </div>    
 {% endblock %}

@@ -1,0 +1,82 @@
+<div class="paginah2">
+<div class="reporte-header" style="display: flex;">
+      
+            <div style="width: 20%;vertical-align: middle">
+            <img style="max-width: 150px;max-height: 100px;" src="{{asset("bundles/multiacademico/img/ministerio.png")}}"  />
+            </div>
+         
+             <div style="width:60%;display:table-cell;vertical-align: top;line-height:30px">
+                  <span class="entidad" style="font-size:18.0pt;font-family:Tahoma;color:#000000"><b>CERTIFICADO DE MATRICULA</b></span><br/>
+                  <span style="font-size:17.0pt;font-family:Tahoma;color:#000000"><b>Jornada</b> <b style="color:#FF0000">{{matricula.matriculaseccion|slice(0,(matricula.matriculaseccion|length)-1)~'a'}}</b></span>
+                 </div>
+                 <div style="width: 20%;vertical-align: middle">
+            <img style="max-width: 150px;max-height: 80px;" src="{{asset("bundles/multiacademico/img/ecuador.png")}}" />
+            </div>
+  </div>
+      
+      <div class="reporte-header" style="line-height:30px;">
+                  <span class="entidad" style="font-size:16.0pt;font-family:Tahoma;color:#000000"><b> INSTITUCIÓN: {{entidad.titulo}}</b></span><br/>
+                  <span  style="font-size:14.0pt;font-family:Tahoma;color:#000000"><b>{{entidad.lugar}}</b></span>
+      </div>
+<div class="detalle" style="width:95%;margin: auto;">             
+<div style="font-size:15.0pt;font-family:Tahoma;color:#000000;padding-top:0.5cm">
+    <table border="0" style="font-weight: bolder;line-height: 22px;width:100%;">
+        <tr>   
+            <td>
+             Año Lectivo:</td>
+             <td>{{matricula.matriculacodperiodo}}</td>
+                 <td>N°  Matricula:</td>
+                     <td style="color:#FF0000">{{"%06d"|format(matricula.id)}}</td>
+        </tr>        
+        {%if matricula.matriculacodcurso.tipo=='BACH'%}
+            <tr>
+        
+        <td>Tipo de Titulo:</td>
+        <td>{{matricula.matriculacodespecializacion.tipotitulo}}</td>
+        <td>Curso: {{matricula.matriculacodcurso}}</td>
+        <td>Paralelo:  <span style="color:#FF0000">{{matricula.matriculaparalelo}}</span></td>
+        </tr>
+        
+        <tr>
+        <td>Titulo:</td>
+        <td colspan="3">{{matricula.matriculacodespecializacion.titulo}}</td>
+        </tr>    
+        {%endif%}
+        {%if (matricula.matriculacodcurso.tipo=='EB' or matricula.matriculacodcurso.tipo=='EBI' or matricula.matriculacodcurso.tipo=='EBS') %}
+        <tr>
+            <td>Nivel de Educación</td>
+            <td>Básica –  Grado {{matricula.matriculacodcurso.grado}}</td>
+            <td>Paralelo:</td>
+            <td>{{matricula.matriculaparalelo}}</td>
+        </tr>
+        {%endif%}
+        <tr>        
+        <td>Fecha:</td>
+        <td colspan="3">2015/05/29</td>
+        </tr>        
+   </table>
+</div>
+<div style="font-size:15.0pt;font-family:Tahoma;color:#000000;padding-top:1cm">
+<p>    
+Quién suscribe Rector y Secretaria certifican que el(a)   Sr (ta.)
+</p>    
+<p style="font-size:17.0pt;font-family:Tahoma;color:#FF0000!important;text-align:center">
+    <b>{{matricula.matriculacodestudiante|upper}} </b>
+</p>
+<p style="line-height:25px;">    
+Previo  el  cumplimiento de los requisitos legales,  se matriculó en  el curso indicado según consta en los registros de matriculas que reposan en esta institución.
+</p>    
+</div>
+
+<div class="firmas" style="padding-top: 2.5cm;font-size:15.0pt;font-family:Tahoma;color:#000000">
+<table style="margin:auto;text-align: center;">                  
+    <tr>
+        <td style="padding-right:5cm;">{{rector.trato|upper}} {{rector.name|upper}}<br/>{{rector.cargo|upper}}</td>
+        <td>{{secretaria.trato|upper}} {{secretaria.name|upper}}<br/>SECRETARIA</td>
+     </tr>
+
+</table>                  
+
+  </div>
+</div>
+</div>

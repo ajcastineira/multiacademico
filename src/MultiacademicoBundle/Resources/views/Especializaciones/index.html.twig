@@ -17,7 +17,7 @@
             </div><!-- /.panel-heading -->
             <div class="panel-body ">
 
-    <table class="table records_list">
+    <table class="table records_list table table-primary">
         <thead>
             <tr>
                 <th>Id</th>
@@ -32,28 +32,12 @@
                 <td><a href="{{ path('especializaciones_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.especializacion }}</td>
                 <td>{{ entity.especializacionestado }}</td>
-                <td>
-                <ul>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('especializaciones_show', { 'id': entity.id }) }}">mostrar</a>
-                    </li>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('especializaciones_edit', { 'id': entity.id }) }}">editar</a>
-                    </li>
-                </ul>
+                
+                   <td class="text-center">
+                   <a class="btn btn-primary" href="{{ path('especializaciones_show', { 'id': entity.id }) }}">mostrar</a>
+                   <a class="btn btn-warning" href="{{ path('especializaciones_edit', { 'id': entity.id }) }}">editar</a>
                 </td>
+                
             </tr>
         {% endfor %}
         </tbody>
@@ -62,14 +46,10 @@
         </div>
     </div>    
     </div>
-    <div class="row">    
-        <ul>
-        <li>
-            <a href="{{ path('especializaciones_new') }}">
+    <div class="row text-center">  
+            <a class="btn btn-info" href="{{ path('especializaciones_new') }}">
                 Crear nueva entrada
             </a>
-        </li>
-    </ul>
         </div>
 </div>    
 {% endblock %}

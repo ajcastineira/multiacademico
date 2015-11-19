@@ -1,170 +1,283 @@
 {% block content -%}
 <div id="content">
     <div class="row">
-        <big-breadcrumbs items="['Estudiantes', 'Mostrar']" icon="file"
-                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+        <big-breadcrumbs items="['Estudiantes', 'Mostrar']" icon="file" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
             </div>
-    <div class="row">
+    <!-- Start team table -->
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table records_list  table table-primary">
+                <thead>
+                <tr >
+                    <th class="text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+               <!-- <ul class="record_actions"> --> 
+                    <td class="text-center">
+                        <a class="btn btn-success" href="{{ path('estudiantes') }}">
+                        Regresar a la lista
+                        </a>
+                        <a class="btn btn-primary" href="{{ path('estudiantes_edit', { 'id': entity.id }) }}">
+                            Editar
+                        </a>
+                         {{ form(delete_form) }}                       
+                    </td>
+             </tbody>
+</table>
+</div>
+</div>      
+</div>
 
-    <table class="table record_properties">
-        <tbody>
+    <br/>
+    <div class="row">
+    
+<div class="col-xs-6">
+
+<!-- Start team table -->
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table table-primary">
+                <thead>
+                <tr>
+                    <th align="center" colspan="2" style="background-color:#dddddd;text-alig:center" >Datos del Estudiante</th>
+                </tr>
+                </thead>
+                <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Estudiantecedula</th>
+                <th>Cedula</th>
                 <td>{{ entity.estudianteCedula }}</td>
             </tr>
             <tr>
-                <th>Estudiante</th>
+                <th>Nombre</th>
                 <td>{{ entity.estudiante }}</td>
             </tr>
             <tr>
-                <th>Estudiantefechanacimiento</th>
+                <th>Fecha de Nacimiento</th>
                 <td>{{ entity.estudianteFechanacimiento }}</td>
             </tr>
             <tr>
-                <th>Estudiantenacionalidad</th>
+                <th>Nacionalidad</th>
                 <td>{{ entity.estudianteNacionalidad }}</td>
             </tr>
             <tr>
-                <th>Estudiantelugarnacimiento</th>
+                <th>>Lugar de Nacimiento</th>
                 <td>{{ entity.estudianteLugarnacimiento }}</td>
             </tr>
             <tr>
-                <th>Estudianteprovincian</th>
+                <th>Provincia N.</th>
                 <td>{{ entity.estudianteProvinciaN }}</td>
             </tr>
             <tr>
-                <th>Estudiantecantonn</th>
+                <th>Canton N.</th>
                 <td>{{ entity.estudianteCantonN }}</td>
             </tr>
             <tr>
-                <th>Estudianteparroquian</th>
+                <th>Parroquia N.</th>
                 <td>{{ entity.estudianteParroquiaN }}</td>
             </tr>
             <tr>
-                <th>Estudiantedomicilio</th>
+                <th>Domicilio</th>
                 <td>{{ entity.estudianteDomicilio }}</td>
             </tr>
             <tr>
-                <th>Estudianteprovinciad</th>
+                <th>Provincia D.</th>
                 <td>{{ entity.estudianteProvinciaD }}</td>
             </tr>
             <tr>
-                <th>Estudiantecantond</th>
+                <th>Canton D.</th>
                 <td>{{ entity.estudianteCantonD }}</td>
             </tr>
             <tr>
-                <th>Estudianteparroquiad</th>
+                <th>Parroquia D.</th>
                 <td>{{ entity.estudianteParroquiaD }}</td>
             </tr>
             <tr>
-                <th>Estudiantegenero</th>
+                <th>Genero</th>
                 <td>{{ entity.estudianteGenero }}</td>
             </tr>
             <tr>
-                <th>Estudiantediscapacidad</th>
+                <th>Discapacidad</th>
                 <td>{{ entity.estudianteDiscapacidad }}</td>
             </tr>
             <tr>
-                <th>Estudianteconae</th>
+                <th>Conae</th>
                 <td>{{ entity.estudianteConae }}</td>
             </tr>
             <tr>
-                <th>Estudianteetnia</th>
+                <th>Etnia</th>
                 <td>{{ entity.estudianteEtnia }}</td>
             </tr>
             <tr>
-                <th>Estudianteplantel</th>
+                <th>Plantel</th>
                 <td>{{ entity.estudiantePlantel }}</td>
             </tr>
             <tr>
-                <th>Estudiantecorreo</th>
+                <th>Correo</th>
                 <td>{{ entity.estudianteCorreo }}</td>
             </tr>
             <tr>
-                <th>Estudiantecarnet</th>
+                <th>Carnet</th>
                 <td>{{ entity.estudianteCarnet }}</td>
             </tr>
             <tr>
-                <th>Estudiantefoto</th>
+                <th>Foto</th>
                 <td>{{ entity.estudianteFoto }}</td>
             </tr>
             <tr>
-                <th>Estudianteestado</th>
+                <th>Estado</th>
                 <td>{{ entity.estudianteEstado }}</td>
             </tr>
             <tr>
-                <th>Estudiantenumeroacta</th>
+                <th>Numero de Acta</th>
                 <td>{{ entity.estudianteNumeroacta }}</td>
             </tr>
+    </tbody>
+</table>
+</div>
+</div>      
+</div>
+</div>
+ <div class="col-xs-6">
+
+<!-- Start team table -->
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table table-primary">
+                <thead>
+                <tr>
+                    <th align="center" colspan="2" style="background-color:#dddddd;text-alig:center" >Datos Maternos</th>
+                </tr>
+                </thead>
+                <tbody>
             <tr>
-                <th>Madre</th>
+                <th>Nombre</th>
                 <td>{{ entity.madre }}</td>
             </tr>
             <tr>
-                <th>Madrecedula</th>
+                <th>Cedula</th>
                 <td>{{ entity.madreCedula }}</td>
             </tr>
             <tr>
-                <th>Madreestadocivil</th>
+                <th>Estado Civil</th>
                 <td>{{ entity.madreEstadocivil }}</td>
             </tr>
             <tr>
-                <th>Madretelefono</th>
+                <th>Telefono</th>
                 <td>{{ entity.madreTelefono }}</td>
             </tr>
             <tr>
-                <th>Madredomicilio</th>
+                <th>Domicilio</th>
                 <td>{{ entity.madreDomicilio }}</td>
             </tr>
             <tr>
-                <th>Madrebono</th>
+                <th>Bono</th>
                 <td>{{ entity.madreBono }}</td>
             </tr>
+    </tbody>
+</table>
+</div>
+</div>      
+</div>
+
+<!-- Start team table -->
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table table-primary">
+                <thead>
+                <tr>
+                    <th align="center" colspan="2" style="background-color:#dddddd;text-alig:center" >Datos Paternos</th>
+                </tr>
+                </thead>
+                <tbody>
             <tr>
-                <th>Padre</th>
+                <th>Nombre</th>
                 <td>{{ entity.padre }}</td>
             </tr>
             <tr>
-                <th>Padrecedula</th>
+                <th>Cedula</th>
                 <td>{{ entity.padreCedula }}</td>
             </tr>
             <tr>
-                <th>Padreestadocivil</th>
+                <th>Estado Civil</th>
                 <td>{{ entity.padreEstadocivil }}</td>
             </tr>
             <tr>
-                <th>Padretelefono</th>
+                <th>Telefono</th>
                 <td>{{ entity.padreTelefono }}</td>
             </tr>
             <tr>
-                <th>Padredomicilio</th>
+                <th>Domicilio</th>
                 <td>{{ entity.padreDomicilio }}</td>
             </tr>
-            <tr>
-                <th>Representantecedula</th>
+    </tbody>
+</table>
+</div>
+</div>      
+</div>
+            
+ <!-- Start team table -->
+<div class="panel">
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table table-primary">
+                <thead>
+                <tr>
+                    <th align="center" colspan="2" style="background-color:#dddddd;text-alig:center" >Datos del Repressentante</th>
+                </tr>
+                </thead>
+                <tbody>
+ <tr>
+                <th>Cedula</th>
                 <td>{{ entity.representanteCedula }}</td>
             </tr>
             <tr>
-                <th>Representante</th>
+                <th>Nombre</th>
                 <td>{{ entity.representante }}</td>
             </tr>
             <tr>
-                <th>Representantedomicilio</th>
+                <th>Domicilio</th>
                 <td>{{ entity.representanteDomicilio }}</td>
             </tr>
             <tr>
-                <th>Representantetelefono</th>
+                <th>Telefono</th>
                 <td>{{ entity.representanteTelefono }}</td>
             </tr>
             <tr>
-                <th>Representantetipo</th>
+                <th>Tipo</th>
                 <td>{{ entity.representanteTipo }}</td>
             </tr>
-            <tr>
+    </tbody>
+</table>
+</div>
+</div>      
+</div>           
+</div> 
+            <div class="col-md-12">
+
+<!-- Start team table -->
+<div class="panel">
+    <div class="panel-heading">
+        <div class="clearfix"></div>
+    </div><!-- /.panel-heading -->
+    <div class="panel-body no-padding">
+        <div class="table-responsive" style="margin-top: -1px;">
+            <table class="table table-primary">
+                <thead>
+                <tr>
+                    <th align="center" colspan="2" style="background-color:#dddddd;text-alig:center" >Datos del Sistema</th>
+                </tr>
+                </thead>
+                <tbody>
+                        <tr>
                 <th>Username</th>
                 <td>{{ entity.username }}</td>
             </tr>
@@ -189,7 +302,7 @@
                 <td>{{ entity.signature }}</td>
             </tr>
             <tr>
-                <th>Signatureformat</th>
+                <th>Signature Format</th>
                 <td>{{ entity.signatureFormat }}</td>
             </tr>
             <tr>
@@ -201,11 +314,11 @@
                 <td>{{ entity.access }}</td>
             </tr>
             <tr>
-                <th>Lastlogin</th>
+                <th>Last Login</th>
                 <td>{{ entity.lastlogin }}</td>
             </tr>
             <tr>
-                <th>Lastactivity</th>
+                <th>Last Activity</th>
                 <td>{{ entity.lastactivity }}</td>
             </tr>
             <tr>
@@ -236,23 +349,16 @@
                 <th>Mail</th>
                 <td>{{ entity.mail }}</td>
             </tr>
-        </tbody>
-    </table>
-    </div>
-    <div class="row">
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('estudiantes') }}">
-            Regresar a la lista
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('estudiantes_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-    </div>
+    </tbody>
+</table>
 </div>
+</div>      
+</div> 
+    </div>
+
+
+            
+
+    </div>   <!-- Final del row -->
+   </div>  
 {% endblock %}

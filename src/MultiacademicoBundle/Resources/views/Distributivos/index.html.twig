@@ -36,14 +36,12 @@
         </div>
     </div>    
     </div>
-    <div class="row">    
-        <ul>
-        <li>
-            <a href="{{ path('distributivos_new') }}">
+    <div class="row text-center">    
+        
+            <a class="btn btn-info" href="{{ path('distributivos_new') }}">
                 Crear nueva entrada
             </a>
-        </li>
-    </ul>
+        
         </div>
 </div>    
 {{ datatable_render_js(datatable) }}

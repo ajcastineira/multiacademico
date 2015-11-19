@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Arxis\BlogBundle\Entity\Post;
+use Arxis\BlogBundle\Form\PostType;
 
 /**
  * @Route("/build")
@@ -14,11 +16,15 @@ use Symfony\Component\HttpFoundation\Response;
 class AppController extends Controller
 {
     /**
-     * @Route("/dashboard/dashboard.{_format}", name="dashboard", options={"expose":true})
+     * @Route("/dashboard/dashboard.{_format}", name="dashboardview", options={"expose":true})
      */
     public function dashboardAction(Request $request, $_format='html')
     {
-        $response = $this->render('AppBundle:app:dashboard/dashboard.html.twig');
+        
+        $entity = new Post();
+        $postform  = $this->createPublicPostForm($entity);
+        $response = $this->render('AppBundle:app:dashboard/dashboard.html.twig',
+                                array('postform'=>$postform->createView()));
         return $response;
     }
     
@@ -134,5 +140,29 @@ class AppController extends Controller
     public function tabdefaultAction($_format='html')
     {
         return $this->render('AppBundle:app:components/activities/tabs/tab-default.html.twig');
-    }          
+    }
+    
+    
+        /**
+     * Creates a form to create a Post entity.
+     *
+     * @param Post $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createPublicPostForm(Post $entity)
+    {
+        $form = $this->createForm(new PostType(), $entity, array(
+           // 'action' => $this->generateUrl('post_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Publicar',
+                                            'attr'=>array(
+                                                        'class'=>'btn btn-primary pull-right mt-5'
+                                                          )));
+
+        return $form;
+    }
+    
 }

@@ -28,8 +28,9 @@ class AppKernel extends Kernel
             new MultiacademicoBundle\MultiacademicoBundle(),
             new Multiservices\ArxisBundle\MultiservicesArxisBundle(),
             new Multiservices\NotifyBundle\NotifyBundle(),
-            new Pcimagenca\ChatBundle\PcimagencaChatBundle(),
-            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            //new Pcimagenca\ChatBundle\PcimagencaChatBundle(),
+            //new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new Arxis\BlogBundle\ArxisBlogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

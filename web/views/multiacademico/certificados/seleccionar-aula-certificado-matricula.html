@@ -1,0 +1,40 @@
+<div class="panel rounded shadow">
+    <div class="panel-heading">
+        <div class="pull-left">
+            <h3 class="panel-title"><i class="flaticon-certificate"></i> Cursos</h3>
+        </div>
+        <div class="pull-right">
+            <button data-tooltip="" data-collapse-panel="" class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse" data-original-title="" title=""><i class="fa fa-angle-up"></i></button>
+            <button data-tooltip="" data-remove-panel="" class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove" data-original-title="" title=""><i class="fa fa-times"></i></button>
+        </div>
+        <div class="clearfix"></div>
+    </div><!-- /.panel-heading -->
+    <div class="panel-body ">
+        <div data-ui-view="content">
+        <div class="table-responsive"> 
+                <div class="col-sm-12">   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Curso</th>
+                                <th>Tutor</th>
+                                <th>Nº</th>
+                                <th class="text-center">Opción</th>
+                            </tr>
+                        </thead>
+                        <tbody >                            
+                            <tr data-ng-repeat="aula in aulas">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{aula.aula}}</td>
+                                    <td>{{aula.tutor}}</td>
+                                    <td>{{aula.totalalumnos}}</td>
+                                    <td class="text-center"><a class="btn btn-info" ui-sref="multiacademico.certificados.matricula.aula({curso: aula.curso.id,especializacion:aula.especializacion.id, paralelo:aula.paralelo,seccion: aula.seccion,periodo:aula.periodo.id})" role="button">Seleccionar</a></td>
+                            </tr>
+                        </tbody >
+                    </table>
+                </div>
+        </div> 
+        </div>      
+    </div>   
+    </div>

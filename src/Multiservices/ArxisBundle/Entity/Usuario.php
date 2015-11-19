@@ -22,18 +22,24 @@ class Usuario extends BaseUser
     * @ORM\Column(name="id",type="integer",options={"unsigned"=true})
     * @ORM\Id
     * @ORM\GeneratedValue(strategy="IDENTITY")
+    * @Serializer\Expose
+    * @Serializer\Groups({"activities"})
     */
     protected $id;
     /**
     * @ORM\Column(type="string",length=255)
     * @Serializer\Expose
-    * @Serializer\Groups({"list","detail","estadisticas"})
+    * @Serializer\Groups({"list","detail","estadisticas","activities"})
     */
     private $name='';
     /**
     * @ORM\Column(name="cargo",type="string",length=255)
     */
     private $cargo = '';
+    /**
+    * @ORM\Column(name="trato",type="string",length=50)
+    */
+    private $trato = '';
     /**
     * @ORM\Column(type="string",length=255, nullable=true)
     */
@@ -289,6 +295,27 @@ class Usuario extends BaseUser
     public function getCargo()
     {
         return $this->cargo;
+    }
+    
+    /**
+    * Set trato
+    * 
+    * @param string $trato
+    */
+     public function setTrato($trato)
+    {
+        $this->trato = $trato;
+      
+    }
+
+    /**
+     * Get trato
+     *
+     * @return string 
+     */
+    public function getTrato()
+    {
+        return $this->trato;
     }
 
     /**
@@ -586,7 +613,7 @@ class Usuario extends BaseUser
     /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("picture")
-     * @Serializer\Groups({"estadisticas"})
+     * @Serializer\Groups({"estadisticas","activities"})
      */
     public function getWebPath()
     {

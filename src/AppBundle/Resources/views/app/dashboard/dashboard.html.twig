@@ -1,32 +1,289 @@
-<!-- MAIN CONTENT -->
-<div id="content"  ng-controller="DashboardCtrl">
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+       <div class="callout callout-info mb-20 alert alert-dismissable" role="alert">
+            <a href="https://arxis.la" target="_blank">Muliacademico de Arxis</a> a partir de este momento puedes cambiar tu foto de perfil.
+            La nueva tecnología de <a href="https://arxis.la" target="_blank">Arxis</a> permitirá que tengas un sitio mas seguro.
+            Recuerda que puedes contactarnos al 052-738945 para servicio al cliente.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+        </div>
+     </div>
+ </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+         
+        <div class="profile-cover">
+           
+            <div class="profile-body">
+                <div class="panel rounded shadow">
+                        {{form_start(postform)}}
+                            {{form_widget(postform.content)}}
+                          
+                        
+                        <div class="panel-footer">
+                            {{form_widget(postform.submit)}}
+                            <ul class="nav nav-pills">
+                                <!--<li><a href="#"><i class="fa fa-user"></i></a></li>
+                                <!--<li><a href="#"><i class="fa fa-map-marker"></i></a></li>-->
+                                <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                                <!--<li><a href="#"><i class="fa fa-smile-o"></i></a></li>-->
+                            </ul><!-- /.nav nav-pills -->
+                        </div><!-- /.panel-footer -->
+                        {{form_end(postform)}}
+                </div><!-- /.panel -->
+                <div class="profile-timeline">
+                    <!-- Start timeline -->
+                    <div class="timeline">
+                   <!--      <div class="timeline-item">
+                            <div class="text-center">
+                                <div class="time-show first">
+                                    <a href="#" class="btn btn-success">Hoy</a>
+                                </div>
+                            </div>
+                        </div>
+                        
 
-	<div class="row">
-		<big-breadcrumbs items="['Inicio', 'Panel']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
-		<div smart-include="{{path('layout-sub-header')}}"></div>
-                {#<div smart-include="{{asset('app/layout/partials/sub-header.tpl.html')}}"></div>#}
-                
-	</div>
-	<!-- widget grid -->
-	<section id="widget-grid" widget-grid>
+  <!--                       <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <span class="timeline-icon bg-danger"><i class="fa fa-child"></i></span>
+                            </div>
+                              <div class="timeline-body ">
+                                <div class="timeline-body-arrow">
+                                </div>
+                                <div class="panel panel-danger shadow">
+                                     
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Your Activity</div>
+                                        
+                                    </div>
+                                        
+                                    <div class="panel-body rounded">
+                                        <ul class="list-unstyled no-margin">
+                                            <li><i class="fa fa-comment"></i> Discussion member on <a href="https://www.facebook.com/groups/twitterbootstrapindonesia/" target="_blank">Twitter Bootstrap Indonesia</a></li>
+                                            <li><i class="fa fa-book"></i> Add a resource <a href="#">Reading web design</a></li>
+                                            <li><i class="fa fa-comment"></i> Add new discussion topic feature Blankon v1.0.2</li>
+                                            <li><i class="fa fa-book"></i> Add a review <a href="#">Criminal on War</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+      -->                {%verbatim%}
+      <!-- Start timeline item -->
+                    
+                            
+                            
+                                
+                            
+                        
+                        <!-- End timeline item -->
+                        <div class="timeline-item animated fadeIn" data-ng-repeat="activity in activities">
+                            <div class="timeline-badge">
+                                <a data-ng-if="activity.actionid.type=='post'" data-ui-sref="app.users.profile({id:activity.uid.id})" >
+                                    <img  data-no-retina="" class="timeline-badge-userpic" data-ng-src="{{settings.baseURL+activity.uid.picture}}">
+                                </a>
+                                <span data-ng-if="activity.actionid.type!='post'" class="timeline-icon {{activity.actionid.parameters.iconbgcolor}} {{activity.actionid.parameters.iconshape}}"><i class="{{activity.actionid.parameters.icon}}"></i></span>
+                            </div>
+                              <div class="timeline-body ">
+                                <div class="timeline-body-arrow">
+                                </div>
+                                <div class="timeline-body-head" data-ng-if="activity.actionid.type=='post'">
+                                    <div class="timeline-body-head-caption">
+                                        <a data-ui-sref="app.users.profile({id:activity.uid.id})" class="timeline-body-title font-blue-madison">{{activity.uid.name}}</a>
+                                        <span class="timeline-body-time font-grey-cascade">Publicado {{activity.date}}. <i class="fa fa-globe"></i></span>
+                                    </div>
+                                    <!--<div class="timeline-body-head-actions">
+                                        <div class="btn-group">
+                                            <button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                Opciones <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="javascript:void(0);">Pin to top</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Change date</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Highlight</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Embed post</a>
+                                                </li>
+                                                <li class="divider">
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Hide from timeline</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0);">Borrar</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <div class="timeline-body-content" data-ng-if="activity.actionid.type=='post'">
+                                    <p>
+                                        {{activity.message}}
+                                    </p>
+                                </div>
+                                <div class="panel panel-success shadow" data-ng-if="activity.actionid.type!='post'">
+                                    <div class="panel-body timeline-desk">
+                                        
+                                        
+                                        <h1 class="{{activity.actionid.parameters.textcolor}}">{{activity.date}}</h1>
+                                        <p ng-bind-html="activity.message"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%endverbatim%}
+                        
+<!--
+                        <div class="timeline-item">
+                            <div class="text-center">
+                                <div class="time-show">
+                                    <a href="#" class="btn btn-primary">Load More</a>
+                                </div>
+                            </div>
+                        </div>
+-->
+                    </div>
+                    <!--/ End timeline -->
+                </div>
+            </div><!-- /.profile-body -->
+        </div><!-- /.profile-cover -->
 
-		<!-- row -->
-                <div class="row">
+    </div>
+                            {%verbatim%}
+     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="panel rounded shadow">
+            <div class="panel-body bg-facebook">
+                <div class="ribbon-wrapper">
+                    <a class="ribbon bg-twitter transparent"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 1</a>
+                </div><!-- /.ribbon-wrapper -->
+                <ul class="inner-all list-unstyled">
+                    <li class="text-center">
+                        <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})"><img class="img-circle img-bordered-success" src="{{mejorestudiantequimestrefoto}}" alt="{{mejorestudiantequimestre.estudiante}}">
+                            </a>
+                    </li>
+                    <li class="text-center">
+                        <h4 class="text-capitalize">{{mejorestudiantequimestre.estudiante}}</h4>
+                        <p class="text-muted text-capitalize">Mejor Estudiante del Quimestre</p>
+                    </li>
+                    <li>
+                        <a href="" class="btn btn-success text-center btn-block">{{mejorestudiantequimestre.curso}}, {{mejorestudiantequimestre.paralelo}}</a>
+                    </li>
+                    <li><br/></li>
+                    <li>
+                        <div class="btn-group-vertical btn-block">
+                            <a data-ui-sref="app.users.profile({id:mejorestudiantequimestre.uid})" class="btn btn-default">Ver Perfil</a>
+                            <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
+                        </div>
+                    </li>
+                </ul><!-- /.list-unstyled -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <div class="panel rounded shadow">
+            <div class="panel-body">
+                <div class="ribbon-wrapper">
+                    <a class="ribbon ribbon-success"><i class="fa fa-star"></i> 1</a>
+                </div><!-- /.ribbon-wrapper -->
+                <ul class="inner-all list-unstyled">
+                    <li class="text-center">
+                        <a data-ui-sref="app.users.profile({id:mejorestudianteparcial.uid})"> 
+                            <img class="img-circle img-bordered-success" src="{{mejorestudianteparcialfoto}}" alt="{{mejorestudianteparcial.estudiante}}">
+                            </a>
+                    </li>
+                    <li class="text-center">
+                        <h4 class="text-capitalize">{{mejorestudianteparcial.estudiante}}</h4>
+                        <p class="text-muted text-capitalize">Mejor Estudiante del Parcial</p>
+                    </li>
+                    <li>
+                        <a href="" class="btn btn-success text-center btn-block">{{mejorestudianteparcial.curso}}, {{mejorestudianteparcial.paralelo}}</a>
+                    </li>
+                    <li><br/></li>
+                    <li>
+                        <div class="btn-group-vertical btn-block">
+                            <a data-ui-sref="app.users.profile({id:mejorestudianteparcial.uid})" class="btn btn-default">Ver Perfil</a>
+                            <!--<a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right text-success"></i>Logout</a>-->
+                        </div>
+                    </li>
+                </ul><!-- /.list-unstyled -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <div class="panel rounded shadow">
+            <div class="panel-body bg-danger">
+                <div class="ribbon-wrapper">
+                    <a class="ribbon bg-warning"><i class="fa fa-star"></i> 2</a>
+                </div><!-- /.ribbon-wrapper -->
+                <div class="row row-merge">
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="media mb-10">
+                            <a class="pull-left media-object" data-ui-sref="app.users.profile({id:mejorestudiante2parcial.uid})">
+                                <img class="img-responsive img-circle" src="{{mejorestudiante2parcialfoto}}" alt="{{mejorestudiante2parcial.estudiante}}">
+                            </a><!-- /.media-object -->
+                            <div class="media-body">
+                                <h4 class="media-heading"><a data-ui-sref="app.users.profile({id:mejorestudiante2parcial.uid})">{{mejorestudiante2parcial.estudiante}}</a></h4>
+                                <p class="text-muted h6 mt-5"><i class="fa fa-map-marker"></i> {{mejorestudiante2parcial.curso}}, {{mejorestudiante2parcial.paralelo}}</p>
+                            </div><!-- /.media-body -->
+                        </div><!-- /.media -->
+                    </div><!-- /.col-sm-9 -->
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="btn-group-vertical btn-block pull-right">
+                            <!--<a href="#" class="btn btn-success btn-sm"><i class="fa fa-thumbs-up"></i> Like</a>
+                            <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i> Chat</a>
+                            -->
+                        </div>
+                    </div><!-- /.col-sm-3 -->
+                </div><!-- /.row-merge -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <div class="panel rounded shadow">
+            <div class="panel-body bg-info">
+                <div class="ribbon-wrapper">
+                    <a class="ribbon bg-danger"><i class="fa fa-star"></i> 3</a>
+                </div><!-- /.ribbon-wrapper -->
+                <div class="row row-merge">
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="media mb-10">
+                            <a class="pull-left media-object" data-ui-sref="app.users.profile({id:mejorestudiante3parcial.uid})">
+                                <img class="img-responsive img-circle" src="{{mejorestudiante3parcialfoto}}" alt="...">
+                            </a><!-- /.media-object -->
+                            <div class="media-body">
+                                <h4 class="media-heading"><a data-ui-sref="app.users.profile({id:mejorestudiante3parcial.uid})">{{mejorestudiante3parcial.estudiante}}</a></h4>
+                                <p class="text-muted h6 mt-5"><i class="fa fa-map-marker"></i> {{mejorestudiante3parcial.curso}}, {{mejorestudiante3parcial.paralelo}}</p>
+                            </div><!-- /.media-body -->
+                        </div><!-- /.media -->
+                    </div><!-- /.col-sm-9 -->
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="btn-group-vertical btn-block pull-right">
+                            <!--<a href="#" class="btn btn-success btn-sm btn-alt"><i class="fa fa-thumbs-up"></i> Like</a>
+                            <a href="#" class="btn btn-success btn-sm btn-alt"><i class="fa fa-envelope-o"></i> Chat</a>-->
+                        </div>
+                    </div><!-- /.col-sm-3 -->
+                </div><!-- /.row-merge -->
+            </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+    </div>
+                            {%endverbatim%}
+    <!-- ADSENSE -->                              
+        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+		<div class="text-align-center" style="text-align:center">
+                        <script type="text/javascript" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- bloque de contenido -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px"
+                     data-ad-client="ca-pub-9022887868130724"
+                     data-ad-slot="4098681295"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                </div>
+         </div><!-- /.col -->
+      <!-- fin ADSENSE --> 
 
-		<!-- a blank row to get started -->
-                    <article class="col-sm-12 text-center">
-			<!-- your contents here -->
-                        <img src="{{asset("grupointlogo.png")}}" />
-                       <!--<div smart-include="app/dashboard/live-feeds.tpl.html" class="placeholder-live-feeds"></div>
-                       -->
-                    </article>
-		</div>
-			
-                
-		
+   
+ 
+   
+</div><!-- /.row -->
 
-	</section>
-	<!-- end widget grid -->
-
-</div>
-<!-- END MAIN CONTENT -->

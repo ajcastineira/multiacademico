@@ -11,3 +11,11 @@ services:
     notificador:
         class: Multiservices\NotifyBundle\Servicios\Notificador
         arguments: ["@doctrine.orm.entity_manager"]
+    activityregistrador:
+        class: Multiservices\NotifyBundle\Servicios\ActivityRegistrador
+        arguments: ["@doctrine.orm.entity_manager"]
+    notify.user.login:
+        class: Multiservices\NotifyBundle\EventListener\LoginListener
+        arguments: [@security.context,@service_container]
+        tags:
+            - { name: kernel.event_subscriber }

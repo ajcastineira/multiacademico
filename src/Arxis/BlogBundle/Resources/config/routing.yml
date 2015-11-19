@@ -1,0 +1,3 @@
+ArxisBlogAnottations:
+    resource: "@ArxisBlogBundle/Controller/"
+    type:     annotation

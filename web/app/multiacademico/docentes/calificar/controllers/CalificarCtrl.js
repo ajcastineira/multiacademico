@@ -91,7 +91,7 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                                 });
                                  modalInstance.rendered.then(function () {
                                     angular.element(".modal-dialog").addClass("noprint");
-                                    angular.element(".printable").html(angular.element(".modal-content").html());
+                                    angular.element(".printable").html(angular.element("#remoteModalCalificaciones").html());
                                     $log.info('Modal rendered at: ' + new Date());
                                    
                                 });

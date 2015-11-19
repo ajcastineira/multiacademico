@@ -33,8 +33,8 @@ class EstadisticasController extends FOSRestController
     public function cgetAllAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $q=1;
-        $p=3;
+        $q=2;
+        $p=1;
         $user = $this->get('security.token_storage')->getToken()->getUser();
         
         

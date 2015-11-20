@@ -8,15 +8,13 @@
     <div class="row">
     {{ form(edit_form) }}
     </div>
-    <div class="row">
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('estudiantes') }}">
+   <div  class="record_actions" style="display:-webkit-box;">
+            <a class="btn btn-success" href="{{ path('estudiantes') }}">
             Regresar a la lista
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-    </div>
+            </a>                         
+            {{ form_start(delete_form) }}
+             {{ form_widget(delete_form.submit,{'attr':{'class':'btn-danger'} }) }}                       
+            {{ form_end(delete_form) }}                
+        </div>
 </div>
 {% endblock %}

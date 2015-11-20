@@ -41,16 +41,14 @@
     
     {{ form_end(edit_form) }}
     </div>
-     <div >
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('proyectosescolares') }}">
+     <div  class="record_actions" style="display:-webkit-box;">
+            <a class="btn btn-success" href="{{ path('proyectosescolares') }}">
             Regresar a la lista
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-    </div>
+            </a>                         
+            {{ form_start(delete_form) }}
+             {{ form_widget(delete_form.submit,{'attr':{'class':'btn-danger'} }) }}                       
+            {{ form_end(delete_form) }}                
+        </div>  
               
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->

@@ -25,41 +25,20 @@
                 <td>{{ entity.clubabreviatura }}</td>
                 <td>{{ entity.clubestado }}</td>
                 <td>{{ entity.campoaccion }}</td>
-                <td>
-                <ul>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('proyectosescolares_show', { 'id': entity.id }) }}">mostrar</a>
-                    </li>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('proyectosescolares_edit', { 'id': entity.id }) }}">editar</a>
-                    </li>
-                </ul>
+                <td class="text-center">
+                    <a class="btn btn-primary" href="{{ path('proyectosescolares_show', { 'id': entity.id }) }}">Mostrar</a>
+                    <a class="btn btn-warning" href="{{ path('proyectosescolares_edit', { 'id': entity.id }) }}">Editar</a>  
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     </div>
-    <div class="row">    
-        <ul>
-        <li>
-            <a href="{{ path('proyectosescolares_new') }}">
-                Crear nueva entrada
-            </a>
-        </li>
-    </ul>
-        </div>
+        <br/>
+    <div class="row text-center" >   
+        <a class="btn btn-info" href="{{ path('proyectosescolares_new') }}">
+         Crear nueva entrada
+        </a>        
+    </div>
 </div>    
 {% endblock %}

@@ -7,7 +7,7 @@
          
              <div style="width:60%;display:table-cell;vertical-align: top;line-height:30px">
                   <span class="entidad" style="font-size:18.0pt;font-family:Tahoma;color:#000000"><b>CERTIFICADO DE MATRICULA</b></span><br/>
-                  <span style="font-size:17.0pt;font-family:Tahoma;color:#000000"><b>Jornada</b> <b style="color:#FF0000">{{matricula.matriculaseccion|slice(0,(matricula.matriculaseccion|length)-1)~'a'}}</b></span>
+                  <span style="font-size:17.0pt;font-family:Tahoma;color:#000000"><b>Jornada</b> <b style="color:#000000">{{matricula.matriculaseccion|slice(0,(matricula.matriculaseccion|length)-1)~'a'}}</b></span>
                  </div>
                  <div style="width: 20%;vertical-align: middle">
             <img style="max-width: 150px;max-height: 80px;" src="{{asset("bundles/multiacademico/img/ecuador.png")}}" />
@@ -26,7 +26,7 @@
              Año Lectivo:</td>
              <td>{{matricula.matriculacodperiodo}}</td>
                  <td>N°  Matricula:</td>
-                     <td style="color:#FF0000">{{"%06d"|format(matricula.id)}}</td>
+                     <td style="color:#000000">{{"%06d"|format(matricula.id)}}</td>
         </tr>        
         {%if matricula.matriculacodcurso.tipo=='BACH'%}
             <tr>
@@ -34,7 +34,7 @@
         <td>Tipo de Titulo:</td>
         <td>{{matricula.matriculacodespecializacion.tipotitulo}}</td>
         <td>Curso: {{matricula.matriculacodcurso}}</td>
-        <td>Paralelo:  <span style="color:#FF0000">{{matricula.matriculaparalelo}}</span></td>
+        <td>Paralelo:  <span style="color:#000000">{{matricula.matriculaparalelo}}</span></td>
         </tr>
         
         <tr>
@@ -60,7 +60,7 @@
 <p>    
 Quién suscribe Rector y Secretaria certifican que el(a)   Sr (ta.)
 </p>    
-<p style="font-size:17.0pt;font-family:Tahoma;color:#FF0000!important;text-align:center">
+<p style="font-size:17.0pt;font-family:Tahoma;color:#000000!important;text-align:center">
     <b>{{matricula.matriculacodestudiante|upper}} </b>
 </p>
 <p style="line-height:25px;">    

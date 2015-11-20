@@ -15,9 +15,11 @@ class CursosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cursoabreviatura')
-            ->add('curso')
-            ->add('cursoestado')
+            ->add('cursoabreviatura',null,array('label'=>'Abreviatura:'))
+            ->add('curso',null,array('label'=>'Curso:'))
+            ->add('cursoestado','choice',array('label'=>'Estado',
+                                               'choices' => array('Activo'=>'Activo',
+                                                                  'Inactivo'=>'Inactivo')))
         ;
     }
     

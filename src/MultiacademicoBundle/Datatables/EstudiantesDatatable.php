@@ -33,7 +33,7 @@ class EstudiantesDatatable extends AbstractDatatableView
             'state_save' => false,
             'delay' => 0
         ));
-            $this->setUseSDom(true);
+            //$this->setUseSDom(true);
                     $this->ajax->setOptions(array(
             'url' => $this->router->generate('estudiantes_results'),
             'type' => 'POST'
@@ -42,7 +42,7 @@ class EstudiantesDatatable extends AbstractDatatableView
         $this->options->setOptions(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'sdom'=>'<"H"<"dt-toolbar"<"col-xs-12 col-sm-5"f><"col-sm-4 col-xs-6 hidden-xs"><"col-xs-6 col-sm-3"l>r>>t<"F"<"dt-toolbar-footer"<"col-xs-12 col-sm-6"i><"col-xs-12 col-sm-6"p>>>',
+            'dom'=>'<"H"<"dt-toolbar"<"col-xs-12 col-sm-5"f><"col-sm-4 col-xs-6 hidden-xs"><"col-xs-6 col-sm-3"l>r>>t<"F"<"dt-toolbar-footer"<"col-xs-12 col-sm-6"i><"col-xs-12 col-sm-6"p>>>',
             //'sdom'=>'<"input-group rounded no-overflow"f>',
             
             //'dom' => 'lfrtip',

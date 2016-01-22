@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 
 /*
@@ -11,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-process(is_array($argv) ? $argv : array());
+process($argv);
 
 /**
  * processes the installer
@@ -185,6 +184,10 @@ function checkPlatform($quiet, $disableTls)
         $errors['hash'] = true;
     }
 
+    if (!extension_loaded('ctype')) {
+        $errors['ctype'] = true;
+    }
+
     if (!ini_get('allow_url_fopen')) {
         $errors['allow_url_fopen'] = true;
     }
@@ -250,6 +253,11 @@ function checkPlatform($quiet, $disableTls)
                 case 'hash':
                     $text = PHP_EOL."The hash extension is missing.".PHP_EOL;
                     $text .= "Install it or recompile php without --disable-hash";
+                    break;
+
+                case 'ctype':
+                    $text = PHP_EOL."The ctype extension is missing.".PHP_EOL;
+                    $text .= "Install it or recompile php without --disable-ctype";
                     break;
 
                 case 'unicode':
@@ -549,34 +557,7 @@ class HttpClient {
     public function get($url)
     {
         $context = $this->getStreamContext($url);
-        $result = file_get_contents($url, null, $context);
-
-        if ($result && extension_loaded('zlib')) {
-            $decode = false;
-            foreach ($http_response_header as $header) {
-                if (preg_match('{^content-encoding: *gzip *$}i', $header)) {
-                    $decode = true;
-                    continue;
-                } elseif (preg_match('{^HTTP/}i', $header)) {
-                    $decode = false;
-                }
-            }
-
-            if ($decode) {
-                if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
-                    $result = zlib_decode($result);
-                } else {
-                    // work around issue with gzuncompress & co that do not work with all gzip checksums
-                    $result = file_get_contents('compress.zlib://data:application/octet-stream;base64,'.base64_encode($result));
-                }
-
-                if (!$result) {
-                    throw new RuntimeException('Failed to decode zlib stream');
-                }
-            }
-        }
-
-        return $result;
+        return file_get_contents($url, null, $context);
     }
 
     protected function getStreamContext($url)
@@ -742,17 +723,6 @@ class HttpClient {
                 $options['http']['header'] = "Proxy-Authorization: Basic {$auth}\r\n";
             }
         }
-
-        if (isset($options['http']['header'])) {
-            $options['http']['header'] .= "Connection: close\r\n";
-        } else {
-            $options['http']['header'] = "Connection: close\r\n";
-        }
-        if (extension_loaded('zlib')) {
-            $options['http']['header'] .= "Accept-Encoding: gzip\r\n";
-        }
-        $options['http']['header'] .= "User-Agent: Composer Installer\r\n";
-        $options['http']['protocol_version'] = 1.1;
 
         return stream_context_create($options);
     }
@@ -3304,7 +3274,7 @@ A2gAMGUCMGYhDBgmYFo4e1ZC4Kf8NoRRkSAsdk1DPcQdhCPQrNZ8NQbOzWm9kA3bbEhCHQ6qQgIx
 AJw9SDkjOVgaFRJZap7v1VmyHVIsmXHNxynfGyphe3HR3vPA5Q06Sqotp9iGKt0uEA==
 -----END CERTIFICATE-----
 
-NetLock Arany (Class Gold) Főtanúsítvány
+NetLock Arany (Class Gold) FÅ‘tanÃºsÃ­tvÃ¡ny
 ============================================
 -----BEGIN CERTIFICATE-----
 MIIEFTCCAv2gAwIBAgIGSUEs5AAQMA0GCSqGSIb3DQEBCwUAMIGnMQswCQYDVQQGEwJIVTERMA8G
@@ -3882,7 +3852,7 @@ Zt3hrvJBW8qYVoNzcOSGGtIxQbovvi0TWnZvTuhOgQ4/WwMioBK+ZlgRSssDxLQqKi2WF+A5VLxI
 03YnnZotBqbJ7DnSq9ufmgsnAjUpsUCV5/nonFWIGUbWtzT1fs45mtk48VH3Tyw=
 -----END CERTIFICATE-----
 
-Certinomis - Autorité Racine
+Certinomis - AutoritÃ© Racine
 =============================
 -----BEGIN CERTIFICATE-----
 MIIFnDCCA4SgAwIBAgIBATANBgkqhkiG9w0BAQUFADBjMQswCQYDVQQGEwJGUjETMBEGA1UEChMK

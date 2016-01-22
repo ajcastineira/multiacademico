@@ -16,6 +16,6 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
     notify.user.login:
         class: Multiservices\NotifyBundle\EventListener\LoginListener
-        arguments: [@security.context,@service_container]
+        arguments: ["@security.token_storage","@service_container"]
         tags:
             - { name: kernel.event_subscriber }

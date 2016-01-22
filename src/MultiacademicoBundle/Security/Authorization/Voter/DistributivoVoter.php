@@ -6,30 +6,84 @@
 
 namespace MultiacademicoBundle\Security\Authorization\Voter;
 
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
 use Multiservices\ArxisBundle\Entity\Usuario;
-use Symfony\Component\Security\Core\User\UserInterface;
+use MultiacademicoBundle\Entity\Distributivos;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+
 /**
  * Description of DistributivoVoter
  *
  * @author Rene Arias <renearias@arxis.la>
  */
-class DistributivoVoter extends AbstractVoter {
+class DistributivoVoter extends Voter {
     
     const VIEW = 'DISTRIBUTIVO_VIEW';
     const EDIT = 'DISTRIBUTIVO_EDIT';
 
-    protected function getSupportedAttributes()
+    protected function supports($attribute, $subject)
     {
-        return array(self::VIEW, self::EDIT);
+        // if the attribute isn't one we support, return false
+        if (!in_array($attribute, array(self::VIEW, self::EDIT))) {
+            return false;
+        }
+
+        // only vote on Post objects inside this voter
+        if (!$subject instanceof Distributivos) {
+            return false;
+        }
+
+        return true;
     }
     
-    protected function getSupportedClasses()
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
-        return array('MultiacademicoBundle\Entity\Distributivos');
+        $user = $token->getUser();
+
+        if (!$user instanceof Usuario) {
+            // the user must be logged in; if not, deny access
+            return false;
+        }
+
+        // you know $subject is a Post object, thanks to supports
+        /** @var Clubes $proyectoescolar */
+        $proyectoescolar = $subject;
+
+        switch($attribute) {
+            case self::VIEW:
+                return $this->canView($proyectoescolar, $user);
+            case self::EDIT:
+                return $this->canEdit($proyectoescolar, $user);
+        }
+
+        throw new \LogicException('This code should not be reached!');
     }
     
-    protected function isGranted($attribute, $distributivo, $user = null)
+     private function canView(Distributivos $distributivo, Usuario $user)
+    {
+        // if they can edit, they can view
+         
+        if ($this->canEdit($proyectoescolar, $user)) {
+            return true;
+        }else
+        {
+              return false;
+        }
+            
+
+        // the Post object could have, for example, a method isPrivate()
+        // that checks a boolean $private property
+        //return !$proyectoescolar->isPrivate();
+    }
+
+    private function canEdit(Distributivos $distributivo, Usuario $user)
+    {
+        // this assumes that the data object has a getOwner() method
+        // to get the entity of the user who owns this data object
+        return $user === $distributivo->getOwner();
+    }
+    
+    /*protected function isGranted($attribute, $distributivo, $user = null)
     {
         // make sure there is a user object (i.e. that the user is logged in)
         if (!$user instanceof UserInterface) {
@@ -62,7 +116,7 @@ class DistributivoVoter extends AbstractVoter {
         }
 
         return false;
-    }
+    }*/
     
     
 }

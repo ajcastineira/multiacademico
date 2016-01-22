@@ -36,8 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources: ['bootstrap_3_horizontal_layout.html.twig']
+    form_themes:
+        - 'bootstrap_3_horizontal_layout.html.twig'
     #form_themes:
         #- 'AppBundle:Form:fields.html.twig'
         #- 'MultiservicesArxisBundle:Form:fields.html.twig'

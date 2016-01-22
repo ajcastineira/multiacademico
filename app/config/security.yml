@@ -29,7 +29,7 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             form_login:
                 provider: fos_userbundle
-                csrf_provider: security.csrf.token_manager 
+                csrf_token_generator: security.csrf.token_manager
 
             logout:
                  path:   fos_user_security_logout

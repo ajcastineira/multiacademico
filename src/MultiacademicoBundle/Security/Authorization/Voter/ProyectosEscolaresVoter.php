@@ -6,62 +6,86 @@
 
 namespace MultiacademicoBundle\Security\Authorization\Voter;
 
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
+
 use Multiservices\ArxisBundle\Entity\Usuario;
-use Symfony\Component\Security\Core\User\UserInterface;
+
+//use Symfony\Component\Security\Core\User\UserInterface;
+
+use MultiacademicoBundle\Entity\Clubes;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 /**
  * Description of DistributivoVoter
  *
  * @author Rene Arias <renearias@arxis.la>
  */
-class ProyectosEscolaresVoter extends AbstractVoter {
+class ProyectosEscolaresVoter extends Voter {
     
     const VIEW = 'PROYECTO_VIEW';
     const EDIT = 'PROYECTO_EDIT';
 
-    protected function getSupportedAttributes()
+    protected function supports($attribute, $subject)
     {
-        return array(self::VIEW, self::EDIT);
-    }
-    
-    protected function getSupportedClasses()
-    {
-        return array('MultiacademicoBundle\Entity\Clubes');
-    }
-    
-    protected function isGranted($attribute, $proyecto, $user = null)
-    {
-        // make sure there is a user object (i.e. that the user is logged in)
-        if (!$user instanceof UserInterface) {
+        // if the attribute isn't one we support, return false
+        if (!in_array($attribute, array(self::VIEW, self::EDIT))) {
             return false;
         }
 
-        // double-check that the User object is the expected entity (this
-        // only happens when you did not configure the security system properly)
-        if (!$user instanceof Usuario) {
-            throw new \LogicException('The user is somehow not our Usuario class!');
+        // only vote on Post objects inside this voter
+        if (!$subject instanceof Clubes) {
+            return false;
         }
+
+        return true;
+    }
+    
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    {
+        $user = $token->getUser();
+
+        if (!$user instanceof Usuario) {
+            // the user must be logged in; if not, deny access
+            return false;
+        }
+
+        // you know $subject is a Post object, thanks to supports
+        /** @var Clubes $proyectoescolar */
+        $proyectoescolar = $subject;
 
         switch($attribute) {
             case self::VIEW:
-                // the data object could have for example a method isPrivate()
-                // which checks the Boolean attribute $private
-                if ($user->getId() === $proyecto->getClubcoddocente()->getUsuario()->getId()) {
-                    return true;
-                }
-
-                break;
+                return $this->canView($proyectoescolar, $user);
             case self::EDIT:
-                // this assumes that the data object has a getOwner() method
-                // to get the entity of the user who owns this data object
-                if ($user->getId() === $proyecto->getClubcoddocente()->getUsuario()->getId()) {
-                    return true;
-                }
-
-                break;
+                return $this->canEdit($proyectoescolar, $user);
         }
 
-        return false;
+        throw new \LogicException('This code should not be reached!');
+    }
+    
+     private function canView(Clubes $proyecto, Usuario $user)
+    {
+        // if they can edit, they can view
+         
+        if ($user->getId() === $proyecto->getClubcoddocente()->getUsuario()->getId()) {
+                    return true;
+        }else
+        {
+                       return false;
+        }
+        /*if ($this->canEdit($proyectoescolar, $user)) {
+            return true;
+        }*/
+
+        // the Post object could have, for example, a method isPrivate()
+        // that checks a boolean $private property
+        //return !$proyectoescolar->isPrivate();
+    }
+
+    private function canEdit(Clubes $proyecto, Usuario $user)
+    {
+        // this assumes that the data object has a getOwner() method
+        // to get the entity of the user who owns this data object
+        return $user === $proyecto->getClubcoddocente()->getUsuario();
     }
     
     

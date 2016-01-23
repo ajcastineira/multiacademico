@@ -6,15 +6,23 @@ var require = {
             '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min',
             '../plugin/jquery/dist/jquery.min'
         ],
-        'jquery-ui': '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min',
+        'jquery-ui': ['//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min',
+                      '../plugin/jquery-ui/jquery-ui.min'
+        ],
 
-        'bootstrap': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min',
+        'bootstrap': ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min',
+                      '../plugin/bootstrap/dist/js/bootstrap.min'],
 
-        'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min',
-        'angular-cookies': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min',
-        'angular-resource': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min',
-        'angular-sanitize': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min',
-        'angular-animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min',
+        'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min',
+                    '../plugin/angular/angular.min'],
+        'angular-cookies': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min',
+                            '../plugin/angular-cookies/angular-cookies.min'],
+        'angular-resource': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min',
+                            '../plugin/angular-resource/angular-resource.min'],
+        'angular-sanitize': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min',
+                            '../plugin/angular-sanitize/angular-sanitize.min'],
+        'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min',
+                            '../plugin/angular-animate/angular-animate.min'],
 
 
         'domReady': '../plugin/requirejs-domready/domReady',

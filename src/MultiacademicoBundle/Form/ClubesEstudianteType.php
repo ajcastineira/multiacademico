@@ -9,13 +9,7 @@ use MultiacademicoBundle\Form\Type\LetraType;
 
 class ClubesEstudianteType extends AbstractType
 {
-    //private $q;
-    //private $p;
-    
-    //public function __construct($q,$p) {
-    //    $this->q=$q;
-      //  $this->p=$p;
-   // }
+ 
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -31,9 +25,6 @@ class ClubesEstudianteType extends AbstractType
                                                                 'data-placeholder'=>'Buscar Estudiante...'),
                                                     'placeholder'=>''
                                                     ))
-            //->add('notaQ'.$this->q.'P1',new LetraType())
-            //->add('notaQ'.$this->q.'P2',new LetraType())
-            //->add('notaQ'.$this->q.'P3',new LetraType())
         ;
     }
     

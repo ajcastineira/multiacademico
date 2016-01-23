@@ -29,7 +29,7 @@ class ClubesType extends AbstractType
                 'allow_add'=>true,
                 'allow_delete'=>true,
                 'by_reference'=>false,
-                'type'   => new ClubesEstudianteType(),
+                'entry_type'   => ClubesEstudianteType::class,
             ))
         ;
     }
@@ -37,7 +37,7 @@ class ClubesType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Entity\Clubes',

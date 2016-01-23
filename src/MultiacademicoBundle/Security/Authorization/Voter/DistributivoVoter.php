@@ -47,13 +47,13 @@ class DistributivoVoter extends Voter {
 
         // you know $subject is a Post object, thanks to supports
         /** @var Clubes $proyectoescolar */
-        $proyectoescolar = $subject;
+        $distributivo = $subject;
 
         switch($attribute) {
             case self::VIEW:
-                return $this->canView($proyectoescolar, $user);
+                return $this->canView($distributivo, $user);
             case self::EDIT:
-                return $this->canEdit($proyectoescolar, $user);
+                return $this->canEdit($distributivo, $user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -63,7 +63,7 @@ class DistributivoVoter extends Voter {
     {
         // if they can edit, they can view
          
-        if ($this->canEdit($proyectoescolar, $user)) {
+        if ($this->canEdit($distributivo, $user)) {
             return true;
         }else
         {

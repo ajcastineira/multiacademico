@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\AuthenticationEvents;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -44,7 +45,7 @@ class LoginListener implements EventSubscriberInterface
      * @param SecurityContext $securityContext
      * @param Router $router The router
      */
-    public function __construct(SecurityContext $securityContext, ContainerInterface $container)
+    public function __construct(TokenStorage $securityContext, ContainerInterface $container)
     {
         $this->securityContext = $securityContext;
         $this->container=$container;

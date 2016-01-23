@@ -1,31 +1,43 @@
 <?php
 
 namespace MultiacademicoBundle\Form;
-
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use MultiacademicoBundle\Form\Type\LetraType;
+use MultiacademicoBundle\Calificar\ProyectoACalificar;
 
 class ClubesDetalleType extends AbstractType
 {
     private $q;
     private $p;
     
-    public function __construct($q,$p) {
-        $this->q=$q;
-        $this->p=$p;
-    }
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function configureOptions(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('notaQ'.$this->q.'P1',new LetraType())
-            ->add('notaQ'.$this->q.'P2',new LetraType())
-            ->add('notaQ'.$this->q.'P3',new LetraType())
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                $notas = $event->getData();
+                $form = $event->getForm();
+                $dataparent = $event->getForm()->getParent()->getParent()->getData();
+                if ($dataparent instanceof ProyectoACalificar)
+                {
+                    $this->q=$dataparent->getParcial()->getQ();
+                    $this->p=$dataparent->getParcial()->getP();       
+                
+            
+                $form
+                    ->add('notaQ'.$this->q.'P1',LetraType::class)
+                    ->add('notaQ'.$this->q.'P2',LetraType::class)
+                    ->add('notaQ'.$this->q.'P3',LetraType::class);
+                }  
+        })
+                         
            // ->add('codclub')
           //  ->add('clubescodestudiante')
         ;
@@ -34,7 +46,7 @@ class ClubesDetalleType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Entity\ClubesDetalle',
@@ -47,6 +59,6 @@ class ClubesDetalleType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_clubesdetalle';
+        return 'clubesdetalle';
     }
 }

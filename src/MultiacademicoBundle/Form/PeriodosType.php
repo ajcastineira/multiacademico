@@ -36,6 +36,6 @@ class PeriodosType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_periodos';
+        return 'periodos';
     }
 }

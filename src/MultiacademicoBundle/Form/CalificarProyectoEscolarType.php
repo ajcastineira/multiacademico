@@ -5,29 +5,30 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use MultiacademicoBundle\Libs\Parcial;
 
 class CalificarProyectoEscolarType extends AbstractType
 {
     private $quimestre;
     private $parcial;
     
-    public function __construct($quimestre,$parcial) {
-        $this->quimestre=$quimestre;
-        $this->parcial=$parcial;
-    }
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('calificaciones', 'collection', array(
+        //var_dump($this->getParent());
+       
+        $builder->add('calificaciones', CollectionType::class, array(
                         
-                        'type'   => new ClubesDetalleType($this->quimestre,$this->parcial),
-                        'options'  => array(
+                        //'entry_type'   => new ClubesDetalleType($this->quimestre,$this->parcial),
+                        'entry_type' => ClubesDetalleType::class ,
+                        'entry_options'  => array(
                             //'required'  => false,
                             //'attr'      => array('class' => 'email-box')
-                        ),
+                            )
                     ));
         
     }
@@ -48,6 +49,6 @@ class CalificarProyectoEscolarType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_calificar_proyectoescolar';
+        return 'calificar_proyecto_escolar';
     }
 }

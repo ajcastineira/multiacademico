@@ -62,6 +62,6 @@ class DocentesType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_docentes';
+        return 'docentes';
     }
 }

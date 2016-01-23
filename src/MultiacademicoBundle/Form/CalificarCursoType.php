@@ -5,26 +5,24 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class CalificarCursoType extends AbstractType
 {
     private $quimestre;
     private $parcial;
     
-    public function __construct($quimestre,$parcial) {
-        $this->quimestre=$quimestre;
-        $this->parcial=$parcial;
-    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('calificaciones', 'collection', array(
+        $builder->add('calificaciones', CollectionType::class, array(
                         
-                        'type'   => new CalificacionesType($this->quimestre,$this->parcial),
-                        'options'  => array(
+                        'entry_type'   => CalificacionesType::class,
+                        'entry_options'  => array(
                             //'required'  => false,
                             //'attr'      => array('class' => 'email-box')
                         ),
@@ -48,6 +46,6 @@ class CalificarCursoType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_calificar';
+        return 'calificar_curso';
     }
 }

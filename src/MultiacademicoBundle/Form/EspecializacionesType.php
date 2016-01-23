@@ -36,6 +36,6 @@ class EspecializacionesType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_especializaciones';
+        return 'especializaciones';
     }
 }

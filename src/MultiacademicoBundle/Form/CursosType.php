@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CursosType extends AbstractType
 {
@@ -17,9 +18,12 @@ class CursosType extends AbstractType
         $builder
             ->add('cursoabreviatura',null,array('label'=>'Abreviatura:'))
             ->add('curso',null,array('label'=>'Curso:'))
-            ->add('cursoestado','choice',array('label'=>'Estado',
+            ->add('cursoestado',  ChoiceType::class,array('label'=>'Estado',
                                                'choices' => array('Activo'=>'Activo',
                                                                   'Inactivo'=>'Inactivo')))
+          //  ->add('tipo')
+          //  ->add('nivel')
+          //  ->add('grado')
         ;
     }
     
@@ -39,6 +43,6 @@ class CursosType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_cursos';
+        return 'cursos';
     }
 }

@@ -38,6 +38,6 @@ class MateriasType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_materias';
+        return 'materias';
     }
 }

@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 //use Doctrine\ORM\EntityManager;
 //use Multiservices\UbicatexBundle\Form\DataTransformer\CiudadToNumberTransformer;
 
@@ -34,7 +35,7 @@ class LetraType extends AbstractType
 
     public function getParent()
     {
-        return 'choice';
+        return ChoiceType::class;
     }
     public function getName()
     {

@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ClubesType extends AbstractType
 {
@@ -23,7 +24,7 @@ class ClubesType extends AbstractType
                                               'attr'=>array(
                                                                 'class'=>'chosen-select ','data-chosen-select'=>null)
                                                     ))
-            ->add('registrados','collection',array(
+            ->add('registrados',CollectionType::class,array(
                 'label'=>'Alumnos Registrados en Club',
                 'allow_add'=>true,
                 'allow_delete'=>true,
@@ -49,6 +50,6 @@ class ClubesType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_clubes';
+        return 'clubes';
     }
 }

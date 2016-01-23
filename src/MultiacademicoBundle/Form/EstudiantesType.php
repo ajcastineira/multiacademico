@@ -91,6 +91,6 @@ class EstudiantesType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_estudiantes';
+        return 'estudiantes';
     }
 }

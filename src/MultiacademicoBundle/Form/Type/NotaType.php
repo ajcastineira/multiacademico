@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 //use Doctrine\ORM\EntityManager;
 //use Multiservices\UbicatexBundle\Form\DataTransformer\CiudadToNumberTransformer;
 
@@ -33,7 +34,7 @@ class NotaType extends AbstractType
 
     public function getParent()
     {
-        return 'number';
+        return NumberType::class;
     }
     public function getName()
     {

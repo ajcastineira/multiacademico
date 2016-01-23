@@ -46,6 +46,6 @@ class DistributivosType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_distributivos';
+        return 'distributivos';
     }
 }

@@ -5,16 +5,16 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use MultiacademicoBundle\Calificar\CursoACalificar;
+use MultiacademicoBundle\Form\Type\NotaType;
 class CalificacionesType extends AbstractType
 {
     private $q;
     private $p;
     
-    public function __construct($q,$p) {
-        $this->q=$q;
-        $this->p=$p;
-    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -25,15 +25,33 @@ class CalificacionesType extends AbstractType
         
           //  ->add('calificacionnummatricula')
            // ->add('calificacioncodmateria')
-           for ($i=1;$i<=5;$i++)     
-           {
-            $notavar='q'.$this->q.'P'.$this->p.'N'.$i;
-               $builder->add($notavar,'nota');
-           }
-           if ($this->p==3)
-           {
-            $builder->add('q'.$this->q.'Ex','nota');
-           }
+        
+                $builder
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                $notas = $event->getData();
+                $form = $event->getForm();
+                $dataparent = $event->getForm()->getParent()->getParent()->getData();
+                if ($dataparent instanceof CursoACalificar)
+                {
+                    $this->q=$dataparent->getParcial()->getQ();
+                    $this->p=$dataparent->getParcial()->getP();       
+                
+                    for ($i=1;$i<=5;$i++)     
+                       {
+                        $notavar='q'.$this->q.'P'.$this->p.'N'.$i;
+                           $form->add($notavar,  NotaType::class);
+                       }
+                    if ($this->p==3)
+                       {
+                        $form->add('q'.$this->q.'Ex',NotaType::class);
+                       }   
+                }  
+                    
+                    
+        });
+
+           
+           
            // ->add('q1P1Recomendacion')
            // ->add('q1P1Planmejora')
            /* ->add('q1P1Co')
@@ -112,6 +130,6 @@ class CalificacionesType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_calificaciones';
+        return 'calificaciones';
     }
 }

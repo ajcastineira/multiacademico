@@ -56,6 +56,6 @@ class ClubesEstudianteType extends AbstractType
      */
     public function getName()
     {
-        return 'multiacademicobundle_clubesestudiante';
+        return 'clubes_estudiante';
     }
 }

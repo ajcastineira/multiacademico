@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Multiservices\ArxisBundle\Entity\Usuario;
 use Multiservices\ArxisBundle\Form\UsuarioType;
 use Multiservices\ArxisBundle\Form\UsuarioChangeAvatarType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Usuario controller.
  *
@@ -89,7 +89,7 @@ class UsuarioController extends Controller
      */
     private function createCreateForm(Usuario $entity)
     {
-        $form = $this->createForm(new UsuarioType(), $entity, array(
+        $form = $this->createForm(UsuarioType::class, $entity, array(
             'action' => $this->generateUrl('secured_user_create'),
             'method' => 'POST',
         ));
@@ -98,7 +98,7 @@ class UsuarioController extends Controller
              $form->add('user_roles');
          } 
         
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -162,7 +162,7 @@ class UsuarioController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $avatarform = $this->createForm(new  UsuarioChangeAvatarType(),$entity, array(
+        $avatarform = $this->createForm(UsuarioChangeAvatarType::class,$entity, array(
             //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -188,7 +188,7 @@ class UsuarioController extends Controller
         $me=$this->get('security.token_storage')->getToken()->getUser();
         
         $usuario = $me;
-        $form = $this->createForm(new  UsuarioChangeAvatarType(),$me, array(
+        $form = $this->createForm(UsuarioChangeAvatarType::class,$me, array(
             //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -212,7 +212,7 @@ class UsuarioController extends Controller
 
         $me=$this->get('security.token_storage')->getToken()->getUser();
 
-        $form = $this->createForm(new  UsuarioChangeAvatarType(),$me, array(
+        $form = $this->createForm(UsuarioChangeAvatarType::class,$me, array(
             //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -265,7 +265,7 @@ class UsuarioController extends Controller
     */
     private function createEditForm(Usuario $entity)
     {
-        $form = $this->createForm(new UsuarioType(), $entity, array(
+        $form = $this->createForm(UsuarioType::class, $entity, array(
             //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -274,7 +274,7 @@ class UsuarioController extends Controller
              $form->add('user_roles');
          } 
     
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -380,7 +380,7 @@ class UsuarioController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('secured_user_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

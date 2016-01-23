@@ -33,7 +33,7 @@ class Parcial
     }
 
     
-    public function __construct($q,$p) {
+    public function __construct($q=1,$p=1) {
         $this->q=$q;
         $this->p=$p;
     }        

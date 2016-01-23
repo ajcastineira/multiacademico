@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Clubes;
 use MultiacademicoBundle\Form\ClubesType;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Clubes controller.
  *
@@ -97,12 +97,12 @@ class ClubesController extends Controller
      */
     private function createCreateForm(Clubes $entity)
     {
-        $form = $this->createForm(new ClubesType(), $entity, array(
+        $form = $this->createForm(ClubesType::class, $entity, array(
             //'action' => $this->generateUrl('proyectosescolares_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -199,12 +199,12 @@ class ClubesController extends Controller
     */
     private function createEditForm(Clubes $entity)
     {
-        $form = $this->createForm(new ClubesType(), $entity, array(
+        $form = $this->createForm( ClubesType::class, $entity, array(
             //'action' => $this->generateUrl('proyectosescolares_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -334,7 +334,7 @@ class ClubesController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('proyectosescolares_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

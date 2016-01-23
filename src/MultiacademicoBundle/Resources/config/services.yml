@@ -14,6 +14,7 @@ services:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:
             - { name: form.type, alias: nota }  
+      
     security.access.distributivo_voter : 
         class :       MultiacademicoBundle\Security\Authorization\Voter\DistributivoVoter 
         public :      false 

@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Calificaciones;
 use MultiacademicoBundle\Form\CalificacionesType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Calificaciones controller.
@@ -87,12 +88,12 @@ class CalificacionesController extends Controller
      */
     private function createCreateForm(Calificaciones $entity)
     {
-        $form = $this->createForm(new CalificacionesType(), $entity, array(
+        $form = $this->createForm(CalificacionesType::class, $entity, array(
             //'action' => $this->generateUrl('calificaciones_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -199,12 +200,12 @@ class CalificacionesController extends Controller
     */
     private function createEditForm(Calificaciones $entity)
     {
-        $form = $this->createForm(new CalificacionesType(), $entity, array(
+        $form = $this->createForm(CalificacionesType::class, $entity, array(
             //'action' => $this->generateUrl('calificaciones_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -316,7 +317,7 @@ class CalificacionesController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('calificaciones_delete', array('matricula' => $matricula,'materia'=>$materia)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

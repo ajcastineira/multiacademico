@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Materias;
 use MultiacademicoBundle\Form\MateriasType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Materias controller.
  *
@@ -89,12 +89,12 @@ class MateriasController extends Controller
      */
     private function createCreateForm(Materias $entity)
     {
-        $form = $this->createForm(new MateriasType(), $entity, array(
+        $form = $this->createForm( MateriasType::class, $entity, array(
             //'action' => $this->generateUrl('materias_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -185,12 +185,12 @@ class MateriasController extends Controller
     */
     private function createEditForm(Materias $entity)
     {
-        $form = $this->createForm(new MateriasType(), $entity, array(
+        $form = $this->createForm( MateriasType::class, $entity, array(
             //'action' => $this->generateUrl('materias_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -291,7 +291,7 @@ class MateriasController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('materias_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

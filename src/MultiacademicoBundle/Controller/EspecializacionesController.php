@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Especializaciones;
 use MultiacademicoBundle\Form\EspecializacionesType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Especializaciones controller.
  *
@@ -89,12 +89,12 @@ class EspecializacionesController extends Controller
      */
     private function createCreateForm(Especializaciones $entity)
     {
-        $form = $this->createForm(new EspecializacionesType(), $entity, array(
+        $form = $this->createForm( EspecializacionesType::class, $entity, array(
             //'action' => $this->generateUrl('especializaciones_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -185,12 +185,12 @@ class EspecializacionesController extends Controller
     */
     private function createEditForm(Especializaciones $entity)
     {
-        $form = $this->createForm(new EspecializacionesType(), $entity, array(
+        $form = $this->createForm( EspecializacionesType::class, $entity, array(
             //'action' => $this->generateUrl('especializaciones_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -291,7 +291,7 @@ class EspecializacionesController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('especializaciones_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

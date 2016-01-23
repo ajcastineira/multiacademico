@@ -1,4 +1,0 @@
-services:
-#    pcimagenca_chat.example:
-#        class: Pcimagenca\ChatBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]

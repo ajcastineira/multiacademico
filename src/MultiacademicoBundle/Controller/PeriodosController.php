@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Periodos;
 use MultiacademicoBundle\Form\PeriodosType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Periodos controller.
  *
@@ -89,12 +89,12 @@ class PeriodosController extends Controller
      */
     private function createCreateForm(Periodos $entity)
     {
-        $form = $this->createForm(new PeriodosType(), $entity, array(
+        $form = $this->createForm( PeriodosType::class, $entity, array(
             //'action' => $this->generateUrl('periodos_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -185,12 +185,12 @@ class PeriodosController extends Controller
     */
     private function createEditForm(Periodos $entity)
     {
-        $form = $this->createForm(new PeriodosType(), $entity, array(
+        $form = $this->createForm( PeriodosType::class, $entity, array(
             //'action' => $this->generateUrl('periodos_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -291,7 +291,7 @@ class PeriodosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('periodos_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

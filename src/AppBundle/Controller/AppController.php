@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Arxis\BlogBundle\Entity\Post;
 use Arxis\BlogBundle\Form\PostType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @Route("/build")
@@ -152,12 +153,12 @@ class AppController extends Controller
      */
     private function createPublicPostForm(Post $entity)
     {
-        $form = $this->createForm(new PostType(), $entity, array(
+        $form = $this->createForm(PostType::class, $entity, array(
            // 'action' => $this->generateUrl('post_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Publicar',
+        
+        $form->add('submit', SubmitType::class, array('label' => 'Publicar',
                                             'attr'=>array(
                                                         'class'=>'btn btn-primary pull-right mt-5'
                                                           )));

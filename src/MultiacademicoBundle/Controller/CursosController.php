@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Cursos;
 use MultiacademicoBundle\Form\CursosType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Cursos controller.
  *
@@ -87,12 +87,12 @@ class CursosController extends Controller
      */
     private function createCreateForm(Cursos $entity)
     {
-        $form = $this->createForm(new CursosType(), $entity, array(
+        $form = $this->createForm( CursosType::class, $entity, array(
             //'action' => $this->generateUrl('cursos_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -183,12 +183,12 @@ class CursosController extends Controller
     */
     private function createEditForm(Cursos $entity)
     {
-        $form = $this->createForm(new CursosType(), $entity, array(
+        $form = $this->createForm( CursosType::class, $entity, array(
             //'action' => $this->generateUrl('cursos_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -289,7 +289,7 @@ class CursosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('cursos_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

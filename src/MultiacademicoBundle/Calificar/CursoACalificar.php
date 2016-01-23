@@ -10,6 +10,7 @@ namespace MultiacademicoBundle\Calificar;
  * @author Rene Arias <renearias@arxis.la>
  */
 use Doctrine\Common\Collections\ArrayCollection;
+use MultiacademicoBundle\Libs\Parcial;
 
 class CursoACalificar {
     /**
@@ -22,10 +23,16 @@ class CursoACalificar {
      * @var array
      */
     private $calificaciones;
+    /**
+     *
+     * @var Parcial
+     */
+    private $parcial;
     
-    public function __construct($distributivoId) {
+    public function __construct($distributivoId,Parcial $parcial) {
         
         $this->distributivoId=$distributivoId;
+        $this->parcial=$parcial;
     }
     
     public function getCalificaciones() {
@@ -57,6 +64,21 @@ class CursoACalificar {
         $this->distributivoId = $distributivoId;
         return $this;
     }
-
+    /**
+     * 
+     * @return Parcial
+     */
+    public function getParcial() {
+        return $this->parcial;
+    }
+    /**
+     * 
+     * @param Parcial $parcial
+     * @return \MultiacademicoBundle\Calificar\ProyectoACalificar
+     */
+    public function setParcial(Parcial $parcial) {
+        $this->parcial = $parcial;
+        return $this;
+    }
 
 }

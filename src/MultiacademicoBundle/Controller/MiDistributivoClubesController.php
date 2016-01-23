@@ -13,7 +13,7 @@ use MultiacademicoBundle\Entity\Clubes;
 use MultiacademicoBundle\Form\CalificarProyectoEscolarType;
 use MultiacademicoBundle\Calificar\ProyectoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Distributivos controller.
  *
@@ -80,7 +80,7 @@ class MiDistributivoClubesController extends Controller
         }
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $proyectoACalificar=new ProyectoACalificar($id,$qactivo,$pactivo);
+        $proyectoACalificar=new ProyectoACalificar($id,$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:ClubesDetalle')->findByCodclub($id);
         $proyectoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarProyectoForm($proyectoACalificar,$qactivo,$pactivo);
@@ -107,12 +107,13 @@ class MiDistributivoClubesController extends Controller
      */
     private function createCalificarProyectoForm(ProyectoACalificar $proyectoACalificar,$q,$p)
     {
-        $form = $this->createForm(new CalificarProyectoEscolarType($q,$p), $proyectoACalificar, array(
+        $form = $this->createForm(CalificarProyectoEscolarType::class, $proyectoACalificar, array(
           //  'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$proyectoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
             'method' => 'PUT',
+           // 'q'=>2
         ));
-
-        $form->add('guardar', 'submit', array('label' => 'Guardar'));
+        
+        $form->add('guardar', SubmitType::class, array('label' => 'Guardar'));
 
         return $form;
     }
@@ -132,7 +133,7 @@ class MiDistributivoClubesController extends Controller
         }
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $proyectoACalificar=new ProyectoACalificar($id,$qactivo,$pactivo);
+        $proyectoACalificar=new ProyectoACalificar($id,$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:ClubesDetalle')->findByCodclub($id);
         $proyectoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarProyectoForm($proyectoACalificar,$qactivo,$pactivo);

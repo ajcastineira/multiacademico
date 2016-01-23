@@ -1,3 +1,0 @@
-# pcimagenca_chat_homepage:
-#     path:     /chat/
-#     defaults: { _controller: PcimagencaChatBundle:Chat:index }

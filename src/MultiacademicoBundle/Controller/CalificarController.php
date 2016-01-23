@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Calificaciones;
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Calificar controller.
  *
@@ -32,34 +32,6 @@ class CalificarController extends Controller
     }
 
     /**
-     * Lists all Calificaciones entities.
-     *
-     * @Route("/api", name="calificar_api", options={"expose":true})
-     * @Method("GET")
-     * @Template("MultiacademicoBundle:Calificaciones:calificar.html.twig")
-     */
-    public function calificarApiAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $cursoACalificar=new CursoACalificar();
-        $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find(358);
-        $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
-        $cursoACalificar->setCalificaciones($listado);
-        
-        //var_dump($cursoACalificar);
-        
-        //$cursoACalificar->setEstudiantes();
-        
-        $form = $this->createCalificarForm($cursoACalificar);
-        //$form->handleRequest($request);
-
-        return array(
-                'listado'=> $listado,
-                'form'   => $form->createView(),
-                //'entities' => $entities,
-        );
-    }
-    /**
      * Creates a form to create a Calificaciones entity.
      *
      * @param CursoACalificar $entity The entity
@@ -68,12 +40,12 @@ class CalificarController extends Controller
      */
     private function createCalificarForm(CursoACalificar $cursoACalificar)
     {
-        $form = $this->createForm(new CalificarCursoType(), $cursoACalificar, array(
+        $form = $this->createForm(CalificarCursoType::class, $cursoACalificar, array(
             //'action' => $this->generateUrl('calificaciones_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Guardar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Guardar'));
 
         return $form;
     }

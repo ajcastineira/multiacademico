@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PostType extends AbstractType
 {
+    
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -40,6 +41,6 @@ class PostType extends AbstractType
      */
     public function getName()
     {
-        return 'arxis_blogbundle_post';
+        return 'post';
     }
 }

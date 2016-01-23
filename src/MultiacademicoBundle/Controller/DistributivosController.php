@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Form\DistributivosType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Distributivos controller.
  *
@@ -108,12 +108,12 @@ class DistributivosController extends Controller
      */
     private function createCreateForm(Distributivos $entity)
     {
-        $form = $this->createForm(new DistributivosType(), $entity, array(
+        $form = $this->createForm( DistributivosType::class, $entity, array(
             //'action' => $this->generateUrl('distributivos_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -204,12 +204,12 @@ class DistributivosController extends Controller
     */
     private function createEditForm(Distributivos $entity)
     {
-        $form = $this->createForm(new DistributivosType(), $entity, array(
+        $form = $this->createForm( DistributivosType::class, $entity, array(
             //'action' => $this->generateUrl('distributivos_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -310,7 +310,7 @@ class DistributivosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('distributivos_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

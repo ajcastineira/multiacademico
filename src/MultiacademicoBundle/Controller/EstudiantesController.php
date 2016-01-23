@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Estudiantes;
 use MultiacademicoBundle\Form\EstudiantesType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Estudiantes controller.
  *
@@ -117,12 +117,12 @@ class EstudiantesController extends Controller
      */
     private function createCreateForm(Estudiantes $entity)
     {
-        $form = $this->createForm(new EstudiantesType(), $entity, array(
+        $form = $this->createForm( EstudiantesType::class, $entity, array(
             //'action' => $this->generateUrl('estudiantes_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -213,12 +213,12 @@ class EstudiantesController extends Controller
     */
     private function createEditForm(Estudiantes $entity)
     {
-        $form = $this->createForm(new EstudiantesType(), $entity, array(
+        $form = $this->createForm( EstudiantesType::class, $entity, array(
             //'action' => $this->generateUrl('estudiantes_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -319,7 +319,7 @@ class EstudiantesController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('estudiantes_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

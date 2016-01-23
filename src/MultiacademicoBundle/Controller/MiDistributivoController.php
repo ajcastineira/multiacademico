@@ -14,7 +14,7 @@ use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Distributivos controller.
@@ -202,7 +202,7 @@ class MiDistributivoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $cursoACalificar=new CursoACalificar($distributivo->getId());
+        $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
@@ -229,12 +229,12 @@ class MiDistributivoController extends Controller
      */
     private function createCalificarForm(CursoACalificar $cursoACalificar,$q,$p)
     {
-        $form = $this->createForm(new CalificarCursoType($q,$p), $cursoACalificar, array(
+        $form = $this->createForm( CalificarCursoType::class, $cursoACalificar, array(
           //  'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
             'method' => 'PUT',
         ));
 
-        $form->add('guardar', 'submit', array('label' => 'Guardar'));
+        $form->add('guardar', SubmitType::class, array('label' => 'Guardar'));
 
         return $form;
     }
@@ -254,7 +254,7 @@ class MiDistributivoController extends Controller
      
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
-        $cursoACalificar=new CursoACalificar($distributivo->getId());
+        $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);

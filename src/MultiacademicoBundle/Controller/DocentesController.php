@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MultiacademicoBundle\Entity\Docentes;
 use MultiacademicoBundle\Form\DocentesType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Docentes controller.
  *
@@ -87,12 +87,12 @@ class DocentesController extends Controller
      */
     private function createCreateForm(Docentes $entity)
     {
-        $form = $this->createForm(new DocentesType(), $entity, array(
+        $form = $this->createForm( DocentesType::class, $entity, array(
             //'action' => $this->generateUrl('docentes_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear'));
+        $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;
     }
@@ -183,12 +183,12 @@ class DocentesController extends Controller
     */
     private function createEditForm(Docentes $entity)
     {
-        $form = $this->createForm(new DocentesType(), $entity, array(
+        $form = $this->createForm( DocentesType::class, $entity, array(
             //'action' => $this->generateUrl('docentes_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar'));
+        $form->add('submit', SubmitType::class, array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -289,7 +289,7 @@ class DocentesController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('docentes_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
     }

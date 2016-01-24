@@ -156,7 +156,7 @@
      <div class='footercertificado'>
        <div class='separador' ></div><br>
        <p class='textodetalle'>
-             Por lo tanto $siono se le promueve al <b>$sigcurso</b> y para <b>Certificar</b> 
+             Por lo tanto {{matricula.apruebaAnioLectivo()?'':'NO'}} se le promueve al <b>{{sigcurso|upper}} de {{sigcurso.tipo=='EBS'?'EDUCACION BASICA SUPERIOR':'BACHILLERATO GENERAL BASICO UNIFICADO'}} </b> y para <b>Certificar</b> 
              suscriben en unidad de acto
              {{pron_r}} {{rector.cargo|upper}} y {{pron_s}} {{secretaria.cargo|upper}} General del Plantel.
          </p>

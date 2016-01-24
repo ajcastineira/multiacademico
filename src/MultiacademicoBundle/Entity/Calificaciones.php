@@ -2124,6 +2124,12 @@ class Calificaciones
         
     }
     
+    public function apruebaMateria() {
+        if ($this->getPromedioFinal()>=7)
+        {return true;}
+        else
+        {return false;}
+    }
     
     public function esrojo($nota){
      if ($nota  < 7 ){

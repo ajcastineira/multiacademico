@@ -763,4 +763,20 @@ class Matriculas
     }
     
     
+    public function apruebaAnioLectivo()
+    {
+        $count=$this->calificaciones->count();
+        $materiasaprobadas=0;
+        foreach ($this->calificaciones as $materia)
+        {
+            if ($materia->apruebaMateria())
+            {$materiasaprobadas++;}
+        }
+        if ($count==$materiasaprobadas)
+    {return true;}
+        else
+        {return false;}
+    }
+    
+    
 }

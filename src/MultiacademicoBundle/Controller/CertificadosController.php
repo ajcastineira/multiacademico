@@ -129,9 +129,11 @@ class CertificadosController extends Controller
                                                                            )
                                                                     );
         
+        $sigcurso=$em->getRepository('MultiacademicoBundle:Cursos')->findOneByNivel($aula->getCurso()->getNivel()+1);
         return array(
             'entidad'=>$entidad,
             'aula'=>$aula,
+            'sigcurso'=>$sigcurso,
             'rector'=>$rector,
             'secretaria'=>$secretaria,
             'pron_r'=>$pron_r,

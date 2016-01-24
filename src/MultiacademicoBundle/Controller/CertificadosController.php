@@ -28,6 +28,7 @@ class CertificadosController extends Controller
      * @Route("/certificados/matricula", name="cetificadosmatricula")
      * @Route("/certificados/promocion", name="cetificadospromocion")
      * @Route("/certificados/matricula/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-matricula-front")
+     * @Route("/certificados/promocion/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-promocion-front")
      * @Method("GET")
      */
     public function indexAction()
@@ -78,6 +79,63 @@ class CertificadosController extends Controller
             'aula'=>$aula,
             'rector'=>$rector,
             'secretaria'=>$secretaria);
+    }
+    /**
+     * Certificados de Matriculas por curso.
+     *
+     * @Route("/api/certificados/promocion/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-promocion-curso-api", options={"expose":true})
+     * @Method("GET")
+     * @Template()
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function certificadoPromocionCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
+    {
+       $em = $this->getDoctrine()->getManager();
+        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
+        }
+        
+        $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rector');
+        $pron_r='el';
+        if (!$rector) {
+            $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rectora');
+            $pron_r='la';
+            if (!$rector) {
+            throw $this->createNotFoundException('El rector no esta configurado.');
+            }
+        }
+        $secretaria= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Secretaria');
+        $pron_s='la';
+        if (!$secretaria) {
+            throw $this->createNotFoundException('La secretaria no esta configurada.');
+        }
+        
+        
+      
+       //    $this->rector=mb_strtoupper("$trato_r $rector");
+       //    $this->cargorector=mb_strtoupper("$cargo_r");
+       //    $this->elrector="$pron_r $cargo_r";
+      //     $this->secretaria=mb_strtoupper("$trato_s $secretaria");
+      //     $this->cargosecretaria=mb_strtoupper("$cargo_s");
+    //       $this->lasecretaria="$pron_s $cargo_s";
+        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+                                                                    array(
+                                                                          'curso'=>$curso,
+                                                                          'especializacion'=>$especializacion,
+                                                                          'paralelo'=>$paralelo,
+                                                                          'seccion'=>$seccion,
+                                                                          'periodo'=>$periodo
+                                                                           )
+                                                                    );
+        
+        return array(
+            'entidad'=>$entidad,
+            'aula'=>$aula,
+            'rector'=>$rector,
+            'secretaria'=>$secretaria,
+            'pron_r'=>$pron_r,
+            'pron_s'=>$pron_s);
     }
 
 }

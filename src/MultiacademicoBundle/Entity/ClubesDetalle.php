@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use MultiacademicoBundle\Libs\Letra;
 use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
+use MultiacademicoBundle\Libs\Equivalencia;
 
 /**
  * ClubesDetalle
@@ -71,7 +72,7 @@ class ClubesDetalle
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Estudiantes")
+     * @ORM\OneToOne(targetEntity="Estudiantes", inversedBy="codclub")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id")
      * })
@@ -300,4 +301,12 @@ class ClubesDetalle
         
     }
     
+    public function getSiglasCualidad($letra)
+    {
+        return Equivalencia::siglas_cualidad_letra($letra);
+    }
+    public function getInterpretacionSiglas($siglas)
+    {
+        return Equivalencia::retornainterpretacion($siglas);
+    }        
 }

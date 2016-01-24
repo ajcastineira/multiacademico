@@ -1,0 +1,184 @@
+<div class='pagina'>
+     <div class='reporte-header' style="line-height: normal;border-bottom: 0px;">
+
+
+             <img src="{{asset(entidad.data.logoiz|default("bundles/multiacademico/img/ministerio.png"))}}" height=50  border=0>
+             <img src={{asset(entidad.data.logocenter|default("bundles/multiacademico/img/logodefault.png"))}} height=50  border=0>
+             <!--<div style='width:60%;height:50;display:-webkit-inline-box'></div>-->
+               <img src="{{asset(entidad.data.logoder|default("escudo.png"))}}" height=50  border=0><br/>
+
+             <span class='entidad' style="line-height:50px;font-family:'Arial'"><b>{{entidad.entidad}} {{entidad.titulo}}</b></span><br>
+            <span class='subt2'>AMIE {{entidad.data.codamie|default('')}}</span><br>
+             <span class='subt2'><b>Dirección:</b> {{entidad.direccion|default('')}}</span><br>
+             <span class='subt2'><b>Telefono:</b> {{entidad.telefono|default('')}} | <b> Mail:</b> {{entidad.email|default('')}} </span><br>
+             <span class='subt2'><b>{{entidad.lugar|default('')}}</b></span><br><br>
+             
+             
+             <span class='titulo'><b>C&nbsp;E&nbsp;R T I F I C A D O&nbsp;  D E&nbsp;  P R O M O C I Ó N</b></span><br>
+             <p style='margin:1px'><span class='subt1'  style="font-family:'Arial'">AÑO LECTIVO {{matricula.matriculacodperiodo}}</span><br>
+                 <span class='subt2'  style="font-family:'Arial'">JORNADA {{(matricula.matriculaseccion|slice(0,(matricula.matriculaseccion|length)-1)~'a')|upper}}</span>
+             </p>
+     </div>
+     
+       <div id="imprimir"> 
+       <table width='100%' border=0 cellPadding=1 cellSpacing=0 bgcolor=FFFFFF>
+           <tr>
+           <td></td>
+           <td width=20><button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button></td></tr>
+       </table>
+       </div>
+         
+     <div class='detalle'>
+         <p class='textodetalle'>
+             De conformidad con lo prescrito en el Art. 197 del Reglamento General a la Ley Orgánica
+   de Educación Intercultural y demás normativas vigentes, certifica que el/la estudiante<br/>
+     <span style='text-align:center;display: block;'><b>{{matricula.matriculacodestudiante|upper}}</b></span>
+     del <b>{{matricula.matriculacodcurso|upper}}</b>, 
+     Paralelo "{{matricula.matriculaparalelo|upper}}", 
+     Jornada {{(matricula.matriculaseccion|slice(0,(matricula.matriculaseccion|length)-1)~'a')|upper}}
+      obtuvo las siguientes calificaciones durante el presente año lectivo:
+         </p>
+
+     </div>
+     <div class='detallenotas'>
+
+
+     <table border=1 width='100%' cellPadding=1 cellSpacing=0 bgcolor=FFFFFF style='text-align:center'>
+       <tr class='tablacabecera'>
+           <td rowspan=2 width='300'><span ><b>A&nbsp;S&nbsp;I&nbsp;G&nbsp;N&nbsp;A&nbsp;T&nbsp;U&nbsp;R&nbsp;A&nbsp;S</b></span></td>
+              <td colspan=2><span ><b>C&nbsp;A&nbsp;L&nbsp;I&nbsp;F&nbsp;I&nbsp;C&nbsp;A&nbsp;C&nbsp;I&nbsp;O&nbsp;N&nbsp;E&nbsp;S</b></span></td>
+              </tr>
+             <tr class='tablacabecera'>
+              <td width='80'><span><b>NÚMEROS</b></span></td>
+                
+      {%if entidad.data.certpromo.cualitativas %}
+              <td><span><b>CUALITATIVA</b></span></td>
+       {%endif%}
+      {%if entidad.data.certpromo.numeroenletras %}
+              <td><span><b>LETRAS</b></span></td>
+      {%endif%}
+              
+              </tr>
+              {%set sumtotal=0%}
+              {%set ptotal=0%}
+              {%set c=matricula.calificaciones.count%}
+              {%set sumnotaletras=""%}
+              {%set ptotalletras=""%}
+              {%set pcualita=""%}
+       {%for calificacion in matricula.calificaciones%}       
+           
+           {%set pfinal=calificacion.getPromedioFinal()%}
+           
+           {%set sumtotal=sumtotal+pfinal%}
+             {%if loop.last %}
+                 {%set ptotal=sumtotal/c%}
+                 {%set sumnotaletras=calificacion.getNotaEnLetras(sumtotal)%}
+                 {%set ptotalletras=calificacion.getNotaEnLetras(ptotal)%}
+                 {%set pcualita=calificacion.getCualitativa(ptotal)%}
+             {%endif%}
+           
+           
+           {%set colornota='#000000'%}
+           {%if calificacion.esrojo(pfinal) %}
+           {%set colornota='#FF0000'%}
+            {%endif%}
+              <tr class='calificacion' style='color:{{colornota}}'>
+              <td>{{calificacion.calificacioncodmateria}}</td>
+             
+        
+              {#$nota=number_format($calificacion['nota'],2,',','.');#}
+              <td style='text-align:center;'>{{pfinal|number_format(2,',')}}</td>
+        {%if entidad.data.certpromo.cualitativas %}
+        <td>{{calificacion.getCualitativa(pfinal)}}</td>
+        {%endif%}
+        {%if entidad.data.certpromo.numeroenletras %}
+      
+          <td>{{calificacion.getNotaEnLetras(pfinal)|upper}}</td>
+           {%endif%}
+            </tr>
+             
+       {%endfor%}          
+       
+       
+       {%if entidad.data.certpromo.numeroenletras %}
+              <tr class='promediogeneral'>
+                  <td><span><b>TOTAL</b></span></td>
+                  <td style='text-align:center;'><span>{{sumtotal|number_format(2,',')}}</span></td>
+                  <td><span><b>{{sumnotaletras}}</b></span></td>
+                  
+              </tr>
+        {%endif%}
+                
+           
+           <tr class='promediogeneral'>
+           <td><span><b>PROMEDIO GENERAL</b></span></td>
+            <td style='text-align:center;'><span>{{ptotal|number_format(2,',')}}</span></td>
+             <td><span>
+              {%if entidad.data.certpromo.cualitativas %}
+                    {{pcualita}}
+                {%endif%}
+                  {%if entidad.data.certpromo.numeroenletras %}
+                     {{ptotalletras|upper}}
+                 {%endif%}
+             
+             </span></td>
+              </tr>
+          
+                  <!-- comportamiento -->
+                  
+     </table>
+<br/>
+        <table border=1 width='100%' cellPadding=1 cellSpacing=0 bgcolor=FFFFFF style='text-align:center'>
+             <tr class='comportamiento'>
+                 <td width='300'>EVALUACION DEL COMPORTAMIENTO</td>
+                 <td width='80' style='text-align:center'>{{matricula.comportamiento.getComportamientoAnual()}}</td>
+                 <td>{{matricula.comportamiento.getCualidadComportamiento(matricula.comportamiento.getComportamientoAnual())}}</td>
+             </tr>
+             {%if (matricula.matriculacodcurso.tipo=='EB' or matricula.matriculacodcurso.tipo=='EBI' or matricula.matriculacodcurso.tipo=='EBS') %}
+             
+                 {%if matricula.matriculacodestudiante.codclub==null%}
+                 
+                 <tr class='proyectosescolares'>
+                     <td colspan='3'>Alumno No registra CLUB</td>
+                 </tr>
+                     {%else%}
+                 <tr class='proyectosescolares'>
+                     <td >PROYECTOS ESCOLARES</td>
+                    <td style='text-align:center'> {{matricula.matriculacodestudiante.codclub.getSiglasCualidad(matricula.matriculacodestudiante.codclub.getClubNotaAnual())}}</td> 
+                    <td>{{matricula.matriculacodestudiante.codclub.getInterpretacionSiglas(matricula.matriculacodestudiante.codclub.getSiglasCualidad(matricula.matriculacodestudiante.codclub.getClubNotaAnual()))}}</td>
+                 </tr>
+                 {%endif%}   
+             {%endif%}
+         </table>
+     <br>
+     </div>
+
+     <div class='footercertificado'>
+       <div class='separador' ></div><br>
+       <p class='textodetalle'>
+             Por lo tanto $siono se le promueve al <b>$sigcurso</b> y para <b>Certificar</b> 
+             suscriben en unidad de acto
+             {{pron_r}} {{rector.cargo|upper}} y {{pron_s}} {{secretaria.cargo|upper}} General del Plantel.
+         </p>
+          <br>
+         <table style='text-align: right;' border=0 width='100%' cellPadding=0 cellSpacing=0 bgcolor=FFFFFF>
+         
+         <tr><td></td><td width=300 style='text-align:{{entidad.data.certpromo.posfecha}};'><span style='font-size:10.0pt;font-family:Tahoma;color:#000000'><b>{{entidad.ciudad}}, </b>{{entidad.data.certpromo.fechapromo|date('D')|dia}} {{entidad.data.certpromo.fechapromo|date('d')}} de {{entidad.data.certpromo.fechapromo|date('m')|mes}} del {{entidad.data.certpromo.fechapromo|date('Y')}} </span></td></tr>
+         
+         <tr height=50><td></td><td></td>
+
+         </tr></table>
+
+         <table class='firmas' border=0 width='100%' cellPadding=1 cellSpacing=3 bgcolor=FFFFFF>
+         <tr><td><span >{{rector}}</span></td>
+         <td><span >{{secretaria}}</span></td></tr>
+         <tr><td><span><b>{{rector.cargo}}</b></span></td>
+         <td><span><b>{{secretaria.cargo}}</b></span></td></tr>
+         </table>
+
+
+         <table width='100%' border=0 cellPadding=1 cellSpacing=0>
+         <tr><td></td><td width=10><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>. . .</b></span></td></tr>
+         </table>
+     </div>
+   </div>

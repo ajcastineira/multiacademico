@@ -440,11 +440,18 @@ class Estudiantes
     private $usuario;
     
     /**
+     *
+     * @var \MultiacademicoBundle\Entity\ClubesDetalle
+     * @ORM\OneToOne(targetEntity="\MultiacademicoBundle\Entity\ClubesDetalle", mappedBy="clubescodestudiante")
+     */
+    private $codclub;
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->codclub = new ArrayCollection();
+        //$this->codclub = new ArrayCollection();
         $this->matriculas = new ArrayCollection();
     }
 
@@ -1848,6 +1855,24 @@ class Estudiantes
             else
             {return null;}
     }
+    /**
+     * 
+     * @return \MultiacademicoBundle\Entity\ClubesDetalle
+     */
+    public function getCodclub() {
+        return $this->codclub;
+    }
+    /**
+     * 
+     * @param \MultiacademicoBundle\Entity\ClubesDetalle $codclub
+     * @return \MultiacademicoBundle\Entity\Estudiantes
+     */
+    public function setCodclub(\MultiacademicoBundle\Entity\ClubesDetalle $codclub) {
+        $this->codclub = $codclub;
+        return $this;
+    }
+
+        
     
     public function __toString() {
         return $this->estudiante;

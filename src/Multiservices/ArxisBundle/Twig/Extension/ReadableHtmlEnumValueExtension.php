@@ -39,7 +39,7 @@ class ReadableHtmlEnumValueExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return ['readablehtml' => new \Twig_Filter_Method($this, 'getReadableHtmlEnumValue')];
+        return [new \Twig_SimpleFilter('readablehtml', array($this, 'getReadableHtmlEnumValue'))];
     }
 
     /**

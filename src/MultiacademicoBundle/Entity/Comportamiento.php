@@ -4,6 +4,8 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use MultiacademicoBundle\Libs\Letra;
+use MultiacademicoBundle\Libs\Equivalencia;
 
 /**
  * Comportamiento
@@ -1074,5 +1076,24 @@ class Comportamiento
     public function getComportamientonummatricula()
     {
         return $this->comportamientonummatricula;
+    }
+    public function getComportamientoQuimestral($q) {
+        $comvar1='agdcQ'.$q.'P1';
+        $comvar2='agdcQ'.$q.'P2';
+        $comvar3='agdcQ'.$q.'P3';
+        $pn=Letra::retornaentero((Letra::letranumero($this->$comvar1)+
+            Letra::letranumero($this->$comvar2)+
+            Letra::letranumero($this->$comvar3))/3);
+        return Letra::retornaletra($pn);
+    }
+    public function getComportamientoAnual() {
+        $pn=Letra::retornaentero((Letra::letranumero($this->getComportamientoQuimestral(1))+
+            Letra::letranumero($this->getComportamientoQuimestral(2)))/2);
+        return Letra::retornaletra($pn);
+    }
+    
+    public function getCualidadComportamiento($letra)
+    {
+        return Equivalencia::retornacualidadconducta($letra);
     }
 }

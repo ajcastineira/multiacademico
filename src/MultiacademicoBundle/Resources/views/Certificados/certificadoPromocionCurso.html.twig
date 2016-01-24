@@ -1,0 +1,13 @@
+{%extends '::basesimple.html.twig'%}
+{% block body-%}
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<div style="height: 2cm;"></div>
+{% for matricula in aula.matriculados %}
+ {{include("MultiacademicoBundle:Certificados:certificadoPromocion.html.twig")}}
+ <div style="page-break-after: always"></div>
+ <div style="height: 4cm;"></div>
+
+ {%endfor%}
+ {% endblock body-%}

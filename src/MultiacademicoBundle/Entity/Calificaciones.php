@@ -3,6 +3,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MultiacademicoBundle\Libs\Equivalencia;
+use MultiacademicoBundle\Libs\NumToLetras;
 use JMS\Serializer\Annotation as Serializer;
 
 
@@ -2002,21 +2003,7 @@ class Calificaciones
         return $this->calificacionnummatricula;
     }
     
-    public function esrojo($nota){
-     if ($nota  < 7 ){
-         //$color="#FF0000";
-         return true;
-     }else
-      {
-         //$color="#000000";
-         return false;
-      }
-    }
     
-    public function getSiglasEquivalencia($nota)
-    {
-      return Equivalencia::retornasiglascualidad($nota);
-    }
             
     function redondear_dos_decimal($valor) { 
         //$float_redondeado=floor($valor * 100) / 100;
@@ -2135,6 +2122,32 @@ class Calificaciones
                 return $promedio_mejorado;
               }
         
+    }
+    
+    
+    public function esrojo($nota){
+     if ($nota  < 7 ){
+         //$color="#FF0000";
+         return true;
+     }else
+      {
+         //$color="#000000";
+         return false;
+      }
+    }
+    
+    public function getSiglasEquivalencia($nota)
+    {
+      return Equivalencia::retornasiglascualidad($nota);
+    }
+    public function getCualitativa($nota)
+    {
+      return Equivalencia::retornacualidad($nota);
+    }
+    
+    public function getNotaEnLetras($nota)
+    {
+      return NumToLetras::convierteEnLetras($nota);
     }
     
 }

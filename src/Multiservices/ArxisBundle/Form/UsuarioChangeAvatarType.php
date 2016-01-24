@@ -4,7 +4,7 @@ namespace Multiservices\ArxisBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UsuarioChangeAvatarType extends AbstractType
 {
@@ -26,9 +26,9 @@ class UsuarioChangeAvatarType extends AbstractType
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Multiservices\ArxisBundle\Entity\Usuario',
@@ -41,6 +41,6 @@ class UsuarioChangeAvatarType extends AbstractType
      */
     public function getName()
     {
-        return 'multiservices_arxisbundle_user_change_avatar';
+        return 'usuario_change_avatar';
     }
 }

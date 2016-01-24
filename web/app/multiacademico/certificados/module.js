@@ -100,7 +100,76 @@ define([
                                      } */  
                         }
                     }
-                });
+                })
+            .state('multiacademico.certificados.promocion', {
+                    url: '/promocion',
+                    data: {
+                        pageTitle: 'Certificados',
+                        pageHeader: {
+                            icon: 'fa flaticon-certificate',
+                            title: 'Certificados',
+                            subtitle: 'Seleccionar curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Certificados'},{title: 'Seleccionar curso'}
+                        ]
+                    },
+                    
+                    views:{
+                        'content@multiacademico':{
+                            templateUrl: 'views/multiacademico/certificados/seleccionar-aula-certificado-promocion.html',
+                            controller: function ($scope, aulas) {
+                            $scope.aulas = aulas;
+                           },
+                           resolve:{
+                               aulas: function ($http) {
+                                 return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data.aulas;
+                                         });
+                                         }
+                                     }
+                           }
+                        }
+                })
+            .state('multiacademico.certificados.promocion.aula', {
+                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                    data: {
+                        pageTitle: 'Certificados',
+                        pageHeader: {
+                            icon: 'fa flaticon-certificate',
+                            title: 'Certificados',
+                            subtitle: 'Promocion'
+                        },
+                        breadcrumbs: [
+                            {title: 'Certificados'},{title: 'Promocion'}
+                        ]
+                    },
+                    views:{
+                        'content@multiacademico':{
+                            templateUrl: function($stateParams){
+                                return Routing.generate('certificados-promocion-curso-api',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo});
+                                }//,
+                                
+                           // controller: 'InformesCtrl',
+                           /*resolve:{
+                               deps: $couchPotatoProvider.resolveDependencies([
+                                'multiacademico/informes/controllers/InformesCtrl'//,
+                               // 'multiacademico/calificaciones/Calificaciones'
+                               
+                                ])//,
+                               aula: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data.aula;
+                                         });
+                                         }
+                                     } */  
+                        }
+                    }
+                });    
               
 
 

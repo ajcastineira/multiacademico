@@ -3,14 +3,14 @@ var require = {
     paths: {
 
         'jquery': [
-            '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min',
+            '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min',
             '../plugin/jquery/dist/jquery.min'
         ],
         'jquery-ui': ['//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min',
                       '../plugin/jquery-ui/jquery-ui.min'
         ],
 
-        'bootstrap': ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min',
+        'bootstrap': ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min',
                       '../plugin/bootstrap/dist/js/bootstrap.min'],
 
         'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min',
@@ -62,13 +62,18 @@ var require = {
         'bootstrap-session-timeout':'../plugin/bootstrap-session-timeout/dist/bootstrap-session-timeout.min',
         
         'bootstrap-taginput':'../plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput-angular.min',
+        
+        'bootstrap-daterangepicker':['//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker.js',
+                                     '../plugin/bootstrap-daterangepicker/bootstrap-daterangepicker'],
+        
         'jasny-bootstrap-fileinput':'../plugin/jasny-bootstrap-fileinput/js/jasny-bootstrap.fileinput.min',
         'holderjs':'../plugin/holderjs/holder',
         'bootstrap-maxlength':'../plugin/bootstrap-maxlength/bootstrap-maxlength.min',
 
         'ckeditor': '../plugin/ckeditor/ckeditor',
 
-        'moment': '../plugin/moment/min/moment-with-locales.min',
+        'moment': ['//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min',
+                    '../plugin/moment/min/moment-with-locales.min'],
         'moment-timezone': '../plugin/moment-timezone/moment-timezone',
 
         'sparkline': '../plugin/relayfoods-jquery.sparkline/dist/jquery.sparkline.min',
@@ -91,13 +96,41 @@ var require = {
 
         'chartjs': '../plugin/chartjs/chart.min',
 
-        'datatables': '../plugin/datatables/media/js/jquery.dataTables.min',
-        'datatables-bootstrap': '../plugin/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap',
-        'datatables-tools': '../plugin/datatables-tabletools/js/dataTables.tableTools',
-        'datatables-colvis': '../plugin/datatables-colvis/js/dataTables.colVis',
-        'datatables-responsive': '../plugin/datatables-responsive/files/1.10/js/datatables.responsive',
-
-
+        
+        'datatables.net': ['//cdn.datatables.net/1.10.10/js/jquery.dataTables.min',
+                       '../plugin/datatables/media/js/jquery.dataTables.min'
+                        ],
+        
+        'datatables.net-buttons': ['https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min',
+                            '../plugin/datatables-buttons/js/dataTables.buttons.min'
+                        ],
+        
+        'datatables.net-buttons.flash': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.flash.min',
+                            '../plugin/datatables-buttons/js/buttons.flash.min'
+                        ],                   
+        
+        'datatables.net-buttons.html5': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.html5.min',
+                            '../plugin/datatables-buttons/js/buttons.html5.min'
+                        ],
+        
+        'datatables.net-buttons.print': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.print.min',
+                            '../plugin/datatables-buttons/js/buttons.print.min'
+                        ],                
+        
+        'datatables.net-buttons.bootstrap': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.bootstrap.min',
+                            '../plugin/datatables-buttons/js/buttons.bootstrap.min'
+                        ],                                   
+    
+        'datatables.net-bs': '../plugin/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min',
+    
+        'datatables.net-responsive': '../plugin/datatables-responsive/js/datatables.responsive.min',
+        'datatables.net-responsive.bootstrap': '../plugin/datatables-responsive/js/responsive.bootstrap.min',
+        
+        'pdfmake':"https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min",
+        'pdfmakefonts':"https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts",
+        'jszip':'https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min',
+        
+        
         'jqgrid':'../plugin/jqgrid/js/minified/jquery.jqGrid.min',
         'jqgrid-locale-en':'../plugin/jqgrid/js/i18n/grid.locale-en',
 
@@ -211,11 +244,19 @@ var require = {
 
         'morris': {deps: ['raphael']},
 
-        'datatables':{deps: ['jquery']},
-        'datatables-colvis':{deps: ['datatables']},
-        'datatables-tools':{deps: ['datatables']},
-        'datatables-bootstrap':{deps: ['datatables','datatables-tools','datatables-colvis']},
-        'datatables-responsive': {deps: ['datatables']},
+        'datatables.net':{deps: ['jquery','bootstrap-daterangepicker']},
+        'datatables.net-buttons' :{deps: ['datatables.net']},
+        'datatables.net-buttons.html5':{deps: ['datatables.net','datatables.net-buttons','jszip']},
+        'datatables.net-buttons.flash':{deps: ['datatables.net','datatables.net-buttons']},
+        'datatables.net-buttons.print':{deps: ['datatables.net','datatables.net-buttons']},
+        
+       // 'datatables-colvis':{deps: ['datatables']},
+       // 'datatables-tools':{deps: ['datatables']},
+        //'datatables-bootstrap':{deps: ['datatables','datatables-tools','datatables-colvis']},
+       'datatables.net-responsive': {deps: ['datatables.net']},
+       'datatables.net-bs':{deps: ['datatables.net','datatables.net-buttons','datatables.net-responsive']},
+       'datatables.net-buttons.bootstrap':{deps: ['datatables.net-bs','datatables.net-buttons']},
+       'datatables.net-responsive.bootstrap': {deps: ['datatables.net-bs','datatables.net-responsive']},
 
         'jqgrid' : {deps: ['jquery']},
         'jqgrid-locale-en' : {deps: ['jqgrid']},
@@ -267,7 +308,10 @@ var require = {
 
         'superbox': { deps: ['jquery']},
         
-        'oc-lazyload': { deps: ['angular']}//,
+        'oc-lazyload': { deps: ['angular']},
+        
+        
+        'pdfmakefonts': { deps: ['pdfmake']}//,
 
        // 'notification': { deps: ['jquery']},
 

@@ -26,6 +26,7 @@
   "to-markdown": "empty:",
   "markdown": "empty:",
   "bootstrap-markdown": "empty:",
+  "bootstrap-daterangepicker": "empty:",
   "ckeditor": "empty:",
   "moment": "empty:",
   "moment-timezone": "empty:",
@@ -45,6 +46,15 @@
   "dygraphs-demo": "empty:",
   "chartjs": "empty:",
   "datatables": "empty:",
+  "datatables.net": "empty:",
+  "datatables.net-bs": "empty:",
+  "datatables.net-buttons": "empty:",
+  "datatables.net-buttons.bootstrap": "empty:",
+  "datatables.net-buttons.html5": "empty:",
+  "datatables.net-buttons.flash": "empty:",
+  "datatables.net-buttons.print": "empty:",
+  "datatables.net-responsive.bootstrap": "empty:",
+  "datatables.net-responsive": "empty:",
   "datatables-bootstrap": "empty:",
   "datatables-tools": "empty:",
   "datatables-colvis": "empty:",
@@ -90,6 +100,8 @@
   "oc-lazyload":"empty:",
   "ionsound":"empty:",
   "skycons":"empty:",
-  "bootbox":"empty:"
-  
+  "bootbox":"empty:",
+  "pdfmake":"empty:",
+  "pdfmakefonts":"empty:",
+  "jszip":"empty:"
 }

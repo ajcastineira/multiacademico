@@ -1,0 +1,6 @@
+datatables:
+    actions:
+        title: Acciones
+        show: Ver
+        edit: Editar
+        new: Agregar

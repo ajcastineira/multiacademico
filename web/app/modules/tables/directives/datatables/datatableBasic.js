@@ -1,9 +1,16 @@
 define(['modules/tables/module',
-    'datatables',
-    'datatables-responsive',
-    'datatables-colvis',
-    'datatables-tools',
-    'datatables-bootstrap'
+    'datatables.net',
+    'datatables.net-responsive.bootstrap',
+    'datatables.net-buttons.html5',
+    'datatables.net-buttons.flash',
+    'datatables.net-buttons.print',
+    'datatables.net-buttons.bootstrap',
+    //'datatables-colvis', deprecado
+    //'datatables-tools', deprecado
+    'datatables.net-bs',
+    'pdfmake',
+    'pdfmakefonts',
+    'jszip'
 ], function (module) {
 
     'use strict';

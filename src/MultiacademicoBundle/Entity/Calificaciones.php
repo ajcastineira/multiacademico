@@ -2075,7 +2075,7 @@ class Calificaciones
             $quimestre_menor=$quimestre1;
         }
 
-              if ($quimestre_menor<$this->mejoramiento)
+              if ($this->mejoramiento>$quimestre_menor)
               {
                 $quimestre_mejorado=$this->mejoramiento;
               }
@@ -2088,7 +2088,7 @@ class Calificaciones
 
               if($promedio_quimestres>=7)
               {
-              return $promedio_quimestres;
+              return $promedio_mejorado;
               }
               elseif($promedio_mejorado>=7)
               {

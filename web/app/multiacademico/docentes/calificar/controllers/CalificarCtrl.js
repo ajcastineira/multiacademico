@@ -1,7 +1,9 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/docentes/calificar/module'], function (module) {
+define(['multiacademico/docentes/calificar/module',
+        'multiacademico/calificaciones/Calificaciones'
+        ], function (module) {
 
     'use strict';
     
@@ -37,14 +39,14 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
      return (letra);
     }
 
-    module.registerController('CalificarCtrl', function ($scope,$modal,$log,$http,$state,$stateParams) {
+    module.registerController('CalificarCtrl', function ($scope,$modal,$log,$http,$state,$stateParams,Calificaciones) {
                             
                             $scope.state=$stateParams;
                           
                             $scope.qop=[
                                     {id:1,label:"PRIMER QUIMESTRE"},
                                     {id:2,label:"SEGUNDO QUIMESTRE"},
-                                  //  {id:3,label:"ANUAL"}
+                                    {id:3,label:"ANUAL"}
                             ];
                             $scope.pop=[
                                     {id:1,label:"Primer Parcial"},
@@ -68,8 +70,9 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
                                 var pl=retornaletra(promedio)
                                 return pl;
                             }
-                                
-                            
+                            $scope.promediofinal=function(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia){
+                                return Calificaciones.calcularPromedioFinal(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
+                            };    
                             $scope.changeq=function(){
                                     $state.go($state.$current,{submited:false,q:$scope.q,p:$scope.p});
                                 };
@@ -104,6 +107,7 @@ define(['multiacademico/docentes/calificar/module'], function (module) {
 
 
                             };    
+
                             $scope.formData={};
                             // process the form
                             $scope.processForm = function(e,formulario) {

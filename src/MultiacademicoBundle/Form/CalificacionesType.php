@@ -35,16 +35,25 @@ class CalificacionesType extends AbstractType
                 {
                     $this->q=$dataparent->getParcial()->getQ();
                     $this->p=$dataparent->getParcial()->getP();       
-                
+                    if($this->q<3)
+                    {
                     for ($i=1;$i<=5;$i++)     
                        {
                         $notavar='q'.$this->q.'P'.$this->p.'N'.$i;
                            $form->add($notavar,  NotaType::class);
                        }
-                    if ($this->p==3)
+                        if ($this->p==3)
                        {
                         $form->add('q'.$this->q.'Ex',NotaType::class);
-                       }   
+                       }
+                    }
+                    if ($this->q==3)
+                       {
+                        $form->add('mejoramiento',NotaType::class);
+                        $form->add('supletorio',NotaType::class);
+                        $form->add('remedial',NotaType::class);
+                        $form->add('gracia',NotaType::class);
+                       }      
                 }  
                     
                     

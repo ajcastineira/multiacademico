@@ -158,11 +158,23 @@ define(['multiacademico/multiacademico'], function(module){
                                 return redondear(r/2,2);
                                 },            
                      getPromedioFinal:function (calificacion)
-                        {
+                     {
+                        if(typeof calificacion === 'undefined'){return('N/A');}
+                        
                         var quimestre1=this.getPromedioQuimestre(1,calificacion);
                         var quimestre2=this.getPromedioQuimestre(2,calificacion);
+                        var mejoramiento=calificacion['mejoramiento'];
+                        var supletorio=calificacion['supletorio'];
+                        var remedial=calificacion['remedial'];
+                        var gracia=calificacion['gracia'];
+                        return this.calcularPromedioFinal(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
+                     },
+                     calcularPromedioFinal: function(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
+                     {
+                      
+                        
 
-                        var promedio_quimestres=this.getPromedioAnual(calificacion);
+                        var promedio_quimestres=redondear((quimestre1+quimestre2)/2,2);
                         var quimestre_mayor=0;
                         var quimestre_menor=0;
                         var quimestre_mejorado=0;
@@ -177,9 +189,9 @@ define(['multiacademico/multiacademico'], function(module){
                             quimestre_menor=quimestre1;
                         }
 
-                              if (quimestre_menor<calificacion['mejoramiento'])
+                            if (mejoramiento>quimestre_menor)
                               {
-                                quimestre_mejorado=calificacion['mejoramiento'];
+                                quimestre_mejorado=mejoramiento;
                               }
                               else
                               {
@@ -190,7 +202,7 @@ define(['multiacademico/multiacademico'], function(module){
 
                               if(promedio_quimestres>=7)
                               {
-                               return promedio_quimestres;
+                               return promedio_mejorado;
                               }
                               else if(promedio_mejorado>=7)
                               {
@@ -198,23 +210,21 @@ define(['multiacademico/multiacademico'], function(module){
                               }
                               else if(promedio_mejorado>=4)
                               {
-                                 if (calificacion['supletorio']>=7)
+                                 if (supletorio>=7)
                                   {return 7;}
-                                 else if (calificacion['remedial']>=7)
+                                 else if (remedial>=7)
                                   {return 7;}
-                                 else if (calificacion['gracia']>=7)
+                                 else if (gracia>=7)
                                   {return 7;}
                                  else
                                    {return promedio_mejorado;}          
 
                                }
-
-
                               else if(promedio_mejorado<4)
                               {
-                                if (calificacion['remedial']>=7)
+                                if (remedial>=7)
                                    {return 7;}
-                                   else if (calificacion['gracia']>=7)
+                                   else if (gracia>=7)
                                   {return 7;}
                                   else
                                    {return promedio_mejorado;}
@@ -224,7 +234,7 @@ define(['multiacademico/multiacademico'], function(module){
                                 return promedio_mejorado;
                               }
 
-                    },
+                     },
                      apruebaMateria:function (calificacion)
                      {
                        if (this.getPromedioFinal(calificacion)>=7)

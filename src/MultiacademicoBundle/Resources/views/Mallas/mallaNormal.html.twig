@@ -136,14 +136,14 @@ table { page : rotated!important }
                             <td ng-if="Materias[distributivo.distributivocodmateria.id]&&q==3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['gracia']}}</td> 
                             <td ng-if="Materias[distributivo.distributivocodmateria.id]&&q==3" data-ng-repeat-end style=" -webkit-print-color-adjust:exact;background-color: gainsboro;">{{prf($parent.$parent.$index,distributivo.distributivocodmateria.id)}}</td> 
                                
-                           <td ng-if="q==3">{{sumf($$index)}}</td> 
+                           <td ng-if="q==3">{{sumf($index)}}</td> 
                             <td ng-if="q==3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prg($index)}}</td> 
                            
                            <td ng-if="q==3&&!apruebaAnioLectivo($index)" colspan="2">PIERDE AÑO</td>
                            
                           
                            <!--
-                           <td ng-if="q==3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;">{{sumf($parent.$parent.$index)}}</td> 
+                           <td ng-if="q==3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;">{{sumf($index)}}</td> 
                                                         <td colspan="2">PIERDE AÑO</td>-->
                              
                                    

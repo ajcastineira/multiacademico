@@ -17,15 +17,19 @@ define(['multiacademico/reportes/malla/module',
                                 titulo:"CUADRO DE CALIFICACIONES DEL PARCIAL"+$scope.p,
                                 materiacolspan:function()
                                 {
-                                    if ($scope.p<=3)
+                                    if ($scope.p<=3&& $scope.q<3)
                                     {    
                                         return 7;
                                     }
-                                    if ($scope.p==4)
+                                    if ($scope.p===4&& $scope.q<3)
                                     {    
                                         return 8;
                                     }
-                                    return 7
+                                    if ($scope.q===3)
+                                    {    
+                                        return 5;
+                                    }
+                                    return 7;
                                 }
                             };
                             $scope.Calificaciones=Calificaciones;
@@ -63,6 +67,45 @@ define(['multiacademico/reportes/malla/module',
                                 if (typeof q==='undefined') q=$scope.q;
                                 var calificacion=$scope.aula.matriculados[i].calificaciones[m];
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
+                            };
+                            
+                            $scope.pra=function(i,m)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getPromedioAnual(calificacion);
+                            };
+                            
+                            $scope.prf=function(i,m)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getPromedioFinal(calificacion);
+                            };
+                            
+                            $scope.prf=function(i,m)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getPromedioFinal(calificacion);
+                            };
+                            $scope.sumf=function(i)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                return Calificaciones.getSumaFinal(calificaciones);
+                            };
+                            $scope.prg=function(i)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                return Calificaciones.getPromedioGeneral(calificaciones);
+                            };
+                            
+                            $scope.apruebaAnioLectivo=function(i)
+                            {
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                return Calificaciones.apruebaAnio(calificaciones);
                             };
                             
                             $scope.cualitativa=function(nota)

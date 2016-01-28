@@ -17,9 +17,31 @@
                                         
                                         {{form_widget(form.guardar)}}
                                         
-                                            <a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning "><i class="fa fa-print bigger-160"></i>Imprimir</a>
-                                            {#<a id="imprimircontratobtn" ng-click="imprimirCalificaciones()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" data-toggle="modal" data-target="#remoteModalCalificaciones" class="btn btn-warning">
-                                                <i class="fa fa-print fa-lg"></i> Imprimir</a>#}
+                                            {#<a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning "><i class="fa fa-print bigger-160"></i>Imprimir</a>#}
+                                             
+                                            <div class="btn-group">
+                                            <a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning" >
+                                                <i class="fa fa-print"></i> Imprimir
+                                            </a>
+                                            <button type="button" class="btn btn-app btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>    
+                                            <ul class="dropdown-menu" role="menu">
+                                                  
+                                                        <li>
+                                                            <a ng-href="{{'{{urlCalificacionesPrint()}}'}}" data-ng-click="openModal()" target="_blank">Hoja Actual</a>
+                                                        </li>
+                                                        <li>
+                                                            <a ng-href="{{'{{urlResumenCalificacionesQuimestrePrint()}}'}}" data-ng-click="openModalExpanded(urlResumenCalificacionesQuimestrePrint())" target="_blank">Resumen Quimestral</a>
+                                                        </li>
+                                                        <li>
+                                                            <a ng-href="{{'{{urlResumenCalificacionesAnualPrint()}}'}}" data-ng-click="openModalExpanded(urlResumenCalificacionesAnualPrint())" target="_blank">Resumen Anual</a>
+                                                        </li>
+                                               
+                                            </ul>
+                                        </div>
+
                                     </td></tr>
                                 <tr><td colspan="4"><b>Curso: </b>{{curso}}</td>
                                     <td colspan="10"><b>Materia: </b>{{materia}} </td> 

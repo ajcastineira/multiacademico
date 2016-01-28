@@ -79,12 +79,43 @@ define(['multiacademico/docentes/calificar/module',
                              $scope.urlCalificacionesPrint=function(){
                                     return Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p});
                                 };
+                            $scope.urlResumenCalificacionesQuimestrePrint=function(){
+                                    return Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:4});
+                                };    
+                            $scope.urlResumenCalificacionesAnualPrint=function(){
+                                    return Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:3,p:1});
+                                };        
                             $scope.imprimirCalificaciones = function () {
                                 angular.element(".printable").html(angular.element("#remoteModalCalificaciones .modal-content").html());
                              };     
                              $scope.openModal = function () {
                                 var modalInstance = $modal.open({
                                     templateUrl: Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p}),
+                                     size: 'lg',
+                                     controller: function($scope, $modalInstance){
+                                        $scope.closeModal = function(){
+                                            $modalInstance.close();
+                                        }
+                                    }
+                                });
+                                 modalInstance.rendered.then(function () {
+                                    angular.element(".modal-dialog").addClass("noprint");
+                                    angular.element(".printable").html(angular.element("#remoteModalCalificaciones").html());
+                                    $log.info('Modal rendered at: ' + new Date());
+                                   
+                                });
+                                modalInstance.result.then(function () {
+                                    $log.info('Modal closed at: ' + new Date());
+
+                                }, function () {
+                                    $log.info('Modal dismissed at: ' + new Date());
+                                });
+
+
+                            };    
+                            $scope.openModalExpanded = function (url) {
+                                var modalInstance = $modal.open({
+                                    templateUrl: url,
                                      size: 'lg',
                                      controller: function($scope, $modalInstance){
                                         $scope.closeModal = function(){

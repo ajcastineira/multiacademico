@@ -63,7 +63,7 @@ var require = {
         
         'bootstrap-taginput':'../plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput-angular.min',
         
-        'bootstrap-daterangepicker':['//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker.js',
+        'bootstrap-daterangepicker':['//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker',
                                      '../plugin/bootstrap-daterangepicker/bootstrap-daterangepicker'],
         
         'jasny-bootstrap-fileinput':'../plugin/jasny-bootstrap-fileinput/js/jasny-bootstrap.fileinput.min',

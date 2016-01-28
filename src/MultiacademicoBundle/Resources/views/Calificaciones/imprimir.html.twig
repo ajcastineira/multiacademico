@@ -66,10 +66,11 @@
                 <table border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="000000">
                     <tbody>
                         <tr height="30" bgcolor="FFFFFF">
-                            <th rowspan="2"><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b>No.</b></span></th>
-                                      <th rowspan="2"><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b>Matr.</b></span></th>
+                            <th rowspan="2"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>No.</b></span></th>
+                                      <th rowspan="2"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Matr.</b></span></th>
                                       <th rowspan="2"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Apellidos y Nombres</b></span></th>
-                                      <th colspan="4"><span style="font-size:8.0pt;font-family:Tahoma;color:000000"><b>EVALUACIÓN FORMATIVA</b></span></th>
+                                      {%if pactivo<4 and qactivo<3 %}
+                                      <th colspan="4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>EVALUACIÓN FORMATIVA</b></span></th>
                                       <th width="35" bgcolor="FFFFFF" rowspan="2"><img src="{{asset('bundles/multiacademico/img/text_ev.png')}}" border="0"></th>
                                       <th width="35" bgcolor="FFFFFF" rowspan="2"><img src="{{asset('bundles/multiacademico/img/text_pr.png')}}" border="0"></th>
                                       <th rowspan="2" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cl.png')}}" border="0"></th>
@@ -79,25 +80,97 @@
                                       <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ag.png')}}" border="0"></td>
                                       <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_lc.png')}}" border="0"></td>
                                      </tr>
-                                     {%set c, sumpp=0,0%}
+                                      {%elseif pactivo==4 and qactivo<3 %}
+                                         <th colspan=4><span style='font-size:8.0pt;font-family:Tahoma;color:000000'><b>PROMEDIO PARCIALES</b></span></th>
+                                           <th width=35 bgcolor=FFFFFF rowspan=2><img src="{{asset('bundles/multiacademico/img/text_pr_pa_80.png')}}" border=0></th>
+                                           <th width=35 bgcolor=FFFFFF rowspan=2><img src="{{asset('bundles/multiacademico/img/text_ex.png')}}" border=0></th>
+                                           <th width=35 bgcolor=FFFFFF rowspan=2><img src="{{asset('bundles/multiacademico/img/text_ex_20.png')}}" border=0></th>
+                                           <th rowspan=2 width=35 bgcolor=FFFFFF><img src="{{asset('bundles/multiacademico/img/text_pr_100.png')}}" border=0></th>
+                                           <th rowspan=2 width=35 bgcolor=FFFFFF><img src="{{asset('bundles/multiacademico/img/text_cl.png')}}" border=0></th></tr>
+
+
+                                          <tr>
+                                          <td width=35 bgcolor=FFFFFF><div style='font-size:8.0pt;font-family:Tahoma;color:#000000;-ms-transform:rotate(270deg);-moz-transform:rotate(270deg);-webkit-transform:rotate(270deg);-o-transform:rotate(270deg)'>Primer Parcial</div></td>
+                                          <td width=35 bgcolor=FFFFFF><div style='font-size:8.0pt;font-family:Tahoma;color:#000000;-ms-transform:rotate(270deg);-moz-transform:rotate(270deg);-webkit-transform:rotate(270deg);-o-transform:rotate(270deg)'>Segundo Parcial</div></td>
+                                          <td width=35 bgcolor=FFFFFF><div style='font-size:8.0pt;font-family:Tahoma;color:#000000;-ms-transform:rotate(270deg);-moz-transform:rotate(270deg);-webkit-transform:rotate(270deg);-o-transform:rotate(270deg)'>Tercer Parcial</div></td>
+                                          <td width=35 bgcolor=FFFFFF><img src="{{asset('bundles/multiacademico/img/text_pr_pa.png')}}" border=0></td>
+                                          </tr>
+                                        {%elseif qactivo==3%}  
+                                            <th colspan=2><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'><b>PROMEDIO QUIMESTRES</b></span></th>
+                                            <th colspan=8><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'><b>RESUMEN ANUAL</b></span></th>
+
+                                           <tr style='text-align:center'>
+                                           <td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>Primer Quimestre</b></span></td>
+                                        {#<td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>Cualitativa</b></span></td>#}
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>Segundo Quimestre</b></span></td>
+                                        {#<td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>Cualitativa</b></span></td>#}
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>{{parcial.text_quimestre()}}</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>Cualitativa</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>Ex. Mejor.</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>Ex. Suplet.</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>Ex. Remed.</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:6.0pt;font-family:Tahoma;color:#000000'><b>EXAMEN DE GRACIA</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>PROMEDIO FINAL</b></span></td>
+                                          <td width=35 bgcolor=FFFFFF><span style='font-size:7.0pt;font-family:Tahoma;color:#000000'><b>ESTADO</b></span></td>
+                                          </tr>
+                                        {%endif%}
+                                    
+                                     {%set c, sumpp,sumpq,sumpf,promediocurso=0,0,0,0,0%}
+                                     
                                      {%for estudiante in listado%}
                                      {%set c=c+1%}
                                      <tr bgcolor="{{(c+2)%2?'FFFFFF':'F1EFE2'}}" height="20">
                                          <td width="15"  style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{c}}</span></td>
                                          <td width="40"  style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.calificacionnummatricula.id}}</span></td>
                                          <td ><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.calificacionnummatricula}}</span></td>
-                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N1')}}</span></td>
-                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N2')}}</span></td>
-                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N3')}}</span></td>
-                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N4')}}</span></td>
-                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N5')}}</span></td>
+                                         {%if pactivo<4 and qactivo<3 %}
+                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N1')}}</span></td>
+                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N2')}}</span></td>
+                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N3')}}</span></td>
+                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N4')}}</span></td>
+                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N5')}}</span></td>
                                          {% set pp=estudiante.getPromedioParcial(qactivo,pactivo) %}
                                          {% set sumpp=(sumpp+pp) %}
-                                     <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{pp}}</span></td>
-                                         
-                                     <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.getSiglasEquivalencia(pp)}}</span></td></tr>
+                                          {%set promediocurso=(sumpp/c)%}
+                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{pp}}</span></td>
+                                         <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{estudiante.getSiglasEquivalencia(pp)}}</span></td>
+                                         {%elseif pactivo==4 and qactivo<3 %}
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioParcial(qactivo,1)}}</span></td>
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioParcial(qactivo,2)}}</span></td>
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioParcial(qactivo,3)}}</span></td>
+                
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioParciales(qactivo)}}</span></td>
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{(estudiante.getPromedioParciales(qactivo)*0.8)|round(2)}}</span></td>
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{attribute(estudiante,'q'~qactivo~'Ex')}}</span></td>
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{(attribute(estudiante,'q'~qactivo~'Ex')*0.2)|round(2)}}</center></span></td>
+                                         {% set pq=estudiante.getPromedioQuimestre(qactivo) %}
+                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{pq}}</center></span></td>
+                                        
+                                        <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getSiglasEquivalencia(pq)}}</span></td>
+                                        
+                                        
+                                         {% set sumpq=(sumpq+pq) %}
+                                          {%set promediocurso=(sumpq/c)%}
+                                         {%elseif qactivo==3 %}
+                                             <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioQuimestre(1)}}</span></td>
+                                             <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioQuimestre(2)}}</span></td>
+  
+                                            <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getPromedioAnual()}}</span></td>
+                                            <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getSiglasEquivalencia(estudiante.getPromedioAnual())}}</span></td>
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.mejoramiento}}</span></td>
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.supletorio}}</span></td>
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.remedial}}</span></td>
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.gracia}}</span></td>
+                                            {% set pf=estudiante.getPromedioFinal() %}
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{pf}}</span></td>
+                                            <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:{{estudiante.apruebaMateria()?'#000000':'#FF0000'}}'>{{estudiante.apruebaMateria()?'APRUEBA':'REPRUEBA'}}</span></td>
+                                            
+                                             {% set sumpf=(sumpf+pf) %}
+                                             {%set promediocurso=(sumpf/c)%}
+                                         {%endif%}
+                                     </tr>     
                                      {%endfor%}
-                                     {%set promediocurso=(sumpp/c)%}
+                                    
                 </tbody>
             </table>
                 

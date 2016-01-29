@@ -1,10 +1,9 @@
 echo "Actualizando Multiacademico"
 git reset --hard
 git pull --rebase
-
-if [ $1 = "composer" ]; then
+composer=$1
+if [ "$composer" = "composer" ]; then
                echo "Se Actualizara Composer"
-
                php composer.phar self-update
                php composer.phar update
 fi

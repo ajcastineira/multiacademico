@@ -83,6 +83,7 @@ define([
     //multiacademico
      'multiacademico/multiacademico',
      'multiacademico/estudiantes/module',
+     'multiacademico/matriculas/module',
      'multiacademico/materias/module',
      'multiacademico/periodo/module',
      'multiacademico/cursos/module',

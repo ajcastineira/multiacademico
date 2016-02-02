@@ -26,26 +26,6 @@ define([
                                   '</div>'
                     })
 
-
-
-              .state('matriculas', {
-                    url: '/matriculas',
-                    templateUrl: 'views/matriculas.html',
-                    data: {
-                        pageTitle: 'matriculas',
-                        pageHeader: {
-                            icon: 'fa fa-pencil',
-                            title: 'matriculas',
-                            subtitle: 'matriculas and more'
-                        },
-                        breadcrumbs: [
-                            {title: 'matriculas'},{title: 'matriculas'}
-                        ]
-                    }
-                })
-
-
-
               .state('calificaciones', {
                     url: '/calificaciones',
                     templateUrl: 'views/calificaciones.html',

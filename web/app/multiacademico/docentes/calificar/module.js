@@ -20,21 +20,6 @@ define(['angular',
                     state_updated:'multiacademico.docentes.midistributivo.menu.calificaciones'
                      };
         $stateProvider
-            .state ('multiacademico.docentes', {
-                abstract:true,
-                data: {
-                        pageTitle: 'Docentes',
-                        pageHeader: {
-                            icon: 'flaticon-teach',
-                            title: 'Docente',
-                            subtitle: 'Docente'
-                        },
-                        breadcrumbs: [
-                            {title: 'Docentes'},{title: 'lista'}
-                        ]
-                    },
-                
-            })
             .state ('multiacademico.docentes.midistributivo', {
                 //abstract:true,
                 url:'/midistributivo',

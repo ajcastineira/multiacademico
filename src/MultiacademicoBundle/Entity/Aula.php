@@ -6,13 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Doctrine\Common\Collections\Criteria;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
- * Distributivos
+ * Aula
  *
  * @ORM\Table(name="aulas")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\AulaRepository")
  * @Serializer\ExclusionPolicy("all")
+ * @UniqueEntity({"curso","especializacion","paralelo","seccion","periodo"}, message="El Aula con esta combinacion ya existe")
  */
 class Aula
 {

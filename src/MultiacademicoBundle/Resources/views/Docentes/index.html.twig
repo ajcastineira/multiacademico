@@ -21,33 +21,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Docentecedula</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Docentetrato</th>
                 <th>Docente</th>
-                <th>Docentedomicilio</th>
-                <th>Docenteemail</th>
-                <th>Docentetelefono</th>
-                <th>Docentecargo</th>
-                <th>Docenteestado</th>
-                <th>Username</th>
-                <th>Salt</th>
-                <th>Path</th>
-                <th>Theme</th>
-                <th>Signature</th>
-                <th>Signatureformat</th>
-                <th>Created</th>
-                <th>Access</th>
-                <th>Lastlogin</th>
-                <th>Lastactivity</th>
-                <th>Status</th>
-                <th>Timezone</th>
-                <th>Language</th>
-                <th>Picture</th>
-                <th>Init</th>
-                <th>Data</th>
-                <th>Mail</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -55,33 +29,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('docentes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.docentecedula }}</td>
-                <td>{{ entity.login }}</td>
-                <td>{{ entity.password }}</td>
-                <td>{{ entity.docentetrato }}</td>
                 <td>{{ entity.docente }}</td>
-                <td>{{ entity.docentedomicilio }}</td>
-                <td>{{ entity.docenteemail }}</td>
-                <td>{{ entity.docentetelefono }}</td>
-                <td>{{ entity.docentecargo }}</td>
-                <td>{{ entity.docenteestado }}</td>
-                <td>{{ entity.username }}</td>
-                <td>{{ entity.salt }}</td>
-                <td>{{ entity.path }}</td>
-                <td>{{ entity.theme }}</td>
-                <td>{{ entity.signature }}</td>
-                <td>{{ entity.signatureFormat }}</td>
-                <td>{{ entity.created }}</td>
-                <td>{{ entity.access }}</td>
-                <td>{{ entity.lastlogin }}</td>
-                <td>{{ entity.lastactivity }}</td>
-                <td>{{ entity.status }}</td>
-                <td>{{ entity.timezone }}</td>
-                <td>{{ entity.language }}</td>
-                <td>{{ entity.picture }}</td>
-                <td>{{ entity.init }}</td>
-                <td>{{ entity.data }}</td>
-                <td>{{ entity.mail }}</td>
                 <td>
                 <ul>                    
                     

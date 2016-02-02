@@ -1,0 +1,47 @@
+{% block content -%}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['Aulas', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+            </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Especializacion</th>
+                <th>Paralelo</th>
+                <th>Seccion</th>
+                <th>Periodo</th>
+                <th>Tutor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for aula in aulas %}
+            <tr>
+                {#<td><a href="{{ path('proyectosescolares_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ aula.curso }}</td>
+                <td>{{ aula.especializacion }}</td>
+                <td>{{ aula.paralelo }}</td>
+                <td>{{ aula.seccion }}</td>
+                <td>{{ aula.periodo }}</td>
+                <td>{{ aula.tutor }}</td>
+                <td class="text-center">
+                    <a class="btn btn-primary" href="{{path('aulas',{'page':[aula.curso.id,aula.especializacion.id,aula.paralelo,aula.seccion,aula.periodo.id]|join('/')}) }}">Mostrar</a>
+                    <a class="btn btn-warning" href="{{path('aulas',{'page':([aula.curso.id,aula.especializacion.id,aula.paralelo,aula.seccion,aula.periodo.id]|join('/'))~'/edit'}) }}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+        <br/>
+    <div class="row text-center" >   
+        <a class="btn btn-info" href="{{ path('aulas',{'page':'new'}) }}">
+         Crear nueva entrada
+        </a>        
+    </div>
+</div>    
+{% endblock %}

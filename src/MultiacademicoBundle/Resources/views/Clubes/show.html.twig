@@ -61,9 +61,9 @@
             <a class="btn btn-primary" href="{{ path('proyectosescolares_edit', { 'id': entity.id }) }}">
                 Editar
             </a>                
-            {{ form_start(delete_form) }}
-             {{ form_widget(delete_form.submit,{'attr':{'class':'btn-danger'} }) }}                       
-            {{ form_end(delete_form) }}                
+             {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
         </div>
 </div>
 {% endblock %}

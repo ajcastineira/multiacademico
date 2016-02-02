@@ -1,40 +1,41 @@
 {% block extends %}
-{#{{ "{% extends app.request.isXmlHttpRequest ? '::baseajaxforms.html.twig' : 'MultiservicesArxisBundle::layoutsmart.html.twig' %}" }}#}
+{{ "{% extends 'base.html.twig' %}" }}
 {% endblock extends %}
+
 {% block body %}
-{{ "{% block content -%}" }}
-<div id="content">
-    <div class="row">
-    <div class=" col-md-12">
+{{ "{% block body %}" }}
+    <h1>{{ entity }}</h1>
 
-        <!-- Start inline form -->
-        <div class="panel rounded shadow">
-            <div class="panel-heading">
-                <div class="pull-left">
-                    <h3 class="panel-title"><i class="fa fa-file"></i> {{ entity }} Mostrar</h3>
-                </div>
-                <div class="pull-right">
-                    <button data-tooltip data-collapse-panel class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
-                    <button data-tooltip data-remove-panel class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
-                </div>
-                <div class="clearfix"></div>
-            </div><!-- /.panel-heading -->
-            <div class="panel-body ">
-
-    <table class="table record_properties">
+    <table>
         <tbody>
         {%- for field, metadata in fields %}
 
             <tr>
                 <th>{{ field|capitalize }}</th>
 
-            {%- if metadata.type in ['date', 'datetime'] %}
+            {%- if metadata.type in ['datetime'] %}
 
-                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
+                <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+            {%- elseif metadata.type in ['date'] %}
+
+                <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d\') }}{% endif %}' }}</td>
+
+            {%- elseif metadata.type in ['time'] %}
+
+                <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|date(\'H:i:s\') }}{% endif %}' }}</td>
+
+            {%- elseif metadata.type in ['array'] %}
+
+                <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|join(\', \') }}{% endif %}' }}</td>
+
+            {%- elseif metadata.type in ['boolean'] %}
+
+                <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}Yes{% else %}No{% endif %}' }}</td>
 
             {%- else %}
 
-                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+                <td>{{ '{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
 
             {%- endif %}
 
@@ -44,14 +45,8 @@
 
         </tbody>
     </table>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="row">
-    {% set hide_edit, hide_delete = false, false %}
-    {% include 'crud/views/others/record_actions.html.twig.twig' %}
-    </div>
-</div>
+
+{% set hide_edit, hide_delete = false, false %}
+{{ include('crud/views/others/record_actions.html.twig.twig') -}}
 {{ "{% endblock %}" }}
 {% endblock body %}

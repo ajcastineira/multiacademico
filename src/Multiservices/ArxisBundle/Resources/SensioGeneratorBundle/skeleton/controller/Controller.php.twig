@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 {% if 'annotation' == format.routing -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 {% endif %}
+{% if 'rest' == 'rest' -%}
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
+{% endif %}
 {% endblock use_statements %}
 
 {% block class_definition %}

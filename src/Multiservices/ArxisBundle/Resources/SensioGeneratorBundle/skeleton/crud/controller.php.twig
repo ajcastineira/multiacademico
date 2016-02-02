@@ -5,14 +5,12 @@ namespace {{ namespace }}\Controller{{ entity_namespace ? '\\' ~ entity_namespac
 {% block use_statements %}
 {% if 'new' in actions or 'edit' in actions or 'delete' in actions %}
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 {%- endif %}
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 {% if 'annotation' == format -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 {%- endif %}
 
 use {{ namespace }}\Entity\{{ entity }};
@@ -39,24 +37,18 @@ class {{ entity_class }}Controller extends Controller
 {% block class_body %}
     {%- if 'index' in actions %}
         {%- include 'crud/actions/index.php.twig' %}
-        {%- include 'crud/actions/index_api.php.twig' %}
     {%- endif %}
 
     {%- if 'new' in actions %}
-        {%- include 'crud/actions/create.php.twig' %}
         {%- include 'crud/actions/new.php.twig' %}
-        {%- include 'crud/actions/new_api.php.twig' %}
     {%- endif %}
 
     {%- if 'show' in actions %}
         {%- include 'crud/actions/show.php.twig' %}
-        {%- include 'crud/actions/show_api.php.twig' %}
     {%- endif %}
 
     {%- if 'edit' in actions %}
         {%- include 'crud/actions/edit.php.twig' %}
-        {%- include 'crud/actions/edit_api.php.twig' %}
-        {%- include 'crud/actions/update.php.twig' %}
     {%- endif %}
 
     {%- if 'delete' in actions %}

@@ -1,4 +1,3 @@
-
     /**
 {% block phpdoc_method_header %}
      * Lists all {{ entity }} entities.
@@ -6,7 +5,7 @@
      *
 {% block phpdoc_method_annotations %}
 {% if 'annotation' == format %}
-     * @Route("", name="{{ route_name_prefix }}")
+     * @Route("/", name="{{ route_name_prefix }}_index")
      * @Method("GET")
 {% endif %}
 {% endblock phpdoc_method_annotations %}
@@ -16,8 +15,14 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
+        $em = $this->getDoctrine()->getManager();
+
+        ${{ entity_pluralized }} = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
 {% endblock method_body %}
+
 {% block method_return %}
-       return $this->render('::baseangular.html.twig');
+        return $this->render('{{ entity|lower|replace({'\\': '/'}) }}/index.html.twig', array(
+            '{{ entity_pluralized }}' => ${{ entity_pluralized }},
+        ));
 {% endblock method_return %}
     }

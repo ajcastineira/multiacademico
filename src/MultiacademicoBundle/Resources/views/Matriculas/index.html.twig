@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Matriculas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matriculaseccion</th>
+                <th>Matriculaparalelo</th>
+                <th>Matriculafecha</th>
+                <th>Matriculaclave</th>
+                <th>Matriculatipo</th>
+                <th>Matriculaobservacion</th>
+                <th>Matriculaestado</th>
+                <th>Matriculaq1laborada</th>
+                <th>Matriculaq1jutificada</th>
+                <th>Matriculaq1injustificada</th>
+                <th>Matriculaq2laborada</th>
+                <th>Matriculaq2jutificada</th>
+                <th>Matriculaq2injustificada</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matricula in matriculas %}
+            <tr>
+                <td><a href="{{ path('matriculas_show', { 'id': matricula.id }) }}">{{ matricula.id }}</a></td>
+                <td>{{ matricula.matriculaseccion }}</td>
+                <td>{{ matricula.matriculaparalelo }}</td>
+                <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ matricula.matriculaclave }}</td>
+                <td>{{ matricula.matriculatipo }}</td>
+                <td>{{ matricula.matriculaobservacion }}</td>
+                <td>{{ matricula.matriculaestado }}</td>
+                <td>{{ matricula.matriculaQ1Laborada }}</td>
+                <td>{{ matricula.matriculaQ1Jutificada }}</td>
+                <td>{{ matricula.matriculaQ1Injustificada }}</td>
+                <td>{{ matricula.matriculaQ2Laborada }}</td>
+                <td>{{ matricula.matriculaQ2Jutificada }}</td>
+                <td>{{ matricula.matriculaQ2Injustificada }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('matriculas_show', { 'id': matricula.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('matriculas_edit', { 'id': matricula.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matriculas_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

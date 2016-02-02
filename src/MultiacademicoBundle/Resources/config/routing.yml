@@ -12,6 +12,17 @@ aulasapi:
     options:
         expose: true
     prefix: api
+matriculas:
+    path:      /matriculas/{page}
+    defaults:  { _controller: AppBundle:Default:inicio, page: index }
+    requirements:
+         page: ".*"     
+matriculasapi:
+    type: rest
+    resource: MultiacademicoBundle\Controller\MatriculasController
+    options:
+        expose: true
+    prefix: api    
 reportes:
     type: rest
     resource: MultiacademicoBundle\Controller\ReportesController

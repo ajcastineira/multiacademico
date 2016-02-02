@@ -57,7 +57,7 @@ class Distributivos
      *
      * @ORM\Column(name="distributivoestado", type="string", length=8, nullable=false)
      */
-    private $distributivoestado;
+    private $distributivoestado="Activo";
 
     /**
      * @var string

@@ -5,8 +5,10 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class DistributivosType extends AbstractType
+class MatriculasType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,12 +17,12 @@ class DistributivosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('distributivocodperiodo')
-            ->add('distributivocoddocente')
-            ->add('distributivocodmateria')  
-            ->add('distributivocodcurso')
-            ->add('distributivocodespecializacion')
-            ->add('distributivoparalelo',ChoiceType::class,array('label'=>'Paralelo',
+            ->add('matriculacodperiodo',null,array('label'=>'Periodo'))
+            ->add('matriculacodestudiante',null,array('label'=>'Estudiante'))
+            ->add('matriculacodespecializacion',null,array('label'=>'Especializacion'))
+            ->add('matriculacodcurso',null,array('label'=>'Curso'))
+            
+            ->add('matriculaparalelo',ChoiceType::class,array('label'=>'Paralelo',
                                                               'choices'=>array( 'A'=>'A',
                                                                                 'B'=>'B',
                                                                                 'C'=>'C',
@@ -32,20 +34,24 @@ class DistributivosType extends AbstractType
                                                                                 'I'=>'I'
                                                                                 )  
                                                                ))
-            ->add('distributivoseccion',ChoiceType::class,array('label'=>'Seccion',
+            ->add('matriculaseccion',ChoiceType::class,array('label'=>'Seccion',
                                                 'choices'=>array('Matutino'=>'Matutino',
                                                                  'Vespertino'=>'Vespertino',
                                                                  'Nocturno'=>'Nocturno')
-                                    ))
-            ->add('distributivohora')
-            ->add('distributivofecha')
-            ->add('distributivoestado')
-            ->add('distributivogrado')
+                                                ))
+            ->add('matriculafecha', DateTimeType::class)
+            //->add('matriculaclave')
+            ->add('matriculatipo',ChoiceType::class,array(
+                                                           'choices'=>array('Ordinaria'=>'Ordinaria','Extraordinaria'=>'Extraordinaria')
+                                                           ))
+            ->add('matriculaobservacion',null,array('label'=>'Observacion'))
+            //->add('matriculaestado')
+          //  ->add('matriculausuario')
             
             
-            
-            
-            //->add('aula')
+          //  ->add('aula')
+         //   ->add('comportamiento')
+          //  ->add('asistencia')
         ;
     }
     
@@ -55,16 +61,17 @@ class DistributivosType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MultiacademicoBundle\Entity\Distributivos',
+            'data_class' => 'MultiacademicoBundle\Entity\Matriculas',
             'attr' => array('ng-submit'=>"processForm(\$event,'".$this->getName()."')")
         ));
     }
-
+    
+    
     /**
      * @return string
      */
     public function getName()
     {
-        return 'distributivos';
+        return 'matriculas';
     }
 }

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Matriculas</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ matricula.id }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaseccion</th>
+                <td>{{ matricula.matriculaseccion }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaparalelo</th>
+                <td>{{ matricula.matriculaparalelo }}</td>
+            </tr>
+            <tr>
+                <th>Matriculafecha</th>
+                <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Matriculaclave</th>
+                <td>{{ matricula.matriculaclave }}</td>
+            </tr>
+            <tr>
+                <th>Matriculatipo</th>
+                <td>{{ matricula.matriculatipo }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaobservacion</th>
+                <td>{{ matricula.matriculaobservacion }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaestado</th>
+                <td>{{ matricula.matriculaestado }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq1laborada</th>
+                <td>{{ matricula.matriculaQ1Laborada }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq1jutificada</th>
+                <td>{{ matricula.matriculaQ1Jutificada }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq1injustificada</th>
+                <td>{{ matricula.matriculaQ1Injustificada }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq2laborada</th>
+                <td>{{ matricula.matriculaQ2Laborada }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq2jutificada</th>
+                <td>{{ matricula.matriculaQ2Jutificada }}</td>
+            </tr>
+            <tr>
+                <th>Matriculaq2injustificada</th>
+                <td>{{ matricula.matriculaQ2Injustificada }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matriculas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('matriculas_edit', { 'id': matricula.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

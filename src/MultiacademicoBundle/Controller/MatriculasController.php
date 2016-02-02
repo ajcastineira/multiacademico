@@ -23,7 +23,6 @@ class MatriculasController extends Controller
     /**
      * Lists all Matriculas entities.
      *
-     * @Route("/", name="matriculas_index")
      * @Rest\Get()
      */
     public function indexAction()
@@ -40,7 +39,7 @@ class MatriculasController extends Controller
     /**
      * Creates a new Matriculas entity.
      *
-     * @Route("/new", name="matriculas_new")
+     * Route("/new", name="matriculas_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)

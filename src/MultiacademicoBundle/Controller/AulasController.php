@@ -58,6 +58,7 @@ class AulasController extends FOSRestController
      */
     public function getAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {
+        
         $em = $this->getDoctrine()->getManager();
 
         $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
@@ -72,10 +73,11 @@ class AulasController extends FOSRestController
         if (!$aula) {
             throw $this->createNotFoundException('Unable to find Aula.');
         }
-       
+       $deleteForm = $this->createDeleteForm($aula);
 
         return array(
             'aula' => $aula,
+            'delete_form' => $deleteForm->createView(),
            
         );
     }
@@ -123,7 +125,7 @@ class AulasController extends FOSRestController
      */
     public function editAction(Request $request, Aula $aula)
     {
-        //$deleteForm = $this->createDeleteForm($aula);
+        $deleteForm = $this->createDeleteForm($aula);
         $editForm = $this->createForm('MultiacademicoBundle\Form\AulasType', $aula);
         $editForm->handleRequest($request);
 
@@ -145,8 +147,27 @@ class AulasController extends FOSRestController
         return $this->render('MultiacademicoBundle:Aulas:edit.html.twig', array(
             'aula' => $aula,
             'edit_form' => $editForm->createView(),
-          //  'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
+    }
+    
+    /**
+     * Deletes a Aula entity.
+     *
+     * @Rest\Delete("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
+     */
+    public function deleteAction(Request $request, Aula $aula)
+    {
+        $form = $this->createDeleteForm($aula);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($aula);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('aulas');
     }
    
     /**
@@ -156,12 +177,19 @@ class AulasController extends FOSRestController
      *
      * return \Symfony\Component\Form\Form The form
      */
-    /*private function createDeleteForm(Aula $aula)
+    private function createDeleteForm(Aula $aula)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('aula_delete', array('id' => $aula->getId())))
+            ->setAction($this->generateUrl('delete_aula', array(
+                                                                   'curso' => $aula->getCurso()->getId(),
+                                                            'especializacion' => $aula->getEspecializacion()->getId(),
+                                                            'paralelo' => $aula->getParalelo(),
+                                                            'seccion' => $aula->getSeccion(),
+                                                            'periodo' => $aula->getPeriodo()->getId(),
+                                                             '_format','html'
+                                                                )))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }*/
+    }
 }

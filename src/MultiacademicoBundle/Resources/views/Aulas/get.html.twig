@@ -35,18 +35,6 @@
                 </tr>   
              
         
-        
-        
-            <tr>
-                {#<td><a href="{{ path('proyectosescolares_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
-                
-
-                {# td class="text-center">
-                    <a class="btn btn-primary" href="{{ path('proyectosescolares_show', { 'id': entity.id }) }}">Mostrar</a>
-                    <a class="btn btn-warning" href="{{ path('proyectosescolares_edit', { 'id': entity.id }) }}">Editar</a>  
-                </td>#}
-            </tr>
-       
         </tbody>
     </table>
     </div>
@@ -54,16 +42,16 @@
     <div class="row text-center" >
         <ul>
         <li>
-              <a href="{{ path('aulas') }}">Regresar a la lista</a>
+              <a class="btn btn-default"href="{{ path('aulas') }}">Regresar a la lista</a>
         </li>
         <li>
-           {# <a href="{{ path('cargos_edit', { 'id': cargo.id }) }}">Edit</a>#}
+            <a class="btn btn-warning" href="{{path('aulas',{'page':([aula.curso.id,aula.especializacion.id,aula.paralelo,aula.seccion,aula.periodo.id]|join('/'))~'/edit'}) }}">Editar</a>
         </li>
          <li>
-          {#  {{ form_start(delete_form) }}
+            {{ form_start(delete_form) }}
                 <input class="btn btn-danger" type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
-          #}
+          
         </li>      
         </ul>
     </div>

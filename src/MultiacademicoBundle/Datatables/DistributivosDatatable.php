@@ -97,26 +97,26 @@ class DistributivosDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'visible'=>false,
             ))
             ->add('distributivocoddocente.docente', 'column', array(
-                'title' => 'Distributivocoddocente Docente',
+                'title' => 'Docente',
             ))    
-            ->add('distributivoestado', 'column', array(
-                'title' => 'Distributivoestado',
-            ))
-           
             ->add('distributivocodmateria.materia', 'column', array(
-                'title' => 'Distributivocodmateria Materia',
+                'title' => 'Materia',
             ))
-            
+            ->add('distributivocodcurso.curso', 'column', array(
+                'title' => 'Curso',
+            ))            
             ->add('distributivocodespecializacion.especializacion', 'column', array(
-                'title' => 'Distributivocodespecializacion Especializacion',
+                'title' => 'Especializacion',
             ))
             ->add('distributivoparalelo', 'column', array(
-                'title' => 'Distributivoparalelo',
+                'title' => 'Paralelo',
+                'width' => '3em'
             ))
             ->add('distributivoseccion', 'column', array(
-                'title' => 'Distributivoseccion',
+                'title' => 'Seccion',
             ))    
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

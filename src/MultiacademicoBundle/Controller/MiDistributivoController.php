@@ -66,7 +66,7 @@ class MiDistributivoController extends Controller
      
      * @Route("/menu/{id}", name="menu_calificar", options={"expose":true})
      * @Method("GET")
-     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
+     * @Security("(is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')) or has_role('ROLE_ADMIN')")
      */
     public function menuCalificarAction(Distributivos $id)
     {
@@ -79,7 +79,7 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/api", name="menu_calificar_api", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:MiDistributivo:menu.html.twig")
-     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
+     * @Security("(is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')) or has_role('ROLE_ADMIN')")
      */
     
     public function menuCalificarApiAction(Distributivos $id)
@@ -136,7 +136,7 @@ class MiDistributivoController extends Controller
      * @Route("/menu/{id}/calificaciones/{q}/{p}/imprimir", name="imprimir_calificaciones", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:Calificaciones:imprimir.html.twig")
-     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
+     * @Security("(is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')) or has_role('ROLE_ADMIN')")
      */
     public function imprimirAction(Distributivos $id,$q,$p)
     { 
@@ -180,7 +180,7 @@ class MiDistributivoController extends Controller
      *
      * @Route("/menu/{id}/calificaciones/{q}/{p}", name="calificaciones", options={"expose":true})
      * @Method("GET")
-     * @Security("is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')")
+     * @Security("(is_granted('DISTRIBUTIVO_VIEW',id) and has_role('ROLE_DOCENTE')) or has_role('ROLE_ADMIN')")
      * 
      */
     public function calificacionesAction(Distributivos $id)
@@ -198,7 +198,10 @@ class MiDistributivoController extends Controller
      */
     public function calificacionesApiAction(Distributivos $distributivo,$q,$p)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        {    
         $this->denyAccessUnlessGranted('DISTRIBUTIVO_VIEW', $distributivo, 'Usted solo puede escribir calificaciones en los cursos asignados a su distributivo!');
+        }
         $em = $this->getDoctrine()->getManager();
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);

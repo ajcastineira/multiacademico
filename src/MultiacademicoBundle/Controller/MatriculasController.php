@@ -68,7 +68,7 @@ class MatriculasController extends Controller
             $em->persist($matricula);
             $em->flush();
 
-            return $this->redirectToRoute('get_matriculas', array('matricula' => $matricula->getId()));
+            return $this->redirectToRoute('get_matricula', array('matricula' => $matricula->getId()));
         }
 
         return $this->render('MultiacademicoBundle:Matriculas:new.html.twig', array(

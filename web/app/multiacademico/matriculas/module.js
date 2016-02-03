@@ -69,7 +69,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
-                            return Routing.generate(rutas.show,{'id':$stateParams.id,'_format':'html'});
+                            return Routing.generate(rutas.show,{'matricula':$stateParams.id,'_format':'html'});
                         }
                     }
                 }
@@ -107,7 +107,7 @@ define(['angular',
                 }
             })
             .state('multiacademico.matriculas.edit', {
-                url: '/matriculas{id:[0-9]{1,11}}/edit',
+                url: '/matriculas/{id:[0-9]{1,11}}/edit',
                 params:{
                     id:undefined,
                     submited:false,
@@ -126,7 +126,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                          templateProvider:function($stateParams,FormsCrud){
-                                  return FormsCrud.editWithVars($stateParams,rutas,{'id':$stateParams.id,'_format':'html'});
+                                  return FormsCrud.editWithVars($stateParams,rutas,{'matricula':$stateParams.id,'_format':'html'});
                                   //return "Hola mundo ";
                              },
                         controller: 'FormsCrudCtrl',

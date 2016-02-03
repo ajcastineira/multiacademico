@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use MultiacademicoBundle\Validator\Constraints as MultiacademicoAssert;
 
 /**
  * Matriculas
@@ -15,7 +16,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\MatriculasRepository")
  * @Serializer\ExclusionPolicy("all")
- * @UniqueEntity({"matriculacodestudiante","matriculacodperiodo"}, message="El estudiante ya esta matriculado en este periodo lectivo")
+ * @UniqueEntity({"matriculacodestudiante","matriculacodperiodo"}, message=" El estudiante ya esta matriculado en este periodo lectivo ")
+ * @MultiacademicoAssert\Matricula
  */
 class Matriculas
 {
@@ -188,6 +190,8 @@ class Matriculas
      *   @ORM\JoinColumn(name="matriculaparalelo", referencedColumnName="paralelo"),
      *   @ORM\JoinColumn(name="matriculaseccion", referencedColumnName="seccion")
      * })
+     * 
+     * 
      */
     private $aula;
     
@@ -761,7 +765,7 @@ class Matriculas
      */
         public function getCursoName()
     {
-        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matricula;
+        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
     }
     
     public function __toString() {

@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use MultiacademicoBundle\Form\Type\SeccionType;
-
+use MultiacademicoBundle\Form\Type\ParaleloType;
 class MatriculasType extends AbstractType
 {
     /**
@@ -22,18 +22,7 @@ class MatriculasType extends AbstractType
             ->add('matriculacodestudiante',null,array('label'=>'Estudiante'))
             ->add('matriculacodespecializacion',null,array('label'=>'Especializacion'))
             ->add('matriculacodcurso',null,array('label'=>'Curso'))
-            ->add('matriculaparalelo',ChoiceType::class,array('label'=>'Paralelo',
-                                                              'choices'=>array( 'A'=>'A',
-                                                                                'B'=>'B',
-                                                                                'C'=>'C',
-                                                                                'D'=>'D',
-                                                                                'E'=>'E',
-                                                                                'F'=>'F',
-                                                                                'G'=>'G',
-                                                                                'H'=>'H',
-                                                                                'I'=>'I'
-                                                                                )  
-                                                               ))
+            ->add('matriculaparalelo',ParaleloType::class)
             ->add('matriculaseccion',SeccionType::class)
             ->add('matriculafecha', DateTimeType::class)
             

@@ -10,7 +10,8 @@ class SeccionType extends AbstractType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array('choices'=>array('Matutino'=>'Matutino',
+        $resolver->setDefaults(array('label'=>'Seccion',
+                                     'choices'=>array('Matutino'=>'Matutino',
                                                                  'Vespertino'=>'Vespertino',
                                                                  'Nocturno'=>'Nocturno'),
                                       'placeholder'=>'',

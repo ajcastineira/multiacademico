@@ -5,7 +5,8 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use MultiacademicoBundle\Form\Type\SeccionType;
+use MultiacademicoBundle\Form\Type\ParaleloType;
 
 class DistributivosType extends AbstractType
 {
@@ -16,32 +17,17 @@ class DistributivosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('distributivocodperiodo')
-            ->add('distributivocoddocente')
-            ->add('distributivocodmateria')  
-            ->add('distributivocodcurso')
-            ->add('distributivocodespecializacion')
-            ->add('distributivoparalelo',ChoiceType::class,array('label'=>'Paralelo',
-                                                              'choices'=>array( 'A'=>'A',
-                                                                                'B'=>'B',
-                                                                                'C'=>'C',
-                                                                                'D'=>'D',
-                                                                                'E'=>'E',
-                                                                                'F'=>'F',
-                                                                                'G'=>'G',
-                                                                                'H'=>'H',
-                                                                                'I'=>'I'
-                                                                                )  
-                                                               ))
-            ->add('distributivoseccion',ChoiceType::class,array('label'=>'Seccion',
-                                                'choices'=>array('Matutino'=>'Matutino',
-                                                                 'Vespertino'=>'Vespertino',
-                                                                 'Nocturno'=>'Nocturno')
-                                    ))
-            ->add('distributivohora')
-            ->add('distributivofecha')
-            ->add('distributivoestado')
-            ->add('distributivogrado')
+            ->add('distributivocodperiodo',null,['label'=>'Periodo'])
+            ->add('distributivocoddocente',null,['label'=>'Docente'])
+            ->add('distributivocodmateria',null,['label'=>'Materia'])
+            ->add('distributivocodcurso',null,['label'=>'Curso'])
+            ->add('distributivocodespecializacion',null,['label'=>'Especializacion'])
+            ->add('distributivoparalelo',ParaleloType::class)
+            ->add('distributivoseccion',SeccionType::class)
+            ->add('distributivohora',null,['label'=>'Horas Semanales'])
+            ->add('distributivofecha',null,['label'=>'Fecha'])
+           // ->add('distributivoestado')
+       //     ->add('distributivogrado')
             
             
             

@@ -2,6 +2,19 @@ services:
 #    multiacademico.example:
 #        class: MultiacademicoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    validator.multiacademico.MatriculaValidator:
+        class:  MultiacademicoBundle\Validator\Constraints\MatriculaValidator
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: matricula.validator }
+    validator.multiacademico.DistributivoValidator:
+        class:  MultiacademicoBundle\Validator\Constraints\DistributivoValidator
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: distributivo.validator }        
+
     multiacademico.estudiantes:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         tags:

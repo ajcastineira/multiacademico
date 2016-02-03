@@ -4,6 +4,8 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use MultiacademicoBundle\Validator\Constraints as MultiacademicoAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Distributivos
@@ -11,6 +13,8 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Table(name="distributivos", indexes={@ORM\Index(name="FK_asignaturasprofesores", columns={"distributivocodperiodo"}), @ORM\Index(name="distributivocoddocente", columns={"distributivocoddocente"}), @ORM\Index(name="distributivocodmateria", columns={"distributivocodmateria"}), @ORM\Index(name="distributivocodcurso", columns={"distributivocodcurso"}), @ORM\Index(name="distributivocodespecializacion", columns={"distributivocodespecializacion"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\DistributivosRepository")
  * @Serializer\ExclusionPolicy("none")
+ * @UniqueEntity({"distributivocoddocente","distributivocodmateria","distributivocodcurso","distributivocodespecializacion","distributivoparalelo","distributivoseccion","distributivocodperiodo"}, message="Este distributivo ya existe",errorPath="form")
+ * @MultiacademicoAssert\Distributivo
  */
 class Distributivos
 {
@@ -64,7 +68,7 @@ class Distributivos
      *
      * @ORM\Column(name="distributivogrado", type="string", length=2, nullable=true)
      */
-    private $distributivogrado;
+    private $distributivogrado='0';
 
     /**
      * @var \Periodos

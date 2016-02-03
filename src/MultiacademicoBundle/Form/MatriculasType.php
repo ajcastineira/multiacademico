@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use MultiacademicoBundle\Form\Type\SeccionType;
 
 class MatriculasType extends AbstractType
 {
@@ -21,7 +22,6 @@ class MatriculasType extends AbstractType
             ->add('matriculacodestudiante',null,array('label'=>'Estudiante'))
             ->add('matriculacodespecializacion',null,array('label'=>'Especializacion'))
             ->add('matriculacodcurso',null,array('label'=>'Curso'))
-            
             ->add('matriculaparalelo',ChoiceType::class,array('label'=>'Paralelo',
                                                               'choices'=>array( 'A'=>'A',
                                                                                 'B'=>'B',
@@ -34,20 +34,13 @@ class MatriculasType extends AbstractType
                                                                                 'I'=>'I'
                                                                                 )  
                                                                ))
-            ->add('matriculaseccion',ChoiceType::class,array('label'=>'Seccion',
-                                                'choices'=>array('Matutino'=>'Matutino',
-                                                                 'Vespertino'=>'Vespertino',
-                                                                 'Nocturno'=>'Nocturno')
-                                                ))
+            ->add('matriculaseccion',SeccionType::class)
             ->add('matriculafecha', DateTimeType::class)
-            //->add('matriculaclave')
+            
             ->add('matriculatipo',ChoiceType::class,array(
                                                            'choices'=>array('Ordinaria'=>'Ordinaria','Extraordinaria'=>'Extraordinaria')
                                                            ))
             ->add('matriculaobservacion',null,array('label'=>'Observacion'))
-            //->add('matriculaestado')
-          //  ->add('matriculausuario')
-            
             
           //  ->add('aula')
          //   ->add('comportamiento')

@@ -6,12 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * Matriculas
  *
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\MatriculasRepository")
  * @Serializer\ExclusionPolicy("all")
+ * @UniqueEntity({"id","matriculacosestudiante","matriculacodperiodo"}, message="El estudiante ya esta matriculado")
  */
 class Matriculas
 {
@@ -30,8 +34,9 @@ class Matriculas
      * @var string
      *
      * @ORM\Column(name="matriculaseccion", type="string", length=20, nullable=false)
+     * @Assert\NotBlank()
      */
-    private $matriculaseccion;
+    private $matriculaseccion='Matutino';
 
     /**
      * @var string
@@ -52,7 +57,7 @@ class Matriculas
      *
      * @ORM\Column(name="matriculaclave", type="string", length=4, nullable=false)
      */
-    private $matriculaclave;
+    private $matriculaclave='M';
 
     /**
      * @var string
@@ -73,7 +78,7 @@ class Matriculas
      *
      * @ORM\Column(name="matriculaestado", type="string", length=14, nullable=false)
      */
-    private $matriculaestado;
+    private $matriculaestado='Activo';
 
     /**
      * @var string
@@ -232,6 +237,7 @@ class Matriculas
     public function __construct()
     {
         $this->calificaciones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->matriculafecha=new \DateTime();
     }
     /**
      * Get id
@@ -755,7 +761,7 @@ class Matriculas
      */
         public function getCursoName()
     {
-        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matriculaseccion;
+        return $this->matriculacodcurso." ".$this->matriculaparalelo." ".$this->matriculacodespecializacion." ".$this->matricula;
     }
     
     public function __toString() {
@@ -779,4 +785,28 @@ class Matriculas
     }
     
     
+
+    /**
+     * Add calificacione
+     *
+     * @param \MultiacademicoBundle\Entity\Calificaciones $calificacione
+     *
+     * @return Matriculas
+     */
+    public function addCalificacione(\MultiacademicoBundle\Entity\Calificaciones $calificacione)
+    {
+        $this->calificaciones[] = $calificacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove calificacione
+     *
+     * @param \MultiacademicoBundle\Entity\Calificaciones $calificacione
+     */
+    public function removeCalificacione(\MultiacademicoBundle\Entity\Calificaciones $calificacione)
+    {
+        $this->calificaciones->removeElement($calificacione);
+    }
 }

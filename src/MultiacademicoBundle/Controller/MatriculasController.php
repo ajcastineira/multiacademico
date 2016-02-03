@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Matriculas;
 use MultiacademicoBundle\Form\MatriculasType;
 
@@ -23,7 +24,7 @@ class MatriculasController extends Controller
     /**
      * Lists all Matriculas entities.
      *
-     * @Rest\Get()
+     * 
      */
     public function indexAction()
     {
@@ -39,21 +40,35 @@ class MatriculasController extends Controller
     /**
      * Creates a new Matriculas entity.
      *
-     * Route("/new", name="matriculas_new")
-     * @Method({"GET", "POST"})
+ 
+     * @Rest\Post() 
+     * @Rest\Get("/matriculas/new", name="new_matricula") 
      */
     public function newAction(Request $request)
     {
         $matricula = new Matriculas();
-        $form = $this->createForm('MultiacademicoBundle\Form\MatriculasType', $matricula);
+       $form = $this->createForm('MultiacademicoBundle\Form\MatriculasType', $matricula);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+                                                                    array(
+                                                                          'curso'=>$matricula->getMatriculacodcurso()->getId(),
+                                                                          'especializacion'=>$matricula->getMatriculacodespecializacion()->getId(),
+                                                                          'paralelo'=>$matricula->getMatriculaparalelo(),
+                                                                          'seccion'=>$matricula->getMatriculaseccion(),
+                                                                          'periodo'=>$matricula->getMatriculacodperiodo()->getId()
+                                                                           )
+                                                                    );
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $matricula->setMatriculausuario($user);
+            $matricula->setAula($aula);
             $em->persist($matricula);
             $em->flush();
 
-            return $this->redirectToRoute('matriculas_show', array('id' => $matriculas->getId()));
+            return $this->redirectToRoute('get_matriculas', array('matricula' => $matricula->getId()));
         }
 
         return $this->render('MultiacademicoBundle:Matriculas:new.html.twig', array(
@@ -65,10 +80,8 @@ class MatriculasController extends Controller
     /**
      * Finds and displays a Matriculas entity.
      *
-     * @Route("/{id}", name="matriculas_show")
-     * @Method("GET")
      */
-    public function showAction(Matriculas $matricula)
+    public function getAction(Matriculas $matricula)
     {
         $deleteForm = $this->createDeleteForm($matricula);
 
@@ -81,8 +94,8 @@ class MatriculasController extends Controller
     /**
      * Displays a form to edit an existing Matriculas entity.
      *
-     * @Route("/{id}/edit", name="matriculas_edit")
-     * @Method({"GET", "POST"})
+     * Route("/{id}/edit", name="matriculas_edit")
+     * Method({"GET", "POST"})
      */
     public function editAction(Request $request, Matriculas $matricula)
     {
@@ -107,9 +120,7 @@ class MatriculasController extends Controller
 
     /**
      * Deletes a Matriculas entity.
-     *
-     * @Route("/{id}", name="matriculas_delete")
-     * @Method("DELETE")
+     * 
      */
     public function deleteAction(Request $request, Matriculas $matricula)
     {
@@ -135,7 +146,7 @@ class MatriculasController extends Controller
     private function createDeleteForm(Matriculas $matricula)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('matriculas_delete', array('id' => $matricula->getId())))
+            ->setAction($this->generateUrl('delete_matricula', array('matricula' => $matricula->getId() )))
             ->setMethod('DELETE')
             ->getForm()
         ;

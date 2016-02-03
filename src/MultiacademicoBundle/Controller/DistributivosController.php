@@ -83,6 +83,16 @@ class DistributivosController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+                                                                    array(
+                                                                          'curso'=>$entity->getDistributivocodcurso()->getId(),
+                                                                          'especializacion'=>$entity->getDistributivocodespecializacion()->getId(),
+                                                                          'paralelo'=>$entity->getDistributivoparalelo(),
+                                                                          'seccion'=>$entity->getDistributivoseccion(),
+                                                                          'periodo'=>$$entity->getDistributivocodperiodo()->getId()
+                                                                           )
+                                                                    );
+            $entity->setAula($aula);
             $em->persist($entity);
             $em->flush();
 

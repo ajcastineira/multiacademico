@@ -66,10 +66,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('matriculas_index') }}">Back to the list</a>
+            <a href="{{ path('matriculas') }}">Regresar a la lista</a>
         </li>
         <li>
-            <a href="{{ path('matriculas_edit', { 'id': matricula.id }) }}">Edit</a>
+            <a href="{{ path('matriculas', { 'page': matricula.id~'/edit' }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

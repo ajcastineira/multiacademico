@@ -15,7 +15,7 @@ define(['angular',
                     new:'new_matricula',
                     edit:'edit_matricula',
                     update:'edit_matricula',
-                    show:'show_matricula',
+                    show:'get_matricula',
                     list:'index_matricula',
                     state_created:'multiacademico.matriculas.show',
                     state_updated:'multiacademico.matriculas.show'
@@ -55,7 +55,7 @@ define(['angular',
                 
             })
             .state('multiacademico.matriculas.show', {
-                url: '/matriculas/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                url: '/matriculas/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
                             icon: 'flaticon-teach',
@@ -69,7 +69,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
-                            return Routing.generate(rutas.show,{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo,'_format':'html'});
+                            return Routing.generate(rutas.show,{'id':$stateParams.id,'_format':'html'});
                         }
                     }
                 }
@@ -107,14 +107,9 @@ define(['angular',
                 }
             })
             .state('multiacademico.matriculas.edit', {
-                url: '/matriculas/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/edit',
+                url: '/matriculas{id:[0-9]{1,11}}/edit',
                 params:{
                     id:undefined,
-                    curso:undefined,
-                    especializacion:undefined,
-                    paralelo:undefined,
-                    seccion:undefined,
-                    periodo:undefined,
                     submited:false,
                     formData:null
                 },
@@ -131,7 +126,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                          templateProvider:function($stateParams,FormsCrud){
-                                  return FormsCrud.editWithVars($stateParams,rutas,{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo,'_format':'html'});
+                                  return FormsCrud.editWithVars($stateParams,rutas,{'id':$stateParams.id,'_format':'html'});
                                   //return "Hola mundo ";
                              },
                         controller: 'FormsCrudCtrl',

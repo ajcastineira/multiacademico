@@ -14,6 +14,7 @@ aulasapi:
     prefix: api
 matriculas:
     path:      /matriculas/{page}
+    path:      /matriculas
     defaults:  { _controller: AppBundle:Default:inicio, page: index }
     requirements:
          page: ".*"     

@@ -93,9 +93,8 @@ class MatriculasController extends Controller
 
     /**
      * Displays a form to edit an existing Matriculas entity.
-     *
-     * Route("/{id}/edit", name="matriculas_edit")
-     * Method({"GET", "POST"})
+    * @Rest\Post() 
+     * @Rest\Get("/matriculas/{matricula}/edit", name="edit_matricula") 
      */
     public function editAction(Request $request, Matriculas $matricula)
     {
@@ -108,7 +107,7 @@ class MatriculasController extends Controller
             $em->persist($matricula);
             $em->flush();
 
-            return $this->redirectToRoute('matriculas_edit', array('id' => $matricula->getId()));
+            return $this->redirectToRoute('edit_matricula', array('matricula' => $matricula->getId()));
         }
 
         return $this->render('MultiacademicoBundle:Matriculas:edit.html.twig', array(
@@ -133,7 +132,7 @@ class MatriculasController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('matriculas_index');
+        return $this->redirectToRoute('matriculas');
     }
 
     /**

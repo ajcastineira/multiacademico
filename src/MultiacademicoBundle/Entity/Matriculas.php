@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="matriculas", indexes={@ORM\Index(name="FK_matriculas", columns={"matriculacodperiodo"}), @ORM\Index(name="matriculacodestudiante", columns={"matriculacodestudiante"}), @ORM\Index(name="matriculacodespecializacion", columns={"matriculacodespecializacion"}), @ORM\Index(name="matriculacodcurso", columns={"matriculacodcurso"}), @ORM\Index(name="matriculausuario", columns={"matriculausuario"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\MatriculasRepository")
  * @Serializer\ExclusionPolicy("all")
- * @UniqueEntity({"id","matriculacosestudiante","matriculacodperiodo"}, message="El estudiante ya esta matriculado")
+ * @UniqueEntity({"matriculacodestudiante","matriculacodperiodo"}, message="El estudiante ya esta matriculado en este periodo lectivo")
  */
 class Matriculas
 {

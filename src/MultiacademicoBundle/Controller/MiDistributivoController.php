@@ -210,17 +210,28 @@ class MiDistributivoController extends Controller
         $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         // comparando si el listado de calificaciones no ha sido creado
-        if (count($listado)==0)
+        $numMatriculados=$em->getRepository('MultiacademicoBundle:Calificaciones')->numeroMatriculadosDelDistributivo($distributivo);
+        if ($numMatriculados>count($listado))
         {
+            //Definiedo ArrayColection 
+            $matriculasEnListado=new \Doctrine\Common\Collections\ArrayCollection();
+            //llenando array
+            foreach ($listado as $listacalificacion)
+            {
+              $matriculasEnListado[]=$listacalificacion->getCalificacionnummatricula();
+            }
+            //obteniendo lista de matriculados
             $matriculados=$em->getRepository('MultiacademicoBundle:Calificaciones')->matriculadosDelDistributivo($distributivo);
             foreach ($matriculados as $matricula) {
+                if (!$matriculasEnListado->contains($matricula))
+                {   
                 $calificacion=new Calificaciones();
                 $calificacion->setCalificacioncodmateria($distributivo->getDistributivocodmateria());
                 $calificacion->setCalificacionnummatricula($matricula);
                 $em->persist($calificacion);
+                }
             }
-            $em->flush(); //Persist objects that did not make up an entire batch
-            //$em->clear();
+            $em->flush(); //Persistiendo objetos en base de datos
             $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         }
         $cursoACalificar->setCalificaciones($listado);

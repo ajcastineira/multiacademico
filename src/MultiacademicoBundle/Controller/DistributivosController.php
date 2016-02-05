@@ -89,7 +89,7 @@ class DistributivosController extends Controller
                                                                           'especializacion'=>$entity->getDistributivocodespecializacion()->getId(),
                                                                           'paralelo'=>$entity->getDistributivoparalelo(),
                                                                           'seccion'=>$entity->getDistributivoseccion(),
-                                                                          'periodo'=>$$entity->getDistributivocodperiodo()->getId()
+                                                                          'periodo'=>$entity->getDistributivocodperiodo()->getId()
                                                                            )
                                                                     );
             $entity->setAula($aula);

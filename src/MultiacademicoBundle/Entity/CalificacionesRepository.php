@@ -11,7 +11,38 @@ use Doctrine\ORM\EntityRepository;
 class CalificacionesRepository extends EntityRepository
 {
     
-   public function calificacionesDistributivo(Distributivos $distributivo)
+    public function crearCursoACalificar(Distributivos $distributivo)
+    {
+        return null;
+    }
+    public function matriculadosDelDistributivo(Distributivos $distributivo)
+    {
+       $curso=$distributivo->getDistributivocodcurso();
+        $especializacion=$distributivo->getDistributivocodespecializacion();
+        $paralelo=$distributivo->getDistributivoparalelo();
+        $periodo=$distributivo->getDistributivocodperiodo();
+        $seccion=$distributivo->getDistributivoseccion();
+        
+        return $this->getEntityManager()
+            ->createQuery('SELECT m, e '
+                    . ' FROM MultiacademicoBundle:Matriculas m'
+                    . ' JOIN m.matriculacodestudiante e'
+                    . ' where '
+                    . ' m.matriculacodcurso=:curso and'
+                    .' m.matriculacodespecializacion=:especializacion and'
+                    .' m.matriculaparalelo=:paralelo and'
+                    .' m.matriculacodperiodo=:periodo and'
+                    .' m.matriculaseccion=:seccion '
+                    )
+            ->setParameter(":curso", $curso)
+            ->setParameter(":especializacion", $especializacion)
+            ->setParameter(":paralelo", $paralelo)
+            ->setParameter(":periodo", $periodo)
+            ->setParameter(":seccion", $seccion)
+            ->getResult(); 
+    }
+           
+    public function calificacionesDistributivo(Distributivos $distributivo)
     {
         $curso=$distributivo->getDistributivocodcurso();
         $especializacion=$distributivo->getDistributivocodespecializacion();

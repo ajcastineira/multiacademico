@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
+use MultiacademicoBundle\Entity\Calificaciones;
+
 use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
@@ -207,6 +209,20 @@ class MiDistributivoController extends Controller
         $parcial=new Parcial($qactivo,$pactivo);
         $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
+        // comparando si el listado de calificaciones no ha sido creado
+        if (count($listado)==0)
+        {
+            $matriculados=$em->getRepository('MultiacademicoBundle:Calificaciones')->matriculadosDelDistributivo($distributivo);
+            foreach ($matriculados as $matricula) {
+                $calificacion=new Calificaciones();
+                $calificacion->setCalificacioncodmateria($distributivo->getDistributivocodmateria());
+                $calificacion->setCalificacionnummatricula($matricula);
+                $em->persist($calificacion);
+            }
+            $em->flush(); //Persist objects that did not make up an entire batch
+            //$em->clear();
+            $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
+        }
         $cursoACalificar->setCalificaciones($listado);
         $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
         

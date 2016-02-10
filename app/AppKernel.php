@@ -5,6 +5,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+      public function init() {
+        // Change timezone
+        date_default_timezone_set('UTC');
+
+        parent::init();
+    }
     public function registerBundles()
     {
         $bundles = [
@@ -19,6 +25,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Multiservices\PayPayBundle\PayPayBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),

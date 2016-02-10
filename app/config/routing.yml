@@ -17,7 +17,9 @@ app:
     type:     annotation
 _multiservices_arxis:
     resource: "@MultiservicesArxisBundle/Resources/config/routing.yml"
-
+pay_pay:
+    resource: "@PayPayBundle/Resources/config/routing.yml"
+    prefix:   /
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 notify:

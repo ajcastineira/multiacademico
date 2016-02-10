@@ -1,4 +1,4 @@
 Multiacademico
 =======
 
-Sistema Academico para Escuelas y Colegios de Latinoamerica
+Este es la carpeta App

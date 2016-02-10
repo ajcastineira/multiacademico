@@ -1,0 +1,4 @@
+PayPayAnnotations:
+   resource: "@PayPayBundle/Controller/"
+   type:     annotation
+   prefix:   /

@@ -24,13 +24,13 @@ class PagosController extends Controller
  /**
      * Lists all Pagos entities.
      *
-     * @Route("", name="secured_pagos")
-     * @Method("GET")
+     * @Route("/pagos", name="secured_pagos")
+    * Template()
      */
    public function PagosAction() {
     $js = '<script  type="text/javascript">'.
      'function download(filename, text) {
-  var element = document.createElement('a');
+  var element = document.createElement("a");
   element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
   element.setAttribute("download", filename);
 
@@ -43,13 +43,13 @@ class PagosController extends Controller
 }'.
      '</script>';
 
-    return $this->render(
-        'PayPayBundle:Default:GuiLogin.html.twig',
-        array(
-            'js' => $js
-        )
-    );
-
+    // return $this->render(
+    //     'PayPayBundle:Default:GuiLogin.html.twig',
+    //     array(
+    //         'js' => $js
+    //     )
+    // );
+ return new Response("OK");
     //para llamar desde consola "download('test.txt', 'Hello world!');"
     // poner en twig {% if (js is defined) %}{{ js|raw }}{% endif %}
 }

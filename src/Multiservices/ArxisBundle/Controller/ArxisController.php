@@ -27,6 +27,41 @@ class ArxisController extends Controller
         
         
     }
+
+      /**
+     * @Route("/arxis2", name="_arxis")
+     * Template()
+     */
+    public function index2Action(Request $request)
+    {
+         $js = '<script  type="text/javascript">'.
+     'function download(filename, text) {
+  var element = document.createElement("a");
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+
+}
+'. 
+     '</script>';
+     
+     return $this->render(
+        'PayPayBundle:Factura:Index.html.twig',
+        array(
+            'js' => $js
+        )
+    );
+        //return $this->render('MultiservicesArxisBundle:Arxis:index.html.twig');
+        // return new Response("OK2");
+        
+        
+    }
     /**
      * @Route("/inicioera.{_format}", name="inicio", options={"expose":true})
      * @Template()

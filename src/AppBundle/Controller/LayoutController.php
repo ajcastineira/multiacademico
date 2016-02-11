@@ -68,7 +68,14 @@ class LayoutController extends Controller
      */
     public function layoutnavigationAction()
     {
-        return $this->render('AppBundle:app:layout/partials/navigation.tpl.html.twig');
+         $em = $this->getDoctrine()->getManager();
+        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
+        }
+        return $this->render('AppBundle:app:layout/partials/navigation.tpl.html.twig',
+                    ['entidad'=>$entidad]
+                );
     }
     
     /**

@@ -55,7 +55,29 @@
         </a>
     </li>
     <!--/ End matriculas -->
-    
+    {%if entidad.getEsParticular() %}
+    <li class="sidebar-category">
+        <span>Pagos</span>
+        <span class="pull-right"><i class="fa fa-money"></i></span>
+    </li> 
+
+
+      <li class="submenu">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-globe"></i></span>
+            <span class="text">Pagos</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Registro de pagos</a></li>
+            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Consultar Pagos</a></li>
+            <!--<li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
+             <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
+              <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>
+              <li><a data-ui-sref="dos-quimestre" data-active-menu>Dos Quimestres</a></li>-->
+        </ul>
+    </li>
+   {%endif%}
         <!-- Start category ui kit-->
     <li class="sidebar-category">
         <span>Academico</span>
@@ -152,6 +174,7 @@
             <li><a data-ui-sref="multiacademico.informes" data-active-menu>Informes de Aprendizaje y Comportamiento</a></li>
         </ul>
     </li>
+    {#
     <li class="submenu">
          <a href="javascript:void(0);"><span class="icon"> <i class="fa fa-print"></i></span>
              <span class="text">Reportes</span> <span class="arrow"></span></a>
@@ -166,6 +189,7 @@
                     <li><a href="#/reportedocenteclave" data-active-menu>Reporte Docentes Claves</a></li>
                 </ul>
     </li>
+    #}
     <li class="submenu">
                 <a href="javascript:void(0);"> <span class="icon"><i class="flaticon-certificate"></i></span>
                     <span class="text">Certificados</span> <span class="arrow"></span></a>
@@ -190,29 +214,6 @@
    {% if is_granted('ROLE_DOCENTE')%}
        {{include('AppBundle:app:layout/partials/menus/docentesmenu.html.twig')}}
    {% endif%}
-
-
-<li class="sidebar-category">
-        <span>Pagos</span>
-        <span class="pull-right"><i class="fa fa-money"></i></span>
-    </li> 
-
-
-      <li class="submenu">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-globe"></i></span>
-            <span class="text">Pagos</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Registro de pagos</a></li>
-            <li><a data-ui-sref="multiacademico.malla-normal" data-active-menu>Consultar Pagos</a></li>
-            <!--<li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
-             <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
-              <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>
-              <li><a data-ui-sref="dos-quimestre" data-active-menu>Dos Quimestres</a></li>-->
-        </ul>
-    </li>
 
 
    

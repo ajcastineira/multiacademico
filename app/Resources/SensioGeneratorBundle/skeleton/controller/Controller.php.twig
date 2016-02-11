@@ -7,14 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 {% if 'annotation' == format.routing -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 {% endif %}
-{% if 'rest' == 'rest' -%}
-use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Controller\Annotations as Rest;
-{% endif %}
 {% endblock use_statements %}
 
 {% block class_definition %}
-class {{ controller }}Controller extends FOSRestController
+class {{ controller }}Controller extends Controller
 {% endblock class_definition %}
 {
 {% block class_body %}
@@ -22,7 +18,6 @@ class {{ controller }}Controller extends FOSRestController
     {% if 'annotation' == format.routing -%}
     /**
      * @Route("{{ action.route }}")
-     * @Rest\RouteResource("{{ action.route|capitalize }}")
      */
     {% endif -%}
     public function {{ action.name }}(

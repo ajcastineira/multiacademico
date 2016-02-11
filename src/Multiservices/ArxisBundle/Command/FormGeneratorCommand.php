@@ -11,6 +11,8 @@ use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 //use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineFormGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface; 
+use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
+
 class FormGeneratorCommand extends GenerateDoctrineCrudCommand
 {
     protected $generator;
@@ -20,9 +22,9 @@ class FormGeneratorCommand extends GenerateDoctrineCrudCommand
     {
         parent::configure();
         $this->setName('arxis:generate:crud');
-        $this->setDescription('Our admin generator rocks!');
+        $this->setDescription('Generar un CRUD basado en una Doctrine entity personalizado!');
     }
- 
+    
     protected function getGenerator(BundleInterface $bundle = null)
     {
         if (null === $this->generator) {
@@ -38,8 +40,9 @@ class FormGeneratorCommand extends GenerateDoctrineCrudCommand
     
      protected function getFormGenerator($bundle = null)
     {
-        if (null === $this->formGenerator) {
+         if (null === $this->formGenerator) {
             $skeletonDirs[]=__DIR__.'/../Resources/SensioGeneratorBundle/skeleton';
+            $bundle->getName();
             $this->formGenerator = new DoctrineFormGenerator($this->getContainer()->get('filesystem'));
             $this->formGenerator->setSkeletonDirs($skeletonDirs);
         }

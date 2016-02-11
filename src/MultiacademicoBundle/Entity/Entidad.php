@@ -101,11 +101,19 @@ class Entidad
     private $visitas;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="es_particular", type="boolean", nullable=false, options={"default":false})
+     */
+    private $esParticular;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="data", type="json_array", nullable=true)
      */
     private $data;
+    
 
 
 
@@ -406,4 +414,24 @@ class Entidad
     {
         return $this->data;
     }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function getEsParticular() {
+        return $this->esParticular;
+    }
+    
+    /**
+     * 
+     * @param boolean $esParticular
+     * @return Entidad
+     */
+    public function setEsParticular($esParticular) {
+        $this->esParticular = $esParticular;
+        return $this;
+    }
+
+
 }

@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use MultiacademicoBundle\Form\Type\SeccionType;
 use MultiacademicoBundle\Form\Type\ParaleloType;
+use MultiacademicoBundle\Form\Type\EstudianteType;
+
 class MatriculasType extends AbstractType
 {
     /**
@@ -19,7 +21,7 @@ class MatriculasType extends AbstractType
     {
         $builder
             ->add('matriculacodperiodo',null,array('label'=>'Periodo'))
-            ->add('matriculacodestudiante',null,array('label'=>'Estudiante'))
+            ->add('matriculacodestudiante',  EstudianteType::class,array('label'=>'Estudiante'))
             ->add('matriculacodespecializacion',null,array('label'=>'Especializacion'))
             ->add('matriculacodcurso',null,array('label'=>'Curso'))
             ->add('matriculaparalelo',ParaleloType::class)

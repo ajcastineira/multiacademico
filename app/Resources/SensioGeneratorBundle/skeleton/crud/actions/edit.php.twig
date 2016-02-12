@@ -9,6 +9,8 @@
      * @Route("/{id}/edit", name="{{ route_name_prefix }}_edit")
      * @Method({"GET", "POST"})
 {% endif %}
+     * @Rest\Post() 
+     * @Rest\Get("/{{ route_name_prefix }}/{{'{'~entity_singularized~'}'}}/edit", name="edit_{{ route_name_prefix }}") 
 {% endblock phpdoc_method_annotations %}
      */
 {% block method_definition %}

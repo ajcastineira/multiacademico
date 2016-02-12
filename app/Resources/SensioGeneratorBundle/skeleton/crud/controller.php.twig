@@ -11,9 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 {% if 'annotation' == format -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+{%- endif %}
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
-{%- endif %}
 
 use {{ namespace }}\Entity\{{ entity }};
 {% if 'new' in actions or 'edit' in actions %}
@@ -29,8 +29,8 @@ use {{ namespace }}\Form\{{ entity }}Type;
 {% block phpdoc_class_annotations %}
 {% if 'annotation' == format %}
  * @Route("/{{ route_prefix }}")
- * @Rest\RouteResource("{{ entity_singularized|capitalize }}")
 {% endif %}
+* @Rest\RouteResource("{{ entity_singularized|capitalize }}")
 {% endblock phpdoc_class_annotations %}
  */
 {% block class_definition %}

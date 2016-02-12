@@ -84,7 +84,6 @@ define(['modules/forms/module'], function(module){
                                        
                                         return $http.get(Routing.generate(rutas.edit,vars))
                                              .then(function(response) {
-                                                 console.log(response);
                                               return response.data;
                                                });
                                            }}                     

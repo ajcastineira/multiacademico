@@ -267,4 +267,28 @@ class Ingresos
     
    
     
+
+    /**
+     * Set representante
+     *
+     * @param \MultiacademicoBundle\Entity\Representantes $representante
+     *
+     * @return Ingresos
+     */
+    public function setRepresentante(\MultiacademicoBundle\Entity\Representantes $representante = null)
+    {
+        $this->representante = $representante;
+
+        return $this;
+    }
+
+    /**
+     * Get representante
+     *
+     * @return \MultiacademicoBundle\Entity\Representantes
+     */
+    public function getRepresentante()
+    {
+        return $this->representante;
+    }
 }

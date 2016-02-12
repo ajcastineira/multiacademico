@@ -115,6 +115,11 @@ define([
      'modules/forms/module',
      'modules/forms/models/FormsCrud',
      
+     // paypay
+     'modules/paypay/module',
+     'modules/paypay/ingresos/module',
+    // 'modules/paypay/egresos/module',
+     
     // users
      'modules/users/module'//,
 

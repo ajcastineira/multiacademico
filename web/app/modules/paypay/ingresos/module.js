@@ -58,15 +58,14 @@ define(['angular',
                 data: {
                         pageTitle: 'Ingresos'
                     },
-                 views: {
-                    "content@app": {
-                        templateUrl: Routing.generate(rutas.list,{'_format':'html'}),
-                        resolve: {
+                resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
                                 'modules/tables/directives/datatables/datatableBasic'
                             ])
-                        }
+                        },
+                 views: {
+                    "content@app": {
+                        templateUrl: Routing.generate(rutas.list,{'_format':'html'})
                     }
                 }    
                 

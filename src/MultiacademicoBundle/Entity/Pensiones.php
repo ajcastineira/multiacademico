@@ -125,4 +125,3 @@ class Pensiones
         return $this->estudianteId;
     }
 }
-

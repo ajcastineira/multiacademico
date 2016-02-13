@@ -7,11 +7,11 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: form.type, alias: formasPagos }
-      paypay_datatables.ingresos:
+      paypaybundle_datatable.ingresos:
         class: Multiservices\PayPayBundle\Datatables\IngresosDatatable
         tags:
             - { name: sg.datatable.view }            
-      paypay_datatables.egresos:
+      paypaybundle_datatable.egresos:
         class: Multiservices\PayPayBundle\Datatables\EgresosDatatable
         tags:
             - { name: sg.datatable.view }  

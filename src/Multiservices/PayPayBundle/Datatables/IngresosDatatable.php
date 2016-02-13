@@ -4,23 +4,38 @@ namespace Multiservices\PayPayBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
-use Multiservices\PayPayBundle\Form\Type\ClientesType;
-use Multiservices\PayPayBundle\Form\Type\FormasPagosType;
-use Multiservices\PayPayBundle\Form\Type\UsuariosType;
 
 /**
  * Class IngresosDatatable
  *
  * @package Multiservices\PayPayBundle\Datatables
- */
+*/
 class IngresosDatatable extends AbstractDatatableView
 {
     /**
      * {@inheritdoc}
      */
-    public function buildDatatable()
+    public function buildDatatable(array $options = array())
     {
-        $this->features->setFeatures(array(
+        $this->topActions->set(array(
+            'start_html' => '<div class="row"><div class="col-sm-3">',
+            'end_html' => '<hr></div></div>',
+            'actions' => array(
+                array(
+                    'route' => $this->router->generate('ingresos',['page'=>'new']),
+                    'label' => $this->translator->trans('datatables.actions.new'),
+                    'icon' => 'glyphicon glyphicon-plus',
+                    'attributes' => array(
+                        'rel' => 'tooltip',
+                        'title' => $this->translator->trans('datatables.actions.new'),
+                        'class' => 'btn btn-primary',
+                        'role' => 'button'
+                    ),
+                )
+            )
+        ));
+
+        $this->features->set(array(
             'auto_width' => true,
             'defer_render' => false,
             'info' => true,
@@ -34,22 +49,22 @@ class IngresosDatatable extends AbstractDatatableView
             'searching' => true,
             'server_side' => true,
             'state_save' => false,
-            'delay' => 0
+            'delay' => 0,
+            'extensions' => array()
         ));
-            $this->setUseSDom(true);
-                    $this->ajax->setOptions(array(
+
+        $this->ajax->set(array(
             'url' => $this->router->generate('ingresos_results'),
             'type' => 'GET'
         ));
-            
-        $this->options->setOptions(array(
+
+        $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
             'dom' => 'lfrtip',
-            'sdom'=>'<"H"<"dt-toolbar"<"col-xs-12 col-sm-5"f><"col-sm-4 col-xs-6 hidden-xs"><"col-xs-6 col-sm-3"l>r>>t<"F"<"dt-toolbar-footer"<"col-xs-12 col-sm-6"i><"col-xs-12 col-sm-6"p>>>',
             'length_menu' => array(10, 25, 50, 100),
             'order_classes' => true,
-            'order' => [[2, 'desc']],
+            'order' => array(array(0, 'asc')),
             'order_multi' => true,
             'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
@@ -58,89 +73,84 @@ class IngresosDatatable extends AbstractDatatableView
             'search_delay' => 0,
             'state_duration' => 7200,
             'stripe_classes' => array(),
-            'responsive' => true,
-            'class' => Style::BASE_STYLE.' projects-table '.Style::BOOTSTRAP_3_STYLE.' table-striped table-bordered table-hover',
+            'class' => Style::BOOTSTRAP_3_STYLE,
             'individual_filtering' => false,
-            'individual_filtering_position' => 'head',
+            'individual_filtering_position' => 'foot',
             'use_integration_options' => true,
-            'detail_child_rows' => true
+            'force_dom' => false
         ));
 
         $this->columnBuilder
-                ->add(null, 'detailscontrol', array(
-                        'title' => '',
-                    ))
-                ->add('id', 'rowdetail', array('title' => 'Codigo',
-                                            'visible'=>false))
-                ->add('fecha', 'datetime', array('title' => 'Fecha',))
-                ->add('cliente.nombre', 'column', array('title' => 'Cliente',))
-                ->add('cliente.apellido', 'rowdetail', array('title' => 'Cliente','visible'=>false))
-                ->add('monto', 'column', array('title' => 'Monto',))
-                ->add('descripcion', 'column', array('title' => 'Descripción',))
-                ->add('formaPago.formaPago', 'rowdetail', array('title' => 'Forma de Pago',))
-                ->add('referencia', 'rowdetail', array('title' => 'Referencia',))
-                ->add('collectedby.name', 'rowdetail', array('title' => 'Cobrado por',))
-                
-               
-               
-                ->add(null, 'action', array(
-                'title' => 'Acciones',
-                'start_html' => '<div class="wrapper">',
-                'end_html' => '</div>',
+            ->add('id', 'column', array(
+                'title' => 'Id',
+            ))
+          /*  ->add('fecha', 'datetime', array(
+                'title' => 'Fecha',
+            ))*/
+            ->add('monto', 'column', array(
+                'title' => 'Monto',
+            ))
+            ->add('descripcion', 'column', array(
+                'title' => 'Descripcion',
+            ))
+            ->add('referencia', 'column', array(
+                'title' => 'Referencia',
+            ))
+            ->add('collectedby.id', 'column', array(
+                'title' => 'Collectedby Id',
+            ))
+            ->add('collectedby.name', 'column', array(
+                'title' => 'Collectedby Name',
+            ))
+
+            ->add('formaPago.id', 'column', array(
+                'title' => 'FormaPago Id',
+            ))
+            ->add('formaPago.formaPago', 'column', array(
+                'title' => 'FormaPago FormaPago',
+            ))
+
+
+            ->add('representante.representante', 'column', array(
+                'title' => 'Representante Representante',
+            ))
+
+            ->add(null, 'action', array(
+                'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'ingresos_show',
+                        'route' => 'ingresos',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'page' => 'id'
                         ),
-                        'label' => 'Mostrar',
-                       // 'toajax'=>true,
+                        'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
                         'attributes' => array(
                             'rel' => 'tooltip',
-                            'title' => 'Mostrar',
-                            'class' => 'btn btn-default btn-xs',
+                            'title' => $this->translator->trans('datatables.actions.show'),
+                            'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                        'role' => 'ROLE_USER',
-                        //'render_if' => array('visible')
                     ),
                     array(
                         'route' => 'ingresos_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'page' => 'id'
                         ),
-                        'label' => 'Editar',
-                        //'toajax'=>true,
+                        'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
                         'attributes' => array(
                             'rel' => 'tooltip',
-                            'title' => 'Editar',
+                            'title' => $this->translator->trans('datatables.actions.edit'),
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                        //'confirm' => true,
-                        //'confirm_message' => 'Esta Seguro?',
-                        'role' => 'ROLE_ADMIN',
                     )
                 )
-            ));
-                
+            ))
+        ;
     }
-    /**
-     * {@inheritdoc}
-     */
-    public function getLineFormatter()
-    {
-        $formatter = function($line){
-        	$line["cliente"]["nombre"]=$line["cliente"]["apellido"]." ".$line["cliente"]["nombre"];        	
-            
-            return $line;
-        };
 
-        return $formatter;
-     
-    }
     /**
      * {@inheritdoc}
      */

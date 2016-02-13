@@ -33,7 +33,7 @@
             <a href="{{ path('ingresos') }}">Regresar a la lista</a>
         </li>
         <li>
-            <a href="{{ path('ingresos', { 'page': ingreso.id }) }}/edit">Editar</a>
+            <a href="{{ path('ingresos_edit', { 'page': ingreso.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

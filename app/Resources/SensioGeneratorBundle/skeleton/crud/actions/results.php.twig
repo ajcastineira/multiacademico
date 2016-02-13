@@ -17,7 +17,7 @@
     {
 {% block method_body %}
 
-        $datatable = $this->get('datatable.{{ entity_singularized }}');
+        $datatable = $this->get('{{ bundle|lower }}_datatable.{{ entity_pluralized }}');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
 {% endblock method_body %}

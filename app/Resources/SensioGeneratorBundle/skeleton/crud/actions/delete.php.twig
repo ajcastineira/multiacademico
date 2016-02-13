@@ -42,7 +42,7 @@
     private function createDeleteForm({{ entity_class }} ${{ entity_singularized }})
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('{{ route_name_prefix }}_delete', array('id' => ${{ entity_singularized }}->getId())))
+            ->setAction($this->generateUrl('delete_{{ entity_singularized }}', array('{{entity_singularized}}' => ${{ entity_singularized }}->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

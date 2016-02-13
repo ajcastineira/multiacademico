@@ -15,14 +15,18 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
 
-        ${{ entity_pluralized }} = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
+        //${{ entity_pluralized }} = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
+
+        ${{ entity_pluralized }}_datatable = $this->get("{{ bundle|lower }}_datatable.{{ entity_pluralized }}");
+        ${{ entity_pluralized }}_datatable->buildDatatable();
 {% endblock method_body %}
 
 {% block method_return %}
         return $this->render('{{ entity|lower|replace({'\\': '/'}) }}/index.html.twig', array(
-            '{{ entity_pluralized }}' => ${{ entity_pluralized }},
+            //'{{ entity_pluralized }}' => ${{ entity_pluralized }},
+            'datatable'=>${{ entity_pluralized }}_datatable
         ));
 {% endblock method_return %}
     }

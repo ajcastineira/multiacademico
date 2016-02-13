@@ -10,7 +10,7 @@
      * @Method({"GET", "POST"})
 {% endif %}
      * @Rest\Post() 
-     * @Rest\Get("/{{ route_name_prefix }}/{{'{'~entity_singularized~'}'}}/edit", name="edit_{{ route_name_prefix }}") 
+     * @Rest\Get("/{{ route_name_prefix }}/{{'{'~entity_singularized~'}'}}/edit", name="edit_{{ entity_singularized }}") 
 {% endblock phpdoc_method_annotations %}
      */
 {% block method_definition %}
@@ -27,7 +27,7 @@
             $em->persist(${{ entity_singularized }});
             $em->flush();
 
-            return $this->redirectToRoute('{{ route_name_prefix }}_edit', array('id' => ${{ entity_singularized }}->getId()));
+            return $this->redirectToRoute('{{ route_name_prefix }}', array('page' => ${{ entity_singularized }}->getId().'/edit'));
         }
 {% endblock method_body %}
 

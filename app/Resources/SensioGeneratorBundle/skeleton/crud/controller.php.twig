@@ -41,7 +41,7 @@ class {{ entity_class }}Controller extends FOSRestController
     {%- if 'index' in actions %}
         {%- include 'crud/actions/index.php.twig' %}
     {%- endif %}
-
+        {%- include 'crud/actions/results.php.twig' %}
     {%- if 'new' in actions %}
         {%- include 'crud/actions/new.php.twig' %}
     {%- endif %}

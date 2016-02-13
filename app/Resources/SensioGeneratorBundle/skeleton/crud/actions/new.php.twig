@@ -9,6 +9,8 @@
      * @Route("/new", name="{{ route_name_prefix }}_new")
      * @Method({"GET", "POST"})
 {% endif %}
+     * @Rest\Post() 
+     * @Rest\Get("/{{ route_name_prefix }}/new", name="new_{{ entity_singularized }}") 
 {% endblock phpdoc_method_annotations %}
      */
 {% block method_definition %}
@@ -26,9 +28,9 @@
             $em->flush();
 
             {% if 'show' in actions -%}
-                return $this->redirectToRoute('{{ route_name_prefix }}_show', array('id' => ${{ entity_class|lower }}->getId()));
+                return $this->redirectToRoute('{{ route_name_prefix }}', array('page' => ${{ entity_class|lower }}->getId()));
             {%- else -%}
-                return $this->redirectToRoute('{{ route_name_prefix }}_index'));
+                return $this->redirectToRoute('{{ route_name_prefix }}'));
             {%- endif %}
 
         }

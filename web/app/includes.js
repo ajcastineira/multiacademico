@@ -97,7 +97,7 @@ define([
      'multiacademico/reportes/malla/module',
      'multiacademico/certificados/module',
      'multiacademico/informes/module',
-     'multiacademico/pagos/module',
+   //  'multiacademico/pagos/module',
     
     // cases
     // 'modules/cases/module',

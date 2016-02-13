@@ -5,6 +5,7 @@ namespace Multiservices\PayPayBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use MultiacademicoBundle\Form\Type\RepresentanteType;
 
 class IngresosType extends AbstractType
 {
@@ -15,14 +16,14 @@ class IngresosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha', 'datetime')
+            //->add('fecha', 'datetime')
             ->add('monto')
             ->add('descripcion')
             ->add('referencia')
             ->add('collectedby')
             ->add('modifiedby')
             ->add('formaPago')
-            ->add('representante')
+            ->add('representante',  RepresentanteType::class)
         ;
     }
     

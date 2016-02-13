@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+       <style>
+        label{
+            display: table;
+        }
+        div.dataTables_filter input {
+          margin-left: 0px; 
+        }
+        .dataTable thead tr th:first-child{
+          min-width: 10px;  
+        }
+        #ingresos_datatable thead tr:first-child{
+          display:none;
+        } 
+    </style>
+    <h1>Ingresos listado</h1>
+
+        {{ datatable_render_html(datatable) }}
+    <ul>
+        <li>
+            <a href="{{ path('ingresos',{'page':'new'}) }}">Crear nueva entrada</a>
+        </li>
+    </ul>   {{ datatable_render_js(datatable) }}
+{% endblock %}

@@ -55,9 +55,9 @@
         </a>
     </li>
     <!--/ End matriculas -->
-    {%if entidad.getEsParticular() %}
+    {%if entidad.getEsParticular() and is_granted('ROLE_ADMIN')%}
     <li class="sidebar-category">
-        <span>Pagos</span>
+        <span>Facturacion</span>
         <span class="pull-right"><i class="fa fa-money"></i></span>
     </li> 
 

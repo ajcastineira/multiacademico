@@ -28,13 +28,33 @@ class MatriculasController extends FOSRestController
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
 
-        $matriculas = $em->getRepository('MultiacademicoBundle:Matriculas')->findAll();
-
+        //$matriculas = $em->getRepository('MultiacademicoBundle:Matriculas')->findAll();
+        $matriculasDatatable = $this->get("multiacademicobundle_datatable.matriculas");
+        $matriculasDatatable->buildDatatable();
+        
         return $this->render('MultiacademicoBundle:Matriculas:index.html.twig', array(
-            'matriculas' => $matriculas,
+            //'matriculas' => $matriculas,
+            'datatable'=>$matriculasDatatable
         ));
+    }
+    
+    /**
+     * Get results matriculas entities.
+     *
+     */
+    
+    public function resultsAction()
+    {
+        /**
+         * @var \Sg\DatatablesBundle\Datatable\Data\DatatableData $datatable
+         */
+        $datatable = $this->get('multiacademicobundle_datatable.matriculas');
+         $datatable->buildDatatable();
+         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**

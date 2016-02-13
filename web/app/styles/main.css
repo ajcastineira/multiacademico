@@ -20326,7 +20326,7 @@ body.page-footer-fixed #page-content .footer-content {
 }
 /* line 615, ../../app/styles/layout/_sidebar.scss */
 .sidebar-menu > li > ul > li.active {
-  background-color: black;
+  background-color: #00b1e1;
 }
 /* line 618, ../../app/styles/layout/_sidebar.scss */
 .sidebar-menu > li > ul > li.active.submenu > a {
@@ -20532,6 +20532,10 @@ body.page-footer-fixed #page-content .footer-content {
 }
 /* line 453, ../../app/styles/core/_functions.scss */
 .sidebar-light .sidebar-menu > li > ul > li.active a {
+  color: white;
+}
+/* line 453, ../../app/styles/core/_functions.scss */
+.sidebar-light .sidebar-menu > li > ul > li.active a:hover {
   color: #777;
 }
 /* line 455, ../../app/styles/core/_functions.scss */

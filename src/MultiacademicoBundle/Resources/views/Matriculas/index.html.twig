@@ -1,57 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Matriculas list</h1>
+    <style>
+        label{
+            display: table;
+        }
+        div.dataTables_filter input {
+          margin-left: 0px; 
+        }
+        .dataTable thead tr th:first-child{
+          min-width: 10px;  
+        }
+        #matriculas_datatable thead tr:first-child{
+          display:none;
+        } 
+    </style>
+    <h1>Matriculas listado</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Matriculaseccion</th>
-                <th>Matriculaparalelo</th>
-                <th>Matriculafecha</th>
-                <th>Matriculaclave</th>
-                <th>Matriculatipo</th>
-                <th>Matriculaobservacion</th>
-                <th>Matriculaestado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for matricula in matriculas %}
-            <tr>
-                <td><a href="{{ path('matriculas', { 'page': matricula.id }) }}">{{ matricula.id }}</a></td>
-                <td>{{ matricula.matriculaseccion }}</td>
-                <td>{{ matricula.matriculaparalelo }}</td>
-                <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ matricula.matriculaclave }}</td>
-                <td>{{ matricula.matriculatipo }}</td>
-                <td>{{ matricula.matriculaobservacion }}</td>
-                <td>{{ matricula.matriculaestado }}</td>
-                <td>{{ matricula.matriculaQ1Laborada }}</td>
-                <td>{{ matricula.matriculaQ1Jutificada }}</td>
-                <td>{{ matricula.matriculaQ1Injustificada }}</td>
-                <td>{{ matricula.matriculaQ2Laborada }}</td>
-                <td>{{ matricula.matriculaQ2Jutificada }}</td>
-                <td>{{ matricula.matriculaQ2Injustificada }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('matriculas', { 'page': matricula.id} ) }}">mostrar</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('matriculas', { 'page': matricula.id~'/edit' }) }}">editar</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+   {{ datatable_render_html(datatable) }}
 
     <ul>
         <li>
-            <a href="{{ path('matriculas', { 'page': 'new' }) }}">Create a new entry</a>
+            <a class="btn btn-primary" href="{{ path('matriculas', { 'page': 'new' }) }}">Crear Nueva Matricula</a>
         </li>
     </ul>
+    {{ datatable_render_js(datatable) }}
 {% endblock %}

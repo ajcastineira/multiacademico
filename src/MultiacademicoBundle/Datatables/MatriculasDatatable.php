@@ -1,35 +1,17 @@
 <?php
-{% set complete_namespace %}
-{% if admin %}
-{{ namespace }}\Datatables\Admin;
-{% else %}
-{{ namespace }}\Datatables;
-{% endif %}
-{% endset %}
 
-{% set package_namespace %}
-{% if admin %}
-{{ namespace }}\Datatables\Admin
-{% else %}
-{{ namespace }}\Datatables
-{% endif %}
-{% endset %}
-namespace {{ complete_namespace }}
-{% block use_statements %}
+namespace MultiacademicoBundle\Datatables;
+
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
-{% endblock use_statements %}
 
-{% block class_definition %}
 /**
- * Class {{ datatable_class }}
+ * Class MatriculasDatatable
  *
- * @package {{ package_namespace -}}
- */
-class {{ datatable_class }} extends AbstractDatatableView
-{% endblock class_definition %}
+ * @package MultiacademicoBundle\Datatables
+*/
+class MatriculasDatatable extends AbstractDatatableView
 {
-{% block class_body %}
     /**
      * {@inheritdoc}
      */
@@ -40,7 +22,7 @@ class {{ datatable_class }} extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('{{ route_pref }}',['page'=>'new']),
+                    'route' => $this->router->generate('matriculas',['page'=>'new']),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
@@ -65,25 +47,21 @@ class {{ datatable_class }} extends AbstractDatatableView
             'scroll_x' => false,
             'scroll_y' => '',
             'searching' => true,
-            'server_side' => {{ client_side ? 'false' : 'true' }},
+            'server_side' => true,
             'state_save' => false,
             'delay' => 0,
             'extensions' => array()
         ));
 
-        {% if false == client_side -%}
         $this->ajax->set(array(
-            'url' => $this->router->generate('{{ ajax_url }}'),
+            'url' => $this->router->generate('matriculas_results'),
             'type' => 'GET'
         ));
-
-        {% endif -%}
 
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            //'dom' => 'lfrtip',
-            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
+            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100),
@@ -97,32 +75,53 @@ class {{ datatable_class }} extends AbstractDatatableView
             'search_delay' => 0,
             'state_duration' => 7200,
             'stripe_classes' => array(),
-            {% if true == bootstrap3 -%}
             'class' => Style::BOOTSTRAP_3_STYLE,
-            {% else -%}
-            'class' => Style::BASE_STYLE,
-            {% endif -%}
-            'individual_filtering' => false,
-            'individual_filtering_position' => 'foot',
-            {% if true == bootstrap3 -%}
+            'individual_filtering' => true,
+            'individual_filtering_position' => 'head',
             'use_integration_options' => true,
-            {% else -%}
-            'use_integration_options' => false,
-            {% endif -%}
             'force_dom' => true
         ));
 
         $this->columnBuilder
-            {% for field in fields -%}
-            ->add('{{ field.property }}', '{{ field.column_name }}', array(
-                'title' => '{{ field.title }}',
+            ->add('id', 'column', array(
+                'title' => 'Num. Mat.',
+                'width'=>'4em'
             ))
-            {% endfor -%}
+            ->add('matriculacodestudiante.estudiante', 'column', array(
+                'title' => 'Matriculacodestudiante Estudiante',
+            ))
+            ->add('matriculacodcurso.curso', 'column', array(
+                'title' => 'Curso',
+            ))
+            ->add('matriculacodespecializacion.especializacion', 'column', array(
+                'title' => 'Especializacion',
+            ))    
+            ->add('matriculaseccion', 'column', array(
+                'title' => 'Seccion',
+            ))
+            ->add('matriculaparalelo', 'column', array(
+                'title' => 'Paralelo',
+                 'width'=>'4em'
+            ))
+            ->add('matriculafecha', 'datetime', array(
+                'title' => 'Fecha Mat.',
+            ))
+            
+            /*->add('matriculaestado', 'column', array(
+                'title' => 'Matriculaestado',
+            ))*/
+          
+           
+            
+          /*  ->add('matriculacodestudiante.representante', 'column', array(
+                'title' => 'Matriculacodestudiante Representante',
+            ))*/
+           
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => '{{ route_pref }}',
+                        'route' => 'matriculas',
                         'route_parameters' => array(
                             'page' => 'id'
                         ),
@@ -136,7 +135,7 @@ class {{ datatable_class }} extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => '{{ route_pref }}_edit',
+                        'route' => 'matriculas_edit',
                         'route_parameters' => array(
                             'page' => 'id'
                         ),
@@ -159,7 +158,7 @@ class {{ datatable_class }} extends AbstractDatatableView
      */
     public function getEntity()
     {
-        return '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}';
+        return 'MultiacademicoBundle\Entity\Matriculas';
     }
 
     /**
@@ -167,7 +166,6 @@ class {{ datatable_class }} extends AbstractDatatableView
      */
     public function getName()
     {
-        return '{{ datatable_name }}';
+        return 'matriculas_datatable';
     }
-{% endblock class_body %}
 }

@@ -19,6 +19,10 @@ services:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         tags:
             - { name: sg.datatable.view }
+    multiacademicobundle_datatable.matriculas:
+        class: MultiacademicoBundle\Datatables\MatriculasDatatable
+        tags:
+            - { name: sg.datatable.view }
     multiacademico.distributivos:
         class: MultiacademicoBundle\Datatables\DistributivosDatatable
         tags:

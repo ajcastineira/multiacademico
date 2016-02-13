@@ -55,7 +55,7 @@ define([
         'multiacademico.certificados',
        'multiacademico.informes',
         'multiacademico.materias',
-         'multiacademico.pagos',
+   //      'multiacademico.pagos',
        // 'multiacademico.periodo'
                 
 

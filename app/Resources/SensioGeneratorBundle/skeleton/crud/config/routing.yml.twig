@@ -3,7 +3,9 @@
     path:      /{{ route_name_prefix }}/{page}
     defaults:  { _controller: AppBundle:Default:inicio, page: index }
     requirements:
-         page: ".*"
+        page: \d+|new
+    options:
+        expose: true
 #rutas del back o api         
 {{ route_name_prefix }}_api:
     type: rest

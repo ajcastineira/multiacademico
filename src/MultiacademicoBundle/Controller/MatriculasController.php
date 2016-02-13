@@ -19,7 +19,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
  * @Route("/matriculas")
  * @Rest\RouteResource("Matricula")
  */
-class MatriculasController extends Controller
+class MatriculasController extends FOSRestController
 {
     /**
      * Lists all Matriculas entities.
@@ -93,7 +93,7 @@ class MatriculasController extends Controller
 
     /**
      * Displays a form to edit an existing Matriculas entity.
-    * @Rest\Post() 
+     * @Rest\Post() 
      * @Rest\Get("/matriculas/{matricula}/edit", name="edit_matricula") 
      */
     public function editAction(Request $request, Matriculas $matricula)

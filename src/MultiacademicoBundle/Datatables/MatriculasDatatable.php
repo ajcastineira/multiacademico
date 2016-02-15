@@ -103,9 +103,10 @@ class MatriculasDatatable extends AbstractDatatableView
                 'title' => 'Paralelo',
                  'width'=>'4em'
             ))
-            ->add('matriculafecha', 'datetime', array(
+           /* ->add('matriculafecha', 'datetime', array(
                 'title' => 'Fecha Mat.',
-            ))
+                'date_format' => 'Y-M-d',
+            ))*/
             
             /*->add('matriculaestado', 'column', array(
                 'title' => 'Matriculaestado',

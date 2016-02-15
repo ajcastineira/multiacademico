@@ -72,8 +72,8 @@ var require = {
 
         'ckeditor': '../plugin/ckeditor/ckeditor',
 
-        'moment': ['//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min',
-                    '../plugin/moment/min/moment.min'],
+        'moment': ['//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.min',
+                    '../plugin/moment/min/moment-with-locales.min'],
        // 'moment-timezone': '../plugin/moment-timezone/moment-timezone',
 
         'sparkline': '../plugin/relayfoods-jquery.sparkline/dist/jquery.sparkline.min',
@@ -227,11 +227,11 @@ var require = {
 
         'ckeditor': { deps: ['jquery']},
 
-        'moment': {'exports': 'moment'},
+       // 'moment': {'exports': 'moment'},
       //  'moment-timezone': { deps: ['moment']},
        // 'moment-timezone-data': { deps: ['moment']},
        // 'moment-helper': { deps: ['moment-timezone-data']},
-        'bootstrap-daterangepicker': { deps: ['jquery', 'moment']},
+        'bootstrap-daterangepicker': { deps: ['jquery']},
 
         'flot': { deps: ['jquery']},
         'flot-resize': { deps: ['flot']},
@@ -244,7 +244,7 @@ var require = {
 
         'morris': {deps: ['raphael']},
 
-        'datatables.net':{deps: ['jquery','moment','bootstrap-daterangepicker']},
+        'datatables.net':{deps: ['jquery','bootstrap-daterangepicker']},
         'datatables.net-buttons' :{deps: ['datatables.net']},
         'datatables.net-buttons.html5':{deps: ['datatables.net','datatables.net-buttons','jszip']},
         'datatables.net-buttons.flash':{deps: ['datatables.net','datatables.net-buttons']},

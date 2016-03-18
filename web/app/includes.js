@@ -70,16 +70,16 @@ define([
 
     // chat
     // 'components/chat/module',
-    
-    
+
+
     // test
      'scripts/config',
      'scripts/controllers',
      'scripts/directives',
      'scripts/modules/dashboard',
     // 'scripts/modules/animate'
-    
-    
+
+
     //multiacademico
      'multiacademico/multiacademico',
      'multiacademico/estudiantes/module',
@@ -98,29 +98,30 @@ define([
      'multiacademico/certificados/module',
      'multiacademico/informes/module',
    //  'multiacademico/pagos/module',
-    
+
     // cases
     // 'modules/cases/module',
-    
+
     // graphs
     // 'modules/graphs/module',
 
     // contacts
     // 'modules/contacts/module',
-    
-    
+
+
     // tables
     // 'modules/tables/module',
 
     // forms
      'modules/forms/module',
      'modules/forms/models/FormsCrud',
-     
+
      // paypay
      'modules/paypay/module',
      'modules/paypay/ingresos/module',
+   'modules/paypay/pensiones/module',
     // 'modules/paypay/egresos/module',
-     
+
     // users
      'modules/users/module'//,
 
@@ -141,7 +142,7 @@ define([
 
     // smartAdmin
     // 'modules/smart-admin/module'
-    
+
 ], function () {
     'use strict';
 });

@@ -1,0 +1,15 @@
+#para rutas front pensiones
+pensiones:
+    path:      /pensiones/{page}
+    # defaults:  { _controller: AppBundle:Default:inicio, page: index }
+    defaults:  { _controller: PayPayBundle:Pensiones:index, page: index }
+    requirements:
+        page: ".*"
+
+#rutas del back o api
+pensiones_api:
+    type: rest
+    resource: Multiservices\PayPayBundle\Controller\PensionesController
+    options:
+        expose: true
+    prefix: api

@@ -20,7 +20,7 @@ define([
     'oc-lazyload'
 ], function (ng, couchPotato) {
 
-    
+
     var app = ng.module('app', [
         'ngSanitize',
         'ngAnimate',
@@ -40,6 +40,7 @@ define([
         'app.forms',
         'app.paypay',
         'app.paypay.ingresos',
+       'app.paypay.pensiones',
      //   'app.paypay.egresos',
         'multiacademico',
         'multiacademico.estudiantes',
@@ -57,12 +58,13 @@ define([
         'multiacademico.materias',
    //      'multiacademico.pagos',
        // 'multiacademico.periodo'
-                
+
+
 
     ]);
-        
+
    couchPotato.configureApp(app);
-   
+
     app.config(function ($provide, $httpProvider, $locationProvider) {
 
        $locationProvider.html5Mode(true);
@@ -103,7 +105,7 @@ define([
         });
         // Add the interceptor to the $httpProvider.
         $httpProvider.interceptors.push('ErrorHttpInterceptor');
-         
+
     });
 
     app.run(function ($couchPotato, $rootScope, $state, $stateParams) {
@@ -112,6 +114,6 @@ define([
         $rootScope.$stateParams = $stateParams;
         // editableOptions.theme = 'bs3';
     });
- 
+
     return app;
 });

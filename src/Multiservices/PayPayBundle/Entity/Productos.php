@@ -82,11 +82,12 @@ class Productos
     private $avisoMinimo;
 
     /**
+     * Los tipos pueden ser bien, servicio o pension anotado espo para que mas adelante sea un enum
      * @var string
      *
-     * @ORM\Column(name="servicio", type="string", nullable=false)
+     * @ORM\Column(name="tipo", type="string", nullable=false)
      */
-    private $servicio;
+    private $tipo;
     /**
      * @var string
      *
@@ -921,26 +922,26 @@ class Productos
     }
 
     /**
-     * Set servicio
+     * Set Tipo
      *
-     * @param string $servicio
+     * @param string $tipo
      *
      * @return Productos
      */
-    public function setservicio($servicio)
+    public function setTipo($tipo)
     {
-        $this->servicio = $servicio;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get servicio
+     * Get Tipo
      *
      * @return string
      */
-    public function getservicio()
+    public function getTipo()
     {
-        return $this->servicio;
+        return $this->tipo;
     }
 }

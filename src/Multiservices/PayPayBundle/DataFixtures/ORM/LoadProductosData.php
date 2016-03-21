@@ -42,7 +42,7 @@ class LoadProductosData implements FixtureInterface
         $pension->setStock(1);
         $pension->setCodFamilia($familia);
         $pension->setObservaciones("Pension Mes ".$meses[$i]);
-        $pension->setservicio("Pension");
+        $pension->setTipo("Pension");
         $manager->persist($pension);
         
         }

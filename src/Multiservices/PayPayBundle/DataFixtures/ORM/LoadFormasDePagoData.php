@@ -44,11 +44,8 @@ class LoadFormasDePagoData implements FixtureInterface
           $efectivo = new FormasPagos();
           $efectivo->setFormaPago("EFECTIVO");
           $efectivo->setDescripcion("Efectivo al momento de la compra");
-          $formasdepago[]=$efectivo;
+          $formasdepago[]=$efectivo; 
         }
-        
-        
-        
         
             
         return $formasdepago;

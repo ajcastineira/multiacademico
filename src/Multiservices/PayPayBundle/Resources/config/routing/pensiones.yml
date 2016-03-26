@@ -1,11 +1,3 @@
-#para rutas front pensiones
-pensiones:
-    path:      /pensiones/{page}
-    # defaults:  { _controller: AppBundle:Default:inicio, page: index }
-    defaults:  { _controller: PayPayBundle:Pensiones:index, page: index }
-    requirements:
-        page: ".*"
-
 #rutas del back o api
 pensiones_api:
     type: rest
@@ -13,3 +5,15 @@ pensiones_api:
     options:
         expose: true
     prefix: api
+#ruta para txtbanco
+pensiones_download:
+    path:      /pensiones/download/{id}
+    defaults:  { _controller: PayPayBundle:Pensiones:download}
+    requirements:
+        id: \d+
+#para rutas front pensiones
+pensiones:
+    path:      /pensiones/{page}
+    defaults:  { _controller: PayPayBundle:Pensiones:index, page: index}
+    requirements:
+         page: ".*"

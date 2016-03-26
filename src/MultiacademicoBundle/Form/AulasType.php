@@ -20,6 +20,7 @@ class AulasType extends AbstractType
             ->add('especializacion')
             ->add('paralelo')
             ->add('seccion')
+            ->add('alias')     
             ->add('tutor')
         ;
     }

@@ -26,6 +26,7 @@ class LoadFormasDePagoData implements FixtureInterface
     {
         
         $formasdepago=$this->loadFormasDePago($manager);
+        
         foreach($formasdepago as $formadepago)
         {    
           $manager->persist($formadepago);
@@ -43,10 +44,11 @@ class LoadFormasDePagoData implements FixtureInterface
           $efectivo = new FormasPagos();
           $efectivo->setFormaPago("EFECTIVO");
           $efectivo->setDescripcion("Efectivo al momento de la compra");
+          $formasdepago[]=$efectivo;
         }
         
         
-        $formasdepago[]=$efectivo;
+        
         
             
         return $formasdepago;

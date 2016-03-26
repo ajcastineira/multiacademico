@@ -94,6 +94,14 @@ class Aula
      * 
      */
     private $estado;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=50, nullable=true)
+     * 
+     */
+    private $alias;
 
     /**
      * @ORM\OneToMany(targetEntity="Matriculas", mappedBy="aula")
@@ -405,5 +413,31 @@ class Aula
     {
         return $this->getAulaName();
     }
+    
+    
 
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     *
+     * @return Aula
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
 }

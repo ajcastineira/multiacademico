@@ -5,6 +5,8 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EstudiantesType extends AbstractType
 {
@@ -15,28 +17,37 @@ class EstudiantesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('estudianteCedula')
-            ->add('estudiante')
-           /* ->add('estudianteFechanacimiento')
-            ->add('estudianteNacionalidad')
-            ->add('estudianteLugarnacimiento')
-            ->add('estudianteProvinciaN')
-            ->add('estudianteCantonN')
-            ->add('estudianteParroquiaN')
-            ->add('estudianteDomicilio')
-            ->add('estudianteProvinciaD')
-            ->add('estudianteCantonD')
-            ->add('estudianteParroquiaD')
-            ->add('estudianteGenero')
-            ->add('estudianteDiscapacidad')
-            ->add('estudianteConae')
-            ->add('estudianteEtnia')
-            ->add('estudiantePlantel')
-            ->add('estudianteCorreo')
-            ->add('estudianteCarnet')
-            ->add('estudianteFoto')
-            ->add('estudianteEstado')
-            ->add('estudianteNumeroacta')
+            ->add('estudianteCedula',null,['label'=>'Cedula'])
+            ->add('mail',null,['label'=>'Email'])
+            ->add('estudiante',null,['label'=>'Estudiante (Apellidos y Nombres)'])
+            ->add('estudianteFechanacimiento',DateType::class,['label'=>'Fecha de Nacimiento',
+                                                                  'format' => 'yyyy-MM-dd',
+                                                                   'years'=>range(1990,date('Y'))])
+            ->add('estudianteNacionalidad',null,['label'=>'Nacionalidad'])
+            ->add('estudianteLugarnacimiento',null,['label'=>'Lugar Nacimiento'])
+            ->add('estudianteProvinciaN',null,['label'=>'Provincia Nacimiento'])
+            ->add('estudianteCantonN',null,['label'=>'Canton Nacimiento'])
+            ->add('estudianteParroquiaN',null,['label'=>'Parroquia Nacimiento'])
+            ->add('estudianteDomicilio',null,['label'=>'Domicilio'])
+            ->add('estudianteProvinciaD',null,['label'=>'Provincia Domicilio'])
+            ->add('estudianteCantonD',null,['label'=>'Canton Domicilio'])
+            ->add('estudianteParroquiaD',null,['label'=>'Parroquia Domicilio'])
+            ->add('estudianteGenero',  ChoiceType::class,['label'=>'Genero','choices'=>[
+                                                                                        'Masculino'=>'Masculino',
+                                                                                         'Femenino'=>'Femenino'
+                                                                                        ]])
+            ->add('estudianteDiscapacidad',  ChoiceType::class,['label'=>'Sufre Discapacidad','choices'=>[
+                                                                                            'No'=>'No',
+                                                                                            'Si'=>'Si',
+                                                                                        ]])
+            //->add('estudianteConae')
+            //->add('estudianteEtnia')
+            //->add('estudiantePlantel')
+            //->add('estudianteCorreo')
+           // ->add('estudianteCarnet')
+           // ->add('estudianteFoto')
+            //->add('estudianteEstado')
+            //->add('estudianteNumeroacta')
             ->add('madre')
             ->add('madreCedula')
             ->add('madreEstadocivil')
@@ -53,24 +64,24 @@ class EstudiantesType extends AbstractType
             ->add('representanteDomicilio')
             ->add('representanteTelefono')
             ->add('representanteTipo')
-            ->add('username')
-            ->add('password')
-            ->add('salt')
-            ->add('path')
-            ->add('theme')
-            ->add('signature')
-            ->add('signatureFormat')
-            ->add('created')
-            ->add('access')
-            ->add('lastlogin')
-            ->add('lastactivity')
-            ->add('status')
-            ->add('timezone')
-            ->add('language')
-            ->add('picture')
-            ->add('init')
-            ->add('data')
-            ->add('mail')*/
+           // ->add('username')
+           // ->add('password')
+          //  ->add('salt')
+          //  ->add('path')
+          //  ->add('theme')
+          //  ->add('signature')
+          //  ->add('signatureFormat')
+          //  ->add('created')
+         //   ->add('access')
+          //  ->add('lastlogin')
+          //  ->add('lastactivity')
+          //  ->add('status')
+          //  ->add('timezone')
+         //   ->add('language')
+          //  ->add('picture')
+           // ->add('init')
+          //  ->add('data')
+            
         ;
     }
     

@@ -26,5 +26,10 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: form.type, alias: users }  
-      
+    validator.arxis.UsernameValidator:
+        class:  Multiservices\ArxisBundle\Validator\Constraints\UsernameValidator
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: username.validator }        
   

@@ -4,6 +4,8 @@
     <h1>Matriculas creation</h1>
 
     {{ form_start(form) }}
+        {{ form_row(form.matriculacodperiodo) }}
+        {{ form_row(form.matriculacodestudiante) }}
         {{ form_widget(form) }}
         <input type="submit" value="Crear" />
     {{ form_end(form) }}

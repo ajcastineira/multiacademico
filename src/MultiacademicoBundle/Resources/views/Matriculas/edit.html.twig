@@ -4,6 +4,8 @@
     <h1>Matriculas edit</h1>
 
     {{ form_start(edit_form) }}
+        {{ form_row(edit_form.matriculacodperiodo) }}
+        {{ form_row(edit_form.matriculacodestudiante) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Editar" />
     {{ form_end(edit_form) }}

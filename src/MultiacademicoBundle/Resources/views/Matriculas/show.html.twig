@@ -6,17 +6,34 @@
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Codigo de Matricula</th>
                 <td>{{ matricula.id }}</td>
             </tr>
             <tr>
-                <th>Matriculaseccion</th>
-                <td>{{ matricula.matriculaseccion }}</td>
+                <th>Periodo</th>
+                <td>{{ matricula.matriculacodperiodo }}</td>
             </tr>
             <tr>
-                <th>Matriculaparalelo</th>
+                <th>Estudiante</th>
+                <td>{{ matricula.matriculacodestudiante }}</td>
+            </tr>
+            <tr>
+                <th>Curso</th>
+                <td>{{ matricula.matriculacodcurso }}</td>
+            </tr>
+            <tr>
+                <th>Especializacion</th>
+                <td>{{ matricula.matriculacodespecializacion }}</td>
+            </tr>
+            <tr>
+                <th>Paralelo</th>
                 <td>{{ matricula.matriculaparalelo }}</td>
             </tr>
+            <tr>
+                <th>Seccion</th>
+                <td>{{ matricula.matriculaseccion }}</td>
+            </tr>
+            
             <tr>
                 <th>Matriculafecha</th>
                 <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -37,30 +54,7 @@
                 <th>Matriculaestado</th>
                 <td>{{ matricula.matriculaestado }}</td>
             </tr>
-            <tr>
-                <th>Matriculaq1laborada</th>
-                <td>{{ matricula.matriculaQ1Laborada }}</td>
-            </tr>
-            <tr>
-                <th>Matriculaq1jutificada</th>
-                <td>{{ matricula.matriculaQ1Jutificada }}</td>
-            </tr>
-            <tr>
-                <th>Matriculaq1injustificada</th>
-                <td>{{ matricula.matriculaQ1Injustificada }}</td>
-            </tr>
-            <tr>
-                <th>Matriculaq2laborada</th>
-                <td>{{ matricula.matriculaQ2Laborada }}</td>
-            </tr>
-            <tr>
-                <th>Matriculaq2jutificada</th>
-                <td>{{ matricula.matriculaQ2Jutificada }}</td>
-            </tr>
-            <tr>
-                <th>Matriculaq2injustificada</th>
-                <td>{{ matricula.matriculaQ2Injustificada }}</td>
-            </tr>
+            
         </tbody>
     </table>
 

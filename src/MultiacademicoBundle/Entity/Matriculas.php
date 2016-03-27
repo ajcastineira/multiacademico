@@ -71,7 +71,7 @@ class Matriculas
     /**
      * @var string
      *
-     * @ORM\Column(name="matriculaobservacion", type="string", length=250, nullable=false)
+     * @ORM\Column(name="matriculaobservacion", type="string", length=250, nullable=true)
      */
     private $matriculaobservacion;
 
@@ -788,8 +788,8 @@ class Matriculas
         {return false;}
     }
     
-    
 
+    
     /**
      * Add calificacione
      *

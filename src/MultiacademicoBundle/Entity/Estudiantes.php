@@ -267,11 +267,21 @@ class Estudiantes
     private $representanteCedula;
 
     /**
+     * @var \MultiacademicoBundle\Entity\Representantes
+     *
+     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="representante_id", referencedColumnName="id")
+     * })
+     */
+    private $representante;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="representante", type="string", length=50, nullable=false)
      */
-    private $representante;
+    private $representanteNombre;
 
     /**
      * @var string
@@ -1283,30 +1293,6 @@ class Estudiantes
     }
 
     /**
-     * Set representante
-     *
-     * @param string $representante
-     *
-     * @return Estudiantes
-     */
-    public function setRepresentante($representante)
-    {
-        $this->representante = $representante;
-
-        return $this;
-    }
-
-    /**
-     * Get representante
-     *
-     * @return string
-     */
-    public function getRepresentante()
-    {
-        return $this->representante;
-    }
-
-    /**
      * Set representanteDomicilio
      *
      * @param string $representanteDomicilio
@@ -1876,5 +1862,77 @@ class Estudiantes
     
     public function __toString() {
         return $this->estudiante;
+    }
+
+    /**
+     * Set representanteNombre
+     *
+     * @param string $representanteNombre
+     *
+     * @return Estudiantes
+     */
+    public function setRepresentanteNombre($representanteNombre)
+    {
+        $this->representanteNombre = $representanteNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get representanteNombre
+     *
+     * @return string
+     */
+    public function getRepresentanteNombre()
+    {
+        return $this->representanteNombre;
+    }
+
+    /**
+     * Set representante
+     *
+     * @param \MultiacademicoBundle\Entity\Representantes $representante
+     *
+     * @return Estudiantes
+     */
+    public function setRepresentante(\MultiacademicoBundle\Entity\Representantes $representante = null)
+    {
+        $this->representante = $representante;
+
+        return $this;
+    }
+
+    /**
+     * Get representante
+     *
+     * @return \MultiacademicoBundle\Entity\Representantes
+     */
+    public function getRepresentante()
+    {
+        return $this->representante;
+    }
+
+    /**
+     * Add matricula
+     *
+     * @param \MultiacademicoBundle\Entity\Matriculas $matricula
+     *
+     * @return Estudiantes
+     */
+    public function addMatricula(\MultiacademicoBundle\Entity\Matriculas $matricula)
+    {
+        $this->matriculas[] = $matricula;
+
+        return $this;
+    }
+
+    /**
+     * Remove matricula
+     *
+     * @param \MultiacademicoBundle\Entity\Matriculas $matricula
+     */
+    public function removeMatricula(\MultiacademicoBundle\Entity\Matriculas $matricula)
+    {
+        $this->matriculas->removeElement($matricula);
     }
 }

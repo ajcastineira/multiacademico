@@ -5,6 +5,3 @@ PayPayAnnotations:
 pay_pay_ingresos:
     resource: "@PayPayBundle/Resources/config/routing/ingresos.yml"
     #prefix:   /ingresos
-pay_pay_pensiones:
-    resource: "@PayPayBundle/Resources/config/routing/pensiones.yml"
-    #prefix:   /pensiones

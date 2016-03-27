@@ -1,6 +1,6 @@
 <?php
 
-namespace Multiservices\PayPayBundle\Controller;
+namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -37,7 +37,7 @@ class PensionesController extends Controller
      *
      * @Route("/api", name="pensiones_api", options={"expose":true})
      * @Method("GET")
-     * @Template("PayPayBundle:Pensiones:index.html.twig")
+     * @Template("MultiacademicoBundle:Pensiones:index.html.twig")
      */
     public function indexApiAction()
     {
@@ -46,7 +46,7 @@ class PensionesController extends Controller
         // $entities = $em->getRepository('PayPayBundle:Productos')->findByServicio('Pension');
         // $entities = $em->getRepository('MultiacademicoBundle:Representantes')->findAll();
         // $entities = $em->getRepository('PayPayBundle:Facturas')->findAll();
-        $entities = $em->getRepository('PayPayBundle:Facturaitems')->findAll();
+        $entities = $em->getRepository('PayPayBundle:Facturaitems')->findByTipo('Pension');
         return array(
             'entities' => $entities,
             );

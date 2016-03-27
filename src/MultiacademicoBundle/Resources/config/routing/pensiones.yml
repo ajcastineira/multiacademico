@@ -1,19 +1,19 @@
 #rutas del back o api
 pensiones_api:
     type: rest
-    resource: Multiservices\PayPayBundle\Controller\PensionesController
+    resource: MultiacademicoBundle\Controller\PensionesController
     options:
         expose: true
     prefix: api
 #ruta para txtbanco
 pensiones_download:
     path:      /pensiones/download/{id}
-    defaults:  { _controller: PayPayBundle:Pensiones:download}
+    defaults:  { _controller: MultiacademicoBundle:Pensiones:download}
     requirements:
         id: \d+
 #para rutas front pensiones
 pensiones:
     path:      /pensiones/{page}
-    defaults:  { _controller: PayPayBundle:Pensiones:index, page: index}
+    defaults:  { _controller: MultiacademicoBundle:Pensiones:index, page: index}
     requirements:
          page: ".*"

@@ -32,4 +32,7 @@ estadisticas:
     resource: MultiacademicoBundle\Controller\EstadisticasController
     options:
         expose: true
-    prefix: api       
+    prefix: api    
+multiacademico_pensiones:
+    resource: "@MultiacademicoBundle/Resources/config/routing/pensiones.yml"
+    #prefix:   /pensiones    

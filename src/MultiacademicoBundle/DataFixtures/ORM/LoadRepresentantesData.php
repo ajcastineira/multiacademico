@@ -36,17 +36,23 @@ class LoadRepresentantesData implements FixtureInterface
     private function loadRepresentantes(ObjectManager $manager)
     {
         $representantes = [];
-        $representante = new Representantes();
-                $representante->setRepresentante('ALVARADO LOPEZ DAYRA DAYANA');
-                $representante->setMontoMensual(1.000);
-                $representante->setUsername('alvarado');
-                $representante->setPassword('alvarado');
-                $representante->setSalt('salt');
-                $representante->setLastlogin(1);
-                $representante->setLastactivity(1);
+        //buscando si existe el representante por defecto
+        $representantepordefecto=$manager->getRepository('MultiacademicoBundle:Representantes')->findByRepresentante('REPRESENTANTE POR DEFECTO');
+        //si no esta se lo crea
+        if (!$representantepordefecto)
+        {
+                $representante = new Representantes();
+                $representante->setRepresentante('REPRESENTANTE POR DEFECTO');
+                $representante->setMontoMensual(20);
+                //$representante->setUsername('rpdefault');
+                //$representante->setPassword('alvarado');
+                //$representante->setSalt('salt');
+                //$representante->setLastlogin(1);
+                //$representante->setLastactivity(1);
                 $representante->setStatus(true);
-
-        $representantes[] = $representante;
+                
+                $representantes[] = $representante;
+        }
         return $representantes;
     }
 }

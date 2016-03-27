@@ -37,7 +37,7 @@ class LoadRepresentantesData implements FixtureInterface
     {
         $representantes = [];
         //buscando si existe el representante por defecto
-        $representantepordefecto=$manager->getRepository('MultiacademicoBundle:Representantes')->findByRepresentante('REPRESENTANTE POR DEFECTO');
+        $representantepordefecto=$manager->getRepository('MultiacademicoBundle:Representantes')->findOneByRepresentante('REPRESENTANTE POR DEFECTO');
         //si no esta se lo crea
         if (!$representantepordefecto)
         {

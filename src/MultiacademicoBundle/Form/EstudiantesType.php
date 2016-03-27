@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class EstudiantesType extends AbstractType
 {
@@ -20,7 +21,9 @@ class EstudiantesType extends AbstractType
             ->add('estudianteCedula',null,['label'=>'Cedula'])
             ->add('mail',null,['label'=>'Email'])
             ->add('estudiante',null,['label'=>'Estudiante (Apellidos y Nombres)'])
+                
             ->add('estudianteFechanacimiento',DateType::class,['label'=>'Fecha de Nacimiento',
+                                                                  'format' => 'yyyy-MM-dd',
                                                                   'format' => 'yyyy-MM-dd',
                                                                    'years'=>range(1990,date('Y'))])
             ->add('estudianteNacionalidad',null,['label'=>'Nacionalidad'])
@@ -63,7 +66,13 @@ class EstudiantesType extends AbstractType
             ->add('representante')
             ->add('representanteDomicilio')
             ->add('representanteTelefono')
-            ->add('representanteTipo')
+            ->add('representanteTipo',  ChoiceType::class,['label'=>'Tipo de Representante','choices'=>[
+                                                                                        'Madre'=>'Madre',
+                                                                                         'Padre'=>'Padre',
+                                                                                         'Otro'=>'Otro'
+                                                                                        ]])
+            ->add('username',null,['label'=>'Username'])    
+            ->add('password',PasswordType::class,['label'=>'Password'])    
            // ->add('username')
            // ->add('password')
           //  ->add('salt')

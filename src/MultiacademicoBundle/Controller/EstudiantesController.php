@@ -86,24 +86,41 @@ class EstudiantesController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Estudiantes();
-        $form = $this->createCreateForm($entity);
+        $estudiante = new Estudiantes();
+        $form = $this->createCreateForm($estudiante);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            
+            
+            $userManager = $this->container->get('fos_user.user_manager');
+            $userEstudiante= $userManager->createUser();
+            $userEstudiante->setUsername($estudiante->getUsername());
+            $userEstudiante->setEmail($estudiante->getMail());
+            $userEstudiante->setPlainPassword($estudiante->getPassword());
+            //buscando rol
+            $role=$em->getRepository("MultiservicesArxisBundle:Role")->findOneByName("ROLE_ESTUDIANTE");
+            //asignando rol estudiante
+            $userEstudiante->addRole($role);
+            $userEstudiante->setName($estudiante->getEstudiante());
+            $userEstudiante->setCargo("Estudiante");
+            $userEstudiante->setEnabled(true);
+            $userManager->updateUser($userEstudiante);
+           
+            $estudiante->setUsuario($userEstudiante);
+            
+            $em->persist($estudiante);
             $em->flush();
-
-            //return $this->redirect($this->generateUrl('estudiantes_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('estudiantes_show', array('id' => $estudiante->getId())));
                 $response_redir=new JsonResponse();
-                $response_redir->setData(array('id'=>$entity->getId()));
+                $response_redir->setData(array('id'=>$estudiante->getId()));
                 $response_redir->setStatusCode(201);
                 return $response_redir;
         }
 
         return array(
-            'entity' => $entity,
+            'entity' => $estudiante,
             'form'   => $form->createView(),
         );
     }

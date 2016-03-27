@@ -40,13 +40,14 @@
                 <th>Cedula</th>
                 <td>{{ entity.estudianteCedula }}</td>
             </tr>
+            
             <tr>
                 <th>Nombre</th>
                 <td>{{ entity.estudiante }}</td>
             </tr>
             <tr>
                 <th>Fecha de Nacimiento</th>
-                <td>{{ entity.estudianteFechanacimiento }}</td>
+                <td>{{ entity.estudianteFechanacimiento|date('d-M-Y') }}</td>
             </tr>
             <tr>
                 <th>Nacionalidad</th>
@@ -265,37 +266,23 @@
                 <tbody>
                         <tr>
                 <th>Username</th>
-                <td>{{ entity.username }}</td>
+                <td>{{ entity.usuario.username }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ entity.mail }}</td>
             </tr>
             <tr>
                 <th>Password</th>
-                <td>{{ entity.password }}</td>
+                <td>Actualizada</td>
             </tr>
+            
+            
             <tr>
-                <th>Salt</th>
-                <td>{{ entity.salt }}</td>
+                <th>Creado</th>
+                <td>{{ entity.usuario.created|date('d-M-Y H:i:s') }}</td>
             </tr>
-            <tr>
-                <th>Path</th>
-                <td>{{ entity.path }}</td>
-            </tr>
-            <tr>
-                <th>Theme</th>
-                <td>{{ entity.theme }}</td>
-            </tr>
-            <tr>
-                <th>Signature</th>
-                <td>{{ entity.signature }}</td>
-            </tr>
-            <tr>
-                <th>Signature Format</th>
-                <td>{{ entity.signatureFormat }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ entity.created }}</td>
-            </tr>
-            <tr>
+            {#<tr>
                 <th>Access</th>
                 <td>{{ entity.access }}</td>
             </tr>
@@ -310,16 +297,8 @@
             <tr>
                 <th>Status</th>
                 <td>{{ entity.status }}</td>
-            </tr>
-            <tr>
-                <th>Timezone</th>
-                <td>{{ entity.timezone }}</td>
-            </tr>
-            <tr>
-                <th>Language</th>
-                <td>{{ entity.language }}</td>
-            </tr>
-            <tr>
+            </tr>#}
+            {#<tr>
                 <th>Picture</th>
                 <td>{{ entity.picture }}</td>
             </tr>
@@ -330,11 +309,8 @@
             <tr>
                 <th>Data</th>
                 <td>{{ entity.data }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ entity.mail }}</td>
-            </tr>
+            </tr>#}
+            
     </tbody>
 </table>
 </div>

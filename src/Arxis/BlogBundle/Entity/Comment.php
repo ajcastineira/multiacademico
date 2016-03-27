@@ -86,7 +86,7 @@ class Comment implements CommentInterface
      * Moderation status.
      *
      * @var int
-     * @ORM\Column(name="status", type="integer", options={"default":"false"})
+     * @ORM\Column(name="status", type="integer", options={"default":false})
      */
     protected $status = self::STATUS_VALID;
 

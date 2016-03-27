@@ -2,14 +2,19 @@
 
 namespace MultiacademicoBundle\Form;
 
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
+
 use MultiacademicoBundle\Form\Type\SeccionType;
 use MultiacademicoBundle\Form\Type\ParaleloType;
-use MultiacademicoBundle\Form\Type\EstudianteType;
+use MultiacademicoBundle\Form\Type\EstudianteNoMatriculadoType;
 
 class MatriculasType extends AbstractType
 {
@@ -20,8 +25,32 @@ class MatriculasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('matriculacodperiodo',null,array('label'=>'Periodo'))
-            ->add('matriculacodestudiante',  EstudianteType::class,array('label'=>'Estudiante'))
+            ->add('matriculacodperiodo',null,array('label'=>'Periodo'));
+        
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event)  {
+                $form = $event->getForm();
+
+                $formOptions = array(
+                    'class' => 'MultiacademicoBundle:Estudiantes',
+                    'property_path' => 'matriculacodestudiante',
+                    'query_builder' => function (EntityRepository $er)  {
+                         return $er->estudiantesNoMatriculados();
+                    },
+                );
+
+                // create the field, this is similar the $builder->add()
+                // field name, field type, data, options
+                $form->add('matriculacodestudiante', EstudianteNoMatriculadoType::class, $formOptions);
+            }
+        );
+        
+        
+        
+        
+        $builder
+            //->add('matriculacodestudiante',  EstudianteNoMatriculadoType::class,array('label'=>'Estudiante'))
             ->add('matriculacodespecializacion',null,array('label'=>'Especializacion'))
             ->add('matriculacodcurso',null,array('label'=>'Curso'))
             ->add('matriculaparalelo',ParaleloType::class)

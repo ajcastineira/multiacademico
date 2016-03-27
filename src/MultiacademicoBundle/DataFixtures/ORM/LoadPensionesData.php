@@ -67,22 +67,6 @@ class LoadPensionesData implements FixtureInterface
                 $manager->persist($pension);
             }
         }
-        $representante = $manager->getRepository('MultiacademicoBundle:Representantes')->findOneByRepresentante('REPRESENTANTE POR DEFECTO');
-        $factura = new Facturas();
-        $factura->setIdcliente($representante);
-        $factura->setTotal(1000);
-        $factura->setIvaIgv(120);
-        $factura->setSubTotal(880);
-        $manager->persist($factura);
-
-        for($i=73 ;$i<85;$i++)
-        {
-        $itemfactura = new Facturaitems();
-        $itemfactura->setIdfactura($factura);
-        // $itemfactura->setIdproducto($i);
-        $manager->persist($itemfactura);
-        }
-
         $manager->flush();
 
     }

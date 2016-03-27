@@ -34,6 +34,36 @@ class Representantes
      * @Serializer\Groups({"list","detail"})
      */
     private $representante;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cedula", type="string", length=12, nullable=false)
+     */
+    private $cedula;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="domicilio", type="string", length=50, nullable=false)
+     */
+    private $domicilio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=20, nullable=false)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=5, nullable=false)
+     */
+    private $tipo;
+    
 
     /**
      * @var float
@@ -42,53 +72,13 @@ class Representantes
      */
     private $montoMensual;
 
-  /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
-     */
-    private $salt;
-
- /**
-     * @var integer
-     *
-     * @ORM\Column(name="lastlogin", type="integer", nullable=false)
-     */
-    private $lastlogin;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lastactivity", type="integer", nullable=false)
-     */
-    private $lastactivity;
-
+  
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
-     */
 
     /**
      * @var \Multiservices\ArxisBundle\Entity\Usuario
@@ -325,5 +315,100 @@ class Representantes
     public function __toString() {
         return $this->representante;
     }
-}
 
+    /**
+     * Set cedula
+     *
+     * @param string $cedula
+     *
+     * @return Representantes
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+
+        return $this;
+    }
+
+    /**
+     * Get cedula
+     *
+     * @return string
+     */
+    public function getCedula()
+    {
+        return $this->cedula;
+    }
+
+    /**
+     * Set domicilio
+     *
+     * @param string $domicilio
+     *
+     * @return Representantes
+     */
+    public function setDomicilio($domicilio)
+    {
+        $this->domicilio = $domicilio;
+
+        return $this;
+    }
+
+    /**
+     * Get domicilio
+     *
+     * @return string
+     */
+    public function getDomicilio()
+    {
+        return $this->domicilio;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     *
+     * @return Representantes
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     *
+     * @return Representantes
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+}

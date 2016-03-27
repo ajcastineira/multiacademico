@@ -14,3 +14,4 @@ php bin/console doctrine:fixtures:load --append
 chmod 755 index.php
 chmod 755 web/app.php
 chmod 755 web/app_dev.php
+chmod 755 update.sh

@@ -43,6 +43,10 @@ class LoadRepresentantesData implements FixtureInterface
         {
                 $representante = new Representantes();
                 $representante->setRepresentante('REPRESENTANTE POR DEFECTO');
+                $representante->setCedula('9999999999');
+                $representante->setDomicilio('Domicilio Representante por Defecto');
+                $representante->setTelefono('5555555555');
+                $representante->setTipo('DEFAULT');
                 $representante->setMontoMensual(20);
                 //$representante->setUsername('rpdefault');
                 //$representante->setPassword('alvarado');

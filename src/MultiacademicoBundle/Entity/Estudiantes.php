@@ -314,7 +314,6 @@ class Estudiantes
     /**
      * @var string
      *
-     * ORM\Column(name="username", type="string", length=255, nullable=false)
      * @ArxisAssert\Username
      */
     private $username;
@@ -322,7 +321,6 @@ class Estudiantes
     /**
      * @var string
      *
-     * ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password="";
 

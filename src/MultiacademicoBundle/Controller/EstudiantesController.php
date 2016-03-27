@@ -93,21 +93,7 @@ class EstudiantesController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             
-            
-            $userManager = $this->container->get('fos_user.user_manager');
-            $userEstudiante= $userManager->createUser();
-            $userEstudiante->setUsername($estudiante->getUsername());
-            $userEstudiante->setEmail($estudiante->getMail());
-            $userEstudiante->setPlainPassword($estudiante->getPassword());
-            //buscando rol
-            $role=$em->getRepository("MultiservicesArxisBundle:Role")->findOneByName("ROLE_ESTUDIANTE");
-            //asignando rol estudiante
-            $userEstudiante->addRole($role);
-            $userEstudiante->setName($estudiante->getEstudiante());
-            $userEstudiante->setCargo("Estudiante");
-            $userEstudiante->setEnabled(true);
-            $userManager->updateUser($userEstudiante);
-           
+            $userEstudiante=$this->crearUserEstudiante($estudiante);
             $estudiante->setUsuario($userEstudiante);
             
             $em->persist($estudiante);
@@ -287,6 +273,7 @@ class EstudiantesController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            //$entity->getUsuario()->setUsernameCanonical($entity->getUsername());
             $em->flush();
 
             return $this->redirect($this->generateUrl('estudiantes_api_edit', array('id' => $id)));
@@ -339,5 +326,24 @@ class EstudiantesController extends Controller
             ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
+    }
+    
+    private function crearUserEstudiante(Estudiantes $estudiante)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $userManager = $this->container->get('fos_user.user_manager');
+            $userEstudiante= $userManager->createUser();
+            $userEstudiante->setUsername($estudiante->getUsername());
+            $userEstudiante->setEmail($estudiante->getMail());
+            $userEstudiante->setPlainPassword($estudiante->getPassword());
+            //buscando rol
+            $role=$em->getRepository("MultiservicesArxisBundle:Role")->findOneByName("ROLE_ESTUDIANTE");
+            //asignando rol estudiante
+            $userEstudiante->addRole($role);
+            $userEstudiante->setName($estudiante->getEstudiante());
+            $userEstudiante->setCargo("Estudiante");
+            $userEstudiante->setEnabled(true);
+            $userManager->updateUser($userEstudiante);
+            return $userEstudiante;
     }
 }

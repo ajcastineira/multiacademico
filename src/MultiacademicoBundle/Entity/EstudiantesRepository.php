@@ -17,11 +17,7 @@ class EstudiantesRepository extends EntityRepository
             ->createQueryBuilder()->select('e')
                     ->from('MultiacademicoBundle:Estudiantes','e')
                     ->where('e.matriculas is empty ');
-                    // . ' m.materia != :materia'
-                    //. ' ORDER BY n.notificaciontimestamp DESC'
-                    
-          //  ->setParameter(":pass", "")
-          // ->getResult();
+
     }
     
    

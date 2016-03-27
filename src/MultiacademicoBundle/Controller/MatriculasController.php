@@ -10,6 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Matriculas;
 use MultiacademicoBundle\Form\MatriculasType;
 
+use MultiacademicoBundle\Entity\Pension;
+use Multiservices\PayPayBundle\Entity\Facturas;
+use Multiservices\PayPayBundle\Entity\Facturaitems;
+
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
@@ -86,6 +90,7 @@ class MatriculasController extends FOSRestController
             $matricula->setMatriculausuario($user);
             $matricula->setAula($aula);
             $em->persist($matricula);
+            $this->generarFacturas($matricula);
             $em->flush();
 
             return $this->redirectToRoute('get_matricula', array('matricula' => $matricula->getId()));
@@ -169,5 +174,77 @@ class MatriculasController extends FOSRestController
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    protected function generarFacturas(Matriculas $matricula)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $usuarioResponsable=$matricula->getMatriculausuario()->getId();
+        $representante = $matricula->getMatriculacodestudiante()->getRepresentante();
+        if (!$representante)
+        {
+            $representante = $em->getRepository('MultiacademicoBundle:Representantes')->findOneByRepresentante('REPRESENTANTE POR DEFECTO');
+        }
+        
+        $facturaDeMatricula = new Facturas();
+        $facturaDeMatricula->setIdcliente($representante);
+        
+
+        //añadiendo items
+            $itemMatriculaOrdinaria=new Facturaitems();
+            //añadiendo item el producto Servicio Matricula Ordinaria
+            $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRICULA ORDINARIA');        
+            $itemMatriculaOrdinaria->setIdproducto($matriculaOrdinaria);
+            $itemMatriculaOrdinaria->setCantidad(1);
+            $itemMatriculaOrdinaria->setPunitario($matriculaOrdinaria->getPrecioPvp());
+            $itemMatriculaOrdinaria->setDescripcion($matriculaOrdinaria->getDescripcion()." Estudiante: ".$matricula->getMatriculacodestudiante());
+            $itemMatriculaOrdinaria->setIdfactura($facturaDeMatricula);
+            $itemMatriculaOrdinaria->setUserid($usuarioResponsable);
+            
+        $facturaDeMatricula->addItem($itemMatriculaOrdinaria);
+        //fecha de vencimiento de factura por matricula 3 dias despues
+        $facturaDeMatricula->setVencimiento(new \DateTime('+3 days'));
+        $facturaDeMatricula->setPago(null);
+        //calculando factura
+        $facturaDeMatricula->calcularFactura();
+        $em->persist($facturaDeMatricula);
+        
+        //generando facturas pendientes de pension
+        $diaDeVencimiento=5;// el 5 del siguiente mes
+        $mesinicial=5;// primer mes es mayo
+        $anio=date('Y');
+        for($i=1 ;$i<=10;$i++)
+        {
+            $pension=new Pension();
+            
+            
+            $facturaDePension=new Facturas();
+            $facturaDePension->setIdcliente($representante);
+                $itemPension=new Facturaitems();
+                $itemPension->setCantidad(1);
+                    $productopension=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta("PENSION ".$i);
+                    $itemPension->setIdproducto($productopension);
+                    $itemPension->setPunitario($productopension->getPrecioPvp());
+                    $itemPension->setDescripcion($productopension->getDescripcion()." Estudiante: ".$matricula->getMatriculacodestudiante());
+                $itemPension->setIdfactura($facturaDePension);
+                $itemPension->setUserid($usuarioResponsable);
+            //añadiendo item
+            $facturaDePension->addItem($itemPension);    
+            
+            $fechaVencimiento=new \DateTime();
+            $fechaVencimiento->setDate($anio, $mesinicial+$i, $diaDeVencimiento);
+            $facturaDePension->setVencimiento($fechaVencimiento);
+            $facturaDePension->setPago(null);
+            
+            $facturaDePension->calcularFactura();
+            $em->persist($facturaDePension);
+            $em->flush();
+            $pension->setFactura($facturaDePension);
+            $pension->setEstudiante($matricula->getMatriculacodestudiante());
+            $pension->setInfo($productopension->getDescripcion());
+            $em->persist($pension);
+        }
+        
     }
 }

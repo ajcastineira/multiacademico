@@ -19,7 +19,7 @@ class Pension
     /**
      * @var \MultiacademicoBundle\Entity\Estudiantes
      *
-     * @ORM\ManyToOne(targetEntity="Estudiantes")
+     * @ORM\ManyToOne(targetEntity="Estudiantes", inversedBy="pensiones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="estudiante", referencedColumnName="id",nullable=false)
      * })

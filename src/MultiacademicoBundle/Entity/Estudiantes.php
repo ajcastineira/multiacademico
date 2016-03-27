@@ -6,11 +6,18 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
+
 /**
  * Estudiantes
  *
  * @ORM\Table(name="estudiantes",  indexes={@ORM\Index(name="estudiante", columns={"estudiante"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\EstudiantesRepository")
+ * @UniqueEntity({"estudianteCedula"}, message="Cedula ya registrada en el sistema")
+ * @UniqueEntity({"mail"}, message="Este email ya existe en el sistema")
+ * @UniqueEntity({"estudiante"}, message="Este nombre ya existe en el sistema")
  * @Serializer\ExclusionPolicy("all")
  */
 class Estudiantes
@@ -45,7 +52,7 @@ class Estudiantes
     /**
      * @var string
      *
-     * @ORM\Column(name="estudiante_fechanacimiento", type="string", length=10, nullable=false)
+     * @ORM\Column(name="estudiante_fechanacimiento", type="date", nullable=false)
      */
     private $estudianteFechanacimiento;
 
@@ -131,56 +138,56 @@ class Estudiantes
      *
      * @ORM\Column(name="estudiante_conae", type="string", length=5, nullable=false)
      */
-    private $estudianteConae;
+    private $estudianteConae="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_etnia", type="string", length=20, nullable=false)
      */
-    private $estudianteEtnia;
+    private $estudianteEtnia="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_plantel", type="string", length=50, nullable=false)
      */
-    private $estudiantePlantel;
+    private $estudiantePlantel="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_correo", type="string", length=50, nullable=false)
      */
-    private $estudianteCorreo;
+    private $estudianteCorreo="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_carnet", type="string", length=2, nullable=false)
      */
-    private $estudianteCarnet;
+    private $estudianteCarnet="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_foto", type="string", length=100, nullable=false)
      */
-    private $estudianteFoto;
+    private $estudianteFoto="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_estado", type="string", length=15, nullable=false)
      */
-    private $estudianteEstado;
+    private $estudianteEstado="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="estudiante_numeroacta", type="string", length=3, nullable=false)
      */
-    private $estudianteNumeroacta;
+    private $estudianteNumeroacta="";
 
     /**
      * @var string
@@ -281,7 +288,7 @@ class Estudiantes
      *
      * @ORM\Column(name="representante", type="string", length=50, nullable=false)
      */
-    private $representanteNombre;
+    private $representanteNombre="";
 
     /**
      * @var string
@@ -307,24 +314,19 @@ class Estudiantes
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
+     * ORM\Column(name="username", type="string", length=255, nullable=false)
+     * @ArxisAssert\Username
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * ORM\Column(name="password", type="string", length=255, nullable=false)
      */
-    private $password;
+    private $password="";
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
-     */
-    private $salt;
-
+    
     /**
      * @var string
      *
@@ -337,14 +339,14 @@ class Estudiantes
      *
      * @ORM\Column(name="theme", type="string", length=255, nullable=false)
      */
-    private $theme;
+    private $theme="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="signature", type="string", length=255, nullable=false)
      */
-    private $signature;
+    private $signature="";
 
     /**
      * @var string
@@ -358,35 +360,35 @@ class Estudiantes
      *
      * @ORM\Column(name="created", type="integer", nullable=false)
      */
-    private $created;
+    private $created=0;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="access", type="integer", nullable=false)
      */
-    private $access;
+    private $access=0;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="lastlogin", type="integer", nullable=false)
      */
-    private $lastlogin;
+    private $lastlogin=0;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="lastactivity", type="integer", nullable=false)
      */
-    private $lastactivity;
+    private $lastactivity=0;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean", nullable=false)
      */
-    private $status;
+    private $status=true;
 
     /**
      * @var string
@@ -400,14 +402,14 @@ class Estudiantes
      *
      * @ORM\Column(name="language", type="string", length=12, nullable=false)
      */
-    private $language;
+    private $language="";
 
     /**
      * @var integer
      *
      * @ORM\Column(name="picture", type="integer", nullable=false)
      */
-    private $picture;
+    private $picture=0;
 
     /**
      * @var string
@@ -457,12 +459,18 @@ class Estudiantes
     private $codclub;
     
     /**
+     * @ORM\OneToMany(targetEntity="Pension", mappedBy="estudiante")
+     */
+    private $pensiones;
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
         //$this->codclub = new ArrayCollection();
         $this->matriculas = new ArrayCollection();
+        $this->pensiones = new ArrayCollection();
     }
 
 
@@ -1410,30 +1418,6 @@ class Estudiantes
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     *
-     * @return Estudiantes
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
     }
 
     /**

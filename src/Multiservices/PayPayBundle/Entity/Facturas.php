@@ -55,7 +55,7 @@ class Facturas
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="pago", type="datetime", nullable=false)
+     * @ORM\Column(name="pago", type="datetime", nullable=true)
      */
     private $pago;
 
@@ -133,6 +133,11 @@ class Facturas
      * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturaitems", mappedBy="idfactura", cascade={"persist"})
      */
     private $items;
+    
+     /**
+     * @ORM\OneToOne(targetEntity="MultiacademicoBundle\Entity\Pension", mappedBy="factura")
+     */
+    private $pension;
 
     /**
      * Constructor
@@ -547,5 +552,43 @@ class Facturas
     public function getItems()
     {
         return $this->items;
+    }
+    
+    public function calcularFactura() {
+        $sum=0;
+        $iva=12;
+        foreach ($this->items as $item)
+        {
+            //$item = new Facturaitems();
+            $sum+=($item->getPunitario()*$item->getCantidad());
+        }
+        $this->sub_total=$sum;
+        $this->iva_igv=$this->sub_total*($iva/100);
+        $this->total=$this->sub_total+$this->iva_igv;
+        return true;
+    }
+
+    /**
+     * Set pension
+     *
+     * @param \MultiacademicoBundle\Entity\Pension $pension
+     *
+     * @return Facturas
+     */
+    public function setPension(\MultiacademicoBundle\Entity\Pension $pension = null)
+    {
+        $this->pension = $pension;
+
+        return $this;
+    }
+
+    /**
+     * Get pension
+     *
+     * @return \MultiacademicoBundle\Entity\Pension
+     */
+    public function getPension()
+    {
+        return $this->pension;
     }
 }

@@ -556,7 +556,7 @@ class Facturas
     
     public function calcularFactura() {
         $sum=0;
-        $iva=0; //Por concepto de Educacion
+        $iva=0; //Por concepto de Educacion no se cobra iva
         foreach ($this->items as $item)
         {
             //$item = new Facturaitems();

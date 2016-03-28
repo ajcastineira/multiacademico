@@ -18,11 +18,11 @@ class PensionDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
-       /* $this->topActions->set(array(
+        $this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
             'end_html' => '<hr></div></div>',
             'actions' => array(
-                array(
+                /*array(
                     'route' => $this->router->generate('pension',['page'=>'new']),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
@@ -32,9 +32,21 @@ class PensionDatatable extends AbstractDatatableView
                         'class' => 'btn btn-primary',
                         'role' => 'button'
                     ),
+                ),*/
+                array(
+                    'route' => $this->router->generate('pensiones_download'),
+                    'label' => 'Exportar a Banco',
+                    'icon' => 'fa fa-bank',
+                    'attributes' => array(
+                        'rel' => 'tooltip',
+                        'title' => 'Descargar Archivo para Banco',
+                        'class' => 'btn btn-success',
+                        'target'=> '_blank',
+                        'role' => 'button'
+                    ),
                 )
             )
-        ));*/
+        ));
 
         $this->features->set(array(
             'auto_width' => true,

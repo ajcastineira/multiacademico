@@ -18,6 +18,9 @@ use Multiservices\PayPayBundle\Entity\Facturaitems;
 use Multiservices\PayPayBundle\Entity\Productos;
 use MultiacademicoBundle\Entity\Representates;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Multiservices\PayPayBundle\Bancos\Pichincha\FormatoEntrada;
+
 /**
  * Pensiones controller.
  *
@@ -29,11 +32,18 @@ use MultiacademicoBundle\Entity\Representates;
 class PensionesController extends Controller
 {
 
-    protected function downloadFile($contenido)
+    protected function downloadFile(array $pensiones)
     {
-        $string ="Id Factura : ".$contenido->getId();
-        $string1 =" - Estado: ".$contenido->getEstado();
-        $string2 =" - Fecha de Vencimiento : ".$contenido->getPago()->format('Y-d-m');
+        $string="";
+        foreach ($pensiones as $pension)
+        {    
+        $formato=new FormatoEntrada();    
+        $formato->llenarDesdeFactura($pension);
+        $string.=$formato->devolverString();
+        $string.="\n";
+        }
+       //// $string1 =" - Estado: ".$factura->getEstado();
+        //$string2 =" - Fecha de Vencimiento : ".$factura->getVencimiento()->format('Y-d-m');
 
         $path = $this->get('kernel')->getRootDir();
         $file = "\Resources\Files\banco.txt";
@@ -41,8 +51,8 @@ class PensionesController extends Controller
 
         $f = fopen($filename, "x+");
         fwrite($f, $string);
-        fwrite($f, $string1);
-        fwrite($f, $string2);
+      //  fwrite($f, $string1);
+      //  fwrite($f, $string2);
         fclose($f);
 
         $response = new Response();
@@ -57,13 +67,16 @@ class PensionesController extends Controller
         return $response;
     }
 
-    public function downloadAction($id){
-        return $this->downloadFile($this->facturatxt($id));
+    public function downloadAction(){
+        return $this->downloadFile($this->facturas());
     }
-
-    protected function facturatxt($id)
+    /**
+     * 
+     * @return array
+     */
+    protected function facturas()
     {
-        $product = $this->getDoctrine()->getRepository('PayPayBundle:Facturas')->findOneById($id);
-        return $product;
+        $facturas = $this->getDoctrine()->getManager()->getRepository('MultiacademicoBundle:Pension')->findAll();
+        return $facturas;
     }
 }

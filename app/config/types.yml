@@ -1,2 +1,2 @@
-#imports:
-    #- { resource: "@AppBundle/Resources/config/types.yml" }    
+imports:
+    - { resource: "@PayPayBundle/Resources/config/types.yml" }    

@@ -556,11 +556,12 @@ class Facturas
     
     public function calcularFactura() {
         $sum=0;
-        $iva=12;
+        $iva=0; //Por concepto de Educacion
         foreach ($this->items as $item)
         {
             //$item = new Facturaitems();
             $sum+=($item->getPunitario()*$item->getCantidad());
+            //$iva=$item->getIdproducto()->getImpuesto();
         }
         $this->sub_total=$sum;
         $this->iva_igv=$this->sub_total*($iva/100);

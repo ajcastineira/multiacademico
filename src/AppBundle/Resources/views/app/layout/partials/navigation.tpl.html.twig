@@ -55,7 +55,7 @@
         </a>
     </li>
     <!--/ End matriculas -->
-    {%if entidad.getEsParticular() and is_granted('ROLE_ADMIN')%}
+    {%if entidad.getEsParticular() and is_granted('ROLE_COLECTORA')%}
     <li class="sidebar-category">
         <span>Facturacion</span>
         <span class="pull-right"><i class="fa fa-money"></i></span>
@@ -65,12 +65,12 @@
       <li class="submenu">
         <a href="javascript:void(0);">
             <span class="icon"><i class="fa fa-globe"></i></span>
-            <span class="text">Pagos</span>
+            <span class="text">Pensiones Pagos</span>
             <span class="arrow"></span>
         </a>
         <ul>
+            <li><a data-ui-sref="multiacademico.pensiones.list" data-active-menu>Consultar Pensiones</a></li>
             <li><a data-ui-sref="app.paypay.pensiones.list" data-active-menu>Registro de pagos</a></li>
-            <li><a data-ui-sref="multiacademico.pensiones.list" data-active-menu>Consultar Pagos</a></li>
             <!--<li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
              <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
               <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>

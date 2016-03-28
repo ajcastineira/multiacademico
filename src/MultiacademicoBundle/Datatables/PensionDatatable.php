@@ -246,7 +246,7 @@ class PensionDatatable extends AbstractDatatableView
             /*->add('factura.sub_total', 'column', array(
                 'title' => 'Factura Sub_total',
             ))*/
-           /* ->add(null, 'action', array(
+            ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
@@ -263,7 +263,7 @@ class PensionDatatable extends AbstractDatatableView
                             'role' => 'button'
                         ),
                     ),
-                    array(
+                    /*array(
                         'route' => 'pension_edit',
                         'route_parameters' => array(
                             'page' => 'id'
@@ -276,9 +276,9 @@ class PensionDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                    )
+                    )*/
                 )
-            ))*/
+            ))
         ;
     }
     /**

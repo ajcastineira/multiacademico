@@ -6,9 +6,48 @@
     <table>
         <tbody>
             <tr>
-                <th>Info</th>
+                <th>Informacion</th>
                 <td>{{ pension.info }}</td>
             </tr>
+            <tr>
+                <th>Emitida</th>
+                <td>{{ pension.factura.emitido|date() }}</td>
+            </tr>
+            <tr>
+                <th>Estudiante</th>
+                <td>{{ pension.estudiante }}</td>
+            </tr>
+            <tr>
+                <th>Codigo Factura</th>
+                <td>{{ pension.factura.id }}</td>
+            </tr>
+            <tr>
+                <th>Factura Numero Legal</th>
+                <td>{{ pension.factura.legal }}</td>
+            </tr>
+            <tr>
+                <th>Representante</th>
+                <td>{{ pension.factura.idcliente }}</td>
+            </tr>
+            <tr>
+                <th>Total a Pagar</th>
+                
+                <td>${{ pension.factura.total }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ pension.factura.estado|readablehtml|raw }}</td>
+            </tr>
+            <tr>
+                <th>Vencimiento</th>
+                <td>{{ pension.factura.vencimiento|date() }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Pago</th>
+                
+                <td>{{ pension.factura.pago is null?'No ha sido Pagada':pension.factura.pago|date() }}</td>
+            </tr>
+            
         </tbody>
     </table>
 
@@ -16,9 +55,9 @@
         <li>
             <a href="{{ path('pension') }}">Regresar a la lista</a>
         </li>
-        <li>
-            <a href="{{ path('pension_edit', { 'page': pension.factura }) }}">Editar</a>
-        </li>
+       {# <li>
+            <a href="{{ path('pension_edit', { 'pension': pension.factura }) }}">Editar</a>
+        </li>#}
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Eliminar">

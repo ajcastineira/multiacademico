@@ -17,6 +17,17 @@ class Pension
 {
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * Serializer\Expose
+     * Serializer\Groups({"list","detail"})
+     */
+    private $id;
+    
+    /**
      * @var \MultiacademicoBundle\Entity\Estudiantes
      *
      * @ORM\ManyToOne(targetEntity="Estudiantes", inversedBy="pensiones")
@@ -33,7 +44,6 @@ class Pension
     /**
      * @var \Multiservices\PayPayBundle\Entity\Facturas
      *
-     * @ORM\Id
      * @ORM\OneToOne(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", inversedBy="pension")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
@@ -126,5 +136,15 @@ class Pension
     public function getInfo()
     {
         return $this->info;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

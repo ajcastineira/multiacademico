@@ -40,7 +40,7 @@ define([
         'app.forms',
         'app.paypay',
         'app.paypay.ingresos',
-       'app.paypay.pensiones',
+       
      //   'app.paypay.egresos',
         'multiacademico',
         'multiacademico.estudiantes',
@@ -56,6 +56,7 @@ define([
         'multiacademico.certificados',
        'multiacademico.informes',
         'multiacademico.materias',
+        'multiacademico.pensiones',
    //      'multiacademico.pagos',
        // 'multiacademico.periodo'
 

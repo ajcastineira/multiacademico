@@ -97,6 +97,7 @@ define([
      'multiacademico/reportes/malla/module',
      'multiacademico/certificados/module',
      'multiacademico/informes/module',
+     'multiacademico/pensiones/module',
    //  'multiacademico/pagos/module',
 
     // cases
@@ -119,7 +120,7 @@ define([
      // paypay
      'modules/paypay/module',
      'modules/paypay/ingresos/module',
-   'modules/paypay/pensiones/module',
+   
     // 'modules/paypay/egresos/module',
 
     // users

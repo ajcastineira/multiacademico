@@ -3,6 +3,8 @@
 namespace Multiservices\PayPayBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
+use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 
 /**
  * Facturas
@@ -74,9 +76,10 @@ class Facturas
     private $forma = '-------';
 
     /**
-     * @var string
+     * @var EstadoFacturaType
      *
-     * @ORM\Column(name="estado", type="string", length=10, nullable=false,options={"default":"No pagado"})
+     * @ORM\Column(name="estado", type="EstadoFacturaType", length=10, nullable=false,options={"default":"No pagado"})
+     * @DoctrineAssert\Enum(entity="Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType")     
      */
     private $estado = 'No pagado';
 

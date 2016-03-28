@@ -81,7 +81,7 @@ class Facturas
      * @ORM\Column(name="estado", type="EstadoFacturaType", length=10, nullable=false,options={"default":"No pagado"})
      * @DoctrineAssert\Enum(entity="Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType")     
      */
-    private $estado = 'No pagado';
+    private $estado = EstadoFacturaType::NOPAGADA;
 
     /**
      * @var integer

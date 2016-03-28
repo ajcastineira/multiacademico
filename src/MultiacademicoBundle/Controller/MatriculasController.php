@@ -213,7 +213,7 @@ class MatriculasController extends FOSRestController
         $pensionM=new Pension();
         $pensionM->setFactura($facturaDeMatricula);
             $pensionM->setEstudiante($matricula->getMatriculacodestudiante());
-            $pensionM->setInfo($productopension->getDescripcion());
+            $pensionM->setInfo("Matricula Ordinaria");
             $em->persist($pensionM);
         
         //generando facturas pendientes de pension

@@ -72,7 +72,7 @@ define(['angular',
                 
             })
             .state('multiacademico.pensiones.show', {
-                url: '/pension/{id:[0-9]{1,11}}',
+                url: '/pensiones/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
                             icon: 'flaticon-teach',
@@ -92,7 +92,7 @@ define(['angular',
                 }
             })
             .state('multiacademico.pensiones.new', {
-                url: '/pension/new',
+                url: '/pensiones/new',
                 params:{
                   submited:false,
                   formData:null

@@ -24,7 +24,7 @@ class Facturaitems
     /**
      * @var Facturas
      *
-     * @ORM\ManyToOne(targetEntity="Facturas")
+     * @ORM\ManyToOne(targetEntity="Facturas", inversedBy="items")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idfactura", referencedColumnName="id")
      * })

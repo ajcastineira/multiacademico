@@ -27,6 +27,10 @@ services:
         class: MultiacademicoBundle\Datatables\DistributivosDatatable
         tags:
             - { name: sg.datatable.view }        
+    multiacademico.pensiones:
+        class: MultiacademicoBundle\Datatables\PensionDatatable
+        tags:
+            - { name: sg.datatable.view }                
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:

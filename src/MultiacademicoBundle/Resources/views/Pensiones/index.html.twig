@@ -16,49 +16,14 @@
                     <div class="clearfix"></div>
                 </div><!-- /.panel-heading -->
                 <div class="panel-body ">
-
-                    <table class="table records_list">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Representante</th>
-                                <th>Mes</th>
-                                <th>Fecha de vencimiento</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for entity in entities %}
-                                {% if entity.idproducto.tipo == "Pension" %}
-                                <tr>
-                                    <td><a href="#">{{ entity.id }}</a></td>
-                                    <td>{{ entity.idfactura.idcliente }}</td>
-                                    <td>{{ entity.idproducto }}</td>
-                                    <td>{{ entity.idfactura.vencimiento.format("Y-m-d")}}</td>
-                                    <td>
-                                        <ul>
-                                            <li><a href="#">Ver</a></li>
-                                            <li><a href="#">Editar</a></li>
-                                            <li><a href="{{ path('pensiones_download', {'id': entity.idfactura.id}) }}" target="_blank">TXT Banco</a></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                {% endif%}
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    {{ datatable_render_html(datatable) }}
+                   
+                         
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <ul>
-            <li>
-                <a>
-                    Crear nueva entrada
-                </a>
-            </li>
-        </ul>
-    </div>
+    
 </div>
+{{ datatable_render_js(datatable) }}
 {% endblock %}

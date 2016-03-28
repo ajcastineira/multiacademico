@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pension</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Info</th>
+                <td>{{ pension.info }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pension') }}">Regresar a la lista</a>
+        </li>
+        <li>
+            <a href="{{ path('pension_edit', { 'page': pension.factura }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

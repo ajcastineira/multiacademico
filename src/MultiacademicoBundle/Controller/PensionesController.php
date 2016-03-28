@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
+//use FOS\RestBundle\Controller\FOSRestController;
+//use FOS\RestBundle\Controller\Annotations as Rest;
 use Multiservices\PayPayBundle\Entity\Facturas;
 use Multiservices\PayPayBundle\Entity\Facturaitems;
 use Multiservices\PayPayBundle\Entity\Productos;
@@ -18,39 +22,12 @@ use MultiacademicoBundle\Entity\Representates;
  * Pensiones controller.
  *
  * @Route("/pensiones")
- */
+
+ * @Security("has_role('ROLE_COLECTORA') or has_role('ROLE_ADMIN')")
+
+ *  */
 class PensionesController extends Controller
 {
-    /**
-     * Lists all Pensiones entities.
-     *
-     * @Route("", name="pensiones")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-       return $this->render('::baseangular.html.twig');
-    }
-
-    /**
-     * Lists all Pensiones entities.
-     *
-     * @Route("/api", name="pensiones_api", options={"expose":true})
-     * @Method("GET")
-     * @Template("MultiacademicoBundle:Pensiones:index.html.twig")
-     */
-    public function indexApiAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        // $entities = $em->getRepository('PayPayBundle:Productos')->findAll();
-        // $entities = $em->getRepository('PayPayBundle:Productos')->findByServicio('Pension');
-        // $entities = $em->getRepository('MultiacademicoBundle:Representantes')->findAll();
-        // $entities = $em->getRepository('PayPayBundle:Facturas')->findAll();
-        $entities = $em->getRepository('PayPayBundle:Facturaitems')->findByTipo('Pension');
-        return array(
-            'entities' => $entities,
-            );
-    }
 
     protected function downloadFile($contenido)
     {

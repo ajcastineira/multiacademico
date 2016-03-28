@@ -54,10 +54,13 @@ class EstudiantesDatatable extends AbstractDatatableView
                 'buttons' =>
                     array(
                         ['extend'=> 'copy',
-                         'text'=> 'Copiar'],
+                         'text'=> 'Copiar',
+                         'className'=>'btn-primary'],
                         'excel',
                         'pdf',
-                        'print'
+                        ['extend'=> 'print',
+                         'text'=> 'Imprimir',
+                         'className'=>'btn-primary'],
                         
                        /* array(
                             'text' => 'Reload',

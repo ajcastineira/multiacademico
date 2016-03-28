@@ -209,6 +209,12 @@ class MatriculasController extends FOSRestController
         //calculando factura
         $facturaDeMatricula->calcularFactura();
         $em->persist($facturaDeMatricula);
+        $em->flush();
+        $pensionM=new Pension();
+        $pensionM->setFactura($facturaDeMatricula);
+            $pensionM->setEstudiante($matricula->getMatriculacodestudiante());
+            $pensionM->setInfo($productopension->getDescripcion());
+            $em->persist($pensionM);
         
         //generando facturas pendientes de pension
         $diaDeVencimiento=5;// el 5 del siguiente mes

@@ -73,7 +73,7 @@ class PensionDatatable extends AbstractDatatableView
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
             'renderer' => '',
             'scroll_collapse' => false,
-            'search_delay' => 100,
+            'search_delay' => 500,
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
@@ -86,11 +86,11 @@ class PensionDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('factura.id', 'column', array(
                 'title' => 'Cod Factura',
-                'width'=>'5em'
+                'width'=>'4em'
             ))    
             ->add('info', 'column', array(
                 'title' => 'Info',
-                'width'=>'10em'
+                'width'=>'5em'
             ))
            /* ->add('estudiante.id', 'column', array(
                 'title' => 'Estudiante Id',
@@ -100,6 +100,7 @@ class PensionDatatable extends AbstractDatatableView
             ))*/
             ->add('estudiante.estudiante', 'column', array(
                 'title' => 'Estudiante ',
+                 'width'=>'7em',
             ))
         /*
             ->add('estudiante.madre', 'column', array(
@@ -198,24 +199,30 @@ class PensionDatatable extends AbstractDatatableView
 
             ->add('factura.idcliente.representante', 'column', array(
                 'title' => 'Representante',
+                 'width'=>'7em'
             ))
             ->add('factura.emitido', 'datetime', array(
                 'title' => 'Factura Emitido',
-                'date_format' => 'DD-MMM-YYYY H:mm:s'
+                'date_format' => 'DD-MMM-YYYY H:mm:s',
+                 'width'=>'5em',
             ))
             ->add('factura.estado', 'column', array(
                 'title' => 'Factura Estado',
+                 'width'=>'5em'
             ))
             ->add('factura.vencimiento', 'datetime', array(
                 'title' => 'Factura Vencimiento',
-                'date_format' => 'DD-MMM-YYYY H:mm:s'
+                'date_format' => 'DD-MMM-YYYY H:mm:s',
+                 'width'=>'5em',
             ))
             ->add('factura.pago', 'datetime', array(
                 'title' => 'Factura Pago',
-                'date_format' => 'DD-MMM-YYYY H:mm:s'
+                'date_format' => 'DD-MMM-YYYY H:mm:s',
+                 'width'=>'5em'
             ))
             ->add('factura.total', 'column', array(
                 'title' => 'Factura Total',
+                 'width'=>'4em'
             ))
             /*->add('factura.forma', 'column', array(
                 'title' => 'Factura Forma',

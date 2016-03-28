@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
+use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 
 /**
  * Class PensionDatatable
@@ -72,7 +73,7 @@ class PensionDatatable extends AbstractDatatableView
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
             'renderer' => '',
             'scroll_collapse' => false,
-            'search_delay' => 0,
+            'search_delay' => 100,
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
@@ -83,8 +84,13 @@ class PensionDatatable extends AbstractDatatableView
         ));
 
         $this->columnBuilder
+            ->add('factura.id', 'column', array(
+                'title' => 'Cod Factura',
+                'width'=>'5em'
+            ))    
             ->add('info', 'column', array(
                 'title' => 'Info',
+                'width'=>'10em'
             ))
            /* ->add('estudiante.id', 'column', array(
                 'title' => 'Estudiante Id',
@@ -189,16 +195,16 @@ class PensionDatatable extends AbstractDatatableView
             ->add('estudiante.mail', 'column', array(
                 'title' => 'Estudiante Mail',
             ))*/
-            ->add('factura.id', 'column', array(
-                'title' => 'Cod Factura',
-                'width'=>'5em'
-            ))
+
             ->add('factura.idcliente.representante', 'column', array(
                 'title' => 'Representante',
             ))
             ->add('factura.emitido', 'datetime', array(
                 'title' => 'Factura Emitido',
                 'date_format' => 'DD-MMM-YYYY H:mm:s'
+            ))
+            ->add('factura.estado', 'column', array(
+                'title' => 'Factura Estado',
             ))
             ->add('factura.vencimiento', 'datetime', array(
                 'title' => 'Factura Vencimiento',
@@ -214,9 +220,7 @@ class PensionDatatable extends AbstractDatatableView
             /*->add('factura.forma', 'column', array(
                 'title' => 'Factura Forma',
             ))*/
-            ->add('factura.estado', 'column', array(
-                'title' => 'Factura Estado',
-            ))
+         
             /*->add('factura.tipo', 'column', array(
                 'title' => 'Factura Tipo',
             ))*/
@@ -270,7 +274,22 @@ class PensionDatatable extends AbstractDatatableView
             ))*/
         ;
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $formatter = function($line){
+            //$sentence=<a href="javascript:Routing.generate('usuarios_show',{'id':".$line["id"]."\'});'>
+            //$line["nombre"]="<a href=\"clientes/".$line["id"]."\" >".$line["nombre"]."</a>";
+            $line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
+       
+            return $line;
+        };
 
+        return $formatter;
+     
+    }
     /**
      * {@inheritdoc}
      */

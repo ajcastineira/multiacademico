@@ -1,6 +1,0 @@
-#ruta para txtbanco
-pensiones_download:
-    path:      /pensiones/download/{id}
-    defaults:  { _controller: MultiacademicoBundle:Pensiones:download}
-    requirements:
-        id: \d+

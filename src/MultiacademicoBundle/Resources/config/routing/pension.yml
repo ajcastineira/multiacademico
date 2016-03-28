@@ -23,3 +23,7 @@ pension_edit:
     methods:  [GET, POST]
     options:
         expose: true
+#ruta para txtbanco
+pensiones_download:
+    path:      /pensiones/download
+    defaults:  { _controller: MultiacademicoBundle:Pensiones:download}        

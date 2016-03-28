@@ -35,7 +35,4 @@ estadisticas:
     prefix: api    
 multiacademico_pension:
     resource: "@MultiacademicoBundle/Resources/config/routing/pension.yml"    
-    #prefix:   /pension  
-multiacademico_pensiones:
-    resource: "@MultiacademicoBundle/Resources/config/routing/pensiones.yml"
-    #prefix:   /pensiones    
+    #prefix:   /pension    

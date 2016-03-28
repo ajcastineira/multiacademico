@@ -10849,7 +10849,7 @@ ul.days li span {
 .btn-primary {
   background-color: #00B1E1;
   border-color: #00B1E1;
-  color: white;
+  color: white!important;
 }
 /* line 585, ../../app/styles/core/_functions.scss */
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary[disabled], .btn-primary.disabled {

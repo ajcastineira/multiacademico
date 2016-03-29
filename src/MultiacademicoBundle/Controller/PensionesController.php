@@ -8,17 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 //use FOS\RestBundle\Controller\FOSRestController;
 //use FOS\RestBundle\Controller\Annotations as Rest;
-use Multiservices\PayPayBundle\Entity\Facturas;
-use Multiservices\PayPayBundle\Entity\Facturaitems;
-use Multiservices\PayPayBundle\Entity\Productos;
-use MultiacademicoBundle\Entity\Representates;
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Multiservices\PayPayBundle\Bancos\Pichincha\FormatoEntrada;
 
 /**
@@ -40,10 +33,8 @@ class PensionesController extends Controller
         $formato=new FormatoEntrada();    
         $formato->llenarDesdeFactura($pension);
         $string.=$formato->devolverString();
-        $string.="\n";
+        $string.="\r\n";
         }
-       //// $string1 =" - Estado: ".$factura->getEstado();
-        //$string2 =" - Fecha de Vencimiento : ".$factura->getVencimiento()->format('Y-d-m');
 
         $path = $this->get('kernel')->getRootDir();
         $file = "\Resources\Files\banco.txt";

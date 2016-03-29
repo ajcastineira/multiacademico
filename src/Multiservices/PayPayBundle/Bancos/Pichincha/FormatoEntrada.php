@@ -184,14 +184,16 @@ class FormatoEntrada {
         $this->setContrapartida($pension->getEstudiante()->getId());
         $this->setMoneda("USD"); //USD=dolar
         $this->setValor(str_pad($pension->getFactura()->getTotal()*100, 13, "0", STR_PAD_LEFT));
-        $this->setFormaDeCobroPago("CTA");
-        $this->setTipoDeCuenta('CTA');
-        $this->setNumeroDeCuenta("00056");
+        $this->setFormaDeCobroPago("REC");
+        $this->setTipoDeCuenta('');
+        $this->setNumeroDeCuenta('');
         $this->setReferencia(substr($pension->getInfo(),0,40));
-        $this->setTipoIdCliente('C');
-        $this->setNumeroIdCliente($pension->getFactura()->getIdcliente()->getCedula());
+        $this->setTipoIdCliente('N');
+        //$this->setNumeroIdCliente($pension->getFactura()->getIdcliente()->getCedula());
+        $this->setNumeroIdCliente('');
         $this->setNombreCliente($pension->getFactura()->getIdcliente()->getRepresentante());
-        $this->baseImponible=$this->getValor();
+        //$this->baseImponible=$this->getValor();
+        $this->baseImponible='';
         return true;
     }
     

@@ -168,8 +168,8 @@ define(['angular',
                 url: '/pension/{id:[0-9]{1,11}}/pay',
                 params:{
                     id:undefined,
-                    submited:false,
-                    formData:null
+                    //submited:false,
+                    //formData:null
                 },
                 data: {
                         pageHeader: {
@@ -189,24 +189,15 @@ define(['angular',
                                               method  : 'POST',
                                               async:   true,
                                               url     : Routing.generate(rutas.pay,{'pension':$stateParams.id,'_format':'json'}),
-                                             // data    : params.formData,  // pass in data as strings
-                                             // transformRequest: angular.identity,
-                                             // headers : {'Content-Type': undefined }  // set the headers so angular passing info as form data (not request payload)
                                              }).then(function(response) { 
-                                                // console.log(response);
+
                                                     if(response.status===200){
-                                                       
-                                                      
                                                       $state.go(rutas.state_updated,{'id':$stateParams.id,'_format':'html'});
-                                                      //return response.data;  
                                                     }else if(response.status===201)
                                                     {   
                                                         $state.go(rutas.state_updated,{'id':$stateParams.id,'_format':'html'});
-                                                        //return "<div>se ha actualizado correctamente</div>";
                                                     }
                                                   });
-                                    //return FormsCrud.editWithVars($stateParams,rutas,{'pension':$stateParams.id,'_format':'html'});
-                                  
                              },
                         //controller: 'FormsCrudCtrl',
                         resolve: {

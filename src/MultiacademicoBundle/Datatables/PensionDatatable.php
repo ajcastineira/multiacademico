@@ -47,6 +47,12 @@ class PensionDatatable extends AbstractDatatableView
                 )
             )
         ));
+        
+        /*$this->callbacks->set(array(
+            'draw_callback' => "function( settings ) {
+                                    alert( 'DataTables has redrawn the table.' );
+                                }"
+        ));*/
 
         $this->features->set(array(
             'auto_width' => true,
@@ -305,13 +311,10 @@ class PensionDatatable extends AbstractDatatableView
                             'title' => 'Pagar Pension',
                             'class' => 'btn btn-warning btn-xs',
                             'role' => 'button',
-                            //'onclik'=>'javascript(0);',
-                            //'data-toggle'=>'modal',
-                            //'data-target'=>".bs-example-modal-sm",
-                            //'target'=>'_blank'
+                       //     'onclick'=>'event.preventDefault();',
                         ),
                         'confirm'=>true,
-                        'confirm_message'=>'¿Esta seguro de realizar esta accion?'
+                        'confirm_message'=>'¿Esta seguro de realizar esta acción?'
                     ),
                     /*array(
                         'route' => 'pension_edit',

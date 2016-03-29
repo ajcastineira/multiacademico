@@ -1,6 +1,7 @@
 define(['angular',
     'angular-couch-potato',
-    'angular-ui-router'
+    'angular-ui-router',
+    'bootbox'
 ], function (ng, couchPotato) {
 
     "use strict";
@@ -14,6 +15,7 @@ define(['angular',
         var rutas={create:'new_pension',
                     new:'new_pension',
                     edit:'edit_pension',
+                    pay:'pay_pension',
                     update:'edit_pension',
                     show:'get_pension',
                     list:'index_pension',
@@ -151,6 +153,58 @@ define(['angular',
                             deps: $couchPotatoProvider.resolveDependencies([
                                 'modules/forms/directives/input/smartSelect2',
                                 'modules/forms/controllers/FormsCrudCtrl'
+                            ])
+                        }
+                    }
+                }
+            })
+            .state('multiacademico.pensiones.pay', {
+                url: '/pension/{id:[0-9]{1,11}}/pay',
+                params:{
+                    id:undefined,
+                    submited:false,
+                    formData:null
+                },
+                data: {
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Pensiones',
+                            subtitle: 'Mostrar'
+                        },
+                        breadcrumbs: [
+                            {title: 'Pensiones'},{title: 'mostrar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                         templateProvider:function($stateParams,$http){
+                                        //return "HOla mundo";
+                                        return $http({
+                                              method  : 'POST',
+                                              async:   true,
+                                              url     : Routing.generate(rutas.pay,{'pension':$stateParams.id,'_format':'html'}),
+                                             // data    : params.formData,  // pass in data as strings
+                                             // transformRequest: angular.identity,
+                                             // headers : {'Content-Type': undefined }  // set the headers so angular passing info as form data (not request payload)
+                                             }).then(function(response) { 
+                                                // console.log(response);
+                                                    if(response.status===200){
+                                                       
+                                                      return response.data;  
+                                                    }else if(response.status===201)
+                                                    {   
+                                                        //$state.go(rutas.state_updated,{id:response.data.id});
+                                                        return "<div>se ha actualizado correctamente</div>";
+                                                    }
+                                                  });
+                                    //return FormsCrud.editWithVars($stateParams,rutas,{'pension':$stateParams.id,'_format':'html'});
+                                  
+                             },
+                        //controller: 'FormsCrudCtrl',
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/directives/input/smartSelect2',
+                                //'modules/forms/controllers/FormsCrudCtrl'
                             ])
                         }
                     }

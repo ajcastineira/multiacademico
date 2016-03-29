@@ -126,21 +126,10 @@ class PensionController extends FOSRestController
      * Change Pension entity to Payed Estatus
      *
      * @Rest\Post() 
-     * Rest\Get("/pension/{pension}/edit", name="edit_pension") 
+     * @Rest\View(statusCode=200) 
      */
     public function payAction(Request $request, Pension $pension)
     {
-        $deleteForm = $this->createDeleteForm($pension);
-        /*$editForm = $this->createForm('MultiacademicoBundle\Form\PensionType', $pension);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($pension);
-            $em->flush();
-
-            return $this->redirectToRoute('pension', array('page' => $pension->getId().'/edit'));
-        }*/
          if ($pension->getFactura()->getEstado()!=EstadoFacturaType::PAGADA)
          {
             $pension->getFactura()->setEstado(EstadoFacturaType::PAGADA);
@@ -148,12 +137,9 @@ class PensionController extends FOSRestController
          }
          $em = $this->getDoctrine()->getManager();
          $em->persist($pension);
-            $em->flush();
+         $em->flush();
 
-        return $this->render('MultiacademicoBundle:Pension:show.html.twig', array(
-            'pension' => $pension,
-            'delete_form' => $deleteForm->createView(),
-        ));
+         return true;
     }
 
     /**

@@ -1,7 +1,6 @@
 define(['angular',
     'angular-couch-potato',
-    'angular-ui-router',
-    'bootbox'
+    'angular-ui-router'
 ], function (ng, couchPotato) {
 
     "use strict";
@@ -63,6 +62,13 @@ define(['angular',
                  views: {
                     "content@multiacademico": {
                         templateUrl: Routing.generate(rutas.list,{'_format':'html'}),
+                        /*controller: function ($scope)
+                                    {
+                                        $scope.Pagar=function(e){
+                                            e.preventDefault();
+                                            alert("Hola");
+                                        }
+                                    },*/
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                // 'modules/graphs/directives/inline/sparklineContainer',    

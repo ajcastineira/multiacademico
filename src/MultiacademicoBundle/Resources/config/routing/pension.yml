@@ -26,7 +26,7 @@ pension_edit:
 pension_pay:
     path:     /pension/{page}/pay
     defaults:  { _controller: AppBundle:Default:inicio, page: index }
-    methods:  [GET, POST]
+    methods:  [PUT]
     options:
         expose: true        
 #ruta para txtbanco

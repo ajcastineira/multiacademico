@@ -249,9 +249,9 @@ fos_user:
             type: app_user_registration
     group:
         group_class: Multiservices\ArxisBundle\Entity\Grupo
-#sensio_framework_extra:
-#    view:
-#        annotations: false
+sensio_framework_extra:
+    view:
+        annotations: false
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
@@ -263,9 +263,3 @@ fos_rest:
         serialize_null:       false
     serializer:
         serialize_null:       false
-
-#pcimagenca_chat:
-    # refresh interval in milliseconds
- #   update_interval: 5000
-    # messages to be shown in chat
-  #  number_of_messages: 10

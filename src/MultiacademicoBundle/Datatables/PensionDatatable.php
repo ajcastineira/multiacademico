@@ -293,6 +293,26 @@ class PensionDatatable extends AbstractDatatableView
                             'role' => 'button'
                         ),
                     ),
+                    array(
+                        'route' => 'pension_pay',
+                        'route_parameters' => array(
+                            'page' => 'id'
+                        ),
+                        'label' => 'Pagar',
+                        'icon' => 'fa fa-money',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Pagar Pension',
+                            'class' => 'btn btn-warning btn-xs',
+                            'role' => 'button',
+                            //'onclik'=>'javascript(0);',
+                            //'data-toggle'=>'modal',
+                            //'data-target'=>".bs-example-modal-sm",
+                            //'target'=>'_blank'
+                        ),
+                        'confirm'=>true,
+                        'confirm_message'=>'¿Esta seguro de realizar esta accion?'
+                    ),
                     /*array(
                         'route' => 'pension_edit',
                         'route_parameters' => array(

@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use MultiacademicoBundle\Entity\Pension;
 use MultiacademicoBundle\Form\PensionType;
+use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 
 /**
  * Pension controller.
@@ -117,6 +118,40 @@ class PensionController extends FOSRestController
         return $this->render('MultiacademicoBundle:Pension:edit.html.twig', array(
             'pension' => $pension,
             'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    /**
+     * Change Pension entity to Payed Estatus
+     *
+     * @Rest\Post() 
+     * Rest\Get("/pension/{pension}/edit", name="edit_pension") 
+     */
+    public function payAction(Request $request, Pension $pension)
+    {
+        $deleteForm = $this->createDeleteForm($pension);
+        /*$editForm = $this->createForm('MultiacademicoBundle\Form\PensionType', $pension);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($pension);
+            $em->flush();
+
+            return $this->redirectToRoute('pension', array('page' => $pension->getId().'/edit'));
+        }*/
+         if ($pension->getFactura()->getEstado()!=EstadoFacturaType::PAGADA)
+         {
+            $pension->getFactura()->setEstado(EstadoFacturaType::PAGADA);
+            $pension->getFactura()->setPago(new \DateTime());
+         }
+         $em = $this->getDoctrine()->getManager();
+         $em->persist($pension);
+            $em->flush();
+
+        return $this->render('MultiacademicoBundle:Pension:show.html.twig', array(
+            'pension' => $pension,
             'delete_form' => $deleteForm->createView(),
         ));
     }

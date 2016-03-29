@@ -183,12 +183,12 @@ define(['angular',
                     },
                 views: {
                     "content@multiacademico": {
-                         templateProvider:function($stateParams,$http){
+                         templateProvider:function($stateParams,$state,$http){
                                         //return "HOla mundo";
                                         return $http({
                                               method  : 'POST',
                                               async:   true,
-                                              url     : Routing.generate(rutas.pay,{'pension':$stateParams.id,'_format':'html'}),
+                                              url     : Routing.generate(rutas.pay,{'pension':$stateParams.id,'_format':'json'}),
                                              // data    : params.formData,  // pass in data as strings
                                              // transformRequest: angular.identity,
                                              // headers : {'Content-Type': undefined }  // set the headers so angular passing info as form data (not request payload)
@@ -196,11 +196,13 @@ define(['angular',
                                                 // console.log(response);
                                                     if(response.status===200){
                                                        
-                                                      return response.data;  
+                                                      
+                                                      $state.go(rutas.state_updated,{'id':$stateParams.id,'_format':'html'});
+                                                      //return response.data;  
                                                     }else if(response.status===201)
                                                     {   
-                                                        //$state.go(rutas.state_updated,{id:response.data.id});
-                                                        return "<div>se ha actualizado correctamente</div>";
+                                                        $state.go(rutas.state_updated,{'id':$stateParams.id,'_format':'html'});
+                                                        //return "<div>se ha actualizado correctamente</div>";
                                                     }
                                                   });
                                     //return FormsCrud.editWithVars($stateParams,rutas,{'pension':$stateParams.id,'_format':'html'});

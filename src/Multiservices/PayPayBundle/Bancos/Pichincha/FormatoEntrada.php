@@ -177,7 +177,7 @@ class FormatoEntrada {
         $this->nombreCliente = $nombreCliente;
         return $this;
     }
-
+    //llenado para recaudacion
     public function llenarDesdeFactura(Pension $pension) {
         
         $this->setCodigoorientacion("CO"); // CO=Cobros PA=Pagos

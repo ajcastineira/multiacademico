@@ -225,6 +225,7 @@ class Matriculas
     
     public function indexCalificaciones()
     {
+        $claves=[];
         foreach ($this->getCalificaciones() as $calificacionmateria)
         {
             $claves[]=$calificacionmateria->getCalificacioncodmateria()->getId();

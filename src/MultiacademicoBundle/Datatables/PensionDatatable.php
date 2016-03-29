@@ -68,7 +68,7 @@ class PensionDatatable extends AbstractDatatableView
             'searching' => true,
             'server_side' => true,
             'state_save' => false,
-            'delay' => 0,
+            'delay' => 500,
             'extensions' => array(
                 'buttons' =>
                     array(

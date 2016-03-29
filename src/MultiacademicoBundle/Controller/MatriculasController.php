@@ -90,7 +90,11 @@ class MatriculasController extends FOSRestController
             $matricula->setMatriculausuario($user);
             $matricula->setAula($aula);
             $em->persist($matricula);
-            $this->generarFacturas($matricula);
+            $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+            if ($entidad->getEsParticular())
+            {
+                $this->generarFacturas($matricula);
+            }
             $em->flush();
 
             return $this->redirectToRoute('get_matricula', array('matricula' => $matricula->getId()));

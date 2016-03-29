@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use MultiacademicoBundle\Entity\Aula;
+use JMS\Serializer\SerializationContext;
 
 /**
  * Reportes controller.
@@ -29,7 +30,7 @@ class AulasController extends FOSRestController
      * Lists all Distributivos entities.
      *
      * @Method("GET")
-     * @Rest\View(serializerGroups={"list"})
+     * Rest\View(serializerGroups={"list"})
      */
     public function cgetAllAction(Request $request)
     {
@@ -43,19 +44,25 @@ class AulasController extends FOSRestController
         }else
         {
           $aulas=$em->getRepository('MultiacademicoBundle:Aula')->misAulasByUser($user);  
-        }    
-
-        return array(
-            'aulas' => $aulas,
-           
-        );
+        }
+         $context=new SerializationContext();
+         $context->setGroups("list");
+         $view = $this->view($aulas, 200)
+            ->setTemplate("MultiacademicoBundle:Aulas:cgetAll.html.twig")
+            ->setTemplateVar('aulas')
+            ->setTemplateData($aulas)
+            ->setSerializationContext($context);
+         
+                 
+        return $this->handleView($view);
+        //return $templateData;
     }
     
     
     /**
      * Lists aula.
      * @Rest\Get("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
-     * @Rest\View(serializerGroups={"detail"})
+     * Rest\View(serializerGroups={"detail"})
      */
     public function getAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {
@@ -75,12 +82,22 @@ class AulasController extends FOSRestController
             throw $this->createNotFoundException('Unable to find Aula.');
         }
        $deleteForm = $this->createDeleteForm($aula);
-
-        return array(
+       $context=new SerializationContext();
+        $context->setGroups("detail");
+         $templateData= array(
             'aula' => $aula,
             'delete_form' => $deleteForm->createView(),
            
         );
+         $view = $this->view($aula, 200)
+            ->setTemplate("MultiacademicoBundle:Aulas:get.html.twig")
+            ->setTemplateVar('aula')
+            ->setTemplateData($templateData)
+            ->setSerializationContext($context);
+         
+                 
+        return $this->handleView($view);
+        
     }
     
     

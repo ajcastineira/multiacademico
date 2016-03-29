@@ -12,9 +12,9 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 class EstadoFacturaType  extends AbstractEnumType
 {
     const INDEFINIDO   = null;
-    const PAGADA   = 'ACTIVO';
-    const NOPAGADA = 'No Pagado';
-    const VENCIDA ='Vencida';
+    const PAGADA   = 'pagado';
+    const NOPAGADA = 'No pagado';
+    const VENCIDA ='vencido';
     
     
 

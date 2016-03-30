@@ -57,7 +57,7 @@ define([
                                  return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
-                                             return response.data.aulas;
+                                             return response.data;
                                          });
                                          }
                                      }
@@ -126,7 +126,7 @@ define([
                                  return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
-                                             return response.data.aulas;
+                                             return response.data;
                                          });
                                          }
                                      }

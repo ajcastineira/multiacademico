@@ -56,7 +56,7 @@ define([
                                  return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
-                                             return response.data.aulas;
+                                             return response.data;
                                          });
                                          }
                                      }
@@ -93,7 +93,7 @@ define([
                                  return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
-                                             return response.data.aula;
+                                             return response.data;
                                          });
                                          }
                                      }   

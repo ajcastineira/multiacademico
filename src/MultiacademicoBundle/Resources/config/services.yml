@@ -23,6 +23,10 @@ services:
         class: MultiacademicoBundle\Datatables\MatriculasDatatable
         tags:
             - { name: sg.datatable.view }
+    multiacademico.aulas:
+        class: MultiacademicoBundle\Datatables\AulaDatatable
+        tags:
+            - { name: sg.datatable.view }        
     multiacademico.distributivos:
         class: MultiacademicoBundle\Datatables\DistributivosDatatable
         tags:

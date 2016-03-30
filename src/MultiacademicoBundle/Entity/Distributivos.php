@@ -125,11 +125,7 @@ class Distributivos
      *
      * @ORM\ManyToOne(targetEntity="Aula", inversedBy="distributivos")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="distributivocodperiodo", referencedColumnName="codperiodo"),
-     *   @ORM\JoinColumn(name="distributivocodcurso", referencedColumnName="codcurso"),
-     *   @ORM\JoinColumn(name="distributivocodespecializacion", referencedColumnName="codespecializacion"),
-     *   @ORM\JoinColumn(name="distributivoparalelo", referencedColumnName="paralelo"),
-     *   @ORM\JoinColumn(name="distributivoseccion", referencedColumnName="seccion")
+     *   @ORM\JoinColumn(name="aula_id", referencedColumnName="id", nullable=false)
      * })
      */
     private $aula;

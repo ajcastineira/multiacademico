@@ -184,11 +184,7 @@ class Matriculas
      *
      * @ORM\ManyToOne(targetEntity="Aula", inversedBy="matriculados")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="matriculacodperiodo", referencedColumnName="codperiodo"),
-     *   @ORM\JoinColumn(name="matriculacodcurso", referencedColumnName="codcurso"),
-     *   @ORM\JoinColumn(name="matriculacodespecializacion", referencedColumnName="codespecializacion"),
-     *   @ORM\JoinColumn(name="matriculaparalelo", referencedColumnName="paralelo"),
-     *   @ORM\JoinColumn(name="matriculaseccion", referencedColumnName="seccion")
+     *   @ORM\JoinColumn(name="aula_id", referencedColumnName="id", nullable=false)
      * })
      * 
      * 

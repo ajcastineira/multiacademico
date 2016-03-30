@@ -20,10 +20,18 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Aula
 {
     
-  
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
     /**
      * @var \Cursos
-     * @ORM\Id
+     * 
      * @ORM\ManyToOne(targetEntity="Cursos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codcurso", referencedColumnName="id", nullable=false)
@@ -36,7 +44,7 @@ class Aula
 
     /**
      * @var \Especializaciones
-     * @ORM\Id
+     * 
      * @ORM\ManyToOne(targetEntity="Especializaciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codespecializacion", referencedColumnName="id", nullable=false)
@@ -49,7 +57,7 @@ class Aula
     
     /**
      * @var string
-     * @ORM\Id
+     * 
      * @ORM\Column(name="paralelo", type="string", length=1, nullable=false)
      * @Serializer\Expose
      * @Serializer\Groups({"list","detail"})
@@ -58,7 +66,7 @@ class Aula
 
     /**
      * @var string
-     * @ORM\Id
+     * 
      * @ORM\Column(name="seccion", type="string", length=20, nullable=false)
      * @Serializer\Expose
      * @Serializer\Groups({"list","detail"})
@@ -67,7 +75,7 @@ class Aula
     
       /**
      * @var \Periodos
-     * @ORM\Id
+     * 
      * @ORM\ManyToOne(targetEntity="Periodos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codperiodo", referencedColumnName="id", nullable=false)
@@ -130,7 +138,17 @@ class Aula
         $this->matriculados = new \Doctrine\Common\Collections\ArrayCollection();
         $this->distributivos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     /**
      * Set paralelo
      *

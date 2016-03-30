@@ -11,7 +11,20 @@ use Doctrine\ORM\EntityRepository;
 class AulaRepository extends EntityRepository
 {
     
-   public function misAulas($docente)
+    public function findByDatos($curso,$especializacion,$paralelo,$seccion,$periodo)
+    {
+        $aula=$this->getEntityManager()->getRepository('MultiacademicoBundle:Aula')->findOneBy(
+                                                                    array(
+                                                                          'curso'=>$curso,
+                                                                          'especializacion'=>$especializacion,
+                                                                          'paralelo'=>$paralelo,
+                                                                          'seccion'=>$seccion,
+                                                                          'periodo'=>$periodo
+                                                                           )
+                                                                    );
+        return $aula;
+    }
+    public function misAulas($docente)
     {
         return $this->getEntityManager()
             ->createQuery('SELECT a'

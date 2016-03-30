@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -45,12 +46,21 @@ class AulasController extends FOSRestController
         {
           $aulas=$em->getRepository('MultiacademicoBundle:Aula')->misAulasByUser($user);  
         }
+        
+        $aulasDatatable = $this->get("multiacademico.aulas");
+        $aulasDatatable->buildDatatable();
+        
          $context=new SerializationContext();
          $context->setGroups("list");
+         $templateData= array(
+            'aulas' => $aulas,
+            'datatable' => $aulasDatatable,
+           
+        );
          $view = $this->view($aulas, 200)
             ->setTemplate("MultiacademicoBundle:Aulas:cgetAll.html.twig")
             ->setTemplateVar('aulas')
-            ->setTemplateData($aulas)
+            ->setTemplateData($templateData)
             ->setSerializationContext($context);
          
                  
@@ -58,26 +68,39 @@ class AulasController extends FOSRestController
         //return $templateData;
     }
     
+    /**
+     * Get results estudiante entities.
+     *
+     * @Route("/results", name="aula_results")
+     *
+     * @return Response
+     */
+    
+    public function aulaResultsAction()
+    {
+        /**
+         * @var \Sg\DatatablesBundle\Datatable\Data\DatatableData $datatable
+         */
+        $datatable = $this->get('multiacademico.aulas');
+         $datatable->buildDatatable();
+         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
+    }
     
     /**
      * Lists aula.
      * @Rest\Get("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
+     * @ParamConverter("aula", class="MultiacademicoBundle:Aula", options={
+     *    "repository_method" = "findByDatos",
+     *    "mapping": {"curso": "curso","especializacion":"especializacion","paralelo":"paralelo", "seccion": "seccion","periodo": "periodo"},
+     *    "map_method_signature" = true
+     * })
      * Rest\View(serializerGroups={"detail"})
      */
-    public function getAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
+    public function getAction(Request $request,Aula $aula)
     {
         
-        $em = $this->getDoctrine()->getManager();
-
-        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
-                                                                    array(
-                                                                          'curso'=>$curso,
-                                                                          'especializacion'=>$especializacion,
-                                                                          'paralelo'=>$paralelo,
-                                                                          'seccion'=>$seccion,
-                                                                          'periodo'=>$periodo
-                                                                           )
-                                                                    );
         if (!$aula) {
             throw $this->createNotFoundException('Unable to find Aula.');
         }
@@ -140,6 +163,11 @@ class AulasController extends FOSRestController
      * Displays a form to edit an existing Aula entity.
      * @Rest\Post("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/edit") 
      * @Rest\Get("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/edit", name="edit_aula") 
+     * @ParamConverter("aula", class="MultiacademicoBundle:Aula", options={
+     *    "repository_method" = "findByDatos",
+     *    "mapping": {"curso": "curso","especializacion":"especializacion","paralelo":"paralelo", "seccion": "seccion","periodo": "periodo"},
+     *    "map_method_signature" = true
+     * })
      */
     public function editAction(Request $request, Aula $aula)
     {
@@ -173,6 +201,11 @@ class AulasController extends FOSRestController
      * Deletes a Aula entity.
      *
      * @Rest\Delete("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
+     * @ParamConverter("aula", class="MultiacademicoBundle:Aula", options={
+     *    "repository_method" = "findByDatos",
+     *    "mapping": {"curso": "curso","especializacion":"especializacion","paralelo":"paralelo", "seccion": "seccion","periodo": "periodo"},
+     *    "map_method_signature" = true
+     * })
      */
     public function deleteAction(Request $request, Aula $aula)
     {

@@ -413,7 +413,10 @@ class Aula
      */
     public function getAulaName()
     {
-        return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion;
+        if ($this->alias!="")
+        {return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion." \"".$this->alias."\"";}
+        else
+        {return $this->curso." ".$this->paralelo." ".$this->especializacion." ".$this->seccion;}
     }
     /**
      * @Serializer\VirtualProperty

@@ -131,8 +131,12 @@
         <table border=1 width='100%' cellPadding=1 cellSpacing=0 bgcolor=FFFFFF style='text-align:center'>
              <tr class='comportamiento'>
                  <td width='300'>EVALUACION DEL COMPORTAMIENTO</td>
+                 {%if matricula.comportamiento is not null%}
                  <td width='80' style='text-align:center'>{{matricula.comportamiento.getComportamientoAnual()}}</td>
                  <td>{{matricula.comportamiento.getCualidadComportamiento(matricula.comportamiento.getComportamientoAnual())}}</td>
+                 {%else%}
+                 <td colspan="2" style='text-align:center'>EL TUTOR NO HA REGISTRADO EL COMPORTAMIENTO DE ESTE ALUMNO</td>    
+                 {%endif%}
              </tr>
              {%if (matricula.matriculacodcurso.tipo=='EB' or matricula.matriculacodcurso.tipo=='EBI' or matricula.matriculacodcurso.tipo=='EBS') %}
              

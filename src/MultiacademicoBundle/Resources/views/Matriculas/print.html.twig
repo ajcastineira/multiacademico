@@ -1,0 +1,65 @@
+{% block body -%}
+<div class="modal-header noprint">
+	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
+		&times;
+	</button>
+        <h4 class="modal-title" id="myModalLabel">
+        <img src="{{asset('escudo.png')}}" height="100" alt="Logotipo" />
+         Impresión - Vista Previa
+        </h4>
+        <div class="text-align-right" style="text-align: right!important;">
+        <a id="imprimirmodal" class="btn btn-success" onclick="window.print();">Imprimir</a>
+        </div>
+</div>
+
+<div id="remoteModalContent" class="modal-body ">
+    
+    <div>
+        <br/><br/>            
+        <center><img src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> </center>
+             <h1 style="text-align:center">
+                 Matriculas
+             </h1>
+          <br/><br/><br/>
+    </div>
+    
+    
+    
+       {#<table border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF" style="border-collapse: collapse;">
+        <thead style="background-color:#04d868">
+            <tr>
+                <th style="padding: 5px;text-align:center;">Id</th>
+                <th style="padding: 5px;text-align:center;">Fecha</th>
+                <th style="padding: 5px;text-align:center;">Ganado</th>
+                <th style="padding: 5px;text-align:center;">Accion Tipo</th>
+                <th style="padding: 5px;text-align:center;">Detalle Medico</th>
+                <th style="padding: 5px;text-align:center;">Observacion</th>
+                <th style="padding: 5px;text-align:center;">Veterinario</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="padding: 5px">{{ entity.id }}</td>
+                <td style="padding: 5px">{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td style="padding: 5px">{{ entity.ganadoid }}</td>
+                <td style="padding: 5px">{{ entity.accionTipo }}</td>
+                <td style="padding: 5px">{{ entity.detalleMedico }}</td>
+                <td style="padding: 5px">{{ entity.observacion }}</td>
+                <td style="padding: 5px">{{ entity.veterinario }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>#}
+        <br/><br/><br/><br/><br/>
+</div>                          
+    <div class="modal-footer noprint">
+	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
+		Cancelar
+	</button>
+    <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print()">Imprimir</a>
+</div>
+<!--area imprimible test -->
+    <div class="printable" />
+    <!-- fin area imprimible test -->
+{% endblock %}

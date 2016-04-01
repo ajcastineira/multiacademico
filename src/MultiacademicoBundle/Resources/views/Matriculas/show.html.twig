@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Matriculas</h1>
+   <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/imprimir.css')}}" />
+    <h1 class="noprint">Matriculas</h1>
 
-    <table>
+    <table class="noprint">
         <tbody>
             <tr>
                 <th>Codigo de Matricula</th>
@@ -58,16 +60,19 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('matriculas') }}">Regresar a la lista</a>
+    <ul class="noprint">
+        <li ng-controller="PrintCtrl">
+             <a data-ng-click="openModal('print_matricula',{'matricula':{{matricula.id}},'_format':'html'})" type="button" class="btn btn-app btn-primary "><i class="fa fa-print bigger-160"></i> Imprimir</a>
         </li>
         <li>
-            <a href="{{ path('matriculas', { 'page': matricula.id~'/edit' }) }}">Editar</a>
+            <a class="btn btn-app btn-default " href="{{ path('matriculas') }}">Regresar a la lista</a>
+        </li>
+        <li>
+            <a class="btn btn-app btn-warning " href="{{ path('matriculas', { 'page': matricula.id~'/edit' }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-app btn-danger " type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -87,6 +87,13 @@ define(['angular',
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
                             return Routing.generate(rutas.show,{'matricula':$stateParams.id,'_format':'html'});
+                        },
+                        //controller: 'PrintCtrl',
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                //'modules/forms/directives/input/smartSelect2',
+                                'modules/forms/controllers/PrintCtrl'//,
+                            ])
                         }
                     }
                 }

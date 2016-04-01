@@ -64,7 +64,7 @@ class CertificadosController extends Controller
             throw $this->createNotFoundException('La secretaria no esta configurada.');
         }
         
-        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+        $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
                                                                           'curso'=>$curso,
                                                                           'especializacion'=>$especializacion,
@@ -119,7 +119,7 @@ class CertificadosController extends Controller
       //     $this->secretaria=mb_strtoupper("$trato_s $secretaria");
       //     $this->cargosecretaria=mb_strtoupper("$cargo_s");
     //       $this->lasecretaria="$pron_s $cargo_s";
-        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+        $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
                                                                           'curso'=>$curso,
                                                                           'especializacion'=>$especializacion,

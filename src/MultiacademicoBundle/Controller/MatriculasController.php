@@ -119,6 +119,20 @@ class MatriculasController extends FOSRestController
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    /**
+     * Print and displays a Matriculas entity.
+     * @Rest\Get() 
+     */
+    public function printAction(Matriculas $matricula)
+    {
+        //$deleteForm = $this->createDeleteForm($matricula);
+
+        return $this->render('MultiacademicoBundle:Matriculas:print.html.twig', array(
+            'matricula' => $matricula,
+          //  'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Displays a form to edit an existing Matriculas entity.

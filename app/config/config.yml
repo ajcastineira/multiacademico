@@ -113,11 +113,11 @@ assetic:
         
         chosen_css:
             inputs:
-                - %kernel.root_dir%/../web/vendor/chosen/chosen.min.css 
+                - %kernel.root_dir%/../web/plugin/chosen/chosen.min.css 
             output: vendor/chosen/chosen.min.css    
         chosen_sprite_png:
             inputs:
-                - %kernel.root_dir%/../web/vendor/chosen/chosen-sprite.png 
+                - %kernel.root_dir%/../web/plugin/chosen/chosen-sprite.png 
             output: vendor/chosen/chosen-sprite.png     
         sign_css:
             inputs:

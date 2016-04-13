@@ -98,6 +98,7 @@ define([
      'multiacademico/certificados/module',
      'multiacademico/informes/module',
      'multiacademico/pensiones/module',
+     'multiacademico/representantes/module',
    //  'multiacademico/pagos/module',
 
     // cases

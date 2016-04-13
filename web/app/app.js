@@ -57,6 +57,7 @@ define([
        'multiacademico.informes',
         'multiacademico.materias',
         'multiacademico.pensiones',
+        'multiacademico.representantes',
    //      'multiacademico.pagos',
        // 'multiacademico.periodo'
 

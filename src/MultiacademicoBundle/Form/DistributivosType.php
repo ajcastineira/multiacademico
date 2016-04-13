@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use MultiacademicoBundle\Form\Type\SeccionType;
 use MultiacademicoBundle\Form\Type\ParaleloType;
+use MultiacademicoBundle\Form\Type\DocenteType;
+use MultiacademicoBundle\Form\Type\MateriaType;
 
 class DistributivosType extends AbstractType
 {
@@ -18,8 +20,8 @@ class DistributivosType extends AbstractType
     {
         $builder
             ->add('distributivocodperiodo',null,['label'=>'Periodo'])
-            ->add('distributivocoddocente',null,['label'=>'Docente'])
-            ->add('distributivocodmateria',null,['label'=>'Materia'])
+            ->add('distributivocoddocente',DocenteType::class,['label'=>'Docente'])
+            ->add('distributivocodmateria',  MateriaType::class,['label'=>'Materia'])
             ->add('distributivocodcurso',null,['label'=>'Curso'])
             ->add('distributivocodespecializacion',null,['label'=>'Especializacion'])
             ->add('distributivoparalelo',ParaleloType::class)

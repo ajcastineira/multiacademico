@@ -23,7 +23,7 @@ class DistributivoValidator extends ConstraintValidator
    private function distributivo_tiene_aula_valida(Distributivos $value)
    {
        
-       $aula=$this->entityManager->getRepository('MultiacademicoBundle:Aula')->find(
+       $aula=$this->entityManager->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
                                                                           'curso'=>$value->getDistributivocodcurso()->getId(),
                                                                           'especializacion'=>$value->getDistributivocodespecializacion()->getId(),

@@ -23,7 +23,7 @@ class MatriculaValidator extends ConstraintValidator
    private function matricula_tiene_aula_valida(Matriculas $value)
    {
        
-       $aula=$this->entityManager->getRepository('MultiacademicoBundle:Aula')->find(
+       $aula=$this->entityManager->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
                                                                           'curso'=>$value->getMatriculacodcurso()->getId(),
                                                                           'especializacion'=>$value->getMatriculacodespecializacion()->getId(),

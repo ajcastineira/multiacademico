@@ -29,7 +29,7 @@
         </a>
     </li>
     <!--/ End User -->
-    {% if is_granted('ROLE_ADMIN')%}
+    {% if is_granted('ROLE_SECRETARIA')%}
     <!-- Start category ui kit-->
     <li class="sidebar-category">
         <span>Estudiantes</span>
@@ -66,7 +66,7 @@
         </a>
     </li>
     <!--/ End matriculas -->
-    
+    {%endif%}
     {%if entidad.getEsParticular() and is_granted('ROLE_COLECTORA')%}
     <li class="sidebar-category">
         <span>Facturacion</span>
@@ -82,7 +82,7 @@
         </a>
         <ul>
             <li><a data-ui-sref="multiacademico.pensiones.list" data-active-menu>Consultar Pensiones</a></li>
-            <li><a data-ui-sref="app.paypay.pensiones.list" data-active-menu>Registro de pagos</a></li>
+            <li><a data-ui-sref="app.paypay.ingresos.list" data-active-menu>Registro de pagos</a></li>
             <!--<li><a data-ui-sref="comportamiento" data-active-menu>Comportamiento</a></li>
              <li><a data-ui-sref="quimestre" data-active-menu>Quimestre 1</a></li>
               <li><a data-ui-sref="quimestre2" data-active-menu>Quimestre 2</a></li>
@@ -90,6 +90,7 @@
         </ul>
     </li>
    {%endif%}
+    {% if is_granted('ROLE_SECRETARIA')%}
         <!-- Start category ui kit-->
     <li class="sidebar-category">
         <span>Academico</span>

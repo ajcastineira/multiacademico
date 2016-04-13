@@ -39,12 +39,20 @@ class LoadFormasDePagoData implements FixtureInterface
         $formasdepago=[];
         
         $efectivo=$manager->getRepository('PayPayBundle:FormasPagos')->findByFormaPago('EFECTIVO');
+        $banco=$manager->getRepository('PayPayBundle:FormasPagos')->findByFormaPago('BANCO');
         if (!$efectivo)
         {
           $efectivo = new FormasPagos();
           $efectivo->setFormaPago("EFECTIVO");
           $efectivo->setDescripcion("Efectivo al momento de la compra");
           $formasdepago[]=$efectivo; 
+        }
+        if (!$efectivo)
+        {
+          $banco = new FormasPagos();
+          $banco->setFormaPago("BANCO");
+          $banco->setDescripcion("Recaudacion en Banco");
+          $formasdepago[]=$banco; 
         }
         
             

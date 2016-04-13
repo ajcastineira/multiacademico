@@ -15,7 +15,7 @@ class PensionRepository extends EntityRepository
             ->createQueryBuilder()->select('p')
                     ->from('MultiacademicoBundle:Pension','p')
                     ->innerJoin('p.factura', 'f')
-                    ->where('f.estado =:estado1')
+                    ->where('f.estado =:estado1 OR f.estado =:estado2')
                     ->setParameter('estado1',  EstadoFacturaType::NOPAGADA)
                     ->setParameter('estado2',   EstadoFacturaType::VENCIDA)
                     ->getQuery()->getResult();

@@ -12,6 +12,14 @@
                 <td>{{ matricula.id }}</td>
             </tr>
             <tr>
+                <th>Codigo de Estudiante</th>
+                <td>{{ matricula.matriculacodestudiante.id }}</td>
+            </tr>
+            <tr>
+                <th>Representante</th>
+                <td>{{ matricula.matriculacodestudiante.representante|default('No asignado') }}</td>
+            </tr>
+            <tr>
                 <th>Periodo</th>
                 <td>{{ matricula.matriculacodperiodo }}</td>
             </tr>
@@ -37,23 +45,23 @@
             </tr>
             
             <tr>
-                <th>Matriculafecha</th>
+                <th>Fecha de Matriculacion</th>
                 <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
-            <tr>
+            {#<tr>
                 <th>Matriculaclave</th>
                 <td>{{ matricula.matriculaclave }}</td>
-            </tr>
+            </tr>#}
             <tr>
                 <th>Matriculatipo</th>
                 <td>{{ matricula.matriculatipo }}</td>
             </tr>
             <tr>
-                <th>Matriculaobservacion</th>
+                <th>Observacion</th>
                 <td>{{ matricula.matriculaobservacion }}</td>
             </tr>
             <tr>
-                <th>Matriculaestado</th>
+                <th>Estado</th>
                 <td>{{ matricula.matriculaestado }}</td>
             </tr>
             
@@ -62,7 +70,7 @@
 
     <ul class="noprint">
         <li ng-controller="PrintCtrl">
-             <a data-ng-click="openModal('print_matricula',{'matricula':{{matricula.id}},'_format':'html'})" type="button" class="btn btn-app btn-primary "><i class="fa fa-print bigger-160"></i> Imprimir</a>
+             <a data-ng-click="openModal('print_matricula_contrato',{'matricula':{{matricula.id}},'_format':'html'})" type="button" class="btn btn-app btn-primary "><i class="fa fa-print bigger-160"></i> Imprimir</a>
         </li>
         <li>
             <a class="btn btn-app btn-default " href="{{ path('matriculas') }}">Regresar a la lista</a>
@@ -76,4 +84,7 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+<!--area imprimible test -->
+    <div class="printable"/>
+<!-- fin area imprimible test -->            
 {% endblock %}

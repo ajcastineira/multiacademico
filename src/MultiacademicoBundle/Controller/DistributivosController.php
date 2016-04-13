@@ -83,7 +83,7 @@ class DistributivosController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->findBy(
                                                                     array(
                                                                           'curso'=>$entity->getDistributivocodcurso()->getId(),
                                                                           'especializacion'=>$entity->getDistributivocodespecializacion()->getId(),

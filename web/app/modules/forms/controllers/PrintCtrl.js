@@ -22,9 +22,9 @@ define(['modules/forms/module'], function (module) {
                                     }
                                 });
                                modalInstance.rendered.then(function () {
-                                   // angular.element(".modal-dialog").addClass("noprint");
-                                    //angular.element(".printable").html(angular.element("#remoteModalContent").html());
-                                    angular.element(".printable").html(angular.element("#remoteModalContent .modal-content").html());
+                                    angular.element(".modal-dialog").addClass("noprint");
+                                    angular.element(".printable").html(angular.element("#remoteModalContent").html());
+                                    //angular.element(".printable").html(angular.element("#remoteModalContent .modal-content").html());
                                     $log.info('Modal rendered at: ' + new Date());
                                 });
                                 

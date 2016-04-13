@@ -19,7 +19,9 @@
                 CONTRATO DE SERVICIO EDUCATIVO PARTICULAR
              </h3>
 <div class="text-justify">       
-Comparecen a la celebración del presente contrato por una parte UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA, debidamente representado por la autoridad educativa Rector MGS. WIGDINTON PONCE ORTIZ, a quien en adelante y para efectos del presente contrato se denominará simplemente LA INSTITUCIÓN EDUCATIVA UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA,  y por otra parte el/la señor/a, ORMEÑO AREVALO DAYANA DEL CARMEN representante legal del estudiante RIVERA ORMEÑO JEHICOL OMAR, portador de la cédula de ciudadanía No. 0921803409, por sus propios y personales derechos, a quien en adelante y para efectos de este contrato se denominará el/la CONTRATANTE, quienes en forma libre y voluntaria y con capacidad legal para ejercer derechos y contraer obligaciones, convienen en celebrar el presente contrato que se regirá por las siguientes cláusulas: 
+    Comparecen a la celebración del presente contrato por una parte UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA, debidamente representado por la autoridad educativa Rector MGS. WIGDINTON PONCE ORTIZ, a quien en adelante y para efectos del presente contrato se denominará simplemente LA <b>INSTITUCIÓN EDUCATIVA UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA</b>,  y por otra parte el/la señor/a, 
+    <b>{{matricula.matriculacodestudiante.representante|default('NO TIENE REPRESENTANTE')}}</b> 
+    representante legal del estudiante <b>{{matricula.matriculacodestudiante}}</b>, portador de la cédula de ciudadanía No. {{matricula.matriculacodestudiante.representante.cedula|default('XXXXXXXXXX')}}, por sus propios y personales derechos, a quien en adelante y para efectos de este contrato se denominará el/la CONTRATANTE, quienes en forma libre y voluntaria y con capacidad legal para ejercer derechos y contraer obligaciones, convienen en celebrar el presente contrato que se regirá por las siguientes cláusulas: 
 <br/>
 <b>PRIMERA.- ANTECEDENTES: </b>
 <br/>
@@ -31,7 +33,7 @@ El/la contratante a manifestado su voluntad de contar con los servicios de nuest
 <br/>
 <b>SEGUNDA.- OBJETO: </b>
 <br/>
-Institución Educativa ECUATORIANA AUSTRIACA  y el/la señor/a de ORMEÑO AREVALO DAYANA DEL CARMEN representante legal del estudiante RIVERA ORMEÑO JEHICOL OMAR, de 11 AÑOS DE edad, que cursará en el presente periodo lectivo 2015 – 2016, en el OCTAVO año de educación básica, de común acuerdo en forma libre voluntaria, convienen en celebrar el presente contrato, por el cual el contratante se compromete a adquirir los servicios de educación particular de  nuestra Institución Educativa, los servicios, los cuales el contratante declara conocerlos y aceptarlos en su integridad; 
+<b>Institución Educativa ECUATORIANA AUSTRIACA</b>  y el/la señor/a de {{matricula.matriculacodestudiante.representante|default('NO TIENE REPRESENTANTE')}} representante legal del estudiante <b>{{matricula.matriculacodestudiante}}</b>, de ___ AÑOS DE edad, que cursará en el presente periodo lectivo <b>{{matricula.matriculacodperiodo}}</b>, en el {{matricula.matriculacodcurso}} de {{matricula.matriculacodespecializacion}}, de común acuerdo en forma libre voluntaria, convienen en celebrar el presente contrato, por el cual el contratante se compromete a adquirir los servicios de educación particular de  nuestra Institución Educativa, los servicios, los cuales el contratante declara conocerlos y aceptarlos en su integridad; 
 <br/>
 <b>TERCERA.- DERECHOS Y OBLIGACIONES DE LA COMUNIDAD EDUCATIVA: </b>
 <br/>
@@ -104,10 +106,22 @@ Para constancia de la aceptación las partes firman en tres ejemplares de igual 
 
 
 
-
+<br/>
+<br/>
+<br/>
+<br/>
 
 <p>
-Representante  Legal de la IE                            Representante Legal del estudiante
+<table style="width:100%">
+    <tr>
+        <td style="width:50%;text-align:center">
+    Representante  Legal de la IE
+        </td>
+        <td style="width:50%;text-align:center">
+            Representante Legal del estudiante
+        </td>
+    </tr>
+</table>
 </p>
 
 

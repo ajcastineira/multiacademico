@@ -8,12 +8,12 @@
     <table class="noprint">
         <tbody>
             <tr>
-                <th>Codigo de Matricula</th>
+                <th>Numero de Matricula</th>
                 <td>{{ matricula.id }}</td>
             </tr>
             <tr>
                 <th>Codigo de Estudiante</th>
-                <td>{{ matricula.matriculacodestudiante.id }}</td>
+                <td>{{ matricula.matriculacodestudiante.id }}  | <small><i>"Codigo usado en Banco"</i></small></td>
             </tr>
             <tr>
                 <th>Representante</th>
@@ -69,8 +69,33 @@
     </table>
 
     <ul class="noprint">
-        <li ng-controller="PrintCtrl">
-             <a data-ng-click="openModal('print_matricula_contrato',{'matricula':{{matricula.id}},'_format':'html'})" type="button" class="btn btn-app btn-primary "><i class="fa fa-print bigger-160"></i> Imprimir</a>
+        <li>
+
+             <div class="btn-group">
+                <button type="button" class="btn btn-app btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                <i class="fa fa-print"></i> Imprimir <span class="caret"></span>
+                 </button> 
+                <ul class="dropdown-menu" role="menu" ng-controller="PrintCtrl">
+                    <li>
+                        <a href="#" data-ng-click="openModal('print_matricula_contrato',{'matricula':{{matricula.id}},'_format':'html'})"><i class="fa fa-print bigger-160"></i> Contrato</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#" target="_blank">Anexo</a>
+                    </li>
+                    {#<li>
+                        <a ng-href="{{'{{urlAnexo('~entity.cedula~')}}'}}" target="_blank">Anexo</a>
+                    </li>
+                    
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void="" href="#">Separated link</a>
+                    </li>#}
+                </ul>
+            </div>
+
+            
+             
         </li>
         <li>
             <a class="btn btn-app btn-default " href="{{ path('matriculas') }}">Regresar a la lista</a>

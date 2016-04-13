@@ -99,7 +99,7 @@ class MatriculasController extends FOSRestController
 
             return $this->redirectToRoute('get_matricula', array('matricula' => $matricula->getId()));
         }
-
+        
         return $this->render('MultiacademicoBundle:Matriculas:new.html.twig', array(
             'matricula' => $matricula,
             'form' => $form->createView(),

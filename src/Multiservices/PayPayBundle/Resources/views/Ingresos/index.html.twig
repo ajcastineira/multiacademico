@@ -1,36 +1,26 @@
-{% block content -%}
-<div id="content">
-    <div class="row">
-        <big-breadcrumbs items="['Ingresos', 'Resumen']" icon="file"
-                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-		<ul id="sparks">
-			<li class="sparks-info">
-                            <a class="btn btn-success"href="{{ path('ingresos_new') }}">
-                            <i class="fa fa-dollar"></i> Registrar un Pago
-                            </a>
-                        </li>
-		</ul>
-	</div>
-    </div>
-    <div class="row">
+{% extends 'base.html.twig' %}
 
-    
-    {{ datatable_render_html(datatable) }}
-    
-    </div>
-    <div class="row">    
-        <ul>
+{% block body %}
+       <style>
+        label{
+            display: table;
+        }
+        div.dataTables_filter input {
+          margin-left: 0px; 
+        }
+        .dataTable thead tr th:first-child{
+          min-width: 10px;  
+        }
+        #ingresos_datatable thead tr:first-child{
+          display:none;
+        } 
+    </style>
+    <h1>Ingresos listado</h1>
+
+        {{ datatable_render_html(datatable) }}
+    <ul>
         <li>
-            <a href="{{ path('ingresos_new') }}">
-                Crear nueva entrada
-            </a>
+            <a href="{{ path('ingresos',{'page':'new'}) }}">Crear nueva entrada</a>
         </li>
-    </ul>
-        </div>
-</div>
-<script>
-      {{ datatable_render_jsns(datatable) }}
-</script>            
+    </ul>   {{ datatable_render_js(datatable) }}
 {% endblock %}
-

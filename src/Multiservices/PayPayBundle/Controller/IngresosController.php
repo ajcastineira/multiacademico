@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 use Multiservices\PayPayBundle\Entity\Ingresos;
 use Multiservices\PayPayBundle\Form\IngresosType;
 
@@ -30,7 +32,7 @@ class IngresosController extends FOSRestController
         $ingresos_datatable = $this->get("paypaybundle_datatable.ingresos");
         $ingresos_datatable->buildDatatable();
 
-        return $this->render('ingresos/index.html.twig', array(
+        return $this->render('PayPayBundle:Ingresos:index.html.twig', array(
             //'ingresos' => $ingresos,
             'datatable'=>$ingresos_datatable
         ));
@@ -67,10 +69,14 @@ class IngresosController extends FOSRestController
             $em->persist($ingreso);
             $em->flush();
 
-            return $this->redirectToRoute('ingresos', array('page' => $ingresos->getId()));
+            //return $this->redirectToRoute('ingresos', array('page' => $ingresos->getId()));
+                $response_redir=new JsonResponse();
+                $response_redir->setData(array('id'=>$ingreso->getId()));
+                $response_redir->setStatusCode(201);
+                return $response_redir;
         }
 
-        return $this->render('ingresos/new.html.twig', array(
+        return $this->render('PayPayBundle:Ingresos:new.html.twig', array(
             'ingreso' => $ingreso,
             'form' => $form->createView(),
         ));
@@ -85,7 +91,7 @@ class IngresosController extends FOSRestController
     {
         $deleteForm = $this->createDeleteForm($ingreso);
 
-        return $this->render('ingresos/show.html.twig', array(
+        return $this->render('PayPayBundle:Ingresos:show.html.twig', array(
             'ingreso' => $ingreso,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -111,7 +117,7 @@ class IngresosController extends FOSRestController
             return $this->redirectToRoute('ingresos', array('page' => $ingreso->getId().'/edit'));
         }
 
-        return $this->render('ingresos/edit.html.twig', array(
+        return $this->render('PayPayBundle:Ingresos:edit.html.twig', array(
             'ingreso' => $ingreso,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

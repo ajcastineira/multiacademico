@@ -74,10 +74,10 @@ class IngresosDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => false,
-            'individual_filtering_position' => 'foot',
+            'individual_filtering' => true,
+            'individual_filtering_position' => 'head',
             'use_integration_options' => true,
-            'force_dom' => false
+            'force_dom' => true
         ));
 
         $this->columnBuilder

@@ -90,6 +90,22 @@ class Ingresos
      */
     private $representante;
     
+    
+    /**
+     * @var \Multiservices\PayPayBundle\Entity\Facturas
+     *
+     * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", inversedBy="abonos")
+     * @ORM\JoinTable(name="facturas_ingresos",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $facturas;
+    
     public function __construct() {       
        $this->fecha=New \DateTime();
     }
@@ -290,5 +306,39 @@ class Ingresos
     public function getRepresentante()
     {
         return $this->representante;
+    }
+
+    /**
+     * Add factura
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Facturas $factura
+     *
+     * @return Ingresos
+     */
+    public function addFactura(\Multiservices\PayPayBundle\Entity\Facturas $factura)
+    {
+        $this->facturas[] = $factura;
+
+        return $this;
+    }
+
+    /**
+     * Remove factura
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Facturas $factura
+     */
+    public function removeFactura(\Multiservices\PayPayBundle\Entity\Facturas $factura)
+    {
+        $this->facturas->removeElement($factura);
+    }
+
+    /**
+     * Get factura
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFacturas()
+    {
+        return $this->facturas;
     }
 }

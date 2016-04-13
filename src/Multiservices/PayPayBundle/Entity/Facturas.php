@@ -33,7 +33,7 @@ class Facturas
     /**
      * @var \MultiacademicoBundle\Entity\Representantes
      *
-     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes")
+     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes", inversedBy="facturas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idcliente", referencedColumnName="id")
      * })
@@ -141,6 +141,11 @@ class Facturas
      * @ORM\OneToOne(targetEntity="MultiacademicoBundle\Entity\Pension", mappedBy="factura")
      */
     private $pension;
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Ingresos", mappedBy="idfactura", cascade={"persist"})
+     */
+    private $abonos;
 
     /**
      * Constructor
@@ -148,6 +153,7 @@ class Facturas
     public function __construct()
     {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->abonos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->emitido= new \DateTime();
         $this->vencimiento= new \DateTime();
         $this->pago= new \DateTime();
@@ -594,5 +600,50 @@ class Facturas
     public function getPension()
     {
         return $this->pension;
+    }
+    
+    public function __toString() {
+        if ($this->getPension()!==null)
+        {
+        return strval($this->getId()) .' - '. $this->getPension()->getInfo() .' - '. $this->getPension()->getEstudiante();
+        }
+        else
+        {
+         return strval($this->getId());   
+        }
+    }
+
+    /**
+     * Add abono
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Ingresos $abono
+     *
+     * @return Facturas
+     */
+    public function addAbono(\Multiservices\PayPayBundle\Entity\Ingresos $abono)
+    {
+        $this->abonos[] = $abono;
+
+        return $this;
+    }
+
+    /**
+     * Remove abono
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Ingresos $abono
+     */
+    public function removeAbono(\Multiservices\PayPayBundle\Entity\Ingresos $abono)
+    {
+        $this->abonos->removeElement($abono);
+    }
+
+    /**
+     * Get abonos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAbonos()
+    {
+        return $this->abonos;
     }
 }

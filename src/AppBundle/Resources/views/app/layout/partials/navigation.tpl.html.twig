@@ -55,6 +55,18 @@
         </a>
     </li>
     <!--/ End matriculas -->
+    
+    <!-- Start matriculas -->
+    <li>
+        <a data-ui-sref="multiacademico.representantes.list" data-active-menu>
+            <span class="icon"><i class="fa fa-user-secret"></i></span>
+            <span class="text">Representantes</span>
+            
+           
+        </a>
+    </li>
+    <!--/ End matriculas -->
+    
     {%if entidad.getEsParticular() and is_granted('ROLE_COLECTORA')%}
     <li class="sidebar-category">
         <span>Facturacion</span>

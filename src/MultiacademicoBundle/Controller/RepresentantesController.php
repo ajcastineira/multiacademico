@@ -88,7 +88,7 @@ class RepresentantesController extends FOSRestController
     /**
      * Finds and displays a Representantes entity.
      *
-     * @Rest\Get() 
+     * @Rest\Get("/representantes/{representante}") 
      */
     public function getAction(Representantes $representante)
     {

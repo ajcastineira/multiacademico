@@ -108,7 +108,7 @@ class MatriculasController extends FOSRestController
 
     /**
      * Finds and displays a Matriculas entity.
-     *
+     * @Rest\Get("/matriculas/{matricula}") 
      */
     public function getAction(Matriculas $matricula)
     {
@@ -122,7 +122,7 @@ class MatriculasController extends FOSRestController
     
     /**
      * Print and displays a Matriculas entity.
-     * @Rest\Get() 
+     * @Rest\Get("/matriculas/{matricula}/print")  
      */
     public function printAction(Matriculas $matricula)
     {
@@ -136,7 +136,7 @@ class MatriculasController extends FOSRestController
     
     /**
      * Print and displays a Matriculas entity.
-     * @Rest\Get() 
+     * @Rest\Get("/matriculas/{matricula}/contrato/print")  
      */
     public function printContratoAction(Matriculas $matricula)
     {

@@ -77,7 +77,7 @@ class MatriculasController extends FOSRestController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $em = $this->getDoctrine()->getManager();
-            $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
                                                                           'curso'=>$matricula->getMatriculacodcurso()->getId(),
                                                                           'especializacion'=>$matricula->getMatriculacodespecializacion()->getId(),

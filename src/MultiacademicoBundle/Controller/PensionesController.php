@@ -67,7 +67,7 @@ class PensionesController extends Controller
      */
     protected function facturas()
     {
-        $facturas = $this->getDoctrine()->getManager()->getRepository('MultiacademicoBundle:Pension')->findAll();
+        $facturas = $this->getDoctrine()->getRepository('MultiacademicoBundle:Pension')->pensionesPendientes();
         return $facturas;
     }
 }

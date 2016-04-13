@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Estudiantes;
 use MultiacademicoBundle\Form\EstudiantesType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use MultiacademicoBundle\Entity\Representantes;
 /**
  * Estudiantes controller.
  *
@@ -95,6 +96,9 @@ class EstudiantesController extends Controller
             
             $userEstudiante=$this->crearUserEstudiante($estudiante);
             $estudiante->setUsuario($userEstudiante);
+            //$representante=$this->crearRepresentante($estudiante);
+            //$estudiante->setRepresentante($representante);
+           
             
             $em->persist($estudiante);
             $em->flush();
@@ -345,5 +349,13 @@ class EstudiantesController extends Controller
             $userEstudiante->setEnabled(true);
             $userManager->updateUser($userEstudiante);
             return $userEstudiante;
+    }
+    
+    private function crearRepresentante(Estudiantes $estudiante)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $representante=Representantes();
+        
+        return $representante;
     }
 }

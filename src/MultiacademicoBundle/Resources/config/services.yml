@@ -23,6 +23,10 @@ services:
         class: MultiacademicoBundle\Datatables\MatriculasDatatable
         tags:
             - { name: sg.datatable.view }
+    multiacademicobundle_datatable.representantes:
+        class: MultiacademicoBundle\Datatables\RepresentantesDatatable
+        tags:
+            - { name: sg.datatable.view }
     multiacademico.aulas:
         class: MultiacademicoBundle\Datatables\AulaDatatable
         tags:
@@ -39,7 +43,7 @@ services:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:
             - { name: form.type, alias: nota }  
-      
+
     security.access.distributivo_voter : 
         class :       MultiacademicoBundle\Security\Authorization\Voter\DistributivoVoter 
         public :      false 
@@ -57,5 +61,3 @@ services:
             - { name: doctrine.orm.entity_listener }
            # - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: postFlush, method: postFlush }
-            
-    

@@ -266,7 +266,7 @@
                 <tbody>
                         <tr>
                 <th>Username</th>
-                <td>{{ entity.usuario.username }}</td>
+                <td>{{ entity.usuario.username|default('ESTUDIANTE NO TIENE USUARIO ASIGNADO')}}</td>
             </tr>
             <tr>
                 <th>Mail</th>
@@ -280,7 +280,10 @@
             
             <tr>
                 <th>Creado</th>
-                <td>{{ entity.usuario.created|date('d-M-Y H:i:s') }}</td>
+                <td> {%if entity.usuario is not null%}
+                    {{ entity.usuario.created|date('d-M-Y H:i:s') }}
+                    {%endif%}
+                </td>
             </tr>
             {#<tr>
                 <th>Access</th>

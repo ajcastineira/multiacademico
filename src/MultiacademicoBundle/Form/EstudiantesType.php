@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
+use MultiacademicoBundle\Form\Type\RepresentanteType;
 class EstudiantesType extends AbstractType
 {
     /**
@@ -18,6 +18,7 @@ class EstudiantesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('representante',  RepresentanteType::class)
             ->add('estudianteCedula',null,['label'=>'Cedula'])
             ->add('mail',null,['label'=>'Email'])
             ->add('estudiante',null,['label'=>'Estudiante (Apellidos y Nombres)'])
@@ -62,15 +63,15 @@ class EstudiantesType extends AbstractType
             ->add('padreEstadocivil')
             ->add('padreTelefono')
             ->add('padreDomicilio')
-            ->add('representanteCedula')
-            ->add('representante')
-            ->add('representanteDomicilio')
-            ->add('representanteTelefono')
-            ->add('representanteTipo',  ChoiceType::class,['label'=>'Tipo de Representante','choices'=>[
+          //  ->add('representanteCedula')
+            
+         //   ->add('representanteDomicilio')
+          //  ->add('representanteTelefono')
+           /* ->add('representanteTipo',  ChoiceType::class,['label'=>'Tipo de Representante','choices'=>[
                                                                                         'Madre'=>'Madre',
                                                                                          'Padre'=>'Padre',
                                                                                          'Otro'=>'Otro'
-                                                                                        ]])
+                                                                                        ]])*/
             ->add('username',null,['label'=>'Username'])    
             ->add('password',PasswordType::class,['label'=>'Password'])    
            // ->add('username')

@@ -271,7 +271,7 @@ class Estudiantes
      *
      * @ORM\Column(name="representante_cedula", type="string", length=12, nullable=false)
      */
-    private $representanteCedula;
+    private $representanteCedula=0;
 
     /**
      * @var \MultiacademicoBundle\Entity\Representantes
@@ -295,21 +295,21 @@ class Estudiantes
      *
      * @ORM\Column(name="representante_domicilio", type="string", length=50, nullable=false)
      */
-    private $representanteDomicilio;
+    private $representanteDomicilio="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="representante_telefono", type="string", length=20, nullable=false)
      */
-    private $representanteTelefono;
+    private $representanteTelefono="";
 
     /**
      * @var string
      *
      * @ORM\Column(name="representante_tipo", type="string", length=5, nullable=false)
      */
-    private $representanteTipo;
+    private $representanteTipo="";
 
     /**
      * @var string
@@ -427,6 +427,7 @@ class Estudiantes
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255, nullable=false)
+     * @ArxisAssert\Email
      */
     private $mail;
     /**

@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,6 +12,7 @@ use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCol
  *
  * @ORM\Table(name="representantes",  indexes={@ORM\Index(name="representante", columns={"representante"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\RepresentantesRepository")
+ * @UniqueEntity({"cedula"}, message="Este numero de cedula ya existe en el sistema")
   * @Serializer\ExclusionPolicy("all")
  */
 class Representantes
@@ -78,7 +80,7 @@ class Representantes
      *
      * @ORM\Column(name="status", type="boolean", nullable=false)
      */
-    private $status;
+    private $status=true;
 
     /**
      * @var \Multiservices\ArxisBundle\Entity\Usuario

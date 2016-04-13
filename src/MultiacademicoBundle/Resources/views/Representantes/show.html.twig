@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Representantes</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ representante.id }}</td>
+            </tr>
+            <tr>
+                <th>Representante</th>
+                <td>{{ representante.representante }}</td>
+            </tr>
+            <tr>
+                <th>Cedula</th>
+                <td>{{ representante.cedula }}</td>
+            </tr>
+            <tr>
+                <th>Domicilio</th>
+                <td>{{ representante.domicilio }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ representante.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ representante.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Montomensual</th>
+                <td>{{ representante.montoMensual }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if representante.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('representantes') }}">Regresar a la lista</a>
+        </li>
+        <li>
+            <a href="{{ path('representantes_edit', { 'page': representante.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

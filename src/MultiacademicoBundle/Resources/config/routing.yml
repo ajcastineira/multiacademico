@@ -27,3 +27,6 @@ estadisticas:
 multiacademico_pension:
     resource: "@MultiacademicoBundle/Resources/config/routing/pension.yml"    
     #prefix:   /pension    
+multiacademico_representantes:
+    resource: "@MultiacademicoBundle/Resources/config/routing/representantes.yml"
+    #prefix:   /representantes

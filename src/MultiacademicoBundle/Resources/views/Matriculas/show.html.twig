@@ -25,8 +25,14 @@
             </tr>
             <tr>
                 <th>Estudiante</th>
-                <td>{{ matricula.matriculacodestudiante }}</td>
+                <td><a href="{{path('estudiantes_show',{'id':matricula.matriculacodestudiante.id})}}">{{ matricula.matriculacodestudiante }}</a></td>
             </tr>
+            
+            <tr>
+                <th>Usuario del Estudiante</th>
+                <td>{{ matricula.matriculacodestudiante.getUsuario().getUsername()|default('NO TIENE USUARIO ASIGNADO') }}</td>
+            </tr>
+            
             <tr>
                 <th>Curso</th>
                 <td>{{ matricula.matriculacodcurso }}</td>
@@ -43,7 +49,14 @@
                 <th>Seccion</th>
                 <td>{{ matricula.matriculaseccion }}</td>
             </tr>
-            
+            <tr>
+                <th>Alias</th>
+                <td>{{ matricula.aula.alias }}</td>
+            </tr>
+            <tr>
+                <th>Matriculado Por</th>
+                <td>{{matricula.matriculausuario|default('sistema')}}</td>
+            </tr>
             <tr>
                 <th>Fecha de Matriculacion</th>
                 <td>{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>

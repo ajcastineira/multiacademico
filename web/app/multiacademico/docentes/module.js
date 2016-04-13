@@ -32,7 +32,24 @@ define(['angular',
                         breadcrumbs: [
                             {title: 'Docentes'},{title: 'lista'}
                         ]
-                    }
+                    },
+                resolve:{
+                    chosencss: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
+
+                                    var pluginPath   = settings.pluginPath  ; // Create variable JS path
+                                    return $ocLazyLoad.load( // You can lazy load files for an existing module
+                                    [
+                                        {
+                                            insertBefore: '#load_css_before',
+                                            files: [
+                                                pluginPath+'/chosen/chosen.min.css'
+                                            ]
+                                        }
+                                    ]
+                                    );
+                                }]
+                    
+                }
             })
            
             .state('multiacademico.docentes.list', {

@@ -94,6 +94,18 @@ class Representantes
      * @Serializer\Groups({"estadisticas"})
      */
     private $usuario;
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", mappedBy="idcliente")
+     */
+    private $facturas;
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->facturas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -292,5 +304,40 @@ class Representantes
     public function getTipo()
     {
         return $this->tipo;
+    }
+
+
+    /**
+     * Add factura
+     *
+     * @param \Multiservices\ArxisBundle\Entity\Facturas $factura
+     *
+     * @return Representantes
+     */
+    public function addFactura(\Multiservices\ArxisBundle\Entity\Facturas $factura)
+    {
+        $this->facturas[] = $factura;
+
+        return $this;
+    }
+
+    /**
+     * Remove factura
+     *
+     * @param \Multiservices\ArxisBundle\Entity\Facturas $factura
+     */
+    public function removeFactura(\Multiservices\ArxisBundle\Entity\Facturas $factura)
+    {
+        $this->facturas->removeElement($factura);
+    }
+
+    /**
+     * Get facturas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFacturas()
+    {
+        return $this->facturas;
     }
 }

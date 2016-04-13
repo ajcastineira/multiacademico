@@ -96,23 +96,22 @@ class IngresosDatatable extends AbstractDatatableView
             ->add('referencia', 'column', array(
                 'title' => 'Referencia',
             ))
-            ->add('collectedby.id', 'column', array(
-                'title' => 'Collectedby Id',
-            ))
             ->add('collectedby.name', 'column', array(
-                'title' => 'Collectedby Name',
+                'title' => 'Cobrado por',
             ))
 
-            ->add('formaPago.id', 'column', array(
-                'title' => 'FormaPago Id',
-            ))
+
             ->add('formaPago.formaPago', 'column', array(
-                'title' => 'FormaPago FormaPago',
+                'title' => 'Forma de Pago',
             ))
 
 
             ->add('representante.representante', 'column', array(
-                'title' => 'Representante Representante',
+                'title' => 'Representante',
+            ))
+                
+            ->add('factura.id', 'column', array(
+                'title' => 'Factura',
             ))
 
             ->add(null, 'action', array(

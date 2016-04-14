@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Pension;
 use MultiacademicoBundle\Form\PensionType;
 use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
+use Multiservices\PayPayBundle\Entity\Ingresos;
 
 /**
  * Pension controller.
@@ -130,12 +131,25 @@ class PensionController extends FOSRestController
      */
     public function payAction(Request $request, Pension $pension)
     {
+        $em = $this->getDoctrine()->getManager(); 
          if ($pension->getFactura()->getEstado()!=EstadoFacturaType::PAGADA)
          {
             $pension->getFactura()->setEstado(EstadoFacturaType::PAGADA);
             $pension->getFactura()->setPago(new \DateTime());
+            $ingreso=new Ingresos();
+            $ingreso->setMonto($pension->getFactura()->saldoAPagar());
+            $ingreso->setRepresentante($pension->getFactura()->getIdcliente());
+            $ingreso->setFecha(New \DateTime());
+            $ingreso->addFactura($pension->getFactura());
+            $efectivo=$em->getRepository('PayPayBundle:FormasPagos')->findOneByFormaPago('EFECTIVO');
+            $ingreso->setFormaPago($efectivo);
+            $ingreso->setCollectedby($this->getUser());
+            $ingreso->registrarPagoEnFacturas();
+            $em->persist($ingreso);
+            
          }
-         $em = $this->getDoctrine()->getManager();
+         
+         
          $em->persist($pension);
          $em->flush();
 

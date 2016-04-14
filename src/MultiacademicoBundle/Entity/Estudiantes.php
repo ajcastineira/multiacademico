@@ -276,7 +276,7 @@ class Estudiantes
     /**
      * @var \MultiacademicoBundle\Entity\Representantes
      *
-     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes")
+     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes", inversedBy="representados")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="representante_id", referencedColumnName="id")
      * })

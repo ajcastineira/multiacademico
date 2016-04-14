@@ -96,6 +96,11 @@ class Representantes
     private $usuario;
     /**
      * 
+     * @ORM\OneToMany(targetEntity="\MultiacademicoBundle\Entity\Estudiantes", mappedBy="representante")
+     */
+    private $representados;
+    /**
+     * 
      * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", mappedBy="idcliente")
      */
     private $facturas;
@@ -105,6 +110,7 @@ class Representantes
     public function __construct()
     {
         $this->facturas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->representados = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -339,5 +345,39 @@ class Representantes
     public function getFacturas()
     {
         return $this->facturas;
+    }
+
+    /**
+     * Add representado
+     *
+     * @param \MultiacademicoBundle\Entity\Estudiantes $representado
+     *
+     * @return Representantes
+     */
+    public function addRepresentado(\MultiacademicoBundle\Entity\Estudiantes $representado)
+    {
+        $this->representados[] = $representado;
+
+        return $this;
+    }
+
+    /**
+     * Remove representado
+     *
+     * @param \MultiacademicoBundle\Entity\Estudiantes $representado
+     */
+    public function removeRepresentado(\MultiacademicoBundle\Entity\Estudiantes $representado)
+    {
+        $this->representados->removeElement($representado);
+    }
+
+    /**
+     * Get representados
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepresentados()
+    {
+        return $this->representados;
     }
 }

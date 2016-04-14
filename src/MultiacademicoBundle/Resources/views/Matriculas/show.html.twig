@@ -17,7 +17,13 @@
             </tr>
             <tr>
                 <th>Representante</th>
-                <td>{{ matricula.matriculacodestudiante.representante|default('No asignado') }}</td>
+                <td>
+                    {% if matricula.matriculacodestudiante.representante is not null %}
+                    <a href="{{path('representantes',{'page':matricula.matriculacodestudiante.representante.id})}}">{{ matricula.matriculacodestudiante.representante|default('No asignado') }}</a>
+                    {%else%}
+                    No Asignado
+                    {%endif%}
+                </td>
             </tr>
             <tr>
                 <th>Periodo</th>

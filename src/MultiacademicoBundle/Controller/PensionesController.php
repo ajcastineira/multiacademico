@@ -58,16 +58,16 @@ class PensionesController extends Controller
         return $response;
     }
 
-    public function downloadAction(){
-        return $this->downloadFile($this->facturas());
+    public function downloadAction($seccion='all'){
+        return $this->downloadFile($this->facturas($seccion));
     }
     /**
      * 
      * @return array
      */
-    protected function facturas()
+    protected function facturas($seccion)
     {
-        $facturas = $this->getDoctrine()->getRepository('MultiacademicoBundle:Pension')->pensionesPendientes();
+        $facturas = $this->getDoctrine()->getRepository('MultiacademicoBundle:Pension')->pensionesPendientes($seccion);
         return $facturas;
     }
 }

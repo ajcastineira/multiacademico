@@ -31,5 +31,5 @@ pension_pay:
         expose: true        
 #ruta para txtbanco
 pensiones_download:
-    path:      /pensiones/download
-    defaults:  { _controller: MultiacademicoBundle:Pensiones:download}        
+    path:      /pensiones/download/{seccion}
+    defaults:  { _controller: MultiacademicoBundle:Pensiones:download, seccion: all}        

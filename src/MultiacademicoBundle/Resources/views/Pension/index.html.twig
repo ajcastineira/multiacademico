@@ -15,8 +15,44 @@
           display:none;
         } 
     </style>
-    <h1>Pension listado</h1>
-
+    <h1>Pensiones listado</h1>
+    
+    <div class="row">
+        <div class="col-sm-6">
+        
+             <div class="btn-group">
+                 <button href="{{path('pensiones_download')}}" rel='tooltip' title ='Descargar Archivo para Banco' class = 'btn btn-lilac'   target= '_blank'  role = 'button'>
+                    <i class='fa fa-bank'/>Exportar a Banco
+                 </button>
+                <button type="button" class="btn btn-lilac dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                <span class="caret"></span>
+                 </button> 
+                <ul class="dropdown-menu" role="menu" >
+                    <li>
+                        <a href="{{path('pensiones_download',{'seccion':'matricula'})}}" target="_blank" ><i class="fa fa-bank"></i> Matriculas</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{path('pensiones_download',{'seccion':'mayo'})}}" target="_blank"> Mayo</a>
+                    </li>
+                    <li>
+                        <a href="{{path('pensiones_download',{'seccion':'junio'})}}" target="_blank"> Junio</a>
+                    </li>
+                    {#<li>
+                        <a ng-href="{{'{{urlAnexo('~entity.cedula~')}}'}}" target="_blank">Anexo</a>
+                    </li>
+                    
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void="" href="#">Separated link</a>
+                    </li>#}
+                </ul>
+            </div>
+            
+            
+       
+        </div>
+    </div>
         {{ datatable_render_html(datatable) }}
 
     {{ datatable_render_js(datatable) }}

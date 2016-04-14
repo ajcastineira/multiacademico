@@ -7,8 +7,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
-
 use Symfony\Component\Form\FormInterface;
+
+use Doctrine\ORM\EntityRepository;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Multiservices\PayPayBundle\Entity\Facturas;
@@ -40,14 +42,23 @@ class IngresosType extends AbstractType
                 
                 
            $formModifier = function (FormInterface $form, Representantes $representante = null) {
-                $facturas = null === $representante ? array() : $representante->getFacturas()->toArray();
-
-            $form->add('facturas', EntityType::class, array(
-                'class'       => 'PayPayBundle:Facturas',
-                'placeholder' => '',
-                'choices'     => $facturas,
-                'multiple'=>true
-            ));
+                
+               
+               //$facturas = null === $representante ? array() : $representante->getFacturas()->toArray();
+                
+                
+                $formOptions = array(
+                    'class'       => 'PayPayBundle:Facturas',
+                    'placeholder' => '',
+                    //'choices'     => $facturas,
+                    'multiple'=>true,
+                    'property_path' => 'facturas',
+                    'query_builder' => function (EntityRepository $er) use($representante)  {
+                         return $er->facturasPendientes($representante);
+                    }
+                );
+                
+            $form->add('facturas', EntityType::class, $formOptions);
         };
 
         $builder->addEventListener(

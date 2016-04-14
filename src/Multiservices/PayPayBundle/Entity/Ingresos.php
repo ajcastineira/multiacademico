@@ -3,12 +3,14 @@
 namespace Multiservices\PayPayBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 /**
  * Ingresos
  *
  * @ORM\Table(name="ingresos", indexes={@ORM\Index(name="representante_id", columns={"representante_id"}), @ORM\Index(name="collectedby", columns={"collectedby"})})
  * @ORM\Entity(repositoryClass="Multiservices\PayPayBundle\Entity\IngresosRepository")
+ * @
  */
 class Ingresos
 {

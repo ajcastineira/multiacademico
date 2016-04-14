@@ -10,7 +10,7 @@ use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
  * Facturas
  *
  * @ORM\Table(name="facturas")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Multiservices\PayPayBundle\Entity\FacturasRepository")
  */
 class Facturas
 {

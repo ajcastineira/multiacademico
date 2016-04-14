@@ -10,6 +10,10 @@
                 <td>{{ ingreso.id }}</td>
             </tr>
             <tr>
+                <th>Representante</th>
+                <td>{{ ingreso.representante }}</td>
+            </tr>
+            <tr>
                 <th>Fecha</th>
                 <td>{% if ingreso.fecha %}{{ ingreso.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
@@ -36,6 +40,32 @@
              <tr>
                 <th>Cobrado por</th>
                 <td>{{ ingreso.collectedby }}</td>
+            </tr>
+            <tr>
+                <th>Facturas</th>
+                <td>
+                    <table class="table">
+                         <tr>
+                                <th>Factura</th>
+                                <th>Total</th>
+                                <th>Pagado</th>
+                                <th>Saldo</th>
+                                <th>Estado</th>
+                            </tr> 
+                    {%for factura in ingreso.facturas %}
+                        
+                           
+                            <tr>
+                                <td>{{factura}}</td>
+                                <td>{{factura.total}}</td>
+                                <td>{{factura.cobrado}}</td>
+                                <td>{{factura.saldoAPagar()}}</td>
+                                <td>{{factura.estado}}</td>
+                            </tr> 
+                        
+                    {%endfor%}
+                    </table>    
+                </td>
             </tr>
         </tbody>
     </table>

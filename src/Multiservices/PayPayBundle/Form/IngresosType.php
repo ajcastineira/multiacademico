@@ -33,8 +33,8 @@ class IngresosType extends AbstractType
             ->add('monto')
             ->add('descripcion')
             ->add('referencia')
-            ->add('collectedby')
-            ->add('modifiedby')
+           // ->add('collectedby')
+          //  ->add('modifiedby')
             ->add('formaPago')
            // ->add('factura')
            

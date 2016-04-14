@@ -5,12 +5,12 @@ namespace Multiservices\PayPayBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
+use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 /**
  * Ingresos
  *
  * @ORM\Table(name="ingresos", indexes={@ORM\Index(name="representante_id", columns={"representante_id"}), @ORM\Index(name="collectedby", columns={"collectedby"})})
  * @ORM\Entity(repositoryClass="Multiservices\PayPayBundle\Entity\IngresosRepository")
- * @
  */
 class Ingresos
 {
@@ -54,9 +54,23 @@ class Ingresos
     /**
      * @var float
      *
-     * @ORM\Column(name="monto", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="monto", type="float", precision=10, scale=2, nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="double",
+     *     message="El valor {{ value }} no es valido {{ type }}."
+     * )
      */
     private $monto;
+    
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cambio", type="float", precision=10, scale=2, nullable=false)
+     * 
+     */
+    private $cambio;
     
     /**
      * @var string
@@ -99,10 +113,10 @@ class Ingresos
      * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", inversedBy="abonos")
      * @ORM\JoinTable(name="facturas_ingresos",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
      *   }
      * )
      */
@@ -110,7 +124,8 @@ class Ingresos
     
     public function __construct() {       
        $this->fecha=New \DateTime();
-    }
+
+       }
     /**
      * Get id
      *
@@ -342,5 +357,52 @@ class Ingresos
     public function getFacturas()
     {
         return $this->facturas;
+    }
+    
+    public function registrarPagoEnFacturas()
+    {
+        $saldo=$this->getMonto();
+        foreach ($this->getFacturas() as &$factura)
+        {
+            if ($saldo>=$factura->saldoAPagar())
+            {
+                $saldo=$saldo-$factura->saldoAPagar();
+                $factura->setCobrado($factura->getCobrado()+$factura->saldoAPagar());
+                $factura->setEstado(EstadoFacturaType::PAGADA);
+                $factura->setPago(New \DateTime());
+                
+                
+            }else
+            {
+                $factura->setCobrado($factura->getCobrado()+$saldo);
+                //$factura->setEstado(EstadoFacturaType::NOPAGADA);
+                $saldo=0;
+            }
+        }
+        $this->setCambio($saldo);
+    }
+
+    /**
+     * Set cambio
+     *
+     * @param float $cambio
+     *
+     * @return Ingresos
+     */
+    public function setCambio($cambio)
+    {
+        $this->cambio = $cambio;
+
+        return $this;
+    }
+
+    /**
+     * Get cambio
+     *
+     * @return float
+     */
+    public function getCambio()
+    {
+        return $this->cambio;
     }
 }

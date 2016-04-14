@@ -98,7 +98,7 @@ class Facturas
     private $nodo;
 
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="cobrado", type="decimal", precision=10, scale=2, nullable=false)
      */
@@ -143,7 +143,7 @@ class Facturas
     private $pension;
     
      /**
-     * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Ingresos", mappedBy="idfactura", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Ingresos", mappedBy="facturas", cascade={"persist"})
      */
     private $abonos;
 
@@ -415,7 +415,7 @@ class Facturas
     /**
      * Set cobrado
      *
-     * @param string $cobrado
+     * @param decimal $cobrado
      *
      * @return Facturas
      */
@@ -429,7 +429,7 @@ class Facturas
     /**
      * Get cobrado
      *
-     * @return string
+     * @return decimal
      */
     public function getCobrado()
     {
@@ -562,7 +562,13 @@ class Facturas
     {
         return $this->items;
     }
-    
+    /**
+     * 
+     * @return decimal
+     */
+    public function saldoAPagar(){
+        return $this->total-$this->cobrado;
+    }
     public function calcularFactura() {
         $sum=0;
         $iva=0; //Por concepto de Educacion no se cobra iva
@@ -605,11 +611,11 @@ class Facturas
     public function __toString() {
         if ($this->getPension()!==null)
         {
-        return strval($this->getId()) .' - '. $this->getPension()->getInfo() .' - '. $this->getPension()->getEstudiante();
+        return strval($this->getId()) .' - '. $this->getPension()->getInfo() .' - '. $this->getPension()->getEstudiante().' - $'.$this->saldoAPagar();
         }
         else
         {
-         return strval($this->getId());   
+         return strval($this->getId()).' - $'.$this->saldoAPagar();   
         }
     }
 

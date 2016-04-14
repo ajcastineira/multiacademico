@@ -183,7 +183,7 @@ class FormatoEntrada {
         $this->setCodigoorientacion("CO"); // CO=Cobros PA=Pagos
         $this->setContrapartida($pension->getEstudiante()->getId());
         $this->setMoneda("USD"); //USD=dolar
-        $this->setValor(str_pad($pension->getFactura()->getTotal()*100, 13, "0", STR_PAD_LEFT));
+        $this->setValor(str_pad($pension->getFactura()->saldoAPagar()*100, 13, "0", STR_PAD_LEFT));
         $this->setFormaDeCobroPago("REC");
         $this->setTipoDeCuenta('');
         $this->setNumeroDeCuenta('');

@@ -83,19 +83,22 @@ class IngresosDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'width'=>'5em'
             ))
-          /*  ->add('fecha', 'datetime', array(
+            ->add('fecha', 'datetime', array(
                 'title' => 'Fecha',
-            ))*/
+                'date_format' => 'YYYY-MM-DD', 
+            ))
             ->add('monto', 'column', array(
                 'title' => 'Monto',
+                'width'=>'7em'
             ))
-            ->add('descripcion', 'column', array(
+            /*->add('descripcion', 'column', array(
                 'title' => 'Descripcion',
-            ))
-            ->add('referencia', 'column', array(
+            ))*/
+            /*->add('referencia', 'column', array(
                 'title' => 'Referencia',
-            ))
+            ))*/
             ->add('collectedby.name', 'column', array(
                 'title' => 'Cobrado por',
             ))
@@ -110,8 +113,9 @@ class IngresosDatatable extends AbstractDatatableView
                 'title' => 'Representante',
             ))
                 
-            ->add('factura.id', 'column', array(
-                'title' => 'Factura',
+            ->add('facturas.id', 'array', array(
+                'title' => 'Facturas',
+               'data' => 'facturas[, ].id'
             ))
 
             ->add(null, 'action', array(
@@ -131,7 +135,7 @@ class IngresosDatatable extends AbstractDatatableView
                             'role' => 'button'
                         ),
                     ),
-                    array(
+                    /*array(
                         'route' => 'ingresos_edit',
                         'route_parameters' => array(
                             'page' => 'id'
@@ -144,7 +148,7 @@ class IngresosDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                    )
+                    )*/
                 )
             ))
         ;

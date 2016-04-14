@@ -66,6 +66,11 @@ class IngresosController extends FOSRestController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $ingreso->registrarPagoEnFacturas();
+            $user = $this->getUser();
+            $ingreso->setCollectedby($user);
+            
             $em->persist($ingreso);
             $em->flush();
 

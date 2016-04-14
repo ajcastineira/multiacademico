@@ -95,6 +95,17 @@ class PensionController extends FOSRestController
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+     /**
+     * Print and displays a Matriculas entity.
+     * @Rest\Get()  
+     */
+    public function printAction(Pension $pension)
+    {
+        return $this->render('MultiacademicoBundle:Pension:print.html.twig', array(
+            'pension' => $pension,
+        ));
+    }
 
     /**
      * Displays a form to edit an existing Pension entity.

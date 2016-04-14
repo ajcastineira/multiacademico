@@ -95,6 +95,11 @@ define(['angular',
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
                             return Routing.generate(rutas.show,{'pension':$stateParams.id,'_format':'html'});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/controllers/PrintCtrl'//,
+                            ])
                         }
                     }
                 }

@@ -1,0 +1,93 @@
+{% block body -%}
+<div class="modal-header noprint">
+	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
+		&times;
+	</button>
+        <h4 class="modal-title" id="myModalLabel">
+        <img src="{{asset('escudo.png')}}" height="100" alt="Logotipo" />
+         Impresión - Vista Previa
+        </h4>
+        <div class="text-align-right" style="text-align: right!important;">
+        <a id="imprimirmodal" class="btn btn-success" onclick="window.print();">Imprimir</a>
+        </div>
+</div>
+
+<div id="remoteModalContent" class="modal-body ">
+    
+    <div>
+        <br/><br/>            
+        <img class="noprint" src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
+        <div>
+        <table style="width:100% ">    
+         <tr>   
+      <td>{{pension.factura.idcliente}}</td>
+      <td>{{pension.factura.idcliente.telefono|default('---')}}</td>
+      
+      </tr>
+        <tr>
+      <td>{{pension.factura.idcliente.cedula}}</td>
+      <td>{{'now'|localizeddate('long','none','es')}}
+          </td>
+      </tr>
+      <tr>
+      <td>{{pension.factura.idcliente.domicilio}}
+          </td>
+          <td>
+          </td>
+      </tr>
+      </table>    
+      <br/>
+      <table  style="width:100% ">
+          {% for item in pension.factura.items%}
+          <tr>
+            <td> {{item.idproducto.descripcionCorta}}</td>
+            <td> {{item.descripcion}}</td>
+            <td> {{item.cantidad}}</td>
+            <td> {{item.punitario}}</td>
+            <td> {{'desc.'}}</td>
+            <td> {{(item.cantidad*item.punitario)|number_format(2)}}</td>
+          </tr>
+          {%endfor%}
+      </table>
+      <table style="width:100% ">    
+         <tr>   
+             <td></td>
+            <td style="text-align:right">
+          {{pension.factura.subtotal}}
+          </td>
+      </tr>
+      <tr>   
+          <td></td>
+            <td style="text-align:right">
+          {{'dewsc'}}
+          </td>
+      </tr>
+      <tr>   
+          <td></td>
+            <td style="text-align:right">
+          {{pension.factura.ivaigv}}
+          </td>
+      </tr>
+      <tr>   
+          <td></td>
+            <td style="text-align:right">
+          {{pension.factura.total}}
+          </td>
+      </tr>
+        
+      </table>   
+    
+    
+    
+        <br/><br/><br/><br/><br/>
+</div>                          
+    <div class="modal-footer noprint">
+	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
+		Cancelar
+	</button>
+    <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print()">Imprimir</a>
+</div>
+<!--area imprimible test -->
+    <div class="printable" />
+    <!-- fin area imprimible test -->
+{% endblock %}

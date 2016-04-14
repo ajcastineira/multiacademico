@@ -58,7 +58,7 @@ class Ingresos
      * @Assert\NotBlank()
      * @Assert\Type(
      *     type="double",
-     *     message="El valor {{ value }} no es valido {{ type }}."
+     *     message="El valor {{ value }} debe contener 2 decimales Ej: 2.34, 5.00 "
      * )
      */
     private $monto;

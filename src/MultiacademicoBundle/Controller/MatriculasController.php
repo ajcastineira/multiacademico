@@ -229,7 +229,7 @@ class MatriculasController extends FOSRestController
             $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRICULA ORDINARIA');        
             $itemMatriculaOrdinaria->setIdproducto($matriculaOrdinaria);
             $itemMatriculaOrdinaria->setCantidad(1);
-            $itemMatriculaOrdinaria->setPunitario($matriculaOrdinaria->getPrecioPvp());
+            $itemMatriculaOrdinaria->setPunitario($matricula->getValorMatricula());
             $itemMatriculaOrdinaria->setDescripcion($matriculaOrdinaria->getDescripcion()." Estudiante: ".$matricula->getMatriculacodestudiante());
             $itemMatriculaOrdinaria->setIdfactura($facturaDeMatricula);
             $itemMatriculaOrdinaria->setUserid($usuarioResponsable);
@@ -263,7 +263,7 @@ class MatriculasController extends FOSRestController
                 $itemPension->setCantidad(1);
                     $productopension=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta("PENSION ".$i);
                     $itemPension->setIdproducto($productopension);
-                    $itemPension->setPunitario($productopension->getPrecioPvp());
+                    $itemPension->setPunitario($matricula->getValorPension());
                     $itemPension->setDescripcion($productopension->getDescripcion()." Estudiante: ".$matricula->getMatriculacodestudiante());
                 $itemPension->setIdfactura($facturaDePension);
                 $itemPension->setUserid($usuarioResponsable);

@@ -62,7 +62,9 @@ class MatriculasType extends AbstractType
                                                            ))
             ->add('matriculaobservacion',null,array('label'=>'Observacion'))
             
-          //  ->add('aula')
+            ->add('valorMatricula')
+            ->add('valorPension')
+            //  ->add('aula')
          //   ->add('comportamiento')
           //  ->add('asistencia')
         ;

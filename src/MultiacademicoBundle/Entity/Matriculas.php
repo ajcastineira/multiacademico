@@ -74,6 +74,21 @@ class Matriculas
      * @ORM\Column(name="matriculaobservacion", type="string", length=250, nullable=true)
      */
     private $matriculaobservacion;
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="valor_matricula", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $valorMatricula=0;
+    
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="valor_pension", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $valorPension=0;
 
     /**
      * @var string
@@ -809,5 +824,53 @@ class Matriculas
     public function removeCalificacione(\MultiacademicoBundle\Entity\Calificaciones $calificacione)
     {
         $this->calificaciones->removeElement($calificacione);
+    }
+
+    /**
+     * Set valorMatricula
+     *
+     * @param string $valorMatricula
+     *
+     * @return Matriculas
+     */
+    public function setValorMatricula($valorMatricula)
+    {
+        $this->valorMatricula = $valorMatricula;
+
+        return $this;
+    }
+
+    /**
+     * Get valorMatricula
+     *
+     * @return string
+     */
+    public function getValorMatricula()
+    {
+        return $this->valorMatricula;
+    }
+
+    /**
+     * Set valorPension
+     *
+     * @param string $valorPension
+     *
+     * @return Matriculas
+     */
+    public function setValorPension($valorPension)
+    {
+        $this->valorPension = $valorPension;
+
+        return $this;
+    }
+
+    /**
+     * Get valorPension
+     *
+     * @return string
+     */
+    public function getValorPension()
+    {
+        return $this->valorPension;
     }
 }

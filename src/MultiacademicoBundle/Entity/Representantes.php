@@ -310,11 +310,11 @@ class Representantes
     /**
      * Add factura
      *
-     * @param \Multiservices\ArxisBundle\Entity\Facturas $factura
+     * @param \Multiservices\PayPayBundle\Entity\Facturas $factura
      *
      * @return Representantes
      */
-    public function addFactura(\Multiservices\ArxisBundle\Entity\Facturas $factura)
+    public function addFactura(\Multiservices\PayPayBundle\Entity\Facturas $factura)
     {
         $this->facturas[] = $factura;
 
@@ -324,9 +324,9 @@ class Representantes
     /**
      * Remove factura
      *
-     * @param \Multiservices\ArxisBundle\Entity\Facturas $factura
+     * @param \Multiservices\PayPayBundle\Entity\Facturas $factura
      */
-    public function removeFactura(\Multiservices\ArxisBundle\Entity\Facturas $factura)
+    public function removeFactura(\Multiservices\PayPayBundle\Entity\Facturas $factura)
     {
         $this->facturas->removeElement($factura);
     }

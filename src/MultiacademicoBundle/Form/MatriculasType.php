@@ -55,7 +55,7 @@ class MatriculasType extends AbstractType
             ->add('matriculacodcurso',null,array('label'=>'Curso'))
             ->add('matriculaparalelo',ParaleloType::class)
             ->add('matriculaseccion',SeccionType::class)
-           // ->add('matriculafecha', DateTimeType::class)
+            ->add('matriculafecha', DateTimeType::class)
             
             ->add('matriculatipo',ChoiceType::class,array(
                                                            'choices'=>array('Ordinaria'=>'Ordinaria','Extraordinaria'=>'Extraordinaria')

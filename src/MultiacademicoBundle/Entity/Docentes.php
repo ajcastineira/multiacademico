@@ -3,13 +3,18 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
 
 /**
  * Docentes
  *
  * @ORM\Table(name="docentes")
  * @ORM\Entity
+ * @UniqueEntity({"docentecedula"}, message="Cedula ya registrada en el sistema")
+ * @UniqueEntity({"docenteemail"}, message="Este email ya existe en el sistema")
+ * @UniqueEntity({"docente"}, message="Este nombre ya existe en el sistema")
  */
 class Docentes
 {
@@ -29,19 +34,6 @@ class Docentes
      */
     private $docentecedula;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=20, nullable=false)
-     */
-    private $login;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=20, nullable=false)
-     */
-    private $password;
 
     /**
      * @var string
@@ -68,6 +60,7 @@ class Docentes
      * @var string
      *
      * @ORM\Column(name="docenteemail", type="string", length=50, nullable=false)
+     * @ArxisAssert\Email
      */
     private $docenteemail;
 
@@ -90,21 +83,23 @@ class Docentes
      *
      * @ORM\Column(name="docenteestado", type="string", length=8, nullable=false)
      */
-    private $docenteestado;
+    private $docenteestado="Activo";
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
+     * @ArxisAssert\Username
      */
     private $username;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
+     * 
      */
-    private $salt;
+    private $password;
+
+
 
     /**
      * @var string
@@ -113,89 +108,6 @@ class Docentes
      */
     private $path;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="theme", type="string", length=255, nullable=false)
-     */
-    private $theme;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="signature", type="string", length=255, nullable=false)
-     */
-    private $signature;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="signature_format", type="string", length=255, nullable=true)
-     */
-    private $signatureFormat;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="created", type="integer", nullable=false)
-     */
-    private $created;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="access", type="integer", nullable=false)
-     */
-    private $access;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lastlogin", type="integer", nullable=false)
-     */
-    private $lastlogin;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lastactivity", type="integer", nullable=false)
-     */
-    private $lastactivity;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="status", type="boolean", nullable=false)
-     */
-    private $status;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="timezone", type="string", length=32, nullable=true)
-     */
-    private $timezone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="language", type="string", length=12, nullable=false)
-     */
-    private $language;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="picture", type="integer", nullable=false)
-     */
-    private $picture;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="init", type="string", length=254, nullable=true)
-     */
-    private $init;
 
     /**
      * @var string
@@ -204,12 +116,6 @@ class Docentes
      */
     private $data;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mail", type="string", length=255, nullable=false)
-     */
-    private $mail;
     
     /**
      * @var \Multiservices\ArxisBundle\Entity\Usuario
@@ -258,29 +164,7 @@ class Docentes
         return $this->docentecedula;
     }
 
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return Docentes
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
+   
 
     /**
      * Set password
@@ -498,29 +382,6 @@ class Docentes
         return $this->username;
     }
 
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     *
-     * @return Docentes
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
 
     /**
      * Set path
@@ -547,294 +408,6 @@ class Docentes
     }
 
     /**
-     * Set theme
-     *
-     * @param string $theme
-     *
-     * @return Docentes
-     */
-    public function setTheme($theme)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return string
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Set signature
-     *
-     * @param string $signature
-     *
-     * @return Docentes
-     */
-    public function setSignature($signature)
-    {
-        $this->signature = $signature;
-
-        return $this;
-    }
-
-    /**
-     * Get signature
-     *
-     * @return string
-     */
-    public function getSignature()
-    {
-        return $this->signature;
-    }
-
-    /**
-     * Set signatureFormat
-     *
-     * @param string $signatureFormat
-     *
-     * @return Docentes
-     */
-    public function setSignatureFormat($signatureFormat)
-    {
-        $this->signatureFormat = $signatureFormat;
-
-        return $this;
-    }
-
-    /**
-     * Get signatureFormat
-     *
-     * @return string
-     */
-    public function getSignatureFormat()
-    {
-        return $this->signatureFormat;
-    }
-
-    /**
-     * Set created
-     *
-     * @param integer $created
-     *
-     * @return Docentes
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return integer
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set access
-     *
-     * @param integer $access
-     *
-     * @return Docentes
-     */
-    public function setAccess($access)
-    {
-        $this->access = $access;
-
-        return $this;
-    }
-
-    /**
-     * Get access
-     *
-     * @return integer
-     */
-    public function getAccess()
-    {
-        return $this->access;
-    }
-
-    /**
-     * Set lastlogin
-     *
-     * @param integer $lastlogin
-     *
-     * @return Docentes
-     */
-    public function setLastlogin($lastlogin)
-    {
-        $this->lastlogin = $lastlogin;
-
-        return $this;
-    }
-
-    /**
-     * Get lastlogin
-     *
-     * @return integer
-     */
-    public function getLastlogin()
-    {
-        return $this->lastlogin;
-    }
-
-    /**
-     * Set lastactivity
-     *
-     * @param integer $lastactivity
-     *
-     * @return Docentes
-     */
-    public function setLastactivity($lastactivity)
-    {
-        $this->lastactivity = $lastactivity;
-
-        return $this;
-    }
-
-    /**
-     * Get lastactivity
-     *
-     * @return integer
-     */
-    public function getLastactivity()
-    {
-        return $this->lastactivity;
-    }
-
-    /**
-     * Set status
-     *
-     * @param boolean $status
-     *
-     * @return Docentes
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return boolean
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set timezone
-     *
-     * @param string $timezone
-     *
-     * @return Docentes
-     */
-    public function setTimezone($timezone)
-    {
-        $this->timezone = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * Get timezone
-     *
-     * @return string
-     */
-    public function getTimezone()
-    {
-        return $this->timezone;
-    }
-
-    /**
-     * Set language
-     *
-     * @param string $language
-     *
-     * @return Docentes
-     */
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return string
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
-     * Set picture
-     *
-     * @param integer $picture
-     *
-     * @return Docentes
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return integer
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
-     * Set init
-     *
-     * @param string $init
-     *
-     * @return Docentes
-     */
-    public function setInit($init)
-    {
-        $this->init = $init;
-
-        return $this;
-    }
-
-    /**
-     * Get init
-     *
-     * @return string
-     */
-    public function getInit()
-    {
-        return $this->init;
-    }
-
-    /**
      * Set data
      *
      * @param string $data
@@ -858,29 +431,6 @@ class Docentes
         return $this->data;
     }
 
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     *
-     * @return Docentes
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
     /**
      * 
      * @return \Multiservices\ArxisBundle\Entity\Usuario

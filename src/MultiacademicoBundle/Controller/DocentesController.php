@@ -62,9 +62,11 @@ class DocentesController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $userDocente=$this->crearUserDocente($entity);
+            $entity->setUsuario($userDocente);
             $em->persist($entity);
             $em->flush();
-
+                
             //return $this->redirect($this->generateUrl('docentes_show', array('id' => $entity->getId())));
                 $response_redir=new JsonResponse();
                 $response_redir->setData(array('id'=>$entity->getId()));
@@ -292,5 +294,24 @@ class DocentesController extends Controller
             ->add('submit', SubmitType::class, array('label' => 'Eliminar'))
             ->getForm()
         ;
+    }
+    
+    private function crearUserDocente(Docentes $docente)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $userManager = $this->container->get('fos_user.user_manager');
+            $userDocente= $userManager->createUser();
+            $userDocente->setUsername($docente->getUsername());
+            $userDocente->setEmail($docente->getDocenteemail());
+            $userDocente->setPlainPassword($docente->getPassword());
+            //buscando rol
+            $role=$em->getRepository("MultiservicesArxisBundle:Role")->findOneByName("ROLE_DOCENTE");
+            //asignando rol docente
+            $userDocente->addRole($role);
+            $userDocente->setName($docente->getDocente());
+            $userDocente->setCargo("Docente");
+            $userDocente->setEnabled(true);
+            $userManager->updateUser($userDocente);
+            return $userDocente;
     }
 }

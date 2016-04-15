@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class DocentesType extends AbstractType
 {
@@ -15,14 +16,14 @@ class DocentesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('docentecedula')
+            ->add('docentecedula',null,['label'=>'Cedula'])    
            // ->add('mail')
-            ->add('docentetrato')
+            ->add('docentetrato',null,['label'=>'Trato'])    
             ->add('docente')
-            ->add('docentedomicilio')
-            ->add('docenteemail')
-            ->add('docentetelefono')
-            ->add('docentecargo')
+            ->add('docentedomicilio',null,['label'=>'Domicilio'])
+            ->add('docenteemail',null,['label'=>'Email'])    
+            ->add('docentetelefono',null,['label'=>'Telefono'])
+            ->add('docentecargo',null,['label'=>'Cargo'])
             //->add('docenteestado')
             //->add('username')
            // ->add('salt')
@@ -42,8 +43,8 @@ class DocentesType extends AbstractType
             //->add('data')
             
             //->add('usuario')
-            //->add('login')
-            //->add('password')
+            ->add('username')
+            ->add('password',PasswordType::class,['label'=>'Password'])    
         ;
     }
     

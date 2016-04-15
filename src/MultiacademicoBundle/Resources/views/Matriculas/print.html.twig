@@ -136,21 +136,21 @@
                 <th style="padding: 2px">Matriculatipo</th>
                 <td style="padding: 2px">{{ matricula.matriculatipo }}</td>
             </tr>
-            <tr>
+            {#<tr>
                 <th style="padding: 2px">Observacion</th>
                 <td style="padding: 2px">{{ matricula.matriculaobservacion }}</td>
             </tr>
             <tr>
                 <th style="padding: 2px">Estado</th>
                 <td style="padding: 2px">{{ matricula.matriculaestado }}</td>
-            </tr>
+            </tr>#}
             
         </tbody>
     </table>
 
     <div style="height:100px;">
       <div style="width: 50%; float: left; text-align: center;">
-        <h4 style="margin-bottom: 20px;">Estudiante</h4>
+        <h4 style="margin-bottom: 20px;">Secretaria</h4>
         <h5 style="text-align: left; margin-left: 100px;">Usuario: {{matricula.matriculacodestudiante.usuario.username}} </h5>
         <h5 style="text-align: left; margin-left: 100px;">Password: estudiante </h5>
       </div>
@@ -171,7 +171,4 @@
   </button>
   <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print()">Imprimir</a>
 </div>
-<!--area imprimible test -->
-  <div class="printable" />
-<!-- fin area imprimible test -->
 {% endblock %}

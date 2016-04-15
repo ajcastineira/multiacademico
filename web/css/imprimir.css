@@ -20,6 +20,9 @@
     padding-right: 100px;
 }
 @media print {
+.body-content {
+  min-height: 500px;
+}
 #cabecera {
   display: none !important;
 }

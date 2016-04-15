@@ -12,74 +12,65 @@
         </div>
 </div>
 
-<div id="remoteModalContent" class="modal-body ">
-    
-    <div>
-        <br/><br/>            
-        <img class="noprint" src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
+<div id="remoteModalContent" class="modal-body">
+  <div>    
+    <div style="height: 80px; margin-top: 30px;">
+      <div style="width: 60%; display: block; float: left;">
         <div>
-        <table style="width:100% ">    
-         <tr>   
-      <td>{{pension.factura.idcliente}}</td>
-      <td>{{pension.factura.idcliente.telefono|default('---')}}</td>
-      
-      </tr>
-        <tr>
-      <td>{{pension.factura.idcliente.cedula}}</td>
-      <td>{{'now'|localizeddate('long','none','es')}}
-          </td>
-      </tr>
-      <tr>
-      <td>{{pension.factura.idcliente.domicilio}}
-          </td>
-          <td>
-          </td>
-      </tr>
-      </table>    
-      <br/>
-      <table  style="width:100% ">
+          <span style="padding-left: 90px;">{{pension.factura.idcliente}}</span>      
+        </div>
+        <div>
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.cedula}}</span> 
+        </div>        
+      </div>
+      <div style="width: 40%; display: block; float: left;">
+        <div >
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.telefono|default('---')}}</span> 
+        </div>
+        <div style="font-weight: bold;" >
+          <span style="padding-left: 90px;"> <!--Aquí el código de fecha --> </span>
+        </div>
+      </div>
+      <div style="width: 100%; display: block; float: left;">
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.domicilio}}</span>
+      </div>      
+    </div>
+    <div>
+      <table  style="width:100%; margin-top:100px;">          
           {% for item in pension.factura.items%}
-          <tr>
+          <tr style="text-align: center">
             <td> {{item.idproducto.descripcionCorta}}</td>
-            <td> {{item.descripcion}}</td>
+            <td style="width: 40%;"> {{item.descripcion}}</td>
             <td> {{item.cantidad}}</td>
-            <td> {{item.punitario}}</td>
+            <td style="text-align:right; padding-right:10px;"> {{item.punitario}}</td>
             <td> {{'desc.'}}</td>
-            <td> {{(item.cantidad*item.punitario)|number_format(2)}}</td>
+            <td style="text-align:right; padding-right:10px;"> {{(item.cantidad*item.punitario)|number_format(2)}}</td>
           </tr>
           {%endfor%}
       </table>
-      <table style="width:100% ">    
-         <tr>   
-             <td></td>
-            <td style="text-align:right">
-          {{pension.factura.subtotal}}
-          </td>
-      </tr>
-      <tr>   
-          <td></td>
-            <td style="text-align:right">
-          {{'dewsc'}}
-          </td>
-      </tr>
-      <tr>   
-          <td></td>
-            <td style="text-align:right">
-          {{pension.factura.ivaigv}}
-          </td>
-      </tr>
-      <tr>   
-          <td></td>
-            <td style="text-align:right">
-          {{pension.factura.total}}
-          </td>
-      </tr>
-        
-      </table>   
-    
-    
-    
-        <br/><br/><br/><br/><br/>
+      <table style="width:100%; margin-top: 100px;">    
+        <tr>   
+          <td style="width:20%; text-align:right">{{pension.factura.subtotal}}</td>
+        </tr>
+        <tr>  
+            <td style="width:20%; text-align:right"> {{'dewsc'}} </td>
+        </tr>
+        <tr>   
+            <td style="width:20%; text-align:right"> {{pension.factura.ivaigv}} </td>
+        </tr>
+        <tr>   
+            <td id="total-pension" style="width:20%; text-align:right"> {{pension.factura.total}} </td>
+        </tr>        
+      </table>
+    </div>
+    <div>
+      <h4 style="text-align: left; margin-top: 100px;">  </h4>
+    </div>
+    <div>
+      <h4 style="text-align: center; margin-top: 100px;"> Recibí conforme </h4>
+    </div>
+  </div>    
+  
 </div>                          
     <div class="modal-footer noprint">
 	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
@@ -90,4 +81,5 @@
 <!--area imprimible test -->
     <div class="printable" />
     <!-- fin area imprimible test -->
+
 {% endblock %}

@@ -1,4 +1,15 @@
 {% block body -%}
+    <style>
+        .resenia
+        {
+            font-family: Arial;
+            font-size: 6pt;
+            text-align: right;
+            line-height: normal;
+            padding-left:30px;
+        }
+     </style>   
+        
 <div class="modal-header noprint">
 	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
 		&times;
@@ -14,10 +25,32 @@
 
 <div id="remoteModalContent" class="modal-body " style="font-family: Arial">
   
-       <img src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
-        <h3 style="text-align:center;font-family: Arial">
-                CONTRATO DE SERVICIO EDUCATIVO PARTICULAR
-             </h3>
+       
+       
+    <div style="text-align:center;">
+    <div style="display:inline-flex">
+        <div style="text-align: center;padding-right:50px">
+            <img src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
+        </div>    
+        <div style="text-align: center">
+            <span class="entidad"><b>{{entidad.entidad}} "{{entidad.titulo}}"</b></span><br>
+             {#<span class="subt2">AMIE {{entidad.data.codamie|default("__H______")}}</span><br>#}
+             <span class="subt2">{{entidad.direccion}} </span> </br>
+             
+             <span class="subt2"><b>{{entidad.lugar}}</b></span> | <span class="subt2"><b>Telefono:</b> {{entidad.telefono}}</span><br/>
+             <span><b> Email:</b> {{entidad.email}} </span><br>
+        </div>    
+        <div class="resenia">
+            Nombre del proceso: Comunicación y Admisión<br/>
+            Código: CA-R 022 <br/>
+            Versión: 1<br/>
+            Fecha: {{'now'|localizeddate('long','none','es')}}
+        </div>    
+    </div> 
+    </div>
+        <div style="font-size:15px;text-align:center">
+             <h4>CONTRATO DE SERVICIO EDUCATIVO PARTICULAR</h4>
+        </div>    
 <div class="text-justify">       
     Comparecen a la celebración del presente contrato por una parte UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA, debidamente representado por la autoridad educativa Rector MGS. WIGDINTON PONCE ORTIZ, a quien en adelante y para efectos del presente contrato se denominará simplemente LA <b>INSTITUCIÓN EDUCATIVA UNIDAD EDUCATIVA ECUATORIANA AUSTRIACA</b>,  y por otra parte el/la señor/a, 
     <b>{{matricula.matriculacodestudiante.representante|default('NO TIENE REPRESENTANTE')}}</b> 

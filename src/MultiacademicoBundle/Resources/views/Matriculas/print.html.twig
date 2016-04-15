@@ -1,44 +1,146 @@
 {% block body -%}
 <div class="modal-header noprint">
-	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
-		&times;
-	</button>
-        <h4 class="modal-title" id="myModalLabel">
-        <img src="{{asset('escudo.png')}}" height="100" alt="Logotipo" />
-         Impresión - Vista Previa
-        </h4>
-        <div class="text-align-right" style="text-align: right!important;">
-        <a id="imprimirmodal" class="btn btn-success" onclick="window.print();">Imprimir</a>
-        </div>
+  <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
+    &times;
+  </button>
+  <h4 class="modal-title" id="myModalLabel">
+    <img src="{{asset('escudo.png')}}" height="100" alt="Logotipo" />
+      Impresión - Vista Previa
+  </h4>
+  <div class="text-align-right" style="text-align: right!important;">
+    <a id="imprimirmodal" class="btn btn-success" onclick="window.print();">Imprimir</a>
+  </div>
 </div>
 
-<div id="remoteModalContent" class="modal-body ">
-    
-    <div>
-        <br/><br/>            
-        <img src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
-        <h3 style="text-align:center;font-family: Arial">
-                CONTRATO DE SERVICIO EDUCATIVO PARTICULAR
-             </h3>
-      AQUI EDITAS TODO EL HTML QUE TU QUIERAS
-      AQUI TE DEJO UN DUMP DE MATRICULA
-      {{dump(matricula)}}
-
-        
-          <br/><br/><br/>
+<div id="remoteModalContent" class="modal-body">
+    <div style="height: 160px;"> 
+      <div style="display: block; width: 15%; float: left;"> 
+        <img class="noprint" src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
+      </div>
+      <div style="display: block; width: 65%; float: left; padding:5px; font-size: 12px" > 
+        <h1 style="font-size: 20px; text-align:center; text-transform:uppercase;"> Unidad Educativa Ecuatoriana Austriaca</h1>
+        <p style="margin: 0; text-align: center;"> Dirección: Calle Eloy Alfaro c/ Guayaquil y Las Almendras</p>
+        <p style="margin: 0; text-align: center;"> Tlf: 27 4376 </p>
+        <p style="margin: 0; text-align: center;"> Pedro Carbo - Ecuador</p>
+        <div style="margin: 10px auto; width: 95%;"> 
+          <div style="float:left;"> 
+            <span> RUC: 099228136337001</span>
+          </div>
+          <div style="float:right;"> 
+            <span> Enseñanza Preescolar - Primaria y Secundaria </span>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    
-    
-        <br/><br/><br/><br/><br/>
+    <h3 style="text-align: center; text-transform: uppercase; margin-top:20px; margin-bottom: 30px;">
+      Datos de Matriculación
+    </h3>
+    <table style="margin: 0 auto 4em;">
+        <tbody>
+            <tr>
+                <th style="padding: 2px">Numero de Matricula</th>
+                <td style="padding: 2px">{{ matricula.id }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Codigo de Estudiante</th>
+                <td style="padding: 2px">{{ matricula.matriculacodestudiante.id }}</i></small></td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Representante</th>
+                <td style="padding: 2px">
+                    {% if matricula.matriculacodestudiante.representante is not null %}
+                    <a href="{{path('representantes',{'page':matricula.matriculacodestudiante.representante.id})}}">{{ matricula.matriculacodestudiante.representante|default('No asignado') }}</a>
+                    {%else%}
+                    No Asignado
+                    {%endif%}
+                </td style="padding: 2px">
+            </tr>
+            <tr>
+                <th style="padding: 2px">Periodo</th>
+                <td style="padding: 2px">{{ matricula.matriculacodperiodo }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Estudiante</th>
+                <td style="padding: 2px">{{ matricula.matriculacodestudiante }}</a></td>
+            </tr>
+            
+            <tr>
+                <th style="padding: 2px">Usuario del Estudiante</th>
+                <td style="padding: 2px">{{ matricula.matriculacodestudiante.getUsuario().getUsername()|default('NO TIENE USUARIO ASIGNADO') }}</td>
+            </tr>
+            
+            <tr>
+                <th style="padding: 2px">Curso</th>
+                <td style="padding: 2px">{{ matricula.matriculacodcurso }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Especializacion</th>
+                <td style="padding: 2px">{{ matricula.matriculacodespecializacion }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Paralelo</th>
+                <td style="padding: 2px">{{ matricula.matriculaparalelo }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Seccion</th>
+                <td style="padding: 2px">{{ matricula.matriculaseccion }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Alias</th>
+                <td style="padding: 2px">{{ matricula.aula.alias }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Matriculado Por</th>
+                <td style="padding: 2px">{{matricula.matriculausuario|default('sistema')}}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Fecha de Matriculacion</th>
+                <td style="padding: 2px">{% if matricula.matriculafecha %}{{ matricula.matriculafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            {#<tr>
+                <th style="padding: 2px">Matriculaclave</th>
+                <td style="padding: 2px">{{ matricula.matriculaclave }}</td>
+            </tr>#}
+            <tr>
+                <th style="padding: 2px">Matriculatipo</th>
+                <td style="padding: 2px">{{ matricula.matriculatipo }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Observacion</th>
+                <td style="padding: 2px">{{ matricula.matriculaobservacion }}</td>
+            </tr>
+            <tr>
+                <th style="padding: 2px">Estado</th>
+                <td style="padding: 2px">{{ matricula.matriculaestado }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div style="height:100px;">
+      <div style="width: 50%; float: left; text-align: center;">
+        <h4 style="margin-bottom: 20px;">Estudiante</h4>
+        <h5 style="text-align: left; margin-left: 100px;">Usuario {{matricula.matriculacodestudiante.username}} </h5>
+        <h5 style="text-align: left; margin-left: 100px;">Password </h5>
+      </div>
+      <div style="width: 50%; float: left; text-align: center;">
+        <h4 style="margin-bottom: 20px;">Respresentante</h4>
+        <h5>
+          {% if matricula.matriculacodestudiante.representante is not null %}
+            <a href="{{path('representantes',{'page':matricula.matriculacodestudiante.representante.id})}}">{{ matricula.matriculacodestudiante.representante|default('No asignado') }}</a>
+            {%else%}
+            No Asignado
+          {%endif%}</h5>
+      </div>
+    </div>
 </div>                          
-    <div class="modal-footer noprint">
-	<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
-		Cancelar
-	</button>
-    <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print()">Imprimir</a>
+<div class="modal-footer noprint">
+  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
+    Cancelar
+  </button>
+  <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print()">Imprimir</a>
 </div>
 <!--area imprimible test -->
-    <div class="printable" />
-    <!-- fin area imprimible test -->
+  <div class="printable" />
+<!-- fin area imprimible test -->
 {% endblock %}

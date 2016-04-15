@@ -1918,4 +1918,18 @@ class Estudiantes
     {
         $this->matriculas->removeElement($matricula);
     }
+    
+    public function getEdad()
+    {
+        // birthdate format is YYYY-MM-DD 
+        $birth = $this->getEstudianteFechanacimiento();
+        if ($birth->format('Y-m-d')=='-0001-11-30')
+        {
+            return null;
+        }
+        $today = new \DateTime(); 
+        $diff = $birth->diff($today);
+        
+        return $diff->format('%y'); // edad en años
+    }
 }

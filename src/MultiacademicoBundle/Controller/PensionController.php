@@ -111,7 +111,7 @@ class PensionController extends FOSRestController
      * Displays a form to edit an existing Pension entity.
      *
      * @Rest\Post() 
-     * @Rest\Get("/pension/{pension}/edit", name="edit_pension") 
+     * @Rest\Get("/pensions/{pension}/edit", name="edit_pension") 
      */
     public function editAction(Request $request, Pension $pension)
     {
@@ -121,10 +121,11 @@ class PensionController extends FOSRestController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $pension->getFactura()->calcularFactura();
             $em->persist($pension);
             $em->flush();
 
-            return $this->redirectToRoute('pension', array('page' => $pension->getId().'/edit'));
+            return $this->redirectToRoute('edit_pension', array('pension' => $pension->getId()));
         }
 
         return $this->render('MultiacademicoBundle:Pension:edit.html.twig', array(

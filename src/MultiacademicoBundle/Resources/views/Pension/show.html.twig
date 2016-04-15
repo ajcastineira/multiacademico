@@ -32,6 +32,11 @@
                 <td>{{ pension.factura.idcliente }}</td>
             </tr>
             <tr>
+                <th>Descuento</th>
+                
+                <td>${{ pension.factura.descuento }}</td>
+            </tr>
+            <tr>
                 <th>Total a Pagar</th>
                 
                 <td>${{ pension.factura.total }}</td>
@@ -82,7 +87,7 @@
             <a href="{{ path('pension') }}">Regresar a la lista</a>
         </li>
         <li>
-            <a href="{{ path('pension_edit', { 'pension': pension.factura }) }}">Editar</a>
+            <a href="{{ path('pension_edit', { 'page': pension.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Multiservices\PayPayBundle\Form\FacturasType;
 
 class PensionType extends AbstractType
 {
@@ -17,7 +18,7 @@ class PensionType extends AbstractType
         $builder
             ->add('info')
             ->add('estudiante')
-            ->add('factura')
+            ->add('factura',  FacturasType::class)
         ;
     }
     

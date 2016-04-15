@@ -46,18 +46,25 @@ class Facturaitems
     private $descripcion;
 
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="cantidad", type="decimal", precision=10, scale=2, nullable=false,options={"default":"0.00"})
      */
     private $cantidad = '0.00';
     
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="punitario", type="decimal", precision=10, scale=2, nullable=false,options={"default":"0.00"})
      */
     private $punitario = '0.00';
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="descuento", type="decimal", precision=10, scale=2, nullable=false,options={"default":"0.00"})
+     */
+    private $descuento = 0;
 
     /**
      * @var integer
@@ -305,5 +312,41 @@ class Facturaitems
     public function getIdproducto()
     {
         return $this->idproducto;
+    }
+    
+    public function getValorDescuento()
+    {
+        $valor=$this->cantidad*$this->punitario;
+        return $valor*($this->descuento/100);
+    }
+    
+    public function getTotal()
+    {
+        $valor=$this->cantidad*$this->punitario;
+        return $valor-($valor*($this->descuento/100));
+    }
+
+    /**
+     * Set descuento
+     *
+     * @param decimal $descuento
+     *
+     * @return Facturaitems
+     */
+    public function setDescuento($descuento)
+    {
+        $this->descuento = $descuento;
+
+        return $this;
+    }
+
+    /**
+     * Get descuento
+     *
+     * @return decimal
+     */
+    public function getDescuento()
+    {
+        return $this->descuento;
     }
 }

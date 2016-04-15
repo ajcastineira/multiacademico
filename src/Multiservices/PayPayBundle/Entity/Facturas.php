@@ -133,6 +133,13 @@ class Facturas
     private $sub_total;
     
      /**
+     * @var decimal
+     *
+     * @ORM\Column(name="descuento", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $descuento;
+    
+     /**
      * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturaitems", mappedBy="idfactura", cascade={"persist"})
      */
     private $items;
@@ -572,13 +579,16 @@ class Facturas
     public function calcularFactura() {
         $sum=0;
         $iva=0; //Por concepto de Educacion no se cobra iva
+        $sumdesc=0;
         foreach ($this->items as $item)
         {
-            //$item = new Facturaitems();
-            $sum+=($item->getPunitario()*$item->getCantidad());
+           // $item = new Facturaitems();
+            $sum+=($item->getTotal());
+            $sumdesc+=($item->getValorDescuento());
             //$iva=$item->getIdproducto()->getImpuesto();
         }
         $this->sub_total=$sum;
+        $this->descuento=$sumdesc;
         $this->iva_igv=$this->sub_total*($iva/100);
         $this->total=$this->sub_total+$this->iva_igv;
         return true;
@@ -651,5 +661,29 @@ class Facturas
     public function getAbonos()
     {
         return $this->abonos;
+    }
+
+    /**
+     * Set descuento
+     *
+     * @param string $descuento
+     *
+     * @return Facturas
+     */
+    public function setDescuento($descuento)
+    {
+        $this->descuento = $descuento;
+
+        return $this;
+    }
+
+    /**
+     * Get descuento
+     *
+     * @return string
+     */
+    public function getDescuento()
+    {
+        return $this->descuento;
     }
 }

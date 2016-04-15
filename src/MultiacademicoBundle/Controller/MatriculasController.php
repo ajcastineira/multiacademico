@@ -126,11 +126,11 @@ class MatriculasController extends FOSRestController
      */
     public function printAction(Matriculas $matricula)
     {
-        //$deleteForm = $this->createDeleteForm($matricula);
+        
 
         return $this->render('MultiacademicoBundle:Matriculas:print.html.twig', array(
             'matricula' => $matricula,
-          //  'delete_form' => $deleteForm->createView(),
+        
         ));
     }
     
@@ -140,11 +140,15 @@ class MatriculasController extends FOSRestController
      */
     public function printContratoAction(Matriculas $matricula)
     {
-        //$deleteForm = $this->createDeleteForm($matricula);
+        $em = $this->getDoctrine()->getManager();
+        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
+        if (!$entidad) {
+            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
+        }
 
         return $this->render('MultiacademicoBundle:Matriculas:printcontrato.html.twig', array(
             'matricula' => $matricula,
-          //  'delete_form' => $deleteForm->createView(),
+            'entidad'=>$entidad
         ));
     }
 

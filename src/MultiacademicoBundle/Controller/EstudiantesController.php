@@ -246,7 +246,8 @@ class EstudiantesController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Estudiantes entity.');
         }
-
+        //parche temporal
+        $entity->setMail($entity->getUsuario()->getEmail());
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -267,15 +268,15 @@ class EstudiantesController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MultiacademicoBundle:Estudiantes')->find($id);
-
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Estudiantes entity.');
         }
-
+        
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
+        
         if ($editForm->isValid()) {
             //$entity->getUsuario()->setUsernameCanonical($entity->getUsername());
             $em->flush();

@@ -1,4 +1,23 @@
 {% block body -%}
+<style>    
+    @page {
+      size: auto;
+      
+     margin-left: 0.5cm;
+      margin-right: 0.5cm;
+      margin-top: 0.1cm;
+
+    }
+    @page rotated { size : landscape;
+                margin-left: 0.5cm;
+                margin-right: 0.5cm;
+                margin-top: 0.1cm;
+    }
+    @media print {
+    .letraprintMini {
+        font-size:8pt;
+    }
+</style>    
 <div class="modal-header noprint">
 	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
 		&times;
@@ -13,7 +32,7 @@
 </div>
 
 <div id="remoteModalContent" class="modal-body" >
-  <div style="font-size:8pt">    
+  <div class="letraprintMini" style="font-size:8pt">    
     <div style="height: 80px; margin-top: 30px;">
       <div style="width: 60%; display: block; float: left;">
         <div>

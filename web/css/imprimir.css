@@ -20,9 +20,12 @@
     padding-right: 100px;
 }
 @media print {
-.body-content {
-  min-height: 500px;
-}
+    .body-content {
+        min-height: 500px;
+    }
+    .letraprintMini {
+        font-size:7pt;
+    }
 #cabecera {
   display: none !important;
 }

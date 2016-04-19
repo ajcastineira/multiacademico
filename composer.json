@@ -49,7 +49,12 @@
         
         "knplabs/knp-time-bundle": "^1.5",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
-        "twig/extensions": "^1.3"
+        "twig/extensions": "^1.3",
+        "h4cc/wkhtmltopdf-amd64": "0.12.3",
+        "h4cc/wkhtmltopdf-i386": "0.12.3",
+        "h4cc/wkhtmltoimage-amd64": "0.12.3",
+        "h4cc/wkhtmltoimage-i386": "0.12.3",
+        "wemersonjanuario/wkhtmltopdf-windows": "dev-master"
 
     },
     "require-dev": {

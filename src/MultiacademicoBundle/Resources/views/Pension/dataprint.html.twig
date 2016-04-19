@@ -1,0 +1,66 @@
+<div class="letraprintMini" >    
+    <div style="height: 80px; margin-top: 30px;">
+      <div style="width: 60%; display: block; float: left;">
+        <div>
+          <span style="padding-left: 90px;">{{pension.factura.idcliente}}</span>      
+        </div>
+        <div>
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.cedula}}</span> 
+        </div>        
+      </div>
+      <div style="width: 40%; display: block; float: left;">
+        <div >
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.telefono|default('---')}}</span> 
+        </div>
+        <div style="font-weight: bold;" >
+          <span style="padding-left: 90px;"> <!--Aquí el código de fecha --> </span>
+        </div>
+      </div>
+      <div style="width: 100%; display: block; float: left;">
+          <span style="padding-left: 90px;">{{pension.factura.idcliente.domicilio}}</span>
+      </div>      
+    </div>
+    <div>
+      <table class="letraprintMini" style="width:100%; margin-top:100px;">          
+          {% for item in pension.factura.items%}
+          <tr style="text-align: center">
+            <td> {{item.idproducto.descripcionCorta}}</td>
+            <td style="width: 40%;"> {{item.descripcion}}</td>
+            <td> {{item.cantidad}}</td>
+            <td style="text-align:right; padding-right:10px;"> {{item.punitario}}</td>
+            {# descuento i9ndividual #}
+            <td> {{item.getValorDescuento()|number_format(2)}}</td>
+            <td style="text-align:right; padding-right:10px;"> {{(item.getTotal())|number_format(2)}}</td>
+          </tr>
+          {%endfor%}
+      </table>
+      <table class="letraprintMini" style="width:100%; margin-top: 100px">    
+        <tr>
+          <td rowspan="4" style="width:20%; "> </td>
+          <td rowspan="4" style="width:60%; text-align:left">  <span id="total-words" style="text-align: left; margin-top: 100px;">  </span></td>
+          <td style="width:20%; text-align:right">{{pension.factura.subtotal}}</td>
+        </tr>
+        <tr>  
+            {# descuento #}
+            <td style="width:20%; text-align:right"> {{pension.factura.descuento}} </td>
+        </tr>
+        <tr>   
+            <td style="width:20%; text-align:right"> {{pension.factura.ivaigv}} </td>
+        </tr>
+        <tr>   
+            <td id="total-pension" style="width:20%; text-align:right"> {{pension.factura.total}} </td>
+        </tr>        
+      </table>
+    </div>
+    {#<div>
+      <h4 style="text-align: center; margin-top: 100px;"> Recibí conforme </h4>
+    </div>#}
+  </div>
+  
+<script>
+  var num = document.getElementById('total-pension').innerHTML;
+  document.getElementById('total-words').innerHTML = NumeroALetras(parseFloat(num));
+ 
+</script>
+
+ 

@@ -323,7 +323,7 @@ class Facturaitems
     public function getTotal()
     {
         $valor=$this->cantidad*$this->punitario;
-        return $valor-($valor*($this->descuento/100));
+        return $valor;
     }
 
     /**

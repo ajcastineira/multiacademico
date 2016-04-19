@@ -589,8 +589,9 @@ class Facturas
         }
         $this->sub_total=$sum;
         $this->descuento=$sumdesc;
-        $this->iva_igv=$this->sub_total*($iva/100);
-        $this->total=$this->sub_total+$this->iva_igv;
+        $subTdescuento=$this->sub_total-$this->descuento;
+        $this->iva_igv=$subTdescuento*($iva/100);
+        $this->total=$subTdescuento+$this->iva_igv;
         return true;
     }
 

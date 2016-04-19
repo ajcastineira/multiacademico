@@ -42,11 +42,11 @@ define(['modules/forms/module',
 
                             }; 
                             $scope.printPDF= function (documentDefinition){
-                                  pdfMake.fonts={
+                                /*  pdfMake.fonts={
                                       micross:{
                                             normal:'micross.ttf'
 		                      }
-                                  };
+                                  };*/
                                   pdfMake.createPdf(documentDefinition).download();
                             }
                             

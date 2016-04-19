@@ -15,6 +15,6 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
     #KNP generator PDF
-    pdf_generator: %kernel.root_dir%/../vendor/bin/wkhtmltopdf64
+    pdf_generator: %kernel.root_dir%/../vendor/bin/wkhtmltopdf-amd64
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt

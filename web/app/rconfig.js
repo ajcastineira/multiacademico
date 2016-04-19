@@ -126,8 +126,9 @@ var require = {
         'datatables.net-responsive': '../plugin/datatables-responsive/js/datatables.responsive.min',
         'datatables.net-responsive.bootstrap': '../plugin/datatables-responsive/js/responsive.bootstrap.min',
         
-        'pdfmake':"https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min",
-        'pdfmakefonts':"https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts",
+        'pdfmake':["https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min",
+                    '../plugin/pdfmake/build/pdfmake.min'],
+        'pdfmakefonts':"../plugin/pdfmake/build/vfs_fonts",
         'jszip':'https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min',
         
         

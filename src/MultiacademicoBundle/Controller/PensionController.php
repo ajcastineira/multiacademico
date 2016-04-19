@@ -96,15 +96,34 @@ class PensionController extends FOSRestController
         ));
     }
     
+    /**
+     * Print and displays a Pension entity.
+     * @Rest\Get()  
+     */
+    public function dataprintAction(Pension $pension)
+    {
+        $view = $this->view($pension, 200)
+            ->setTemplate("MultiacademicoBundle:Pension:dataprint.html.twig")
+            ->setTemplateVar('pension')
+            ;
+        return $this->handleView($view);
+
+    }
+    
      /**
      * Print and displays a Matriculas entity.
      * @Rest\Get()  
      */
     public function printAction(Pension $pension)
     {
-        return $this->render('MultiacademicoBundle:Pension:print.html.twig', array(
-            'pension' => $pension,
-        ));
+        $view = $this->view($pension, 200)
+            ->setTemplate("MultiacademicoBundle:Pension:print.html.twig")
+            ->setTemplateVar('pension')
+            //->setTemplateData($templateData)
+            //->setSerializationContext($context)
+            ;
+        return $this->handleView($view);
+
     }
 
     /**

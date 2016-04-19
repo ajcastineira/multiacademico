@@ -79,23 +79,6 @@ class EstudiantesType extends AbstractType
                                                                                         ]])*/
             ->add('username',null,['label'=>'Username'])    
             ->add('password',PasswordType::class,['label'=>'Password'])    
-           // ->add('username')
-           // ->add('password')
-          //  ->add('salt')
-          //  ->add('path')
-          //  ->add('theme')
-          //  ->add('signature')
-          //  ->add('signatureFormat')
-          //  ->add('created')
-         //   ->add('access')
-          //  ->add('lastlogin')
-          //  ->add('lastactivity')
-          //  ->add('status')
-          //  ->add('timezone')
-         //   ->add('language')
-          //  ->add('picture')
-           // ->add('init')
-          //  ->add('data')
             
         ;
     }

@@ -1,4 +1,7 @@
 <div class="letraprintMini" >    
+    <div>
+        <br/>
+    </div>
     <div style="height: 80px; margin-top: 30px;">
       <div style="width: 60%; display: block; float: left;">
         <div>
@@ -13,7 +16,7 @@
           <span style="padding-left: 90px;">{{pension.factura.idcliente.telefono|default('---')}}</span> 
         </div>
         <div style="font-weight: bold;" >
-          <span style="padding-left: 90px;"> <!--Aquí el código de fecha --> </span>
+          <span style="padding-left: 90px;"> {{'now'|date('Y-M-d')}} </span>
         </div>
       </div>
       <div style="width: 100%; display: block; float: left;">
@@ -43,6 +46,10 @@
         <tr>  
             {# descuento #}
             <td style="width:20%; text-align:right"> {{pension.factura.descuento}} </td>
+        </tr>
+        <tr>  
+            {# descuento #}
+            <td style="width:20%; text-align:right"> {{pension.factura.subtotal-pension.factura.descuento}} </td>
         </tr>
         <tr>   
             <td style="width:20%; text-align:right"> {{pension.factura.ivaigv}} </td>

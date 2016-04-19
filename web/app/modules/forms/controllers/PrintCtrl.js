@@ -43,10 +43,10 @@ define(['modules/forms/module',
                             }; 
                             $scope.printPDF= function (documentDefinition){
                                   pdfMake.fonts={
-                                      opensans:{
-                                          normal:'OpenSans-Regular.ttf'
-                                      }
-                                  }
+                                      micross:{
+                                            normal:'micross.ttf'
+		                      }
+                                  };
                                   pdfMake.createPdf(documentDefinition).download();
                             }
                             

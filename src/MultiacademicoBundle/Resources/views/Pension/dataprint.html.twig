@@ -1,4 +1,4 @@
-<div class="letraprintMini" >    
+<div class="letraprintMini" style="font-family:Arial">    
     <div>
         <br/>
     </div>
@@ -15,7 +15,7 @@
         <div >
           <span style="padding-left: 90px;">{{pension.factura.idcliente.telefono|default('---')}}</span> 
         </div>
-        <div style="font-weight: bold;" >
+        <div>
           <span style="padding-left: 90px;"> {{'now'|date('Y-M-d')}} </span>
         </div>
       </div>
@@ -26,8 +26,8 @@
     <div>
       <table class="letraprintMini" style="width:100%; margin-top:100px;">          
           {% for item in pension.factura.items%}
-          <tr style="text-align: center">
-            <td> {{item.idproducto.descripcionCorta}}</td>
+          <tr style="text-align: center;">
+            <td style="width: 15%;"> {{item.idproducto.descripcionCorta}}</td>
             <td style="width: 40%;"> {{item.descripcion}}</td>
             <td> {{item.cantidad}}</td>
             <td style="text-align:right; padding-right:10px;"> {{item.punitario}}</td>
@@ -39,8 +39,8 @@
       </table>
       <table class="letraprintMini" style="width:100%; margin-top: 100px">    
         <tr>
-          <td rowspan="4" style="width:20%; "> </td>
-          <td rowspan="4" style="width:60%; text-align:left">  <span id="total-words" style="text-align: left; margin-top: 100px;">  </span></td>
+          <td rowspan="5" style="width:20%; "> </td>
+          <td rowspan="5" style="width:60%; text-align:left">  <span id="total-words" style="text-align: left; margin-top: 100px;">  </span></td>
           <td style="width:20%; text-align:right">{{pension.factura.subtotal}}</td>
         </tr>
         <tr>  

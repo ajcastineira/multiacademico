@@ -313,6 +313,9 @@ function NumeroALetras(num){
                     <li>
                         <a href="#" data-ng-click="printPDF(facturaDefinition)"></i> PDF</a>
                     </li>
+                    <li>
+                        <a href="{{path('printpdf_pension',{'pension':pension.id,'_format':'html'})}}" target="_blank"></i> PDR (prueba)</a>
+                    </li>
                     {#<li>
                         <a ng-href="{{'{{urlAnexo('~entity.cedula~')}}'}}" target="_blank">Anexo</a>
                     </li>

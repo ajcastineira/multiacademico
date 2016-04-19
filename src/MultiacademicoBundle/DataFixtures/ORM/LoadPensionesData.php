@@ -37,12 +37,12 @@ class LoadPensionesData implements FixtureInterface
         }
         
         //creando Producto MAtricula
-        $matricula=$manager->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRICULA ORDINARIA');
+        $matricula=$manager->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRORD');
         if (!$matricula)
         {
             $matricula = new Productos();
             $matricula->setDescripcion("Matricula Ordinaria");
-            $matricula->setDescripcionCorta("MATRICULA ORDINARIA");
+            $matricula->setDescripcionCorta("MATRORD");
             $matricula->setStock(100);
             $matricula->setCodFamilia($familia);
             $matricula->setObservaciones("Matricula");

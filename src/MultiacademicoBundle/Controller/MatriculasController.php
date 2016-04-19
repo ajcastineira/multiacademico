@@ -234,7 +234,7 @@ class MatriculasController extends FOSRestController
         //añadiendo items
             $itemMatriculaOrdinaria=new Facturaitems();
             //añadiendo item el producto Servicio Matricula Ordinaria
-            $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRICULA ORDINARIA');        
+            $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRORD');        
             $itemMatriculaOrdinaria->setIdproducto($matriculaOrdinaria);
             $itemMatriculaOrdinaria->setCantidad(1);
             $itemMatriculaOrdinaria->setPunitario($matricula->getValorMatricula());

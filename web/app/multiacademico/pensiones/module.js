@@ -96,10 +96,15 @@ define(['angular',
                         templateUrl: function($stateParams){
                             return Routing.generate(rutas.show,{'pension':$stateParams.id,'_format':'html'});
                         },
+                        controller:function($scope, $window){
+                            $scope.facturaDefinition=$window.facturaDefinition;
+                        },
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                 'modules/forms/controllers/PrintCtrl'//,
-                            ])
+                            ]),
+ 
+                            
                         }
                     }
                 }

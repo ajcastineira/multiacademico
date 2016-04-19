@@ -1,7 +1,11 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['modules/forms/module'], function (module) {
+define(['modules/forms/module',
+        'pdfmake',
+        'pdfmakefonts',
+        'modules/forms/html2pdf'
+    ], function (module) {
 
     'use strict';
 
@@ -36,7 +40,10 @@ define(['modules/forms/module'], function (module) {
                                 });
 
 
-                            };    
+                            }; 
+                            $scope.printPDF= function (documentDefinition){
+                                  pdfMake.createPdf(documentDefinition).download();
+                            }
                             
                             
                         });

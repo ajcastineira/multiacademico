@@ -18,6 +18,7 @@ use MultiacademicoBundle\Entity\Representantes;
 use Multiservices\PayPayBundle\Entity\Ingresos;
 
 use MultiacademicoBundle\Form\Type\RepresentanteType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class IngresosType extends AbstractType
 {
@@ -28,7 +29,7 @@ class IngresosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('fecha', 'datetime')
+            ->add('fecha', DateTimeType::class)
             ->add('representante',  RepresentanteType::class)
             ->add('monto')
             ->add('descripcion')

@@ -3,15 +3,26 @@ var requirejsCompileSkip = require('./tasks/requirejs-compile-skip.json');
 var pkg = require('./package.json');
 
 var pub = pkg.smartadmin.public;
+var plg = pkg.smartadmin.plugin;
 var tmp = pkg.smartadmin.temp;
 var bld = pkg.smartadmin.build;
+var fnt = pkg.smartadmin.fonts;
 
 module.exports = function (grunt) {
 
 
     // Project configuration.
     grunt.initConfig({
-
+        dump_dir: {
+            options: {
+              rootPath: fnt,
+              pre:'window.pdfMake = window.pdfMake || {}; window.pdfMake.vfs = '
+            },
+            'files':{
+                         src:  [fnt+'OpenSans-Regular.ttf' ],
+                         dest: plg + 'pdfmake/build/vfs_fonts.js'
+                    }
+                },
         turnOffPotatoDeclaration: {
             tmp: {
                 expand: true,
@@ -182,6 +193,8 @@ module.exports = function (grunt) {
             }
         }
     });
+    
+    grunt.loadNpmTasks('grunt-dump-dir');
 
     grunt.loadNpmTasks('grunt-contrib-clean');
 

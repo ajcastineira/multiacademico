@@ -5,7 +5,8 @@
     "plugin": "../web/plugin/",
     "vendor": "../web/vendor/",
     "temp": "../web/tmp/",
-    "build": "../web/build/"
+    "build": "../web/build/",
+    "fonts": "../web/fonts/"
   },
   "version": "0.0.1",
   "description": "Smartadmin grunt tools",
@@ -24,6 +25,7 @@
     "grunt-contrib-requirejs": "^0.4.4"
   },
   "devDependencies": {
-    "grunt-contrib-cssmin": "^0.14.0"
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-dump-dir": "^0.1.2"
   }
 }

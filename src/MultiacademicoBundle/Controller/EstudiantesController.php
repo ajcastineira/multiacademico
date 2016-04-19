@@ -128,7 +128,31 @@ class EstudiantesController extends Controller
             //'action' => $this->generateUrl('estudiantes_create'),
             'method' => 'POST',
         ));
-
+        
+        $form->add('estudianteNacionalidad',null,['label'=>'Nacionalidad'])
+            ->add('estudianteLugarnacimiento',null,['label'=>'Lugar Nacimiento'])
+            ->add('estudianteProvinciaN',null,['label'=>'Provincia Nacimiento'])
+            ->add('estudianteCantonN',null,['label'=>'Canton Nacimiento'])
+            ->add('estudianteParroquiaN',null,['label'=>'Parroquia Nacimiento'])
+            ->add('estudianteDomicilio',null,['label'=>'Domicilio'])
+            ->add('estudianteProvinciaD',null,['label'=>'Provincia Domicilio'])
+            ->add('estudianteCantonD',null,['label'=>'Canton Domicilio'])
+            ->add('estudianteParroquiaD',null,['label'=>'Parroquia Domicilio']);
+               
+         $form->add('madre')
+            ->add('madreCedula')
+            ->add('madreEstadocivil')
+            ->add('madreTelefono')
+            ->add('madreDomicilio')
+            ->add('madreBono')
+            ->add('padre')
+            ->add('padreCedula')
+            ->add('padreEstadocivil')
+            ->add('padreTelefono')
+            ->add('padreDomicilio');
+                
+        
+        
         $form->add('submit', SubmitType::class, array('label' => 'Crear'));
 
         return $form;

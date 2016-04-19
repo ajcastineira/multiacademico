@@ -3,6 +3,8 @@
 namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -14,6 +16,7 @@ use MultiacademicoBundle\Entity\Pension;
 use MultiacademicoBundle\Form\PensionType;
 use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 use Multiservices\PayPayBundle\Entity\Ingresos;
+
 
 /**
  * Pension controller.
@@ -108,6 +111,26 @@ class PensionController extends FOSRestController
             ;
         return $this->handleView($view);
 
+    }
+    /**
+     * Print PDF
+     * @Rest\Get()
+     */
+    public function printpdfAction(Pension $pension)
+    {
+        $html = $this->renderView('MultiacademicoBundle:Pension:dataprint.html.twig', array(
+                'pension'  => $pension
+            ));
+        //$html = $this->generateUrl('dataprint_pension', array('pension'=>$pension->getId(),'_format'=>'html'), UrlGeneratorInterface::ABSOLUTE_URL); // use absolute path!
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="file.pdf"'
+            )
+        );
     }
     
      /**

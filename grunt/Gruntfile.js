@@ -19,7 +19,7 @@ module.exports = function (grunt) {
               pre:'window.pdfMake = window.pdfMake || {}; window.pdfMake.vfs = '
             },
             'files':{
-                         src:  [fnt+'OpenSans-Regular.ttf' ],
+                         src:  [fnt+'micross.ttf' ],
                          dest: plg + 'pdfmake/build/vfs_fonts.js'
                     }
                 },

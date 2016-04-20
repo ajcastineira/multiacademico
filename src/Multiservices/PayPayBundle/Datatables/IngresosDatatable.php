@@ -50,7 +50,24 @@ class IngresosDatatable extends AbstractDatatableView
             'server_side' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array()
+            'extensions' => array(
+                'buttons' =>
+                    array(
+                        ['extend'=> 'copy',
+                         'text'=> 'Copiar',
+                          'className'=>'btn-primary'],
+                        'excel',
+                        'pdf',
+                        ['extend'=> 'print',
+                         'text'=> 'Imprimir',
+                         'className'=>'btn-primary'],
+                        
+                       /* array(
+                            'text' => 'Reload',
+                            'action' => ':post:reload.js.twig'
+                        )*/
+                   ),
+                'responsive' => true)
         ));
 
         $this->ajax->set(array(
@@ -61,7 +78,9 @@ class IngresosDatatable extends AbstractDatatableView
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'dom' => 'lfrtip',
+             'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
+                    "<'row'<'col-sm-12'rt>>" .
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),

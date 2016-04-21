@@ -119,7 +119,7 @@ class IngresosController extends FOSRestController
             $em->persist($ingreso);
             $em->flush();
 
-            return $this->redirectToRoute('ingresos', array('page' => $ingreso->getId().'/edit'));
+            return $this->redirectToRoute('edit_ingreso', array('ingreso' => $ingreso->getId()));
         }
 
         return $this->render('PayPayBundle:Ingresos:edit.html.twig', array(

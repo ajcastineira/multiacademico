@@ -9,12 +9,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Doctrine\ORM\EntityRepository;
 
 use MultiacademicoBundle\Form\Type\SeccionType;
 use MultiacademicoBundle\Form\Type\ParaleloType;
 use MultiacademicoBundle\Form\Type\EstudianteNoMatriculadoType;
+use MultiacademicoBundle\Entity\Estudiantes;
 
 class MatriculasType extends AbstractType
 {
@@ -27,22 +30,29 @@ class MatriculasType extends AbstractType
         $builder
             ->add('matriculacodperiodo',null,array('label'=>'Periodo'));
         
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event)  {
-                $form = $event->getForm();
-
+        $formModifier = function (FormInterface $form, Estudiantes $estudiante = null) {
+                
+               
                 $formOptions = array(
                     'class' => 'MultiacademicoBundle:Estudiantes',
                     'property_path' => 'matriculacodestudiante',
-                    'query_builder' => function (EntityRepository $er)  {
-                         return $er->estudiantesNoMatriculados();
+                    'query_builder' => function (EntityRepository $er) use ($estudiante)  {
+                         return $er->estudiantesNoMatriculados($estudiante);
                     },
                 );
+               
+                
+            $form->add('matriculacodestudiante', EstudianteNoMatriculadoType::class, $formOptions);
+        };
+        
+        
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event)use ($formModifier)  {
+                $data = $event->getData();
 
-                // create the field, this is similar the $builder->add()
-                // field name, field type, data, options
-                $form->add('matriculacodestudiante', EstudianteNoMatriculadoType::class, $formOptions);
+                $formModifier($event->getForm(), $data->getMatriculacodestudiante());
+                 
             }
         );
         

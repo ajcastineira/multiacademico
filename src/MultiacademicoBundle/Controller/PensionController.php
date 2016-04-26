@@ -54,17 +54,43 @@ class PensionController extends FOSRestController
         $datatable = $this->get('multiacademico.pensiones');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
-        
-        $function = function($qb)
-    {
-         $qb->addSelect('partial idcliente.{id,representante}');
-         $qb->join ('factura.idcliente','idcliente');
-
-    };
-
-    $query->addWhereResult($function);
-
-        return $query->getResponse();
+        $query->buildQuery();
+        $qb = $query->getQuery();
+      //  $qb=new \Doctrine\ORM\QueryBuilder();
+        $qb->addSelect('partial idcliente.{id,representante}');
+        $qb->join ('factura.idcliente','idcliente');
+        $partes_validas=[];
+        $where=$qb->getDqlPart('where');
+        if (isset($where))
+        {
+            $qb_where_parts = $where->getParts();
+            foreach ($qb_where_parts as &$qb_where_part)
+             {
+                    $parts=$qb_where_part->getParts();
+                    foreach ($parts as $part)
+                    {
+                        if ($part->getLeftExpr()=='factura.idcliente')
+                        {
+                            $newpart=new \Doctrine\ORM\Query\Expr\Comparison('idcliente.representante',$part->getOperator(),$part->getRightExpr());
+                            $partesvalidas[]=$newpart;
+                        }else
+                        {
+                            $partesvalidas[]=$part;
+                        }
+                    }
+             }
+         }
+         if (isset($newpart))
+         {
+            $qb->resetDQLPart('where');
+            foreach ($partesvalidas as $partevalida)
+            {
+                $qb->andWhere($partevalida);
+            }
+         }
+       // var_dump($qb->getDQL());
+        $query->setQuery($qb);
+        return $query->getResponse(false);
     }
 
     /**

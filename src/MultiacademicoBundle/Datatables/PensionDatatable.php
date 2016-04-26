@@ -5,7 +5,7 @@ namespace MultiacademicoBundle\Datatables;
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
-
+use MultiacademicoBundle\Datatables\Columns\RepresentanteColumn;
 /**
  * Class PensionDatatable
  *
@@ -89,6 +89,10 @@ class PensionDatatable extends AbstractDatatableView
         ));
 
         $this->columnBuilder
+            ->add('id', 'column', array(
+                //'title' => 'Cod Factura',
+                'visible'=>false
+            ))    
             ->add('factura.id', 'column', array(
                 'title' => 'Cod Factura',
                 'width'=>'4em'
@@ -204,11 +208,13 @@ class PensionDatatable extends AbstractDatatableView
             ->add('estudiante.mail', 'column', array(
                 'title' => 'Estudiante Mail',
             ))*/
-          /* ->add('factura.idcliente.id', 'column', array(
+          /* ->add('factura.idcliente', 'column', array(
                 'visible'=>false
-            ))     */
-            ->add('factura.idcliente', 'column', array(
+            )) */    
+            ->add('factura.idcliente', new RepresentanteColumn(), array(
                 'title' => 'Representante',
+                'data'=>'factura.idcliente.representante',
+                //'render'=>'function(data){return data.representante;}',
                  'width'=>'7em'
             ))
             ->add('factura.emitido', 'datetime', array(

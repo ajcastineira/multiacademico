@@ -45,9 +45,8 @@ class Pension
      * @var \Multiservices\PayPayBundle\Entity\Facturas
      *
      * @ORM\OneToOne(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", inversedBy="pension")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="factura_id", referencedColumnName="id")
+     * 
      * Serializer\Expose
      * Serializer\Groups({"estadisticas"})
      */

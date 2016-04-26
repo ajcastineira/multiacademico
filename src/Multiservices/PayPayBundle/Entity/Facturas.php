@@ -34,9 +34,8 @@ class Facturas
      * @var \MultiacademicoBundle\Entity\Representantes
      *
      * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes", inversedBy="facturas")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idcliente", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="idcliente", referencedColumnName="id")
+     * 
      */
     private $idcliente;
 
@@ -206,11 +205,11 @@ class Facturas
     /**
      * Set idcliente
      *
-     * @param integer $idcliente
+     * @param \MultiacademicoBundle\Entity\Representantes $idcliente
      *
      * @return Facturas
      */
-    public function setIdcliente($idcliente)
+    public function setIdcliente(\MultiacademicoBundle\Entity\Representantes $idcliente)
     {
         $this->idcliente = $idcliente;
 
@@ -220,7 +219,7 @@ class Facturas
     /**
      * Get idcliente
      *
-     * @return integer
+     * @return \MultiacademicoBundle\Entity\Representantes
      */
     public function getIdcliente()
     {

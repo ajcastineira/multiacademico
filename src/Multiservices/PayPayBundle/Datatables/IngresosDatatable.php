@@ -129,17 +129,21 @@ class IngresosDatatable extends AbstractDatatableView
                 'title' => 'Representante',
             ))
                 
-            ->add('facturas.id', 'array', array(
+            ->add('facturas.pension.estudiante.estudiante', 'array', array(
                 'title' => 'Estudiante',
                 'data' => 'facturas[, ].pension.estudiante.estudiante',
                 'render'=>"function(data,type,row){return eliminarDuplicados(data.split(String.fromCharCode(44,32)));}"
             ))
-
+                
+             ->add('facturas.pension.info', 'array', array(
+                'data' => 'facturas[, ].pension.info',
+                 'visible'=>false
+            ))    
             ->add('facturas.id', 'array', array(
                 'title' => 'Facturas',
-               'data' => 'facturas[, ].pension.id'
+               'data' => 'facturas[, ].id'
             ))
-                       ->add('collectedby.name', 'column', array(
+            ->add('collectedby.name', 'column', array(
                 'title' => 'Cobrado por',
             )) 
             ->add('formaPago.formaPago', 'column', array(
@@ -188,16 +192,18 @@ class IngresosDatatable extends AbstractDatatableView
         $router = $this->router;
         
         $formatter = function($line) use ($router){
-            //$line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
-            $results=[];
+            
+            if (isset($line["facturas"]))
+            {
+               
             foreach ($line["facturas"] as &$factura)
             {
                 $estudianteroute = $router->generate('estudiantes_show', array('id' => $factura["pension"]["estudiante"]["id"]));
                 $factura["pension"]["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$factura["pension"]["estudiante"]["estudiante"].'</a>';
                 $facturaroute = $router->generate('pension', array('page' => $factura["pension"]["id"]));
-                $factura["pension"]["id"] = '<a rel="tooltip" title="'.$factura["pension"]["info"].'" href="'.$facturaroute.'">'.$factura["id"].'</a>';
+                $factura["id"] = '<a rel="tooltip" title="'.$factura["pension"]["info"].'" href="'.$facturaroute.'">'.$factura["id"].'</a>';
             }
-            
+            }
             $representanteroute = $router->generate('representantes', array('page' => $line["representante"]["id"]));
             $line["representante"]["representante"] = '<a href="'.$representanteroute.'">'.$line["representante"]["representante"].'</a>';
        

@@ -51,9 +51,10 @@ class IngresosController extends FOSRestController
         
         $function = function($qb)
         {
-         $qb->addSelect('partial pension.{id,info}, partial estudiante.{id,estudiante}');
-         $qb->join ('facturas.pension','pension');
-        $qb->join ('pension.estudiante','estudiante');
+        // $qb->addSelect('partial estudiante.{id,estudiante}');
+        //$qb->join ('ingresos.facturas','facturas');
+         //$qb->join ('facturas.pension','facturas_pension');
+        //$qb->innerJoin ('pension_estudiante.estudiante','estudiante');
         };
 
     $query->addWhereResult($function);

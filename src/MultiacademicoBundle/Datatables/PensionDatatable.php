@@ -89,10 +89,6 @@ class PensionDatatable extends AbstractDatatableView
         ));
 
         $this->columnBuilder
-            ->add('id', 'column', array(
-                //'title' => 'Cod Factura',
-                'visible'=>false
-            ))    
             ->add('factura.id', 'column', array(
                 'title' => 'Cod Factura',
                 'width'=>'4em'
@@ -236,8 +232,12 @@ class PensionDatatable extends AbstractDatatableView
                 'date_format' => 'DD-MMM-YYYY H:mm:s',
                  'width'=>'5em'
             ))
+            ->add('factura.cobrado', 'column', array(
+                'title' => 'Cobrado',
+                'width'=>'4em',
+            ))
             ->add('factura.total', 'column', array(
-                'title' => 'Factura Total',
+                'title' => 'Total',
                  'width'=>'4em'
             ))
             /*->add('factura.forma', 'column', array(
@@ -247,9 +247,7 @@ class PensionDatatable extends AbstractDatatableView
             /*->add('factura.tipo', 'column', array(
                 'title' => 'Factura Tipo',
             ))*/
-            /*->add('factura.cobrado', 'column', array(
-                'title' => 'Factura Cobrado',
-            ))*/
+            
             /*->add('factura.statevencido', 'column', array(
                 'title' => 'Factura Statevencido',
             ))*/

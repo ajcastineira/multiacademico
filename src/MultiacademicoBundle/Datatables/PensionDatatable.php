@@ -19,11 +19,9 @@ class PensionDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         
-        /*$this->callbacks->set(array(
-            'draw_callback' => "function( settings ) {
-                                    alert( 'DataTables has redrawn the table.' );
-                                }"
-        ));*/
+        $this->callbacks->set(array(
+            'footer_callback' => "MultiacademicoBundle:Pension:footercallback.js.twig"
+        ));
 
         $this->features->set(array(
             'auto_width' => true,

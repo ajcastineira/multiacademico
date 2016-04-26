@@ -206,10 +206,10 @@ class PensionDatatable extends AbstractDatatableView
             ->add('estudiante.mail', 'column', array(
                 'title' => 'Estudiante Mail',
             ))*/
-           ->add('factura.idcliente.id', 'virtual', array(
+          /* ->add('factura.idcliente.id', 'column', array(
                 'visible'=>false
-            ))     
-            ->add('factura.idcliente.representante', 'virtual', array(
+            ))     */
+            ->add('factura.idcliente', 'column', array(
                 'title' => 'Representante',
                  'width'=>'7em'
             ))
@@ -318,12 +318,16 @@ class PensionDatatable extends AbstractDatatableView
         $router = $this->router;
         
         $formatter = function($line) use ($router){
+            //var_dump($line);
+            //var_dump($line["factura"]);
+            if (isset($line["factura"]))
+            {
             $line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
-            $estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
-            $line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
             $representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
             $line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
-       
+            }
+            $estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
+            $line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
             return $line;
         };
 

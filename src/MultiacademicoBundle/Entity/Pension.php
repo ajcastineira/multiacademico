@@ -10,7 +10,7 @@ use Multiservices\PayPayBundle\Entity\Facturas;
  * Pension
  *
  * @ORM\Table(name="pensiones")
- * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\PensionRepository")
+ * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\PensionRepository")
  * Serializer\ExclusionPolicy("all")
  */
 class Pension

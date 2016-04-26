@@ -15,6 +15,22 @@
           display:none;
         } 
     </style>
+    <script>
+   function eliminarDuplicados(arr) {
+ var i,
+     len=arr.length,
+     out=[],
+     obj={};
+
+ for (i=0;i<len;i++) {
+    obj[arr[i]]=0;
+ }
+ for (i in obj) {
+    out.push(i);
+ }
+ return out;
+}
+</script>
     <h1>Ingresos listado</h1>
 
         {{ datatable_render_html(datatable) }}

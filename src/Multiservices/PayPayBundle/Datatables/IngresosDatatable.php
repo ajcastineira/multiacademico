@@ -106,7 +106,7 @@ class IngresosDatatable extends AbstractDatatableView
             ))
             ->add('fecha', 'datetime', array(
                 'title' => 'Fecha',
-                'date_format' => 'YYYY-MM-DD', 
+                'date_format' => 'YYYY-MM-DD HH:MM', 
             ))
             ->add('monto', 'column', array(
                 'title' => 'Monto',
@@ -118,25 +118,33 @@ class IngresosDatatable extends AbstractDatatableView
             /*->add('referencia', 'column', array(
                 'title' => 'Referencia',
             ))*/
-            ->add('collectedby.name', 'column', array(
-                'title' => 'Cobrado por',
+
+
+
+
+            ->add('representante.id', 'column', array(
+                'visible' => false,
             ))
-
-
-            ->add('formaPago.formaPago', 'column', array(
-                'title' => 'Forma de Pago',
-            ))
-
-
             ->add('representante.representante', 'column', array(
                 'title' => 'Representante',
             ))
                 
             ->add('facturas.id', 'array', array(
-                'title' => 'Facturas',
-               'data' => 'facturas[, ].id'
+                'title' => 'Estudiante',
+                'data' => 'facturas[, ].pension.estudiante.estudiante',
+                'render'=>"function(data,type,row){return eliminarDuplicados(data.split(String.fromCharCode(44,32)));}"
             ))
 
+            ->add('facturas.id', 'array', array(
+                'title' => 'Facturas',
+               'data' => 'facturas[, ].pension.id'
+            ))
+                       ->add('collectedby.name', 'column', array(
+                'title' => 'Cobrado por',
+            )) 
+            ->add('formaPago.formaPago', 'column', array(
+                'title' => 'Forma de Pago',
+            ))    
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
@@ -154,7 +162,7 @@ class IngresosDatatable extends AbstractDatatableView
                             'role' => 'button'
                         ),
                     ),
-                    /*array(
+                    array(
                         'route' => 'ingresos_edit',
                         'route_parameters' => array(
                             'page' => 'id'
@@ -167,12 +175,38 @@ class IngresosDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                    )*/
+                    )
                 )
             ))
         ;
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $router = $this->router;
+        
+        $formatter = function($line) use ($router){
+            //$line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
+            $results=[];
+            foreach ($line["facturas"] as &$factura)
+            {
+                $estudianteroute = $router->generate('estudiantes_show', array('id' => $factura["pension"]["estudiante"]["id"]));
+                $factura["pension"]["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$factura["pension"]["estudiante"]["estudiante"].'</a>';
+                $facturaroute = $router->generate('pension', array('page' => $factura["pension"]["id"]));
+                $factura["pension"]["id"] = '<a rel="tooltip" title="'.$factura["pension"]["info"].'" href="'.$facturaroute.'">'.$factura["id"].'</a>';
+            }
+            
+            $representanteroute = $router->generate('representantes', array('page' => $line["representante"]["id"]));
+            $line["representante"]["representante"] = '<a href="'.$representanteroute.'">'.$line["representante"]["representante"].'</a>';
+       
+            return $line;
+        };
 
+        return $formatter;
+     
+    }
     /**
      * {@inheritdoc}
      */

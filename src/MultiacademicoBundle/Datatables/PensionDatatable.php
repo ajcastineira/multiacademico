@@ -105,6 +105,9 @@ class PensionDatatable extends AbstractDatatableView
            /* ->add('estudiante.estudianteCedula', 'column', array(
                 'title' => 'Estudiante EstudianteCedula',
             ))*/
+           ->add('estudiante.id', 'column', array(
+                 'visible'=>false,
+            ))     
             ->add('estudiante.estudiante', 'column', array(
                 'title' => 'Estudiante ',
                  'width'=>'7em',
@@ -203,8 +206,10 @@ class PensionDatatable extends AbstractDatatableView
             ->add('estudiante.mail', 'column', array(
                 'title' => 'Estudiante Mail',
             ))*/
-
-            ->add('factura.idcliente.representante', 'column', array(
+           ->add('factura.idcliente.id', 'virtual', array(
+                'visible'=>false
+            ))     
+            ->add('factura.idcliente.representante', 'virtual', array(
                 'title' => 'Representante',
                  'width'=>'7em'
             ))
@@ -271,23 +276,6 @@ class PensionDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'pension_pay',
-                        'route_parameters' => array(
-                            'page' => 'id'
-                        ),
-                        'label' => 'Pagar',
-                        'icon' => 'fa fa-money',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => 'Pagar Pension',
-                            'class' => 'btn btn-warning btn-xs',
-                            'role' => 'button',
-                       //     'onclick'=>'event.preventDefault();',
-                        ),
-                        'confirm'=>true,
-                        'confirm_message'=>'¿Esta seguro de realizar esta acción?'
-                    ),
-                    /*array(
                         'route' => 'pension_edit',
                         'route_parameters' => array(
                             'page' => 'id'
@@ -297,10 +285,27 @@ class PensionDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-primary btn-xs',
+                            'class' => 'btn btn-warning btn-xs',
                             'role' => 'button'
                         ),
-                    )*/
+                    ),
+                    array(
+                        'route' => 'pension_pay',
+                        'route_parameters' => array(
+                            'page' => 'id'
+                        ),
+                        'label' => 'Pagar',
+                        'icon' => 'fa fa-money',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Pagar Pension',
+                            'class' => 'btn btn-danger btn-xs',
+                            'role' => 'button',
+                       //     'onclick'=>'event.preventDefault();',
+                        ),
+                        'confirm'=>true,
+                        'confirm_message'=>'¿Esta seguro de realizar esta acción?'
+                    )
                 )
             ))
         ;
@@ -310,10 +315,14 @@ class PensionDatatable extends AbstractDatatableView
      */
     public function getLineFormatter()
     {
-        $formatter = function($line){
-            //$sentence=<a href="javascript:Routing.generate('usuarios_show',{'id':".$line["id"]."\'});'>
-            //$line["nombre"]="<a href=\"clientes/".$line["id"]."\" >".$line["nombre"]."</a>";
+        $router = $this->router;
+        
+        $formatter = function($line) use ($router){
             $line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
+            $estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
+            $line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
+            $representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
+            $line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
        
             return $line;
         };

@@ -17,28 +17,22 @@ services:
 
     multiacademico.estudiantes:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
-        tags:
-            - { name: sg.datatable.view }
+        parent: sg_datatables.datatable.abstract
     multiacademicobundle_datatable.matriculas:
         class: MultiacademicoBundle\Datatables\MatriculasDatatable
-        tags:
-            - { name: sg.datatable.view }
+        parent: sg_datatables.datatable.abstract
     multiacademicobundle_datatable.representantes:
         class: MultiacademicoBundle\Datatables\RepresentantesDatatable
-        tags:
-            - { name: sg.datatable.view }
+        parent: sg_datatables.datatable.abstract
     multiacademico.aulas:
         class: MultiacademicoBundle\Datatables\AulaDatatable
-        tags:
-            - { name: sg.datatable.view }        
+        parent: sg_datatables.datatable.abstract
     multiacademico.distributivos:
         class: MultiacademicoBundle\Datatables\DistributivosDatatable
-        tags:
-            - { name: sg.datatable.view }        
+        parent: sg_datatables.datatable.abstract
     multiacademico.pensiones:
         class: MultiacademicoBundle\Datatables\PensionDatatable
-        tags:
-            - { name: sg.datatable.view }                
+        parent: sg_datatables.datatable.abstract
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:

@@ -48,6 +48,15 @@ class IngresosController extends FOSRestController
         $datatable = $this->get('paypaybundle_datatable.ingresos');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+        
+        $function = function($qb)
+        {
+         $qb->addSelect('partial pension.{id,info}, partial estudiante.{id,estudiante}');
+         $qb->join ('facturas.pension','pension');
+        $qb->join ('pension.estudiante','estudiante');
+        };
+
+    $query->addWhereResult($function);
 
         return $query->getResponse();
     }

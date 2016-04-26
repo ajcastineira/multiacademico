@@ -54,6 +54,15 @@ class PensionController extends FOSRestController
         $datatable = $this->get('multiacademico.pensiones');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+        
+        $function = function($qb)
+    {
+         $qb->addSelect('partial idcliente.{id,representante}');
+         $qb->join ('factura.idcliente','idcliente');
+
+    };
+
+    $query->addWhereResult($function);
 
         return $query->getResponse();
     }

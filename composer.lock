@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8aba4a5b765fa135e0a927e161206211",
-    "content-hash": "509f7b06eb38bb40452c17b71b668288",
+    "hash": "627998147a21cf304487783beed05dff",
+    "content-hash": "a8efa3cb8be38c10488dd54112ee954f",
     "packages": [
         {
             "name": "components/jquery",
@@ -1025,32 +1025,33 @@
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
-            "version": "1.6.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
-                "reference": "2f52d924692647db02bbcb27c159fef03bf000c9"
+                "reference": "90dcbf52dae73c3cb36965ee05e7cd04e53b5b6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/2f52d924692647db02bbcb27c159fef03bf000c9",
-                "reference": "2f52d924692647db02bbcb27c159fef03bf000c9",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/90dcbf52dae73c3cb36965ee05e7cd04e53b5b6f",
+                "reference": "90dcbf52dae73c3cb36965ee05e7cd04e53b5b6f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/console": "~2.0|3.*",
-                "symfony/framework-bundle": "~2.0|3.*",
-                "symfony/serializer": "~2.0|3.*",
+                "symfony/console": "~2.3||~3.0",
+                "symfony/framework-bundle": "~2.3||~3.0",
+                "symfony/serializer": "~2.0||~3.0",
                 "willdurand/jsonp-callback-validator": "~1.0"
             },
             "require-dev": {
-                "symfony/expression-language": "~2.4|3.*"
+                "symfony/expression-language": "~2.4||~3.0",
+                "symfony/phpunit-bridge": "~2.7||~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -1069,7 +1070,7 @@
                 },
                 {
                     "name": "William Durand",
-                    "email": "william.durand1@gmail.com"
+                    "email": "will+git@drnd.me"
                 }
             ],
             "description": "A pretty nice way to expose your Symfony2 routing to client applications.",
@@ -1079,7 +1080,7 @@
                 "javascript",
                 "routing"
             ],
-            "time": "2015-10-28 15:08:39"
+            "time": "2016-04-21 13:20:58"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -2401,16 +2402,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/renearias/arxis-datatables-bundle.git",
-                "reference": "e20d0c6badf75a34d41df99ab2c1f24d4f20be4d"
+                "reference": "1a4b94743d931841eaf3809a8addb86d3c3b714c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/renearias/arxis-datatables-bundle/zipball/e20d0c6badf75a34d41df99ab2c1f24d4f20be4d",
-                "reference": "e20d0c6badf75a34d41df99ab2c1f24d4f20be4d",
+                "url": "https://api.github.com/repos/renearias/arxis-datatables-bundle/zipball/1a4b94743d931841eaf3809a8addb86d3c3b714c",
+                "reference": "1a4b94743d931841eaf3809a8addb86d3c3b714c",
                 "shasum": ""
             },
             "require": {
-                "friendsofsymfony/jsrouting-bundle": "~1.6",
+                "friendsofsymfony/jsrouting-bundle": "dev-master",
                 "php": ">=5.3.3",
                 "symfony/framework-bundle": "~2.6|~3.0",
                 "symfony/options-resolver": "~2.6|~3.0",
@@ -2458,7 +2459,7 @@
                 "symfony3",
                 "table"
             ],
-            "time": "2016-04-25 19:49:26"
+            "time": "2016-04-26 01:10:26"
         },
         {
             "name": "robloach/component-installer",
@@ -2510,16 +2511,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.5",
+            "version": "v5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "3a160355bb1364da55ed9e415c1aa1fa8d457b6f"
+                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/3a160355bb1364da55ed9e415c1aa1fa8d457b6f",
-                "reference": "3a160355bb1364da55ed9e415c1aa1fa8d457b6f",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ffe306d09c1f2bad721237f63b2169d1b78253d0",
+                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0",
                 "shasum": ""
             },
             "require": {
@@ -2558,7 +2559,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-03-15 16:21:41"
+            "time": "2016-04-25 20:50:31"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3681,6 +3682,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
+        "friendsofsymfony/jsrouting-bundle": 20,
         "google/apiclient": 10,
         "knplabs/knp-snappy-bundle": 20,
         "renearias/arxis-datatables-bundle": 20,

@@ -19,6 +19,7 @@ class FacturasType extends AbstractType
     {
         $builder
             ->add('idcliente',null,array('label'=>'Cliente'))
+            ->add('legal')    
             //->add('emitido')
             //->add('vencimiento')
             //->add('pago')
@@ -36,7 +37,7 @@ class FacturasType extends AbstractType
                                              'attr'=>array( 'ng-value'=>'calculateTax()')))
             ->add('total',HiddenType::class,array('label'=>'Iva',
                                              'attr'=>array( 'ng-value'=>'calculateGrandTotal()')))
-            //->add('legal')
+            
             ->add('items',CollectionType::class,array(
                 'label'=>'Detalle de Factura',
                 'allow_add'=>true,

@@ -169,6 +169,16 @@ class MatriculasController extends FOSRestController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
+                                                                    array(
+                                                                          'curso'=>$matricula->getMatriculacodcurso()->getId(),
+                                                                          'especializacion'=>$matricula->getMatriculacodespecializacion()->getId(),
+                                                                          'paralelo'=>$matricula->getMatriculaparalelo(),
+                                                                          'seccion'=>$matricula->getMatriculaseccion(),
+                                                                          'periodo'=>$matricula->getMatriculacodperiodo()->getId()
+                                                                           )
+                                                                    );
+            $matricula->setAula($aula);
             $em->persist($matricula);
             $em->flush();
 

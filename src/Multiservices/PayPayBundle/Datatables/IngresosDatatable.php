@@ -72,11 +72,11 @@ class IngresosDatatable extends AbstractDatatableView
                          'text'=> 'Imprimir',
                          'className'=>'btn-primary',
                             'footer'=>true],
-                        
-                       /* array(
-                            'text' => 'Reload',
-                            'action' => ':post:reload.js.twig'
-                        )*/
+                       [
+                            'text' => 'Recargar',
+                            'className'=>'btn btn-primary',
+                            'action' => '::reload.js.twig'
+                        ]
                    ),
                 'responsive' => true)
         ));

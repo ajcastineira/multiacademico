@@ -17,6 +17,9 @@ class IngresosDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
+        $exporOptions=[
+                       'columns'=> [0,1,2,4,5,7,8,9]
+                       ];
         $this->callbacks->set(array(
             'footer_callback' => "PayPayBundle:Ingresos:footercallback.js.twig"
         ));
@@ -59,18 +62,22 @@ class IngresosDatatable extends AbstractDatatableView
                     array(
                         ['extend'=> 'copy',
                          'text'=> 'Copiar',
-                          'className'=>'btn-primary'],
+                          'className'=>'btn-primary',
+                          'exportOptions'=>$exporOptions],
                         ['extend'=> 'excel',
                          'text'=> 'Excel',
                          'className'=>'btn-success',
+                         'exportOptions'=>$exporOptions,
                          'footer'=>true ],
                         ['extend'=> 'pdf',
                          'text'=> 'PDF',
                          'className'=>'btn-danger',
+                         'exportOptions'=>$exporOptions,
                          'footer'=>true ],
                         ['extend'=> 'print',
                          'text'=> 'Imprimir',
                          'className'=>'btn-primary',
+                         'exportOptions'=>$exporOptions,
                             'footer'=>true],
                        [
                             'text' => 'Recargar',
@@ -144,7 +151,7 @@ class IngresosDatatable extends AbstractDatatableView
             ->add('facturas.pension.estudiante.estudiante', 'array', array(
                 'title' => 'Estudiante',
                 'data' => 'facturas[, ].pension.estudiante.estudiante',
-                'render'=>"function(data,type,row){return eliminarDuplicados(data.split(String.fromCharCode(44,32)));}"
+               // 'render'=>"function(data,type,row){return eliminarDuplicados(data.split(String.fromCharCode(44,32)));}"
             ))
                 
              ->add('facturas.pension.info', 'array', array(

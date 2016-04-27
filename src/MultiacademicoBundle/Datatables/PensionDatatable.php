@@ -18,7 +18,10 @@ class PensionDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
-        
+        $exporOptions=[
+                       'columns'=> [0,1,2,3,4,5,6,7,8,9]
+            
+                       ];
         $this->callbacks->set(array(
             'footer_callback' => "MultiacademicoBundle:Pension:footercallback.js.twig"
         ));
@@ -43,18 +46,22 @@ class PensionDatatable extends AbstractDatatableView
                     array(
                         ['extend'=> 'copy',
                          'text'=> 'Copiar',
-                          'className'=>'btn-primary'],
+                          'className'=>'btn-primary',
+                          'exportOptions'=>$exporOptions],
                         ['extend'=> 'excel',
                          'text'=> 'Excel',
                          'className'=>'btn-success',
+                         'exportOptions'=>$exporOptions,
                          'footer'=>true ],
                         ['extend'=> 'pdf',
                          'text'=> 'PDF',
                          'className'=>'btn-danger',
+                         'exportOptions'=>$exporOptions,
                          'footer'=>true ],
                         ['extend'=> 'print',
                          'text'=> 'Imprimir',
                          'className'=>'btn-primary',
+                         'exportOptions'=>$exporOptions,
                             'footer'=>true],
                         [
                             'text' => 'Recargar',

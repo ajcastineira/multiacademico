@@ -70,6 +70,11 @@ define(['angular',
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
                             return Routing.generate(rutas.show,{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo,'_format':'html'});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/controllers/PrintCtrl'
+                            ])
                         }
                     }
                 }

@@ -11050,7 +11050,7 @@ ul.days li span {
 .btn-success {
   background-color: #8CC152;
   border-color: #8CC152;
-  color: white;
+  color: white!important;
 }
 /* line 585, ../../app/styles/core/_functions.scss */
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .btn-success[disabled], .btn-success.disabled {
@@ -11653,7 +11653,7 @@ ul.days li span {
 .btn-danger {
   background-color: #E9573F;
   border-color: #E9573F;
-  color: white;
+  color: white!important;
 }
 /* line 585, ../../app/styles/core/_functions.scss */
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .btn-danger[disabled], .btn-danger.disabled {

@@ -104,12 +104,18 @@ class Representantes
      * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", mappedBy="idcliente")
      */
     private $facturas;
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Ingresos", mappedBy="representante")
+     */
+    private $pagos;
      /**
      * Constructor
      */
     public function __construct()
     {
         $this->facturas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pagos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->representados = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -379,5 +385,39 @@ class Representantes
     public function getRepresentados()
     {
         return $this->representados;
+    }
+
+    /**
+     * Add pago
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Ingresos $pago
+     *
+     * @return Representantes
+     */
+    public function addPago(\Multiservices\PayPayBundle\Entity\Ingresos $pago)
+    {
+        $this->pagos[] = $pago;
+
+        return $this;
+    }
+
+    /**
+     * Remove pago
+     *
+     * @param \Multiservices\PayPayBundle\Entity\Ingresos $pago
+     */
+    public function removePago(\Multiservices\PayPayBundle\Entity\Ingresos $pago)
+    {
+        $this->pagos->removeElement($pago);
+    }
+
+    /**
+     * Get pagos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPagos()
+    {
+        return $this->pagos;
     }
 }

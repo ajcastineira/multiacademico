@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <th>Representante</th>
-                <td>{{ ingreso.representante }}</td>
+                <td><a href="{{path('representantes',{'page':ingreso.representante.id})}}">{{ ingreso.representante }}</a></td>
             </tr>
             <tr>
                 <th>Fecha</th>

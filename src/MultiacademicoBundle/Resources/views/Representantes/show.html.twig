@@ -29,13 +29,70 @@
                 <th>Tipo</th>
                 <td>{{ representante.tipo }}</td>
             </tr>
-            <tr>
+            {#<tr>
                 <th>Montomensual</th>
                 <td>{{ representante.montoMensual }}</td>
-            </tr>
+            </tr>#}
             <tr>
                 <th>Status</th>
-                <td>{% if representante.status %}Yes{% else %}No{% endif %}</td>
+                <td>{% if representante.status %}Si{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pensiones</th>
+                <td><table class="table">
+                         <tr>
+                                <th>Nº</th>
+                                <th>Info</th>
+                                <th>Fecha Vencimiento</th>
+                                <th>Descuento</th>
+                                <th>Total</th>
+                                <th>Cobrado</th>
+                                <th>Saldo</th>
+                                <th>Accion</th>
+                            </tr> 
+                    {%for factura in representante.facturas %}
+                        
+                           
+                            <tr>
+                                <td>{{factura.id}}</td>
+                                <td>{{factura.pension.info}}</td>
+                                <td>{{factura.vencimiento|localizeddate('medium','medium','es')}}</td>
+                                <td>{{factura.descuento}}</td>
+                                <td>{{factura.total}}</td>
+                                <td>{{factura.cobrado}}</td>
+                                <td>{{factura.saldoAPagar()}}</td>
+                                <td>{{factura.estado|readablehtml|raw}}</td>
+                                <td><a class="btn btn-primary btn-xs" href="{{path('pension',{'page':factura.pension.id})}}">Ver</a></td>
+                            </tr> 
+                        
+                    {%endfor%}
+                    </table>  </td>
+            </tr>
+            <tr>
+                <th>Abonos</th>
+                <td><table class="table">
+                         <tr>
+                                <th>Nº</th>
+                                <th>Monto</th>
+                                <th>Descripcion</th>
+                                <th>Referencia</th>
+                                <th>Fecha</th>
+                                <th>Accion</th>
+                            </tr> 
+                    {%for abono in representante.pagos %}
+                        
+                           
+                            <tr>
+                                <td>{{abono.id}}</td>
+                                <td>{{abono.monto}}</td>
+                                <td>{{abono.descripcion}}</td>
+                                <td>{{abono.referencia}}</td>
+                                <td>{{abono.fecha|localizeddate('medium','medium','es')}}</td>
+                                <td><a class="btn btn-primary btn-xs" href="{{path('ingresos',{'page':abono.id})}}">Ver</a></td>
+                            </tr> 
+                        
+                    {%endfor%}
+                    </table>  </td>
             </tr>
         </tbody>
     </table>

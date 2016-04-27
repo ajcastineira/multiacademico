@@ -99,7 +99,7 @@ class Ingresos
     /**
      * @var \MultiacademicoBundle\Entity\Representantes
      *
-     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes")
+     * @ORM\ManyToOne(targetEntity="\MultiacademicoBundle\Entity\Representantes", inversedBy="pagos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="representante_id", referencedColumnName="id")
      * })

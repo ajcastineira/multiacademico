@@ -593,7 +593,17 @@ class Facturas
         $this->total=$subTdescuento+$this->iva_igv;
         return true;
     }
-
+    public function cambiarEstadoSiEstaPagada()
+    {
+        if ($this->saldoAPagar()<=0)
+        {
+            $this->estado=EstadoFacturaType::PAGADA;
+        }else
+        {
+            $this->estado=EstadoFacturaType::NOPAGADA;
+        }    
+        return $this;
+    }
     /**
      * Set pension
      *

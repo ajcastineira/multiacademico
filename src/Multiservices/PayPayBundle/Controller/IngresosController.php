@@ -121,11 +121,13 @@ class IngresosController extends FOSRestController
     public function editAction(Request $request, Ingresos $ingreso)
     {
         $deleteForm = $this->createDeleteForm($ingreso);
+        $montoAnterior=$ingreso->getMonto();
         $editForm = $this->createForm('Multiservices\PayPayBundle\Form\IngresosType', $ingreso);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $ingreso->modificarPagoEnFacturas($montoAnterior);
             $em->persist($ingreso);
             $em->flush();
 

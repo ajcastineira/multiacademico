@@ -381,6 +381,28 @@ class Ingresos
         }
         $this->setCambio($saldo);
     }
+    public function modificarPagoEnFacturas($montoAnterior=0)
+    {
+        $saldo=$this->getMonto()-$montoAnterior;
+        
+        foreach ($this->getFacturas() as &$factura)
+        {
+            if ($saldo>=$factura->saldoAPagar())
+            {
+                $saldo=$saldo-$factura->saldoAPagar();
+                $factura->setCobrado($factura->getCobrado()+$factura->saldoAPagar());
+                $factura->cambiarEstadoSiEstaPagada();
+                $factura->setPago(new \DateTime());
+            }else
+            {
+                $factura->setCobrado($factura->getCobrado()+$saldo);
+                $factura->cambiarEstadoSiEstaPagada();
+                $factura->setPago(new \DateTime());
+                $saldo=0;
+            }
+        }
+    }
+    
     public function revertirPagoEnFacturas()
     {
         $saldo=$this->getMonto();
@@ -400,7 +422,6 @@ class Ingresos
                 $saldo=0;
             }
         }
-        //$this->setCambio($saldo);
     }
 
     /**

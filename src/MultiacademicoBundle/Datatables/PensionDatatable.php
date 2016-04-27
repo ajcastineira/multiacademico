@@ -110,9 +110,6 @@ class PensionDatatable extends AbstractDatatableView
            /* ->add('estudiante.estudianteCedula', 'column', array(
                 'title' => 'Estudiante EstudianteCedula',
             ))*/
-          /* ->add('estudiante.id', 'column', array(
-                 'visible'=>false,
-            ))    */ 
             ->add('estudiante.estudiante', 'column', array(
                 'title' => 'Estudiante ',
                  'width'=>'7em',
@@ -267,6 +264,9 @@ class PensionDatatable extends AbstractDatatableView
             /*->add('factura.sub_total', 'column', array(
                 'title' => 'Factura Sub_total',
             ))*/
+            ->add('estudiante.id', 'column', array(
+                 'visible'=>false,
+            ))     
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(

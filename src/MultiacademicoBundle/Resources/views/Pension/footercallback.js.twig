@@ -23,10 +23,20 @@ function ( tfoot, data, start, end, display ) {
         .reduce( function (a, b) {
             return intVal(a) + intVal(b);
         }, 0 );
+    // Total over this page
+    pageTotalCobrado = api
+        .column( 8, { page: 'current'} )
+        .data()
+        .reduce( function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0 );    
 
     // Update footer
-    $("#pension_datatable").find("tfoot").html('<tr><td colspan="5"> Total = $'+pageTotal+'</td></tr>');
+    $("#pension_datatable").find("tfoot").html('<tr><td colspan="5">Cobrados $'+pageTotalCobrado+' de $'+pageTotal+'</td></tr>');
     $(api.column(9).footer()).html(
         'Total: $'+pageTotal
+    );
+    $(api.column(8).footer()).html(
+        'Cobrado: $'+pageTotalCobrado
     );
 }

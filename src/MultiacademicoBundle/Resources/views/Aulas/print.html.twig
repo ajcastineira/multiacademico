@@ -1,0 +1,84 @@
+{% block body -%}
+        <style>
+        .resenia
+        {
+            font-family: Arial;
+            font-size: 6pt;
+            text-align: right;
+            line-height: normal;
+            padding-left:30px;
+        }
+     </style> 
+<div class="modal-header noprint">
+  <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
+    &times;
+  </button>
+  <h4 class="modal-title" id="myModalLabel">
+    <img src="{{asset('escudo.png')}}" height="100" alt="Logotipo" />
+      Impresión - Vista Previa
+  </h4>
+  <div class="text-align-right" style="text-align: right!important;">
+    <a id="imprimirmodal" class="btn btn-success" onclick="window.print();">Imprimir</a>
+  </div>
+</div>
+
+<div id="remoteModalContent" class="modal-body">
+    <div style="text-align:center;">
+    <div style="display:inline-flex">
+        <div style="text-align: center;padding-right:50px">
+            <img src="{{asset('escudo.png')}}" height="80" border="0" alt="Logo"> 
+        </div>    
+        <div style="text-align: center">
+            <span class="entidad"><b>{{entidad.entidad}} "{{entidad.titulo}}"</b></span><br>
+             {#<span class="subt2">AMIE {{entidad.data.codamie|default("__H______")}}</span><br>#}
+             <span class="subt2">{{entidad.direccion}} </span> </br>
+             
+             <span class="subt2"><b>{{entidad.lugar}}</b></span> | <span class="subt2"><b>Telefono:</b> {{entidad.telefono}}</span><br/>
+             <span><b> Email:</b> {{entidad.email}} </span><br>
+        </div>    
+   
+    </div> 
+    </div>  
+    <h3 style="text-align: center; text-transform: uppercase; margin-top:20px; margin-bottom: 30px;">
+      Reporte de Aula
+    </h3>
+        
+        <table>    
+          <tr>
+              <td><b>Aula:</b> {{aula}}</td>
+          </tr>
+          <tr>
+              <td><b>Tutor:</b> {{aula.tutor}}</td>
+          </tr>
+        </table>        
+          <br/>
+    <table class="" border="1" style="margin:auto">
+        <tr>
+           <th>Nº</th>
+           <th>Nombre</th>
+           <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+            {%for matricula in aula.matriculados %}
+        <tr>
+        <td>{{matricula.matriculacodestudiante.id}}</td>    
+        <td>{{matricula.matriculacodestudiante}}</td>
+        <td>&nbsp;</td>
+        </tr>
+        {%endfor%}
+        <tfoot>
+            <tr>
+                <td></td>
+                <td>Total Estudiantes: {{aula.matriculados|length}}</td>
+                <td></td>
+            </tr>
+        </tfoot>    
+    </table>
+        
+</div>                          
+<div class="modal-footer noprint">
+  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">
+    Cancelar
+  </button>
+  <a id="imprimirmodal" type="button" class="btn btn-success" onclick="window.print();">Imprimir</a>
+</div>
+{% endblock %}

@@ -50,45 +50,44 @@ class PensionController extends FOSRestController
      */
     public function resultsAction(Request $request)
     {
-
-        $datatable = $this->get('multiacademico.pensiones');
-        $datatable->buildDatatable();
+        $datatable = $this->get('multiacademico.pensiones');$datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
         $query->buildQuery();
         $qb = $query->getQuery();
       //  $qb=new \Doctrine\ORM\QueryBuilder();
         $qb->addSelect('partial idcliente.{id,representante}');
         $qb->join ('factura.idcliente','idcliente');
-        $partes_validas=[];
-        $where=$qb->getDqlPart('where');
-        if (isset($where))
-        {
+        $partesvalidas=[]; $where=$qb->getDqlPart('where');
+        $function=  function (\Doctrine\ORM\Query\Expr\Comparison $part){
+            if ($part->getLeftExpr()=='factura.idcliente'){    
+            $newpart=new \Doctrine\ORM\Query\Expr\Comparison('idcliente.representante',$part->getOperator(),$part->getRightExpr());
+            return $newpart;
+            }
+            return $part;
+        };
+        if (isset($where)){
             $qb_where_parts = $where->getParts();
-            foreach ($qb_where_parts as &$qb_where_part)
+            foreach ($qb_where_parts as $qb_where_part)
              {
-                    $parts=$qb_where_part->getParts();
-                    foreach ($parts as $part)
-                    {
-                        if ($part->getLeftExpr()=='factura.idcliente')
+                    if (!($qb_where_part instanceof \Doctrine\ORM\Query\Expr\Comparison)){    
+                        $parts=$qb_where_part->getParts();
+                        $partesvalidasi=[];
+                        foreach ($parts as $part)
                         {
-                            $newpart=new \Doctrine\ORM\Query\Expr\Comparison('idcliente.representante',$part->getOperator(),$part->getRightExpr());
-                            $partesvalidas[]=$newpart;
-                        }else
-                        {
-                            $partesvalidas[]=$part;
+                            $partesvalidasi[]=$function($part);
                         }
-                    }
+                        $clase=get_class($qb_where_part);
+                        $partesvalidas[]=new $clase($partesvalidasi);   
+                    }else{
+                         $partesvalidas[]=$function($qb_where_part);
+                    }    
              }
          }
-         if (isset($newpart))
-         {
+            if (!empty($partesvalidas)){
             $qb->resetDQLPart('where');
-            foreach ($partesvalidas as $partevalida)
-            {
-                $qb->andWhere($partevalida);
+            $qb->add('where',new \Doctrine\ORM\Query\Expr\Andx($partesvalidas));
             }
-         }
-       // var_dump($qb->getDQL());
+        //var_dump($qb->getDQL());
         $query->setQuery($qb);
         return $query->getResponse(false);
     }

@@ -94,7 +94,7 @@ class IngresosDatatable extends AbstractDatatableView
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100,-1),
             'order_classes' => true,
-            'order' => array(array(0, 'asc')),
+            'order' => array(array(1, 'desc')),
             'order_multi' => true,
             'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,

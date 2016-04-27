@@ -150,11 +150,12 @@ class IngresosController extends FOSRestController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $ingreso->revertirPagoEnFacturas();
             $em->remove($ingreso);
             $em->flush();
         }
 
-        return $this->redirectToRoute('ingresos_index');
+        return $this->redirectToRoute('ingresos');
     }
 
     /**

@@ -257,7 +257,7 @@ function NumeroALetras(num){
             </tr>
             <tr>
                 <th>Estudiante</th>
-                <td>{{ pension.estudiante }}</td>
+                <td><a href='{{path('estudiantes_show',{'id':pension.estudiante.id})}}'>{{ pension.estudiante }}</a></td>
             </tr>
             <tr>
                 <th>Codigo Factura</th>
@@ -269,18 +269,27 @@ function NumeroALetras(num){
             </tr>
             <tr>
                 <th>Representante</th>
-                <td>{{ pension.factura.idcliente }}</td>
+                <td><a href='{{path('representantes',{'page':pension.factura.idcliente.id})}}'>{{ pension.factura.idcliente }}</a></td>
             </tr>
             <tr>
                 <th>Descuento</th>
-                
                 <td>${{ pension.factura.descuento }}</td>
+            </tr>
+            <tr>
+                <th>Total Neto</th>
+                
+                <td>${{ pension.factura.total }}</td>
+            </tr>
+            <tr>
+                <th>Cobrado</th>
+                <td>${{ pension.factura.cobrado }}</td>
             </tr>
             <tr>
                 <th>Total a Pagar</th>
                 
-                <td>${{ pension.factura.total }}</td>
+                <td>${{ pension.factura.saldoAPagar() }}</td>
             </tr>
+            
             <tr>
                 <th>Estado</th>
                 <td>{{ pension.factura.estado|readablehtml|raw }}</td>
@@ -299,6 +308,9 @@ function NumeroALetras(num){
     </table>
 
     <ul class="noprint">
+         <li>
+            <a  class="btn btn-default" href="{{ path('pension') }}">Regresar a la lista</a>
+        </li>
         <li>
               <div class="btn-group">
                 <button type="button" class="btn btn-app btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
@@ -308,20 +320,18 @@ function NumeroALetras(num){
                     
                     {#<li>
                         <a href="#" data-ng-click="openModal('print_matricula_contrato',{'matricula':{{matricula.id}},'_format':'html'})"><i class="fa fa-print bigger-160"></i> Contrato</a>
-                    </li>#}
-                    <li class="divider"></li>
+                    </li>
+                    <li class="divider"></li>#}
                     
                     <li>
                         <a href="#" data-ng-click="openModal('print_pension',{'pension':{{pension.id}},'_format':'html'})"></i> Solo Datos</a>
                     </li>
+                    <li class="divider"></li>
                     <li>
                         <a href="#" data-ng-click="printPDF(facturaDefinition)"></i> PDF</a>
                     </li>
-                    <li>
-                        <a href="{{path('printpdf_pension',{'pension':pension.id,'_format':'html'})}}" target="_blank"></i> PDR (prueba)</a>
-                    </li>
                     {#<li>
-                        <a ng-href="{{'{{urlAnexo('~entity.cedula~')}}'}}" target="_blank">Anexo</a>
+                        <a href="{{path('printpdf_pension',{'pension':pension.id,'_format':'html'})}}" target="_blank"></i> PDR (prueba)</a>
                     </li>
                     
                     <li class="divider"></li>
@@ -332,14 +342,11 @@ function NumeroALetras(num){
             </div>
         </li>    
         <li>
-            <a href="{{ path('pension') }}">Regresar a la lista</a>
-        </li>
-        <li>
-            <a href="{{ path('pension_edit', { 'page': pension.id }) }}">Editar</a>
+            <a class="btn btn-warning" href="{{ path('pension_edit', { 'page': pension.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Eliminar">
+                <input class="btn btn-danger" type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -381,6 +381,27 @@ class Ingresos
         }
         $this->setCambio($saldo);
     }
+    public function revertirPagoEnFacturas()
+    {
+        $saldo=$this->getMonto();
+        foreach ($this->getFacturas() as &$factura)
+        {
+            if ($saldo>=$factura->getCobrado())
+            {
+                $factura->setCobrado(0);
+                $saldo=$saldo-$factura->getCobrado();
+                $factura->setEstado(EstadoFacturaType::NOPAGADA);
+                $factura->setPago(null);
+            }else
+            {
+                $factura->setCobrado($factura->getCobrado()-$saldo);
+                $factura->setEstado(EstadoFacturaType::NOPAGADA);
+                $factura->setPago(null);
+                $saldo=0;
+            }
+        }
+        //$this->setCambio($saldo);
+    }
 
     /**
      * Set cambio

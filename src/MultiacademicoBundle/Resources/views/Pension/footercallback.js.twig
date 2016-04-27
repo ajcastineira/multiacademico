@@ -1,5 +1,4 @@
 function ( tfoot, data, start, end, display ) {
-    console.log(tfoot);
     var api = this.api(), data;
     // Remove the formatting to get integer data for summation
     var intVal = function ( i ) {
@@ -32,11 +31,11 @@ function ( tfoot, data, start, end, display ) {
         }, 0 );    
 
     // Update footer
-    $("#pension_datatable").find("tfoot").html('<tr><td colspan="5">Cobrados $'+pageTotalCobrado+' de $'+pageTotal+'</td></tr>');
+    $("#pension_datatable").find("tfoot").html('<tr><td colspan="5">Cobrados $'+(Math.round(pageTotalCobrado* 100) / 100)+' de $'+(Math.round(pageTotal* 100) / 100)+'</td></tr>');
     $(api.column(9).footer()).html(
-        'Total: $'+pageTotal
+        'Total: $'+(Math.round(pageTotal* 100) / 100)
     );
     $(api.column(8).footer()).html(
-        'Cobrado: $'+pageTotalCobrado
+        'Cobrado: $'+(Math.round(pageTotalCobrado * 100) / 100)
     );
 }

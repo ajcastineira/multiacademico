@@ -16,8 +16,8 @@ function ( tfoot, data, start, end, display ) {
         }, 0 );
 
     // Update footer
-    $("#ingresos_datatable").find("tfoot").html('<tr><td colspan="11"> Total = $'+pageTotal+'</td></tr>');
+    $("#ingresos_datatable").find("tfoot").html('<tr><td colspan="11"> Total = $'+(Math.round(pageTotal*100)/100)+'</td></tr>');
     $(api.column(2).footer()).html(
-        '$'+pageTotal
+        '$'+(Math.round(pageTotal*100)/100)
     );
 }

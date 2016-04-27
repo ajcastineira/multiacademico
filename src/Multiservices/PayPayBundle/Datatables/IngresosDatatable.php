@@ -17,6 +17,10 @@ class IngresosDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
+        $this->callbacks->set(array(
+            'footer_callback' => "PayPayBundle:Ingresos:footercallback.js.twig"
+        ));
+        
         $this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
             'end_html' => '<hr></div></div>',
@@ -81,7 +85,7 @@ class IngresosDatatable extends AbstractDatatableView
              'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100),
+            'length_menu' => array(10, 25, 50, 100,-1),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),
             'order_multi' => true,
@@ -107,10 +111,11 @@ class IngresosDatatable extends AbstractDatatableView
             ->add('fecha', 'datetime', array(
                 'title' => 'Fecha',
                 'date_format' => 'YYYY-MM-DD HH:MM', 
+                'width'=>'8em'
             ))
             ->add('monto', 'column', array(
                 'title' => 'Monto',
-                'width'=>'7em'
+                'width'=>'6em'
             ))
             /*->add('descripcion', 'column', array(
                 'title' => 'Descripcion',
@@ -141,13 +146,16 @@ class IngresosDatatable extends AbstractDatatableView
             ))    
             ->add('facturas.id', 'array', array(
                 'title' => 'Facturas',
-               'data' => 'facturas[, ].id'
+               'data' => 'facturas[, ].id',
+                'width'=>'6em'
             ))
             ->add('collectedby.name', 'column', array(
                 'title' => 'Cobrado por',
+                'width'=>'6em'
             )) 
             ->add('formaPago.formaPago', 'column', array(
                 'title' => 'Forma de Pago',
+                'width'=>'5em'
             ))    
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

@@ -70,7 +70,7 @@ class PensionDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100),
+            'length_menu' => array(10, 25, 50, 100,-1),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),
             'order_multi' => true,
@@ -214,16 +214,16 @@ class PensionDatatable extends AbstractDatatableView
                  'width'=>'7em'
             ))
             ->add('factura.emitido', 'datetime', array(
-                'title' => 'Factura Emitido',
+                'title' => 'Emitido',
                 'date_format' => 'DD-MMM-YYYY H:mm:s',
                  'width'=>'5em',
             ))
             ->add('factura.estado', 'column', array(
-                'title' => 'Factura Estado',
+                'title' => 'Estado',
                  'width'=>'5em'
             ))
             ->add('factura.vencimiento', 'datetime', array(
-                'title' => 'Factura Vencimiento',
+                'title' => 'Vencimiento',
                 'date_format' => 'DD-MMM-YYYY H:mm:s',
                  'width'=>'5em',
             ))

@@ -103,9 +103,9 @@ class PensionDatatable extends AbstractDatatableView
            /* ->add('estudiante.estudianteCedula', 'column', array(
                 'title' => 'Estudiante EstudianteCedula',
             ))*/
-           ->add('estudiante.id', 'column', array(
+          /* ->add('estudiante.id', 'column', array(
                  'visible'=>false,
-            ))     
+            ))    */ 
             ->add('estudiante.estudiante', 'column', array(
                 'title' => 'Estudiante ',
                  'width'=>'7em',

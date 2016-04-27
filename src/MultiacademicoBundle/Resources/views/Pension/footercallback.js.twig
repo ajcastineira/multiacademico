@@ -18,7 +18,7 @@ function ( tfoot, data, start, end, display ) {
 */
     // Total over this page
     pageTotal = api
-        .column( 10, { page: 'current'} )
+        .column( 9, { page: 'current'} )
         .data()
         .reduce( function (a, b) {
             return intVal(a) + intVal(b);
@@ -26,7 +26,7 @@ function ( tfoot, data, start, end, display ) {
 
     // Update footer
     $("#pension_datatable").find("tfoot").html('<tr><td colspan="5"> Total = $'+pageTotal+'</td></tr>');
-    /*$(api.column(2).footer()).html(
+    /*$(api.column(1).footer()).html(
         '$'+pageTotal
     );*/
 }

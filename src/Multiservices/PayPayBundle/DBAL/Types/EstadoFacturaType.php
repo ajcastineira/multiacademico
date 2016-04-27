@@ -12,9 +12,10 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 class EstadoFacturaType  extends AbstractEnumType
 {
     const INDEFINIDO   = null;
-    const PAGADA   = 'pagado';
+    const PAGADA   = 'pagada';
     const NOPAGADA = 'No pagado';
     const VENCIDA ='vencido';
+    const ANULADA ='anulada';
     
     
 
@@ -23,13 +24,15 @@ class EstadoFacturaType  extends AbstractEnumType
         self::INDEFINIDO=>'INDEFINIDO',
         self::PAGADA   => 'Pagada',
         self::NOPAGADA => 'No Pagado',
-        self::VENCIDA => 'Vencida'
+        self::VENCIDA => 'Vencida',
+        self::ANULADA => 'Anulada'
     ];
     protected static $htmlchoices = [
         self::INDEFINIDO     => '<span class="label label-default">INDEFINIDO</span>',
         self::PAGADA     => '<span class="label label-success">Pagada</span>',
         self::NOPAGADA => '<span class="label label-warning">No Pagado</span>',
         self::VENCIDA => '<span class="label label-danger">Vencida</span>',
+        self::ANULADA => '<span class="label label-danger">Anulada</span>',
     ];
      /**
      * Get readable choices for the ENUM field

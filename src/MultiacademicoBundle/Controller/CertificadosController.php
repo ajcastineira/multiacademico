@@ -47,10 +47,6 @@ class CertificadosController extends Controller
     public function certificadoMatriculaCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {
        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         
         $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rector');
         if (!$rector) {
@@ -75,7 +71,6 @@ class CertificadosController extends Controller
                                                                     );
         
         return array(
-            'entidad'=>$entidad,
             'aula'=>$aula,
             'rector'=>$rector,
             'secretaria'=>$secretaria);
@@ -91,10 +86,6 @@ class CertificadosController extends Controller
     public function certificadoPromocionCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {
        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         
         $rector= $em->getRepository('MultiservicesArxisBundle:Usuario')->findOneByCargo('Rector');
         $pron_r='el';
@@ -131,7 +122,6 @@ class CertificadosController extends Controller
         
         $sigcurso=$em->getRepository('MultiacademicoBundle:Cursos')->findOneByNivel($aula->getCurso()->getNivel()+1);
         return array(
-            'entidad'=>$entidad,
             'aula'=>$aula,
             'sigcurso'=>$sigcurso,
             'rector'=>$rector,

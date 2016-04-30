@@ -131,17 +131,12 @@ class AulasController extends FOSRestController
     {
         
         $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         if ($fecha!="simple")
         {$template='MultiacademicoBundle:Aulas:printwfecha.html.twig';}
         else
         {$template='MultiacademicoBundle:Aulas:print.html.twig';}
         return $this->render($template, array(
-            'aula' => $aula,
-            'entidad'=>$entidad
+            'aula' => $aula
         ));
     }
     

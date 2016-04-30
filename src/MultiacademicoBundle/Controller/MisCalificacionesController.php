@@ -43,17 +43,12 @@ class MisCalificacionesController extends Controller
     public function informeCalificacionesEstudianteAction()
     {
        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
         if (!$periodo) {
             throw $this->createNotFoundException('El periodo no esta configurado.');
         }
         
         return $this->render('MultiacademicoBundle:Informes:informeCalificacionesEstudiante.html.twig',array(
-            'entidad'=>$entidad,
             'periodo'=>$periodo));
     }
 

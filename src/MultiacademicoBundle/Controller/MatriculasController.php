@@ -126,15 +126,8 @@ class MatriculasController extends FOSRestController
      */
     public function printAction(Matriculas $matricula)
     {
-        
-        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         return $this->render('MultiacademicoBundle:Matriculas:print.html.twig', array(
-            'matricula' => $matricula,
-            'entidad'=>$entidad
+            'matricula' => $matricula
         ));
     }
     
@@ -144,15 +137,8 @@ class MatriculasController extends FOSRestController
      */
     public function printContratoAction(Matriculas $matricula)
     {
-        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
-
         return $this->render('MultiacademicoBundle:Matriculas:printcontrato.html.twig', array(
-            'matricula' => $matricula,
-            'entidad'=>$entidad
+            'matricula' => $matricula
         ));
     }
 

@@ -41,17 +41,12 @@ class MallasController extends Controller
     public function mallaNormalAction()
     {
        $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
-        if (!$entidad) {
+        if (!$periodo) {
             throw $this->createNotFoundException('El periodo no esta configurado.');
         }
         $titulo="CUADRO DE CALIFICACIONES FINALES";
         return array(
-            'entidad'=>$entidad,
             'titulo'=>$titulo,
             'periodo'=>$periodo,);
     }

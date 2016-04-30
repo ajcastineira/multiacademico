@@ -144,12 +144,8 @@ class MiDistributivoController extends Controller
     { 
                 
         $em = $this->getDoctrine()->getManager();
-        $entidad = $em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
         $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
-        if (!$entidad) {
+        if (!$periodo) {
             throw $this->createNotFoundException('El periodo no esta configurado.');
         }
         $distributivo = $em->getRepository('MultiacademicoBundle:Distributivos')->find($id);
@@ -164,7 +160,6 @@ class MiDistributivoController extends Controller
         $materia=$distributivo->getDistributivocodmateria();
         $docente=$distributivo->getDistributivocoddocente();
         return array(
-            'entidad'=>$entidad,
             'periodo'=>$periodo,
             'curso'=>$curso, 'materia'=>$materia, 'docente'=>$docente,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,

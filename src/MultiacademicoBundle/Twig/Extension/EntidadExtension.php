@@ -2,40 +2,30 @@
 
 namespace MultiacademicoBundle\Twig\Extension;
 
+use MultiacademicoBundle\Servicios\EntidadData;
+
 class EntidadExtension extends \Twig_Extension
 {
     /**
-     * @var EntityManager
+     * @var EntidadData
      */
-    protected $em;
+    protected $entidadData;
  
-    public function __construct($em)
+    public function __construct(EntidadData $entidadData)
     {
-        $this->em = $em;
+        $this->entidadData = $entidadData;
     }
     
-    /**
-     * Get Entidad value
-     *
-     * @return \MultiacademicoBundle\Entity\Entidad
-     */
-    public function getEntidad()
-    {
-        $entidad = $this->em->getRepository('MultiacademicoBundle:Entidad')->find(1);
-        if (!$entidad) {
-            throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
-        }
-        return $entidad;
-    }
+    
     public function getGlobals()
     {
-        return array('entidad' => $this->getEntidad());
+        return array('entidad' => $this->entidadData->getEntidad());
     }
      /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'Entidad Extension';
+        return 'entidad_extension';
     }
 }

@@ -155,8 +155,8 @@
 
     </div>
                             {%verbatim%}
-     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="panel rounded shadow">
+     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+        <div class="panel rounded shadow" ng-if="mejorestudiantequimestre">
             <div class="panel-body bg-facebook">
                 <div class="ribbon-wrapper">
                     <a class="ribbon bg-twitter transparent"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 1</a>
@@ -183,7 +183,7 @@
                 </ul><!-- /.list-unstyled -->
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->
-        <div class="panel rounded shadow">
+        <div class="panel rounded shadow" ng-if="mejorestudianteparcial">
             <div class="panel-body">
                 <div class="ribbon-wrapper">
                     <a class="ribbon ribbon-success"><i class="fa fa-star"></i> 1</a>
@@ -211,7 +211,7 @@
                 </ul><!-- /.list-unstyled -->
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->
-        <div class="panel rounded shadow">
+        <div class="panel rounded shadow" ng-if="mejorestudiante2parcial">
             <div class="panel-body bg-danger">
                 <div class="ribbon-wrapper">
                     <a class="ribbon bg-warning"><i class="fa fa-star"></i> 2</a>
@@ -238,7 +238,7 @@
                 </div><!-- /.row-merge -->
             </div><!-- /.panel-body -->
         </div><!-- /.panel -->
-        <div class="panel rounded shadow">
+        <div class="panel rounded shadow"  ng-if="mejorestudiante3parcial" >
             <div class="panel-body bg-info">
                 <div class="ribbon-wrapper">
                     <a class="ribbon bg-danger"><i class="fa fa-star"></i> 3</a>

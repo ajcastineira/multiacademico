@@ -2,6 +2,11 @@ services:
 #    multiacademico.example:
 #        class: MultiacademicoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    twig.extension.entidad:
+        class: MultiacademicoBundle\Twig\Extension\EntidadExtension
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: twig.extension }    
     validator.multiacademico.MatriculaValidator:
         class:  MultiacademicoBundle\Validator\Constraints\MatriculaValidator
         arguments:

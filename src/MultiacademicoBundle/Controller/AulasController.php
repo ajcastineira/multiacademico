@@ -125,9 +125,9 @@ class AulasController extends FOSRestController
     
      /**
      * Print and displays a Matriculas entity.
-     * @Rest\Get("/aula/{aula}/{fecha}/print")  
+     * @Rest\Get("/aula/{aula}/{fecha}/print", defaults={"fecha":"simple"})
      */
-    public function printAction(Aula $aula,$fecha=false)
+    public function printAction(Aula $aula,$fecha)
     {
         
         $em = $this->getDoctrine()->getManager();
@@ -135,7 +135,10 @@ class AulasController extends FOSRestController
         if (!$entidad) {
             throw $this->createNotFoundException('La entidad o institucion no esta configurada.');
         }
-        $fecha?$template='MultiacademicoBundle:Aulas:printwfecha.html.twig':'MultiacademicoBundle:Aulas:print.html.twig';
+        if ($fecha!="simple")
+        {$template='MultiacademicoBundle:Aulas:printwfecha.html.twig';}
+        else
+        {$template='MultiacademicoBundle:Aulas:print.html.twig';}
         return $this->render($template, array(
             'aula' => $aula,
             'entidad'=>$entidad

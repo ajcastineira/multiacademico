@@ -56,7 +56,7 @@
                             <tr>
                                 <td>{{factura.id}}</td>
                                 <td>{{factura.pension.info}}</td>
-                                <td>{{factura.vencimiento|localizeddate('medium','medium','es')}}</td>
+                                <td>{{factura.vencimiento|localizeddate('medium','medium')}}</td>
                                 <td>{{factura.descuento}}</td>
                                 <td>{{factura.total}}</td>
                                 <td>{{factura.cobrado}}</td>
@@ -87,7 +87,7 @@
                                 <td>{{abono.monto}}</td>
                                 <td>{{abono.descripcion}}</td>
                                 <td>{{abono.referencia}}</td>
-                                <td>{{abono.fecha|localizeddate('medium','medium','es')}}</td>
+                                <td>{{abono.fecha|localizeddate('medium','medium')}}</td>
                                 <td><a class="btn btn-primary btn-xs" href="{{path('ingresos',{'page':abono.id})}}">Ver</a></td>
                             </tr> 
                         

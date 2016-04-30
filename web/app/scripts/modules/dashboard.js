@@ -32,11 +32,11 @@ define([
         // =========================================================================
         // display marketing alert only once
            .controller('DashboardCtrl',['$scope', '$http','$browser', 'settings','ResumenInicio','activities', function ($scope, $http,$browser, settings,ResumenInicio,activities) {
-            if($('#wrapper').css('opacity')) {
+           /* if($('#wrapper').css('opacity')) {
                 if (!$.cookie('intro')) {
 
                     // Gritter notification intro 1
-                    /*setTimeout(function () {
+                    setTimeout(function () {
                         var uniqueId = $.gritter.add({
                             // (string | mandatory) the heading of the notification
                             title: 'Bienvenido a Multiacademico',
@@ -57,8 +57,8 @@ define([
                                 speed: 'slow'
                             });
                         }, 12000);
-                    }, 5000);*/
-
+                    }, 5000);
+                   
                     // Gritter notification intro 2
                     setTimeout(function () {
                         $.gritter.add({
@@ -78,24 +78,40 @@ define([
                     // Set cookie intro
                     $.cookie('intro',1, {expires: 1});
                 }
-            }
+            }*/
                 
                var base=$browser.baseHref();
               
                 base=base.replace("app_dev.php/","");
                
                 $scope.resumen=ResumenInicio;
-                
-                $scope.mejorestudianteparcial=ResumenInicio.mejoresparcial[0];
-                $scope.mejorestudianteparcialfoto=base+$scope.mejorestudianteparcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
-                $scope.mejorestudiante2parcial=ResumenInicio.mejoresparcial[1];
-                $scope.mejorestudiante2parcialfoto=base+$scope.mejorestudiante2parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
-                $scope.mejorestudiante3parcial=ResumenInicio.mejoresparcial[2];
-                $scope.mejorestudiante3parcialfoto=base+$scope.mejorestudiante3parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
-                
+                if (ResumenInicio.mejoresparcial.length>0)
+                {
+                    $scope.mejorestudianteparcial=ResumenInicio.mejoresparcial[0];
+                    $scope.mejorestudianteparcialfoto=base+$scope.mejorestudianteparcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                    $scope.mejorestudiante2parcial=ResumenInicio.mejoresparcial[1];
+                    $scope.mejorestudiante2parcialfoto=base+$scope.mejorestudiante2parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                    $scope.mejorestudiante3parcial=ResumenInicio.mejoresparcial[2];
+                    $scope.mejorestudiante3parcialfoto=base+$scope.mejorestudiante3parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                }else
+                {
+                    $scope.mejorestudianteparcial=null;
+                    $scope.mejorestudiante2parcial=null;
+                    $scope.mejorestudiante3parcial=null;
+                    $scope.mejorestudianteparcialfoto=null;
+                    $scope.mejorestudiante2parcialfoto=null;
+                    $scope.mejorestudiante3parcialfoto=null;
+                }    
+                if (ResumenInicio.mejoresquimestre.length>0)
+                {
                 $scope.mejorestudiantequimestre=ResumenInicio.mejoresquimestre[0];
                 $scope.mejorestudiantequimestrefoto=base+$scope.mejorestudiantequimestre.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
-                
+                }
+                else
+                {
+                    $scope.mejorestudiantequimestre=null;
+                    $scope.mejorestudiantequimestrefoto=null;
+                }
                 
                  $scope.activities=activities;
                  

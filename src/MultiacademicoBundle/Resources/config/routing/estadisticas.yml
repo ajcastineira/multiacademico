@@ -1,0 +1,10 @@
+estadisticas:
+    type: rest
+    resource: MultiacademicoBundle\Controller\EstadisticasController
+    options:
+        expose: true
+    prefix: api
+estadisticas_matriculados:
+    path:     /estadisticas/matriculados
+    defaults:  { _controller: AppBundle:Default:inicio}
+    methods:  [GET, POST]

@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
+<link rel="stylesheet" href="{{asset('css/certificados.css')}}">
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+{{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
+<br />
+{{include('MultiacademicoBundle:Reportes:botonimprimir.html.twig')}}
+<table style="margin:auto" border="1">
+   <tr> 
+       <th>Aula</th>
+       <th>Masculino</th>
+       <th>Femenino</th>
+       <th>Total</th>
+   </tr>
+   {%set tm=0%}
+   {%set tf=0%}
+   {%set tt=0%}
+   
+{% for aula in matriculados %}
+  <tr>  
+    <td>{{aula.aula}}</td>
+    <td style="text-align:center">{{aula.masculino}}</td>
+    <td style="text-align:center">{{aula.femenino}}</td>
+    <td style="text-align:center">{{aula.total}}</td>
+  <tr>
+      {%set tm=tm+aula.masculino%}
+      {%set tf=tf+aula.femenino%}
+      {%set tt=tt+aula.total%}
+{%endfor%}
+  <tfoot>
+  <tr>  
+
+    <th style="text-align:right">Resumen Total de Matriculados:</th>
+    <th style="text-align:center">{{tm}}</th>
+    <th style="text-align:center">{{tf}}</th>
+    <th style="text-align:center">{{tt}}</th>
+  <tr>
+   </tfoot>
+</table>

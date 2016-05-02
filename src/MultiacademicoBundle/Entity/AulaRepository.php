@@ -47,6 +47,65 @@ class AulaRepository extends EntityRepository
             ->setParameter(":usuario", $user)
             ->getResult();
     }
+    
+    public function matriculadosPorSexo()
+    {
+        $result=[];
+        $aulas=$this->getEntityManager()
+            ->createQuery('SELECT a as aula, count(m) as total'
+                    . ' FROM MultiacademicoBundle:Aula a '
+                    . ' JOIN a.matriculados m '
+                    . ' JOIN m.matriculacodestudiante e'
+                    //. ' JOIN m.matriculacodestudiante e'
+               //     . ' WHERE e.estudianteGenero=:genero '
+                    . ' GROUP BY a '
+                    //. ' ORDER BY a.id'
+                    )
+           // ->setParameter(":genero", "Masculino")
+            ->getResult();
+       
+        foreach ($aulas as &$aula)
+        {
+            $aula["masculino"]=$this->masculinosAula($aula['aula']);
+            $aula["femenino"]=$this->femeninosAula($aula['aula']);
+        }
+
+        return $aulas;
+    }
+    
+    public function masculinosAula($aula)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT count(m)'
+                    . ' FROM MultiacademicoBundle:Aula a '
+                    . ' JOIN a.matriculados m '
+                    . ' JOIN m.matriculacodestudiante e'
+                    //. ' JOIN m.matriculacodestudiante e'
+                    . ' WHERE e.estudianteGenero=:genero AND a.id=:aula'
+                  //  . ' GROUP BY e.estudianteGenero '
+                    //. ' ORDER BY a.id'
+                    )
+            ->setParameters([":genero"=> "Masculino",
+                             ":aula"=>$aula])
+            ->getSingleScalarResult();
+    }
+    
+    public function femeninosAula($aula)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT count(m) as total'
+                    . ' FROM MultiacademicoBundle:Aula a '
+                    . ' JOIN a.matriculados m '
+                    . ' JOIN m.matriculacodestudiante e'
+                    //. ' JOIN m.matriculacodestudiante e'
+                    . ' WHERE e.estudianteGenero=:genero AND a=:aula'
+                   // . ' GROUP BY e.estudianteGenero '
+                    //. ' ORDER BY a.id'
+                    )
+            ->setParameters([":genero"=> "Femenino",
+                             ":aula"=>$aula])
+            ->getSingleScalarResult();
+    }
    /*public function alumnosClub(Clubes $club)
     {
         $curso=$distributivo->getDistributivocodcurso();

@@ -118,8 +118,6 @@
         <a data-ui-sref="multiacademico.proyectosescolares.list" data-active-menu>
             <span class="icon"><i class="fa flaticon-meeting"></i></span>
             <span class="text">Proyectos Escolares</span>
-            
-           
         </a>
     </li>
     
@@ -188,22 +186,22 @@
             <li><a data-ui-sref="multiacademico.informes" data-active-menu>Informes de Aprendizaje y Comportamiento</a></li>
         </ul>
     </li>
-    {#
+    
     <li class="submenu">
          <a href="javascript:void(0);"><span class="icon"> <i class="fa fa-print"></i></span>
              <span class="text">Reportes</span> <span class="arrow"></span></a>
                 <ul>
-                    <li><a href="#/ínformesortalf" data-active-menu>Reporte de Matriculas Alfabeticamente</a></li>
+                    {#<li><a href="#/ínformesortalf" data-active-menu>Reporte de Matriculas Alfabeticamente</a></li>
                     <li><a href="#/informesortnum" data-active-menu>Reporte de Matriculas Numericamente</a></li>
                     <li><a href="#/informesortnum" data-active-menu>Reporte de Matriculas por Curso</a></li>
-                    <li><a href="#/reportesorterror" data-active-menu>Reporte de Matriculas Errores</a></li>
-                    <li><a href="#/dos-quimestre" data-active-menu>xxReporte de Matriculas Estadistico</a></li>
-                    <li><a href="#/reportelibro" data-active-menu>Libro de Matriculas</a></li>
+                    <li><a href="#/reportesorterror" data-active-menu>Reporte de Matriculas Errores</a></li>#}
+                    <li><a data-ui-sref="multiacademico.estadisticas.matriculados" data-active-menu>Reporte de Matriculas Estadistico</a></li>
+                    {#<li><a href="#/reportelibro" data-active-menu>Libro de Matriculas</a></li>
                     <li><a href="#/reportedocente" data-active-menu>Reporte Docentes</a></li>
-                    <li><a href="#/reportedocenteclave" data-active-menu>Reporte Docentes Claves</a></li>
+                    <li><a href="#/reportedocenteclave" data-active-menu>Reporte Docentes Claves</a></li>#}
                 </ul>
     </li>
-    #}
+    
     <li class="submenu">
                 <a href="javascript:void(0);"> 
                     <span class="icon"><i class="fa flaticon-certificate"></i></span>

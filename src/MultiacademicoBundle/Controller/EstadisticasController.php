@@ -55,6 +55,17 @@ class EstadisticasController extends FOSRestController
         );
     }
     
+    public function matriculadosAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $matriculados=$em->getRepository('MultiacademicoBundle:Aula')->matriculadosPorSexo();
+        $view = $this->view($matriculados,200)
+            ->setTemplate("MultiacademicoBundle:Reportes:matriculados.html.twig")
+            ->setTemplateVar('matriculados')
+            ;
+        return $this->handleView($view);
+    }
+    
     
    
     

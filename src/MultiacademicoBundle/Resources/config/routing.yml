@@ -18,12 +18,8 @@ miscalificaciones:
     options:
         expose: true
     prefix: api 
-estadisticas:
-    type: rest
-    resource: MultiacademicoBundle\Controller\EstadisticasController
-    options:
-        expose: true
-    prefix: api    
+multiacademico_estadisticas:
+    resource: "@MultiacademicoBundle/Resources/config/routing/estadisticas.yml"    
 multiacademico_pension:
     resource: "@MultiacademicoBundle/Resources/config/routing/pension.yml"    
     #prefix:   /pension    

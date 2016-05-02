@@ -18,7 +18,7 @@ class AulaDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-3">',
+            'start_html' => '<div class="row"><div class="col-sm-6">',
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
@@ -29,6 +29,17 @@ class AulaDatatable extends AbstractDatatableView
                         'rel' => 'tooltip',
                         'title' => $this->translator->trans('datatables.actions.new'),
                         'class' => 'btn btn-primary',
+                        'role' => 'button'
+                    ),
+                ),
+                array(
+                    'route' => $this->router->generate('estadisticas_matriculados'),
+                    'label' => 'Ver Resumen',
+                    'icon' => 'fa fa-print',
+                    'attributes' => array(
+                        'rel' => 'tooltip',
+                        'title' => 'Resumen Estadistico',
+                        'class' => 'btn btn-success',
                         'role' => 'button'
                     ),
                 )

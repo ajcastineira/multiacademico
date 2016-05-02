@@ -19,6 +19,7 @@ use Multiservices\PayPayBundle\Entity\Ingresos;
 
 use MultiacademicoBundle\Form\Type\RepresentanteType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class IngresosType extends AbstractType
 {
@@ -31,7 +32,9 @@ class IngresosType extends AbstractType
         $builder
             ->add('fecha', DateTimeType::class)
             ->add('representante',  RepresentanteType::class)
-            ->add('monto')
+            ->add('monto',NumberType::class,['attr'=>
+                                                    ['step'=>'0.01']]
+                                            )
             ->add('descripcion')
             ->add('referencia')
            // ->add('collectedby')
@@ -76,10 +79,10 @@ class IngresosType extends AbstractType
                 // It's important here to fetch $event->getForm()->getData(), as
                 // $event->getData() will get you the client data (that is, the ID)
                 $representante = $event->getForm()->getData();
-
+                $facturas = $event->getForm()->getParent()->getData()->getFacturas();
                 // since we've added the listener to the child, we'll have to pass on
                 // the parent to the callback functions!
-                $formModifier($event->getForm()->getParent(), $representante);
+                $formModifier($event->getForm()->getParent(), $representante,$facturas);
             }
         );    
             

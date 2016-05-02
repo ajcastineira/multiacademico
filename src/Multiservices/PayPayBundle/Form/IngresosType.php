@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormInterface;
-
+use Doctrine\ORM\PersistentCollection;
 use Doctrine\ORM\EntityRepository;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -42,11 +42,9 @@ class IngresosType extends AbstractType
                 ;
                 
                 
-           $formModifier = function (FormInterface $form, Representantes $representante = null) {
+           $formModifier = function (FormInterface $form, Representantes $representante = null, PersistentCollection $facturas=null) {
                 
-               
-               //$facturas = null === $representante ? array() : $representante->getFacturas()->toArray();
-                
+               $facturas = null === $facturas ? array() : $facturas->toArray();
                 
                 $formOptions = array(
                     'class'       => 'PayPayBundle:Facturas',
@@ -54,8 +52,8 @@ class IngresosType extends AbstractType
                     //'choices'     => $facturas,
                     'multiple'=>true,
                     'property_path' => 'facturas',
-                    'query_builder' => function (EntityRepository $er) use($representante)  {
-                         return $er->facturasPendientes($representante);
+                    'query_builder' => function (EntityRepository $er) use($representante,$facturas)  {
+                         return $er->facturasPendientes($representante,$facturas);
                     }
                 );
                 
@@ -68,7 +66,7 @@ class IngresosType extends AbstractType
                 // this would be your entity, i.e. Ingresos
                 $data = $event->getData();
 
-                $formModifier($event->getForm(), $data->getRepresentante());
+                $formModifier($event->getForm(), $data->getRepresentante(),$data->getFacturas());
             }
         );
 

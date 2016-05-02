@@ -14,18 +14,27 @@ use MultiacademicoBundle\Entity\Representantes;
  */
 class FacturasRepository extends EntityRepository
 {
-    public function facturasPendientes($representante)
+    public function facturasPendientes($representante,$facturas=null)
         {
-
-           return $this->getEntityManager()
+            $orw="";
+            $params=['cliente'=>  $representante,
+                       'estado1'=>  EstadoFacturaType::NOPAGADA,
+                       'estado2'=>   EstadoFacturaType::VENCIDA];
+            foreach ($facturas as $i=>$factura)
+                {
+                    ($i>0)?$orw.=" OR ":$orw.="";
+                    $orw.=" f.id=:factura$i ";
+                    $params["factura$i"]=$factura;
+                }
+           $qb=$this->getEntityManager()
             ->createQueryBuilder()->select('f')
                     ->from('PayPayBundle:Facturas','f')
                     //->innerJoin('p.factura', 'f')
                     ->where('f.idcliente= :cliente AND (f.estado =:estado1 OR f.estado =:estado2)')
-                    ->setParameter('cliente',  $representante)
-                    ->setParameter('estado1',  EstadoFacturaType::NOPAGADA)
-                    ->setParameter('estado2',   EstadoFacturaType::VENCIDA)
-                   // ->getQuery()->getResult()
-                    ;
+                    ->setParameters($params);
+           if ($orw!=""){
+               $qb->orWhere($orw);
+           }
+           return $qb;
         }
 }

@@ -44,6 +44,7 @@ define([
      //   'app.paypay.egresos',
         'multiacademico',
         'multiacademico.estudiantes',
+        'multiacademico.estadisticas',
         'multiacademico.matriculas',
         'multiacademico.docentes',
         'multiacademico.docentes.midistributivo',

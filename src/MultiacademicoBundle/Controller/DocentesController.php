@@ -39,13 +39,32 @@ class DocentesController extends Controller
      */
     public function indexApiAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MultiacademicoBundle:Docentes')->findAll();
-
+         $docentesDatatable = $this->get("multiacademico.docentes");
+        $docentesDatatable->buildDatatable();
+        
         return array(
-            'entities' => $entities,
+           'datatable'=>$docentesDatatable
         );
+    }
+    
+    /**
+     * Get results estudiante entities.
+     *
+     * @Route("/results", name="docentes_results")
+     *
+     * @return Response
+     */
+    
+    public function docentesResultsAction()
+    {
+        /**
+         * @var \Sg\DatatablesBundle\Datatable\Data\DatatableData $datatable
+         */
+        $datatable = $this->get('multiacademico.docentes');
+         $datatable->buildDatatable();
+         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
     /**
      * Creates a new Docentes entity.

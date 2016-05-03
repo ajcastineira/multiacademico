@@ -1,4 +1,16 @@
 {% block content -%}
+        <style>
+        label{
+            display: table;
+        }
+        div.dataTables_filter input {
+          margin-left: 0px; 
+        }
+        .dataTable thead tr th:first-child{
+          min-width: 10px;  
+        }
+ 
+    </style>
 <div id="content">
     <div class="row">
     <div class=" col-md-12">
@@ -17,45 +29,7 @@
             </div><!-- /.panel-heading -->
             <div class="panel-body ">
 
-    <table class="table records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Docente</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('docentes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.docente }}</td>
-                <td>
-                <ul>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('docentes_show', { 'id': entity.id }) }}">mostrar</a>
-                    </li>                    
-                    
-                    
-                    
-                    
-                                                                                                            
-                                             
-                    <li>
-                        <a href="{{ path('docentes_edit', { 'id': entity.id }) }}">editar</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        {{ datatable_render_html(datatable) }}
             </div>
         </div>
     </div>    
@@ -63,11 +37,12 @@
     <div class="row">    
         <ul>
         <li>
-            <a href="{{ path('docentes_new') }}">
+            <a class="btn btn-info" href="{{ path('docentes_new') }}">
                 Crear nueva entrada
             </a>
         </li>
     </ul>
         </div>
 </div>    
+            {{ datatable_render_js(datatable) }}
 {% endblock %}

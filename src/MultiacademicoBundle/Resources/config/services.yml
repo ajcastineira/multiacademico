@@ -38,6 +38,9 @@ services:
     multiacademico.estudiantes:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable
         parent: sg_datatables.datatable.abstract
+    multiacademico.docentes:
+        class: MultiacademicoBundle\Datatables\DocentesDatatable
+        parent: sg_datatables.datatable.abstract    
     multiacademicobundle_datatable.matriculas:
         class: MultiacademicoBundle\Datatables\MatriculasDatatable
         parent: sg_datatables.datatable.abstract

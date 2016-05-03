@@ -17,7 +17,7 @@ use MultiacademicoBundle\Entity\Representantes;
  * Estudiantes controller.
  *
  * @Route("/estudiantes")
- * @Security("has_role('ROLE_SECRETARIA')")
+ * @Security("has_role('ROLE_SECRETARIA') or has_role('ROLE_COLECTORA')")
  */
 class EstudiantesController extends Controller
 {

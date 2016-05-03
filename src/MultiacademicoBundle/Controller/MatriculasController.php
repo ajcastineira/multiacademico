@@ -3,7 +3,7 @@
 namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -22,6 +22,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
  *
  * @Route("/matriculas")
  * @Rest\RouteResource("Matricula")
+ * @Security("has_role('ROLE_SECRETARIA') or has_role('ROLE_COLECTORA')")
  */
 class MatriculasController extends FOSRestController
 {

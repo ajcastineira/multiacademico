@@ -3,9 +3,9 @@
 namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -18,6 +18,7 @@ use MultiacademicoBundle\Form\RepresentantesType;
  * Representantes controller.
  * @Route("/representantes")
 * @Rest\RouteResource("Representante")
+ * @Security("has_role('ROLE_SECRETARIA') or has_role('ROLE_COLECTORA')")
  */
 class RepresentantesController extends FOSRestController
 {

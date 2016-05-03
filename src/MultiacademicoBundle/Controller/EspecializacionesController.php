@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
  * Especializaciones controller.
  *
  * @Route("/especializaciones")
- * @Security("has_role('ROLE_ADMIN')")
+ * @Security("has_role('ROLE_SECRETARIA')")
  */
 class EspecializacionesController extends Controller
 {

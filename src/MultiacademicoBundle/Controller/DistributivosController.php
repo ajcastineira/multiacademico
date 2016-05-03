@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
  * Distributivos controller.
  *
  * @Route("/distributivos")
- * @Security("has_role('ROLE_ADMIN')")
+ * @Security("has_role('ROLE_SECRETARIA')")
  */
 class DistributivosController extends Controller
 {

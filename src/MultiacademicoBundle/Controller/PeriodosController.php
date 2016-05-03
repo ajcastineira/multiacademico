@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
  * Periodos controller.
  *
  * @Route("/periodos")
- * @Security("has_role('ROLE_ADMIN')")
+ * @Security("has_role('ROLE_SECRETARIA')")
  */
 class PeriodosController extends Controller
 {

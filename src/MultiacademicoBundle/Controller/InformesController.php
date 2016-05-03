@@ -39,7 +39,7 @@ class InformesController extends Controller
      * @Route("/api/informeaprendizaje", name="informe-aprendizaje-api", options={"expose":true})
      * @Method("GET")
      * @Template()
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SECRETARIA')")
      */
     public function informeAprendizajeCursoAction()
     {

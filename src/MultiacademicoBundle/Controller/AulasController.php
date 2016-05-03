@@ -21,7 +21,7 @@ use JMS\Serializer\SerializationContext;
  * Reportes controller.
  * @Route("/aulas")
  *  @Rest\RouteResource("Aula")
- * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_ADMIN')")
+ * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_SECRETARIA')")
  */
 class AulasController extends FOSRestController
 {
@@ -39,7 +39,7 @@ class AulasController extends FOSRestController
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
         
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SECRETARIA'))
         {
             $aulas=$em->getRepository('MultiacademicoBundle:Aula')->findAll();
         }else

@@ -40,7 +40,7 @@ class EstadisticasController extends FOSRestController
         
         $mejoresparcial=$em->getRepository('MultiacademicoBundle:Calificaciones')->MejoresEstudiantesGeneralParcial($q,$p);
         $mejoresquimestre=$em->getRepository('MultiacademicoBundle:Calificaciones')->MejoresEstudiantesGeneralQuimestre($q);
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SECRETARIA'))
         {
         //$aulas=$em->getRepository('MultiacademicoBundle:Aula')->findAll();
         }else

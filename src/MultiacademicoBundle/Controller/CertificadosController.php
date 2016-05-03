@@ -42,7 +42,7 @@ class CertificadosController extends Controller
      * @Route("/api/certificados/matricula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-matricula-curso-api", options={"expose":true})
      * @Method("GET")
      * @Template()
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SECRETARIA')")
      */
     public function certificadoMatriculaCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {
@@ -81,7 +81,7 @@ class CertificadosController extends Controller
      * @Route("/api/certificados/promocion/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-promocion-curso-api", options={"expose":true})
      * @Method("GET")
      * @Template()
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SECRETARIA')")
      */
     public function certificadoPromocionCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
     {

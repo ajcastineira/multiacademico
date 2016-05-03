@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCol
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
+use MultiacademicoBundle\Validator\Constraints\EstudianteEmail;
 
 /**
  * Estudiantes
@@ -18,6 +19,7 @@ use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
  * @UniqueEntity({"estudianteCedula"}, message="Cedula ya registrada en el sistema")
  * @UniqueEntity({"mail"}, message="Este email ya existe en el sistema")
  * @UniqueEntity({"estudiante"}, message="Este nombre ya existe en el sistema")
+ * @EstudianteEmail
  * @Serializer\ExclusionPolicy("all")
  */
 class Estudiantes
@@ -427,7 +429,7 @@ class Estudiantes
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255, nullable=false)
-     * @ArxisAssert\Email
+     * @Assert\Email()
      */
     private $mail;
     /**

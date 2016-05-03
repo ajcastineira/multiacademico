@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
+use MultiacademicoBundle\Validator\Constraints\DocenteEmail;
 
 /**
  * Docentes
@@ -15,6 +16,7 @@ use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
  * @UniqueEntity({"docentecedula"}, message="Cedula ya registrada en el sistema")
  * @UniqueEntity({"docenteemail"}, message="Este email ya existe en el sistema")
  * @UniqueEntity({"docente"}, message="Este nombre ya existe en el sistema")
+ * @DocenteEmail
  */
 class Docentes
 {
@@ -60,7 +62,7 @@ class Docentes
      * @var string
      *
      * @ORM\Column(name="docenteemail", type="string", length=50, nullable=false)
-     * @ArxisAssert\Email
+     * @Assert\Email()
      */
     private $docenteemail;
 

@@ -22,6 +22,18 @@ services:
             entityManager: "@doctrine.orm.entity_manager"
         tags:
             - { name: validator.constraint_validator, alias: distributivo.validator }        
+    validator.multiacademico.EstudianteEmailValidator:
+        class:  MultiacademicoBundle\Validator\Constraints\EstudianteEmailValidator
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: estudiante_email.validator }                
+    validator.multiacademico.DocenteEmailValidator:
+        class:  MultiacademicoBundle\Validator\Constraints\DocenteEmailValidator
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: docente_email.validator }        
 
     multiacademico.estudiantes:
         class: MultiacademicoBundle\Datatables\EstudiantesDatatable

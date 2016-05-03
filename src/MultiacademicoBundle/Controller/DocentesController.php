@@ -243,7 +243,7 @@ class DocentesController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->updateUserDocente($entity);
             return $this->redirect($this->generateUrl('docentes_api_edit', array('id' => $id)));
         }
 
@@ -313,5 +313,14 @@ class DocentesController extends Controller
             $userDocente->setEnabled(true);
             $userManager->updateUser($userDocente);
             return $userDocente;
+    }
+    
+    private function updateUserDocente(Docentes $docente)
+    {
+        $userDocente=$docente->getUsuario();
+        $userDocente->setEmail($docente->getDocenteemail());
+        $userManager = $this->container->get('fos_user.user_manager');
+         $userManager->updateUser($userDocente,false);
+         return $userDocente;
     }
 }

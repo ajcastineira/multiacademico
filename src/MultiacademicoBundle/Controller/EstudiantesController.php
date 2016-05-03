@@ -302,7 +302,8 @@ class EstudiantesController extends Controller
         $editForm->handleRequest($request);
         
         if ($editForm->isValid()) {
-            //$entity->getUsuario()->setUsernameCanonical($entity->getUsername());
+            
+            $this->updateUserEstudiante($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('estudiantes_api_edit', array('id' => $id)));
@@ -374,6 +375,15 @@ class EstudiantesController extends Controller
             $userEstudiante->setEnabled(true);
             $userManager->updateUser($userEstudiante);
             return $userEstudiante;
+    }
+    
+    private function updateUserEstudiante(Estudiantes $estudiante)
+    {
+        $userEstudiante=$estudiante->getUsuario();
+        $userEstudiante->setEmail($estudiante->getMail());
+        $userManager = $this->container->get('fos_user.user_manager');
+         $userManager->updateUser($userEstudiante,false);
+         return $userEstudiante;
     }
     
     private function crearRepresentante(Estudiantes $estudiante)

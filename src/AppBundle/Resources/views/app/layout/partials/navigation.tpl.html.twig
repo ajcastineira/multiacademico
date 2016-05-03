@@ -29,7 +29,7 @@
         </a>
     </li>
     <!--/ End User -->
-    {% if is_granted('ROLE_SECRETARIA')%}
+    {% if is_granted('ROLE_SECRETARIA') or is_granted('ROLE_COLECTORA')%}
     <!-- Start category ui kit-->
     <li class="sidebar-category">
         <span>Estudiantes</span>

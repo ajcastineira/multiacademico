@@ -54,7 +54,7 @@ class LoadDefaultUserRolesData implements FixtureInterface
         if (!$rolesecretaria)
         {
           $rolesecretaria = new Role();
-          $rolesecretaria->setName('ROLE_ADMIN');
+          $rolesecretaria->setName('ROLE_SECRETARIA');
         }
         $roledocente=$manager->getRepository('MultiservicesArxisBundle:Role')->findOneByName('ROLE_DOCENTE');
         if (!$roledocente)

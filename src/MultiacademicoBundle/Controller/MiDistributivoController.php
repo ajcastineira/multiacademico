@@ -94,7 +94,7 @@ class MiDistributivoController extends Controller
         //$entities = $em->getRepository('MultiacademicoBundle:Distributivos')->miDistributivo($docente);
 
         return array(
-            null
+            'aula_id' => $id->getAula()->getId()
         );
     }
     

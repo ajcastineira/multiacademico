@@ -131,10 +131,12 @@ class AulasController extends FOSRestController
     {
         
         $em = $this->getDoctrine()->getManager();
-        if ($fecha!="simple")
-        {$template='MultiacademicoBundle:Aulas:printwfecha.html.twig';}
-        else
+        if ($fecha=="simple")
         {$template='MultiacademicoBundle:Aulas:print.html.twig';}
+        elseif($fecha=="asistencia")
+        {$template='MultiacademicoBundle:Aulas:printasistencia.html.twig';}
+        elseif($fecha=="fecha")
+        {$template='MultiacademicoBundle:Aulas:printwfecha.html.twig';}
         return $this->render($template, array(
             'aula' => $aula
         ));

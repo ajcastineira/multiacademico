@@ -1,5 +1,7 @@
 {% block content -%}
-<div id="content">
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}" />
+<div id="content" class="noprint">
     <div class="row">
     <div class="col-md-push-3 col-md-6">
 
@@ -45,9 +47,8 @@
             </tr>
             <tr>
                 <td>Lista de Control diario de Asisencias</td>
-                <td>
-                        <a class="btn btn-primary" href="#">Seleccionar <i class="fa fa-arrow-right icon-on-right"></i>
-                        </a>
+                <td data-ng-controller="PrintCtrl">
+                        <a class="btn btn-primary" href="#" data-ng-click="openModal('print_aula',{'aula':{{aula_id}},'fecha':'asistencia','_format':'html'})">Seleccionar <i class="fa fa-arrow-right icon-on-right"></i></a>
                 </td>
             </tr>
 
@@ -59,4 +60,5 @@
     </div>
 </div><!-- /.row -->
 </div>
+<div class="printable"/>
 {% endblock %}

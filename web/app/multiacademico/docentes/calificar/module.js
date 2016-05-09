@@ -70,7 +70,8 @@ define(['angular',
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
+                                'modules/tables/directives/datatables/datatableBasic',
+                                'modules/forms/controllers/PrintCtrl'
                             ])
                         }
                     }

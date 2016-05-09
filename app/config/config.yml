@@ -38,6 +38,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'bootstrap_3_horizontal_layout.html.twig'
+    globals:
+        entidad: '@entidadData'
     #form_themes:
         #- 'AppBundle:Form:fields.html.twig'
         #- 'MultiservicesArxisBundle:Form:fields.html.twig'

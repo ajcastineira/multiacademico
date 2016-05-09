@@ -6,12 +6,13 @@
 namespace MultiacademicoBundle\Servicios;
 
 use Doctrine\ORM\EntityManager;
+use MultiacademicoBundle\Entity\Entidad;
 /**
  * Description of EntidadData
  *
  * @author Rene Arias <renearas@arxis.la>
  */
-class EntidadData {
+class EntidadData extends Entidad {
     
     /**
      * @var EntityManager

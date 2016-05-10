@@ -91,7 +91,7 @@ class MatriculasController extends FOSRestController
             $matricula->setMatriculausuario($user);
             $matricula->setAula($aula);
             $em->persist($matricula);
-            $entidad = $this->get('entidadData')->getEntidad();
+            $entidad = $this->get('entidadData');
             if ($entidad->getEsParticular())
             {
                 $this->generarFacturas($matricula);

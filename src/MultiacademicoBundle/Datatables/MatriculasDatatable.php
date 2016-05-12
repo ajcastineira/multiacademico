@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
+use MultiacademicoBundle\Datatables\Columns\RepresentanteColumn;
 
 /**
  * Class MatriculasDatatable
@@ -17,6 +18,10 @@ class MatriculasDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
+       $exporOptions=[
+                       //'columns'=> [0,1,2,3,4,5,6,7,8,9]
+            
+                       ];
         $this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
             'end_html' => '<hr></div></div>',
@@ -50,7 +55,36 @@ class MatriculasDatatable extends AbstractDatatableView
             'server_side' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array()
+            'extensions' => array(
+                'buttons' =>
+                    array(
+                        ['extend'=> 'copy',
+                         'text'=> 'Copiar',
+                          'className'=>'btn-primary',
+                          'exportOptions'=>$exporOptions],
+                        ['extend'=> 'excel',
+                         'text'=> 'Excel',
+                         'className'=>'btn-success',
+                         'exportOptions'=>$exporOptions,
+                         'footer'=>true ],
+                        ['extend'=> 'pdf',
+                         'text'=> 'PDF',
+                         'className'=>'btn-danger',
+                         'exportOptions'=>$exporOptions,
+                         'footer'=>true ],
+                        ['extend'=> 'print',
+                         'text'=> 'Imprimir',
+                         'className'=>'btn-primary',
+                         'exportOptions'=>$exporOptions,
+                            'footer'=>true],
+                        [
+                            'text' => 'Recargar',
+                            'className'=>'btn btn-primary',
+                            'action' => '::reload.js.twig'
+                        ]
+                   ),
+                'responsive' => true
+            )
         ));
 
         $this->ajax->set(array(
@@ -61,7 +95,7 @@ class MatriculasDatatable extends AbstractDatatableView
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'><'col-sm-4 col-xs-12'l>>" .
+            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100),
@@ -106,23 +140,8 @@ class MatriculasDatatable extends AbstractDatatableView
             ->add('aula.alias', 'column', array(
                 'title' => 'Alias',
                  'width'=>'4em'
-            ))    
-           /* ->add('matriculafecha', 'datetime', array(
-                'title' => 'Fecha Mat.',
-                'date_format' => 'Y-M-d',
-            ))*/
-            
-            /*->add('matriculaestado', 'column', array(
-                'title' => 'Matriculaestado',
-            ))*/
-          
-           
-            
-          /*  ->add('matriculacodestudiante.representante', 'column', array(
-                'title' => 'Matriculacodestudiante Representante',
-            ))*/
-           
-            ->add(null, 'action', array(
+            ))
+           ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
@@ -154,10 +173,77 @@ class MatriculasDatatable extends AbstractDatatableView
                         ),
                     )
                 )
+            ))     
+            ->add('matriculacodestudiante.representante', new RepresentanteColumn(), array(
+                'title' => 'Representante',
+                'data'=>'matriculacodestudiante.representante.representante',
+                //'visible'=>false
+                 //'width'=>'4em'
             ))
+            ->add('matriculacodestudiante.representanteTelefono', 'column', array(
+                'title' => 'Tlf Representante',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))    
+             ->add('matriculacodestudiante.estudianteCedula', 'column', array(
+                'title' => 'Cedula',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))     
+             ->add('matriculacodestudiante.estudianteGenero', 'column', array(
+                'title' => 'Genero',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))
+             ->add('matriculacodestudiante.estudianteDomicilio', 'column', array(
+                'title' => 'Domicilio',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))         
+           /* ->add('matriculafecha', 'datetime', array(
+                'title' => 'Fecha Mat.',
+                'date_format' => 'Y-M-d',
+            ))*/
+            
+            /*->add('matriculaestado', 'column', array(
+                'title' => 'Matriculaestado',
+            ))*/
+          
+           
+            
+          /*  ->add('matriculacodestudiante.representante', 'column', array(
+                'title' => 'Matriculacodestudiante Representante',
+            ))*/
+           
+            
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $router = $this->router;
+        
+        $formatter = function($line) use ($router){
+            //var_dump($line);
+           // var_dump($line["matriculacodestudiante"]["representante"]);
+            if (isset($line["matriculacodestudiante"]))
+            {
+            
+            $representanteroute = $router->generate('representantes', array('page' => $line["matriculacodestudiante"]["representante"]["id"]));
+            $line["matriculacodestudiante"]["representante"]["representante"] = '<a href="'.$representanteroute.'">'.$line["matriculacodestudiante"]["representante"]["representante"].'</a>';
+            }
+            //$estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
+            //$line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
+            return $line;
+        };
+
+        return $formatter;
+     
+    }
+    
     /**
      * {@inheritdoc}
      */

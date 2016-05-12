@@ -17,6 +17,9 @@ use Multiservices\PayPayBundle\Entity\Facturaitems;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
+use AppBundle\Lib\ResultsCorrector;
+
+
 /**
  * Matriculas controller.
  *
@@ -58,8 +61,32 @@ class MatriculasController extends FOSRestController
         $datatable = $this->get('multiacademicobundle_datatable.matriculas');
          $datatable->buildDatatable();
          $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
-
-        return $query->getResponse();
+         
+         $query->buildQuery();
+        $qb = $query->getQuery();
+        $qb->addSelect('partial representante.{id,representante}')->join('matriculacodestudiante.representante','representante');
+        $where=$qb->getDqlPart('where');
+        $valorBuscado="matriculacodestudiante.representante";
+        $valorNuevo="representante.representante";
+        $partesvalidas=[];
+        if (isset($where)){
+            $qb_where_parts = $where->getParts();
+            foreach ($qb_where_parts as $qb_where_part)
+             {
+                $partesvalidas[]=ResultsCorrector::obtenerPartesValidas($qb_where_part, $valorBuscado, $valorNuevo);
+             }
+         }
+        //var_dump($qb->getDQL()); 
+        //var_dump($where); 
+        $clasew=get_class($where);
+            if (!empty($partesvalidas)){
+            $qb->resetDQLPart('where');
+            $qb->add('where',new $clasew($partesvalidas));
+            }
+        //var_dump($qb->getDQLPart('where'));     
+        //var_dump($qb->getDQL());
+        $query->setQuery($qb);
+        return $query->getResponse(false);
     }
 
     /**

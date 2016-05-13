@@ -272,6 +272,17 @@ class DistributivosController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            
+            $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
+                                                                    array(
+                                                                          'curso'=>$entity->getDistributivocodcurso()->getId(),
+                                                                          'especializacion'=>$entity->getDistributivocodespecializacion()->getId(),
+                                                                          'paralelo'=>$entity->getDistributivoparalelo(),
+                                                                          'seccion'=>$entity->getDistributivoseccion(),
+                                                                          'periodo'=>$entity->getDistributivocodperiodo()->getId()
+                                                                           )
+                                                                    );
+            $entity->setAula($aula);
 
             return $this->redirect($this->generateUrl('distributivos_api_edit', array('id' => $id)));
         }

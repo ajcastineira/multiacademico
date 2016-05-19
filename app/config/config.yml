@@ -240,6 +240,17 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+# Nelmio CORS
+nelmio_cors:
+    defaults:
+        allow_origin:  ["*"]
+        allow_methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers: ["content-type", "authorization"]
+        max_age:       3600
+    paths:
+        '^/': ~    
+    
 knp_snappy:
     temporary_folder: %kernel.cache_dir%/snappy
     pdf:

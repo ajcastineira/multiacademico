@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
             //probado commit
             new AppBundle\AppBundle(),
             new MultiacademicoBundle\MultiacademicoBundle(),

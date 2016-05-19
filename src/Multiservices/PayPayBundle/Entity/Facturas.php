@@ -367,6 +367,7 @@ class Facturas
      */
     public function getEstado()
     {
+        $this->estaVencida();
         return $this->estado;
     }
 
@@ -695,5 +696,23 @@ class Facturas
     public function getDescuento()
     {
         return $this->descuento;
+    }
+    
+    public function estaVencida()
+    {
+        $hoy=New \Datetime();
+        if ($hoy>$this->vencimiento && ($this->estado==EstadoFacturaType::NOPAGADA||$this->estado==EstadoFacturaType::VENCIDA))
+        {
+            $this->marcarComoVencida();
+            return true;
+        }else
+        {
+            return false;  
+        }
+    }
+    
+    public function marcarComoVencida() {
+        $this->estado=EstadoFacturaType::VENCIDA;
+        $this->statevencido=true;
     }
 }

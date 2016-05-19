@@ -48,6 +48,8 @@
                                 <th>Total</th>
                                 <th>Cobrado</th>
                                 <th>Saldo</th>
+                                <th>Estado</th>
+                                <th>Vencida</th>
                                 <th>Accion</th>
                             </tr> 
                     {%for factura in representante.facturas %}
@@ -62,6 +64,7 @@
                                 <td>{{factura.cobrado}}</td>
                                 <td>{{factura.saldoAPagar()}}</td>
                                 <td>{{factura.estado|readablehtml|raw}}</td>
+                                <td>{{factura.estaVencida()}}</td>
                                 <td><a class="btn btn-primary btn-xs" href="{{path('pension',{'page':factura.pension.id})}}">Ver</a></td>
                             </tr> 
                         

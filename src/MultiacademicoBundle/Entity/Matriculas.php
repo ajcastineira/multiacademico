@@ -873,4 +873,9 @@ class Matriculas
     {
         return $this->valorPension;
     }
+    
+    public function estaAlDia()
+    {
+       return $this->matriculacodestudiante->tienePensionesPendientes();         
+    }
 }

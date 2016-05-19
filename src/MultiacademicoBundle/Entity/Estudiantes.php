@@ -1934,4 +1934,53 @@ class Estudiantes
         
         return $diff->format('%y'); // edad en años
     }
+
+    /**
+     * Add pensione
+     *
+     * @param \MultiacademicoBundle\Entity\Pension $pensione
+     *
+     * @return Estudiantes
+     */
+    public function addPensione(\MultiacademicoBundle\Entity\Pension $pensione)
+    {
+        $this->pensiones[] = $pensione;
+
+        return $this;
+    }
+
+    /**
+     * Remove pensione
+     *
+     * @param \MultiacademicoBundle\Entity\Pension $pensione
+     */
+    public function removePensione(\MultiacademicoBundle\Entity\Pension $pensione)
+    {
+        $this->pensiones->removeElement($pensione);
+    }
+
+    /**
+     * Get pensiones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPensiones()
+    {
+        return $this->pensiones;
+    }
+    
+    public function tienePensionesPendientes() {
+        $pv=0;
+        foreach ($this->pensiones as $pension)
+        {
+            if ($pension->getFactura()->estaVencida())
+            {$pv++;
+             break;   
+            }
+        }
+        if ($pv==0)
+        {return false;}
+        else
+        {return true;}
+    }
 }

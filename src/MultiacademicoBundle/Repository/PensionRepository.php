@@ -28,5 +28,22 @@ class PensionRepository extends EntityRepository
                     ->getQuery()->getResult();
 
     }
+    
+    public function actualizarPensiones()
+    {
+        $hoy=new \DateTime();
+        $where='f.vencimiento <=:hoy AND (f.estado =:estado1 OR f.estado =:estado2)';
+        $parameters=['hoy'=>$hoy,
+                     'estado1'=> EstadoFacturaType::NOPAGADA,
+                     'estado2'=> EstadoFacturaType::VENCIDA];
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        return $qb->update('PayPayBundle:Facturas','f')
+                    ->set('f.estado',  $qb->expr()->literal(EstadoFacturaType::VENCIDA))
+                    ->set('f.statevencido', true)
+                    ->where($where)
+                    ->setParameters($parameters)
+                    ->getQuery()->getResult();
+
+    }
    
 }

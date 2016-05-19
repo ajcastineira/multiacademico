@@ -33,9 +33,9 @@ class PensionController extends FOSRestController
      */
     public function indexAction()
     {
-        //$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        //$pensions = $em->getRepository('MultiacademicoBundle:Pension')->findAll();
+        $pensions = $em->getRepository('MultiacademicoBundle:Pension')->actualizarPensiones();
 
         $pensions_datatable = $this->get("multiacademico.pensiones");
         $pensions_datatable->buildDatatable();

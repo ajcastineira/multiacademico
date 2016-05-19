@@ -141,6 +141,10 @@ class MatriculasDatatable extends AbstractDatatableView
                 'title' => 'Alias',
                  'width'=>'4em'
             ))
+            ->add('estaAlDia', 'virtual', array(
+                'title' => '¿Esta al Dia?',
+                 'width'=>'4em'
+            ))    
            ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
@@ -234,6 +238,13 @@ class MatriculasDatatable extends AbstractDatatableView
             
             $representanteroute = $router->generate('representantes', array('page' => $line["matriculacodestudiante"]["representante"]["id"]));
             $line["matriculacodestudiante"]["representante"]["representante"] = '<a href="'.$representanteroute.'">'.$line["matriculacodestudiante"]["representante"]["representante"].'</a>';
+            $mat=$this->em->find('MultiacademicoBundle:Matriculas', $line["id"]);
+            if ($mat->estaAlDia())
+            {$line["estaAlDia"]='<span class="label label-success">SI</span>';}
+            else
+            {    
+            $line["estaAlDia"]='<span class="label label-danger">NO</span>';
+            }
             }
             //$estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
             //$line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';

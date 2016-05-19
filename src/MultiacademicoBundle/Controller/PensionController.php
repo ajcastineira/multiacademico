@@ -658,6 +658,7 @@ class PensionController extends FOSRestController
             }
            $em->flush(); //Persist objects that did not make up an entire batch
            $em->clear();
+           print_r("----------  FINALIZADO CON EXITO  ------");
         };
         
         

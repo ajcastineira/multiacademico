@@ -876,6 +876,6 @@ class Matriculas
     
     public function estaAlDia()
     {
-       return $this->matriculacodestudiante->tienePensionesPendientes();         
+       return !($this->matriculacodestudiante->tienePensionesPendientes());         
     }
 }

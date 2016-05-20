@@ -212,7 +212,7 @@ class FormatoEntrada {
         $this->getTipoIdCliente().$tabulador.
         $this->getNumeroIdCliente().$tabulador.
         $this->getNombreCliente().$tabulador.
-        $this->getBaseImponible();
+        $this->getBaseImponible().$tabulador.$tabulador;
         
         return $string;
     }

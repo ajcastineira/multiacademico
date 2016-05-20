@@ -191,7 +191,7 @@ class FormatoEntrada {
         $this->setTipoIdCliente('N');
         //$this->setNumeroIdCliente($pension->getFactura()->getIdcliente()->getCedula());
         $this->setNumeroIdCliente('');
-        $this->setNombreCliente($pension->getFactura()->getIdcliente()->getRepresentante());
+        $this->setNombreCliente($pension->getEstudiante()->getEstudiante());
         //$this->baseImponible=$this->getValor();
         $this->baseImponible='';
         return true;

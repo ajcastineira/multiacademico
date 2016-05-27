@@ -17,6 +17,9 @@ use MultiacademicoBundle\Form\PensionType;
 use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
 use Multiservices\PayPayBundle\Entity\Ingresos;
 
+use Multiservices\PayPayBundle\Form\SubirListadoXLSType;
+use Multiservices\PayPayBundle\Bancos\Pichincha\ListadoXLS;
+
 use AppBundle\Lib\ResultsCorrector;
 
 
@@ -31,19 +34,79 @@ class PensionController extends FOSRestController
      * Lists all Pension entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $pensions = $em->getRepository('MultiacademicoBundle:Pension')->actualizarPensiones();
-
+        
+        $listado = new ListadoXLS();
+        $form=$this->createForm(SubirListadoXLSType::class, $listado, 
+                                        ['action'=>$this->generateUrl('subir_pension_listado')]);
+        $form->handleRequest($request);
+        
         $pensions_datatable = $this->get("multiacademico.pensiones");
         $pensions_datatable->buildDatatable();
 
         return $this->render('MultiacademicoBundle:Pension:index.html.twig', array(
             //'pensions' => $pensions,
-            'datatable'=>$pensions_datatable
+            'datatable'=>$pensions_datatable,
+            'form'=>$form->createView()
         ));
+    }
+    /**
+     * @Rest\Post()
+     */
+    public function subirListadoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $listado = new ListadoXLS();
+        $form=$this->createForm(SubirListadoXLSType::class, $listado, 
+                                    ['action'=>$this->generateUrl('subir_pension_listado')]);
+        $form->handleRequest($request);
+        
+         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $file=$listado->getFile()->openFile();
+            $lineas=0;
+            while (!$file->eof())
+            {
+                $lineas++;
+                $file->seek($lineas);
+                if ($lineas>3)
+                {
+                    $data=$file->fgetcsv("\t");
+                    if (count($data)>26)
+                    {    
+                    $que_va_a_pagar=$data[0];   //contra partidoa
+                    $id_estudiante=$data[4];   //contra partidoa
+                    $valorapagar=floatval($data[8]);
+                    $referencia_doc=$data[20];
+                    $fecha=explode(" ",$data[25]);
+                    $hora=explode(" ",$data[26]);
+                    $datetime_pago=new \DateTime("$fecha[2]/$fecha[1]/$fecha[0] $hora[3]:$hora[4]:$hora[5]");
+                    
+                    
+                    $pensions = $em->getRepository('MultiacademicoBundle:Pension')->importarPago($id_estudiante,$valorapagar,$que_va_a_pagar,$referencia_doc,$datetime_pago);
+                    
+                    }
+                    
+                }   
+            }
+            var_dump("Ingresos Registrados Correctamente");
+            return $this->redirectToRoute('pension');
+        }
+        
+        $pensions_datatable = $this->get("multiacademico.pensiones");
+        $pensions_datatable->buildDatatable();
+
+        return $this->render('MultiacademicoBundle:Pension:index.html.twig', array(
+            //'pensions' => $pensions,
+            'datatable'=>$pensions_datatable,
+            'form'=>$form->createView()
+        ));
+        
     }
 
     /**
@@ -275,351 +338,7 @@ class PensionController extends FOSRestController
     public function updateAllAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $arraymat=[371=>24.0714188174246
-                ,346=>50
-                ,400=>30
-                ,195=>24.9
-                ,352=>20
-                ,160=>64.55
-                ,129=>10
-                ,116=>10
-                ,460=>18
-                ,286=>58
-                ,173=>58
-                ,471=>52
-                ,472=>52
-                ,144=>10
-                ,81=>15
-                ,32=>10
-                ,357=>20
-                ,300=>15
-                ,11=>10
-                ,49=>10
-                ,298=>10
-                ,154=>20
-                ,181=>20
-                ,51=>25
-                ,218=>41.81
-                ,178=>50
-                ,179=>40
-                ,236=>40
-                ,452=>57.45
-                ,234=>57.45
-                ,368=>50
-                ,184=>20
-                ,186=>20
-                ,442=>25
-                ,577=>40
-                ,525=>15
-                ,103=>20
-                ,188=>20
-                ,165=>30
-                ,323=>34
-                ,324=>15
-                ,59=>31.0014224751067
-                ,574=>40
-                ,23=>25
-                ,303=>25
-                ,406=>25
-                ,477=>20
-                ,378=>15
-                ,490=>15
-                ,63=>50
-                ,256=>15
-                ,257=>15
-                ,258=>15
-                ,146=>25
-                ,19=>35
-                ,115=>25
-                ,425=>20
-                ,233=>40
-                ,78=>30
-                ,125=>25
-                ,57=>20
-                ,162=>15
-                ,508=>21
-                ,509=>21
-                ,507=>10
-                ,200=>15
-                ,94=>30
-                ,174=>25
-                ,252=>15
-                ,251=>15
-                ,255=>15
-                ,130=>25
-                ,603=>50
-                ,299=>15
-                ,344=>15
-                ,343=>15
-                ,491=>10
-                ,20=>20
-                ,301=>20
-                ,239=>25
-                ,104=>15
-                ,597=>20
-                ,235=>45
-                ,479=>100
-                ,269=>30
-                ,268=>30
-                ,320=>40
-                ,522=>30
-                ,521=>30
-                ,480=>33
-                ,334=>21.9344773790952
-                ,83=>20
-                ,287=>30
-                ,530=>20
-                ,430=>30
-                ,133=>10
-                ,304=>25
-                ,305=>22.7951635846373
-                ,124=>10
-                ,547=>40
-                ,487=>30
-                ,488=>30
-                ,482=>25
-                ,483=>25
-                ,285=>35
-                ,127=>25
-                ,399=>25.6661327897496
-                ,36=>5
-                ,377=>5
-                ,401=>15
-                ,402=>15
-                ,517=>20
-                ,540=>55
-                ,237=>20
-                ,468=>18.2361308677098
-                ,292=>20
-                ,410=>20
-                ,259=>25
-                ,572=>25
-                ,337=>10
-                ,580=>15
-                ,581=>10
-                ,358=>10
-                ,135=>20
-                ,354=>15
-                ,263=>25
-                ,512=>25
-                ,511=>15
-                ,322=>25
-                ,308=>10
-                ,309=>10
-                ,341=>15
-                ,66=>15
-                ,202=>27
-                ,143=>20
-                ,310=>33
-                ,339=>20
-                ,366=>20
-                ,112=>15
-                ,111=>15
-                ,105=>35
-                ,311=>45
-                ,312=>45
-                ,90=>27
-                ,246=>27
-                ,595=>60
-                ,594=>60
-                ,35=>28
-                ,241=>25
-                ,92=>20
-                ,25=>15
-                ,21=>10
-                ,102=>20
-                ,42=>20
-                ,238=>25
-                ,294=>25
-                ,150=>30
-                ,245=>10
-                ,141=>35
-                ,619=>35
-                ,62=>15
-                ,60=>15.0387947756369
-                ,271=>15
-                ,61=>10
-                ,384=>54
-                ,383=>57
-                ,74=>10
-                ,15=>10
-                ,177=>37
-                ,348=>40
-                ,367=>64.54
-                ,128=>50
-                ,99=>40
-                ,45=>30
-                ,46=>25
-                ,462=>25
-                ,463=>24
-                ,566=>35
-                ,542=>30
-                ,189=>20
-                ,455=>10
-                ,561=>15
-                ,132=>20
-                ,204=>50
-                ,589=>15
-                ,588=>15
-                ,353=>31
-                ,448=>20
-                ,450=>20
-                ,449=>20
-                ,606=>24
-                ,604=>24
-                ,605=>24
-                ,418=>20
-                ,24=>20
-                ,91=>25
-                ,317=>20
-                ,110=>15
-                ,151=>57.45
-                ,144=>15
-                ,278=>10
-                ,279=>10
-                ,147=>25
-                ,264=>10
-                ,117=>10
-                ,242=>40
-                ,107=>30
-                ,80=>25
-                ,131=>15
-                ,208=>20
-                ,253=>20
-                ,518=>25
-                ,106=>45
-                ,529=>10
-                ,176=>30
-                ,598=>20
-                ,576=>20
-                ,291=>35
-                ,349=>28
-                ,227=>25
-                ,228=>28
-                ,633=>25
-                ,137=>20
-                ,428=>20
-                ,138=>25
-                ,345=>25
-                ,134=>25
-                ,590=>30
-                ,520=>50
-                ,260=>50.0070911927386
-                ,261=>50
-                ,101=>20
-                ,231=>20
-                ,230=>20
-                ,96=>25
-                ,492=>25
-                ,203=>25
-                ,79=>10
-                ,473=>15
-                ,551=>28
-                ,192=>20
-                ,191=>20
-                ,329=>12
-                ,330=>12
-                ,565=>20
-                ,120=>18
-                ,528=>25
-                ,100=>71
-                ,364=>15
-                ,223=>44
-                ,224=>45
-                ,82=>20
-                ,172=>20
-                ,409=>20
-                ,193=>20
-                ,434=>25
-                ,52=>25
-                ,544=>40
-                ,543=>40
-                ,114=>20
-                ,557=>20
-                ,551=>20
-                ,552=>20
-                ,553=>20
-                ,554=>20
-                ,262=>36
-                ,295=>36
-                ,495=>22
-                ,546=>29.09
-                ,556=>14
-                ,571=>25
-                ,568=>25
-                ,56=>15
-                ,456=>40
-                ,356=>15
-                ,627=>29.09
-                ,14=>10
-                ,88=>15
-                ,470=>15
-                ,607=>20
-                ,288=>15
-                ,624=>15
-                ,248=>5
-                ,415=>5
-                ,97=>5
-                ,139=>15
-                ,73=>15
-                ,404=>10
-                ,612=>40
-                ,586=>40
-                ,498=>10
-                ,634=>10
-                ,635=>10
-                ,636=>10
-                ,216=>10
-                ,331=>10
-                ,215=>10
-                ,609=>10
-                ,610=>10
-                ,625=>100
-                ,539=>10
-                ,538=>10
-                ,537=>10
-                ,209=>15
-                ,414=>10
-                ,229=>10
-                ,306=>10
-                ,564=>10
-                ,548=>10
-                ,549=>10
-                ,478=>15
-                ,445=>15
-                ,584=>15
-                ,417=>15
-                ,347=>10
-                ,493=>10
-                ,569=>10
-                ,222=>10
-                ,9=>50
-                ,395=>50
-                ,395=>50
-                ,169=>50
-                ,502=>50
-                ,359=>50
-                ,226=>50
-                ,496=>50
-                ,497=>50
-                ,281=>50
-                ,86=>50
-                ,225=>50
-                ,119=>50
-                ,503=>50
-                ,458=>50
-                ,277=>25
-                ,171=>50
-                ,283=>50
-                ,220=>50
-                ,504=>50
-                ,505=>50
-                ,50=>50
-                ,394=>50
-                ,342=>50
-                ,370=>50
-                ,393=>50
-                ,397=>50];
+        $arraymat=[];
         $log="";
         $batchSize=20;
         $i=0;

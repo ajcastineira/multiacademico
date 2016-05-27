@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
+use Multiservices\PayPayBundle\Entity\Ingresos;
 
 class PensionRepository extends EntityRepository
 {
@@ -43,6 +44,37 @@ class PensionRepository extends EntityRepository
                     ->where($where)
                     ->setParameters($parameters)
                     ->getQuery()->getResult();
+
+    }
+    
+    
+    public function importarPago($id_estudiante,$valorapagar,$que_va_a_pagar,$referencia_doc,$datetime_pago)
+    {
+        $em=$this->getEntityManager();
+        $ingreso_existente = $em->getRepository('PayPayBundle:Ingresos')->findOneByDescripcion($que_va_a_pagar." ".$referencia_doc);
+        if (!$ingreso_existente)
+        {   
+        $pension_a_pagar = $em->getRepository('MultiacademicoBundle:Pension')->findOneBy([
+                                                                                           'estudiante'=>$id_estudiante,
+                                                                                          'info'=>  $que_va_a_pagar]
+                                                                                          );
+        $formaPagoBanco=$em->getRepository('PayPayBundle:FormasPagos')->findOneByFormaPago('BANCO');
+        $ingreso=new Ingresos();
+        $ingreso->setRepresentante($pension_a_pagar->getFactura()->getIdcliente());
+        $ingreso->setFecha($datetime_pago);
+        $ingreso->setMonto($valorapagar);
+        $ingreso->setFormaPago($formaPagoBanco);
+        $ingreso->setDescripcion($que_va_a_pagar." ".$referencia_doc);
+        $ingreso->setReferencia($que_va_a_pagar." DOCBANCO: ".$referencia_doc);
+        $ingreso->addFactura($pension_a_pagar->getFactura());
+        $em->persist($ingreso);
+        $em->flush();
+        return true;
+        }else
+        {
+          return false;  
+        }    
+        
 
     }
    

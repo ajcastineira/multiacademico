@@ -16,9 +16,9 @@
     <h1>Pensiones listado</h1>
     
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
         
-             <div class="btn-group">
+             <div class="col-sm-6 btn-group">
                  <button href="{{path('pensiones_download')}}" rel='tooltip' title ='Descargar Archivo para Banco' class = 'btn btn-lilac'   target= '_blank'  role = 'button'>
                     <i class='fa fa-bank'/>Exportar a Banco
                  </button>
@@ -36,6 +36,12 @@
                     <li>
                         <a href="{{path('pensiones_download',{'seccion':'junio'})}}" target="_blank"> Junio</a>
                     </li>
+                    <li>
+                        <a href="{{path('pensiones_download',{'seccion':'julio'})}}" target="_blank"> Julio</a>
+                    </li>
+                    <li>
+                        <a href="{{path('pensiones_download',{'seccion':'agosto'})}}" target="_blank"> Agosto</a>
+                    </li>
                     {#<li>
                         <a ng-href="{{'{{urlAnexo('~entity.cedula~')}}'}}" target="_blank">Anexo</a>
                     </li>
@@ -46,6 +52,13 @@
                     </li>#}
                 </ul>
             </div>
+                
+            <div class="col-sm-6">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input class="btn btn-lilac" type="submit" value="Subir" />
+                {{ form_end(form) }}
+            </div>    
             
             
        

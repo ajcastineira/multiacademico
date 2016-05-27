@@ -77,9 +77,9 @@ class IngresosController extends FOSRestController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             
-            $ingreso->registrarPagoEnFacturas();
-            $user = $this->getUser();
-            $ingreso->setCollectedby($user);
+            //$ingreso->registrarPagoEnFacturas();
+            //$user = $this->getUser();
+            //$ingreso->setCollectedby($user);
             
             $em->persist($ingreso);
             $em->flush();
@@ -127,7 +127,7 @@ class IngresosController extends FOSRestController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $ingreso->modificarPagoEnFacturas($montoAnterior);
+            //$ingreso->modificarPagoEnFacturas($montoAnterior);
             $em->persist($ingreso);
             $em->flush();
 
@@ -152,7 +152,7 @@ class IngresosController extends FOSRestController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $ingreso->revertirPagoEnFacturas();
+            //$ingreso->revertirPagoEnFacturas();
             $em->remove($ingreso);
             $em->flush();
         }

@@ -11,6 +11,7 @@ use Multiservices\PayPayBundle\DBAL\Types\EstadoFacturaType;
  *
  * @ORM\Table(name="ingresos", indexes={@ORM\Index(name="representante_id", columns={"representante_id"}), @ORM\Index(name="collectedby", columns={"collectedby"})})
  * @ORM\Entity(repositoryClass="Multiservices\PayPayBundle\Entity\IngresosRepository")
+ * @ORM\EntityListeners({"Multiservices\PayPayBundle\EventListener\IngresosListener"})
  */
 class Ingresos
 {

@@ -15,3 +15,8 @@ services:
         class: Multiservices\PayPayBundle\Datatables\EgresosDatatable
         tags:
             - { name: sg.datatable.view }  
+      paypaybundle_ingresos.listener:
+        class: Multiservices\PayPayBundle\EventListener\IngresosListener
+        arguments: ["@security.token_storage","@service_container"]
+        tags:
+            - { name: doctrine.orm.entity_listener }

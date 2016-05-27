@@ -17,7 +17,7 @@ use Multiservices\PayPayBundle\Entity\Facturas;
 use MultiacademicoBundle\Entity\Representantes;
 use Multiservices\PayPayBundle\Entity\Ingresos;
 
-use MultiacademicoBundle\Form\Type\RepresentanteType;
+use MultiacademicoBundle\Form\Type\RepresentanteEstudianteType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
@@ -31,7 +31,7 @@ class IngresosType extends AbstractType
     {
         $builder
             ->add('fecha', DateTimeType::class)
-            ->add('representante',  RepresentanteType::class)
+            ->add('representante',  RepresentanteEstudianteType::class)
             ->add('monto',NumberType::class,['attr'=>
                                                     ['step'=>'0.01']]
                                             )

@@ -1983,4 +1983,10 @@ class Estudiantes
         else
         {return true;}
     }
+    public function getDisplayRepresentanteId() {
+        return $this->getRepresentante()->getId();
+    }
+    public function getDisplayRepresentanteName() {
+        return $this->getRepresentante()->getRepresentante()." : ".$this->estudiante;
+    }
 }

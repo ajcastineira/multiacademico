@@ -167,7 +167,7 @@ function NumeroALetras(num){
                                     widths: [ 200, '*' ],
                                     body: [
                                       [{ text: "{{ pension.factura.idcliente }}", style:'letradatos'}, { text: "{{ pension.factura.idcliente.telefono }}", style:'numeros'}],
-                                      [{ text: "{{ pension.factura.idcliente.cedula }}", style:'letradatos'}, { text: "{{ 'now'|date('Y-m-d')}}", style:'numeros'}],
+                                      [{ text: "{{ pension.factura.idcliente.cedula }}", style:'letradatos'}, { text: "{{ pension.factura.emitido|date('Y-m-d')}}", style:'numeros'}],
                                       [{ text: "{{ pension.factura.idcliente.domicilio }}", style:'letradatos',  colSpan: 2},{}]
                                     ]
                                 },

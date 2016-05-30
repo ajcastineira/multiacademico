@@ -20,7 +20,7 @@ class FacturasType extends AbstractType
         $builder
             ->add('idcliente',null,array('label'=>'Cliente'))
             ->add('legal')    
-            //->add('emitido')
+            ->add('emitido')
             //->add('vencimiento')
             //->add('pago')
             

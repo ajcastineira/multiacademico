@@ -109,6 +109,24 @@ class Ingresos
     
     
     /**
+     * @var \MultiacademicoBundle\Entity\Edtudiantes
+     *
+     */
+    private $estudiante;
+    
+    public function getEstudiante()
+    {
+        return $this->representante;
+    }
+    
+    public function setEstudiante(\MultiacademicoBundle\Entity\Estudiantes $estudiante){
+        $this->estudiante=$estudiante;
+        $this->representante=$estudiante->getRepresentante();
+        return $this;
+    }
+    
+    
+    /**
      * @var \Multiservices\PayPayBundle\Entity\Facturas
      *
      * @ORM\ManyToMany(targetEntity="\Multiservices\PayPayBundle\Entity\Facturas", inversedBy="abonos")

@@ -28,7 +28,7 @@
            
         </a>
     </li>
-    
+    {% if is_granted('ROLE_SECRETARIA') or is_granted('ROLE_COLECTORA') or is_granted('ROLE_DOCENTE')%}
     <li>
 
         <a data-ui-sref="app.notificaciones.new" data-active-menu>
@@ -37,6 +37,7 @@
            
         </a>
     </li>
+    {%endif%}
     <!--/ End User -->
     {% if is_granted('ROLE_SECRETARIA') or is_granted('ROLE_COLECTORA')%}
     <!-- Start category ui kit-->

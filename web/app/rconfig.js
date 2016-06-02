@@ -13,15 +13,15 @@ var require = {
         'bootstrap': ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min',
                       '../plugin/bootstrap/dist/js/bootstrap.min'],
 
-        'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min',
+        'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min',
                     '../plugin/angular/angular.min'],
-        'angular-cookies': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min',
+        'angular-cookies': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.min',
                             '../plugin/angular-cookies/angular-cookies.min'],
-        'angular-resource': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min',
+        'angular-resource': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min',
                             '../plugin/angular-resource/angular-resource.min'],
-        'angular-sanitize': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min',
+        'angular-sanitize': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min',
                             '../plugin/angular-sanitize/angular-sanitize.min'],
-        'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min',
+        'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min',
                             '../plugin/angular-animate/angular-animate.min'],
 
 

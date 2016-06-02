@@ -38,6 +38,7 @@ define([
         'app.users',
         'app.layout',
         'app.forms',
+        'app.notificaciones',
         'app.paypay',
         'app.paypay.ingresos',
        

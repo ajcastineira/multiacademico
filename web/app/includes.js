@@ -118,6 +118,9 @@ define([
     // forms
      'modules/forms/module',
      'modules/forms/models/FormsCrud',
+    // notificaciones
+     'modules/notificaciones/module',
+     
 
      // paypay
      'modules/paypay/module',

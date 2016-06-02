@@ -27,7 +27,7 @@ class EstudiantesType extends AbstractType
                                                                   'format' => 'yyyy-MM-dd',
                                                                   'format' => 'yyyy-MM-dd',
                                                                    'years'=>range(1990,date('Y'))])
-           /* ->add('estudianteNacionalidad',null,['label'=>'Nacionalidad'])
+            ->add('estudianteNacionalidad',null,['label'=>'Nacionalidad'])
             ->add('estudianteLugarnacimiento',null,['label'=>'Lugar Nacimiento'])
             ->add('estudianteProvinciaN',null,['label'=>'Provincia Nacimiento'])
             ->add('estudianteCantonN',null,['label'=>'Canton Nacimiento'])
@@ -35,7 +35,7 @@ class EstudiantesType extends AbstractType
             ->add('estudianteDomicilio',null,['label'=>'Domicilio'])
             ->add('estudianteProvinciaD',null,['label'=>'Provincia Domicilio'])
             ->add('estudianteCantonD',null,['label'=>'Canton Domicilio'])
-            ->add('estudianteParroquiaD',null,['label'=>'Parroquia Domicilio'])*/
+            ->add('estudianteParroquiaD',null,['label'=>'Parroquia Domicilio'])
             ->add('estudianteGenero',  ChoiceType::class,['label'=>'Genero','choices'=>[
                                                                                         'Masculino'=>'Masculino',
                                                                                          'Femenino'=>'Femenino'
@@ -54,7 +54,7 @@ class EstudiantesType extends AbstractType
             //->add('estudianteNumeroacta')
                 
                 
-         /*       
+                
             ->add('madre')
             ->add('madreCedula')
             ->add('madreEstadocivil')
@@ -65,7 +65,7 @@ class EstudiantesType extends AbstractType
             ->add('padreCedula')
             ->add('padreEstadocivil')
             ->add('padreTelefono')
-            ->add('padreDomicilio')*/
+            ->add('padreDomicilio')
                 
                 
           //  ->add('representanteCedula')

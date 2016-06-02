@@ -258,7 +258,13 @@ class MatriculasController extends FOSRestController
         //añadiendo items
             $itemMatriculaOrdinaria=new Facturaitems();
             //añadiendo item el producto Servicio Matricula Ordinaria
-            $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATRORD');        
+            $tipoMat='MATRORD';
+            
+            if ($matricula->getMatriculatipo() == "Extraordinaria")
+            {
+                $tipoMat='MATREXTRA';
+            }
+            $matriculaOrdinaria=$em->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta($tipoMat);
             $itemMatriculaOrdinaria->setIdproducto($matriculaOrdinaria);
             $itemMatriculaOrdinaria->setCantidad(1);
             $itemMatriculaOrdinaria->setPunitario($matricula->getValorMatricula());
@@ -277,7 +283,8 @@ class MatriculasController extends FOSRestController
         $pensionM=new Pension();
         $pensionM->setFactura($facturaDeMatricula);
             $pensionM->setEstudiante($matricula->getMatriculacodestudiante());
-            $pensionM->setInfo("Matricula Ordinaria");
+            
+            $pensionM->setInfo("Matricula ".$matricula->getMatriculatipo());
             $em->persist($pensionM);
         
         //generando facturas pendientes de pension

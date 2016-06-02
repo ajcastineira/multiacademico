@@ -49,6 +49,19 @@ class LoadPensionesData implements FixtureInterface
             $matricula->setTipo("Servicio");
             $manager->persist($matricula);
         }
+        //creando Producto MAtricula extraordinaria
+        $matriculaextra=$manager->getRepository('PayPayBundle:Productos')->findOneByDescripcionCorta('MATREXTRA');
+        if (!$matriculaextra)
+        {
+            $matriculaextra = new Productos();
+            $matriculaextra->setDescripcion("Matricula ExtraOrdinaria");
+            $matriculaextra->setDescripcionCorta("MATREXTRA");
+            $matriculaextra->setStock(100);
+            $matriculaextra->setCodFamilia($familia);
+            $matriculaextra->setObservaciones("Matricula Extraordinaria");
+            $matriculaextra->setTipo("Servicio");
+            $manager->persist($matriculaextra);
+        }
         //creando producto pensiones
         $meses = ["Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre","Enero","Febrero"];
         

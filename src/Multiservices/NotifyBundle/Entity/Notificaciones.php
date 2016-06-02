@@ -54,7 +54,14 @@ class Notificaciones
               {
                  if (isset($this->variables[$var]))
                  {
+                     if ($var!='urlUser')
+                     {    
                      $message=str_replace('%'.$var.'%', '<strong>'.$this->variables[$var].'</strong>',$message);
+                     }else
+                     {
+                     $message=str_replace('%'.$var.'%', $this->variables[$var], $message);    
+                     }    
+
                  }
               }
               return $message;

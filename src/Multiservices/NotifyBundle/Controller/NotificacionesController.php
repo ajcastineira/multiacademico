@@ -24,6 +24,18 @@ class NotificacionesController extends Controller
 {
    
     /**
+     * 
+     *
+     * @Route("/new", name="notificaciones_new")
+     * @Method("GET")
+     */
+    public function baseAction()
+    {
+       return $this->render('::baseangular.html.twig');
+    }
+    
+    
+    /**
      * Lists all Notificaciones entities.
      *
      * @Route("/", name="notificaciones")
@@ -73,9 +85,8 @@ class NotificacionesController extends Controller
     public function inboxApiAction($_format='')
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         $entities = $em->getRepository('NotifyBundle:Notificaciones')->inbox($user);
-        
         $notifyBox=new NotifyBox();
         $c=count($entities);
         $notifyBox->setLength($c);
@@ -121,7 +132,44 @@ class NotificacionesController extends Controller
         );*/
         return New Response("");
     }
+    /**
+     * Creates a new Notificacion entity.
+     *
+     * @Route("/api/new", name="new_notificacion", options={"expose":true})
+     * @Method({"POST","GET"})
+     */
+    public function newAction(Request $request)
+    {
+        $notificacion = new Notificaciones();
+        $form = $this->createForm('Multiservices\NotifyBundle\Form\NotificacionesType', $notificacion);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $user=$this->getUser();
+            $notificador=new Notificador($em);
+            $actiondata=new \Multiservices\NotifyBundle\ActionData\UserNormalNotification();
+            $actiondata->setUsuario($user->getName());
+            $actiondata->setUid($user->getId());
+            $actiondata->setNotificacion($notificacion->getNotificacion());
+            $actiondata->setUrlUser($this->container->get('router')->generate('perfil_user', array(
+                                                                                                 'id' => $user->getId())));
+       
+            //$notify=$notificador->crearNotificacion($actiondata->getActionid(), 'notificacion', $notificacion->getNotificacionuser(), $actiondata);
+            $notificador->notificar($actiondata->getActionid(), 'notificacion', $notificacion->getNotificacionuser(), $actiondata);
+            
+            //$em->persist($notify);
+            //$em->flush();
+
+            //return $this->redirectToRoute('notificaciones', array('page' => $notificacion->getId()));
+            return new Response("El Usuario Ha sido Notificado con EXITO");
+        }
+
+        return $this->render('NotifyBundle:Notificaciones:new.html.twig', array(
+            'notificacion' => $notificacion,
+            'form' => $form->createView(),
+        ));
+    }
 
     /**
      * Finds and displays a Notificaciones entity.

@@ -7,6 +7,7 @@
 namespace Multiservices\NotifyBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Multiservices\ArxisBundle\Entity\Usuario;
 
 class NotificacionesRepository extends EntityRepository
 {
@@ -16,14 +17,15 @@ class NotificacionesRepository extends EntityRepository
         $em->persist($notificacion);
        $em->flush();
     }
-   public function inbox($user)
-    {
+   public function inbox(Usuario $user)
+    {  
         return $this->getEntityManager()
-            ->createQuery('SELECT n'
-                    . ' FROM NotifyBundle:Notificaciones n '
-                    . 'where n.notificacionuser=:user'
-                    . ' ORDER BY n.notificaciontimestamp DESC')
-            ->setParameter(":user", $user)
+            ->createQueryBuilder()->select('n')
+                    ->from('NotifyBundle:Notificaciones', 'n')
+                    ->where('n.notificacionuser = :usuario ')
+                     ->orderBy('n.notificaciontimestamp','DESC')
+            ->setParameter(":usuario", $user)
+            ->getQuery()
             ->getResult();
     }
    /* public function findMensajesRecibidos($user)

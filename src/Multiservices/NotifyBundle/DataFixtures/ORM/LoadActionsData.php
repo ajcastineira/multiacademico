@@ -56,6 +56,25 @@ class LoadActionsData implements FixtureInterface
         
         $actions[]=$uisaction;
         
+        $notificarAction=$manager->getRepository('NotifyBundle:Actions')->find('user_normal_notification');
+        if (!$notificarAction)
+        {
+          $notificarAction = new Actions();
+          $notificarAction->setAid('user_normal_notification');
+        }
+        $notificarAction->setType('user');
+        $notificarAction->setCallback('user_normal_notification');
+        $notificarActionparameters=New ActionParameters();
+        $notificarActionparameters->icon="fa fa-bell";
+        $notificarActionparameters->iconbgcolor="bg-warning";
+        $notificarActionparameters->iconshape="circle";
+        $notificarActionparameters->textcolor="fg-warning";
+        $notificarActionparameters->vars=["usuario","urlUser","notificacion"];
+        $notificarAction->setParameters($notificarActionparameters);
+        $notificarAction->setLabel('<a href="%urlUser%"><strong>%usuario%</strong></a> Le ha notificado: %notificacion%');
+        
+        $actions[]=$notificarAction;
+        
             
         return $actions;
     }

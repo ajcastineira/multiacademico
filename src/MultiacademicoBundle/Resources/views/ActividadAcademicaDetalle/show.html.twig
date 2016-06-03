@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ActividadAcademicaDetalle</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actividadAcademicaDetalle.id }}</td>
+            </tr>
+            <tr>
+                <th>Calificacion</th>
+                <td>{{ actividadAcademicaDetalle.calificacion }}</td>
+            </tr>
+            <tr>
+                <th>Entregada</th>
+                <td>{% if actividadAcademicaDetalle.entregada %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechaentregada</th>
+                <td>{% if actividadAcademicaDetalle.fechaEntregada %}{{ actividadAcademicaDetalle.fechaEntregada|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Revisada</th>
+                <td>{% if actividadAcademicaDetalle.revisada %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fecharevisada</th>
+                <td>{% if actividadAcademicaDetalle.fechaRevisada %}{{ actividadAcademicaDetalle.fechaRevisada|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{% if actividadAcademicaDetalle.estado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('actividadacademicadetalle') }}">Regresar a la lista</a>
+        </li>
+        <li>
+            <a href="{{ path('actividadacademicadetalle_edit', { 'page': actividadAcademicaDetalle.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,4 @@
+doctrine:
+    dbal:
+       types:
+           EstadoActividadAcademicaType: MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType

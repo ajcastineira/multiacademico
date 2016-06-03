@@ -45,6 +45,12 @@ services:
     multiacademicobundle_datatable.representantes:
         class: MultiacademicoBundle\Datatables\RepresentantesDatatable
         parent: sg_datatables.datatable.abstract
+    multiacademicobundle_datatable.actividadacademicas:
+        class: MultiacademicoBundle\Datatables\ActividadAcademicaDatatable
+        parent: sg_datatables.datatable.abstract    
+    multiacademicobundle_datatable.actividadacademicadetalles:
+        class: MultiacademicoBundle\Datatables\ActividadAcademicaDetalleDatatable
+        parent: sg_datatables.datatable.abstract        
     multiacademico.aulas:
         class: MultiacademicoBundle\Datatables\AulaDatatable
         parent: sg_datatables.datatable.abstract
@@ -57,8 +63,12 @@ services:
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:
-            - { name: form.type, alias: nota }  
-
+            - { name: form.type, alias: nota }
+    multiacademico.form.actividad_academica:
+        class: MultiacademicoBundle\Form\ActividadAcademicaType
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: form.type }
     security.access.distributivo_voter : 
         class :       MultiacademicoBundle\Security\Authorization\Voter\DistributivoVoter 
         public :      false 
@@ -76,3 +86,9 @@ services:
             - { name: doctrine.orm.entity_listener }
            # - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: postFlush, method: postFlush }
+    actividad_academica.listener:
+        class: MultiacademicoBundle\EventListener\ActividadAcademicaListener
+        arguments: ['@security.token_storage','@service_container']
+        tags:
+            - { name: doctrine.orm.entity_listener }
+            - { name: doctrine.event_listener, event: postFlush, method: postFlush }        

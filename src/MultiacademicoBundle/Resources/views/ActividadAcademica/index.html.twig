@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ActividadAcademica listado</h1>
+
+        {{ datatable_render_html(datatable) }}
+    <ul>
+        <li>
+            <a href="{{ path('actividadacademica',{'page':'new'}) }}">Crear nueva entrada</a>
+        </li>
+    </ul>   {{ datatable_render_js(datatable) }}
+{% endblock %}

@@ -26,3 +26,7 @@ multiacademico_pension:
 multiacademico_representantes:
     resource: "@MultiacademicoBundle/Resources/config/routing/representantes.yml"
     #prefix:   /representantes
+multiacademico_actividadacademica:
+    resource: "@MultiacademicoBundle/Resources/config/routing/actividadacademica.yml"
+multiacademico_actividadacademicadetalle:
+    resource: "@MultiacademicoBundle/Resources/config/routing/actividadacademicadetalle.yml"

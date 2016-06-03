@@ -68,24 +68,14 @@ class ActividadAcademicaController extends FOSRestController
              {
                 $partesvalidas[]=ResultsCorrector::obtenerPartesValidas(ResultsCorrector::obtenerPartesValidas($qb_where_part, $valorBuscado, $valorNuevo),$valorBuscado2,$valorNuevo2);
              }
-            foreach ($partesvalidasPre as $qb_where_part)
-             {
-                //$partesvalidas[]=ResultsCorrector::obtenerPartesValidas($qb_where_part, $valorBuscado2, $valorNuevo2);
-             } 
          }
-        //var_dump($qb->getDQL()); 
-        //var_dump($where); 
         if (!empty($partesvalidas)){
             $qb->resetDQLPart('where');
             $clasew=get_class($where);
             $qb->add('where',new $clasew($partesvalidas));
           }
-        //var_dump($qb->getDQLPart('where'));     
-        //var_dump($qb->getDQL());
         $query->setQuery($qb);
         return $query->getResponse(false);
-        //return $query->getResponse();
-        
     }
 
     /**
@@ -105,7 +95,7 @@ class ActividadAcademicaController extends FOSRestController
             $em->persist($actividadAcademica);
             $em->flush();
 
-            return $this->redirectToRoute('actividadacademica', array('page' => $actividadAcademica->getId()));
+            return $this->redirectToRoute('show_actividadacademica', array('actividadAcademica' => $actividadAcademica->getId()));
         }
 
         return $this->render('MultiacademicoBundle:ActividadAcademica:new.html.twig', array(

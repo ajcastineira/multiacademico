@@ -25,7 +25,19 @@ class DistributivosRepository extends EntityRepository
             ->setParameter(":materia", "Tutor/a")
             ->getResult();
     }
-    
+    public function misDistributivos($user)
+    {
+        $em = $this->getEntityManager();
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findByUsuario($user);
+        return $em->createQueryBuilder()
+            ->select('d')    
+            ->from('MultiacademicoBundle:Distributivos','d')
+            ->join('d.distributivocodmateria','m')
+            ->where('d.distributivocoddocente=:docente and  m.materia != :materia')    
+            ->setParameter(":docente", $docente)
+            ->setParameter(":materia", "Tutor/a")
+            ;
+    } 
    public function alumnosDistributivo(Distributivos $distributivo)
     {
         $curso=$distributivo->getDistributivocodcurso();

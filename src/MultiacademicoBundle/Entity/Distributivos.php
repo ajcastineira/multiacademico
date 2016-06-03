@@ -428,4 +428,7 @@ class Distributivos
     public function getOwner(){
         return $this->distributivocoddocente->getUsuario();
     }
+    public function __toString() {
+        return $this->distributivocodmateria.' '.$this->aula.' ';
+    }
 }

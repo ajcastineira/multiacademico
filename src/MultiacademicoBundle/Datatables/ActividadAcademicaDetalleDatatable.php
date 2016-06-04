@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
+use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
 /**
  * Class ActividadAcademicaDetalleDatatable
@@ -17,12 +18,12 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
-        $this->topActions->set(array(
+        /*$this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('actividadacademicadetalle',['page'=>'new']),
+                    'route' => $this->router->generate('misactividadesacademicas',['page'=>'new']),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
@@ -33,7 +34,7 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
                     ),
                 )
             )
-        ));
+        )); */
 
         $this->features->set(array(
             'auto_width' => true,
@@ -67,7 +68,7 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100),
+            'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),
             'order_multi' => true,
@@ -89,6 +90,15 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ->add('id', 'column', array(
                 'title' => 'Id',
             ))
+            ->add('actividad.titulo', 'column', array(
+                'title' => 'Tema',
+            ))
+            ->add('actividad.tipo', 'column', array(
+                'title' => 'Tipo',
+            ))
+             ->add('actividad.fechaEntrega', 'datetime', array(
+                'title' => 'Fecha de Entrega',
+            ))      
             ->add('calificacion', 'column', array(
                 'title' => 'Calificacion',
             ))
@@ -104,62 +114,18 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ->add('fechaRevisada', 'datetime', array(
                 'title' => 'FechaRevisada',
             ))
-            ->add('estado', 'boolean', array(
+            ->add('estado', 'column', array(
                 'title' => 'Estado',
             ))
             ->add('matricula.id', 'column', array(
                 'title' => 'Matricula Id',
             ))
-            ->add('matricula.matriculaseccion', 'column', array(
-                'title' => 'Matricula Matriculaseccion',
-            ))
-            ->add('matricula.matriculaparalelo', 'column', array(
-                'title' => 'Matricula Matriculaparalelo',
-            ))
-            ->add('matricula.matriculafecha', 'column', array(
-                'title' => 'Matricula Matriculafecha',
-            ))
-            ->add('matricula.matriculaclave', 'column', array(
-                'title' => 'Matricula Matriculaclave',
-            ))
-            ->add('matricula.matriculatipo', 'column', array(
-                'title' => 'Matricula Matriculatipo',
-            ))
-            ->add('matricula.matriculaobservacion', 'column', array(
-                'title' => 'Matricula Matriculaobservacion',
-            ))
-            ->add('matricula.valorMatricula', 'column', array(
-                'title' => 'Matricula ValorMatricula',
-            ))
-            ->add('matricula.valorPension', 'column', array(
-                'title' => 'Matricula ValorPension',
-            ))
-            ->add('matricula.matriculaestado', 'column', array(
-                'title' => 'Matricula Matriculaestado',
-            ))
-            ->add('matricula.matriculaQ1Laborada', 'column', array(
-                'title' => 'Matricula MatriculaQ1Laborada',
-            ))
-            ->add('matricula.matriculaQ1Jutificada', 'column', array(
-                'title' => 'Matricula MatriculaQ1Jutificada',
-            ))
-            ->add('matricula.matriculaQ1Injustificada', 'column', array(
-                'title' => 'Matricula MatriculaQ1Injustificada',
-            ))
-            ->add('matricula.matriculaQ2Laborada', 'column', array(
-                'title' => 'Matricula MatriculaQ2Laborada',
-            ))
-            ->add('matricula.matriculaQ2Jutificada', 'column', array(
-                'title' => 'Matricula MatriculaQ2Jutificada',
-            ))
-            ->add('matricula.matriculaQ2Injustificada', 'column', array(
-                'title' => 'Matricula MatriculaQ2Injustificada',
-            ))
+            
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'actividadacademicadetalle',
+                        'route' => 'misactividadesacademicas',
                         'route_parameters' => array(
                             'page' => 'id'
                         ),
@@ -173,15 +139,15 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'actividadacademicadetalle_edit',
+                        'route' => 'misactividadesacademicas_edit',
                         'route_parameters' => array(
                             'page' => 'id'
                         ),
-                        'label' => $this->translator->trans('datatables.actions.edit'),
+                        'label' => 'Presentar',
                         'icon' => 'glyphicon glyphicon-edit',
                         'attributes' => array(
                             'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.edit'),
+                            'title' => 'Presentar Actvidad',
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
@@ -190,7 +156,30 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ))
         ;
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $router = $this->router;
+        
+        $formatter = function($line) use ($router){
+            //var_dump($line);
+            //var_dump($line["factura"]);
+            if (isset($line["estado"]))
+            {
+            $line["estado"] = EstadoActividadAcademicaType::getReadableHtmlValue($line["estado"]);
+            //$representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
+            //$line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
+            }
+            //$estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
+            //$line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
+            return $line;
+        };
 
+        return $formatter;
+     
+    }
     /**
      * {@inheritdoc}
      */

@@ -53,6 +53,7 @@ class ActividadAcademicaType extends AbstractType
             ->add('estado')    
             ->add('file', FileType::class, [
                     'label' => 'Archivo',
+                     'required'=>false,
                     'attr' => [
                                 'accept'=>'image/*, application/pdf, application/x-pdf,
                                application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,

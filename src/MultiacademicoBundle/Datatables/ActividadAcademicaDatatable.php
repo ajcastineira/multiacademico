@@ -5,7 +5,6 @@ namespace MultiacademicoBundle\Datatables;
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
-use MultiacademicoBundle\Datatables\Columns\RepresentanteColumn;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
 /**

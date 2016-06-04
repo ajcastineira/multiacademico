@@ -13,7 +13,7 @@ use MultiacademicoBundle\Form\ActividadAcademicaDetalleType;
 
 /**
  * ActividadAcademicaDetalle controller.
- * @Route("actividadacademicasdetalle")
+ * @Route("misactividadesacademica")
 * @Rest\RouteResource("Actividadacademicadetalle")
  */
 class ActividadAcademicaDetalleController extends FOSRestController
@@ -43,11 +43,21 @@ class ActividadAcademicaDetalleController extends FOSRestController
      */
     public function resultsAction(Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        
         $datatable = $this->get('multiacademicobundle_datatable.actividadAcademicaDetalles');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
-
+        
+        $matricula=$em->getRepository('MultiacademicoBundle:Estudiantes')->findOneByUsuario($user)->getMatriculaVigente(); 
+        
+        $function = function($qb) use ($matricula)
+        {
+         $qb->andWhere('matricula.id = :matricula')->setParameter('matricula',$matricula);
+        };
+        
+        $query->addWhereResult($function);
         return $query->getResponse();
     }
 

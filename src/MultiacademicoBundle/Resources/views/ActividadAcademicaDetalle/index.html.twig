@@ -13,12 +13,13 @@
         }
 
     </style>
-    <h1>ActividadAcademicaDetalle listado</h1>
+    <h1>Mis Actividades Academicas listado</h1>
 
         {{ datatable_render_html(datatable) }}
-    <ul>
+   {# <ul>
         <li>
-            <a href="{{ path('actividadacademicadetalle',{'page':'new'}) }}">Crear nueva entrada</a>
+            <a href="{{ path('misactividadesacademicas',{'page':'new'}) }}">Crear nueva entrada</a>
         </li>
-    </ul>   {{ datatable_render_js(datatable) }}
+    </ul>  #}
+            {{ datatable_render_js(datatable) }}
 {% endblock %}

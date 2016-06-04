@@ -414,7 +414,7 @@ class ActividadAcademica
      *                         "application/x-rar-compressed", "application/octet-stream",
      *                         "application/zip"
                                },
-                   mimeTypesMessage = "Por favor suba una imagen valida")
+                   mimeTypesMessage = "Por favor suba un archivo valido o permitido")
      */
     private $file;
 

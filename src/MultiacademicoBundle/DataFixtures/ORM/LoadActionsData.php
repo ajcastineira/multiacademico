@@ -53,6 +53,23 @@ class LoadActionsData implements FixtureInterface
         
         $actions[]=$dwyaction;
         
+        
+        $dstyaction=$manager->getRepository('NotifyBundle:Actions')->find('docente_send_task_you');
+        if (!$dstyaction)
+        {
+          $dstyaction = new Actions();
+          $dstyaction->setAid('docente_send_task_you');
+        }
+        $dstyaction->setType('estudiante');
+        $dstyaction->setCallback('docente_write_calificacion_you');
+        $dstyactionparameters=New ActionParameters();
+        $dstyactionparameters->icon="fa flaticon-teach";
+        $dstyactionparameters->vars=["docente","materia","tipo","tema"];
+        $dstyaction->setParameters($dwyactionparameters);
+        $dstyaction->setLabel('El docente %docente% te ha enviado una %tipo% de %materia% con el tema %tema%');
+        
+        $actions[]=$dstyaction;
+        
             
         return $actions;
     }

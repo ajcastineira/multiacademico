@@ -14,7 +14,7 @@ define(['angular',
         var rutas={create:'new_actividadacademica',
                     new:'new_actividadacademica',
                     edit:'edit_actividadacademica',
-                   // pay:'pay_actividadacademica',
+                    calificar:'show_actividadacademica',
                     update:'edit_actividadacademica',
                     show:'show_actividadacademica',
                     list:'index_actividadacademica',
@@ -81,7 +81,12 @@ define(['angular',
             })
             .state('multiacademico.actividadacademica.show', {
                 url: '/actividadacademica/{id:[0-9]{1,11}}',
-                 data: {
+                params:{
+                    id:undefined,
+                    submited:false,
+                    formData:null
+                },
+                data: {
                         pageHeader: {
                             icon: 'flaticon-teach',
                             title: 'Actividad Academica',
@@ -93,15 +98,37 @@ define(['angular',
                     },
                 views: {
                     "content@multiacademico": {
-                        templateUrl: function($stateParams){
-                            console.log(Routing.generate(rutas.show,{'actividadAcademica':$stateParams.id,'_format':'html'}));
-                            return Routing.generate(rutas.show,{'actividadAcademica':$stateParams.id,'_format':'html'});
-                        },
-                        controller:function($scope, $window){
-                            $scope.facturaDefinition=$window.facturaDefinition;
-                        },
+                         templateProvider:function($stateParams,$state,$http){
+                                     if ($stateParams.submited===true)
+                                        {
+                                        return $http({
+                                              method  : 'POST',
+                                              async:   true,
+                                              data    : $stateParams.formData,
+                                              url     : Routing.generate(rutas.show,{'actividadAcademica':$stateParams.id,'_format':'html'}),
+                                              transformRequest: angular.identity,
+                                              headers : {'Content-Type': undefined }
+                                             }).then(function(response) { 
+
+                                                    if(response.status===200){
+                                                      return response.data
+                                                    }else if(response.status===201)
+                                                    {   
+                                                        return response.data
+                                                    }
+                                                  });
+                                              }else{
+                                        return $http.get(Routing.generate(rutas.show,{'actividadAcademica':$stateParams.id,'_format':'html'}))
+                                             .then(function(response) {
+                                              return response.data;
+                                               });
+                                           }
+                             },
+                        controller: 'FormsCrudCtrl',
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/directives/input/smartSelect2',
+                                'modules/forms/controllers/FormsCrudCtrl',
                                 'modules/forms/controllers/PrintCtrl'//,
                             ])
                         }

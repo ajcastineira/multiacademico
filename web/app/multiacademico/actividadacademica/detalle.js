@@ -10,13 +10,13 @@ define(['angular',
     couchPotato.configureApp(module);
 
     module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
-        $urlRouterProvider.when('/actividadacademicadetalle/', '/actividadacademicadetalle');
+        $urlRouterProvider.when('/misactividadesacademicas/', '/misactividadesacademicas');
         var rutas={create:'new_actividadacademicadetalle',
                     new:'new_actividadacademicadetalle',
                     edit:'edit_actividadacademicadetalle',
                   //  pay:'pay_actividadacademicadetalle',
                     update:'edit_actividadacademicadetalle',
-                    show:'get_actividadacademicadetalle',
+                    show:'show_actividadacademicadetalle',
                     list:'index_actividadacademicadetalle',
                     state_created:'multiacademico.actividadacademicadetalle.show',
                     state_updated:'multiacademico.actividadacademicadetalle.show'
@@ -55,7 +55,7 @@ define(['angular',
             })
            
             .state('multiacademico.actividadacademicadetalle.list', {
-                url: '/actividadacademicadetalle',
+                url: '/misactividadesacademicas',
                 data: {
                         pageTitle: 'Actividad Academica'
                     },
@@ -80,7 +80,7 @@ define(['angular',
                 
             })
             .state('multiacademico.actividadacademicadetalle.show', {
-                url: '/actividadacademicadetalle/{id:[0-9]{1,11}}',
+                url: '/misactividadesacademicas/{id:[0-9]{1,11}}',
                  data: {
                         pageHeader: {
                             icon: 'flaticon-teach',
@@ -110,7 +110,7 @@ define(['angular',
                 }
             })
             .state('multiacademico.actividadacademicadetalle.new', {
-                url: '/actividadacademicadetalle/new',
+                url: '/misactividadesacademicas/new',
                 params:{
                   submited:false,
                   formData:null
@@ -142,7 +142,7 @@ define(['angular',
                 }
             })
             .state('multiacademico.actividadacademicadetalle.edit', {
-                url: '/actividadacademicadetalle/{id:[0-9]{1,11}}/edit',
+                url: '/misactividadesacademicas/{id:[0-9]{1,11}}/edit',
                 params:{
                     id:undefined,
                     submited:false,

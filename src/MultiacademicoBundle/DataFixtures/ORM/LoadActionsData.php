@@ -65,7 +65,7 @@ class LoadActionsData implements FixtureInterface
         $dstyactionparameters=New ActionParameters();
         $dstyactionparameters->icon="fa flaticon-teach";
         $dstyactionparameters->vars=["docente","materia","tipo","tema"];
-        $dstyaction->setParameters($dwyactionparameters);
+        $dstyaction->setParameters($dstyactionparameters);
         $dstyaction->setLabel('El docente %docente% te ha enviado una %tipo% de %materia% con el tema %tema%');
         
         $actions[]=$dstyaction;

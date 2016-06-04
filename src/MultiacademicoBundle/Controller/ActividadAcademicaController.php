@@ -15,6 +15,7 @@ use AppBundle\Lib\ResultsCorrector;
 
 /**
  * ActividadAcademica controller.
+ * @Route("actividadacademicas")
  * @Rest\RouteResource("Actividadacademica")
  */
 class ActividadAcademicaController extends FOSRestController

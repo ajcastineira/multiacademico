@@ -13,7 +13,7 @@ use MultiacademicoBundle\Form\ActividadAcademicaDetalleType;
 
 /**
  * ActividadAcademicaDetalle controller.
- 
+ * @Route("actividadacademicasdetalle")
 * @Rest\RouteResource("Actividadacademicadetalle")
  */
 class ActividadAcademicaDetalleController extends FOSRestController

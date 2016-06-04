@@ -47,41 +47,46 @@ class ActividadAcademicaListener  {
             $actividadAcademica->setSendBy($docente);
             $actividadAcademica->setFechaEnvio(new \Datetime());
             $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
+            $this->preNotificar($actividadAcademica);
             
     }
     public function preUpdate(ActividadAcademica $actividadAcademica, PreUpdateEventArgs $args)
     {
 
-            $user = $this->container->get('security.token_storage')->getToken()->getUser();
-            
-                //$notificador=$this->container->get('notificador');
-                //$usuarioanotificar=$actividadAcademica->getUsuario();
-                
-               /* $actiondata=new \MultiacademicoBundle\ActionData\DocenteSendTaskYou();
-                  $actiondata->setDocente($user->getName());
-                  $actiondata->setMateria($calificacion->getCalificacioncodmateria()->getMateria());
-                  
-                  $n=$notificador->crearNotificacion($actiondata->getActionid(),$user->getName(),$usuarioanotificar,$actiondata);
-                  $this->tareasPorNotificar[] = $n;*/
+            $this->preNotificar($actividadAcademica);
     }
    
     
     public function postFlush(PostFlushEventArgs $args)
     {
         
-        /*if (!empty($this->tareasPorNotificar)) {
+        if (!empty($this->tareasPorNotificar)) {
             $em = $args->getEntityManager();
             foreach ($this->tareasPorNotificar as $notificacion) {
-                
                 $em->persist($notificacion);
-                 
             }
             $this->tareasPorNotificar=[];
-        
             $em->flush();
+       }
+        
+    }
+    
+    private function preNotificar($actividadAcademica)
+    {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
             
-       }*/
-        //$args->getEmptyInstance()
-        //$this->container->get('notificadorDeAula')->notificarAula();
+            $notificador=$this->container->get('notificadorDeAula');
+            $aula=$actividadAcademica->getDistributivo()->getAula();
+            $matriculados=$aula->getMatriculados();
+            
+            $actiondata=new \MultiacademicoBundle\ActionData\DocenteSendTaskYou();
+            $actiondata->setDocente($user->getName());
+            $actiondata->setMateria($actividadAcademica->getDistributivo()->getDistributivocodmateria()->getMateria());
+            $actiondata->setTipo($actividadAcademica->getTipo());
+            $actiondata->setTema($actividadAcademica->getTitulo());
+                    
+            $notificaciones=$notificador->preNotificarAula($aula, $actiondata->getActionid(), 'titulo', $actiondata);
+            
+            $this->tareasPorNotificar = $notificaciones;
     }
 }

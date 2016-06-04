@@ -26,6 +26,16 @@ class DocenteSendTaskYou implements ActionDataInterface{
      * @var string
      */
     public $materia;
+    /**
+     *
+     * @var string
+     */
+    public $tipo;
+    /**
+     *
+     * @var string
+     */
+    public $tema;
     
     public function getActionid() {
         return $this->actionid;
@@ -53,6 +63,24 @@ class DocenteSendTaskYou implements ActionDataInterface{
         $this->materia = $materia;
         return $this;
     }
+    public function getTipo() {
+        return $this->tipo;
+    }
+
+    public function getTema() {
+        return $this->tema;
+    }
+
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+        return $this;
+    }
+
+    public function setTema($tema) {
+        $this->tema = $tema;
+        return $this;
+    }
+
 
 
 }

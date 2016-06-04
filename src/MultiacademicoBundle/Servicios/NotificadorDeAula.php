@@ -12,11 +12,11 @@ use MultiacademicoBundle\Entity\Aula;
 use Multiservices\NotifyBundle\Servicios\Notificador;
 
 /**
- * Description of EntidadData
+ * Description of NotificadorDeAula
  *
  * @author Rene Arias <renearas@arxis.la>
  */
-class NotificadorDeAula extends Entidad {
+class NotificadorDeAula {
     
     /**
      * @var EntityManager
@@ -44,9 +44,9 @@ class NotificadorDeAula extends Entidad {
     /**
      * Notificar a toda el Aula
      *
-     * @return \MultiacademicoBundle\Entity\Entidad
+     * @return array
      */
-    public function notificarAula(Aula $aula, $action='', $titulo, $data=null)
+    public function preNotificarAula(Aula $aula, $accion='', $titulo, $data=null)
     {
         $notificador=new Notificador($this->em);
         $estudiantes=$aula->getMatriculados();
@@ -55,6 +55,7 @@ class NotificadorDeAula extends Entidad {
         {
             $usuarios[]=$estudiante->getMatriculacodestudiante()->getUsuario();
         }
-        $notificador->notificarAVarios($accion, $titulo, $usuarios, $data);
+        $notificaciones= $notificador->preNotificarAVarios($accion, $titulo, $usuarios, $data);
+        return $notificaciones;
     }
 }

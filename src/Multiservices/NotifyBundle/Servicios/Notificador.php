@@ -56,10 +56,11 @@ class Notificador
     function notificarAVarios($accion,$titulo,array $usuarios,$data=null)
     {
        $em=$this->entityManager;
+       $commonAction=$em->getRepository('NotifyBundle:Actions')->find($accion);
        foreach($usuarios as $user)
        {
        $notificacion=New Notificaciones();
-       $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
+       $notificacion->setActionid($commonAction);
        $notificacion->setNotificacionuser($user);
        $notificacion->setNotificacionrole(1);
        $notificacion->setNotificaciontitulo($titulo);
@@ -76,10 +77,12 @@ class Notificador
     function preNotificarAVarios($accion,$titulo,array $usuarios,$data=null)
     {
        $notificaciones=[];
+       $em=$this->entityManager;
+       $commonAction=$em->getRepository('NotifyBundle:Actions')->find($accion);
        foreach($usuarios as $user)
        {
        $notificacion=New Notificaciones();
-       $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
+       $notificacion->setActionid($commonAction);
        $notificacion->setNotificacionuser($user);
        $notificacion->setNotificacionrole(1);
        $notificacion->setNotificaciontitulo($titulo);

@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * ActividadAcademica
@@ -13,6 +15,7 @@ use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
  * @ORM\Table(name="actividad_academica")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\ActividadAcademicaRepository")
  * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaListener"}) 
+ * @ORM\HasLifecycleCallbacks()
  */
 class ActividadAcademica
 {
@@ -70,7 +73,7 @@ class ActividadAcademica
      * @ORM\Column(name="archivo", type="string", length=255, nullable=true)
      */
     private $archivo;
-
+    
     /**
      * @var \DateTime
      *
@@ -368,7 +371,127 @@ class ActividadAcademica
         return $this->detalle;
     }
     
+     public function getAbsolutePath()
+    {
+        return null === $this->archivo
+            ? null
+            : $this->getUploadRootDir().'/'.$this->archivo;
+    }
+    /**
+     * Serializer\VirtualProperty
+     * Serializer\SerializedName("picture")
+     * Serializer\Groups({"estadisticas","activities"})
+     */
+    public function getWebPath()
+    {
+        return null === $this->archivo
+            //? null
+            ? null
+            : $this->getUploadDir().'/'.$this->archivo;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/documents/actividades/enviadas';
+    }
+    
+    /**
+     * @Assert\File(maxSize="6000000",
+                   mimeTypes = {"image/*",
+                               "application/pdf", "application/x-pdf",
+                               "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                               "application/vnd.ms-excel" , "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                               "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+     *                         "application/x-rar-compressed", "application/octet-stream",
+     *                         "application/zip"
+                               },
+                   mimeTypesMessage = "Por favor suba una imagen valida")
+     */
+    private $file;
+
+    private $temp;
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        // check if we have an old image path
+        if (isset($this->archivo)) {
+            // store the old name to delete after the update
+            $this->temp = $this->archivo;
+            $this->archivo= null;
+        } else {
+            $this->archivo = 'initial';
+        }
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->archivo = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
+
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->archivo);
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            
+            unlink($this->getUploadRootDir().'/'.$this->temp);
+            
+            // clear the temp image path
+            $this->temp = null;
+        }
+        $this->file = null;
+    }
+ 
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            try{
+            unlink($file);
+            }catch(\Exception $e)
+            {}
+        }
+    }
+    
     public function __toString(){
        return $this->titulo;
+
     }
 }

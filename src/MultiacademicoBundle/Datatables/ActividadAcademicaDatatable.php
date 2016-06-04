@@ -84,7 +84,7 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             'class' => Style::BOOTSTRAP_3_STYLE,
             'individual_filtering' => false,
             'individual_filtering_position' => 'foot',
-            'use_integration_options' => false,
+            'use_integration_options' => true,
             'force_dom' => true
         ));
 

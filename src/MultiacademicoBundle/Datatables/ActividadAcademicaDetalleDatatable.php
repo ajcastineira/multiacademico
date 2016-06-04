@@ -50,7 +50,9 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             'server_side' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array()
+            'extensions' => array(
+                'responsive' => true
+            )
         ));
 
         $this->ajax->set(array(
@@ -76,10 +78,10 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             'search_delay' => 0,
             'state_duration' => 7200,
             'stripe_classes' => array(),
-            'class' => Style::BASE_STYLE,
+            'class' => Style::BOOTSTRAP_3_STYLE,
             'individual_filtering' => false,
             'individual_filtering_position' => 'foot',
-            'use_integration_options' => false,
+            'use_integration_options' => true,
             'force_dom' => true
         ));
 

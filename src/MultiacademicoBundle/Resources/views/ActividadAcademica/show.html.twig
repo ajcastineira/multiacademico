@@ -1,13 +1,28 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form _self %}
+{% block nota_widget %}
+{% spaceless %}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
+    {%- set type = type|default('number') -%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %} value="{{ value|replace(',','.')|number_format(2,'.') }}" {% endif %}/>
+{% endspaceless %}
+{% endblock  %}
 {% block body %}
-    <h1>ActividadAcademica</h1>
+    <h1>Actividad Academica</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ actividadAcademica.id }}</td>
+            </tr>
+            <tr>
+                <th>Materia</th>
+                <td>{{ actividadAcademica.distributivo.distributivocodmateria }}</td>
+            </tr>
+            <tr>
+                <th>Aula</th>
+                <td>{{ actividadAcademica.distributivo.aula }}</td>
             </tr>
             <tr>
                 <th>Titulo</th>
@@ -23,7 +38,15 @@
             </tr>
             <tr>
                 <th>Archivo</th>
-                <td>{{ actividadAcademica.archivo }}</td>
+                <td>
+                    {% if actividadAcademica.getWebPath() %}
+                    <a class="" target="_blank" href="{{asset(actividadAcademica.getWebPath())}}">
+                        Descargar
+                    </a>
+                    {%else%}
+                     La tarea no tine archivo Adjunto
+                    {%endif%}
+                </td>
             </tr>
             <tr>
                 <th>Fechaenvio</th>
@@ -32,6 +55,40 @@
             <tr>
                 <th>Fechaentrega</th>
                 <td>{% if actividadAcademica.fechaEntrega %}{{ actividadAcademica.fechaEntrega|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            
+            <tr>
+                <th>Detalle</th>
+                <td>{{form_start(form)}}
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                  <th colspan="5" style="text-align:right">  
+                                   <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o bigger-160"></i> Guardar</button> 
+                                   </th>
+                                </tr>    
+                                <tr>
+                                    <th>NumMat</th>
+                                    <th>Estudiante</th>
+                                    <th>Entregada</th>
+                                    <th>Calificacion</th>
+                                    <th>Estado</th>
+                                </tr>    
+                            </thead>        
+                            <tbody>    
+                                {% for calificacion in form.calificaciones %}
+                            <tr>
+                                <td>{{actividadAcademica.detalle[loop.index0].matricula.id}}</td>
+                                <td>{{actividadAcademica.detalle[loop.index0].matricula}}</td>
+                                <td>{% if actividadAcademica.detalle[loop.index0].fechaEntregada %}{{ actividadAcademica.detalle[loop.index0]..fechaEntregada|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{{form_widget(calificacion.calificacion)}}</td>
+                                <td>{{actividadAcademica.detalle[loop.index0].estado|readablehtml|raw}}</td>
+                            </tr>
+                                {%endfor%}
+                            </tbody>    
+                            </table>
+                    {{form_end(form)}}    
+                </td>
             </tr>
         </tbody>
     </table>

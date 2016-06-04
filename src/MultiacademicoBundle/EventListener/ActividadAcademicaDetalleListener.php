@@ -10,7 +10,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use MultiacademicoBundle\Entity\ActividadAcademica;
+use MultiacademicoBundle\Entity\ActividadAcademicaDetalle;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
  *
  * @author Rene Arias
  */
-class ActividadAcademicaListener  {
+class ActividadAcademicaDetalleListener  {
     
    
     protected $container;
@@ -39,40 +39,26 @@ class ActividadAcademicaListener  {
         $this->container=$container;
   
     }
-    public function prePersist(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
+    public function prePersist(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
-            $user = $this->tokenStorage->getToken()->getUser();
-            $docente=$this->container
-                            ->get('doctrine')->getEntityManager()
-                            ->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($user);
-            $actividadAcademica->setSendBy($docente);
-            $actividadAcademica->setFechaEnvio(new \Datetime());
-            $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
-            $actividadAcademica->preUpload();
-            $this->preEnviarActvidadAEstudiantes($actividadAcademica);
-            $this->preNotificar($actividadAcademica);
+           // $actividadAcademica->setFechaEnvio(new \Datetime());
+           // $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
+            //$this->preEnviarActvidadAEstudiantes($actividadAcademica);
+            //$this->preNotificar($actividadAcademica);
             
     }
-    public function postPersist(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
+    public function preUpdate(ActividadAcademicaDetalle $actividadAcademica, PreUpdateEventArgs $args)
     {
-        $actividadAcademica->upload();
-    }
-    public function preUpdate(ActividadAcademica $actividadAcademica, PreUpdateEventArgs $args)
-    {
-        $this->preUpload($actividadAcademica);    
-        $this->preNotificar($actividadAcademica);
-    }
-    public function postUpdate(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
-    {
-        $actividadAcademica->upload();
-    }
-    public function postRemove(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
-    {
-        $actividadAcademica->removeUpload();
+            //$this->preNotificar($actividadAcademica);
+            if ($args->hasChangedField('calificacion'))
+            {
+                $actividadAcademica->setEstado(EstadoActividadAcademicaType::REVISADA);
+                $actividadAcademica->setRevisada(true);
+                $actividadAcademica->setFechaRevisada(new \DateTime());
+            }
+           
     }
 
-
-   
     
     public function postFlush(PostFlushEventArgs $args)
     {
@@ -84,26 +70,7 @@ class ActividadAcademicaListener  {
             $this->actividadesPorEnviar=[];
             $em->flush();
        }
-        if (!empty($this->tareasPorNotificar)) {
-            $em = $args->getEntityManager();
-            foreach ($this->tareasPorNotificar as $notificacion) {
-                $em->persist($notificacion);
-            }
-            $this->tareasPorNotificar=[];
-            $em->flush();
-       }
         
-    }
-    private function preEnviarActvidadAEstudiantes($actividadAcademica)
-    {
-            $user = $this->container->get('security.token_storage')->getToken()->getUser();
-            
-            $enviador=$this->container->get('enviadorDeActividadesAlAula');
-            $aula=$actividadAcademica->getDistributivo()->getAula();
-            
-            $actividades=$enviador->preEnviarActividadAula($aula, $actividadAcademica);
-            
-            $this->actividadesPorEnviar = $actividades;
     }
     private function preNotificar($actividadAcademica)
     {

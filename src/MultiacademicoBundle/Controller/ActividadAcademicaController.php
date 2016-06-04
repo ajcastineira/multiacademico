@@ -10,6 +10,9 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 
 use MultiacademicoBundle\Entity\ActividadAcademica;
 use MultiacademicoBundle\Form\ActividadAcademicaType;
+use MultiacademicoBundle\Form\CalificarActividadAcademicaType;
+use MultiacademicoBundle\Calificar\ActividadACalificar;
+use MultiacademicoBundle\Libs\Parcial;
 
 use AppBundle\Lib\ResultsCorrector;
 
@@ -111,16 +114,26 @@ class ActividadAcademicaController extends FOSRestController
 
     /**
      * Finds and displays a ActividadAcademica entity.
-     *
-     * @Rest\Get() 
+     * @Rest\Post() 
+     * @Rest\Get("/actividadacademicas/{actividadAcademica}/show", name="show_actividadAcademica")
      */
-    public function showAction(ActividadAcademica $actividadAcademica)
+    public function showAction(Request $request, ActividadAcademica $actividadAcademica)
     {
         $deleteForm = $this->createDeleteForm($actividadAcademica);
+        $listado=new ActividadACalificar($actividadAcademica->getId());
+        $listado->setCalificaciones($actividadAcademica->getDetalle());
+        $form = $this->createForm(CalificarActividadAcademicaType::class, $listado);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
+            return $this->redirectToRoute('show_actividadacademica', array('actividadAcademica' => $actividadAcademica->getId()));
+        }
         return $this->render('MultiacademicoBundle:ActividadAcademica:show.html.twig', array(
             'actividadAcademica' => $actividadAcademica,
             'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView()
         ));
     }
 

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use MultiacademicoBundle\Form\Type\NotaType;
 
 class ActividadAcademicaDetalleType extends AbstractType
 {
@@ -16,8 +17,8 @@ class ActividadAcademicaDetalleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('calificacion')
-            ->add('entregada')
+            ->add('calificacion',NotaType::class)
+            //->add('entregada')
             //->add('fechaEntregada', DateTimeType::class)
             //->add('revisada')
             //->add('fechaRevisada', DateTimeType::class)

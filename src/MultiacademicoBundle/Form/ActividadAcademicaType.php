@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\ORM\EntityRepository;
 
@@ -42,6 +43,7 @@ class ActividadAcademicaType extends AbstractType
             ])    
             ->add('titulo')
             ->add('descripcion')
+            ->add('fechaEntrega', DateTimeType::class)
             ->add('tipo', ChoiceType::class, ['choices'=>[
                                                            'Tarea' => 'Tarea',
                                                            'Actividad Individual' => 'Actividad Individual',
@@ -49,9 +51,18 @@ class ActividadAcademicaType extends AbstractType
                                                            'Leccion' => 'Leccion',
                                                          ]] )
             ->add('estado')    
-            //->add('archivo')
+            ->add('file', FileType::class, [
+                    'label' => 'Archivo',
+                    'attr' => [
+                                'accept'=>'image/*, application/pdf, application/x-pdf,
+                               application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                               application/vnd.ms-excel , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                               application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                              application/x-rar-compressed, application/zip'
+                    ]
+            ])
             //->add('fechaEnvio', DateTimeType::class)
-            ->add('fechaEntrega', DateTimeType::class)
+            
             //->add('sendBy')
         ;
     }

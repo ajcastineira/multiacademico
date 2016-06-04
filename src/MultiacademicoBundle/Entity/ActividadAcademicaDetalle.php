@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="actividad_academica_detalle")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\ActividadAcademicaDetalleRepository")
+ * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaDetalleListener"}) 
  */
 class ActividadAcademicaDetalle
 {
@@ -38,7 +39,7 @@ class ActividadAcademicaDetalle
      *
      * @ORM\Column(name="calificacion", type="float", precision=10, scale=2, nullable=true)
      */
-    private $calificacion;
+    private $calificacion=0.00;
     
     /**
      * @var boolean

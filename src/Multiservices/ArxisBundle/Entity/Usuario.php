@@ -703,7 +703,10 @@ class Usuario extends BaseUser
         // check if we have an old image
         if (isset($this->temp)) {
             // delete the old image
+            try{
             unlink($this->getUploadRootDir().'/'.$this->temp);
+            }catch(\Exception $e)
+            {}
             // clear the temp image path
             $this->temp = null;
         }
@@ -715,7 +718,10 @@ class Usuario extends BaseUser
     public function removeUpload()
     {
         if ($file = $this->getAbsolutePath()) {
+            try{
             unlink($file);
+            }catch(\Exception $e)
+            {}
         }
     }
      /**

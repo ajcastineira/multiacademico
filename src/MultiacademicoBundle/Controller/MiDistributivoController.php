@@ -50,7 +50,7 @@ class MiDistributivoController extends Controller
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
         //var_dump($user);
-        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findByUsuario($user);
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($user);
         $entities = $em->getRepository('MultiacademicoBundle:Distributivos')->miDistributivo($docente);
         
         $misclubes= $em->getRepository('MultiacademicoBundle:Clubes')->misClubes($docente);

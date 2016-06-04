@@ -37,7 +37,7 @@ class EstadoActividadAcademicaType  extends AbstractEnumType
         self::PENDIENTE => '<span class="label label-warning">Pendiente</span>',
         self::ENTREGADA => '<span class="label label-info">Entregada</span>',
         self::REVISADA => '<span class="label label-success">Revisada</span>',
-        self::COMPLETADA => '<span class="label label-success">Anulada</span>',
+        self::COMPLETADA => '<span class="label label-success">Completada</span>',
     ];
      /**
      * Get readable choices for the ENUM field

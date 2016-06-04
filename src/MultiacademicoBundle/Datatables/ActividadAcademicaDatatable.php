@@ -6,6 +6,7 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 use MultiacademicoBundle\Datatables\Columns\RepresentanteColumn;
+use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
 /**
  * Class ActividadAcademicaDatatable
@@ -81,7 +82,7 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => true,
+            'individual_filtering' => false,
             'individual_filtering_position' => 'foot',
             'use_integration_options' => false,
             'force_dom' => true
@@ -90,15 +91,20 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'width' => '5em'
+                'width' => '10px'
             ))
             ->add('titulo', 'column', array(
                 'title' => 'Titulo',
-                'width' => '10em'
+                'width' => '20em'
             ))
             ->add('tipo', 'column', array(
                 'title' => 'Tipo',
+                'width' => '10em'
             ))
+            ->add('estado', 'column', array(
+                'title' => 'Estado',
+                'width' => '10em'
+            ))    
             ->add('fechaEnvio', 'datetime', array(
                 'title' => 'FechaEnvio',
             ))
@@ -126,9 +132,10 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
                 'title' => 'Materia',
                 'data'=>'distributivo.distributivocodmateria.materia',
             ))
-            ->add('sendBy.docente', 'column', array(
+            /*->add('sendBy.docente', 'column', array(
                 'title' => 'Enviada por',
-            ))
+                'width' => '8em'
+            ))*/
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
@@ -164,7 +171,30 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             ))
         ;
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $router = $this->router;
+        
+        $formatter = function($line) use ($router){
+            //var_dump($line);
+            //var_dump($line["factura"]);
+            if (isset($line["estado"]))
+            {
+            $line["estado"] = EstadoActividadAcademicaType::getReadableHtmlValue($line["estado"]);
+            //$representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
+            //$line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
+            }
+            //$estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
+            //$line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
+            return $line;
+        };
 
+        return $formatter;
+     
+    }
     /**
      * {@inheritdoc}
      */

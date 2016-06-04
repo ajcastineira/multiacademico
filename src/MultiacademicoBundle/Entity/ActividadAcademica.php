@@ -11,6 +11,7 @@ use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
  *
  * @ORM\Table(name="actividad_academica")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\ActividadAcademicaRepository")
+ * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaListener"}) 
  */
 class ActividadAcademica
 {

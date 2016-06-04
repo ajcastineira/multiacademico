@@ -136,7 +136,7 @@ class ActividadAcademicaController extends FOSRestController
             $em->persist($actividadAcademica);
             $em->flush();
 
-            return $this->redirectToRoute('actividadacademica', array('page' => $actividadAcademica->getId().'/edit'));
+            return $this->redirectToRoute('edit_actividadacademica', array('actividadAcademica' => $actividadAcademica->getId()));
         }
 
         return $this->render('MultiacademicoBundle:ActividadAcademica:edit.html.twig', array(

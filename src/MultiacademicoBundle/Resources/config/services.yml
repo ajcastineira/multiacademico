@@ -8,6 +8,9 @@ services:
     entidadData:
         class: MultiacademicoBundle\Entity\Entidad
         factory: ['@entidadFactory', getEntidad]
+    notificadorDeAula:
+        class: MultiacademicoBundle\Servicios\NotificadorDeAula
+        arguments: ['@security.token_storage','@service_container','@doctrine.orm.entity_manager']
     validator.multiacademico.MatriculaValidator:
         class:  MultiacademicoBundle\Validator\Constraints\MatriculaValidator
         arguments:

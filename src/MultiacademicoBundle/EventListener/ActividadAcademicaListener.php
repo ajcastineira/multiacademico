@@ -9,6 +9,7 @@ namespace MultiacademicoBundle\EventListener;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
 use Doctrine\ORM\Event\PostFlushEventArgs;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use MultiacademicoBundle\Entity\ActividadAcademica;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
@@ -24,6 +25,7 @@ class ActividadAcademicaListener  {
     
    
     protected $container;
+    protected $tokenStorage;
     private $tareasPorNotificar = [];
 
     /**
@@ -39,7 +41,10 @@ class ActividadAcademicaListener  {
     public function prePersist(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
     {
             $user = $this->tokenStorage->getToken()->getUser();
-            $actividadAcademica->setSendBy($user);
+            $docente=$this->container
+                            ->get('doctrine')->getEntityManager()
+                            ->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($user);
+            $actividadAcademica->setSendBy($docente);
             $actividadAcademica->setFechaEnvio(new \Datetime());
             $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
             
@@ -64,16 +69,19 @@ class ActividadAcademicaListener  {
     public function postFlush(PostFlushEventArgs $args)
     {
         
-        if (!empty($this->calificacionesPorNotificar)) {
+        /*if (!empty($this->tareasPorNotificar)) {
             $em = $args->getEntityManager();
-            foreach ($this->calificacionesPorNotificar as $notificacion) {
+            foreach ($this->tareasPorNotificar as $notificacion) {
                 
                 $em->persist($notificacion);
                  
             }
             $this->tareasPorNotificar=[];
+        
             $em->flush();
             
-       }
+       }*/
+        //$args->getEmptyInstance()
+        //$this->container->get('notificadorDeAula')->notificarAula();
     }
 }

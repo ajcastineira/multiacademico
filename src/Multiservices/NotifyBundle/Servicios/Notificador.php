@@ -3,6 +3,7 @@ namespace Multiservices\NotifyBundle\Servicios;
 
 use Doctrine\ORM\EntityManager;
 use Multiservices\NotifyBundle\Entity\Notificaciones;
+use Multiservices\ArxisBundle\Entity\Usuario;
 
 /**
  * Description of timeago
@@ -52,7 +53,7 @@ class Notificador
        return $notificacion;
     }   
     
-    function notificarAVarios($accion,$titulo,$usuarios,$data=null)
+    function notificarAVarios($accion,$titulo,array $usuarios,$data=null)
     {
        $em=$this->entityManager;
        foreach($usuarios as $user)
@@ -72,5 +73,23 @@ class Notificador
        return $notificacion;
     }
     
+    function preNotificarAVarios($accion,$titulo,array $usuarios,$data=null)
+    {
+       $notificaciones=[];
+       foreach($usuarios as $user)
+       {
+       $notificacion=New Notificaciones();
+       $notificacion->setActionid($em->getRepository('NotifyBundle:Actions')->find($accion));
+       $notificacion->setNotificacionuser($user);
+       $notificacion->setNotificacionrole(1);
+       $notificacion->setNotificaciontitulo($titulo);
+       $notificacion->setNotificacion($accion);
+       $notificacion->setNotificaciontimestamp(time());
+       $notificacion->setNotificacionestado(0);
+       $notificacion->setVariables($data);
+       $notificaciones[]=$notificacion;
+       }
+       return $notificaciones;
+    }
 }
 

@@ -52,7 +52,7 @@ class ActividadAcademicaType extends AbstractType
             //->add('archivo')
             //->add('fechaEnvio', DateTimeType::class)
             ->add('fechaEntrega', DateTimeType::class)
-            ->add('sendBy')
+            //->add('sendBy')
         ;
     }
     

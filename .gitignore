@@ -29,8 +29,12 @@
 /web/node_modules/
 /web/tmp
 /web/uploads/documents/images/profile/*
+/web/uploads/documents/actividades/enviadas/*
+/web/uploads/documents/actividades/recibidas/*
 !web/uploads/.gitkeep
 !web/uploads/documents/images/profile/male.png
 !web/uploads/documents/images/profile/.gitkeep
+!web/uploads/documents/actividades/enviadas/.gitkeep
+!web/uploads/documents/actividades/recibidas/.gitkeep
 /web/vendor
 /web/nbproject

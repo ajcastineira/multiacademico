@@ -45,7 +45,9 @@ class ActividadAcademicaController extends FOSRestController
      */
     public function resultsAction(Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
         $datatable = $this->get('multiacademicobundle_datatable.actividadAcademicas');
         $datatable->buildDatatable();
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
@@ -75,6 +77,8 @@ class ActividadAcademicaController extends FOSRestController
             $clasew=get_class($where);
             $qb->add('where',new $clasew($partesvalidas));
           }
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($user);  
+        $qb->andWhere('sendBy.id = :docente')->setParameter('docente',$docente);
         $query->setQuery($qb);
         return $query->getResponse(false);
     }

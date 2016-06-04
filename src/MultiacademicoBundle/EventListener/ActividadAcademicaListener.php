@@ -26,6 +26,7 @@ class ActividadAcademicaListener  {
    
     protected $container;
     protected $tokenStorage;
+    private $actividadesPorEnviar = [];
     private $tareasPorNotificar = [];
 
     /**
@@ -47,19 +48,26 @@ class ActividadAcademicaListener  {
             $actividadAcademica->setSendBy($docente);
             $actividadAcademica->setFechaEnvio(new \Datetime());
             $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
+            $this->preEnviarActvidadAEstudiantes($actividadAcademica);
             $this->preNotificar($actividadAcademica);
             
     }
     public function preUpdate(ActividadAcademica $actividadAcademica, PreUpdateEventArgs $args)
     {
-
             $this->preNotificar($actividadAcademica);
     }
    
     
     public function postFlush(PostFlushEventArgs $args)
     {
-        
+        if (!empty($this->actividadesPorEnviar)) {
+            $em = $args->getEntityManager();
+            foreach ($this->actividadesPorEnviar as $actividad) {
+                $em->persist($actividad);
+            }
+            $this->actividadesPorEnviar=[];
+            $em->flush();
+       }
         if (!empty($this->tareasPorNotificar)) {
             $em = $args->getEntityManager();
             foreach ($this->tareasPorNotificar as $notificacion) {
@@ -70,7 +78,17 @@ class ActividadAcademicaListener  {
        }
         
     }
-    
+    private function preEnviarActvidadAEstudiantes($actividadAcademica)
+    {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            
+            $enviador=$this->container->get('enviadorDeActividadesAlAula');
+            $aula=$actividadAcademica->getDistributivo()->getAula();
+            
+            $actividades=$enviador->preEnviarActividadAula($aula, $actividadAcademica);
+            
+            $this->actividadesPorEnviar = $actividades;
+    }
     private function preNotificar($actividadAcademica)
     {
             $user = $this->container->get('security.token_storage')->getToken()->getUser();

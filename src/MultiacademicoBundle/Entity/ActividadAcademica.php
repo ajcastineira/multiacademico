@@ -3,6 +3,7 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
@@ -93,10 +94,18 @@ class ActividadAcademica
      * })
      */
     private $sendBy;
+            
+     /**
+     * @var ActividadAcademicaDetalle
+     *
+     * @ORM\OneToMany(targetEntity="ActividadAcademicaDetalle", mappedBy="actividad")
+     */
+    private $detalle;
     
     public function __construct() {
         $this->fechaEntrega=new \DateTime();
         $this->fechaEnvio=new \DateTime();
+        $this->detalle= new ArrayCollection();
     }
 
     /**
@@ -323,5 +332,43 @@ class ActividadAcademica
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Add detalle
+     *
+     * @param \MultiacademicoBundle\Entity\ActividadAcademicaDetalle $detalle
+     *
+     * @return ActividadAcademica
+     */
+    public function addDetalle(\MultiacademicoBundle\Entity\ActividadAcademicaDetalle $detalle)
+    {
+        $this->detalle[] = $detalle;
+
+        return $this;
+    }
+
+    /**
+     * Remove detalle
+     *
+     * @param \MultiacademicoBundle\Entity\ActividadAcademicaDetalle $detalle
+     */
+    public function removeDetalle(\MultiacademicoBundle\Entity\ActividadAcademicaDetalle $detalle)
+    {
+        $this->detalle->removeElement($detalle);
+    }
+
+    /**
+     * Get detalle
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDetalle()
+    {
+        return $this->detalle;
+    }
+    
+    public function __toString(){
+       return $this->titulo;
     }
 }

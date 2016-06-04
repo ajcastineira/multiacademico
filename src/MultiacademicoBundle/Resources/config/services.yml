@@ -11,6 +11,9 @@ services:
     notificadorDeAula:
         class: MultiacademicoBundle\Servicios\NotificadorDeAula
         arguments: ['@security.token_storage','@service_container','@doctrine.orm.entity_manager']
+    enviadorDeActividadesAlAula:
+        class: MultiacademicoBundle\Servicios\EnviadorDeActividadesAlAula
+        arguments: ['@doctrine.orm.entity_manager']    
     validator.multiacademico.MatriculaValidator:
         class:  MultiacademicoBundle\Validator\Constraints\MatriculaValidator
         arguments:

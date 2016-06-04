@@ -1,6 +1,8 @@
 <?php
 
 namespace MultiacademicoBundle\Entity;
+use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
+use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,7 +36,7 @@ class ActividadAcademicaDetalle
     /**
      * @var float
      *
-     * @ORM\Column(name="calificacion", type="float", precision=10, scale=2)
+     * @ORM\Column(name="calificacion", type="float", precision=10, scale=2, nullable=true)
      */
     private $calificacion;
     
@@ -43,12 +45,12 @@ class ActividadAcademicaDetalle
      *
      * @ORM\Column(name="entregada", type="boolean")
      */
-    private $entregada;
+    private $entregada=false;
     
     /**
      * @var datetime
      *
-     * @ORM\Column(name="fechaEntregada", type="datetime")
+     * @ORM\Column(name="fechaEntregada", type="datetime", nullable=true)
      */
     private $fechaEntregada;
     
@@ -57,23 +59,43 @@ class ActividadAcademicaDetalle
      *
      * @ORM\Column(name="revisada", type="boolean")
      */
-    private $revisada;
+    private $revisada=false;
     
     /**
      * @var datetime
      *
-     * @ORM\Column(name="fechaRevisada", type="datetime")
+     * @ORM\Column(name="fechaRevisada", type="datetime", nullable=true)
      */
     private $fechaRevisada;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="boolean")
+     * @ORM\Column(name="archivo", type="string", length=255, nullable=true)
      */
-    private $estado;
+    private $archivo;
+    
+    /**
+     * @var EstadoFacturaType
+     *
+     * @ORM\Column(name="estado", type="EstadoActividadAcademicaType", length=10, nullable=false,options={"default":"pendiente","comment":"Estado de Detalle de Actividad Academica"})
+     * @DoctrineAssert\Enum(entity="MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType")     
+     */
+    private $estado=EstadoActividadAcademicaType::PENDIENTE;
+    
+    /**
+     * @var Distributivos
+     *
+     * @ORM\ManyToOne(targetEntity="ActividadAcademica", inversedBy="detalle")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="actividad", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $actividad;
 
-
+    public function __construct() {
+        
+    }
     /**
      * Get id
      *
@@ -250,5 +272,53 @@ class ActividadAcademicaDetalle
     public function getMatricula()
     {
         return $this->matricula;
+    }
+
+    /**
+     * Set actividad
+     *
+     * @param \MultiacademicoBundle\Entity\ActividadAcademica $actividad
+     *
+     * @return ActividadAcademicaDetalle
+     */
+    public function setActividad(\MultiacademicoBundle\Entity\ActividadAcademica $actividad)
+    {
+        $this->actividad = $actividad;
+
+        return $this;
+    }
+
+    /**
+     * Get actividad
+     *
+     * @return \MultiacademicoBundle\Entity\ActividadAcademica
+     */
+    public function getActividad()
+    {
+        return $this->actividad;
+    }
+
+    /**
+     * Set archivo
+     *
+     * @param string $archivo
+     *
+     * @return ActividadAcademicaDetalle
+     */
+    public function setArchivo($archivo)
+    {
+        $this->archivo = $archivo;
+
+        return $this;
+    }
+
+    /**
+     * Get archivo
+     *
+     * @return string
+     */
+    public function getArchivo()
+    {
+        return $this->archivo;
     }
 }

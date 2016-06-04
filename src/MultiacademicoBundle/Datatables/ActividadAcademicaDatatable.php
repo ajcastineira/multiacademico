@@ -132,10 +132,10 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
                 'title' => 'Materia',
                 'data'=>'distributivo.distributivocodmateria.materia',
             ))
-            /*->add('sendBy.docente', 'column', array(
-                'title' => 'Enviada por',
-                'width' => '8em'
-            ))*/
+             ->add('sendBy.id', 'column', array(
+                'title' => '',
+                'visible' => false
+            ))    
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(

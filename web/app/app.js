@@ -51,6 +51,8 @@ define([
         'multiacademico.docentes.midistributivo',
         'multiacademico.proyectosescolares',
         'multiacademico.aulas',
+        'multiacademico.actividadacademica',
+        'multiacademico.actividadacademicadetalle',
         'multiacademico.cursos',
         'multiacademico.distributivos',
         'multiacademico.malla',

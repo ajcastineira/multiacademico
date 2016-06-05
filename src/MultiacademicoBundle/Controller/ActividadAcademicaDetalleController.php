@@ -57,7 +57,7 @@ class ActividadAcademicaDetalleController extends FOSRestController
          $qb->andWhere('matricula.id = :matricula')->setParameter('matricula',$matricula);
         };
         
-        $query->addWhereResult($function);
+        $query->addWhereAll($function);
         return $query->getResponse();
     }
 
@@ -106,12 +106,12 @@ class ActividadAcademicaDetalleController extends FOSRestController
      * Displays a form to edit an existing ActividadAcademicaDetalle entity.
      *
      * @Rest\Post() 
-     * @Rest\Get("/actividadacademicadetalle/{actividadAcademicaDetalle}/edit", name="edit_actividadAcademicaDetalle") 
+     * @Rest\Get("/actividadacademicadetalles/{actividadAcademicaDetalle}/edit", name="edit_actividadAcademicaDetalle") 
      */
     public function editAction(Request $request, ActividadAcademicaDetalle $actividadAcademicaDetalle)
     {
         $deleteForm = $this->createDeleteForm($actividadAcademicaDetalle);
-        $editForm = $this->createForm('MultiacademicoBundle\Form\ActividadAcademicaDetalleType', $actividadAcademicaDetalle);
+        $editForm = $this->createForm('MultiacademicoBundle\Form\PresentarActividadType', $actividadAcademicaDetalle);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -119,7 +119,7 @@ class ActividadAcademicaDetalleController extends FOSRestController
             $em->persist($actividadAcademicaDetalle);
             $em->flush();
 
-            return $this->redirectToRoute('actividadacademicadetalle', array('page' => $actividadAcademicaDetalle->getId().'/edit'));
+            return $this->redirectToRoute('show_actividadacademicadetalle', array('actividadAcademicaDetalle' => $actividadAcademicaDetalle->getId()));
         }
 
         return $this->render('MultiacademicoBundle:ActividadAcademicaDetalle:edit.html.twig', array(
@@ -157,7 +157,7 @@ class ActividadAcademicaDetalleController extends FOSRestController
     private function createDeleteForm(ActividadAcademicaDetalle $actividadAcademicaDetalle)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('delete_actividadAcademicaDetalle', array('actividadAcademicaDetalle' => $actividadAcademicaDetalle->getId())))
+            ->setAction($this->generateUrl('delete_actividadacademicadetalle', array('actividadAcademicaDetalle' => $actividadAcademicaDetalle->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

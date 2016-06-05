@@ -90,6 +90,9 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ->add('id', 'column', array(
                 'title' => 'Id',
             ))
+             ->add('actividad.distributivo.distributivocodmateria.materia', 'column', array(
+                'title' => 'Materia',
+            ))    
             ->add('actividad.titulo', 'column', array(
                 'title' => 'Tema',
             ))
@@ -105,20 +108,15 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ->add('entregada', 'boolean', array(
                 'title' => 'Entregada',
             ))
-            ->add('fechaEntregada', 'datetime', array(
-                'title' => 'FechaEntregada',
-            ))
             ->add('revisada', 'boolean', array(
                 'title' => 'Revisada',
-            ))
-            ->add('fechaRevisada', 'datetime', array(
-                'title' => 'FechaRevisada',
             ))
             ->add('estado', 'column', array(
                 'title' => 'Estado',
             ))
             ->add('matricula.id', 'column', array(
                 'title' => 'Matricula Id',
+                'visible'=>false
             ))
             
             ->add(null, 'action', array(
@@ -172,6 +170,8 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             //$representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
             //$line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
             }
+            $line["entregada"] =  $line["entregada"] ? 'Si' : 'No';
+            $line["revisada"] =  $line["revisada"] ? 'Si' : 'No';
             //$estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
             //$line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';
             return $line;

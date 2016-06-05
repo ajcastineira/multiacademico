@@ -35,6 +35,20 @@ class ActividadAcademicaDetalle
      * })
      */
     private $matricula;
+    
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     */
+    private $descripcion='';
+    
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="observacion", type="text", nullable=true)
+     */
+    private $observacion;
 
     /**
      * @var float
@@ -365,8 +379,8 @@ class ActividadAcademicaDetalle
                                "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                "application/vnd.ms-excel" , "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                                "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-     *                         "application/x-rar-compressed", "application/octet-stream",
-     *                         "application/zip"
+                               "application/x-rar-compressed", "application/octet-stream",
+                               "application/zip"
                                },
                    mimeTypesMessage = "Por favor suba un archivo valido o permitido")
      */
@@ -442,5 +456,53 @@ class ActividadAcademicaDetalle
             }catch(\Exception $e)
             {}
         }
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return ActividadAcademicaDetalle
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     *
+     * @return ActividadAcademicaDetalle
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
     }
 }

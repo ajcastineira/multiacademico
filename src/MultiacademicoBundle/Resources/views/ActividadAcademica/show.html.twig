@@ -10,7 +10,7 @@
 {% block body %}
     <h1>Actividad Academica</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -40,8 +40,8 @@
                 <th>Archivo</th>
                 <td>
                     {% if actividadAcademica.getWebPath() %}
-                    <a class="" target="_blank" href="{{asset(actividadAcademica.getWebPath())}}">
-                        Descargar
+                    <a class="btn btn-lilac" target="_blank" href="{{asset(actividadAcademica.getWebPath())}}">
+                       <i class="fa fa-download"></i> Descargar
                     </a>
                     {%else%}
                      La tarea no tine archivo Adjunto
@@ -58,12 +58,13 @@
             </tr>
             
             <tr>
-                <th>Detalle</th>
-                <td>{{form_start(form)}}
+                
+                <td colspan="2">
+                    {{form_start(form)}}
                             <table class="table table-striped">
                             <thead>
                                 <tr>
-                                  <th colspan="5" style="text-align:right">  
+                                  <th colspan="6" style="text-align:right">  
                                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o bigger-160"></i> Guardar</button> 
                                    </th>
                                 </tr>    
@@ -73,6 +74,7 @@
                                     <th>Entregada</th>
                                     <th>Calificacion</th>
                                     <th>Estado</th>
+                                    <th>Acciones</th>
                                 </tr>    
                             </thead>        
                             <tbody>    
@@ -80,9 +82,15 @@
                             <tr>
                                 <td>{{actividadAcademica.detalle[loop.index0].matricula.id}}</td>
                                 <td>{{actividadAcademica.detalle[loop.index0].matricula}}</td>
-                                <td>{% if actividadAcademica.detalle[loop.index0].fechaEntregada %}{{ actividadAcademica.detalle[loop.index0]..fechaEntregada|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if actividadAcademica.detalle[loop.index0].fechaEntregada %}{{ actividadAcademica.detalle[loop.index0].fechaEntregada|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>{{form_widget(calificacion.calificacion)}}</td>
                                 <td>{{actividadAcademica.detalle[loop.index0].estado|readablehtml|raw}}</td>
+                                <td>
+                                    <a class="btn btn-xs btn-primary" data-ui-sref="multiacademico.actividadacademica.show.detail({detalle:{{actividadAcademica.detalle[loop.index0].id}}})"><i class="fa fa-eye"></i>Ver Detalles</a>
+                                    {% if actividadAcademica.detalle[loop.index0].getWebPath() %}
+                                    <a class="btn btn-xs btn-rss" target="_blank" href="{{asset(actividadAcademica.detalle[loop.index0].getWebPath())}}"><i class="fa fa-download"></i>Descargar</a>
+                                    {%endif%}
+                                </td>
                             </tr>
                                 {%endfor%}
                             </tbody>    

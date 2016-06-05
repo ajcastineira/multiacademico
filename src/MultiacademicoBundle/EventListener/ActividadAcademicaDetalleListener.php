@@ -45,7 +45,12 @@ class ActividadAcademicaDetalleListener  {
            // $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
             //$this->preEnviarActvidadAEstudiantes($actividadAcademica);
             //$this->preNotificar($actividadAcademica);
+           // $actividadAcademica->preUpload();
             
+    }
+    public function postPersist(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
+    {
+            //$actividadAcademica->upload();
     }
     public function preUpdate(ActividadAcademicaDetalle $actividadAcademica, PreUpdateEventArgs $args)
     {
@@ -56,9 +61,23 @@ class ActividadAcademicaDetalleListener  {
                 $actividadAcademica->setRevisada(true);
                 $actividadAcademica->setFechaRevisada(new \DateTime());
             }
+            if ($args->hasChangedField('descripcion'))
+            {
+                $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENTREGADA);
+                $actividadAcademica->setEntregada(true);
+                $actividadAcademica->setFechaEntregada(new \DateTime());
+            }
+            $actividadAcademica->preUpload();
            
     }
-
+    public function postUpdate(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
+    {
+            $actividadAcademica->upload();
+    }
+    public function postRemove(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
+    {
+            $actividadAcademica->removeUpload();
+    }
     
     public function postFlush(PostFlushEventArgs $args)
     {

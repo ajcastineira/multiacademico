@@ -1,29 +1,91 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>ActividadAcademicaDetalle</h1>
+    <h1>Detalle de Actividad Academica</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ actividadAcademicaDetalle.id }}</td>
             </tr>
             <tr>
+                <th>Materia</th>
+                <td>{{ actividadAcademicaDetalle.actividad.distributivo.distributivocodmateria }}</td>
+            </tr>
+            <tr>
+                <th>Enviada Por</th>
+                <td>{{ actividadAcademicaDetalle.actividad.sendBy }}</td>
+            </tr>
+            
+            <tr>
+                <th>Tipo</th>
+                <td>{{ actividadAcademicaDetalle.actividad.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Tema</th>
+                <td>{{ actividadAcademicaDetalle.actividad.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ actividadAcademicaDetalle.actividad.descripcion }}</td>
+            </tr>
+            
+            <tr>
+                <th>Enviada</th>
+                <td>{% if actividadAcademicaDetalle.actividad.fechaEnvio %}{{ actividadAcademicaDetalle.actividad.fechaEnvio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fecha Maxima de Entrega</th>
+                <td>{% if actividadAcademicaDetalle.actividad.fechaEntrega %}{{ actividadAcademicaDetalle.actividad.fechaEntrega|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Archivo Adjunto</th>
+                <td>
+                    {% if actividadAcademicaDetalle.actividad.getWebPath() %}
+                    <a class="btn btn-lilac" target="_blank" href="{{asset(actividadAcademicaDetalle.actividad.getWebPath())}}">
+                       <i class="fa fa-download"></i> Descargar
+                    </a>
+                    {%else%}
+                     La tarea no tine archivo Adjunto
+                    {%endif%}
+                </td>
+            </tr>
+            <tr>
                 <th>Calificacion</th>
-                <td>{{ actividadAcademicaDetalle.calificacion }}</td>
+                <td><strong>{{ actividadAcademicaDetalle.calificacion }}</strong></td>
             </tr>
             <tr>
                 <th>Entregada</th>
-                <td>{% if actividadAcademicaDetalle.entregada %}Yes{% else %}No{% endif %}</td>
+                <td>{% if actividadAcademicaDetalle.entregada %}Si{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Fechaentregada</th>
                 <td>{% if actividadAcademicaDetalle.fechaEntregada %}{{ actividadAcademicaDetalle.fechaEntregada|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
+                <th>Desarrollo Presentado</th>
+                <td>{{actividadAcademicaDetalle.descripcion}}</td>
+            </tr>
+            <tr>
+                <th>Archivo Presentado</th>
+                <td>
+                    {% if actividadAcademicaDetalle.getWebPath() %}
+                    <a class="btn btn-rss" target="_blank" href="{{asset(actividadAcademicaDetalle.getWebPath())}}">
+                       <i class="fa fa-download"></i> Descargar
+                    </a>
+                    {%else%}
+                     No se ha presentado archivo en esta tarea
+                    {%endif%}
+                </td>
+            </tr>
+            <tr>
+                <th>Observaciones Presentadas</th>
+                <td>{{actividadAcademicaDetalle.observacion}}</td>
+            </tr>
+            <tr>
                 <th>Revisada</th>
-                <td>{% if actividadAcademicaDetalle.revisada %}Yes{% else %}No{% endif %}</td>
+                <td>{% if actividadAcademicaDetalle.revisada %}Si{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Fecharevisada</th>
@@ -31,22 +93,30 @@
             </tr>
             <tr>
                 <th>Estado</th>
-                <td>{% if actividadAcademicaDetalle.estado %}Yes{% else %}No{% endif %}</td>
+                <td>{{actividadAcademicaDetalle.estado|readablehtml|raw}}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
+        {% if is_granted('ROLE_ESTUDIANTE')%}
         <li>
-            <a href="{{ path('misactividadesacademicas') }}">Regresar a la lista</a>
+            <a class="btn btn-default" href="{{ path('misactividadesacademicas') }}">Regresar a la lista</a>
         </li>
         <li>
-            <a href="{{ path('misactividadesacademicas_edit', { 'page': actividadAcademicaDetalle.id }) }}">Presentar</a>
+            <a class="btn btn-primary" href="{{ path('misactividadesacademicas_edit', { 'page': actividadAcademicaDetalle.id }) }}">Presentar</a>
         </li>
-        <li>
+        {%endif%}
+        
+        {% if is_granted('ROLE_DOCENTE')%}
+            <li>
+            <a class="btn btn-default" href="{{ path('actividadacademica',{'page':actividadAcademicaDetalle.actividad.id}) }}">Regresar</a>
+           </li>
+        {%endif%}
+        {#<li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
-        </li>
+        </li>#}
     </ul>
 {% endblock %}

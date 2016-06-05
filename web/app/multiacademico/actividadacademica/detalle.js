@@ -94,7 +94,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
-                            return Routing.generate(rutas.show,{'actividadacademicadetalle':$stateParams.id,'_format':'html'});
+                            return Routing.generate(rutas.show,{'actividadAcademicaDetalle':$stateParams.id,'_format':'html'});
                         },
                         controller:function($scope, $window){
                             $scope.facturaDefinition=$window.facturaDefinition;
@@ -161,8 +161,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                          templateProvider:function($stateParams,FormsCrud){
-                                  return FormsCrud.editWithVars($stateParams,rutas,{'actividadacademicadetalle':$stateParams.id,'_format':'html'});
-                                  //return "Hola mundo ";
+                                  return FormsCrud.editWithVars($stateParams,rutas,{'actividadAcademicaDetalle':$stateParams.id,'_format':'html'});
                              },
                         controller: 'FormsCrudCtrl',
                         resolve: {

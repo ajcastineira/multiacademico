@@ -409,21 +409,7 @@ define([
 
 
 
-              .state('ayuda', {
-                    url: '/ayuda',
-                    templateUrl: 'views/ayuda.html',
-                    data: {
-                        pageTitle: 'ayuda',
-                        pageHeader: {
-                            icon: 'fa fa-pencil',
-                            title: 'ayuda',
-                            subtitle: 'ayuda and more'
-                        },
-                        breadcrumbs: [
-                            {title: 'Widget'},{title: 'ayuda'}
-                        ]
-                    }
-                })
+              
 
     });
 

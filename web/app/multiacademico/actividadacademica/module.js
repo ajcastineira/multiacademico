@@ -135,6 +135,39 @@ define(['angular',
                     }
                 }
             })
+            .state('multiacademico.actividadacademica.show.detail', {
+                url: '/detalle/{detalle:[0-9]{1,11}}',
+                params:{
+                    id:undefined,
+                    detalle:undefined,
+                    submited:false,
+                    formData:null
+                },
+                data: {
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Actividad Academica',
+                            subtitle: 'Mostrar'
+                        },
+                        breadcrumbs: [
+                            {title: 'Actividad Academica'},{title: 'mostrar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                         templateUrl: function($stateParams){
+                            return Routing.generate('show_actividadacademicadetalle',{'actividadAcademicaDetalle':$stateParams.detalle,'_format':'html'});
+                         },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/controllers/PrintCtrl'//,
+                            ])
+ 
+                            
+                        }
+                    }
+                }
+            })
             .state('multiacademico.actividadacademica.new', {
                 url: '/actividadacademica/new',
                 params:{

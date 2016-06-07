@@ -12,6 +12,8 @@ use Multiservices\ArxisBundle\Entity\Usuario;
 use Multiservices\ArxisBundle\Form\UsuarioType;
 use Multiservices\ArxisBundle\Form\UsuarioChangeAvatarType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use JMS\Serializer\SerializationContext;
+
 /**
  * Usuario controller.
  *
@@ -46,6 +48,28 @@ class UsuarioController extends Controller
         return array(
             'entities' => $entities,
         );
+    }
+    
+    
+     /**
+     * Lists all Usuario entities.
+     *
+     * @Route("/api/indexsearch.json", name="index_search_usuarios", options={"expose":true})
+     * @Method("GET")
+     * 
+     */
+    public function indexSearchAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('MultiservicesArxisBundle:Usuario')->findAll();
+        $serializer = $this->get('jms_serializer');
+        $r=$serializer->serialize($entities, 'json', SerializationContext::create()->setGroups(array('search')));
+        $response= new JsonResponse();
+        //$response->sendHeaders(array('content-type' => 'application/json'));
+        $response->setData(json_decode($r));
+        
+        
+        return $response;
     }
     /**
      * Creates a new Usuario entity.
@@ -167,9 +191,15 @@ class UsuarioController extends Controller
             'method' => 'PUT',
         ));
         $deleteForm = $this->createDeleteForm($id);
-
+        $estudiante=$em->getRepository('MultiacademicoBundle:Estudiantes')->findOneByUsuario($entity);
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($entity);
+        //$administrativo=null;
+        
         return array(
             'usuario'      => $entity,
+            'estudiante' => $estudiante,
+            'docente' => $docente,
+           // 'administrativo'=>$administrativo,
             'changeavatarform' => $avatarform->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -192,10 +222,16 @@ class UsuarioController extends Controller
             //'action' => $this->generateUrl('secured_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-       
+        $em = $this->getDoctrine()->getManager();
+        $estudiante=$em->getRepository('MultiacademicoBundle:Estudiantes')->findByUsuario($me);
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findByUsuario($me);
+        //$administrativo=null;
 
         return array(
             'usuario'      => $usuario,
+            'estudiante' => $estudiante,
+            'docente' => $docente,
+           // 'administrativo'=>$administrativo,
             'changeavatarform' => $form->createView()
         );
     }

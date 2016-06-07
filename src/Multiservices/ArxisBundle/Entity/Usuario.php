@@ -23,15 +23,61 @@ class Usuario extends BaseUser
     * @ORM\Id
     * @ORM\GeneratedValue(strategy="IDENTITY")
     * @Serializer\Expose
-    * @Serializer\Groups({"activities"})
+    * @Serializer\Groups({"activities","search"})
     */
     protected $id;
     /**
     * @ORM\Column(type="string",length=255)
     * @Serializer\Expose
-    * @Serializer\Groups({"list","detail","estadisticas","activities"})
+    * @Serializer\Groups({"list","detail","estadisticas","activities","search"})
     */
     private $name='';
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("description")
+     * @Serializer\Groups({"search"})
+     */
+    public function getDescripcion(){
+      return $this->cargo;    
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("value")
+     * @Serializer\Groups({"search"})
+     */
+    public function getValue(){
+      return $this->name;    
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("color")
+     * @Serializer\Groups({"search"})
+     */       
+    public  function getColor(){
+        return 'primary';
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("icon")
+     * @Serializer\Groups({"search"})
+     */
+    public  function getIcon(){
+        return 'user';
+    }
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("tokens")
+     * @Serializer\Groups({"search"})
+     */
+    public  function getTokens(){
+        
+        $tokensname=explode(' ',$this->name);
+        $tokens=$tokensname;
+        $tokens[]=$this->name;
+        $tokens[]=$this->cargo;
+        
+        return $tokens;
+    }
     /**
     * @ORM\Column(name="cargo",type="string",length=255)
     */
@@ -613,7 +659,7 @@ class Usuario extends BaseUser
     /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("picture")
-     * @Serializer\Groups({"estadisticas","activities"})
+     * @Serializer\Groups({"estadisticas","activities","search"})
      */
     public function getWebPath()
     {

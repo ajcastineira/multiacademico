@@ -80,25 +80,29 @@
                                     <a href="#" class="btn btn-sm btn-info"><i class="fa fa-google-plus"></i></a>
                                 </div>
                                 <div class="clearfix"></div>
+                                
                             </div><!-- /.panel-heading -->
                             <div class="panel-body no-padding rounded">
                                 <ul class="list-group no-margin">
                                     <li class="list-group-item"><i class="fa fa-envelope mr-5"></i> {{usuario.email}}</li>
                                     <li class="list-group-item"><i class="fa fa-globe mr-5"></i> {{usuario}}</li>
-                                    <li class="list-group-item">
-                                       
+                                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i>
+                                        {{usuario.telefono}}
+                                        {% if estudiante %}
+                                        {% elseif docente %}
+                                        {{docente.docentetelefono}}
+                                         {% endif %}   
                                     </li>
-                                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i> {{usuario.telefono}}</li>
                                 </ul>
                             </div><!-- /.panel-body -->
                         </div><!-- /.panel -->
                         
-                            <div class="panel rounded shadow">
+                            {#<div class="panel rounded shadow">
                                 <div class="ribbon-wrapper">
                                     <div class="ribbon ribbon-primary"><i class="fa fa-star"></i> 7.8</div>
                                 </div><!-- /.ribbon-wrapper -->
                                 <div class="panel-body no-padding text-center">
-                                    <img src="/multiacademico/web/uploads/documents/images/profile/ef037a0b178f74814613db3b546522f912ed2b87 - copia.png" alt="..." class="img-responsive br-t-3 full-width">
+                                    <img ng-src="{{asset(usuario.getWebPath())}}" alt="..." class="img-responsive br-t-3 full-width">
                                     <div class="inner-all block text-center mt-20 mb-20">
                                         <div class="rating rating-2x rating-primary mb-30">
                                             <span class="star"></span>
@@ -121,13 +125,13 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div><!-- /.panel-footer -->
-                            </div><!-- /.panel -->
+                            </div><!-- /.panel -->#}
                         
 
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-8">
 
-                    <div class="profile-cover">
+                    {#<div class="profile-cover">
                         <div class="cover rounded shadow no-overflow">
                             <div class="inner-cover">
                                 <!-- Start offcanvas btn group menu: This menu will take position at the top of profile cover (mobile only). -->
@@ -153,7 +157,19 @@
                                 <li><a href="#"><i class="fa fa-fw fa-envelope"></i> <span>Mensajes</span> <small>(7 nuevos)</small></a></li>
                             </ul>
                         </div><!-- /.cover -->
-                    </div><!-- /.profile-cover -->
+                    </div><!-- /.profile-cover -->#}
+                    <div class="profile-cover">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Responsive anuncio Multiacademico -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-9022887868130724"
+                             data-ad-slot="7743590090"
+                             data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>  
                     <div class="divider"></div>
 
 					<div class="btn-group btn-group-justified">
@@ -172,14 +188,24 @@
 						</span>
 
 						<span class="btn btn-app btn-sm btn-primary no-hover">
-							<span class="line-height-1 bigger-170"> 23 </span>
+							<span class="line-height-1 bigger-170"> 
+                                                            {% if estudiante %}
+                                                            {% elseif docente %}
+                                                                {{docente.distributivos|length}}
+                                                            {% endif %}    
+                                                        </span>
 
 							<br>
 							<span class="line-height-1 smaller-90"> Materias </span>
 						</span>
 
 						<span class="btn btn-app btn-sm btn-success no-hover">
-							<span class="line-height-1 bigger-170"> 7 </span>
+							<span class="line-height-1 bigger-170">
+                                                            {% if estudiante %}
+                                                                1
+                                                            {% elseif docente %}
+                                                                {{docente.distributivos|length}}
+                                                            {% endif %}    </span>
 
 							<br>
 							<span class="line-height-1 smaller-90"> Cursos </span>
@@ -205,59 +231,20 @@
                     <div class="row">
                             <div class="panel panel-primary rounded shadow">
                                 <div class="panel-heading no-border">
-                                    <div class="pull-right">
-                                        <a href="#" class="text-white h4"><i class="fa fa-heart"></i> 15.5K</a>
-                                    </div><!-- /.pull-right -->
-                                    <div class="clearfix"></div>
-                                </div><!-- /.panel-heading -->
-                                <div class="panel-body no-padding">
-                                    <img src="/multiacademico/web/uploads/documents/images/profile/ef037a0b178f74814613db3b546522f912ed2b87 - copia.png" alt="..." class="img-responsive full-width">
-                                    <div class="inner-all block">
-                                        ver todo <a href="#">7 comentarios</a>
-                                    </div><!-- /.inner-all -->
-                                    <div class="line no-margin"></div><!-- /.line -->
-                                    <div class="media inner-all no-margin">
-                                        <div class="pull-left">
-                                            <img src="/multiacademico/web/uploads/documents/images/profile/male.png" alt="...">
-                                        </div><!-- /.pull-left -->
-                                        <div class="media-body">
-                                            <a href="#" class="h4">Ana Diaz</a>
-                                            <small class="block text-muted">Muy bien! </small>
-                                            <em class="text-xs text-muted">Publicado: <span class="text-danger">Diciembre 08, 2014</span></em>
-                                        </div><!-- /.media-body -->
-                                    </div><!-- /.media -->
-                                    <div class="line no-margin"></div><!-- /.line -->
-                                    <div class="media inner-all no-margin">
-                                        <div class="pull-left">
-                                            <img src="/multiacademico/web/uploads/documents/images/profile/male.png" alt="...">
-                                        </div><!-- /.pull-left -->
-                                        <div class="media-body">
-                                            <a href="#" class="h4">Carlos Vargas</a>
-                                            <small class="block text-muted">Excelente!</small>
-                                            <em class="text-xs text-muted">Publicado: <span class="text-danger">Diciembre 08, 2014</span></em>
-                                        </div><!-- /.media-body -->
-                                    </div><!-- /.media -->
-                                </div><!-- /.panel-body -->
-                                <div class="panel-footer">
-                                    <form action="#" class="form-horizontal">
-                                        <div class="form-group has-feedback no-margin">
-                                            <input class="form-control" type="text" placeholder="Escribe tu comentario aqui...">
-                                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                                        </div>
-                                    </form>
-                                </div><!-- /.panel-footer -->
-                            </div><!-- /.panel -->
-                            
-                            <div class="panel panel-primary rounded shadow">
-                                <div class="panel-heading no-border">
                                     <div class="pull-left half">
                                         <div class="media">
                                             <div class="media-object pull-left">
-                                                <img src="/multiacademico/web/uploads/documents/images/profile/male.png" alt="..." class="img-circle">
+                                                <img ng-src="{{asset(usuario.getWebPath())}}"  alt="..." class="img-circle" style="max-width:50px">
                                             </div>
                                             <div class="media-body">
+                                                {% if estudiante %}
                                                 <a href="#" class="media-heading block mb-0 h4 text-white">Estudiante</a>
-                                                <span class="text-white h6">8 de junio, 2014</span>
+                                                {%elseif docente%}
+                                                <a href="#" class="media-heading block mb-0 h4 text-white">Docente</a>
+                                                {%else%}    
+                                                <a href="#" class="media-heading block mb-0 h4 text-white">Administrativo</a>    
+                                                {% endif %}
+                                                <span class="text-white h6">{{'now'|date}}</span>
                                             </div>
                                         </div>
                                     </div><!-- /.pull-left -->
@@ -268,49 +255,54 @@
                                 </div><!-- /.panel-heading -->
                                 <div class="panel-body no-padding">
                                     <div class="inner-all block">
-                                        <h4>Album</h4>
+                                        <h4>Datos Informativos</h4>
                                         <p>
-                                             Imagenes de los estudiasntes de ciencias.
+                                             Detalle
                                         </p>
-                                        <blockquote class="mb-10">Viaje recracional</blockquote>
-
-                                        <img src="/multiacademico/web/uploads/documents/images/profile/ef037a0b178f74814613db3b546522f912ed2b87 - copia.png" alt="..." width="100">
-                                        <img src="/multiacademico/web/uploads/documents/images/profile/ef037a0b178f74814613db3b546522f912ed2b87 - copia.png" alt="..." width="100">
+                                        {#<blockquote class="mb-10">Viaje recracional</blockquote>#}
+                                        <table class="table">
+                                        {% if estudiante %}
+                                            <tr>
+                                                {% if estudiante.getMatriculaVigente() %}
+                                                <th>Aula</th>
+                                                <td>{{estudiante.getMatriculaVigente().getAula()}}</td>
+                                                {%else%}
+                                                <th colspan="2">ESTUDIANTE NO MATRICULADO</th>
+                                                {% endif %}
+                                            </tr>
+                                            <tr>
+                                                <th>Representante</th>
+                                                <td>{{estudiante.representante}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Telefono Representante</th>
+                                                <td>{{estudiante.representante.telefono}}</td>
+                                            </tr>
+                                        {%elseif docente%}
+                                            
+                                            <tr>
+                                                <td colspan="2">
+                                                    Distributivos<br/>
+                                                    <table class="table">
+                                                        <tr>
+                                                            <th>Materia</th>
+                                                            <th>Aula</th>    
+                                                        </tr>    
+                                                    {% for distributivo in docente.distributivos%}
+                                                        <tr>
+                                                            <td>{{distributivo.distributivocodmateria}}</td>
+                                                            <td>{{distributivo.aula}}</td>
+                                                        </tr>        
+                                                    {%endfor%}
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        {%endif%}    
+                                        </table>
                                     </div><!-- /.inner-all -->
-                                    <div class="inner-all bg-primary">
-                                        ver todo <a href="#">7 comentarios</a>
-                                    </div>
+                                    
                                 </div><!-- /.panel-body -->
-                                <div class="panel-footer no-padding no-border">
-                                    <div class="media inner-all no-margin">
-                                        <div class="pull-left">
-                                            <img src="/multiacademico/web/uploads/documents/images/profile/male.png" alt="...">
-                                        </div><!-- /.pull-left -->
-                                        <div class="media-body">
-                                            <a href="#" class="h4">Emilio Riera</a>
-                                            <small class="block text-muted">me gusta! </small>
-                                            <em class="text-xs text-muted">Publicado: <span class="text-danger">Diciembre 08, 2014</span></em>
-                                        </div><!-- /.media-body -->
-                                    </div><!-- /.media -->
-                                    <div class="line no-margin"></div><!-- /.line -->
-                                    <div class="media inner-all no-margin">
-                                        <div class="pull-left">
-                                            <img src="/multiacademico/web/uploads/documents/images/profile/male.png" alt="...">
-                                        </div><!-- /.pull-left -->
-                                        <div class="media-body">
-                                            <a href="#" class="h4">Camila Virguez</a>
-                                            <small class="block text-muted">Excelente viaje!</small>
-                                            <em class="text-xs text-muted">Publicado: <span class="text-danger">Diciembre 08, 2014</span></em>
-                                        </div><!-- /.media-body -->
-                                    </div><!-- /.media -->
-                                    <div class="line no-margin"></div><!-- /.line -->
-                                    <form action="#" class="form-horizontal inner-all">
-                                        <div class="form-group has-feedback no-margin">
-                                            <input class="form-control" type="text" placeholder="Escribe tu comntario aqui...">
-                                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                                        </div>
-                                    </form><!-- /.form-horizontal -->
-                                </div><!-- /.panel-footer -->
+                               
                             </div><!-- /.panel -->
                         
                     </div>

@@ -176,6 +176,10 @@ var require = {
 
 
         'lodash': '../plugin/lodash/lodash.min',
+        //'handlebars':'../plugin/handlebars/handlebars-v4.0.5',
+        'typeahead': '../plugin/typeahead.js/typeahead.jquery.min',
+        'bloodhound': '../plugin/typeahead.js/bloodhound.min',
+        //'typeahead.bundle': '../plugin/typeahead.js/typeahead.bundle',
         
         'ionsound': '../plugin/ionsound/js/ion.sound.min',
         'skycons':'../plugin/skycons-html5/skycons',
@@ -196,7 +200,9 @@ var require = {
     },
     shim: {
         'angular': {'exports': 'angular', deps: ['jquery']},
-
+        /*'handlebars': {
+                exports: 'Handlebars'
+            },*/
         'angular-animate': { deps: ['angular'] },
         'angular-resource': { deps: ['angular'] },
         'angular-cookies': { deps: ['angular'] },
@@ -310,7 +316,11 @@ var require = {
         'superbox': { deps: ['jquery']},
         
         'oc-lazyload': { deps: ['angular']},
+
+        'typeahead': { deps: ['jquery']},
+        'bloodhound': { deps: ['jquery']},
         
+       //'typeahead.bundle': { deps: ['jquery','typehead','bloodhound']},
         
         'pdfmakefonts': { deps: ['pdfmake']}//,
 

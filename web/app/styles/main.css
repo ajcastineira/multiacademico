@@ -19598,7 +19598,7 @@ body.page-footer-fixed #page-content .footer-content {
     min-width: 230px !important;
   }
   /* line 70, ../../app/styles/layout/_page-content.scss */
-  #page-content .navbar-form .tt-dropdown-menu {
+  #page-content .navbar-form .tt-dropdown-menu, #page-content .navbar-form .tt-menu {
     width: 300px !important;
   }
 }
@@ -22423,51 +22423,52 @@ input.rounded + .bootstrap-tagsinput .tag {
 /* line 436, ../../app/styles/plugins.scss */
 .empty-message {
   padding: 20px;
+  color: #999;
 }
 
 /* line 440, ../../app/styles/plugins.scss */
-.tt-dropdown-menu {
+.tt-menu, .tt-dropdown-menu {
   top: 45px !important;
   width: 350px;
   max-height: 360px;
-  background-color: #fff;
+  background-color: #fff!important;
   border-bottom: 1px solid #DDD;
   overflow-y: auto;
   border-bottom-left-radius: 3px !important;
   border-bottom-right-radius: 3px !important;
 }
 /* line 448, ../../app/styles/plugins.scss */
-.tt-dropdown-menu a.media {
+.tt-menu a.media, .tt-dropdown-menu a.media {
   display: block;
   text-decoration: none;
   border-bottom: 1px solid #DDD;
 }
 /* line 452, ../../app/styles/plugins.scss */
-.tt-dropdown-menu a.media:hover {
+.tt-menu a.media:hover, .tt-dropdown-menu a.media:hover {
   background-color: #EEEEEE;
 }
 /* line 456, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media {
+.tt-menu .media, .tt-dropdown-menu .media {
   position: relative;
   padding: 8px 15px;
 }
 /* line 460, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media.border-dotted:after {
+.tt-menu .media.border-dotted:after, .tt-dropdown-menu .media.border-dotted:after {
   border-bottom-style: dotted;
 }
 /* line 464, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-heading {
+.tt-menu .media .media-heading, .tt-dropdown-menu .media .media-heading {
   text-transform: capitalize;
 }
 /* line 467, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-object {
+.tt-menu .media .media-object, .tt-dropdown-menu .media .media-object {
   width: 50px;
   height: 50px;
   text-align: center;
   margin-top: 10px;
 }
 /* line 472, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-object i {
+.tt-menu .media .media-object i, .tt-dropdown-menu .media .media-object i {
   display: block;
   width: 34px;
   height: 34px;
@@ -22478,20 +22479,20 @@ input.rounded + .bootstrap-tagsinput .tag {
   border-radius: 50%;
 }
 /* line 481, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-object i.bg-default {
+.tt-menu .media .media-object i.bg-default, .tt-dropdown-menu .media .media-object i.bg-default {
   background-color: gray;
 }
 /* line 486, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .pull-left {
+.tt-menu .media .pull-left, .tt-dropdown-menu .media .pull-left {
   margin-right: 10px;
   display: table-cell;
 }
 /* line 490, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-body {
+.tt-menu .media .media-body, .tt-dropdown-menu .media .media-body {
   display: table-cell;
 }
 /* line 492, ../../app/styles/plugins.scss */
-.tt-dropdown-menu .media .media-body .media-text {
+.tt-menu .media .media-body .media-text, .tt-dropdown-menu .media .media-body .media-text {
   display: block;
   color: #999;
   font-size: 13px;

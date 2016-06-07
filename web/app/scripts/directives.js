@@ -10,6 +10,8 @@ define([
     'jquery-nicescroll',
     'ionsound',
     'chosen',
+    'typeahead',
+    'bloodhound',
     'sparkline'
 ], function (ng, couchPotato, bootbox) {
 
@@ -1033,7 +1035,66 @@ var module= ng.module('blankonDirective', [])
                 });
             }
         };
-    });
+    })
+    // =========================================================================
+    // TYPEAHEAD
+    // =========================================================================
+    .directive('typeaheadSearch', ['settings',function(settings){
+        return {
+            restrict: 'A',
+            link: function (scope, element){
+                
+                    var handleTypehead = function () {
+                    if($('.typeahead').length){
+                        var repos;
+
+                        repos = new Bloodhound({
+                            datumTokenizer: function(d) { return d.tokens; },
+                            identify: function(d) { console.log(d); return d.name; },
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
+                            prefetch: Routing.generate('index_search_usuarios')
+                             /*remote: {
+                                url: '../data/films/queries/%QUERY.json',
+                                wildcard: '%QUERY'
+                              }*/
+                        });
+
+                        repos.initialize();
+
+                        $('.typeahead').typeahead({
+                              minLength: 2,
+                              highlight: true
+                            }, {
+                            name: 'usuarios',
+                            source: repos.ttAdapter(),
+                            display: 'value',
+                            templates: {
+                                empty: [
+                                    '<div class="empty-message">',
+                                    'No se encontraron resultados',
+                                    '</div>'
+                                ].join('\n'),
+                                suggestion: Handlebars.compile([
+                                    '<a href="'+Routing.generate('perfil_user',{'id':''})+'/{{id}}" class="media border-dotted animated fadeIn">',
+                                    '<span class="media-left">' +
+                                    '<span class="media-object">',
+                                    '<i class="fa fa-{{icon}} bg-{{color}}"></i>',
+                                    '</span>',
+                                    '</span>',
+                                    '<span class="media-body">',
+                                    '<span class="media-heading">{{name}}</span>',
+                                    '<span class="media-text">{{description}}</span>',
+                                    '</span>',
+                                    '</a>'
+                                ].join(''))
+                            }
+                        });
+                    }
+                };
+                handleTypehead();
+            }
+        }
+    }]);
    couchPotato.configureApp(module);
    module.run(function ($couchPotato) {
         module.lazy = $couchPotato;

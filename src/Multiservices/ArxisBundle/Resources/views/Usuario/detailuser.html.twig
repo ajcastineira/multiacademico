@@ -46,7 +46,7 @@
                                                </div>
                                             {{form_end(changeavatarform)}} 
                                             {%else%}
-                                                <img class=" img-circle img-bordered-primary "   ng-src="{{asset(usuario.getWebPath())}}" alt='img' data-pin-nopin="true" />
+                                                <img class=" img-circle img-bordered-primary " style="max-width: 200px;"  ng-src="{{asset(usuario.getWebPath())}}" alt='img' data-pin-nopin="true" />
                                             {%endif %}
                                         </li>
                                          
@@ -159,17 +159,8 @@
                         </div><!-- /.cover -->
                     </div><!-- /.profile-cover -->#}
                     <div class="profile-cover">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- Responsive anuncio Multiacademico -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-9022887868130724"
-                             data-ad-slot="7743590090"
-                             data-ad-format="auto"></ins>
-                        <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                      </div>  
+                        {{include('::adsense-responsive.html.twig')}}
+                    </div>  
                     <div class="divider"></div>
 
 					<div class="btn-group btn-group-justified">

@@ -185,6 +185,7 @@
 
     <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
                 <script src="{{asset('plugin/moment/min/moment-with-locales.min.js')}}"></script>
+                <script src="{{asset('plugin/handlebars/handlebars-v4.0.5.js')}}"></script>
                 
     <!-- Use for production after building the project with grunt --> 
             
@@ -200,6 +201,9 @@
 		{%endif%}
 		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
                 <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+                
+                
+                
     <!--
     <script src="vendor/angular-aria/angular-aria.js"></script>
     <script src="vendor/angular-messages/angular-messages.js"></script>

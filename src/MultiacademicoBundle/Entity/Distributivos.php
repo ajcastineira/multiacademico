@@ -83,7 +83,7 @@ class Distributivos
     /**
      * @var \Docentes
      *
-     * @ORM\ManyToOne(targetEntity="Docentes")
+     * @ORM\ManyToOne(targetEntity="Docentes", inversedBy="distributivos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="distributivocoddocente", referencedColumnName="id", nullable=false)
      * })

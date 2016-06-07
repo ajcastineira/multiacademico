@@ -129,6 +129,15 @@ class Docentes
      * })
      */
     private $usuario;
+    
+     /**
+     * 
+     * 
+     * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="distributivocoddocente")
+     * 
+     */
+    private $distributivos;
+    
 
 
 
@@ -455,4 +464,45 @@ class Docentes
         return $this->docente;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->distributivos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add distributivo
+     *
+     * @param \MultiacademicoBundle\Entity\Distributivos $distributivo
+     *
+     * @return Docentes
+     */
+    public function addDistributivo(\MultiacademicoBundle\Entity\Distributivos $distributivo)
+    {
+        $this->distributivos[] = $distributivo;
+
+        return $this;
+    }
+
+    /**
+     * Remove distributivo
+     *
+     * @param \MultiacademicoBundle\Entity\Distributivos $distributivo
+     */
+    public function removeDistributivo(\MultiacademicoBundle\Entity\Distributivos $distributivo)
+    {
+        $this->distributivos->removeElement($distributivo);
+    }
+
+    /**
+     * Get distributivos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDistributivos()
+    {
+        return $this->distributivos;
+    }
 }

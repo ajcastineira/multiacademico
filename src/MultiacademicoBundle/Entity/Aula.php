@@ -26,6 +26,8 @@ class Aula
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $id;
     

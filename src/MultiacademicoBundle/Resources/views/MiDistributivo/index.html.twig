@@ -48,7 +48,7 @@
          {% for aula in misaulas %}
             <tr>
             <td>
-                <a href="{{ path('menu_tutor', {'curso': aula.curso.id,'especializacion':aula.especializacion.id,'paralelo':aula.paralelo,'seccion':aula.seccion,'periodo':aula.periodo.id}) }}">
+                <a href="{{ path('menu_tutor', {'aula': aula.id}) }}">
                     {{ aula}}
                 </a>
             </td>
@@ -58,7 +58,7 @@
                     
                     <li>
                         
-                        <a class="btn btn-primary" href="{{ path('menu_tutor', {'curso': aula.curso.id,'especializacion':aula.especializacion.id,'paralelo':aula.paralelo,'seccion':aula.seccion,'periodo':aula.periodo.id}) }}">
+                        <a class="btn btn-primary" href="{{ path('menu_tutor', {'aula': aula.id}) }}">
                             Seleccionar <i class="fa fa-arrow-right icon-on-right"></i>
                         </a>
                     </li>                    

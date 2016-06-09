@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Materias controller.
  *
- * @Route("")
+ * 
  */
 class MallasController extends Controller
 {
@@ -23,7 +23,7 @@ class MallasController extends Controller
      * Lists all Materias entities.
      *
      * @Route("/malla-normal", name="malla-normal")
-     * @Route("/malla-normal/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/{q}/{p}", name="malla-normal-front")
+     * @Route("/malla-normal/aula/{aula}/{q}/{p}", name="malla-normal-front")
      * @Method("GET")
      */
     public function indexAction()

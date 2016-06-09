@@ -1,0 +1,141 @@
+<div class="row">
+                  {{ form_start(form) }}
+
+                  <div class="row">
+                        {# store the prototype on the data-prototype attribute #}
+                        <table class="table table-striped" id="calificaciones-fields-list">
+                            <thead class="thin-border-bottom">
+                                <tr class="text-center center">
+                                    <td colspan="3" style="vertical-align:middle">
+                                        
+                                        {{include('MultiacademicoBundle:Calificaciones:formularios/intercambiador.html.twig')}}
+                                       
+                                    </td>
+                                    <td colspan="3">
+                                        <a data-ui-sref="^">
+                                            <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
+                                        
+                                        {{form_widget(form.guardar)}}
+                                        <a href="xx">
+                                            <button type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button></a>
+                                    </td></tr>
+                                <tr><td colspan="3"><b>Aula: </b>{{aula}}</td>
+                                    <td colspan="3"><b>Tutor: </b>{{aula.tutor}} </td> 
+
+                                </tr>
+                                 <tr>    
+                                     <th colspan="3">{{parcial.text_quimestre()}}</th>
+                                     <th colspan="3">{{parcial.text_parcial()}}</th>
+                                  </tr> 
+                                  <tr>
+
+
+                                        <th rowspan="2" style="width:4em">
+                                                    <i class="ace-icon fa fa-file-text-o"></i>
+                                                    Matricula
+                                            </th>
+                                            <th rowspan="2">
+                                                    <i class="ace-icon flaticon-student"></i>	
+                                                    Estudiante
+                                            </th>
+
+                                                  <th colspan="4" class="text-center">{{parcial.textalt_parcial()}}</th>
+                                                  
+                                           </tr>
+
+
+                                           <tr class="">
+                                                <th class="" style="vertical-align:bottom"><div class="">Apreciación<br/>General del<br/>Comportamiento</div></th>
+                                                <th class="" style="vertical-align:bottom"><div class="">Lo que<br/>esta bien</div></th>
+                                                <th class="" style="vertical-align:bottom"><div class="">Lo que<br/>hay que mejorar</div></th>
+                                                <th class="" style="vertical-align:bottom"><div class="">Recomendaciones<br/>para el siguiente<br/>parcial</div></th>
+                                                
+                                            </tr>
+
+
+                            </thead>
+                            <tbody>
+                            {%for calificacion in form.calificaciones %}
+                                
+                                <tr>
+                                    <td>
+                                         {%set nummat=listado[loop.index0].comportamientonummatricula.id %}    
+                                         {%set notares='M'~nummat~'agdcQ'~qactivo~'P' %}
+                                         {%set promedioqv='PM'~nummat~'q'~qactivo %}
+                                        
+                                        
+                                        {#{%set pqval=listado[loop.index0].getClubNotaQuimestral(qactivo)%}#}
+                                        
+                                          {{nummat }}
+                                     </td>   
+                                     <td>
+                                            {{listado[loop.index0].comportamientonummatricula }}
+                                     </td>
+                                     
+                                     {% if qactivo<3%}
+                                     <td>
+                                         
+                                        <div style="display:flex">
+                                         {%set notavar='agdcQ'~qactivo~'P'~pactivo %}
+                                        {{ form_errors(calificacion[notavar]) }}
+                                        {{ form_widget(calificacion[notavar],{'attr':
+                                                                                        {'ng-model':notares~pactivo,
+                                                                                        'ng-init':notares~pactivo~'=\''~calificacion[notavar].vars.value~'\'',
+                                                                                        
+                                                                                        }
+                                                                                                    
+                                                                             }
+                                                       )
+                                        }}
+                                        
+                                        {#{{ form_widget(calificacion[notavar],{'attr':
+                                                                                        {'ng-model':notares~p,
+                                                                                        'ng-init':notares~p~'=\''~calificacion[notavar].vars.value~'\'',
+                                                                                        'ng-change':promedioqv~'=promedioletras('~
+                                                                                                    notares~'1,'~
+                                                                                                    notares~'2,'~
+                                                                                                    notares~'3)'
+                                                                                        }
+                                                                                                    
+                                                                             }
+                                                       )
+                                        }}#}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display:flex">
+                                        {%set estabienvar='estabienQ'~qactivo~'P'~pactivo %}
+                                        {{ form_errors(calificacion[estabienvar]) }}
+                                        {{ form_widget(calificacion[estabienvar])}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display:flex">
+                                         {%set mejorarvar='mejorarQ'~qactivo~'P'~pactivo %}
+                                        {{ form_errors(calificacion[mejorarvar]) }}
+                                        {{ form_widget(calificacion[mejorarvar])}}
+                                        </div>
+                                    </td>   
+                                    <td>
+                                        <div style="display:flex">
+                                         {%set crecomendacionvar='crecomendacionQ'~qactivo~'P'~pactivo %}    
+                                        {{ form_errors(calificacion[crecomendacionvar]) }}
+                                        {{ form_widget(calificacion[crecomendacionvar])}}
+                                        </div>
+                                    </td>   
+                                    {%endif%}
+                                    {#<td data-ng-init="{{promedioqv}}='{{pqval}}'">
+                                        {{'{{'}}{{promedioqv}}{{'}}'}} 
+                                    </td>#}
+                                   
+                                </tr>    
+                            {%endfor%}    
+                            </tbody>
+                        </table>
+
+
+                            </div >
+                        {# ... #}
+                    {{ form_end(form) }}
+
+              </div>

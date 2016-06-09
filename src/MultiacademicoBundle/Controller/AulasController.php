@@ -90,8 +90,8 @@ class AulasController extends FOSRestController
     
     /**
      * Lists aula.
-     * @Rest\Get("/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}")
-     * @ParamConverter("aula", class="MultiacademicoBundle:Aula", options={
+     * @Rest\Get("/aula/{aula}")
+     * ParamConverter("aula", class="MultiacademicoBundle:Aula", options={
      *    "repository_method" = "findByDatos",
      *    "mapping": {"curso": "curso","especializacion":"especializacion","paralelo":"paralelo", "seccion": "seccion","periodo": "periodo"},
      *    "map_method_signature" = true

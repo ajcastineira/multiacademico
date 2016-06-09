@@ -101,8 +101,8 @@ class MiDistributivoController extends Controller
      /**
      * Lists all Distributivos entities.
      *
-     * @Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="menu_tutor", options={"expose":true})
-     * Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/", name="menu_tutor", options={"expose":true})
+     * @Route("/tutor/{aula}", name="menu_tutor", options={"expose":true})
+     * Route("/tutor/{aula}/", name="menu_tutor", options={"expose":true})
      * @Method("GET")
      */
     public function menuTutorAction()
@@ -113,7 +113,7 @@ class MiDistributivoController extends Controller
     /**
      * Lists all Distributivos entities.
      *
-     * @Route("/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/api", name="menu_tutor_api", options={"expose":true})
+     * @Route("/tutor/{aula}/api", name="menu_tutor_api", options={"expose":true})
      * @Method("GET")
      * @Template("MultiacademicoBundle:MiDistributivo:menututor.html.twig")
      */

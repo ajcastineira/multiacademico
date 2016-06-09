@@ -57,7 +57,7 @@ define([
                 
                 
                 .state('multiacademico.malla-normal.aula', {
-                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}/{q}/{p}',
+                    url: '/aula/{aula}/{q}/{p}',
                     reloadOnSearch: false,
                     data: {
                         pageTitle: 'Cuadro de Calificaciones',
@@ -81,7 +81,7 @@ define([
                                
                                 ]),
                                aula: function ($http,$stateParams) {
-                                 return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
+                                 return $http.get(Routing.generate('get_aula',{aula: $stateParams.aula,'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
                                              return response.data;

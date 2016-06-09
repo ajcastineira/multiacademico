@@ -184,7 +184,7 @@ define(['angular',
                 
             })
             .state ('multiacademico.docentes.midistributivo.tutor', {
-                url: '/tutor/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                url: '/tutor/{id}',
                 data: {
                         pageTitle: 'Menu Tutor',
                         pageHeader: {
@@ -199,11 +199,52 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
-                            return Routing.generate('menu_tutor_api',{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo});
+                            return Routing.generate('menu_tutor_api',{'aula':$stateParams.aula});
                         },
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([
                                // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
+            .state ('multiacademico.docentes.midistributivo.tutor.comportamiento', {
+               // abstract:true,
+                url:'/comportamiento/:q/:p',
+                params:{
+                  submited:false,
+                  formData:null
+                },
+                data: {
+                        pageTitle: 'Calificaciones Comportamiento',
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Calificaciones Comportamiento',
+                            subtitle: 'Curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Calificaciones Comportamiento'},{title: 'calificar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateProvider:function($stateParams,CalificarForm){
+                                var rutas3={
+                                            edit:'calificaciones_comportamiento_api',
+                                            update:'calificaciones_comportamiento_api',
+                                            state_created:'multiacademico.docentes.midistributivo.tutor.comportamiento',
+                                            state_updated:'multiacademico.docentes.midistributivo.tutor.comportamiento'
+                                             };
+                                  return CalificarForm.calificar($stateParams,rutas3);
+                             },
+                        controller: 'CalificarCtrl',    
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
                                 'modules/tables/directives/datatables/datatableBasic'
                             ])
                         }

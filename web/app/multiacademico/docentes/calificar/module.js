@@ -114,6 +114,47 @@ define(['angular',
                 }        
                 
             })
+            .state ('multiacademico.docentes.midistributivo.menu.informeaprendizaje', {
+               // abstract:true,
+                url:'/informeaprendizaje/:q/:p',
+                params:{
+                  submited:false,
+                  formData:null
+                },
+                data: {
+                        pageTitle: 'Calificaciones Informe Aprendizaje',
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Calificaciones',
+                            subtitle: 'Curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Calificaciones'},{title: 'calificar informe aprendizaje'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateProvider:function($stateParams,CalificarForm){
+                                  var rutas_informes={
+                                            edit:'calificaciones_informeaprendizaje_api',
+                                            update:'calificaciones_informeaprendizaje_api',
+                                            state_created:'multiacademico.docentes.midistributivo.proyectos.informeaprendizaje',
+                                            state_updated:'multiacademico.docentes.midistributivo.proyectos.informeaprendizaje'
+                                             };
+                                  return CalificarForm.calificar($stateParams,rutas_informes);
+                             },
+                        controller: 'CalificarCtrl',    
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
             .state ('multiacademico.docentes.midistributivo.proyectos', {
                 url:'/proyectos/{id:[0-9]{1,11}}',
                 data: {

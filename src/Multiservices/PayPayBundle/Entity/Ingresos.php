@@ -388,9 +388,7 @@ class Ingresos
                 $saldo=$saldo-$factura->saldoAPagar();
                 $factura->setCobrado($factura->getCobrado()+$factura->saldoAPagar());
                 $factura->setEstado(EstadoFacturaType::PAGADA);
-                $factura->setPago(New \DateTime());
-                
-                
+                $factura->setPago($this->fecha);
             }else
             {
                 $factura->setCobrado($factura->getCobrado()+$saldo);

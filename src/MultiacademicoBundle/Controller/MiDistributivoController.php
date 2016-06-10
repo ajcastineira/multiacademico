@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Entity\Calificaciones;
 
-use MultiacademicoBundle\Form\CalificarCursoType;
+use MultiacademicoBundle\Form\CalificarInformeAprendizajeType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
 use Symfony\Component\HttpFoundation\Response;
@@ -254,7 +254,7 @@ class MiDistributivoController extends Controller
      */
     private function createCalificarForm(CursoACalificar $cursoACalificar,$q,$p)
     {
-        $form = $this->createForm( CalificarCursoType::class, $cursoACalificar, array(
+        $form = $this->createForm( CalificarInformeAprendizajeType::class, $cursoACalificar, array(
           //  'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
             'method' => 'PUT',
         ));

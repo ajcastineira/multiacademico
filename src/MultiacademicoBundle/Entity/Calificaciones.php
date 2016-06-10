@@ -71,7 +71,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p1_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p1_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P1Recomendacion="";
@@ -79,7 +79,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p1_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p1_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P1Planmejora="";
@@ -135,7 +135,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p2_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p2_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P2Recomendacion="";
@@ -143,7 +143,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p2_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p2_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P2Planmejora="";
@@ -199,7 +199,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p3_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p3_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P3Recomendacion="";
@@ -207,7 +207,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_p3_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_p3_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1P3Planmejora="";
@@ -231,7 +231,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1Recomendacion="";
@@ -239,7 +239,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q1_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q1_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q1Planmejora="";
@@ -287,7 +287,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p1_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p1_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P1Recomendacion="";
@@ -295,7 +295,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p1_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p1_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P1Planmejora="";
@@ -351,7 +351,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p2_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p2_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P2Recomendacion="";
@@ -359,7 +359,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p2_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p2_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P2Planmejora="";
@@ -415,7 +415,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p3_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p3_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P3Recomendacion="";
@@ -423,7 +423,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_p3_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_p3_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2P3Planmejora="";
@@ -447,7 +447,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_recomendacion", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_recomendacion", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2Recomendacion="";
@@ -455,7 +455,7 @@ class Calificaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="q2_planmejora", type="string", length=500, nullable=false)
+     * @ORM\Column(name="q2_planmejora", type="string", length=500, nullable=true)
      * @Serializer\Groups({"list","detail"})
      */
     private $q2Planmejora="";

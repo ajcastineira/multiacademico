@@ -1,0 +1,243 @@
+<div class="row">
+                  {{ form_start(form) }}
+
+                  <div class="row">
+                        {# store the prototype on the data-prototype attribute #}
+                        <table class="table table-striped" id="calificaciones-fields-list">
+                            <thead class="thin-border-bottom">
+                                <tr class="text-center center">
+                                    <td colspan="2" style="vertical-align:middle">
+                                        
+                                        {{include('MultiacademicoBundle:Calificaciones:formularios/intercambiador.html.twig')}}
+                                       
+                                    </td>
+                                    <td colspan="3">
+                                        <a data-ui-sref="^">
+                                            <button type="button" class="btn btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
+                                        
+                                        {{form_widget(form.guardar)}}
+                                        
+                                            {#<a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning "><i class="fa fa-print bigger-160"></i>Imprimir</a>#}
+                                             
+                                            {#<div class="btn-group">
+                                            <a data-ng-click="openModal()" ng-href="{{'{{urlCalificacionesPrint()}}'}}" type="button" class="btn btn-app btn-warning" >
+                                                <i class="fa fa-print"></i> Imprimir
+                                            </a>
+                                            <button type="button" class="btn btn-app btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>    
+                                            <ul class="dropdown-menu" role="menu">
+                                                  
+                                                        <li>
+                                                            <a ng-href="{{'{{urlCalificacionesPrint()}}'}}" data-ng-click="openModal()" target="_blank">Hoja Actual</a>
+                                                        </li>
+                                                        <li>
+                                                            <a ng-href="{{'{{urlResumenCalificacionesQuimestrePrint()}}'}}" data-ng-click="openModalExpanded(urlResumenCalificacionesQuimestrePrint())" target="_blank">Resumen Quimestral</a>
+                                                        </li>
+                                                        <li>
+                                                            <a ng-href="{{'{{urlResumenCalificacionesAnualPrint()}}'}}" data-ng-click="openModalExpanded(urlResumenCalificacionesAnualPrint())" target="_blank">Resumen Anual</a>
+                                                        </li>
+                                               
+                                            </ul>#}
+                                        </div>
+
+                                    </td></tr>
+                                <tr><td colspan="2"><b>Curso: </b>{{curso}}</td>
+                                    <td colspan="3"><b>Materia: </b>{{materia}} </td> 
+
+                                </tr>
+                                 <tr>    
+                                     <th colspan="8">{{parcial.text_quimestre()}}</th>
+                                  </tr> 
+                                  <tr>
+
+
+                                        <th rowspan="2" style="width:4em">
+                                                    <i class="ace-icon fa fa-file-text-o"></i>
+                                                    Matricula
+                                            </th>
+                                            <th rowspan="2">
+                                                    <i class="ace-icon flaticon-student"></i>	
+                                                    Estudiante
+                                            </th>
+
+                                                  <th colspan="3" class="text-center">{{parcial.textalt_parcial()}}</th>
+                                                  {% if pactivo==3 %}
+                                                  <th colspan="5" class="text-center hidden-480">Totales del Parcial</th>
+                                                  {% endif%}
+                                           </tr>
+
+                                                {%if qactivo<3%}
+                                                    <th class="" style="vertical-align:bottom"><div class="">Promedio Parcial</div></th>
+                                                    <th class="" style="vertical-align:bottom"><div class="">Lo que hay que mejorar</div></th>
+                                                    <th class="" style="vertical-align:bottom"><div class="">Plan de Recomendacion para el siguiente parcial</div></th>
+                                                    {% if pactivo==3 %}
+                                                    <th class="" style="vertical-align:bottom"><div class="">Lo que hay que mejorar</div></th>
+                                                    <th class="" style="vertical-align:bottom"><div class="">Plan de Recomendacion para el siguiente quimestre</div></th>
+                                                    {%endif%}
+                                                {%endif%}
+                                            </tr>
+
+
+                            </thead>
+                            <tbody>
+                            {%for calificacion in form.calificaciones %}
+                                
+                                <tr>
+                                    <td>
+                                         {%set nummat=listado[loop.index0].calificacionnummatricula.id %}    
+                                         
+                                        
+                                        
+                                          {{nummat }}
+                                     </td>   
+                                     <td>
+                                            {{listado[loop.index0].calificacionnummatricula }}
+                                     </td>
+                                     {% if qactivo<3 %}
+                                         {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
+                                         {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                         {%set promediopt='PPTM'~nummat~'q'~qactivo %}
+                                        {%set promediopt80='PPT80M'~nummat~'q'~qactivo %}
+                                        {%set ppval=listado[loop.index0].getPromedioParcial(qactivo,pactivo)%}
+                                        {%set pptval=listado[loop.index0].getPromedioParciales(qactivo)%}
+                                        {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
+                                        {%set exvar='q'~qactivo~'Ex' %}
+                                        {%set exres='M'~nummat~exvar%}
+                                        {%set exres20=exres~'V20'%}
+                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}    
+                                        <td data-ng-init="{{promediopv}}={{ppval}}">
+                                            {{'{{'}}{{promediopv}}{{'}}'}} 
+                                        </td>
+                                         <td>
+                                            <div style="display:flex">
+                                             {%set recvar='q'~qactivo~'P'~pactivo~'Recomendacion' %}
+                                            {{ form_errors(calificacion[recvar]) }}
+                                            {{ form_widget(calificacion[recvar]) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:flex">
+                                             {%set pmejoravar='q'~qactivo~'P'~pactivo~'Planmejora' %}
+                                            {{ form_errors(calificacion[pmejoravar]) }}
+                                            {{ form_widget(calificacion[pmejoravar]) }}
+                                            </div>
+                                        </td>
+                                        
+                                        
+                                        {% if pactivo==3 %}
+
+                                         <td>
+                                            <div style="display:flex">
+                                             {%set recvarq='q'~qactivo~'Recomendacion' %}
+                                            {{ form_errors(calificacion[recvarq]) }}
+                                            {{ form_widget(calificacion[recvarq]) }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:flex">
+                                             {%set pmejoravarq='q'~qactivo~'Planmejora' %}
+                                            {{ form_errors(calificacion[pmejoravarq]) }}
+                                            {{ form_widget(calificacion[pmejoravarq]) }}
+                                            </div>
+                                        </td>
+                                        <td data-ng-init="{{exres20}}={{exres}}*0.2">
+                                            {{'{{'}}{{exres20}}{{'|number:2}}'}}
+                                        </td>
+                                        <td data-ng-init="{{promedioqv}}={{listado[loop.index0].getPromedioQuimestre(qactivo)}}">
+                                            {{'{{'}}{{promedioqv}}{{'|number:2}}'}}
+                                        </td>
+                                        {% endif %}
+                                    {%endif%}
+                                    {% if qactivo==3 %}
+                                        {%set mejorares='M'~nummat~'mejoramiento'%}
+                                        {%set supletoriores='M'~nummat~'supletorio'%}
+                                        {%set remedialres='M'~nummat~'remedial'%}
+                                        {%set graciares='M'~nummat~'gracia'%}
+                                        {%set pq1val=listado[loop.index0].getPromedioQuimestre(1)%}
+                                        {%set pq2val=listado[loop.index0].getPromedioQuimestre(2)%}
+                                        {%set promedioav='PA'~nummat %} 
+                                        
+                                        {%set paval=listado[loop.index0].getPromedioAnual()%}
+                                        {%set promediofv='PF'~nummat %}    
+                                    <td data-ng-init="{{promedioav}}={{paval}}">
+                                               {{'{{'}}{{promedioav}}{{'|number:2}}'}}
+                                        </td>    
+                                    <td>
+                                        {#'ng-change':promediofv~'='~pq1val~'*1+'~pq2val~'*1+'~mejorares~'*1+'~supletoriores~'*1+'~remedialres~'*1+'~graciares~'*1;'#}
+                                        {{ form_widget(calificacion['mejoramiento'],
+                                                {'attr':    {'ng-model':mejorares,
+                                                             'ng-init':mejorares~'='~(calificacion['mejoramiento'].vars.value|replace(',','.')),
+                                                             'ng-change':promediofv~'=promediofinal('~
+                                                                                        pq1val~','~
+                                                                                        pq2val~','~
+                                                                                        mejorares~','~
+                                                                                        supletoriores~','~
+                                                                                        remedialres~','~
+                                                                                        graciares~')|number:2'
+                                                             
+                                                            }
+                                                    })
+                                        }}
+                                    </td>     
+                                    <td>     
+                                        {{ form_widget(calificacion['supletorio'],
+                                                {'attr':    {'ng-model':supletoriores,
+                                                             'ng-init':supletoriores~'='~(calificacion['supletorio'].vars.value|replace(',','.')),
+                                                             'ng-change':promediofv~'=promediofinal('~
+                                                                                        pq1val~','~
+                                                                                        pq2val~','~
+                                                                                        mejorares~','~
+                                                                                        supletoriores~','~
+                                                                                        remedialres~','~
+                                                                                        graciares~')|number:2'
+                                                            }
+                                                    })
+                                        }}
+                                    </td>     
+                                    <td>     
+                                        {{ form_widget(calificacion['remedial'],
+                                                {'attr':    {'ng-model':remedialres,
+                                                             'ng-init':remedialres~'='~(calificacion['remedial'].vars.value|replace(',','.')),
+                                                             'ng-change':promediofv~'=promediofinal('~
+                                                                                        pq1val~','~
+                                                                                        pq2val~','~
+                                                                                        mejorares~','~
+                                                                                        supletoriores~','~
+                                                                                        remedialres~','~
+                                                                                        graciares~')|number:2'
+                                                            }
+                                                    })
+                                        }}
+                                    </td>     
+                                    <td>     
+                                        {{ form_widget(calificacion['gracia'],
+                                                {'attr':    {'ng-model':graciares,
+                                                             'ng-init':graciares~'='~(calificacion['gracia'].vars.value|replace(',','.')),
+                                                             'ng-change':promediofv~'=promediofinal('~
+                                                                                        pq1val~','~
+                                                                                        pq2val~','~
+                                                                                        mejorares~','~
+                                                                                        supletoriores~','~
+                                                                                        remedialres~','~
+                                                                                        graciares~')|number:2'
+                                                            }
+                                                    })
+                                        }}
+                                    </td>
+                                    <td data-ng-init="{{promediofv}}={{listado[loop.index0].getPromedioFinal()}}">
+                                            {{'{{'}}{{promediofv}}{{'|number:2}}'}}
+                                        </td>
+                                    {%endif%}    
+                                </tr>    
+                            {%endfor%}    
+                            </tbody>
+                        </table>
+
+
+                            </div >
+                        {# ... #}
+                    {{ form_end(form) }}
+
+              </div>

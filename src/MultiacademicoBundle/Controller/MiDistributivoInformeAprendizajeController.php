@@ -111,7 +111,7 @@ class MiDistributivoInformeAprendizajeController extends Controller
         return $form;
     }
     
-    private function crearCuadrosDeComportamiento($listado, Distributivos $distributivo){
+    private function crearCuadrosDeCalificaciones($listado, Distributivos $distributivo){
             
             $em=$this->getDoctrine()->getManager();
             //Definiedo ArrayColection 

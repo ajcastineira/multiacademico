@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Distributivos;
 use MultiacademicoBundle\Entity\Calificaciones;
 
-use MultiacademicoBundle\Form\CalificarInformeAprendizajeType;
+use MultiacademicoBundle\Form\CalificarCursoType;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Libs\Parcial;
 use Symfony\Component\HttpFoundation\Response;
@@ -205,35 +205,19 @@ class MiDistributivoController extends Controller
         $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         // comparando si el listado de calificaciones no ha sido creado
-        $numMatriculados=$em->getRepository('MultiacademicoBundle:Calificaciones')->numeroMatriculadosDelDistributivo($distributivo);
+        $matriculados=$distributivo->getAula()->getMatriculados();
+        $numMatriculados=count($matriculados);
         if ($numMatriculados>count($listado))
         {
-            //Definiedo ArrayColection 
-            $matriculasEnListado=new \Doctrine\Common\Collections\ArrayCollection();
-            //llenando array
-            foreach ($listado as $listacalificacion)
-            {
-              $matriculasEnListado[]=$listacalificacion->getCalificacionnummatricula();
-            }
-            //obteniendo lista de matriculados
-            $matriculados=$em->getRepository('MultiacademicoBundle:Calificaciones')->matriculadosDelDistributivo($distributivo);
-            foreach ($matriculados as $matricula) {
-                if (!$matriculasEnListado->contains($matricula))
-                {   
-                $calificacion=new Calificaciones();
-                $calificacion->setCalificacioncodmateria($distributivo->getDistributivocodmateria());
-                $calificacion->setCalificacionnummatricula($matricula);
-                $em->persist($calificacion);
-                }
-            }
-            $em->flush(); //Persistiendo objetos en base de datos
+            $this->crearCuadrosDeCalificaciones($listado, $distributivo);
             $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         }
         $cursoACalificar->setCalificaciones($listado);
-        $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
         
+        $form = $this->createCalificarForm($cursoACalificar,$qactivo,$pactivo);
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
+        
         return array(
             
             'curso'=>$curso, 'materia'=>$materia,
@@ -254,7 +238,7 @@ class MiDistributivoController extends Controller
      */
     private function createCalificarForm(CursoACalificar $cursoACalificar,$q,$p)
     {
-        $form = $this->createForm( CalificarInformeAprendizajeType::class, $cursoACalificar, array(
+        $form = $this->createForm( CalificarCursoType::class, $cursoACalificar, array(
           //  'action' => $this->generateUrl('pasar_calificaciones_api',array('id'=>$cursoACalificar->getDistributivoId(),'q'=>$q,'p'=>$p)),
             'method' => 'PUT',
         ));
@@ -304,5 +288,29 @@ class MiDistributivoController extends Controller
         
     }
     
+    
+    private function crearCuadrosDeCalificaciones($listado, Distributivos $distributivo){
+            
+            $em=$this->getDoctrine()->getManager();
+            //Definiedo ArrayColection 
+            $matriculasEnListado=new \Doctrine\Common\Collections\ArrayCollection();
+            //llenando array
+            foreach ($listado as $listacalificacion)
+            {
+              $matriculasEnListado[]=$listacalificacion->getComportamientonummatricula();
+            }
+            //obteniendo lista de matriculados
+            $matriculados=$distributivo->getAula()->getMatriculados();
+            foreach ($matriculados as $matricula) {
+                if (!$matriculasEnListado->contains($matricula))
+                {   
+                $calificacion=new Calificaciones();
+                $calificacion->setCalificacioncodmateria($distributivo->getDistributivocodmateria());
+                $calificacion->setCalificacionnummatricula($matricula);
+                $em->persist($calificacion);
+                }
+            }
+            $em->flush(); //Persistiendo objetos en base de datos
+    }
    
 }

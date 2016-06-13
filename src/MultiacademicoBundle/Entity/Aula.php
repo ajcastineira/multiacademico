@@ -97,6 +97,16 @@ class Aula
      */
     private $tutor;
     
+     /**
+     * @var \Docentes
+     
+     * @ORM\ManyToOne(targetEntity="Docentes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="inspector_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $inspector;
+    
     /**
      * @var string
      *
@@ -462,5 +472,29 @@ class Aula
     public function getAlias()
     {
         return $this->alias;
+    }
+
+    /**
+     * Set inspector
+     *
+     * @param \MultiacademicoBundle\Entity\Docentes $inspector
+     *
+     * @return Aula
+     */
+    public function setInspector(\MultiacademicoBundle\Entity\Docentes $inspector = null)
+    {
+        $this->inspector = $inspector;
+
+        return $this;
+    }
+
+    /**
+     * Get inspector
+     *
+     * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function getInspector()
+    {
+        return $this->inspector;
     }
 }

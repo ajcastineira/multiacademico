@@ -22,6 +22,7 @@ class AulasType extends AbstractType
             ->add('seccion')
             ->add('alias')     
             ->add('tutor')
+            ->add('inspector')
         ;
     }
     

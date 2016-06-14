@@ -83,7 +83,8 @@ class PensionController extends FOSRestController
                     $que_va_a_pagar=explode("|",$data[33]);   //contra referencia adicional
                     $canal_de_pago=$data[18];
                     $id_estudiante=$data[4];   //contra partidoa
-                    $valorapagar=floatval($data[8]);
+                    //$valorapagar=floatval($data[8]);
+                    $valorapagar=floatval($data[27]); //procesado
                     $referencia_doc=$data[20];
                     $fecha=explode(" ",$data[25]);
                     $hora=explode(" ",$data[26]);

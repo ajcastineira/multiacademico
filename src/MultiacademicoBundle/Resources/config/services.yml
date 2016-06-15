@@ -66,6 +66,9 @@ services:
     multiacademico.pensiones:
         class: MultiacademicoBundle\Datatables\PensionDatatable
         parent: sg_datatables.datatable.abstract
+    multiacademico.pensionesaulas:
+        class: MultiacademicoBundle\Datatables\PensionesAulasDatatable
+        parent: sg_datatables.datatable.abstract    
     multiacademico.form.type.nota:
         class: MultiacademicoBundle\Form\Type\NotaType
         tags:

@@ -11,7 +11,7 @@ use MultiacademicoBundle\Datatables\Columns\RepresentanteColumn;
  *
  * @package MultiacademicoBundle\Datatables
 */
-class PensionDatatable extends AbstractDatatableView
+class PensionesAulasDatatable extends AbstractDatatableView
 {
     /**
      * {@inheritdoc}
@@ -19,12 +19,12 @@ class PensionDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $exporOptions=[
-                       'columns'=> [0,1,2,3,4,5,6,7,8,9]
+                       //'columns'=> [0,1,2,3,4,5,6,7,8,9]
             
                        ];
-        $this->callbacks->set(array(
+       /* $this->callbacks->set(array(
             'footer_callback' => "MultiacademicoBundle:Pension:footercallback.js.twig"
-        ));
+        ));*/
 
         $this->features->set(array(
             'auto_width' => true,
@@ -78,7 +78,7 @@ class PensionDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('pension_results'),
+            'url' => $this->router->generate('results_pension_aulas'),
             'type' => 'GET'
         ));
 
@@ -121,118 +121,36 @@ class PensionDatatable extends AbstractDatatableView
            /* ->add('estudiante.estudianteCedula', 'column', array(
                 'title' => 'Estudiante EstudianteCedula',
             ))*/
+            ->add('estudiante.matriculas.aula.id', 'array', array(
+                'title' => 'Aula Codigo',
+                'data' => 'estudiante.matriculas[,].aula.id',
+                 'visible'=>false
+            ))    
             ->add('estudiante.estudiante', 'column', array(
                 'title' => 'Estudiante ',
                  'width'=>'7em',
             ))
-        /*
-            ->add('estudiante.madre', 'column', array(
-                'title' => 'Estudiante Madre',
-            ))
-            ->add('estudiante.madreCedula', 'column', array(
-                'title' => 'Estudiante MadreCedula',
-            ))
-            ->add('estudiante.madreEstadocivil', 'column', array(
-                'title' => 'Estudiante MadreEstadocivil',
-            ))
-            ->add('estudiante.madreTelefono', 'column', array(
-                'title' => 'Estudiante MadreTelefono',
-            ))
-            ->add('estudiante.madreDomicilio', 'column', array(
-                'title' => 'Estudiante MadreDomicilio',
-            ))
-            ->add('estudiante.madreBono', 'column', array(
-                'title' => 'Estudiante MadreBono',
-            ))
-            ->add('estudiante.padre', 'column', array(
-                'title' => 'Estudiante Padre',
-            ))
-            ->add('estudiante.padreCedula', 'column', array(
-                'title' => 'Estudiante PadreCedula',
-            ))
-            ->add('estudiante.padreEstadocivil', 'column', array(
-                'title' => 'Estudiante PadreEstadocivil',
-            ))
-            ->add('estudiante.padreTelefono', 'column', array(
-                'title' => 'Estudiante PadreTelefono',
-            ))
-            ->add('estudiante.padreDomicilio', 'column', array(
-                'title' => 'Estudiante PadreDomicilio',
-            ))
-            ->add('estudiante.representanteCedula', 'column', array(
-                'title' => 'Estudiante RepresentanteCedula',
-            ))
-            ->add('estudiante.representanteNombre', 'column', array(
-                'title' => 'Estudiante RepresentanteNombre',
-            ))
-            ->add('estudiante.representanteDomicilio', 'column', array(
-                'title' => 'Estudiante RepresentanteDomicilio',
-            ))
-            ->add('estudiante.representanteTelefono', 'column', array(
-                'title' => 'Estudiante RepresentanteTelefono',
-            ))
-            ->add('estudiante.representanteTipo', 'column', array(
-                'title' => 'Estudiante RepresentanteTipo',
-            ))
-            ->add('estudiante.path', 'column', array(
-                'title' => 'Estudiante Path',
-            ))
-            ->add('estudiante.theme', 'column', array(
-                'title' => 'Estudiante Theme',
-            ))
-            ->add('estudiante.signature', 'column', array(
-                'title' => 'Estudiante Signature',
-            ))
-            ->add('estudiante.signatureFormat', 'column', array(
-                'title' => 'Estudiante SignatureFormat',
-            ))
-            ->add('estudiante.created', 'column', array(
-                'title' => 'Estudiante Created',
-            ))
-            ->add('estudiante.access', 'column', array(
-                'title' => 'Estudiante Access',
-            ))
-            ->add('estudiante.lastlogin', 'column', array(
-                'title' => 'Estudiante Lastlogin',
-            ))
-            ->add('estudiante.lastactivity', 'column', array(
-                'title' => 'Estudiante Lastactivity',
-            ))
-            ->add('estudiante.status', 'column', array(
-                'title' => 'Estudiante Status',
-            ))
-            ->add('estudiante.timezone', 'column', array(
-                'title' => 'Estudiante Timezone',
-            ))
-            ->add('estudiante.language', 'column', array(
-                'title' => 'Estudiante Language',
-            ))
-            ->add('estudiante.picture', 'column', array(
-                'title' => 'Estudiante Picture',
-            ))
-            ->add('estudiante.init', 'column', array(
-                'title' => 'Estudiante Init',
-            ))
-            ->add('estudiante.data', 'column', array(
-                'title' => 'Estudiante Data',
-            ))
-            ->add('estudiante.mail', 'column', array(
-                'title' => 'Estudiante Mail',
-            ))*/
-          /* ->add('factura.idcliente', 'column', array(
-                'visible'=>false
-            )) */    
-            ->add('factura.idcliente', new RepresentanteColumn(), array(
-                'title' => 'Representante',
-                'data'=>'factura.idcliente.representante',
-                //'render'=>'function(data){return data.representante;}',
+                
+             ->add('estudiante.matriculas.aula.alias', 'array', array(
+                'title' => 'Alias ',
+                'data' => 'estudiante.matriculas[,].aula.alias',
                  'width'=>'7em'
             ))
-            ->add('factura.emitido', 'datetime', array(
-                'title' => 'Emitido',
-                'date_format' => 'DD-MMM-YYYY H:mm:s',
-                 'width'=>'5em',
+            ->add('estudiante.matriculas.aula.curso', 'array', array(
+                'title' => 'Curso',
+                'data' => 'estudiante.matriculas[,].aula.curso.curso',
+                 'width'=>'7em'
             ))
+            ->add('estudiante.matriculas.aula.paralelo', 'array', array(
+                'title' => 'Paralelo',
+                'data' => 'estudiante.matriculas[,].aula.paralelo',
+                 'width'=>'7em'
+            ))
+            ->add('estudiante.matriculas.aula.seccion', 'array', array(
+                'title' => 'Seccion',
+                'data' => 'estudiante.matriculas[,].aula.seccion',
+                 'width'=>'7em'
+            ))        
             ->add('factura.estado', 'column', array(
                 'title' => 'Estado',
                  'width'=>'5em'
@@ -255,26 +173,6 @@ class PensionDatatable extends AbstractDatatableView
                 'title' => 'Total',
                  'width'=>'4em'
             ))
-            /*->add('factura.forma', 'column', array(
-                'title' => 'Factura Forma',
-            ))*/
-         
-            /*->add('factura.tipo', 'column', array(
-                'title' => 'Factura Tipo',
-            ))*/
-            
-            /*->add('factura.statevencido', 'column', array(
-                'title' => 'Factura Statevencido',
-            ))*/
-            /*->add('factura.credito', 'column', array(
-                'title' => 'Factura Credito',
-            ))*/
-            /*->add('factura.iva_igv', 'column', array(
-                'title' => 'Factura Iva_igv',
-            ))*/
-            /*->add('factura.sub_total', 'column', array(
-                'title' => 'Factura Sub_total',
-            ))*/
             ->add('estudiante.id', 'column', array(
                 'visible'=>false,
             ))     
@@ -343,8 +241,6 @@ class PensionDatatable extends AbstractDatatableView
             if (isset($line["factura"]))
             {
             $line["factura"]["estado"] = EstadoFacturaType::getReadableHtmlValue($line["factura"]["estado"]);
-            $representanteroute = $router->generate('representantes', array('page' => $line["factura"]["idcliente"]["id"]));
-            $line["factura"]["idcliente"]["representante"] = '<a href="'.$representanteroute.'">'.$line["factura"]["idcliente"]["representante"].'</a>';
             }
             $estudianteroute = $router->generate('estudiantes_show', array('id' => $line["estudiante"]["id"]));
             $line["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$line["estudiante"]["estudiante"].'</a>';

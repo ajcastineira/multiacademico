@@ -54,6 +54,31 @@ class PensionController extends FOSRestController
             'form'=>$form->createView()
         ));
     }
+    
+     /**
+     * Lists all Pension entities.
+     *
+     */
+    public function indexAulasAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $pensions = $em->getRepository('MultiacademicoBundle:Pension')->actualizarPensiones();
+        
+        $listado = new ListadoXLS();
+        $form=$this->createForm(SubirListadoXLSType::class, $listado, 
+                                        ['action'=>$this->generateUrl('subir_pension_listado')]);
+        $form->handleRequest($request);
+        
+        $pensions_datatable = $this->get("multiacademico.pensionesaulas");
+        $pensions_datatable->buildDatatable();
+
+        return $this->render('MultiacademicoBundle:Pension:indexAulas.html.twig', array(
+            //'pensions' => $pensions,
+            'datatable'=>$pensions_datatable,
+            'form'=>$form->createView()
+        ));
+    }
     /**
      * @Rest\Post()
      */
@@ -145,6 +170,40 @@ class PensionController extends FOSRestController
         //var_dump($qb->getDQLPart('where'));     
         //var_dump($qb->getDQL());
         $query->setQuery($qb);
+        return $query->getResponse(false);
+    }
+    
+    /**
+     * Get results from Pension entity.
+     *
+     */
+    public function resultsAulasAction(Request $request)
+    {
+        $datatable = $this->get('multiacademico.pensionesaulas');
+        $datatable->buildDatatable();
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+        $query->buildQuery();
+        $qb = $query->getQuery();
+        
+        $qb->addSelect('partial curso.{id,curso}')->join('aula.curso','curso');
+        $where=$qb->getDqlPart('where');
+        $valorBuscado="aula.curso";
+        $valorNuevo="curso.curso";
+        
+        $partesvalidas=[];
+        if (isset($where)){
+            $qb_where_parts = $where->getParts();
+            foreach ($qb_where_parts as $qb_where_part)
+             {
+                $partesvalidas[]=ResultsCorrector::obtenerPartesValidas($qb_where_part, $valorBuscado, $valorNuevo);
+             }
+         }
+        $clasew=get_class($where);
+            if (!empty($partesvalidas)){
+            $qb->resetDQLPart('where');
+            $qb->add('where',new $clasew($partesvalidas));
+            }
+        $query->setQuery($qb);    
         return $query->getResponse(false);
     }
 

@@ -55,11 +55,13 @@ class MiDistributivoController extends Controller
         
         $misclubes= $em->getRepository('MultiacademicoBundle:Clubes')->misClubes($docente);
         $misaulas= $em->getRepository('MultiacademicoBundle:Aula')->misAulas($docente);
+        $misasistencias=$em->getRepository('MultiacademicoBundle:Aula')->misAulasAsistencia($docente);
 
         return array(
             'entities' => $entities,
             'misclubes' => $misclubes,
             'misaulas' => $misaulas,
+            'misasistencias' => $misasistencias,
         );
     }
     

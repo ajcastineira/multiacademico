@@ -36,6 +36,18 @@ class AulaRepository extends EntityRepository
             ->getResult();
     }
     
+    public function misAulasAsistencia($docente)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT a'
+                    . ' FROM MultiacademicoBundle:Aula a '
+                    . ' where a.inspector= :docente'
+                    //. ' ORDER BY n.notificaciontimestamp DESC'
+                    )
+            ->setParameter(":docente", $docente)
+            ->getResult();
+    }
+    
     public function misAulasByUser($user)
     {
         return $this->getEntityManager()

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Asistencia</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Atp1q1</th>
+                <td>{{ asistencium.atP1Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp1q1</th>
+                <td>{{ asistencium.fjP1Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fip1q1</th>
+                <td>{{ asistencium.fiP1Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Atp2q1</th>
+                <td>{{ asistencium.atP2Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp2q1</th>
+                <td>{{ asistencium.fjP2Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fip2q1</th>
+                <td>{{ asistencium.fiP2Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Atp3q1</th>
+                <td>{{ asistencium.atP3Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp3q1</th>
+                <td>{{ asistencium.fjP3Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Fip3q1</th>
+                <td>{{ asistencium.fiP3Q1 }}</td>
+            </tr>
+            <tr>
+                <th>Atp1q2</th>
+                <td>{{ asistencium.atP1Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp1q2</th>
+                <td>{{ asistencium.fjP1Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fip1q2</th>
+                <td>{{ asistencium.fiP1Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Atp2q2</th>
+                <td>{{ asistencium.atP2Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp2q2</th>
+                <td>{{ asistencium.fjP2Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fip2q2</th>
+                <td>{{ asistencium.fiP2Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Atp3q2</th>
+                <td>{{ asistencium.atP3Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fjp3q2</th>
+                <td>{{ asistencium.fjP3Q2 }}</td>
+            </tr>
+            <tr>
+                <th>Fip3q2</th>
+                <td>{{ asistencium.fiP3Q2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('asistencia') }}">Regresar a la lista</a>
+        </li>
+        <li>
+            <a href="{{ path('asistencia_edit', { 'page': asistencium.asistencianummatricula }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

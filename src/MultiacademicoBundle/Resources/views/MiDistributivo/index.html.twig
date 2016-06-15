@@ -66,6 +66,27 @@
                 </td>
              </tr>   
         {%endfor%}    
+        {% for aula in misasistencias %}
+            <tr>
+            <td>
+                <a href="{{ path('menu_inspector', {'aula': aula.id}) }}">
+                    {{ aula}}
+                </a>
+            </td>
+                <td>Inspector/a</td>
+                <td>
+                <ul>                    
+                    
+                    <li>
+                        
+                        <a class="btn btn-primary" href="{{ path('menu_inspector', {'aula': aula.id}) }}">
+                            Seleccionar <i class="fa fa-arrow-right icon-on-right"></i>
+                        </a>
+                    </li>                    
+                </ul>
+                </td>
+             </tr>   
+        {%endfor%}    
         {% for club in misclubes %}
             <tr>
             <td>

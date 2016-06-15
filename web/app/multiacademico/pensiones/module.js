@@ -18,6 +18,7 @@ define(['angular',
                     update:'edit_pension',
                     show:'get_pension',
                     list:'index_pension',
+                    listaulas:'index_pension_aulas',
                     state_created:'multiacademico.pensiones.show',
                     state_updated:'multiacademico.pensiones.show'
                      };
@@ -62,6 +63,31 @@ define(['angular',
                  views: {
                     "content@multiacademico": {
                         templateUrl: Routing.generate(rutas.list,{'_format':'html'}),
+                        /*controller: function ($scope)
+                                    {
+                                        $scope.Pagar=function(e){
+                                            e.preventDefault();
+                                            alert("Hola");
+                                        }
+                                    },*/
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }    
+                
+            })
+            .state('multiacademico.pensiones.aulas', {
+                url: '/pensiones/aulas',
+                data: {
+                        pageTitle: 'Pensiones Aulas'
+                    },
+                 views: {
+                    "content@multiacademico": {
+                        templateUrl: Routing.generate(rutas.listaulas,{'_format':'html'}),
                         /*controller: function ($scope)
                                     {
                                         $scope.Pagar=function(e){

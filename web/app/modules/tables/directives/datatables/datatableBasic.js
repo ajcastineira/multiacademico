@@ -1,6 +1,7 @@
 define(['modules/tables/module',
     'datatables.net',
     'datatables.net-responsive.bootstrap',
+    'datatables.net-buttons.colVis',
     'datatables.net-buttons.html5',
     'datatables.net-buttons.flash',
     'datatables.net-buttons.print',

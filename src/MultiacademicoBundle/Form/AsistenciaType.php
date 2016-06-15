@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use MultiacademicoBundle\Calificar\AsistenciasARegistrar;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
 
 class AsistenciaType extends AbstractType
 {
@@ -29,11 +31,19 @@ class AsistenciaType extends AbstractType
                     $this->q=$dataparent->getParcial()->getQ();
                     $this->p=$dataparent->getParcial()->getP();       
                 
-            
                 $form
-                    ->add('atP'.$this->p.'Q'.$this->q,LetraType::class)
-                    ->add('fjP'.$this->p.'Q'.$this->q,LetraType::class)
-                    ->add('fiP'.$this->p.'Q'.$this->q,LetraType::class);
+                    ->add('atP'.$this->p.'Q'.$this->q, NumberType::class, ['required'=>false, 'attr'=>[
+                                                                                                'min'=> '0' ,
+                                                                                                'max'=> '99' ,
+                                                                                                'style'=>'width: 5em;']])
+                    ->add('fjP'.$this->p.'Q'.$this->q, NumberType::class, ['required'=>false, 'attr'=>[
+                                                                                                'min'=> '0' ,
+                                                                                                'max'=> '99' ,
+                                                                                                'style'=>'width: 5em;']])
+                    ->add('fiP'.$this->p.'Q'.$this->q, NumberType::class, ['required'=>false, 'attr'=>[
+                                                                                                'min'=> '0' ,
+                                                                                                'max'=> '99' ,
+                                                                                                'style'=>'width: 5em;']]);
                 }  
         });
         /*$builder

@@ -1,0 +1,143 @@
+<div class="row">
+                  {{ form_start(form) }}
+
+                  <div class="row">
+                        {# store the prototype on the data-prototype attribute #}
+                        <table class="table table-striped" id="calificaciones-fields-list">
+                            <thead class="thin-border-bottom">
+                                <tr class="text-center center">
+                                    <td colspan="3" style="vertical-align:middle">
+                                        
+                                        {{include('MultiacademicoBundle:Calificaciones:formularios/intercambiadorsimple.html.twig')}}
+                                       
+                                    </td>
+                                    <td colspan="3">
+                                        <a data-ui-sref="^">
+                                            <button type="button" class="btn btn-app btn-primary "><i class="flaticon-a1 bigger-160"></i>Menu</button></a>
+                                        
+                                        {{form_widget(form.guardar)}}
+                                        <a href="xx">
+                                            <button type="button" class="btn btn-app btn-light "><i class="fa fa-print bigger-160"></i>Imprimir</button></a>
+                                    </td></tr>
+                                <tr><td colspan="3"><b>Aula: </b>{{aula}}</td>
+                                    {#<td colspan="3"><b>Campo de Accion: </b>{{proyectoescolar.campoaccion}} </td> #}
+
+                                </tr>
+                                 <tr>    
+                                     <th colspan="6">{{parcial.text_quimestre()}}</th>
+                                  </tr> 
+                                  <tr>
+
+
+                                        <th rowspan="2" style="width:4em">
+                                                    <i class="ace-icon fa fa-file-text-o"></i>
+                                                    Matricula
+                                            </th>
+                                            <th rowspan="2">
+                                                    <i class="ace-icon flaticon-student"></i>	
+                                                    Estudiante
+                                            </th>
+
+                                                  <th colspan="4" class="text-center">{{parcial.textalt_parcial()}}</th>
+                                                  
+                                           </tr>
+
+
+                                           <tr class="rotar-texto">
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Atrasos</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Fatas Justificadas</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Faltas Injustificadas</div></th>
+                                                <th class="rotar-texto" style="vertical-align:bottom"><div class="letterP4">Total Faltas</div></th>
+                                                
+                                            </tr>
+
+
+                            </thead>
+                            <tbody>
+                            {%for asistencia in form.asistencias %}
+                                
+                                <tr>
+                                    <td>
+                                         {%set nummat=listado[loop.index0].asistencianummatricula.id %}    
+                                         
+                                         {%set totalfaltaspv='TF'~nummat~'q'~qactivo~'p'~pactivo %}
+                                        
+                                        
+                                        {#{%set pqval=listado[loop.index0].getClubNotaQuimestral(qactivo)%}#}
+                                        
+                                          {{nummat }}
+                                     </td>   
+                                     <td>
+                                            {{listado[loop.index0].asistencianummatricula }}
+                                     </td>
+                                     <td>
+                                        <div style="display:flex">
+                                         {%set atrasosvar='atP'~pactivo~'Q'~qactivo %}
+                                         {%set atrasosres='M'~nummat~atrasosvar %}
+                                          
+                                        {{ form_errors(asistencia[atrasosvar]) }}
+                                        {{ form_widget(asistencia[atrasosvar],{'attr':
+                                                                                        {'ng-model':atrasosres,
+                                                                                        'ng-init':atrasosres~'=\''~asistencia[atrasosvar].vars.value~'\''
+                                                                                        }
+                                                                                                    
+                                                                             }
+                                                       )
+                                        }}
+                                        </div>
+                                    </td>
+                                    {%set justificadasvar='fjP'~pactivo~'Q'~qactivo %}
+                                    {%set justificadasres='M'~nummat~justificadasvar %}
+                                    {%set injustificadasvar='fiP'~pactivo~'Q'~qactivo %}
+                                    {%set injustificadasres='M'~nummat~injustificadasvar %}
+                                    <td>
+                                        <div style="display:flex">
+                                         
+                                          
+                                        {{ form_errors(asistencia[justificadasvar]) }}
+                                        {{ form_widget(asistencia[justificadasvar],{'attr':
+                                                                                        {'ng-model':justificadasres,
+                                                                                        'ng-init':justificadasres~'=\''~asistencia[justificadasvar].vars.value~'\'',
+                                                                                        'ng-change':totalfaltaspv~'=('~
+                                                                                                    justificadasres~'*1+'~
+                                                                                                    injustificadasres~'*1)'
+                                                                                        }
+                                                                                                    
+                                                                             }
+                                                       )
+                                        }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display:flex">
+                                         
+                                          
+                                        {{ form_errors(asistencia[injustificadasvar]) }}
+                                        {{ form_widget(asistencia[injustificadasvar],{'attr':
+                                                                                        {'ng-model':injustificadasres,
+                                                                                        'ng-init':injustificadasres~'=\''~asistencia[injustificadasvar].vars.value~'\'',
+                                                                                        'ng-change':totalfaltaspv~'=('~
+                                                                                                    justificadasres~'*1+'~
+                                                                                                    injustificadasres~'*1)'
+                                                                                        }
+                                                                                                    
+                                                                             }
+                                                       )
+                                        }}
+                                        </div>
+                                    </td>
+                                    <td data-ng-init="{{totalfaltaspv}}='{{listado[loop.index0].getTotalFaltasParcial(qactivo,pactivo)}}'">
+                                        {{'{{'}}{{totalfaltaspv}}{{'}}'}} 
+                                    </td>
+                                   
+                                </tr>    
+                            {%endfor%}    
+                            </tbody>
+                        </table>
+
+
+                            </div >
+                        {# ... #}
+                    {{ form_end(form) }}
+
+              </div>

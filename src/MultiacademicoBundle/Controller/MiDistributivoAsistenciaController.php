@@ -39,6 +39,21 @@ class MiDistributivoAsistenciaController extends Controller
         return $this->render('::baseangular.html.twig');
     }
     
+    /**
+     * Lists all Distributivos entities.
+     *
+     * @Route("/inspector/{aula}/api", name="menu_inspector_api", options={"expose":true})
+     * @Method("GET")
+     * @Template("MultiacademicoBundle:MiDistributivo:menuinspector.html.twig")
+     */
+    
+    public function menuInspectorApiAction()
+    {
+     
+        return array(
+            null
+        );
+    }
      /**
      * Lists all Distributivos entities.
      *
@@ -71,7 +86,7 @@ class MiDistributivoAsistenciaController extends Controller
         
         $asistenciaARegistrar->setAsistencias($listado);
         $form = $this->createRegistrarAsitenciaForm($asistenciaARegistrar,$qactivo,$pactivo);
-        
+
         $form->handleRequest($request);
         
         if ($form->isSubmitted()&&$form->isValid()) {

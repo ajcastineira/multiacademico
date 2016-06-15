@@ -17,126 +17,126 @@ class Asistencia
      *
      * @ORM\Column(name="at_p1_q1", type="string", length=4, nullable=false)
      */
-    private $atP1Q1;
+    private $atP1Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p1_q1", type="string", length=4, nullable=false)
      */
-    private $fjP1Q1;
+    private $fjP1Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p1_q1", type="string", length=4, nullable=false)
      */
-    private $fiP1Q1;
+    private $fiP1Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="at_p2_q1", type="string", length=4, nullable=false)
      */
-    private $atP2Q1;
+    private $atP2Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p2_q1", type="string", length=4, nullable=false)
      */
-    private $fjP2Q1;
+    private $fjP2Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p2_q1", type="string", length=4, nullable=false)
      */
-    private $fiP2Q1;
+    private $fiP2Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="at_p3_q1", type="string", length=4, nullable=false)
      */
-    private $atP3Q1;
+    private $atP3Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p3_q1", type="string", length=4, nullable=false)
      */
-    private $fjP3Q1;
+    private $fjP3Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p3_q1", type="string", length=4, nullable=false)
      */
-    private $fiP3Q1;
+    private $fiP3Q1=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="at_p1_q2", type="string", length=4, nullable=false)
      */
-    private $atP1Q2;
+    private $atP1Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p1_q2", type="string", length=4, nullable=false)
      */
-    private $fjP1Q2;
+    private $fjP1Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p1_q2", type="string", length=4, nullable=false)
      */
-    private $fiP1Q2;
+    private $fiP1Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="at_p2_q2", type="string", length=4, nullable=false)
      */
-    private $atP2Q2;
+    private $atP2Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p2_q2", type="string", length=4, nullable=false)
      */
-    private $fjP2Q2;
+    private $fjP2Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p2_q2", type="string", length=4, nullable=false)
      */
-    private $fiP2Q2;
+    private $fiP2Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="at_p3_q2", type="string", length=4, nullable=false)
      */
-    private $atP3Q2;
+    private $atP3Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fj_p3_q2", type="string", length=4, nullable=false)
      */
-    private $fjP3Q2;
+    private $fjP3Q2=0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fi_p3_q2", type="string", length=4, nullable=false)
      */
-    private $fiP3Q2;
+    private $fiP3Q2=0;
 
     /**
      * @var \Matriculas
@@ -606,5 +606,11 @@ class Asistencia
     public function getAsistencianummatricula()
     {
         return $this->asistencianummatricula;
+    }
+    
+    public function getTotalFaltasParcial($q,$p) {
+        $varj='fjP'.$p.'Q'.$q;
+        $vari='fiP'.$p.'Q'.$q;
+        return $this->$varj+$this->$vari;
     }
 }

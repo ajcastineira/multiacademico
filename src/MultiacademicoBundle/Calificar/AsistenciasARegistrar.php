@@ -40,7 +40,7 @@ class AsistenciasARegistrar {
         return $this->asistencias;
     }
     
-    public function addAsistencias(Asistencia $asistencia) {
+    public function addAsistencia(Asistencia $asistencia) {
         $this->asistencias[]=$asistencia;
         return $this;
     }

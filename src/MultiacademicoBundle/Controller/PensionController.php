@@ -79,16 +79,19 @@ class PensionController extends FOSRestController
                     $data=$file->fgetcsv("\t");
                     if (count($data)>26)
                     {    
-                    $que_va_a_pagar=$data[0];   //contra partidoa
+                    //$que_va_a_pagar=$data[0];   //referencia banco
+                    $que_va_a_pagar=explode("|",$data[33]);   //contra referencia adicional
+                    $canal_de_pago=$data[18];
                     $id_estudiante=$data[4];   //contra partidoa
-                    $valorapagar=floatval($data[8]);
+                    //$valorapagar=floatval($data[8]);
+                    $valorapagar=floatval($data[27]); //procesado
                     $referencia_doc=$data[20];
                     $fecha=explode(" ",$data[25]);
                     $hora=explode(" ",$data[26]);
                     $datetime_pago=new \DateTime("$fecha[2]/$fecha[1]/$fecha[0] $hora[3]:$hora[4]:$hora[5]");
                     
                     
-                    $pensions = $em->getRepository('MultiacademicoBundle:Pension')->importarPago($id_estudiante,$valorapagar,$que_va_a_pagar,$referencia_doc,$datetime_pago);
+                    $pensions = $em->getRepository('MultiacademicoBundle:Pension')->importarPago($id_estudiante,$valorapagar,$que_va_a_pagar[0],$referencia_doc,$datetime_pago);
                     
                     }
                     

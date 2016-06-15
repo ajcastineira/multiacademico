@@ -224,6 +224,75 @@ define(['angular',
                 }        
                 
             })
+            .state ('multiacademico.docentes.midistributivo.inspector', {
+                url: '/inspector/{id}',
+                data: {
+                        pageTitle: 'Menu Inspector',
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Inspector',
+                            subtitle: 'Menu'
+                        },
+                        breadcrumbs: [
+                            {title: 'Inspector'},{title: 'menu'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateUrl: function($stateParams){
+                            return Routing.generate('menu_inspector_api',{'aula':$stateParams.aula});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
+            .state ('multiacademico.docentes.midistributivo.inspector.asistencia', {
+               // abstract:true,
+                url:'/asistencia/:q/:p',
+                params:{
+                  submited:false,
+                  formData:null
+                },
+                data: {
+                        pageTitle: 'Registrar Asistencias',
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Registrar Asistencias',
+                            subtitle: 'Curso'
+                        },
+                        breadcrumbs: [
+                            {title: 'Registrar Asistencias'},{title: 'registrar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateProvider:function($stateParams,CalificarForm){
+                                var rutas3={
+                                            edit:'registrar_asistencias_api',
+                                            update:'registrar_asistencias_api',
+                                            state_created:'multiacademico.docentes.midistributivo.inspector.asistencia',
+                                            state_updated:'multiacademico.docentes.midistributivo.inspector.asistencia',
+                                             };
+                                  return CalificarForm.calificar($stateParams,rutas3);
+                             },
+                        controller: 'CalificarCtrl',    
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                               // 'modules/graphs/directives/inline/sparklineContainer',    
+                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
+                                'modules/tables/directives/datatables/datatableBasic'
+                            ])
+                        }
+                    }
+                }        
+                
+            })
             .state ('multiacademico.docentes.midistributivo.tutor', {
                 url: '/tutor/{id}',
                 data: {

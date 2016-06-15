@@ -104,7 +104,7 @@ var require = {
         'datatables.net-buttons': ['https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min',
                             '../plugin/datatables-buttons/js/dataTables.buttons.min'
                         ],
-        'datatables.net-buttons.colVis': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.colVis.min',
+        'datatables.net-buttons.colvis': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.colVis.min',
                             '../plugin/datatables-buttons/js/buttons.colVis.min'
                         ],
         'datatables.net-buttons.flash': ['https://cdn.datatables.net/buttons/1.1.0/js/buttons.flash.min',
@@ -255,7 +255,7 @@ var require = {
 
         'datatables.net':{deps: ['jquery','bootstrap-daterangepicker']},
         'datatables.net-buttons' :{deps: ['datatables.net']},
-        'datatables.net-buttons.colVis':{deps: ['datatables.net','datatables.net-buttons']},
+        'datatables.net-buttons.colvis':{deps: ['datatables.net','datatables.net-buttons']},
         'datatables.net-buttons.html5':{deps: ['datatables.net','datatables.net-buttons','jszip']},
         'datatables.net-buttons.flash':{deps: ['datatables.net','datatables.net-buttons']},
         'datatables.net-buttons.print':{deps: ['datatables.net','datatables.net-buttons']},

@@ -59,7 +59,7 @@ class ActividadAcademicaListener  {
     }
     public function preUpdate(ActividadAcademica $actividadAcademica, PreUpdateEventArgs $args)
     {
-        $this->preUpload($actividadAcademica);    
+        $actividadAcademica->preUpload($actividadAcademica);    
         $this->preNotificar($actividadAcademica);
     }
     public function postUpdate(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)

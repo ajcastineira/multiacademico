@@ -271,7 +271,6 @@ class DistributivosController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $em->flush();
             
             $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
                                                                     array(
@@ -283,6 +282,7 @@ class DistributivosController extends Controller
                                                                            )
                                                                     );
             $entity->setAula($aula);
+            $em->flush();
 
             return $this->redirect($this->generateUrl('distributivos_api_edit', array('id' => $id)));
         }

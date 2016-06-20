@@ -2,48 +2,55 @@
 
 namespace MultiacademicoBundle\Configuracion;
 
-use JMS\Serializer\Serializer;
+use JMS\Serializer\Annotation as Serializer;
+use MultiacademicoBundle\Configuracion\ConfiguracionAnioLectivo;
+
 /**
  * Description of ConfiguracionEntidad
  *
  * @author Rene Arias <renearias@arxis.la>
  */
-class ConfiguracionEntidad implements \JsonSerializable {
+class ConfiguracionEntidad {
     /**
      *
      * @var string
-     * Serializer\Type("string")
+     * @Serializer\Type("string")
      */
     private $logoiz;
     /**
      *
      * @var string
+     * @Serializer\Type("string")
      */
     private $logoder;
     /**
      *
-     * @var string
+     * @Serializer\Type("string")
      */
     private $logocenter;
     /**
      *
      * @var string
+     * @Serializer\Type("string")
      */
     private $codamie;
     /**
      *
      * @var string
+     * @Serializer\Type("array")
      */
     private $certpromo;
     /**
      *
      * @var string
+     * @Serializer\Type("array")
      */
     private $vencimiento;
     
     /**
      *
      * @var string
+     * @Serializer\Type("array")
      */
     private $configuracionAnioLectivo;
     
@@ -116,10 +123,6 @@ class ConfiguracionEntidad implements \JsonSerializable {
     public function setConfiguracionAnioLectivo($configuracionAnioLectivo) {
         $this->configuracionAnioLectivo = $configuracionAnioLectivo;
         return $this;
-    }
-
-    public function jsonSerialize() {
-        return array($this->logoiz,$this->configuracionAnioLectivo);
     }
 
 }

@@ -2,7 +2,7 @@
 
 namespace MultiacademicoBundle\Configuracion;
 
-use JMS\Serializer\Serializer;
+use JMS\Serializer\Annotation as Serializer;
 /**
  * Description of ConfiguracionEntidad
  *

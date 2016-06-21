@@ -110,14 +110,17 @@
                                      {%set pactividadindividual= listado[loop.index0].calificacionnummatricula.getPromedioActividadesIndividualesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
                                      {%set pactividadgrupal= listado[loop.index0].calificacionnummatricula.getPromedioActividadesGrupalesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
                                      {%set plecciones= listado[loop.index0].calificacionnummatricula.getPromedioLeccionesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
+                                     {%set ptareasvar='M'~nummat~'tareas' %}
+                                     {%set pactividadindividualvar='M'~nummat~'aindiv' %}
+                                     {%set pactividadgrupalvar='M'~nummat~'agrup' %}
+                                     {%set pleccionesvar='M'~nummat~'lecciones'  %}
                                      
                                      <td>
                                      <div class="tooltips" data-tooltip data-toggle="tooltip" data-placement="top" title="-- Resumen de Actividad -- Tareas: {{ptareas}} | Individual: {{pactividadindividual}} |  Grupal: {{pactividadgrupal}} | Lecciones: {{plecciones}}">
                                             {{listado[loop.index0].calificacionnummatricula }}
-                                           </div> 
-                                     </td>
-                                     {% if qactivo<3 %}
-                                         {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
+                                     </div>
+                                     
+                                      {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}
                                          {%set promediopv='PM'~nummat~'q'~qactivo~'P'~pactivo %}
                                          {%set promediopt='PPTM'~nummat~'q'~qactivo %}
                                         {%set promediopt80='PPT80M'~nummat~'q'~qactivo %}
@@ -127,7 +130,40 @@
                                         {%set exvar='q'~qactivo~'Ex' %}
                                         {%set exres='M'~nummat~exvar%}
                                         {%set exres20=exres~'V20'%}
-                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}    
+                                        {%set promedioqv='PQ'~nummat~'q'~qactivo %}  
+                                     
+                                     {%set notavartareas='M'~nummat~'q'~qactivo~'P'~pactivo~'N1'%}
+                                     {%set notavaraindiv='M'~nummat~'q'~qactivo~'P'~pactivo~'N2'%}
+                                     {%set notavaragrup='M'~nummat~'q'~qactivo~'P'~pactivo~'N3'%}
+                                     {%set notavarlecciones='M'~nummat~'q'~qactivo~'P'~pactivo~'N4'%}
+                                     <div data-ng-init="{{ptareasvar}}={{ptareas}};
+                                                        {{pactividadindividualvar}}={{pactividadindividual}};
+                                                        {{pactividadgrupalvar}}={{pactividadgrupal}};
+                                                        {{pleccionesvar}}={{plecciones}};"
+                                     </div>
+                                     
+                                     <a data-ng-click="{{notavartareas}}={{ptareasvar}};
+                                        {{notavaraindiv}}={{pactividadindividualvar}};
+                                        {{notavaragrup}}={{pactividadgrupalvar}};
+                                        {{notavarlecciones}}={{pleccionesvar}};
+                                        {{promediopv~'=((('~notares~'1+'~
+                                                            notares~'2+'~
+                                                            notares~'3+'~
+                                                            notares~'4+'~    
+                                                            notares~'5)/5)|number:2);'~
+                                             promediopt~'=(('~(pptval-(ppval/3))~'*1+'~promediopv~'/3)|number:2);'~
+                                             promediopt80~'=(('~promediopt~'*0.8)|number:2);'~
+                                             promedioqv~'=('~exres20~'*1+1*'~promediopt80~');'}}
+                                        
+                                        " class="btn btn-danger tooltips"
+                                        data-tooltip data-toggle="tooltip" data-placement="top" title="-- Usar Notas de Actividad Academica -- Tareas: {{ptareas}} | Individual: {{pactividadindividual}} |  Grupal: {{pactividadgrupal}} | Lecciones: {{plecciones}}"
+                                        >
+                                        <i class="fa fa-arrow-right"></i>
+                                     </a>  
+                                           
+                                     </td>
+                                     {% if qactivo<3 %}
+                                          
                                          {%for i in 1..5%}
                                          <td>
                                             <div style="display:flex">
@@ -149,6 +185,7 @@
                                                                                   })
                                              }}
                                             </div>
+                                              
                                         </td>
                                         {%endfor%}
                                         <td data-ng-init="{{promediopv}}={{ppval}}">

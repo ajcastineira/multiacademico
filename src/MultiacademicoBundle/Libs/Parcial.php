@@ -14,6 +14,28 @@ class Parcial
      */
     private $p; //parcial
     
+    private $fechaInicio;
+    private $fechaFin;
+    
+    public function getFechaInicio() {
+        return $this->fechaInicio;
+    }
+
+    public function getFechaFin() {
+        return $this->fechaFin;
+    }
+
+    public function setFechaInicio($fechaInicio) {
+        $this->fechaInicio = $fechaInicio;
+        return $this;
+    }
+
+    public function setFechaFin($fechaFin) {
+        $this->fechaFin = $fechaFin;
+        return $this;
+    }
+
+        
     public function getQ() {
         return $this->q;
     }

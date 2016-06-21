@@ -274,6 +274,15 @@ class MiDistributivoController extends Controller
      
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
+        $entidad = $this->get('entidadData');
+        $configAnioLectivo=$entidad->getConfigAnioLectivo();
+        $fq='quimestre'.$qactivo;
+        $fpi='fecha_inicio_parcial'.$pactivo;
+        $fpf='fecha_fin_parcial'.$pactivo;
+        $fechaInicio=$configAnioLectivo[$fq][$fpi];
+        $fechaFin=$configAnioLectivo[$fq][$fpf];
+        $parcial->setFechaInicio(new \DateTime($fechaInicio));
+        $parcial->setFechaFin(new \DateTime($fechaFin));
         $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         $cursoACalificar->setCalificaciones($listado);

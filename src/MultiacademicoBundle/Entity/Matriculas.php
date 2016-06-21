@@ -930,13 +930,15 @@ class Matriculas
        return !($this->matriculacodestudiante->tienePensionesPendientes());         
     }
 
-    protected function estaEnPeriodo($dateInicio,$dateFin){
+    private function estaEnPeriodo(\DateTime $dateInicio,\DateTime $dateFin){
         return function($entry) use ($dateInicio,$dateFin){
-            $date=$entry->getActividad()->getFechaEntrega();
-            return ($date>=$dateInicio && $date<=$dateFin);
+            $date=$entry->getActividad()->getFechaEntrega()->getTimestamp();
+            $ditmp=$dateInicio->getTimestamp();
+            $dftmp=$dateFin->getTimestamp();
+            return (($ditmp<=$date) && ($date<=$dftmp));
         };
     }
-    protected function getPromedioActividades(ArrayCollection $actividades){
+    private function getPromedioActividades(ArrayCollection $actividades){
         if (!$actividades->count()){
             return 0;
         }
@@ -956,26 +958,26 @@ class Matriculas
         ); 
         return $tareasInvestigaciones;
     }
-    public function getActividadesPorPeriodo($distributivoid,$tipo,$dateInicio,$dateFin){
+    public function getActividadesPorPeriodo($distributivoid,$tipo, \DateTime $dateInicio, \DateTime $dateFin){
         $actividades=$this->getActividadesPorDistributivoYTipo($distributivoid,$tipo)->filter(
             $this->estaEnPeriodo($dateInicio,$dateFin)
         ); 
         return $actividades;
     }
-    public function getTareasInvestigacionesPeriodo($distributivoid,$dateInicio,$dateFin){
-        $tareasInvestigaciones=$this->getActividadesPorDistributivoYTipo($distributivoid,'Tarea',$dateInicio,$dateFin);
+    public function getTareasInvestigacionesPeriodo($distributivoid, \DateTime $dateInicio, \DateTime $dateFin){
+        $tareasInvestigaciones=$this->getActividadesPorPeriodo($distributivoid,'Tarea',$dateInicio,$dateFin);
         return $tareasInvestigaciones;
     }
     public function getActividadesIndividualesPeriodo($distributivoid,$dateInicio,$dateFin){
-        $actividadesIndividuales=$this->getActividadesPorDistributivoYTipo($distributivoid,'Actividad Individual',$dateInicio,$dateFin);
+        $actividadesIndividuales=$this->getActividadesPorPeriodo($distributivoid,'Actividad Individual',$dateInicio,$dateFin);
         return $actividadesIndividuales;
     }
     public function getActividadesGrupalesPeriodo($distributivoid,$dateInicio,$dateFin){
-        $actividadesGrupales=$this->getActividadesPorDistributivoYTipo($distributivoid,'Actividad Grupal',$dateInicio,$dateFin);
+        $actividadesGrupales=$this->getActividadesPorPeriodo($distributivoid,'Actividad Grupal',$dateInicio,$dateFin);
         return $actividadesGrupales;
     }
     public function getLeccionesPeriodo($distributivoid,$dateInicio,$dateFin){
-        $lecciones=$this->getActividadesPorDistributivoYTipo($distributivoid,'Leccion',$dateInicio,$dateFin);
+        $lecciones=$this->getActividadesPorPeriodo($distributivoid,'Leccion',$dateInicio,$dateFin);
         return $lecciones;
     }
     public function getPromedioTareasInvestigacionesPeriodo($distributivoid,$dateInicio,$dateFin){

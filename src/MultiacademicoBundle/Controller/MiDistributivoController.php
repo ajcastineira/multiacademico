@@ -204,6 +204,15 @@ class MiDistributivoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qactivo=$q;   $pactivo=$p;
         $parcial=new Parcial($qactivo,$pactivo);
+        $entidad = $this->get('entidadData');
+        $configAnioLectivo=$entidad->getConfigAnioLectivo();
+        $fq='quimestre'.$qactivo;
+        $fpi='fecha_inicio_parcial'.$pactivo;
+        $fpf='fecha_fin_parcial'.$pactivo;
+        $fechaInicio=$configAnioLectivo[$fq][$fpi];
+        $fechaFin=$configAnioLectivo[$fq][$fpf];
+        $parcial->setFechaInicio(new \DateTime($fechaInicio));
+        $parcial->setFechaFin(new \DateTime($fechaFin));
         $cursoACalificar=new CursoACalificar($distributivo->getId(),$parcial);
         $listado = $em->getRepository('MultiacademicoBundle:Calificaciones')->calificacionesDistributivo($distributivo);
         // comparando si el listado de calificaciones no ha sido creado
@@ -221,7 +230,7 @@ class MiDistributivoController extends Controller
         $materia=$distributivo->getDistributivocodmateria();
         
         return array(
-            
+            'distributivoid'=>$distributivo->getId(),
             'curso'=>$curso, 'materia'=>$materia,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,
@@ -282,6 +291,7 @@ class MiDistributivoController extends Controller
         $curso=$distributivo->getCursoName();
         $materia=$distributivo->getDistributivocodmateria();
         return array(
+            'distributivoid'=>$distributivo->getId(),
             'curso'=>$curso, 'materia'=>$materia,
             'parcial'=>$parcial,'qactivo'=>$qactivo,  'pactivo'=>$pactivo,
             'listado' => $listado,

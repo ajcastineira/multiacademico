@@ -160,11 +160,7 @@ class AulaDatatable extends AbstractDatatableView
                     array(
                         'route' => 'aulas_show',
                         'route_parameters' => array(
-                            'curso' => 'curso.id',
-                            'especializacion' => 'especializacion.id',
-                            'paralelo' => 'paralelo',
-                            'seccion' => 'seccion',
-                            'periodo' => 'periodo.id'
+                            'aula' => 'id'                            
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',

@@ -55,7 +55,7 @@ define(['angular',
                 
             })
             .state('multiacademico.aulas.show', {
-                url: '/aulas/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                url: '/aulas/{aula}',
                  data: {
                         pageHeader: {
                             icon: 'flaticon-teach',
@@ -69,7 +69,7 @@ define(['angular',
                 views: {
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
-                            return Routing.generate(rutas.show,{'curso': $stateParams.curso,'especializacion':$stateParams.especializacion,'paralelo':$stateParams.paralelo,'seccion':$stateParams.seccion,'periodo':$stateParams.periodo,'_format':'html'});
+                            return Routing.generate(rutas.show,{'aula': $stateParams.aula,'_format':'html'});
                         },
                         resolve: {
                             deps: $couchPotatoProvider.resolveDependencies([

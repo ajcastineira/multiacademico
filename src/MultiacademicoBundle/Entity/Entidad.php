@@ -114,6 +114,14 @@ class Entidad
      */
     private $data;
     
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="configAnioLectivo", type="json_array", nullable=true)
+     */
+    private $configAnioLectivo;
+    
 
 
 
@@ -434,4 +442,28 @@ class Entidad
     }
 
 
+
+    /**
+     * Set configAnioLectivo
+     *
+     * @param array $configAnioLectivo
+     *
+     * @return Entidad
+     */
+    public function setConfigAnioLectivo($configAnioLectivo)
+    {
+        $this->configAnioLectivo = $configAnioLectivo;
+
+        return $this;
+    }
+
+    /**
+     * Get configAnioLectivo
+     *
+     * @return array
+     */
+    public function getConfigAnioLectivo()
+    {
+        return $this->configAnioLectivo;
+    }
 }

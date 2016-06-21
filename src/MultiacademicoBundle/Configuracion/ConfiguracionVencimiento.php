@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
  * Description of ConfiguracionEntidad
  *
  * @author Rene Arias <renearias@arxis.la>
+ * @Serializer\ExclusionPolicy("all")
  */
 class ConfiguracionVencimiento {
     /**

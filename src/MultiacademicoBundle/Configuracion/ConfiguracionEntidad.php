@@ -9,52 +9,72 @@ use MultiacademicoBundle\Configuracion\ConfiguracionAnioLectivo;
  * Description of ConfiguracionEntidad
  *
  * @author Rene Arias <renearias@arxis.la>
+ * @Serializer\ExclusionPolicy("all")
  */
 class ConfiguracionEntidad {
     /**
      *
      * @var string
      * @Serializer\Type("string")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $logoiz;
     /**
      *
      * @var string
      * @Serializer\Type("string")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $logoder;
     /**
      *
      * @Serializer\Type("string")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $logocenter;
     /**
      *
      * @var string
      * @Serializer\Type("string")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $codamie;
     /**
      *
      * @var string
      * @Serializer\Type("array")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $certpromo;
     /**
      *
      * @var string
      * @Serializer\Type("array")
+     * @Serializer\Expose
+     * @Serializer\Groups({"details"})
      */
     private $vencimiento;
     
     /**
      *
-     * @var string
-     * @Serializer\Type("array")
+     * var string
+     * Serializer\Type("MultiacademicoBundle\Configuracion\ConfiguracionAnioLectivo")
+     * Serializer\Type("array")
+     * Serializer\Accessor(getter="getConfiguracionAnioLectivo",setter="setconfiguracionAnioLectivo")
+     * Serializer\Expose
+     * Serializer\Groups({"details"})
+     *
      */
-    private $configuracionAnioLectivo;
+    //private $configuracionAnioLectivo;
     
-    
+     public function __construct() {
+       //$this->configuracionAnioLectivo=new ConfiguracionAnioLectivo();
+    }
 
 /*"certpromo":{"posfecha":"left",
 		    "cualitativas":false,
@@ -116,13 +136,13 @@ class ConfiguracionEntidad {
         $this->vencimiento = $vencimiento;
         return $this;
     }
-    public function getConfiguracionAnioLectivo() {
+    /*public function getConfiguracionAnioLectivo() {
         return $this->configuracionAnioLectivo;
     }
 
-    public function setConfiguracionAnioLectivo($configuracionAnioLectivo) {
+    public function setConfiguracionAnioLectivo(ConfiguracionAnioLectivo $configuracionAnioLectivo) {
         $this->configuracionAnioLectivo = $configuracionAnioLectivo;
         return $this;
-    }
+    }*/
 
 }

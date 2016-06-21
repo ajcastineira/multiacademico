@@ -12,6 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializationContext;
 
 class DataToConfigDataTransformer implements DataTransformerInterface
 {
@@ -51,7 +52,9 @@ class DataToConfigDataTransformer implements DataTransformerInterface
         if (!$configData) {
             return ;
         }
-        $data = json_decode($this->serializer->serialize($configData, 'json'));
+        $serializationContext=SerializationContext::create()->setGroups(array('details'));
+        $data = json_decode($this->serializer->serialize($configData, 'json',$serializationContext));
+        //$data = $configData;
         if (null === $data) {
             // causes a validation error
             // this message is not shown to the user

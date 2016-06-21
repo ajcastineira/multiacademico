@@ -20,6 +20,8 @@ miscalificaciones:
     prefix: api 
 multiacademico_comportamiento:
     resource: "@MultiacademicoBundle/Resources/config/routing/comportamiento.yml"
+multiacademico_entidad:
+    resource: "@MultiacademicoBundle/Resources/config/routing/entidad.yml"
 multiacademico_estadisticas:
     resource: "@MultiacademicoBundle/Resources/config/routing/estadisticas.yml"    
 multiacademico_pension:

@@ -9,39 +9,17 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Rene Arias <renearias@arxis.la>
  * @Serializer\ExclusionPolicy("all")
  */
-class ConfiguracionQuimestre {
-
-    /**
-     *
-     * @var integer
-     * @Serializer\Type("integer")
-     */
-    private $q;
-    
+class ConfiguracionParciales {
     /**
      *
      * @var boolean
-     * @Serializer\Type("integer")
      */
     private $estado;
-    
     /**
      *
-     * @var \DateTime
-     * @Serializer\Type("DateTime<'Y-m-d'>")
-     * @Serializer\Expose
-     * @Serializer\Groups({"details"})
+     * @var integer
      */
-    private $fechaInicioQ;
-    /**
-     *
-     * @var \DateTime
-     * @Serializer\Type("DateTime<'Y-m-d'>")
-     * @Serializer\Expose
-     * @Serializer\Groups({"details"})
-     */
-    private $fechaFinQ;
-    
+    private $time;
     /**
      *
      * @var string
@@ -92,6 +70,10 @@ class ConfiguracionQuimestre {
     private $fechaFinParcial3;
     
     
+    public function getEstado() {
+        return $this->estado;
+    }
+
     public function getTime() {
         return $this->time;
     }
@@ -118,6 +100,11 @@ class ConfiguracionQuimestre {
 
     public function getFechaFinParcial3() {
         return $this->fechaFinParcial3;
+    }
+
+    public function setEstado($estado) {
+        $this->estado = $estado;
+        return $this;
     }
 
     public function setTime($time) {
@@ -152,42 +139,6 @@ class ConfiguracionQuimestre {
 
     public function setFechaFinParcial3($fechaFinParcial3) {
         $this->fechaFinParcial3 = $fechaFinParcial3;
-        return $this;
-    }
-    
-    public function getQ() {
-        return $this->q;
-    }
-
-    public function getEstado() {
-        return $this->estado;
-    }
-
-    public function getFechaInicioQ() {
-        return $this->fechaInicioQ;
-    }
-
-    public function getFechaFinQ() {
-        return $this->fechaFinQ;
-    }
-
-    public function setQ($q) {
-        $this->q = $q;
-        return $this;
-    }
-
-    public function setEstado($estado) {
-        $this->estado = $estado;
-        return $this;
-    }
-
-    public function setFechaInicioQ($fechaInicioQ) {
-        $this->fechaInicioQ = $fechaInicioQ;
-        return $this;
-    }
-
-    public function setFechaFinQ($fechaFinQ) {
-        $this->fechaFinQ = $fechaFinQ;
         return $this;
     }
 

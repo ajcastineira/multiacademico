@@ -110,8 +110,11 @@
                                      {%set pactividadindividual= listado[loop.index0].calificacionnummatricula.getPromedioActividadesIndividualesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
                                      {%set pactividadgrupal= listado[loop.index0].calificacionnummatricula.getPromedioActividadesGrupalesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
                                      {%set plecciones= listado[loop.index0].calificacionnummatricula.getPromedioLeccionesPeriodo(distributivoid,parcial.fechaInicio,parcial.fechaFin) %}
-                                     <td class="tooltips" data-tooltip data-toggle="tooltip" data-placement="top" title="-- Resumen de Actividad -- Tareas: {{ptareas}} | Individual: {{pactividadindividual}} |  Grupal: {{pactividadgrupal}} | Lecciones: {{plecciones}}">
+                                     
+                                     <td>
+                                     <div class="tooltips" data-tooltip data-toggle="tooltip" data-placement="top" title="-- Resumen de Actividad -- Tareas: {{ptareas}} | Individual: {{pactividadindividual}} |  Grupal: {{pactividadgrupal}} | Lecciones: {{plecciones}}">
                                             {{listado[loop.index0].calificacionnummatricula }}
+                                           </div> 
                                      </td>
                                      {% if qactivo<3 %}
                                          {%set notares='M'~nummat~'q'~qactivo~'P'~pactivo~'N' %}

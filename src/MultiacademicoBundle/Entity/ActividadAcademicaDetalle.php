@@ -29,7 +29,7 @@ class ActividadAcademicaDetalle
     /**
      * @var Matriculas
      *
-     * @ORM\ManyToOne(targetEntity="Matriculas")
+     * @ORM\ManyToOne(targetEntity="Matriculas", inversedBy="actividadesAcademicas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="matricula", referencedColumnName="id", nullable=false)
      * })

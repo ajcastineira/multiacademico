@@ -9,6 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use MultiacademicoBundle\Validator\Constraints as MultiacademicoAssert;
+use Doctrine\Common\Collections\Criteria;
+
 
 /**
  * Matriculas
@@ -217,6 +219,19 @@ class Matriculas
      */
     private $calificaciones;
     
+    
+    /**
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="ActividadAcademicaDetalle", mappedBy="matricula")
+     * Serializer\Expose
+     * Serializer\Accessor(getter="indexCalificaciones")
+     * Serializer\Groups({"detail"})
+     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
+     */
+    private $actividadesAcademicas;
+    
+    
     /**
      *
      * @var \MultiacademicoBundle\Entity\Comportamiento
@@ -253,7 +268,8 @@ class Matriculas
     public function __construct()
     {
         $this->calificaciones = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->matriculafecha=new \DateTime();
+        $this->actividadesAcademicas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->matriculafecha = new \DateTime();
     }
     /**
      * Get id
@@ -826,6 +842,41 @@ class Matriculas
         $this->calificaciones->removeElement($calificacione);
     }
 
+    
+    /**
+     * Add actividadesAcademica
+     *
+     * @param \MultiacademicoBundle\Entity\ActividadAcademicaDetalle $actividadesAcademica
+     *
+     * @return Matriculas
+     */
+    public function addActividadesAcademica(\MultiacademicoBundle\Entity\ActividadAcademicaDetalle $actividadesAcademica)
+    {
+        $this->actividadesAcademicas[] = $actividadesAcademica;
+
+        return $this;
+    }
+
+    /**
+     * Remove actividadesAcademica
+     *
+     * @param \MultiacademicoBundle\Entity\ActividadAcademicaDetalle $actividadesAcademica
+     */
+    public function removeActividadesAcademica(\MultiacademicoBundle\Entity\ActividadAcademicaDetalle $actividadesAcademica)
+    {
+        $this->actividadesAcademicas->removeElement($actividadesAcademica);
+    }
+
+    /**
+     * Get actividadesAcademicas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActividadesAcademicas()
+    {
+        return $this->actividadesAcademicas;
+    }
+    
     /**
      * Set valorMatricula
      *
@@ -878,4 +929,70 @@ class Matriculas
     {
        return !($this->matriculacodestudiante->tienePensionesPendientes());         
     }
+
+    protected function estaEnPeriodo($dateInicio,$dateFin){
+        return function($entry) use ($dateInicio,$dateFin){
+            $date=$entry->getActividad()->getFechaEntrega();
+            return ($date>=$dateInicio && $date<=$dateFin);
+        };
+    }
+    protected function getPromedioActividades(ArrayCollection $actividades){
+        if (!$actividades->count()){
+            return 0;
+        }
+        $sum=0;
+        foreach ($actividades as $actividad)
+        {
+            $sum+=$actividad->getCalificacion();
+        }
+        return $sum/$actividades->count();
+    }
+    public function getActividadesPorDistributivoYTipo($distributivoid,$tipo) {
+        $typesToFilter = array($tipo);
+        $tareasInvestigaciones=$this->actividadesAcademicas->filter(
+            function($entry) use ($typesToFilter,$distributivoid) {
+               return (in_array($entry->getActividad()->getTipo(), $typesToFilter) && $entry->getActividad()->getDistributivo()->getId()==$distributivoid);
+            }
+        ); 
+        return $tareasInvestigaciones;
+    }
+    public function getActividadesPorPeriodo($distributivoid,$tipo,$dateInicio,$dateFin){
+        $actividades=$this->getActividadesPorDistributivoYTipo($distributivoid,$tipo)->filter(
+            $this->estaEnPeriodo($dateInicio,$dateFin)
+        ); 
+        return $actividades;
+    }
+    public function getTareasInvestigacionesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $tareasInvestigaciones=$this->getActividadesPorDistributivoYTipo($distributivoid,'Tarea',$dateInicio,$dateFin);
+        return $tareasInvestigaciones;
+    }
+    public function getActividadesIndividualesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $actividadesIndividuales=$this->getActividadesPorDistributivoYTipo($distributivoid,'Actividad Individual',$dateInicio,$dateFin);
+        return $actividadesIndividuales;
+    }
+    public function getActividadesGrupalesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $actividadesGrupales=$this->getActividadesPorDistributivoYTipo($distributivoid,'Actividad Grupal',$dateInicio,$dateFin);
+        return $actividadesGrupales;
+    }
+    public function getLeccionesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $lecciones=$this->getActividadesPorDistributivoYTipo($distributivoid,'Leccion',$dateInicio,$dateFin);
+        return $lecciones;
+    }
+    public function getPromedioTareasInvestigacionesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $tareasInvestigaciones=$this->getTareasInvestigacionesPeriodo($distributivoid,$dateInicio,$dateFin);
+        return $this->getPromedioActividades($tareasInvestigaciones);
+    }
+    public function getPromedioActividadesIndividualesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $lecciones=$this->getActividadesIndividualesPeriodo($distributivoid,$dateInicio,$dateFin);
+        return $this->getPromedioActividades($lecciones);
+    }
+    public function getPromedioActividadesGrupalesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $lecciones=$this->getActividadesGrupalesPeriodo($distributivoid,$dateInicio,$dateFin);
+        return $this->getPromedioActividades($lecciones);
+    }
+    public function getPromedioLeccionesPeriodo($distributivoid,$dateInicio,$dateFin){
+        $lecciones=$this->getLeccionesPeriodo($distributivoid,$dateInicio,$dateFin);
+        return $this->getPromedioActividades($lecciones);
+    }
+    
 }

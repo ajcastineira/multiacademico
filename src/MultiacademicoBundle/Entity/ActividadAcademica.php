@@ -101,7 +101,7 @@ class ActividadAcademica
      /**
      * @var ActividadAcademicaDetalle
      *
-     * @ORM\OneToMany(targetEntity="ActividadAcademicaDetalle", mappedBy="actividad")
+     * @ORM\OneToMany(targetEntity="ActividadAcademicaDetalle", mappedBy="actividad", cascade={"persist", "remove"})
      */
     private $detalle;
     

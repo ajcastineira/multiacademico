@@ -179,7 +179,7 @@ class ActividadAcademicaController extends FOSRestController
             $em->flush();
         }
 
-        return $this->redirectToRoute('actividadacademica_index');
+        return $this->redirectToRoute('actividadacademica');
     }
 
     /**

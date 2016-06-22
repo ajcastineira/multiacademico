@@ -947,7 +947,8 @@ class Matriculas
         {
             $sum+=$actividad->getCalificacion();
         }
-        return $sum/$actividades->count();
+        $avg=round($sum/$actividades->count(),2,PHP_ROUND_HALF_DOWN);
+        return $avg;
     }
     public function getActividadesPorDistributivoYTipo($distributivoid,$tipo) {
         $typesToFilter = array($tipo);

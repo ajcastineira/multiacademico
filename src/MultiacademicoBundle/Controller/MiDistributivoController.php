@@ -318,7 +318,7 @@ class MiDistributivoController extends Controller
             //llenando array
             foreach ($listado as $listacalificacion)
             {
-              $matriculasEnListado[]=$listacalificacion->getComportamientonummatricula();
+              $matriculasEnListado[]=$listacalificacion->getCalificacionnummatricula();
             }
             //obteniendo lista de matriculados
             $matriculados=$distributivo->getAula()->getMatriculados();

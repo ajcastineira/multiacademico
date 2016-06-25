@@ -268,6 +268,14 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Multiservices\ArxisBundle\Entity\Usuario
+    from_email:
+        address:        info@multiacademico.com
+        sender_name:    Multiacademico App
+    resetting:
+        email:
+            from_email:
+                address:        info@multiacademico.com
+                sender_name:    Multiacademico App
     registration:
         confirmation:
             enabled: true

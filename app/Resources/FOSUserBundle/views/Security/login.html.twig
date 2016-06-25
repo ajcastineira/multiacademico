@@ -1,5 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
+{% block OnLoad-%}onLoad="this.document.formulario._username.focus();"{% endblock OnLoad%}
+{% block titleform-%}INICIO DE SESION{% endblock titleform%}
 {% block fos_user_content %}
 
     <style>
@@ -11,7 +13,8 @@
             width: 25%;
             display:inline-block;
         }
-    </style>    
+    </style>
+    
 {% if error %}
     <div class="alert alert-danger">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -47,7 +50,16 @@
         </div>#}
         
     </div><!-- /.sign-footer -->
-
+    <div class="login-links"> 
+            <a href="#">
+                   Olvido su contraseña?
+            </a>
+            <br>
+            <a href="#">
+              Aún no tiene una cuenta? <strong>Regístrese</strong>
+            </a>
+                </div>  
+                                                        
 <!--/ Login form -->
 <script type="text/javascript">
         var nav = window.Event ? true : false;

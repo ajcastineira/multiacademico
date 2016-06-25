@@ -24,24 +24,20 @@
                                         </div> 
 			        	<hr>
                                         <div class="text-center"> 
-                                            	<h4><b>INICIO DE SESION</b></h4>
+                                            	<h4><b>{% block titleform %}{% endblock titleform %}</b></h4>
 			        	</div>
-			        	<div class="login-form">
-			        	
-                                                {% block fos_user_content %}
+                                        <div class="login-form">
+                                        {% block fos_user_content %}
 			        		   <!-- form -->
-                                                {% endblock fos_user_content %}
-							<div class="login-links"> 
-					            <a href="#">
-					          	   Olvido su contraseña?
-					            </a>
-					            <br>
-					            <a href="#">
-					              Aún no tiene una cuenta? <strong>Regístrese</strong>
-					            </a>
-							</div>  
-                                                        
-			        	</div> 			        	
+                                        {% endblock fos_user_content %}
+                                        </div>
+                                        {% for type, messages in app.session.flashBag.all %}
+                                            {% for message in messages %}
+                                                <div class="{{ type }}" style="text-align:center">
+                                                    {{ message|trans({}, 'FOSUserBundle') }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %} 
 			       </div>
 			    </div>
 			</div>
@@ -61,13 +57,7 @@
                             
                         </span>#}
                         
- {% for type, messages in app.session.flashBag.all %}
-                            {% for message in messages %}
-                                <div class="{{ type }}">
-                                    {{ message|trans({}, 'FOSUserBundle') }}
-                                </div>
-                            {% endfor %}
-                        {% endfor %} 
+ 
                         
     
   

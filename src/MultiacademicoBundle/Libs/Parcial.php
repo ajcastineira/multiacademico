@@ -191,6 +191,32 @@ class Parcial
            return $cquim;
 
     }
+    
+    public function estaDentroDelPeriodo() {
+        $hoy=new \DateTime();
+        if ($hoy>=$this->fechaInicio && $hoy<=$this->fechaMaximaDeRegistroDeNotas())
+        {
+            return true;
+        }else
+        {
+            return false;
+        }    
+    }
+    
+    public function fechaMaximaDeRegistroDeNotas() {
+        $fechaMax=new \Datetime($this->fechaFin->format('Y-m-d'));
+        return $fechaMax->modify("+7 days");
+    }
+    
+    public function tiempoRestanteParaPasarNotas(){
+        $hoy=new \DateTime();
+        if ($hoy>$this->fechaMaximaDeRegistroDeNotas())
+        {
+            return "Tiempo Agotado";
+        }
+        $interval = $hoy->diff($this->fechaMaximaDeRegistroDeNotas());
+        return $interval->format('%a dias %h horas %i minutos');
+    }
    /* public function consulta_estado_parcial($parcial,$quimestre)
      {
        $cpar=cod_parcial($parcial);

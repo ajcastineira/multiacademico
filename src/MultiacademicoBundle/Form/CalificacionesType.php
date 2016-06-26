@@ -34,17 +34,24 @@ class CalificacionesType extends AbstractType
                 if ($dataparent instanceof CursoACalificar)
                 {
                     $this->q=$dataparent->getParcial()->getQ();
-                    $this->p=$dataparent->getParcial()->getP();       
+                    $this->p=$dataparent->getParcial()->getP();
+                    $sePermitePasarNotas=$dataparent->getParcial()->estaDentroDelPeriodo();
+                    $optionsField=[];
+                    if (!$sePermitePasarNotas)
+                    {
+                        $optionsField['disabled']=true;
+                    }
+                    
                     if($this->q<3)
                     {
                     for ($i=1;$i<=5;$i++)     
                        {
                         $notavar='q'.$this->q.'P'.$this->p.'N'.$i;
-                           $form->add($notavar,  NotaType::class);
+                           $form->add($notavar,  NotaType::class,$optionsField);
                        }
                         if ($this->p==3)
                        {
-                        $form->add('q'.$this->q.'Ex',NotaType::class);
+                        $form->add('q'.$this->q.'Ex',NotaType::class,$optionsField);
                        }
                     }
                     if ($this->q==3)

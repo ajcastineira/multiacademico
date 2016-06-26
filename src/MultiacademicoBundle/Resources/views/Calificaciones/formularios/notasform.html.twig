@@ -47,6 +47,14 @@
                                     <td colspan="10"><b>Materia: </b>{{materia}} </td> 
 
                                 </tr>
+                                <tr><td colspan="4"><b>Inicio del Parcial: </b>{{parcial.fechaInicio|localizeddate('medium', 'medium')}}</td>
+                                    <td colspan="10"><b>Fin del Parcial: </b>{{parcial.fechaFin|localizeddate('medium', 'medium')}}</td> 
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><b>Fecha Maxima de Registro de Notas: </b>{{parcial.fechaMaximaDeRegistroDeNotas()|localizeddate('medium', 'medium')}}</td> 
+                                    <td colspan="10"><b>Tiempo Restante para Calificar: </b>{{parcial.tiempoRestanteParaPasarNotas()}}</td> 
+                                    
+                                </tr>
                                  <tr>    
                                      <th colspan="14">{{parcial.text_quimestre()}}</th>
                                   </tr> 
@@ -141,7 +149,7 @@
                                                         {{pactividadgrupalvar}}={{pactividadgrupal}};
                                                         {{pleccionesvar}}={{plecciones}};"
                                      </div>
-                                     
+                                     {% if parcial.estaDentroDelPeriodo() %}
                                      <a data-ng-click="{{notavartareas}}={{ptareasvar}};
                                         {{notavaraindiv}}={{pactividadindividualvar}};
                                         {{notavaragrup}}={{pactividadgrupalvar}};
@@ -162,6 +170,7 @@
                                      </a>  
                                            
                                      </td>
+                                     {%endif%}
                                      {% if qactivo<3 %}
                                           
                                          {%for i in 1..5%}

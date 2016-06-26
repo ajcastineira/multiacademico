@@ -39,7 +39,7 @@ class AulasController extends FOSRestController
         
         $user = $this->get('security.token_storage')->getToken()->getUser();
         
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_SECRETARIA'))
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SECRETARIA')||$this->get('security.authorization_checker')->isGranted('ROLE_INSPECTOR'))
         {
             $aulas=$em->getRepository('MultiacademicoBundle:Aula')->findAll();
         }else

@@ -158,8 +158,8 @@
         </a>
     </li> -->
     <!--/ End navigation - dashboard -->
-
-   
+    {%endif%}
+   {% if is_granted('ROLE_SECRETARIA') or is_granted('ROLE_INSPECTOR')%}
 
     <!-- Start navigation - blog -->
     <li class="submenu">
@@ -178,8 +178,11 @@
         </ul>
     </li>
     <!--/ End navigation - blog -->
- 
+    {%endif%}
     <!--/ End navigation - mail -->
+    
+    {% if is_granted('ROLE_SECRETARIA')%}
+        
     <!-- Start category apps -->
     <li class="sidebar-category">
         <span>Reportes</span>

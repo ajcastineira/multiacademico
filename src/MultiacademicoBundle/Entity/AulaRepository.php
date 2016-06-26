@@ -41,7 +41,7 @@ class AulaRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery('SELECT a'
                     . ' FROM MultiacademicoBundle:Aula a '
-                    . ' where a.inspector= :docente'
+                    . ' where a.inspector= :docente OR a.ayudanteInspector= :docente'
                     //. ' ORDER BY n.notificaciontimestamp DESC'
                     )
             ->setParameter(":docente", $docente)

@@ -108,6 +108,16 @@ class Aula
     private $inspector;
     
     /**
+     * @var \Docentes
+     
+     * @ORM\ManyToOne(targetEntity="Docentes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ayudante_inspector_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $ayudanteInspector;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=8, nullable=false)
@@ -496,5 +506,29 @@ class Aula
     public function getInspector()
     {
         return $this->inspector;
+    }
+
+    /**
+     * Set ayudanteInspector
+     *
+     * @param \MultiacademicoBundle\Entity\Docentes $ayudanteInspector
+     *
+     * @return Aula
+     */
+    public function setAyudanteInspector(\MultiacademicoBundle\Entity\Docentes $ayudanteInspector = null)
+    {
+        $this->ayudanteInspector = $ayudanteInspector;
+
+        return $this;
+    }
+
+    /**
+     * Get ayudanteInspector
+     *
+     * @return \MultiacademicoBundle\Entity\Docentes
+     */
+    public function getAyudanteInspector()
+    {
+        return $this->ayudanteInspector;
     }
 }

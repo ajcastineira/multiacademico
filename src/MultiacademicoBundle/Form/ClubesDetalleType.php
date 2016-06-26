@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use MultiacademicoBundle\Form\Type\LetraType;
+use MultiacademicoBundle\Form\Type\NotaCualitativaType;
 use MultiacademicoBundle\Calificar\ProyectoACalificar;
 
 class ClubesDetalleType extends AbstractType
@@ -32,9 +32,9 @@ class ClubesDetalleType extends AbstractType
                 
             
                 $form
-                    ->add('notaQ'.$this->q.'P1',LetraType::class,['required'=>false])
-                    ->add('notaQ'.$this->q.'P2',LetraType::class,['required'=>false])
-                    ->add('notaQ'.$this->q.'P3',LetraType::class,['required'=>false]);
+                    ->add('notaQ'.$this->q.'P1',NotaCualitativaType::class,['required'=>false])
+                    ->add('notaQ'.$this->q.'P2',NotaCualitativaType::class,['required'=>false])
+                    ->add('notaQ'.$this->q.'P3',NotaCualitativaType::class,['required'=>false]);
                 }  
         })
                          

@@ -18,42 +18,42 @@ class ClubesDetalle
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q1_p1", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q1_p1", type="string", length=2, nullable=true)
      */
     private $notaQ1P1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q1_p2", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q1_p2", type="string", length=2, nullable=true)
      */
     private $notaQ1P2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q1_p3", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q1_p3", type="string", length=2, nullable=true)
      */
     private $notaQ1P3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q2_p1", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q2_p1", type="string", length=2, nullable=true)
      */
     private $notaQ2P1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q2_p2", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q2_p2", type="string", length=2, nullable=true)
      */
     private $notaQ2P2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nota_q2_p3", type="string", length=1, nullable=true)
+     * @ORM\Column(name="nota_q2_p3", type="string", length=2, nullable=true)
      */
     private $notaQ2P3;
 

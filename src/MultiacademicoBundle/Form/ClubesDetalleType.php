@@ -32,9 +32,9 @@ class ClubesDetalleType extends AbstractType
                 
             
                 $form
-                    ->add('notaQ'.$this->q.'P1',LetraType::class)
-                    ->add('notaQ'.$this->q.'P2',LetraType::class)
-                    ->add('notaQ'.$this->q.'P3',LetraType::class);
+                    ->add('notaQ'.$this->q.'P1',LetraType::class,['required'=>false])
+                    ->add('notaQ'.$this->q.'P2',LetraType::class,['required'=>false])
+                    ->add('notaQ'.$this->q.'P3',LetraType::class,['required'=>false]);
                 }  
         })
                          

@@ -43,12 +43,20 @@ class MisCalificacionesController extends Controller
     public function informeCalificacionesEstudianteAction()
     {
        $em = $this->getDoctrine()->getManager();
-        $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
+       $user = $this->get('security.token_storage')->getToken()->getUser();
+       $estudiante=$em->getRepository('MultiacademicoBundle:Estudiantes')->findOneByUsuario($user);
+       if ($estudiante->tienePensionesPendientes())
+       {
+           $template='MultiacademicoBundle:Avisos:estudianteNoEstaAlDia.html.twig';
+       }else
+       {
+           $template='MultiacademicoBundle:Informes:informeCalificacionesEstudiante.html.twig';
+       }
+       $periodo = $em->getRepository('MultiacademicoBundle:Periodos')->find(1);
         if (!$periodo) {
             throw $this->createNotFoundException('El periodo no esta configurado.');
         }
-        
-        return $this->render('MultiacademicoBundle:Informes:informeCalificacionesEstudiante.html.twig',array(
+        return $this->render($template,array(
             'periodo'=>$periodo));
     }
 

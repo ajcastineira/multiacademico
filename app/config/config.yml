@@ -118,7 +118,7 @@ assetic:
         chosen_sprite_png:
             inputs:
                 - %kernel.root_dir%/../web/plugin/chosen/chosen-sprite.png 
-            output: vendor/chosen/chosen-sprite.png     
+            output: plugin/chosen/chosen-sprite.png     
         sign_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/pages/sign.css    

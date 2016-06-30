@@ -65,7 +65,7 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             'display_start' => 0,
             'defer_loading' => -1,
             //'dom' => 'lfrtip',
-            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'><'col-sm-4 col-xs-12'l>>" .
+            'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'l><'col-sm-4 col-xs-12'>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100, -1),

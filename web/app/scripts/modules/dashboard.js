@@ -154,7 +154,7 @@ define([
                                 //$state.go($state.$current,{submited:true,formData:dataForm},{reload:true});
                             };
                 // Session timeout
-                $.sessionTimeout({
+               /* $.sessionTimeout({
                   title: 'Su sesion esta a punto de expirar!',
                   logoutButton: 'Logout',
                   keepAliveButton: 'Seguir Conectado',
@@ -165,7 +165,7 @@ define([
                   ignoreUserActivity: false,
                   warnAfter: 240000,
                   redirAfter: 360000
-                });
+                });*/
                 
                 
 

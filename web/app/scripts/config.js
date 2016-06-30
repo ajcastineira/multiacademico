@@ -17,7 +17,7 @@ define([
         var baseURL = $browser.baseHref().replace("app_dev.php/",""), // Setting base url app
             settings = {
                 baseURL                 : baseURL,
-                pluginPath              : 'vendor',
+                pluginPath              : 'plugin',
                 pluginProdPath          : 'plugin',
                 pluginCommercialPath    : baseURL+'/assets/commercial/plugins',
                 globalImagePath         : 'img',

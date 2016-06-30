@@ -13,8 +13,14 @@
         }
 
     </style>
-    <h1>Mis Actividades Academicas listado</h1>
-
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+        <h1>Mis Actividades Academicas listado</h1>
+    </div>
+     <div class="col-xs-12 col-sm-4" style="height:40px">
+        {{include('::adsense-responsive.html.twig')}}
+     </div>
+    </div>    
         {{ datatable_render_html(datatable) }}
    {# <ul>
         <li>

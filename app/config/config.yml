@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+ #   - { resource: redis.yml }  
     - { resource: types.yml }  
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -227,11 +228,16 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        #metadata_cache_driver: redis
+        #query_cache_driver: redis
+        #result_cache_driver: redis
         # entity_managers:
         #     default:
         #         mappings:
         #             VNNCoreBundle: ~
         #             VNNPressboxBundle: ~
+        #second_level_cache:
+        #    enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:

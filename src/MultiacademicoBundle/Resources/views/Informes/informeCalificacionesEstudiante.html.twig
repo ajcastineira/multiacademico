@@ -46,15 +46,22 @@
             <tbody>
                 <tr bgcolor="FFFFFF">
                     <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Materias</b></span></td>
-                    <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p1.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p2.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p3.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pps.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_pa_80.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex_20.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_100.png')}}" border="0"></td>
-            <td width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cu.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ti.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ai.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ag.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_lc.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ev.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pp.png')}}" border="0"></td>
+            <td ng-if="p<=3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cu.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p1.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p2.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_p3.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pps.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_pa_80.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex_20.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_100.png')}}" border="0"></td>
+            <td ng-if="p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cu.png')}}" border="0"></td>
             <!--<td width="35"  style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;font-size:8.0pt;font-family:Tahoma;color:#000000">Comportamiento</div></td>-->
             </tr>
             </tbody></table>
@@ -66,15 +73,22 @@
                         <td>
                             <span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion.calificacioncodmateria.materia}}</span>
                         </td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,1,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,2,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,3,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales(q,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales80(q,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_ex']}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{ex20(q,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(q,calificacion)}}</span></td>
-                        <td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{cualitativasiglas(prq(q,calificacion))}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_p'+p+'_n1']}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_p'+p+'_n2']}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_p'+p+'_n3']}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_p'+p+'_n4']}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_p'+p+'_n5']}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,p,calificacion)}}</span></td>
+                        <td ng-if="p<=3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{cualitativasiglas(prparcial(q,p,calificacion))}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,1,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,2,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparcial(q,3,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales(q,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prparciales80(q,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['q'+q+'_ex']}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{ex20(q,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(q,calificacion)}}</span></td>
+                        <td ng-if="p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{cualitativasiglas(prq(q,calificacion))}}</span></td>
                         <!--<td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">E</span></td>-->
                         {%endverbatim%}
                     </tr>
@@ -85,7 +99,9 @@
                     <tr height="25" bgcolor="FFFFFF">
             <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>NOTA PROMEDIAL</b></span></td>
             {%verbatim%}
-            <td width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td></tr></tbody></table>
+            <td ng-if="p<=3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
+            <td ng-if="p>3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td>
+            </tr></tbody></table>
             {%endverbatim%}
                             
 <br>

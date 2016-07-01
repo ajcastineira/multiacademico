@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
+         //   new Snc\RedisBundle\SncRedisBundle(),
             //probado commit
             new AppBundle\AppBundle(),
             new MultiacademicoBundle\MultiacademicoBundle(),

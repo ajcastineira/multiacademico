@@ -121,6 +121,18 @@ define(['multiacademico/multiacademico'], function(module){
                                       this.getPromedioParcial(q,3,calificacion);
                                 return redondear(sum/3,2);
                                 },
+                    getPromedioTotalParcial:function (q,p,calificaciones) //total de quimestres unicamente
+                          {
+                               var s=0,i=0;
+                               for (var index in calificaciones)
+                               {
+                                    i++;
+                                    var calificacion = calificaciones[index]; 
+                                    s+=this.getPromedioParcial(q,p,calificacion);
+                            };
+                            var r=(s/i);
+                                return redondear(r,2);
+                           },             
                     getPromedioParciales80:function (q,calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}

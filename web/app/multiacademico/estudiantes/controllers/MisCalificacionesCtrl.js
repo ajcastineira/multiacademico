@@ -50,6 +50,14 @@ define(['multiacademico/informes/module',
                                 return Calificaciones.getPromedioParcial(q,p,calificacion);
                             };
                             
+                            $scope.prtp=function(q,p,calificaciones)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                               // var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                return Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
+                            };
+                            
                             $scope.prparciales=function(q,calificacion)
                             {
                                 if (typeof q==='undefined') q=$scope.q;

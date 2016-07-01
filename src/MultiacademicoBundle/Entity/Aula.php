@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="aulas")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\AulaRepository")
+ * ORM\Cache(usage="READ_ONLY")
  * @Serializer\ExclusionPolicy("all")
  * @UniqueEntity({"curso","especializacion","paralelo","seccion","periodo"}, message="El Aula con esta combinacion ya existe")
  */

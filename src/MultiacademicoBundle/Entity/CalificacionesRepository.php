@@ -7,6 +7,7 @@
 namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Monolog\Handler\Curl\Util;
 
 class CalificacionesRepository extends EntityRepository
 {
@@ -74,6 +75,25 @@ class CalificacionesRepository extends EntityRepository
         $seccion=$distributivo->getDistributivoseccion();
         $materia=$distributivo->getDistributivocodmateria();
         
+        //$cacheId = 'Activity_';
+        
+        $parameters=[
+            
+            ":materia" => $materia,
+            ":curso" => $curso,
+            ":especializacion" => $especializacion,
+            ":paralelo" => $paralelo,
+            ":periodo" => $periodo,
+            ":seccion" => $seccion
+            
+        ];
+        
+        /** @var Parameter $parameter */
+        /*foreach ($parameters as $parameter) {
+         $cacheId .= serialize($parameter);
+        }
+        $cacheId = md5($cacheId);*/
+        
         return $this->getEntityManager()
             ->createQuery('SELECT c, m, e '
                     . ' FROM MultiacademicoBundle:Calificaciones c'
@@ -87,12 +107,9 @@ class CalificacionesRepository extends EntityRepository
                     .' m.matriculaseccion=:seccion '
                     .' ORDER BY e.estudiante asc '
                     )
-            ->setParameter(":materia", $materia)
-            ->setParameter(":curso", $curso)
-            ->setParameter(":especializacion", $especializacion)
-            ->setParameter(":paralelo", $paralelo)
-            ->setParameter(":periodo", $periodo)
-            ->setParameter(":seccion", $seccion)
+            ->setParameters($parameters)
+            //->useQueryCache(true)
+            //->useResultCache(true, 3600, $cacheId)
             ->getResult();
     } 
     

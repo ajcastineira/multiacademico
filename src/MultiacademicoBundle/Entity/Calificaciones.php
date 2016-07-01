@@ -14,6 +14,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Table(name="calificaciones", indexes={@ORM\Index(name="calificacionnummatricula", columns={"calificacionnummatricula"}), @ORM\Index(name="calificacioncodmateria", columns={"calificacioncodmateria"})})
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\CalificacionesRepository")
  * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\CalificacionesListener"})
+ * ORM\Cache(usage="READ_ONLY")
  * ORM\HasLifecycleCallbacks() 
  * @Serializer\ExclusionPolicy("none")
  */

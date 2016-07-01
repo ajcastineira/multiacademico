@@ -223,8 +223,8 @@ class UsuarioController extends Controller
             'method' => 'PUT',
         ));
         $em = $this->getDoctrine()->getManager();
-        $estudiante=$em->getRepository('MultiacademicoBundle:Estudiantes')->findByUsuario($me);
-        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findByUsuario($me);
+        $estudiante=$em->getRepository('MultiacademicoBundle:Estudiantes')->findOneByUsuario($me);
+        $docente=$em->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($me);
         //$administrativo=null;
 
         return array(

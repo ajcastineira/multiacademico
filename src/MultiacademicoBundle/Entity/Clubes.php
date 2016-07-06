@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Clubes
@@ -65,6 +66,7 @@ class Clubes
      * @var \Doctrine\Common\Collections\ArrayCollection;
      * @ORM\OneToMany(targetEntity="ClubesDetalle",mappedBy="codclub", cascade={"persist"})
      * ORM\OrderBy({"clubescodestudiante" = "ASC"})
+     * @Assert\Valid
      */
     private $registrados;
     

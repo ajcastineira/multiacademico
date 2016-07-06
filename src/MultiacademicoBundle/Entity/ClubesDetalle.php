@@ -6,12 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use MultiacademicoBundle\Libs\Letra;
 use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 use MultiacademicoBundle\Libs\Equivalencia;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ClubesDetalle
  *
- * @ORM\Table(name="clubes_detalle", indexes={@ORM\Index(name="codclub", columns={"codclub"}), @ORM\Index(name="clubescodestudiante", columns={"clubescodestudiante"})})
+ * @ORM\Table(name="clubes_detalle",
+ *           uniqueConstraints={@ORM\UniqueConstraint(name="search_codestudiante", columns={"clubescodestudiante"})},
+ *           indexes={@ORM\Index(name="codclub", columns={"codclub"}), @ORM\Index(name="clubescodestudiante", columns={"clubescodestudiante"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"clubescodestudiante"}, message="El Estudiante {{ value }} ya esta registrado en otro Proyecto Escolar")
  */
 class ClubesDetalle
 {
@@ -71,10 +75,10 @@ class ClubesDetalle
      * @var \Estudiantes
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Estudiantes", inversedBy="codclub")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id", unique=true)
      * })
      */
     private $clubescodestudiante;

@@ -95,6 +95,14 @@ define(['multiacademico/reportes/malla/module',
                                 var calificaciones=$scope.aula.matriculados[i].calificaciones;
                                 return Calificaciones.getSumaFinal(calificaciones);
                             };
+                            
+                            $scope.prgp=function(i,q,p)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                return Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
+                            };
+                            
                             $scope.prg=function(i)
                             {
                                 //if (typeof q==='undefined') q=$scope.q;

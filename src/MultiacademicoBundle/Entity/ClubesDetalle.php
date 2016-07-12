@@ -7,6 +7,7 @@ use MultiacademicoBundle\Libs\Letra;
 use Doctrine\Common\Collections\Collection, Doctrine\Common\Collections\ArrayCollection;
 use MultiacademicoBundle\Libs\Equivalencia;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * ClubesDetalle
@@ -23,6 +24,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q1_p1", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ1P1;
 
@@ -30,6 +32,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q1_p2", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ1P2;
 
@@ -37,6 +40,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q1_p3", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ1P3;
 
@@ -44,6 +48,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q2_p1", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ2P1;
 
@@ -51,6 +56,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q2_p2", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ2P2;
 
@@ -58,6 +64,7 @@ class ClubesDetalle
      * @var string
      *
      * @ORM\Column(name="nota_q2_p3", type="string", length=2, nullable=true)
+     * @Serializer\Groups({"detail"})
      */
     private $notaQ2P3;
 
@@ -68,6 +75,7 @@ class ClubesDetalle
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="codclub", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Groups({"detail"})
      */
     private $codclub;
 
@@ -80,6 +88,7 @@ class ClubesDetalle
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="clubescodestudiante", referencedColumnName="id", unique=true)
      * })
+     * Serializer\Groups({"detail"})
      */
     private $clubescodestudiante;
     

@@ -248,6 +248,15 @@ class Matriculas
      
      */
     private $asistencia;
+    /**
+    * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("proyectoescolar")
+     * @Serializer\Groups({"detail"})
+     * 
+     */
+    public function getProyectoEscolar(){
+        return $this->getMatriculacodestudiante()->getCodclub();
+    }
     
     public function indexCalificaciones()
     {

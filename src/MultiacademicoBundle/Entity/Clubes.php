@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Clubes
@@ -21,6 +22,7 @@ class Clubes
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Groups({"detail"})
      */
     private $id;
 
@@ -28,6 +30,7 @@ class Clubes
      * @var string
      *
      * @ORM\Column(name="club", type="string", length=255, nullable=false)
+     * @Serializer\Groups({"detail"})
      */
     private $club;
 

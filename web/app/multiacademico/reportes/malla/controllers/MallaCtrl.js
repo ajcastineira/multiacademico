@@ -9,6 +9,15 @@ define(['multiacademico/reportes/malla/module',
 
     module.registerController('MallaCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
                             $scope.aula = aula;
+                            $scope.tam= '1';
+                            $scope.tamOptions= [
+                              {id: '1', name: 'normal'},
+                              {id: '0', name: 'reducido'}
+                            ];
+                            $scope.estaReducido=function()
+                            {
+                                return !parseInt($scope.tam); 
+                            };
                             $scope.qop=Calificaciones.quimestres;
                             $scope.pop=Calificaciones.parciales;
                             $scope.q = $stateParams.q;
@@ -135,6 +144,14 @@ define(['multiacademico/reportes/malla/module',
                                 
                                 };
                             
+                            $scope.proyectoparcial=function(i,q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                var calificacionparcialproyecto=$scope.aula.matriculados[i].proyectoescolar['nota_q'+q+'_p'+p];
+                                if (typeof calificacionparcialproyecto==='undefined') calificacionparcialproyecto='N/A';
+                                return calificacionparcialproyecto;
+                            };
                            });
 });
 

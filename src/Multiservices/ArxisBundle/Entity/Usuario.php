@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FOS\UserBundle\Model\User as BaseUser;
+use AppBundle\Lib\FireBaseUtil;
+
 /**
 * @ORM\Entity
 * @ORM\HasLifecycleCallbacks
@@ -203,7 +205,10 @@ class Usuario extends BaseUser
     protected $groups;
     protected $roles;
     
-   public function __construct()
+   public function getFirebaseToken(){
+       return FireBaseUtil::create_custom_token($this->username, $this->email);
+   }
+    public function __construct()
     {
      //parent::__construct();
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
@@ -220,6 +225,7 @@ class Usuario extends BaseUser
     $this->roles = $this->user_roles;
     $this->setRoles($this->user_roles->toArray());
     $this->addCreated();
+     $this->allowedClients = new ArrayCollection();
     }
     /**
     * Get id

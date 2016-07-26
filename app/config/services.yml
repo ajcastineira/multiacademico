@@ -2,6 +2,7 @@
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
 #    parameter_name: value
+     my_user_provider.class: AppBundle\Security\Core\User\FOSUBUserProvider
 
 services:
 #    service_name:
@@ -25,3 +26,8 @@ services:
             - { name: twig.extension }
     fos_user.doctrine_registry:
         alias: doctrine
+    #hwi_oauth.user.provider.entity:
+    #    class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider    
+    my_user_provider:
+        class: "%my_user_provider.class%"
+        arguments: ['@fos_user.user_manager', { multiacademico: username }]    

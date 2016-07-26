@@ -302,4 +302,47 @@ fos_rest:
             force:                false
         serialize_null:       false
     serializer:
-        serialize_null:       false
+        serialize_null:       false   
+fos_oauth_server:
+    db_driver: orm       
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode  
+    service:
+        user_provider: fos_user.user_provider.username
+hwi_oauth:
+    connect:
+        account_connector: my_user_provider
+    firewall_names: [main]
+    # optional FOSUserBundle integration
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+            #facebook: facebook_id
+            #google: google_id
+            multiacademico: username
+    resource_owners:
+        multiacademico:
+            type:                oauth2
+            client_id:           %oauth_client%
+            client_secret:       %oauth_secret%
+            access_token_url:    %website_back_base_url%/oauth/v2/token
+            authorization_url:   %website_back_base_url%/oauth/v2/auth
+            infos_url:           %website_back_base_url%/me
+            #scope:               "read"
+            user_response_class: HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse
+            options:
+                csrf: true
+            paths:
+                identifier: id
+                nickname:   username
+                password:   password
+                realname:   username
+kreait_firebase:
+  connections:
+    main:
+      scheme: https
+      host: multiacademico.firebaseio.com
+      service_account: %kernel.root_dir%/Resources/FireBase/Multiacademico-fcbcd0bb4d08.json

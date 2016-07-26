@@ -20,4 +20,7 @@ parameters:
     pdf_generator: %kernel.root_dir%/../vendor/bin/wkhtmltopdf-amd64
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+    oauth_client: ~
+    oauth_secret: ~
+    website_back_base_url: ~
     locale: es

@@ -16,13 +16,13 @@ class RepresentanteEstudianteType extends AbstractType
             'attr'=>array( 'class'=>'chosen-select ',
                            'data-chosen-select'=>null,
                           'data-placeholder'=>'Seleccione representante...'),
-            'class'=>  'MultiacademicoBundle:Estudiantes',
-            'choice_label' => function ($estudiante) {
-                            return $estudiante->getDisplayRepresentanteName();
+            'class'=>  'MultiacademicoBundle:Representantes',
+            'choice_label' => function ($representante) {
+                            return $representante->getRepresentadosText();
                         },
-            'choice_value' => function ($estudiante) {
+            /*'choice_value' => function ($representante) {
                             return $estudiante->getDisplayRepresentanteId();
-                        },                    
+                        },                    */
             'placeholder'=>'',
             'multiple'=>false
         ));

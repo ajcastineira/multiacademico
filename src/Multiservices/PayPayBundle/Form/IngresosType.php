@@ -38,7 +38,7 @@ class IngresosType extends AbstractType
     {
         $builder
             ->add('fecha', DateTimeType::class)
-            ->add('estudiante',  RepresentanteEstudianteType::class)
+            ->add('representante',  RepresentanteEstudianteType::class)
             ->add('monto',NumberType::class,['attr'=>
                                                     ['step'=>'0.01']]
                                             )
@@ -80,12 +80,12 @@ class IngresosType extends AbstractType
                 }    
         );
 
-        $builder->get('estudiante')->addEventListener(
+        $builder->get('representante')->addEventListener(
             FormEvents::POST_SUBMIT,
             function (FormEvent $event) use ($formModifier) {
                 // It's important here to fetch $event->getForm()->getData(), as
                 // $event->getData() will get you the client data (that is, the ID)
-                $representante = $event->getForm()->getData()->getRepresentante();
+                $representante = $event->getForm()->getData();
                 $facturas = $event->getForm()->getParent()->getData()->getFacturas();
                 // since we've added the listener to the child, we'll have to pass on
                 // the parent to the callback functions!

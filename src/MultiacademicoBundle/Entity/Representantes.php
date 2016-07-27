@@ -420,4 +420,14 @@ class Representantes
     {
         return $this->pagos;
     }
+    
+    public function getRepresentadosText(){
+        
+        $representados_line="";
+        foreach ($this->getRepresentados() as $representado)
+        {
+           $representados_line.=$representado->getEstudiante()." - ";
+        }
+        return $representados_line. "- ". $this->representante."";
+    }
 }

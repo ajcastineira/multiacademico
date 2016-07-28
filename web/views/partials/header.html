@@ -126,12 +126,12 @@
             <!-- Start notifications -->
            <li class="dropdown navbar-notification">
 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="count label label-danger rounded" style="{{navbarNotifications.unread>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarNotifications.unread}}</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="count label label-danger rounded" style="{{navbarNotifications.unread()>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarNotifications.unread()}}</span></a>
 
                 <!-- Start dropdown menu -->
                <div class="dropdown-menu animated flipInX">
                     <div class="dropdown-header">
-                        <span class="title">Notificationes <strong>({{navbarNotifications.length}})</strong></span>
+                        <span class="title">Notificaciones <strong>({{navbarNotifications.length()}})</strong></span>
                         <!--<span class="option text-right"><a href="#"><i class="fa fa-cog"></i> Setting</a></span>-->
                     </div>
                     <div data-nicescroll class="dropdown-body niceScroll">
@@ -139,7 +139,7 @@
                         <!-- Start notification list -->
                         <div class="media-list small">
 
-                            <a data-ng-repeat="notification in navbarNotifications.data" href="#" class="media {{notification.read ?'':'unread'}}">
+                            <a data-ng-repeat="notification in navbarNotifications.data" ng-click="leerNotificacion(notification)" class="media {{notification.read ?'':'unread'}}">
                                 <div class="media-object pull-left">
                                     <i data-ng-show="notification.icon" class="{{notification.icon}}"></i>
                                     <img data-ng-show="notification.image" class="img-circle" src="https://ipsumimage.appspot.com/30x30,4888E1?f=ffffff" alt="{{notification.image}}"/>
@@ -147,7 +147,7 @@
                                 <div class="media-body">
                                     <span class="media-text" ng-bind-html="notification.message"></span>
                                     <!-- Start meta icon -->
-                                    <span class="media-meta">{{notification.date}}</span>
+                                    <span class="media-meta">{{timeago(notification.date*(-1))}}</span>
                                     <!--/ End meta icon -->
                                </div><!-- /.media-body -->
                             </a><!-- /.media -->
@@ -179,7 +179,7 @@
 <!-- Start notifications -->
            <li class="dropdown navbar-notification">
 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="count label label-danger rounded" style="{{navbarNotifications.unread>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarNotifications.unread}}</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="count label label-danger rounded" style="{{navbarMessages.unread>0?'':'animation: none;-webkit-animation: none;'}}">{{navbarMessages.unread}}</span></a>
 
                 <!-- Start dropdown menu -->
                <div class="dropdown-menu animated flipInX">

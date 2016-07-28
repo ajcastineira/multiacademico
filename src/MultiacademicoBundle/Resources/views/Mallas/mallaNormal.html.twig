@@ -60,7 +60,8 @@ table { page : rotated!important }
                                 <th colspan="{{encabezado.materiacolspan()}}" data-ng-repeat="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]">
                                  {{distributivo.distributivocodmateria.materia}} </th> 
                              {%endverbatim%}
-             <th  ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROYECTO ESCOLAR</div></th>
+             <th  ng-if="q<3&&aula.recibeProyectoEscolar()" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROYECTO ESCOLAR</div></th>   
+             <th  ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>
              <th  ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO PARCIAL</div></th>
              <th  ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">SUMA</div></th>
              <th ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO</div></th>
@@ -140,7 +141,8 @@ table { page : rotated!important }
                             <td ng-if="Materias[distributivo.distributivocodmateria.id]&&q==3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['supletorio']}}</td> 
                             <td ng-if="Materias[distributivo.distributivocodmateria.id]&&q==3">{{alumno.calificaciones[distributivo.distributivocodmateria.id]['gracia']}}</td> 
                             <td ng-if="Materias[distributivo.distributivocodmateria.id]&&q==3" data-ng-repeat-end style=" -webkit-print-color-adjust:exact;background-color: gainsboro;">{{prf($parent.$parent.$index,distributivo.distributivocodmateria.id)}}</td> 
-                            <td ng-if="q<3">{{proyectoparcial($index,q,p)}}</td> 
+                            <td ng-if="q<3&&aula.recibeProyectoEscolar()" ng-class="{'btn-danger':proyectoparcial($index,q,p)=='S.P.','btn-warning':proyectoparcial($index,q,p)=='N/A'}">{{proyectoparcial($index,q,p)}}</td> 
+                            <td ng-if="q<3" ng-class="{'btn-danger':comportamientoparcial($index,q,p)=='S.C.','btn-warning':comportamientoparcial($index,q,p)=='N/A'}">{{comportamientoparcial($index,q,p)}}</td> 
                             <td ng-if="q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgp($index,q,p)}}</td> 
                            <td ng-if="q==3">{{sumf($index)}}</td> 
                             <td ng-if="q==3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prg($index)}}</td> 

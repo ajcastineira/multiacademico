@@ -205,34 +205,7 @@
                 
                 
                   
-<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDPSuC3ADQFoelry5J0O1kjvhJtuCfwK8A",
-    authDomain: "multiacademico.firebaseapp.com",
-    databaseURL: "https://multiacademico.firebaseio.com",
-    storageBucket: "multiacademico.appspot.com",
-  };
-  firebase.initializeApp(config);
-  
-  firebase.auth().signInWithCustomToken("{{app.user.getFirebaseToken()}}").catch(function(error) {
 
-  var errorCode = error.code;
-  var errorMessage = error.message;
-    console.log(error);
-});
- var database = firebase.database();
-  firebase.database().ref('appName').on('value', function(snapshot) {
-        console.log("cambio a",snapshot.val());
-   });
-   
-   function writeAppName(name) {
-      firebase.database().ref('appName').set(name);
-    }
-    
-
-</script>
     <!--
     <script src="vendor/angular-aria/angular-aria.js"></script>
     <script src="vendor/angular-messages/angular-messages.js"></script>

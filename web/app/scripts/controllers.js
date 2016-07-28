@@ -13,8 +13,16 @@ define([
 
 var module = ng.module('blankonController', [])
 
-     .controller('BlankonCtrl',['$scope', '$http', 'settings', function($scope, $http, settings) {
+     .controller('BlankonCtrl',['$scope', '$http', 'settings', '$firebaseObject', '$firebaseArray', 'User', function($scope, $http, settings, $firebaseObject, $firebaseArray, User) {
 
+          User.initialized.then(function(){
+              firebase.auth().signInWithCustomToken(User.fToken).then(function(authData) {
+                console.log("Logged in as:", authData.uid);
+              }).catch(function(error) {
+                console.log("Authentication failed:", error);
+              });
+          });
+          var ref = firebase.database().ref();
         // =========================================================================
         // SUPPORT IE
         // =========================================================================
@@ -155,14 +163,43 @@ var module = ng.module('blankonController', [])
         // =========================================================================
         // NAVBAR NOTIFICATIONS
         // =========================================================================
-        $scope.navbarNotifications = [];
-        $http.get(Routing.generate('activity-notify',{_format:'json'})) // Simple GET request example :
+        
+        
+        // download physicsmarie's profile data into a local object
+        // all server changes are applied in realtime
+        //$scope.profile = $firebaseObject(ref.child('profiles').child('physicsmarie'));
+        
+        User.initialized.then(function(){
+         var misNotificaciones=ref.child('notificaciones').child(User.username).orderByChild('date');
+        $scope.navbarNotifications = {"title":"Notificaciones",
+                                      "length":function(){
+                                              return this.data.length;
+                                      },
+                                      "unread":function(){
+                                          function isRead(m) {
+                                                return m.read === false;
+                                            }
+                                          return this.data.filter(isRead).length;
+
+                                      },
+                                      "data":$firebaseArray(misNotificaciones)
+                                      };
+                                  
+        });
+        $scope.leerNotificacion=function(n){
+            n.read=true; 
+            $http.post(Routing.generate('notificaciones_read',{id:n.$id})) // Simple GET request example :
             .success(function(data) {
-                $scope.navbarNotifications = data;
+               n.read=true;
             })
             .error(function(data, status, headers, config) {
-                // Error actions
+                n.read=false; 
             });
+            
+        };
+        $scope.timeago=function(time){
+            return timeago(time);
+        };
 
         // =========================================================================
         // SIDEBAR RIGHT (PROFILE TAB)
@@ -222,3 +259,47 @@ var module = ng.module('blankonController', [])
     return module;
     
 });
+
+function timeago($timestamp)
+{
+    
+    var tempo= {
+        "fechainteligente": function (timestamp) 
+                             {
+                                 
+                                /*if (!is_int(timestamp)and !is_numeric(timestamp)) 
+                                {
+                                        timestamp=strtotime(timestamp, 0);
+                                }*/
+                                var $diff = Math.floor(Date.now()/1000) - timestamp;
+                                if ($diff <= 0) return 'Ahora';
+                                else if ($diff < 60) return "hace "+this.ConSoSinS(Math.floor($diff), ' segundo(s)');
+                                else if ($diff < 60*60) return "hace "+this.ConSoSinS(Math.floor($diff/60), ' minuto(s)');
+                                else if ($diff < 60*60*24) return "hace "+this.ConSoSinS(Math.floor($diff/(60*60)), ' hora(s)');
+                                else if ($diff < 60*60*24*30) return "hace "+this.ConSoSinS(Math.floor($diff/(60*60*24)), ' día(s)');
+                                else if ($diff < 60*60*24*30*12) return "hace "+this.ConSoSinS(Math.floor($diff/(60*60*24*30)), ' mes(es)');
+                                else return "hace "+this.ConSoSinS(Math.floor($diff/(60*60*24*30*12)), ' año(s)');
+                             },
+        "getColor": function (timestamp)
+        {
+                /*if (!is_int($timestamp)) 
+                {
+                        timestamp=strtotime($timestamp, 0);
+                }*/
+                var $diff = Math.floor(Date.now()/1000) - timestamp;
+                if ($diff <= 0) return 'orange';
+                else if ($diff < 60) return "orange";
+                else if ($diff < 60*60) return "green";
+                else if ($diff < 60*60*24) return "blue";
+                else if ($diff < 60*60*24*30) return "grey";
+                else if ($diff < 60*60*24*30*12) return "grey";
+                else return "grey";
+             },
+     "ConSoSinS": function(val, sentence) 
+     {
+        if (val > 1) return val+sentence.replace(/\u0028|\u0029/g, '');
+	else return val+sentence.replace(/\u0028s\u0029|\u0028es\u0029/g, '');
+     }
+ };
+    return tempo.fechainteligente($timestamp);
+}

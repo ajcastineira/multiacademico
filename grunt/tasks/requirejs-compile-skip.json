@@ -16,6 +16,8 @@
   "angular-google-plus": "empty:",
   "angular-loading-bar": "empty:",
   "angular-mocks": "empty:",
+  "angularfire": "empty:",
+  "firebase": "empty:",
   "pace": "empty:",
   "fastclick": "empty:",
   "jquery-color": "empty:",

@@ -23,6 +23,9 @@ var require = {
                             '../plugin/angular-sanitize/angular-sanitize.min'],
         'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min',
                             '../plugin/angular-animate/angular-animate.min'],
+                        
+        'firebase': ['//www.gstatic.com/firebasejs/3.2.0/firebase'],
+        'angularfire': ['//cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min'],
 
 
         'domReady': '../plugin/requirejs-domready/domReady',
@@ -218,6 +221,8 @@ var require = {
         'angular-couch-potato': { deps: ['angular'] },
         
         'angular-x-editable': { deps: ['angular'] },
+        
+        'angularfire': { deps: ['angular','firebase'] },
         
         'socket.io': { deps: ['angular'] },
 

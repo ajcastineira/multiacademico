@@ -17,6 +17,7 @@ define([
     'angular-sanitize',
     'angular-bootstrap',
     'angular-loading-bar',
+    'angularfire',
     'oc-lazyload'
 ], function (ng, couchPotato) {
 
@@ -24,6 +25,7 @@ define([
     var app = ng.module('app', [
         'ngSanitize',
         'ngAnimate',
+        'firebase',
         'oc.lazyLoad',
         'scs.couch-potato',
         'ui.router',
@@ -74,7 +76,15 @@ define([
 
     app.config(function ($provide, $httpProvider, $locationProvider) {
 
-       $locationProvider.html5Mode(true);
+        var config = {
+            apiKey: "AIzaSyDPSuC3ADQFoelry5J0O1kjvhJtuCfwK8A",
+            authDomain: "multiacademico.firebaseapp.com",
+            databaseURL: "https://multiacademico.firebaseio.com",
+            storageBucket: "multiacademico.appspot.com",
+          };
+          firebase.initializeApp(config);
+        
+        $locationProvider.html5Mode(true);
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         // Intercept http calls.
         $provide.factory('ErrorHttpInterceptor', function ($q) {

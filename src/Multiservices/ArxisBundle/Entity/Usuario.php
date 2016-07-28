@@ -917,4 +917,20 @@ class Usuario extends BaseUser
     {
         return $this->notificaciones;
     }
+    
+    public function getAutorizaciones(){
+        return $this->data["autorizaciones"];
+    }
+    
+    public function addAutorizacion($autorizacion) {
+        if (isset($this->data["autorizaciones"]))
+        {
+           $this->data["autorizaciones"][]=$autorizacion;
+        }
+        return $this;
+    }
+    
+    public function tieneAutorizacionVigente(){
+        return true;
+    }
 }

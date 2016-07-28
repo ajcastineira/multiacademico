@@ -20,10 +20,11 @@ class ApiUsersController extends Controller
     {
         $userin = $this->get('security.token_storage')->getToken()->getUser();
         $user=new \stdClass();
-        $user->username=$userin->getName();
+        $user->username=$userin->getUsername();
         $user->name=$userin->getName();
         $user->picture= $userin->getWebPath();
         $user->cargo= $userin->getCargo();
+        $user->fToken=$userin->getFirebaseToken();
         $user->activity= 12;
         $response= New JsonResponse();
         $response->setData($user);

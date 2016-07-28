@@ -87,7 +87,7 @@ class UserNormalNotification implements ActionDataInterface{
         $this->notificacion = $notificacion;
         return $this;
     }
-
+    
 
 
 

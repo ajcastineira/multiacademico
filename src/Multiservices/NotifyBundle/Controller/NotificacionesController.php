@@ -106,31 +106,12 @@ class NotificacionesController extends Controller
      * @Method("POST")
      
      */
-    public function readAction(Request $request, $id)
+    public function readAction(Request $request, Notificaciones $notificacion)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('NotifyBundle:Notificaciones')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Notificaciones entity.');
-        }
-        $entity->setNotificacionestado(1);
-        //$editForm = $this->createEditForm($entity);
-        //$editForm->handleRequest($request);
+        $notificacion->setNotificacionestado(true);
         $em->flush();
-        /*if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('notificaciones_edit', array('id' => $id)));
-        }*/
-
-        /*return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-        
-        );*/
-        return New Response("");
+        return New Response("",Response::HTTP_NO_CONTENT);
     }
     /**
      * Creates a new Notificacion entity.

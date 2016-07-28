@@ -10,6 +10,7 @@ use Multiservices\NotifyBundle\TimerService\timeago;
  *
  * @ORM\Table(name="notificaciones", indexes={@ORM\Index(name="IDX_6FFCB213768C2B6", columns={"notificacionuser"})})
  * @ORM\Entity(repositoryClass="Multiservices\NotifyBundle\Entity\NotificacionesRepository")
+ * @ORM\EntityListeners({"Multiservices\NotifyBundle\EventListener\NotificacionesListener"})
  * @Serializer\ExclusionPolicy("all")
  */
 class Notificaciones
@@ -50,9 +51,12 @@ class Notificaciones
           {
               $vars=$this->getActionid()->getParameters()['vars'];
               $message=$this->getActionid()->getLabel();
+              //var_dump($this->variables);
               foreach ($vars as $var)
               {
-                 if (isset($this->variables[$var]))
+                  //var_dump($var);
+                  
+                 if (is_array($this->variables) && isset($this->variables[$var]))
                  {
                      if ($var!='urlUser')
                      {    
@@ -60,8 +64,18 @@ class Notificaciones
                      }else
                      {
                      $message=str_replace('%'.$var.'%', $this->variables[$var], $message);    
-                     }    
+                     }
 
+                 }
+                 elseif (is_object($this->variables) && isset($this->variables->$var))
+                 {
+                     if ($var!='urlUser')
+                     {    
+                     $message=str_replace('%'.$var.'%', '<strong>'.$this->variables->$var.'</strong>',$message);
+                     }else
+                     {
+                     $message=str_replace('%'.$var.'%', $this->variables->$var, $message);    
+                     }
                  }
               }
               return $message;

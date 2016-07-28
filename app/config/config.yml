@@ -344,5 +344,6 @@ kreait_firebase:
   connections:
     main:
       scheme: https
-      host: multiacademico.firebaseio.com
-      service_account: %kernel.root_dir%/Resources/FireBase/Multiacademico-fcbcd0bb4d08.json
+      host: %firebase_host%
+      service_account: %firebase_service_json%
+      

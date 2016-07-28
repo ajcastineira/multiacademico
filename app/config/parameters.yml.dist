@@ -20,6 +20,8 @@ parameters:
     pdf_generator: %kernel.root_dir%/../vendor/bin/wkhtmltopdf-amd64
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+    firebase_host: multiacademico.firebaseio.com
+    firebase_service_json: %kernel.root_dir%/Resources/FireBase/Multiacademico-fcbcd0bb4d08.json
     oauth_client: ~
     oauth_secret: ~
     website_back_base_url: ~

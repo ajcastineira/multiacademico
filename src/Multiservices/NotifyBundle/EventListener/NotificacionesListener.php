@@ -28,7 +28,7 @@ class NotificacionesListener  {
     
    
     protected $container;
-    private $notificacionPorSubir;
+    private $notificacionesPorSubir=[];
 
     public function __construct(ContainerInterface $container)
     {
@@ -37,18 +37,21 @@ class NotificacionesListener  {
     
     public function preFlush(Notificaciones $notificacion, PreFlushEventArgs $event) {
         
-        $this->notificacionPorSubir=$notificacion;
+        $this->notificacionesPorSubir[]=$notificacion;
     }
    
     
     public function postFlush(PostFlushEventArgs $args)
     {
-        
-        if ($this->notificacionPorSubir) {
-            $notificacion=$this->notificacionPorSubir;
-            $firebase = $this->container->get('kreait_firebase.connection.main');
-            Notificador::notificarAFirebase($notificacion, $firebase);
-            $this->notificacionPorSubir=null;
+         if (!empty($this->notificacionesPorSubir)) {
+             $firebase = $this->container->get('kreait_firebase.connection.main');
+              Notificador::notificarBulkFirebase($this->notificacionesPorSubir, $firebase);
+             /*$em = $args->getEntityManager();
+             foreach ($this->notificacionesPorSubir as $notificacion) {
+                $notificacion->setSincronizada(true);
+            }*/
+            $this->notificacionPorSubir=[];
+            //$em->flush();
         }
     }
 }

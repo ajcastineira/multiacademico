@@ -170,6 +170,19 @@ class Notificaciones
      */
     private $notificacionestado;
     
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="sincronizada", type="boolean", nullable=false)
+     * 
+     * Serializer\Expose()
+     * Serializer\SerializedName("sync")
+     * 
+     * Serializer\Type("boolean")
+     
+     */
+    private $sincronizada=false;
+    
     public function isRead() {
         if (intval($this->notificacionestado)==1)
         {return true;}
@@ -454,4 +467,28 @@ class Notificaciones
     }
 
 
+
+    /**
+     * Set sincronizada
+     *
+     * @param boolean $sincronizada
+     *
+     * @return Notificaciones
+     */
+    public function setSincronizada($sincronizada)
+    {
+        $this->sincronizada = $sincronizada;
+
+        return $this;
+    }
+
+    /**
+     * Get sincronizada
+     *
+     * @return boolean
+     */
+    public function getSincronizada()
+    {
+        return $this->sincronizada;
+    }
 }

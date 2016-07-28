@@ -94,16 +94,18 @@ class Notificador
        }
        return $notificaciones;
     }
-    public static function formatoNotificacionFirebase(Notificaciones $notificacion){
-        $notificacionFirebase=[$notificacion->getId()=>
-                                            ['uid'=>$notificacion->getNotificacionuser()->getId(),
+    public static function arrayNotificacionFirebase(Notificaciones $notificacion){
+        return ['uid'=>$notificacion->getNotificacionuser()->getId(),
                                              'username'=>$notificacion->getNotificacionuser()->getUsername(),
                                              'date'=>$notificacion->getNotificaciontimestamp()*(-1),
                                              'icon'=>$notificacion->getIcon(),
                                              'read'=>$notificacion->isRead(),
                                              'message'=>$notificacion->getMessage(),
-                                            ]
-            ];
+                                            ];
+    }
+    public static function formatoNotificacionFirebase(Notificaciones $notificacion){
+        $notificacionFirebase=[$notificacion->getId()=>
+                                            self::arrayNotificacionFirebase($notificacion)];
         return $notificacionFirebase;
     }
     public static function formatoVariasNotificacionesFirebase($notificaciones){
@@ -111,13 +113,17 @@ class Notificador
         $notificacionesFirebase=[];
         foreach ($notificaciones as $notificacion)
         {
-        $notificacionesFirebase[$notificacion->getId()]=[   'uid'=>$notificacion->getNotificacionuser()->getId(),
-                                                            'username'=>$notificacion->getNotificacionuser()->getUsername(),
-                                                            'date'=>$notificacion->getNotificaciontimestamp()*(-1),
-                                                            'icon'=>$notificacion->getIcon(),
-                                                            'read'=>$notificacion->isRead(),
-                                                            'message'=>$notificacion->getMessage(),
-                                                            ];
+        $notificacionesFirebase[$notificacion->getId()]=self::arrayNotificacionFirebase($notificacion);
+                                    
+        }
+        return $notificacionesFirebase;
+    }
+    public static function formatoBulkNotificacionesFirebase($bulkNotificaciones){
+        
+        $notificacionesFirebase=[];
+        foreach ($bulkNotificaciones as $notificacion)
+        {
+        $notificacionesFirebase[$notificacion->getNotificacionuser()->getUsername()][$notificacion->getId()]=self::arrayNotificacionFirebase($notificacion);
                                     
         }
         return $notificacionesFirebase;
@@ -130,7 +136,19 @@ class Notificador
     
     public static function sincronizarUsuarioFirebase($notificaciones, $firebase, $username)
     {
-    $firebase->update(self::formatoVariasNotificacionesFirebase($notificaciones), 'notificaciones/'.$username);
+        $firebase->update(self::formatoVariasNotificacionesFirebase($notificaciones), 'notificaciones/'.$username);
+    }
+    
+    public static function notificarBulkFirebase($notificaciones, $firebase)
+    {
+        $notificacionesPreparadas=self::formatoBulkNotificacionesFirebase($notificaciones);
+        {
+            
+            foreach ($notificacionesPreparadas as $username =>$notificacionesUserPreparadas ) {
+                $firebase->update($notificacionesUserPreparadas, 'notificaciones/'.$username);
+            }
+        }
+        
     }
    
 }

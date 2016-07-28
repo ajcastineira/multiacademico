@@ -9,6 +9,12 @@ define(['multiacademico/reportes/malla/module',
 
     module.registerController('MallaCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
                             $scope.aula = aula;
+                            $scope.aula.recibeProyectoEscolar=function(){
+                                if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
+                                {return true;}
+                                else
+                                {return false;}
+                            };
                             $scope.tam= '1';
                             $scope.tamOptions= [
                               {id: '1', name: 'normal'},
@@ -148,9 +154,19 @@ define(['multiacademico/reportes/malla/module',
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.aula.matriculados[i].proyectoescolar==='undefined') return 'S.P.';
                                 var calificacionparcialproyecto=$scope.aula.matriculados[i].proyectoescolar['nota_q'+q+'_p'+p];
                                 if (typeof calificacionparcialproyecto==='undefined') calificacionparcialproyecto='N/A';
                                 return calificacionparcialproyecto;
+                            };
+                           $scope.comportamientoparcial=function(i,q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.aula.matriculados[i].comportamiento==='undefined') return 'S.C.';
+                                var calificacionparcialcomportamiento=$scope.aula.matriculados[i].comportamiento['agdc_q'+q+'_p'+p];
+                                if (typeof calificacionparcialcomportamiento==='undefined') calificacionparcialcomportamiento='N/A';
+                                return calificacionparcialcomportamiento;
                             };
                            });
 });

@@ -17,6 +17,7 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Multiservices\NotifyBundle\Entity\Notificaciones;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Multiservices\NotifyBundle\Servicios\Notificador;
 
 /**
  * Description of CalificacionesListener
@@ -46,16 +47,7 @@ class NotificacionesListener  {
         if ($this->notificacionPorSubir) {
             $notificacion=$this->notificacionPorSubir;
             $firebase = $this->container->get('kreait_firebase.connection.main');
-            
-            $firebase->update([$notificacion->getId()=>
-                                            ['uid'=>$notificacion->getNotificacionuser()->getId(),
-                                             'username'=>$notificacion->getNotificacionuser()->getUsername(),
-                                             'date'=>$notificacion->getNotificaciontimestamp()*(-1),
-                                             'icon'=>$notificacion->getIcon(),
-                                             'read'=>$notificacion->isRead(),
-                                             'message'=>$notificacion->getMessage(),
-                                            ]
-                    ], 'notificaciones/'.$notificacion->getNotificacionuser()->getUsername());
+            Notificador::notificarAFirebase($notificacion, $firebase);
             $this->notificacionPorSubir=null;
         }
     }

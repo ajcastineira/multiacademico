@@ -204,6 +204,11 @@ class Usuario extends BaseUser
      */
     protected $groups;
     protected $roles;
+    /**
+     *  @ORM\OneToMany(targetEntity="Multiservices\NotifyBundle\Entity\Notificaciones", mappedBy="notificacionuser")
+     * 
+     */
+    private $notificaciones;
     
    public function getFirebaseToken(){
        return FireBaseUtil::create_custom_token($this->username, $this->email);
@@ -878,4 +883,38 @@ class Usuario extends BaseUser
 
 
 
+
+    /**
+     * Add notificacione
+     *
+     * @param \Multiservices\NotifyBundle\Entity\Notificaciones $notificacione
+     *
+     * @return Usuario
+     */
+    public function addNotificacione(\Multiservices\NotifyBundle\Entity\Notificaciones $notificacione)
+    {
+        $this->notificaciones[] = $notificacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove notificacione
+     *
+     * @param \Multiservices\NotifyBundle\Entity\Notificaciones $notificacione
+     */
+    public function removeNotificacione(\Multiservices\NotifyBundle\Entity\Notificaciones $notificacione)
+    {
+        $this->notificaciones->removeElement($notificacione);
+    }
+
+    /**
+     * Get notificaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotificaciones()
+    {
+        return $this->notificaciones;
+    }
 }

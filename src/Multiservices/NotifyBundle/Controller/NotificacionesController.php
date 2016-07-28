@@ -15,6 +15,7 @@ use Multiservices\NotifyBundle\NotifyBox\NotifyBox;
 //use Multiservices\NotifyBundle\Form\NotificacionesType;
 //use Symfony\Component\DependencyInjection\ContainerAware;
 
+
 /**
  * Notificaciones controller.
  *
@@ -32,6 +33,48 @@ class NotificacionesController extends Controller
     public function baseAction()
     {
        return $this->render('::baseangular.html.twig');
+    }
+    
+    /**
+     * 
+     *
+     * @Route("/sincronizar", name="notificaciones_sincronizar")
+     * @Method("GET")
+     */
+    public function sincronizarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $firebase = $this->container->get('kreait_firebase.connection.main');
+            //Notificador::subirAFirebase($notificacion, $firebase);
+        $usuarios=$em->getRepository('MultiservicesArxisBundle:Usuario')->findBy(['status'=>0]);
+       // var_dump($notificaciones);
+        $u=1;
+        $notificacionessincronizadas=0;
+        foreach($usuarios as $usuario)
+        {
+            $notificaciones=$usuario->getNotificaciones();
+
+           if($notificaciones->count()>0)
+                {
+                    Notificador::sincronizarUsuarioFirebase($notificaciones, $firebase, $usuario->getUserName());
+                    $notificacionessincronizadas+=$notificaciones->count();
+                }
+                $usuario->setStatus(1);
+                
+            if ($u%20==0)    
+            {
+                 $em->flush();
+            }
+                
+                print_r("User: ".$usuario->getUserName()."<br/>");
+                print_r("SyncUser: ".$notificaciones->count()."<br/>");
+                print_r("Sync: ".$notificacionessincronizadas."<br/>");
+                $u++;
+            
+        }
+         $em->flush();
+        
+        return new Response("{}");
     }
     
     

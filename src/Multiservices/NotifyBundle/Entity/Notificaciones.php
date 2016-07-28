@@ -180,7 +180,7 @@ class Notificaciones
     /**
      * @var \Multiservices\ArxisBundle\Entity\Usuario
      *
-     * @ORM\ManyToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="\Multiservices\ArxisBundle\Entity\Usuario", inversedBy="notificaciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="notificacionuser", referencedColumnName="id")
      * })

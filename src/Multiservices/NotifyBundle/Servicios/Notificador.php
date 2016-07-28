@@ -94,5 +94,44 @@ class Notificador
        }
        return $notificaciones;
     }
+    public static function formatoNotificacionFirebase(Notificaciones $notificacion){
+        $notificacionFirebase=[$notificacion->getId()=>
+                                            ['uid'=>$notificacion->getNotificacionuser()->getId(),
+                                             'username'=>$notificacion->getNotificacionuser()->getUsername(),
+                                             'date'=>$notificacion->getNotificaciontimestamp()*(-1),
+                                             'icon'=>$notificacion->getIcon(),
+                                             'read'=>$notificacion->isRead(),
+                                             'message'=>$notificacion->getMessage(),
+                                            ]
+            ];
+        return $notificacionFirebase;
+    }
+    public static function formatoVariasNotificacionesFirebase($notificaciones){
+        
+        $notificacionesFirebase=[];
+        foreach ($notificaciones as $notificacion)
+        {
+        $notificacionesFirebase[$notificacion->getId()]=[   'uid'=>$notificacion->getNotificacionuser()->getId(),
+                                                            'username'=>$notificacion->getNotificacionuser()->getUsername(),
+                                                            'date'=>$notificacion->getNotificaciontimestamp()*(-1),
+                                                            'icon'=>$notificacion->getIcon(),
+                                                            'read'=>$notificacion->isRead(),
+                                                            'message'=>$notificacion->getMessage(),
+                                                            ];
+                                    
+        }
+        return $notificacionesFirebase;
+    }
+    public static function notificarAFirebase($notificacion, $firebase)
+    {
+        $firebase->update(self::formatoNotificacionFirebase($notificacion),
+                          'notificaciones/'.$notificacion->getNotificacionuser()->getUsername());
+    }
+    
+    public static function sincronizarUsuarioFirebase($notificaciones, $firebase, $username)
+    {
+    $firebase->update(self::formatoVariasNotificacionesFirebase($notificaciones), 'notificaciones/'.$username);
+    }
+   
 }
 

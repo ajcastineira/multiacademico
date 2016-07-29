@@ -86,6 +86,31 @@ define(['angular',
                     "content@multiacademico": {
                         templateUrl: function($stateParams){
                             return Routing.generate('docentes_api_show',{id:$stateParams.id});
+                        },
+                        resolve: {
+                            deps: $couchPotatoProvider.resolveDependencies([
+                                'modules/forms/controllers/PrintCtrl'
+                            ])
+                        }
+                    }
+                }
+            })
+            .state('multiacademico.docentes.authorize', {
+                url: '/docentes/{id:[0-9]{1,11}}/{horas:[0-9]{1,3}}',
+                 data: {
+                        pageHeader: {
+                            icon: 'flaticon-teach',
+                            title: 'Docentes',
+                            subtitle: 'Autorizar'
+                        },
+                        breadcrumbs: [
+                            {title: 'Docentes'},{title: 'autorizar'}
+                        ]
+                    },
+                views: {
+                    "content@multiacademico": {
+                        templateUrl: function($stateParams){
+                            return Routing.generate('docentes_autorizacion',{docente:$stateParams.id,horas:$stateParams.horas});
                         }
                     }
                 }

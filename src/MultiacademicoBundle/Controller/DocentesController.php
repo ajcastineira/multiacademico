@@ -8,9 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Docentes;
 use MultiacademicoBundle\Form\DocentesType;
+use MultiacademicoBundle\Calificar\AutorizacionCalificaciones;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use MultiacademicoBundle\Libs\Parcial;
 /**
  * Docentes controller.
  *
@@ -239,7 +242,8 @@ class DocentesController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
-    }    /**
+    } 
+    /**
      * Edits an existing Docentes entity.
      *
      * @Route("/{id}", name="docentes_update", options={"expose":true})
@@ -272,6 +276,35 @@ class DocentesController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+    
+    /**
+     * Authorize a Docentes entity.
+     *
+     * @Route("/{docente}/autorizar/{horas}/{quimestre}/{parcial}", name="docentes_autorizacion", options={"expose":true})
+     * @Method("GET")
+     * @Security("has_role('ROLE_SECRETARIA')")
+     */
+    public function authorizeAction(Request $request, Docentes $docente, $horas, $quimestre=1, $parcial=1)
+    {
+        
+        $autorizacion=new AutorizacionCalificaciones();
+        $autorizacion->fechaInicio=new \DateTime();
+        $autorizacion->fechaFin=new \DateTime("+$horas hours");
+        $autorizacion->quimestre=$quimestre;
+        $autorizacion->parcial=$parcial;
+        $user=$docente->getUsuario();
+        $user->addAutorizacion($autorizacion);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        $OBparcial=new Parcial($quimestre, $parcial);
+        return $this->render("MultiacademicoBundle:Docentes:autorizacion.html.twig",[
+            'docente'=>$docente,
+            'parcial'=>$OBparcial,
+            'autorizacion'=>$autorizacion,
+            'horas' =>$horas
+        ]);
+    }
+    
     /**
      * Deletes a Docentes entity.
      *

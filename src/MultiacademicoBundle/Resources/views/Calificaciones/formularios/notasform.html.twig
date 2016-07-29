@@ -147,9 +147,9 @@
                                      <div data-ng-init="{{ptareasvar}}={{ptareas}};
                                                         {{pactividadindividualvar}}={{pactividadindividual}};
                                                         {{pactividadgrupalvar}}={{pactividadgrupal}};
-                                                        {{pleccionesvar}}={{plecciones}};"
+                                                        {{pleccionesvar}}={{plecciones}};">
                                      </div>
-                                     {% if parcial.estaDentroDelPeriodo() %}
+                                     {% if (parcial.estaDentroDelPeriodo() or app.user.tieneAutorizacionVigente(qactivo,pactivo))%}
                                      <a data-ng-click="{{notavartareas}}={{ptareasvar}};
                                         {{notavaraindiv}}={{pactividadindividualvar}};
                                         {{notavaragrup}}={{pactividadgrupalvar}};

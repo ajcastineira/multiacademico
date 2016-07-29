@@ -1,6 +1,19 @@
 {% block content -%}
-<div id="content">
-    <div class="row">
+<link rel="stylesheet" href="{{asset('css/multiacademico.css')}}" />
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}" />
+<style>
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+</style>
+<div id="content" >
+    <div class="row noprint">
     <div class=" col-md-12">
 
         <!-- Start inline form -->
@@ -43,16 +56,103 @@
         </div>
         </div>
     </div>
-   <div  class="record_actions" style="display:-webkit-box;">
+   <div  class="record_actions noprint" style="display:-webkit-box;">
             <a class="btn btn-success" href="{{ path('docentes') }}">
             Regresar a la lista
             </a>
             <a class="btn btn-primary" href="{{ path('docentes_edit', { 'id': entity.id }) }}">
                 Editar
-            </a>                
+            </a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                <i class="fa fa-key"></i> Autorizar <span class="caret"></span>
+                 </button> 
+                <ul class="dropdown-menu" role="menu" ng-controller="PrintCtrl">
+                    <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#">Primer Quimestre <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Primer Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':1,'parcial':1})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':1,'parcial':1})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':1,'parcial':1})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Segundo Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':1,'parcial':2})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':1,'parcial':2})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':1,'parcial':2})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Tercer Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':1,'parcial':3})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':1,'parcial':3})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':1,'parcial':3})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#">Segundo Quimestre <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Primer Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':2,'parcial':1})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':2,'parcial':1})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':2,'parcial':1})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Segundo Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':2,'parcial':2})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':2,'parcial':2})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':2,'parcial':2})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a class="test" href="#">Tercer Parcial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':24,'quimestre':2,'parcial':3})">24 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':48,'quimestre':2,'parcial':3})">48 Horas</a></li>
+                          <li><a href="#" data-ng-click="openModal('docentes_autorizacion',{'docente':{{entity.id}},'horas':72,'quimestre':2,'parcial':3})">72 Horas</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>    
+            {#<a class="btn btn-warning" ui-sref="multiacademico.docentes.authorize({id:{{entity.id}},horas:24})">
+                Autorizar
+            </a>#}
+            
+            
+        </div>
+        <div class="noprint"> 
+            <br/>
+            <br/>
+            <br/>
             {{ form_start(delete_form) }}
              {{ form_widget(delete_form.submit,{'attr':{'class':'btn-danger'} }) }}                       
             {{ form_end(delete_form) }}                
-        </div>
+         </div>   
+        <div class="printable"/>
+        
+
 </div>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
 {% endblock %}

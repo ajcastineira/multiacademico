@@ -919,6 +919,10 @@ class Usuario extends BaseUser
     }
     
     public function getAutorizaciones(){
+        if (!isset($this->data["autorizaciones"]))
+        {
+            return null;
+        }   
         return $this->data["autorizaciones"];
     }
     
@@ -926,11 +930,33 @@ class Usuario extends BaseUser
         if (isset($this->data["autorizaciones"]))
         {
            $this->data["autorizaciones"][]=$autorizacion;
-        }
+        }else
+        {
+            $this->data["autorizaciones"]=[];
+            $this->data["autorizaciones"][]=$autorizacion;
+        }    
         return $this;
     }
     
-    public function tieneAutorizacionVigente(){
+    public function tieneAutorizacionVigente($quimestre,$parcial){
+       if (empty($this->getAutorizaciones()))
+       {
+           return false;
+       }
+       $autorizaciones=$this->getAutorizaciones();
+       $hoy=new \DateTime();
+       $autorizacionesParcial=array_filter($autorizaciones,function($item) use ($quimestre,$parcial,$hoy){
+           if ($item["quimestre"]!=$quimestre||$item["parcial"]!=$parcial){
+               return false;
+           }
+           $fechaFin=New \DateTime($item["fechaFin"]["date"]);
+           $fechaFin->setTimezone(new \DateTimeZone($item["fechaFin"]["timezone"]));
+           return ($hoy<$fechaFin);
+       });
+       if (empty($autorizacionesParcial))
+       {
+           return false;
+       }
         return true;
     }
 }

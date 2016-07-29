@@ -78,6 +78,11 @@ services:
         arguments: ['@security.token_storage']
         tags:
             - { name: form.type }
+    multiacademico.form.calificaciones:
+        class: MultiacademicoBundle\Form\CalificacionesType
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: form.type }
     security.access.distributivo_voter : 
         class :       MultiacademicoBundle\Security\Authorization\Voter\DistributivoVoter 
         public :      false 

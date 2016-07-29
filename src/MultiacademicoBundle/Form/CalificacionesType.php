@@ -9,11 +9,18 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use MultiacademicoBundle\Calificar\CursoACalificar;
 use MultiacademicoBundle\Form\Type\NotaType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+
 class CalificacionesType extends AbstractType
 {
     private $q;
     private $p;
-    
+    private $tokenStorage;
+
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -25,9 +32,9 @@ class CalificacionesType extends AbstractType
         
           //  ->add('calificacionnummatricula')
            // ->add('calificacioncodmateria')
-        
+             $user = $this->tokenStorage->getToken()->getUser();
                 $builder
-            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($user) {
                 $notas = $event->getData();
                 $form = $event->getForm();
                 $dataparent = $event->getForm()->getParent()->getParent()->getData();
@@ -36,8 +43,9 @@ class CalificacionesType extends AbstractType
                     $this->q=$dataparent->getParcial()->getQ();
                     $this->p=$dataparent->getParcial()->getP();
                     $sePermitePasarNotas=$dataparent->getParcial()->estaDentroDelPeriodo();
+                    $usuarioTieneAutorizacion=$user->tieneAutorizacionVigente($this->q,$this->p);
                     $optionsField=[];
-                    if (!$sePermitePasarNotas)
+                    if (!$sePermitePasarNotas&&!$usuarioTieneAutorizacion)
                     {
                         $optionsField['disabled']=true;
                     }

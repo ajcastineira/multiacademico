@@ -18,6 +18,7 @@ $loader->unregister();
 $apcLoader->register(true);
 */
 
+date_default_timezone_set('America/Guayaquil');
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);

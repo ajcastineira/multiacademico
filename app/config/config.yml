@@ -59,6 +59,14 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
     assets:
+        vendor-ui:
+            inputs: 
+                - %kernel.root_dir%/../web/build/vendor.ui.js
+            output: build/vendor.ui.js
+        vendor-datatables:
+            inputs: 
+                - %kernel.root_dir%/../web/build/vendor.datatables.js
+            output: build/vendor.datatables.js
         blankon_css:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/reset.css

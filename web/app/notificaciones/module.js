@@ -31,6 +31,11 @@
                         ]
                     },
                 resolve:{
+                     scripts: function(lazyScript){
+                            return lazyScript.register([
+                                'build/vendor.ui.js'
+                            ]);
+                        },
                     chosencss: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                                     var pluginPath   = settings.pluginPath  ; // Create variable JS path

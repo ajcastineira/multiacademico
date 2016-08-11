@@ -2,12 +2,11 @@
 
 
 
-var appConfig = {};
+var appConfig = window.appConfig || {};
 
 appConfig.menu_speed = 200;
 
-
-//appConfig.smartSkin = "smart-style-2";
+appConfig.smartSkin = "smart-style-0";
 
 /*appConfig.skins = [
     {name: "smart-style-0",
@@ -44,7 +43,17 @@ appConfig.menu_speed = 200;
         logo: "styles/img/logo-pale.png",
         class: "btn btn-xs btn-block txt-color-white margin-top-5",
         style: "background: rgba(153, 179, 204, 0.2); border: 1px solid rgba(121, 161, 221, 0.8); color: #17273D !important;",
-        label: "Glass"}
+        label: "Glass"},
+
+    {name: "smart-style-6",
+        logo: "styles/img/logo-pale.png",
+        class: "btn btn-xs btn-block txt-color-white margin-top-5",
+        style: "background: #2196F3; border: 1px solid rgba(121, 161, 221, 0.8); color: #FFF !important;",
+        beta: true,
+        label: "MaterialDesign"
+    }
+
+
 ];*/
 
 
@@ -254,10 +263,12 @@ if (appConfig.voice_command) {
             $.speechApp.stop();
             window.location = $('#logout > span > a').attr("href");
         }
-    }; 
-    
-};
+    };
+}
 
+appConfig.apiRootUrl = 'api';
+
+window.appConfig = appConfig;
 
 /*
 * END APP.appConfig

@@ -252,7 +252,7 @@ angular.module('blankonController', [])
         $scope.popover(); // Call popover
 
     }]);
-    /*couchPotato.configureApp(module);
+    /*
     module.run(function ($couchPotato) {
         module.lazy = $couchPotato;
     });    

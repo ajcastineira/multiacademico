@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------
  * Plugins used : Flot chart, Gritter notification
  ============================================================================ */
-define([
+/*define([
     'angular',
     'angular-couch-potato',
     'angular-ui-router',
@@ -18,12 +18,12 @@ define([
     'flot-pack',
     'dropzone',
     'skycons'
-], function (ng, couchPotato) {
+], function (ng, couchPotato) {*/
     
     'use strict';
-    var module= ng.module('app.dashboard', [])
+    angular.module('app.dashboard', [])
 
-        //module.config(function ($stateProvider)
+        //.config(function ($stateProvider)
         
  
  
@@ -346,9 +346,4 @@ define([
                 }
             };
         });*/
-    couchPotato.configureApp(module);
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-    return module; 
-});
+  

@@ -1,6 +1,6 @@
 'use strict';
 (function(){
-    angular.module("ui.bootstrap.modal", [])
+    angular.module("uix.bootstrapx.modalx", [])
 
         .controller('ModalCtrl', function ($scope, $modalInstance, items) {
 

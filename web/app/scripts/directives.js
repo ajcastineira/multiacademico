@@ -1095,7 +1095,7 @@ angular.module('blankonDirective', [])
             }
         }
     }]);
-   /*couchPotato.configureApp(module);
+   /*
    module.run(function ($couchPotato) {
         module.lazy = $couchPotato;
     });

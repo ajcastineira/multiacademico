@@ -184,12 +184,21 @@
 
     </script>
 
+    
     <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
                 <script src="{{asset('plugin/moment/min/moment-with-locales.min.js')}}"></script>
                 <script src="{{asset('plugin/handlebars/handlebars-v4.0.5.js')}}"></script>
                 
     <!-- Use for production after building the project with grunt --> 
-            
+                <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+                <script src="{{asset('build/vendor.js')}}"></script>		
+		<script src="{{asset('build/app.js')}}"></script>
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+            {#
             {% if(app.environment=='dev') %}     
                 <!-- Use for development -->		
                 <script src="{{asset('app/rconfig.js')}}"></script>
@@ -203,13 +212,12 @@
 		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
                 <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
                 
-                
+                #}
                   
 
     <!--
     <script src="vendor/angular-aria/angular-aria.js"></script>
     <script src="vendor/angular-messages/angular-messages.js"></script>
-    <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular-route/angular-route.js"></script>
     
     <script src="vendor/angular-touch/angular-touch.js"></script>

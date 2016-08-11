@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('app.forms').controller('PrintCtrl', function ($scope,$modal,$log,$http,$state,$stateParams) {
+angular.module('app.forms').controller('PrintCtrl', function ($scope,$uibModal,$log,$http,$state,$stateParams) {
 
                         $scope.urlPrint=function(route,object)
                         {
                             return Routing.generate(route,object);
                         };
                         $scope.openModal = function (link,vars) {
-                            var modalInstance = $modal.open({
+                            var modalInstance = $uibModal.open({
                                 templateUrl: Routing.generate(link,vars),
                                  size: 'lg',
-                                 controller: function($scope, $modalInstance){
+                                 controller: function($scope, $uibModalInstance){
                                     $scope.closeModal = function(){
-                                        $modalInstance.close();
+                                        $uibModalInstance.close();
                                     };
                                 }
                             });

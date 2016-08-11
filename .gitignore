@@ -27,6 +27,8 @@
 /web/bundles/
 /web/escudo.png
 /web/node_modules/
+/web/node_modules
+/web/bower_components
 /web/tmp
 /web/uploads/documents/images/profile/*
 /web/uploads/documents/actividades/enviadas/*

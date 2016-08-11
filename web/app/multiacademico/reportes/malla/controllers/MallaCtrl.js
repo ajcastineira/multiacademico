@@ -1,13 +1,10 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/reportes/malla/module',
-    'multiacademico/calificaciones/Calificaciones'], function (module) {
-
-    'use strict';
+   'use strict';
     
-
-    module.registerController('MallaCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
+    angular.module('multiacademico.malla')
+        .controller('MallaCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
                             $scope.aula = aula;
                             $scope.aula.recibeProyectoEscolar=function(){
                                 if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
@@ -169,7 +166,6 @@ define(['multiacademico/reportes/malla/module',
                                 return calificacionparcialcomportamiento;
                             };
                            });
-});
 
 
 

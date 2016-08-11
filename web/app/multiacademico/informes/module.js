@@ -2,18 +2,12 @@
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
 
-define([
-    'angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.informes', ['ui.router']);
+    angular.module('multiacademico.informes', ['ui.router'])
 
-    couchPotato.configureApp(module);
-    module.filter('ordenarCalificaciones', function() {
+    
+    .filter('ordenarCalificaciones', function() {
         return function(items, reverse) {
         var filtered = [];
         ng.forEach(items, function(item) {
@@ -27,8 +21,8 @@ define([
         if(reverse) filtered.reverse();
         return filtered;
     };
-    });
-    module.config(function ($stateProvider, $couchPotatoProvider)
+    })
+    .config(function ($stateProvider)
     {
         $stateProvider
             .state('multiacademico.informes', {
@@ -84,11 +78,7 @@ define([
                             templateUrl: Routing.generate('informe-aprendizaje-api'),
                             controller: 'InformesCtrl',
                            resolve:{
-                               deps: $couchPotatoProvider.resolveDependencies([
-                                'multiacademico/informes/controllers/InformesCtrl'//,
-                               // 'multiacademico/calificaciones/Calificaciones'
                                
-                                ]),
                                aula: function ($http,$stateParams) {
                                  return $http.get(Routing.generate('get_aula',{aula: $stateParams.aula,'_format':'json'}))
                                          .then(function successCallback(response)
@@ -105,9 +95,3 @@ define([
 
 
     });
-
-    module.run(function($couchPotato){
-        module.lazy = $couchPotato;
-    });
-    return module;
-});

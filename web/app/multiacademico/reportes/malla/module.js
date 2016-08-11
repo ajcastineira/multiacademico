@@ -2,19 +2,14 @@
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
 
-define([
-    'angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
 
     "use strict";
 
-    var module = ng.module('multiacademico.malla', ['ui.router']);
+    angular.module('multiacademico.malla', ['ui.router'])
 
-    couchPotato.configureApp(module);
+    
 
-    module.config(function ($stateProvider, $couchPotatoProvider)
+    .config(function ($stateProvider)
     {
         $stateProvider
     
@@ -75,11 +70,7 @@ define([
                             templateUrl: Routing.generate('malla-normal-api'),
                             controller: 'MallaCtrl',
                            resolve:{
-                               deps: $couchPotatoProvider.resolveDependencies([
-                                'multiacademico/reportes/malla/controllers/MallaCtrl'//,
-                               // 'multiacademico/calificaciones/Calificaciones'
                                
-                                ]),
                                aula: function ($http,$stateParams) {
                                  return $http.get(Routing.generate('get_aula',{aula: $stateParams.aula,'_format':'json'}))
                                          .then(function successCallback(response)
@@ -185,9 +176,3 @@ define([
 
 
     });
-
-    module.run(function($couchPotato){
-        module.lazy = $couchPotato;
-    });
-    return module;
-});

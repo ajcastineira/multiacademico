@@ -2,19 +2,13 @@
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
 
-define([
-    'angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.estadisticas', ['ui.router']);
+    angular.module('multiacademico.estadisticas', ['ui.router'])
 
-    couchPotato.configureApp(module);
+    
 
-    module.config(function ($stateProvider, $couchPotatoProvider)
+    .config(function ($stateProvider)
     {
         $stateProvider
               .state('multiacademico.estadisticas', {
@@ -60,14 +54,7 @@ define([
                         controller:function($scope){
                             $scope.encabezado={titulo:'Estadisticas de Matriculados Por Aulas'};
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic',
-                                'modules/forms/controllers/PrintCtrl'
-                            ]),
-                            
-                        }
+                        
                     }
                 }    
                 
@@ -79,8 +66,4 @@ define([
 
     });
 
-    module.run(function($couchPotato){
-        module.lazy = $couchPotato;
-    });
-    return module;
-});
+ 

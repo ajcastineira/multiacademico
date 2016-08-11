@@ -1,15 +1,10 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.pensiones', ['ui.router']);
+    angular.module('multiacademico.pensiones', ['ui.router'])
 
-    couchPotato.configureApp(module);
+    
 
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('/pensiones/', '/pensiones');
         var rutas={create:'new_pension',
                     new:'new_pension',
@@ -70,12 +65,7 @@ define(['angular',
                                             alert("Hola");
                                         }
                                     },*/
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }    
                 
@@ -95,12 +85,7 @@ define(['angular',
                                             alert("Hola");
                                         }
                                     },*/
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }    
                 
@@ -125,13 +110,7 @@ define(['angular',
                         controller:function($scope, $window){
                             $scope.facturaDefinition=$window.facturaDefinition;
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/controllers/PrintCtrl'//,
-                            ]),
- 
-                            
-                        }
+                        
                     }
                 }
             })
@@ -158,12 +137,7 @@ define(['angular',
                                   return FormsCrud.nuevo($stateParams,rutas,{'_format':'html'});
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -191,12 +165,7 @@ define(['angular',
                                   //return "Hola mundo ";
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -236,21 +205,8 @@ define(['angular',
                                                   });
                              },
                         //controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                //'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                       
                     }
                 }
             })
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

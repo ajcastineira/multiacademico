@@ -1,29 +1,14 @@
-// Defer AngularJS bootstrap
-window.name = "NG_DEFER_BOOTSTRAP!";
+'use strict';
 
-define([
-    'require',
-    'jquery',
-    'angular',
-    'domReady',
-
-    //'pace',
-    'bootstrap',
-    //'bootbox',
-    //'appConfig',
-    'app',
-    'includes'
-], function (require, $, ng, domReady) {
-    'use strict';
-
-    //$.sound_path = appConfig.sound_path;
-   // $.sound_on = appConfig.sound_on;
+$.sound_path = appConfig.sound_path;
+$.sound_on = appConfig.sound_on;
 
 
-    domReady(function (document) {
-        
-        ng.bootstrap(document, ['app']);
-        ng.resumeBootstrap();
-       // console.log("aqui paso algo ya");
-    });
+$(function () {
+
+    // moment.js default language
+    moment.locale('es')
+
+    angular.bootstrap(document, ['app']);
+ 
 });

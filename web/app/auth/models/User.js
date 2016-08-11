@@ -1,19 +1,19 @@
-define(['auth/module'], function (module) {
 
-    'use strict';
 
-   return module.registerFactory('User', function ($http, $q,$browser) {
-        var dfd = $q.defer();
+'use strict';
 
-        var UserModel = {
-            initialized: dfd.promise,
-            username: undefined,
-            name: undefined,
-            picture: undefined,
-            fToken:undefined
-        };
-         $http.get(Routing.generate('api_user',{'_format':'json'})).then(function(response){
-             UserModel.username = response.data.username;
+angular.module('app.auth').factory('User', function ($http, $q, $browser, APP_CONFIG) {
+    var dfd = $q.defer();
+
+    var UserModel = {
+        initialized: dfd.promise,
+        username: undefined,
+        name: undefined,
+        picture: undefined,
+        fToken:undefined
+    };
+     $http.get(APP_CONFIG.apiRootUrl + '/user.json').then(function(response){
+         UserModel.username = response.data.username;
              UserModel.name = response.data.name;
               var base=$browser.baseHref();
               
@@ -22,10 +22,8 @@ define(['auth/module'], function (module) {
              UserModel.picture= base+response.data.picture;
              UserModel.cargo= response.data.cargo;
              UserModel.fToken= response.data.fToken;
-             dfd.resolve(UserModel);
-         });
+         dfd.resolve(UserModel);
+     });
 
-        return UserModel;
-    });
-
+    return UserModel;
 });

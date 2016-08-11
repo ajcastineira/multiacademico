@@ -1,1 +1,0 @@
-"use strict";!function(){angular.module("blankonApp.tables.color",[]).controller("TableColorCtrl",["$scope","$http","settings",function(a,b,c){a.tables=[],b.get(c.dataPath+"/views/tables/color.json").success(function(b){a.tables=b}).error(function(a,b,c,d){})}])}();

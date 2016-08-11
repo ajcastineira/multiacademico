@@ -1,1 +1,0 @@
-define(["auth/module"],function(a){"use strict";return a.registerDirective("loginInfo",["User",function(a){return{restrict:"A",templateUrl:Routing.generate("logininfo"),link:function(b,c){a.initialized.then(function(){b.user=a})}}}])});

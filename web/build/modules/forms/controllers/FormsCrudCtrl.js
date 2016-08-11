@@ -1,1 +1,0 @@
-define(["modules/forms/module"],function(a){"use strict";a.registerController("FormsCrudCtrl",["$scope","$http","$state","$stateParams",function(a,b,c,d){a.state=d,a.controlador="holamundo",a.formData={},a.processForm=function(a,b){a.preventDefault();var d;d=new FormData(document.getElementsByName(b)[0]),c.go(c.$current,{submited:!0,formData:d},{reload:!0})}}])});

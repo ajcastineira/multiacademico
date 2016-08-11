@@ -1,7 +1,7 @@
 // =========================================================================
 // DIRECTIVE APP
 // =========================================================================
-define([
+/*define([
     'angular',
     'angular-couch-potato',
     'bootbox',
@@ -13,11 +13,11 @@ define([
     'typeahead',
     'bloodhound',
     'sparkline'
-], function (ng, couchPotato, bootbox) {
+], function (ng, couchPotato, bootbox) {*/
 
 'use strict';
 
-var module= ng.module('blankonDirective', [])
+angular.module('blankonDirective', [])
 
     // =========================================================================
     // REFRESH PANEL
@@ -1095,9 +1095,9 @@ var module= ng.module('blankonDirective', [])
             }
         }
     }]);
-   couchPotato.configureApp(module);
+   /*couchPotato.configureApp(module);
    module.run(function ($couchPotato) {
         module.lazy = $couchPotato;
     });
    return module; 
-});
+});*/

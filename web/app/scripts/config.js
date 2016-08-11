@@ -1,15 +1,8 @@
  // =========================================================================
 // CONFIGURATION ROUTE
 // =========================================================================
-define([
-    'angular',
-    'angular-couch-potato',
-    'angular-ui-router',
-    'angular-loading-bar',
-    'oc-lazyload'
-], function (ng, couchPotato) {
 'use strict';
- var module=ng.module('blankonConfig', ['angular-loading-bar','oc.lazyLoad'])
+ angular.module('blankonConfig', ['angular-loading-bar','oc.lazyLoad'])
 
     // Setup global settings
     .factory('settings', ['$rootScope','$browser', function($rootScope,$browser) {
@@ -54,7 +47,7 @@ define([
     }])
 
     // Configuration ocLazyLoad with ui router
-    .config(["$stateProvider", "$couchPotatoProvider",function($stateProvider, $couchPotatoProvider, $urlRouterProvider) {
+    .config(["$stateProvider", function($stateProvider, $urlRouterProvider) {
         // Redirect any unmatched url
         // $urlRouterProvider.otherwise('/page-error-404');
 
@@ -998,9 +991,3 @@ define([
         $rootScope.$location = $location; // location to be accessed from view
         $rootScope.settings = settings; // global settings to be accessed from view
     }]);
-    couchPotato.configureApp(module);
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-    return module; 
-});

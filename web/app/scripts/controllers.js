@@ -1,17 +1,17 @@
 // =========================================================================
 // CONTROLLER APP
 // =========================================================================
-define([
+/*define([
     'angular',
     'angular-couch-potato',
     'ionsound',
     'angular-ui-router'
     
-], function (ng,couchPotato){
+], function (ng,couchPotato){*/
 'use strict';
 
 
-var module = ng.module('blankonController', [])
+angular.module('blankonController', [])
 
      .controller('BlankonCtrl',['$scope', '$http', 'settings', '$firebaseObject', '$firebaseArray', 'User', function($scope, $http, settings, $firebaseObject, $firebaseArray, User) {
 
@@ -252,13 +252,13 @@ var module = ng.module('blankonController', [])
         $scope.popover(); // Call popover
 
     }]);
-    couchPotato.configureApp(module);
+    /*couchPotato.configureApp(module);
     module.run(function ($couchPotato) {
         module.lazy = $couchPotato;
     });    
     return module;
     
-});
+});*/
 
 function timeago($timestamp)
 {

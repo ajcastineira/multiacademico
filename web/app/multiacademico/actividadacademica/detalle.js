@@ -1,15 +1,8 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.actividadacademicadetalle', ['ui.router']);
+    angular.module('multiacademico.actividadacademicadetalle', ['ui.router'])
 
-    couchPotato.configureApp(module);
-
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('/misactividadesacademicas/', '/misactividadesacademicas');
         var rutas={create:'new_actividadacademicadetalle',
                     new:'new_actividadacademicadetalle',
@@ -36,6 +29,12 @@ define(['angular',
                         ]
                     },
                 resolve:{
+                    scripts: function(lazyScript){
+                            return lazyScript.register([
+                                'build/vendor.ui.js',
+                                'build/vendor.datatables.js'
+                            ]);
+                        },
                     chosencss: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                                     var pluginPath   = settings.pluginPath  ; // Create variable JS path
@@ -69,12 +68,7 @@ define(['angular',
                                             alert("Hola");
                                         }
                                     },*/
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                       
                     }
                 }    
                 
@@ -98,13 +92,6 @@ define(['angular',
                         },
                         controller:function($scope, $window){
                             $scope.facturaDefinition=$window.facturaDefinition;
-                        },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/controllers/PrintCtrl'//,
-                            ]),
- 
-                            
                         }
                     }
                 }
@@ -131,13 +118,8 @@ define(['angular',
                          templateProvider:function($stateParams,FormsCrud){
                                   return FormsCrud.nuevo($stateParams,rutas,{'_format':'html'});
                              },
-                        controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
-                        }
+                        controller: 'FormsCrudCtrl'
+                      
                     }
                 }
             })
@@ -163,13 +145,7 @@ define(['angular',
                          templateProvider:function($stateParams,FormsCrud){
                                   return FormsCrud.editWithVars($stateParams,rutas,{'actividadAcademicaDetalle':$stateParams.id,'_format':'html'});
                              },
-                        controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                        controller: 'FormsCrudCtrl'
                     }
                 }
             })
@@ -219,11 +195,3 @@ define(['angular',
                 }
             })*/
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

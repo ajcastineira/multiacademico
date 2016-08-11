@@ -1,15 +1,8 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.actividadacademica', ['ui.router']);
-
-    couchPotato.configureApp(module);
-
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    angular.module('multiacademico.actividadacademica', ['ui.router'])
+     
+        .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('/actividadacademica/', '/actividadacademica');
         var rutas={create:'new_actividadacademica',
                     new:'new_actividadacademica',
@@ -36,6 +29,12 @@ define(['angular',
                         ]
                     },
                 resolve:{
+                    scripts: function(lazyScript){
+                            return lazyScript.register([
+                                'build/vendor.ui.js',
+                                'build/vendor.datatables.js'
+                            ]);
+                        },
                     chosencss: ['$ocLazyLoad', 'settings', function($ocLazyLoad, settings) {
 
                                     var pluginPath   = settings.pluginPath  ; // Create variable JS path
@@ -69,12 +68,7 @@ define(['angular',
                                             alert("Hola");
                                         }
                                     },*/
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                       
                     }
                 }    
                 
@@ -125,13 +119,7 @@ define(['angular',
                                            }
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl',
-                                'modules/forms/controllers/PrintCtrl'//,
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -158,13 +146,7 @@ define(['angular',
                          templateUrl: function($stateParams){
                             return Routing.generate('show_actividadacademicadetalle',{'actividadAcademicaDetalle':$stateParams.detalle,'_format':'html'});
                          },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/controllers/PrintCtrl'//,
-                            ])
- 
-                            
-                        }
+                        
                     }
                 }
             })
@@ -191,12 +173,7 @@ define(['angular',
                                   return FormsCrud.nuevo($stateParams,rutas,{'_format':'html'});
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -224,12 +201,7 @@ define(['angular',
                                   //return "Hola mundo ";
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -279,11 +251,3 @@ define(['angular',
                 }
             })*/
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

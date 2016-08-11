@@ -14,6 +14,7 @@
       "angular-simple-logger",
       "angular-google-maps",
       "angular-loading-bar",
+      "angular-xeditable",
       "restangular",
       "fastclick",
       "moment",
@@ -40,7 +41,8 @@
       "angular-datatables.bootstrap",
       "firebase",
       "angularfire",
-      "oclazyload"
+      "oclazyload",
+      "jasny-bootstrap"
 
     ],
     "vendor.ui": [
@@ -80,6 +82,7 @@
       "datatables.net-buttons",
       "datatables.net-buttons-bs",
       "datatables.net-buttons.html5",
+      "datatables.net-buttons.colvis",
       "datatables.net-buttons.print",
       "datatables.net-select",
       "datatables.net-responsive",
@@ -115,6 +118,7 @@
     "angular-datatables": "bower_components/angular-datatables/dist/angular-datatables.min.js",
     "angular-datatables.bootstrap":"bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js",
     "angular-loading-bar":"bower_components/angular-loading-bar/build/loading-bar.min.js",
+    "angular-xeditable":"bower_components/angular-xeditable/dist/js/xeditable.min.js",
     "pace": "bower_components/pace/pace.min.js",
     "fastclick": "bower_components/fastclick/lib/fastclick.js",
     "jquery-color": "bower_components/jquery-color/jquery.color.js",
@@ -147,8 +151,8 @@
     "datatables.net-bs": "bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js",
     "datatables.net-buttons": "bower_components/datatables.net-buttons/js/dataTables.buttons.min.js",
     "datatables.net-buttons-bs": "bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js",
-    "datatables.net-buttons.colvis": "bower_components/datatables-buttons/js/buttons.colVis.min.js",
-    "datatables.net-buttons.flash": "bower_components/datatables-buttons/js/buttons.flash.min.js",
+    "datatables.net-buttons.colvis": "bower_components/datatables.net-buttons/js/buttons.colVis.min.js",
+    "datatables.net-buttons.flash": "bower_components/datatables.net-buttons/js/buttons.flash.min.js",
     "datatables.net-buttons.html5": "bower_components/datatables.net-buttons/js/buttons.html5.min.js",
     "datatables.net-buttons.print": "bower_components/datatables.net-buttons/js/buttons.print.min.js",
     "datatables.net-select": "bower_components/datatables.net-select/js/dataTables.select.min.js",
@@ -192,6 +196,7 @@
     "notification": "smartadmin-plugin/notification/SmartNotification.min.js",
     "firebase": "bower_components/firebase/firebase.js",
     "angularfire": "bower_components/angularfire/dist/angularfire.min.js",
-    "oclazyload":"bower_components/oclazyload/dist/ocLazyLoad.min.js"
+    "oclazyload":"bower_components/oclazyload/dist/ocLazyLoad.min.js",
+    "jasny-bootstrap":"bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"
   }
 }

@@ -163,11 +163,7 @@ class AulasController extends FOSRestController
             $em->persist($aula);
             $em->flush();
 
-            return $this->redirectToRoute('get_aula', array('curso' => $aula->getCurso()->getId(),
-                                                            'especializacion' => $aula->getEspecializacion()->getId(),
-                                                            'paralelo' => $aula->getParalelo(),
-                                                            'seccion' => $aula->getSeccion(),
-                                                            'periodo' => $aula->getPeriodo()->getId(),
+            return $this->redirectToRoute('get_aula', array('aula' => $aula->getId(),
                                                             '_format'=>'html'
                                                             ));
         }

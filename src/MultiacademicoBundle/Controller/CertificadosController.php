@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use MultiacademicoBundle\Entity\Aula;
 
 
 /**
@@ -39,12 +40,12 @@ class CertificadosController extends Controller
     /**
      * Certificados de Matriculas por curso.
      *
-     * @Route("/api/certificados/matricula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-matricula-curso-api", options={"expose":true})
+     * @Route("/api/certificados/matricula/{aula}", name="certificados-matricula-curso-api", options={"expose":true})
      * @Method("GET")
      * @Template()
      * @Security("has_role('ROLE_SECRETARIA')")
      */
-    public function certificadoMatriculaCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
+    public function certificadoMatriculaCursoAction(Request $request, Aula $aula)
     {
        $em = $this->getDoctrine()->getManager();
         
@@ -60,16 +61,6 @@ class CertificadosController extends Controller
             throw $this->createNotFoundException('La secretaria no esta configurada.');
         }
         
-        $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
-                                                                    array(
-                                                                          'curso'=>$curso,
-                                                                          'especializacion'=>$especializacion,
-                                                                          'paralelo'=>$paralelo,
-                                                                          'seccion'=>$seccion,
-                                                                          'periodo'=>$periodo
-                                                                           )
-                                                                    );
-        
         return array(
             'aula'=>$aula,
             'rector'=>$rector,
@@ -78,12 +69,12 @@ class CertificadosController extends Controller
     /**
      * Certificados de Matriculas por curso.
      *
-     * @Route("/api/certificados/promocion/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}", name="certificados-promocion-curso-api", options={"expose":true})
+     * @Route("/api/certificados/promocion/{aula}", name="certificados-promocion-curso-api", options={"expose":true})
      * @Method("GET")
      * @Template()
      * @Security("has_role('ROLE_SECRETARIA')")
      */
-    public function certificadoPromocionCursoAction(Request $request,$curso,$especializacion,$paralelo,$seccion,$periodo)
+    public function certificadoPromocionCursoAction(Request $request, Aula $aula)
     {
        $em = $this->getDoctrine()->getManager();
         
@@ -102,23 +93,6 @@ class CertificadosController extends Controller
             throw $this->createNotFoundException('La secretaria no esta configurada.');
         }
         
-        
-      
-       //    $this->rector=mb_strtoupper("$trato_r $rector");
-       //    $this->cargorector=mb_strtoupper("$cargo_r");
-       //    $this->elrector="$pron_r $cargo_r";
-      //     $this->secretaria=mb_strtoupper("$trato_s $secretaria");
-      //     $this->cargosecretaria=mb_strtoupper("$cargo_s");
-    //       $this->lasecretaria="$pron_s $cargo_s";
-        $aula=$em->getRepository('MultiacademicoBundle:Aula')->findOneBy(
-                                                                    array(
-                                                                          'curso'=>$curso,
-                                                                          'especializacion'=>$especializacion,
-                                                                          'paralelo'=>$paralelo,
-                                                                          'seccion'=>$seccion,
-                                                                          'periodo'=>$periodo
-                                                                           )
-                                                                    );
         
         $sigcurso=$em->getRepository('MultiacademicoBundle:Cursos')->findOneByNivel($aula->getCurso()->getNivel()+1);
         return array(

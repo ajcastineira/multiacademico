@@ -70,7 +70,7 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
-            'order' => array(array(0, 'asc')),
+            'order' => array(array(4, 'desc')),
             'order_multi' => true,
             'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
@@ -80,8 +80,8 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => false,
-            'individual_filtering_position' => 'foot',
+            'individual_filtering' => true,
+            'individual_filtering_position' => 'head',
             'use_integration_options' => true,
             'force_dom' => true
         ));
@@ -101,6 +101,7 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
             ))
              ->add('actividad.fechaEntrega', 'datetime', array(
                 'title' => 'Fecha de Entrega',
+                'filter' => array('daterange', array())
             ))      
             ->add('calificacion', 'column', array(
                 'title' => 'Calificacion',

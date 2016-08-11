@@ -71,7 +71,7 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100),
             'order_classes' => true,
-            'order' => array(array(0, 'asc')),
+            'order' => array(array(4, 'desc')),
             'order_multi' => true,
             'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
@@ -81,8 +81,8 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => false,
-            'individual_filtering_position' => 'foot',
+            'individual_filtering' => true,
+            'individual_filtering_position' => 'head',
             'use_integration_options' => true,
             'force_dom' => true
         ));
@@ -90,25 +90,27 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'width' => '10px'
+                'width' => '2em'
             ))
             ->add('titulo', 'column', array(
                 'title' => 'Titulo',
-                'width' => '20em'
+                'width' => '15em'
             ))
             ->add('tipo', 'column', array(
                 'title' => 'Tipo',
-                'width' => '10em'
+                'width' => '7em'
             ))
             ->add('estado', 'column', array(
                 'title' => 'Estado',
-                'width' => '10em'
+                'width' => '5em'
             ))    
             ->add('fechaEnvio', 'datetime', array(
                 'title' => 'FechaEnvio',
+                'filter' => array('daterange', array()),
             ))
             ->add('fechaEntrega', 'datetime', array(
                 'title' => 'FechaEntrega',
+                'filter' => array('daterange', array()),
             ))    
             ->add('distributivo.aula.curso.curso', 'column', array(
                 'title' => 'Curso',

@@ -14,7 +14,15 @@ angular.module('multiacademico', ['ui.router'])
                     abstract:true,
                     template:'<div data-smart-router-animation-wrap="content content@multiacademico" data-wrap-for="#content">'+
                                     '<div data-ui-view="content" data-autoscroll="false"></div>'+
-                              '</div>'
+                              '</div>',
+                    resolve: {
+                        scripts: function(lazyScript){
+                            return lazyScript.register([
+                                'build/vendor.ui.js',
+                                'build/vendor.datatables.js'
+                            ]);
+                        }
+                    }
                 })
 
           .state('calificaciones', {

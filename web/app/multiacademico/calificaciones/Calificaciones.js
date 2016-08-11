@@ -2,11 +2,9 @@
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
 
-define(['multiacademico/multiacademico'], function(module){
-
     "use strict";
     
-    return module.registerService('Calificaciones', function()
+    angular.module('multiacademico').service('Calificaciones', function()
     {
         var letras={    'A':10,
                         'B':9,
@@ -305,5 +303,5 @@ define(['multiacademico/multiacademico'], function(module){
         );
    
 
-});
+
 

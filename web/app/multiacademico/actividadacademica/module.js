@@ -241,12 +241,7 @@
                                                   });
                              },
                         //controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                //'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                        
                     }
                 }
             })*/

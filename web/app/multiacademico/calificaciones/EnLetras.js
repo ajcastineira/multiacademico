@@ -2,11 +2,9 @@
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
 
-define(['multiacademico/multiacademico'], function(module){
-
     "use strict";
     
-    return module.registerService('EnLetras', function()
+    angular.module('multiacademico').service('EnLetras', function()
     {
     function number_format(number, decimals, dec_point, thousands_sep) {
 
@@ -271,4 +269,4 @@ define(['multiacademico/multiacademico'], function(module){
         };
     });
     
-});
+

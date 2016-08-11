@@ -1,13 +1,10 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/informes/module',
-    'multiacademico/calificaciones/Calificaciones','multiacademico/calificaciones/EnLetras'], function (module) {
-
     'use strict';
     
 
-    module.registerController('MisCalificacionesCtrl', function ($scope,$state,$stateParams, estudiante, Calificaciones,EnLetras) {
+     angular.module('multiacademico.estudiantes').controller('MisCalificacionesCtrl', function ($scope,$state,$stateParams, estudiante, Calificaciones,EnLetras) {
                             $scope.estudiante = estudiante;
                             
                             $scope.qop=Calificaciones.quimestres;
@@ -110,7 +107,6 @@ define(['multiacademico/informes/module',
                                 };
                             
                            });
-});
 
 
 

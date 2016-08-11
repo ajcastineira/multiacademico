@@ -1,8 +1,6 @@
 /* 
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/proyectosescolares/module', 'jquery','chosen'], function (module) {
-
     "use strict";
 
     function addTagFormDeleteLink($tagFormLi) {
@@ -42,7 +40,7 @@ define(['multiacademico/proyectosescolares/module', 'jquery','chosen'], function
     
 }
 
-    module.registerDirective('collectionForm', function ($state) {
+    angular.module('multiacademico.comportamiento').directive('collectionForm', function ($state) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
@@ -85,8 +83,6 @@ var $newLinkLi = $('<tr></tr>').append($addTagLink);
         }
     });
 
-
-});
 
 
 

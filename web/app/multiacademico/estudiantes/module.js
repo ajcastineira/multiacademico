@@ -1,15 +1,7 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.estudiantes', ['ui.router']);
-
-    couchPotato.configureApp(module);
-
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    angular.module('multiacademico.estudiantes', ['ui.router'])
+           .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('/estudiantes/', '/estudiantes');
         var rutas={create:'estudiantes_create',
                     new:'estudiantes_api_new',
@@ -60,12 +52,7 @@ define(['angular',
                  views: {
                     "content@multiacademico": {
                         templateUrl: Routing.generate('estudiantes_api'),
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }   
                 
@@ -113,12 +100,7 @@ define(['angular',
                                   return FormsCrud.nuevo($stateParams,rutas);
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
-                        }
+                       
                     }
                 }
             })
@@ -145,12 +127,7 @@ define(['angular',
                                   return FormsCrud.edit($stateParams,rutas);
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                       
                     }
                 }
             })
@@ -192,10 +169,7 @@ define(['angular',
                         templateUrl: Routing.generate('miscalificaciones_informe_api'),
                         controller:"MisCalificacionesCtrl",
                         resolve:{
-                               deps: $couchPotatoProvider.resolveDependencies([
-                                    'multiacademico/estudiantes/controllers/MisCalificacionesCtrl'//,
-                                // 'multiacademico/calificaciones/Calificaciones'
-                                    ]),
+                               
                                 estudiante: function ($http,$stateParams) {
                                  return $http.get(Routing.generate('get_miscalificaciones',{'_format':'json'}))
                                          .then(function successCallback(response)
@@ -211,11 +185,3 @@ define(['angular',
                 
             })
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

@@ -1,20 +1,10 @@
 /* 
  * Arxis (c) 2015 - Todos los derechos reservados.
  */
-
-define([
-    'angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.certificados', ['ui.router']);
-
-    couchPotato.configureApp(module);
-    
-    module.config(function ($stateProvider, $couchPotatoProvider)
+    angular.module('multiacademico.certificados', ['ui.router'])
+    .config(function ($stateProvider)
     {
         $stateProvider
             .state('multiacademico.certificados', {
@@ -85,11 +75,7 @@ define([
                                 
                            // controller: 'InformesCtrl',
                            /*resolve:{
-                               deps: $couchPotatoProvider.resolveDependencies([
-                                'multiacademico/informes/controllers/InformesCtrl'//,
-                               // 'multiacademico/calificaciones/Calificaciones'
-                               
-                                ])//,
+                              
                                aula: function ($http,$stateParams) {
                                  return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
                                          .then(function successCallback(response)
@@ -154,11 +140,7 @@ define([
                                 
                            // controller: 'InformesCtrl',
                            /*resolve:{
-                               deps: $couchPotatoProvider.resolveDependencies([
-                                'multiacademico/informes/controllers/InformesCtrl'//,
-                               // 'multiacademico/calificaciones/Calificaciones'
-                               
-                                ])//,
+                              
                                aula: function ($http,$stateParams) {
                                  return $http.get(Routing.generate('get_aula',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo,'_format':'json'}))
                                          .then(function successCallback(response)
@@ -175,9 +157,3 @@ define([
 
 
     });
-
-    module.run(function($couchPotato){
-        module.lazy = $couchPotato;
-    });
-    return module;
-});

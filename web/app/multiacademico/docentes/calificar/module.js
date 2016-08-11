@@ -1,15 +1,7 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.docentes.midistributivo', ['ui.router']);
-
-    couchPotato.configureApp(module);
-
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    angular.module('multiacademico.docentes.midistributivo', ['ui.router'])
+            .config(function ($stateProvider, $urlRouterProvider) {
       //  $urlRouterProvider.when('/estudiantes/', '/estudiantes');
         var rutas={//create:'estudiantes_create',
                    // new:'estudiantes_api_new',
@@ -38,12 +30,7 @@ define(['angular',
                     "content@multiacademico": {
                         templateUrl: Routing.generate('midistributivo_api'),
                         
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -67,13 +54,7 @@ define(['angular',
                         templateUrl: function($stateParams){
                             return Routing.generate('menu_calificar_api',{id:$stateParams.id});
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic',
-                                'modules/forms/controllers/PrintCtrl'
-                            ])
-                        }
+                       
                     }
                 }        
                 
@@ -103,13 +84,7 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -144,13 +119,7 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas_informes);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -173,12 +142,7 @@ define(['angular',
                         templateUrl: function($stateParams){
                             return Routing.generate('menu_proyectos_escolares_api',{id:$stateParams.id});
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -213,13 +177,7 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas2);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -242,12 +200,7 @@ define(['angular',
                         templateUrl: function($stateParams){
                             return Routing.generate('menu_inspector_api',{'aula':$stateParams.aula});
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -282,13 +235,7 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas3);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -311,12 +258,7 @@ define(['angular',
                         templateUrl: function($stateParams){
                             return Routing.generate('menu_tutor_api',{'aula':$stateParams.aula});
                         },
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -351,13 +293,7 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas3);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
@@ -392,24 +328,10 @@ define(['angular',
                                   return CalificarForm.calificar($stateParams,rutas2);
                              },
                         controller: 'CalificarCtrl',    
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'multiacademico/docentes/calificar/controllers/CalificarCtrl',
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }        
                 
             })
             
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

@@ -1,10 +1,6 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/docentes/calificar/module',
-        'multiacademico/calificaciones/Calificaciones'
-        ], function (module) {
-
     'use strict';
     
     function retornaletra(cantidad){
@@ -39,7 +35,7 @@ define(['multiacademico/docentes/calificar/module',
      return (letra);
     }
 
-    module.registerController('CalificarCtrl', function ($scope,$modal,$log,$http,$state,$stateParams,Calificaciones) {
+     angular.module('multiacademico.docentes').controller('CalificarCtrl', function ($scope,$uibModal,$log,$http,$state,$stateParams,Calificaciones) {
                             
                             $scope.state=$stateParams;
                           
@@ -89,12 +85,12 @@ define(['multiacademico/docentes/calificar/module',
                                 angular.element(".printable").html(angular.element("#remoteModalCalificaciones .modal-content").html());
                              };     
                              $scope.openModal = function () {
-                                var modalInstance = $modal.open({
+                                var modalInstance = $uibModal.open({
                                     templateUrl: Routing.generate('imprimir_calificaciones',{id:$stateParams.id,q:$stateParams.q,p:$stateParams.p}),
                                      size: 'lg',
-                                     controller: function($scope, $modalInstance){
+                                     controller: function($scope, $uibModalInstance){
                                         $scope.closeModal = function(){
-                                            $modalInstance.close();
+                                            $uibModalInstance.close();
                                         }
                                     }
                                 });
@@ -114,12 +110,12 @@ define(['multiacademico/docentes/calificar/module',
 
                             };    
                             $scope.openModalExpanded = function (url) {
-                                var modalInstance = $modal.open({
+                                var modalInstance = $uibModal.open({
                                     templateUrl: url,
                                      size: 'lg',
-                                     controller: function($scope, $modalInstance){
+                                     controller: function($scope, $uibModalInstance){
                                         $scope.closeModal = function(){
-                                            $modalInstance.close();
+                                            $uibModalInstance.close();
                                         }
                                     }
                                 });
@@ -148,7 +144,7 @@ define(['multiacademico/docentes/calificar/module',
                                $state.go($state.$current,{submited:true,formData:dataForm},{reload:true});
                             };
                         });
-});
+
 
 
 

@@ -1,13 +1,14 @@
 /* 
  * Multiservices (c) 2015 - Todos los derechos reservados.
  */
-define(['multiacademico/informes/module',
-    'multiacademico/calificaciones/Calificaciones'], function (module) {
+/*define(['multiacademico/informes/module',
+    'multiacademico/calificaciones/Calificaciones'], function (module) {*/
 
     'use strict';
     
 
-    module.registerController('InformesCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
+    angular.module('multiacademico.certificados')
+            .controller('InformesCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
                             $scope.aula = aula;
                             $scope.qop=Calificaciones.quimestres;
                             $scope.pop=Calificaciones.parciales;
@@ -90,7 +91,7 @@ define(['multiacademico/informes/module',
                                 };
                             
                            });
-});
+
 
 
 

@@ -1,15 +1,7 @@
-define(['angular',
-    'angular-couch-potato',
-    'angular-ui-router'
-], function (ng, couchPotato) {
-
     "use strict";
 
-    var module = ng.module('multiacademico.entidad', ['ui.router']);
-
-    couchPotato.configureApp(module);
-
-    module.config(function ($stateProvider, $couchPotatoProvider,$urlRouterProvider) {
+    angular.module('multiacademico.entidad', ['ui.router'])
+           .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('/entidad/', '/entidad');
         var rutas={create:'new_entidad',
                     new:'new_entidad',
@@ -44,12 +36,7 @@ define(['angular',
                  views: {
                     "content@multiacademico": {
                         templateUrl: Routing.generate(rutas.list,{'_format':'html'}),
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                               // 'modules/graphs/directives/inline/sparklineContainer',    
-                                'modules/tables/directives/datatables/datatableBasic'
-                            ])
-                        }
+                        
                     }
                 }    
                 
@@ -97,12 +84,7 @@ define(['angular',
                                   return FormsCrud.nuevo($stateParams,rutas);
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'//,
-                            ])
-                        }
+                        
                     }
                 }
             })
@@ -129,21 +111,8 @@ define(['angular',
                                   return FormsCrud.editWithVars($stateParams,rutas,{'entidad':$stateParams.id,'_format':'html'});
                              },
                         controller: 'FormsCrudCtrl',
-                        resolve: {
-                            deps: $couchPotatoProvider.resolveDependencies([
-                                'modules/forms/directives/input/smartSelect2',
-                                'modules/forms/controllers/FormsCrudCtrl'
-                            ])
-                        }
+                        
                     }
                 }
             })
     });
-
-    module.run(function ($couchPotato) {
-        module.lazy = $couchPotato;
-    });
-
-    return module;
-
-});

@@ -1,8 +1,6 @@
-define(['multiacademico/docentes/calificar/module'], function(module){
-
     "use strict";
     
-    return module.registerFactory('CalificarForm', function($http,$state)
+    angular.module('multiacademico.docentes').factory('CalificarForm', function($http,$state)
     {
             return {
                      calificar:function(params,rutas){
@@ -34,6 +32,3 @@ define(['multiacademico/docentes/calificar/module'], function(module){
                    };
             }
         );
-   
-
-});

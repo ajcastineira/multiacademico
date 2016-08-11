@@ -55,7 +55,7 @@
                         }
                 })
             .state('multiacademico.certificados.matricula.aula', {
-                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                    url: '/aula/{aula}',
                     data: {
                         pageTitle: 'Certificados',
                         pageHeader: {
@@ -70,7 +70,7 @@
                     views:{
                         'content@multiacademico':{
                             templateUrl: function($stateParams){
-                                return Routing.generate('certificados-matricula-curso-api',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo});
+                                return Routing.generate('certificados-matricula-curso-api',{aula: $stateParams.aula});
                                 }//,
                                 
                            // controller: 'InformesCtrl',
@@ -120,7 +120,7 @@
                         }
                 })
             .state('multiacademico.certificados.promocion.aula', {
-                    url: '/aula/{curso}/{especializacion}/{paralelo}/{seccion}/{periodo}',
+                    url: '/aula/{aula}',
                     data: {
                         pageTitle: 'Certificados',
                         pageHeader: {
@@ -135,7 +135,7 @@
                     views:{
                         'content@multiacademico':{
                             templateUrl: function($stateParams){
-                                return Routing.generate('certificados-promocion-curso-api',{curso: $stateParams.curso,especializacion:$stateParams.especializacion, paralelo:$stateParams.paralelo,seccion: $stateParams.seccion,periodo:$stateParams.periodo});
+                                return Routing.generate('certificados-promocion-curso-api',{aula: $stateParams.aula});
                                 }//,
                                 
                            // controller: 'InformesCtrl',

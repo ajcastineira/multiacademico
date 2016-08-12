@@ -106,6 +106,91 @@
                                 
                                 };
                             
+                            
+                            $scope.proyectoparcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.proyectoescolar==='undefined') return 'Sin Proyecto';
+                                var calificacionparcialproyecto=$scope.estudiante.proyectoescolar['nota_q'+q+'_p'+p];
+                                if (typeof calificacionparcialproyecto==='undefined') calificacionparcialproyecto='Sin Nota';
+                                return calificacionparcialproyecto;
+                            };
+                            $scope.comportamientoParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.comportamiento==='undefined') return 'S.C.';
+                                var calificacionparcialcomportamiento=$scope.estudiante.comportamiento['agdc_q'+q+'_p'+p];
+                                if (typeof calificacionparcialcomportamiento==='undefined') calificacionparcialcomportamiento='Sin Nota';
+                                return calificacionparcialcomportamiento;
+                            };
+                           $scope.comportamientoRecomendacionParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.comportamiento==='undefined') return 'S.C.';
+                                var recomendacion=$scope.estudiante.comportamiento['crecomendacion_q'+q+'_p'+p];
+                                if (typeof recomendacion==='undefined') recomendacion='';
+                                return recomendacion;
+                            };
+                            $scope.comportamientoEstaBienParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.comportamiento==='undefined') return 'S.C.';
+                                var loQueEstaBien=$scope.estudiante.comportamiento['estabien_q'+q+'_p'+p];
+                                if (typeof loQueEstaBien==='undefined') loQueEstaBien='';
+                                return loQueEstaBien;
+                            };
+                            $scope.comportamientoMejorarParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.comportamiento==='undefined') return 'S.C.';
+                                var mejorar=$scope.estudiante.comportamiento['mejorar_q'+q+'_p'+p];
+                                if (typeof mejorar==='undefined') mejorar='';
+                                return mejorar;
+                            };
+                            
+                            $scope.atrasosParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.asistencia==='undefined') return 'Sin Asistencias';
+                                var atrasos=$scope.estudiante.asistencia['at_p'+p+'_q'+q];
+                                if (typeof atrasos==='undefined') atrasos=0;
+                                return atrasos;
+                            };
+                            
+                            $scope.faltasInjustificadasParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.asistencia==='undefined') return 'Sin Asistencias';
+                                var faltas=$scope.estudiante.asistencia['fi_p'+p+'_q'+q];
+                                if (typeof faltas==='undefined') faltas=0;
+                                return faltas;
+                            };
+                            
+                            $scope.faltasJustificadasParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                if (typeof $scope.estudiante.asistencia==='undefined') return 'Sin Asistencias';
+                                var faltas=$scope.estudiante.asistencia['fj_p'+p+'_q'+q];
+                                if (typeof faltas==='undefined') faltas=0;
+                                return faltas;
+                            };
+                            
+                            $scope.totalFaltasParcial=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                var faltas=$scope.faltasJustificadasParcial(q,p)*1+$scope.faltasInjustificadasParcial(q,p)*1;
+                                return faltas;
+                            };
+                            
                            });
 
 

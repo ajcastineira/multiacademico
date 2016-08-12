@@ -244,6 +244,7 @@ class Matriculas
      *
      * @var \MultiacademicoBundle\Entity\Asistencia
      * @ORM\OneToOne(targetEntity="Asistencia", mappedBy="asistencianummatricula")
+     * @Serializer\Groups({"detail"})
      * @Serializer\Expose
      
      */

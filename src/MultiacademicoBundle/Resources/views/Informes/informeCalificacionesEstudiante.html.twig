@@ -102,10 +102,11 @@
             <td ng-if="p<=3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
             <td ng-if="p>3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td>
             </tr></tbody></table>
-            {%endverbatim%}
+  
                             
 <br>
-{#<table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+
+<table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
         <tbody>
             <tr height="25" bgcolor="FFFFFF">
                 <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">
@@ -117,19 +118,19 @@
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Justificadas</b></span></td>
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Injustificadas</b></span></td>
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Total Faltas</b></span></td>
-                </tr><tr bgcolor="FFFFFF" height="20"><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>0</b></span></td></tr>
+                </tr><tr bgcolor="FFFFFF" height="20"><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosParcial(q,p)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasParcial(q,p)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasParcial(q,p)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasParcial(q,p)}}</b></span></td></tr>
                 <tr></tr>
             </tbody></table>
-    <br>#}
-        {#<table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
-            <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Proyectos Escolares (No tiene asignado Club)</b></span></td></tr></tbody>
+    <br>
+        <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
+            <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Proyectos Escolares ({{estudiante.proyectoescolar.codclub.club}})</b></span></td></tr></tbody>
         </table>
             <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
-                <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nota del Club Quimestral</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Sin Nota</b></span></td></tr></tbody>
-            </table><br>#}
+                <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nota del Proyecto</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{proyectoparcial(q,p)}}</b></span></td></tr></tbody>
+            </table><br>
                 <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
                     <tbody><tr height="25" bgcolor="FFFFFF">
                             <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Comportamiento</b></span>
@@ -137,10 +138,20 @@
                             </tr>
                     </tbody>
                 </table>
-            
                 <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
-                    <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>APRECIACION GENERAL DEL COMPORTAMIENTO (A,B,C,D,E)</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b></b></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE ESTÁ BIEN</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE HAY QUE MEJORAR)</b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr><tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>RECOMENDACIONES PARA LO QUE HAY QUE MEJORAR </b></span></td><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"></span></td></tr></tbody>
+                    <tbody><tr bgcolor="FFFFFF" height="20">
+                            <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>APRECIACION GENERAL DEL COMPORTAMIENTO (A,B,C,D,E)</b></span></td>
+                            <td ng-if="p<=3" style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{comportamientoParcial(q,p)}}</b></span></td>
+                            </tr>
+                        <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE ESTÁ BIEN</b></span></td>
+                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoEstaBienParcial(q,p)}}</span></td></tr>
+                        <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE HAY QUE MEJORAR)</b></span></td>
+                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoMejorarParcial(q,p)}}</span></td></tr>
+                        <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>RECOMENDACIONES PARA LO QUE HAY QUE MEJORAR </b></span></td>
+                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoRecomendacionParcial(q,p)}}</span></td></tr>
+                    </tbody>
                 </table><br>
+                {%endverbatim%}
                     <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
                         <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Rango de Calificación</b></span></td></tr></tbody>
                     </table>

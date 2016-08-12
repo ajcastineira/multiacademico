@@ -42,7 +42,8 @@
       "firebase",
       "angularfire",
       "oclazyload",
-      "jasny-bootstrap"
+      "jasny-bootstrap",
+      "handlebars"
 
     ],
     "vendor.ui": [
@@ -197,6 +198,8 @@
     "firebase": "bower_components/firebase/firebase.js",
     "angularfire": "bower_components/angularfire/dist/angularfire.min.js",
     "oclazyload":"bower_components/oclazyload/dist/ocLazyLoad.min.js",
-    "jasny-bootstrap":"bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"
+    "jasny-bootstrap":"bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js",
+    "handlebars":"bower_components/handlebars/handlebars.min.js"
+
   }
 }

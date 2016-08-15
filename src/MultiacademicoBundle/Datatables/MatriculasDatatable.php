@@ -178,6 +178,7 @@ class MatriculasDatatable extends AbstractDatatableView
             ))
            ->add('matriculacodestudiante.estudianteFechanacimiento', 'datetime', array(
                 'title' => 'Fecha de Nacimiento',
+                 'date_format' => 'YYYY-MMM-DD', // default = "lll"
                 //'visible'=>false
                  //'width'=>'4em'
             ))    

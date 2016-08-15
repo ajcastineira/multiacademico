@@ -58,6 +58,10 @@ class MatriculasDatatable extends AbstractDatatableView
             'extensions' => array(
                 'buttons' =>
                     array(
+                        ['extend'=> 'colvis',
+                         'text'=> 'Seleccionar Columnas',
+                          'className'=>'btn-primary'
+                         ],
                         ['extend'=> 'copy',
                          'text'=> 'Copiar',
                           'className'=>'btn-primary',
@@ -82,6 +86,7 @@ class MatriculasDatatable extends AbstractDatatableView
                             'className'=>'btn btn-primary',
                             'action' => '::reload.js.twig'
                         ]
+                        
                    ),
                 'responsive' => true
             )
@@ -145,6 +150,51 @@ class MatriculasDatatable extends AbstractDatatableView
                 'title' => '¿Esta al Dia?',
                  'width'=>'4em'
             ))    
+            ->add('matriculacodestudiante.representante', new RepresentanteColumn(), array(
+                'title' => 'Representante',
+                'data'=>'matriculacodestudiante.representante.representante',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))
+            ->add('matriculacodestudiante.representanteTelefono', 'column', array(
+                'title' => 'Tlf Representante',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))    
+             ->add('matriculacodestudiante.estudianteCedula', 'column', array(
+                'title' => 'Cedula',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))     
+             ->add('matriculacodestudiante.estudianteGenero', 'column', array(
+                'title' => 'Genero',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))
+             ->add('matriculacodestudiante.estudianteDomicilio', 'column', array(
+                'title' => 'Domicilio',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))
+           ->add('matriculacodestudiante.estudianteFechanacimiento', 'datetime', array(
+                'title' => 'Fecha de Nacimiento',
+                //'visible'=>false
+                 //'width'=>'4em'
+            ))    
+           /* ->add('matriculafecha', 'datetime', array(
+                'title' => 'Fecha Mat.',
+                'date_format' => 'Y-M-d',
+            ))*/
+            
+            /*->add('matriculaestado', 'column', array(
+                'title' => 'Matriculaestado',
+            ))*/
+          
+           
+            
+          /*  ->add('matriculacodestudiante.representante', 'column', array(
+                'title' => 'Matriculacodestudiante Representante',
+            ))*/
            ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
@@ -178,46 +228,6 @@ class MatriculasDatatable extends AbstractDatatableView
                     )
                 )
             ))     
-            ->add('matriculacodestudiante.representante', new RepresentanteColumn(), array(
-                'title' => 'Representante',
-                'data'=>'matriculacodestudiante.representante.representante',
-                //'visible'=>false
-                 //'width'=>'4em'
-            ))
-            ->add('matriculacodestudiante.representanteTelefono', 'column', array(
-                'title' => 'Tlf Representante',
-                //'visible'=>false
-                 //'width'=>'4em'
-            ))    
-             ->add('matriculacodestudiante.estudianteCedula', 'column', array(
-                'title' => 'Cedula',
-                //'visible'=>false
-                 //'width'=>'4em'
-            ))     
-             ->add('matriculacodestudiante.estudianteGenero', 'column', array(
-                'title' => 'Genero',
-                //'visible'=>false
-                 //'width'=>'4em'
-            ))
-             ->add('matriculacodestudiante.estudianteDomicilio', 'column', array(
-                'title' => 'Domicilio',
-                //'visible'=>false
-                 //'width'=>'4em'
-            ))         
-           /* ->add('matriculafecha', 'datetime', array(
-                'title' => 'Fecha Mat.',
-                'date_format' => 'Y-M-d',
-            ))*/
-            
-            /*->add('matriculaestado', 'column', array(
-                'title' => 'Matriculaestado',
-            ))*/
-          
-           
-            
-          /*  ->add('matriculacodestudiante.representante', 'column', array(
-                'title' => 'Matriculacodestudiante Representante',
-            ))*/
            
             
         ;

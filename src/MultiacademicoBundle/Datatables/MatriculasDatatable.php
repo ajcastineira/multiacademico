@@ -103,7 +103,7 @@ class MatriculasDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4 col-xs-12'f><'col-sm-4 col-xs-12'B><'col-sm-4 col-xs-12'l>>" .
                     "<'row'<'col-sm-12'rt>>" .
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100),
+            'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),
             'order_multi' => true,

@@ -94,7 +94,7 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             ))
             ->add('titulo', 'column', array(
                 'title' => 'Titulo',
-                'width' => '15em'
+                'width' => '10em'
             ))
             ->add('tipo', 'column', array(
                 'title' => 'Tipo',
@@ -107,32 +107,41 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
             ->add('fechaEnvio', 'datetime', array(
                 'title' => 'FechaEnvio',
                 'filter' => array('daterange', array()),
+                'width' => '5em'
             ))
             ->add('fechaEntrega', 'datetime', array(
                 'title' => 'FechaEntrega',
                 'filter' => array('daterange', array()),
+                'width' => '5em'
             ))    
             ->add('distributivo.aula.curso.curso', 'column', array(
                 'title' => 'Curso',
+                'width' => '5em'
             ))
             ->add('distributivo.aula.especializacion', 'array', array(
                 'title' => 'Especializacion',
                 'data'=>'distributivo.aula.especializacion.especializacion',
+                'width' => '5em'
             ))
             ->add('distributivo.aula.paralelo', 'column', array(
                 'title' => 'Paralelo',
+                'width' => '2em'
             ))
             ->add('distributivo.aula.seccion', 'column', array(
                 'title' => 'Seccion',
+                'width' => '5em'
             ))        
             ->add('distributivo.aula.alias', 'column', array(
                 'title' => 'Alias',
+                'width' => '5em'
             ))
             
             ->add('distributivo.distributivocodmateria', 'array', array(
                 'title' => 'Materia',
                 'data'=>'distributivo.distributivocodmateria.materia',
+                'width' => '5em'
             ))
+            
              ->add('sendBy.id', 'column', array(
                 'title' => '',
                 'visible' => false

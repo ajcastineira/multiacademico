@@ -43,7 +43,7 @@ class ActividadAcademicaListener  {
     {
             $user = $this->tokenStorage->getToken()->getUser();
             $docente=$this->container
-                            ->get('doctrine')->getEntityManager()
+                            ->get('doctrine')->getManager()
                             ->getRepository('MultiacademicoBundle:Docentes')->findOneByUsuario($user);
             $actividadAcademica->setSendBy($docente);
             $actividadAcademica->setFechaEnvio(new \Datetime());

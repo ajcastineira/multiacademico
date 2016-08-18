@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FOS\UserBundle\Model\User as BaseUser;
 use AppBundle\Lib\FireBaseUtil;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @ORM\Entity
@@ -226,7 +227,7 @@ class Usuario extends BaseUser
       
     //$this->inbox= new \Doctrine\Common\Collections\ArrayCollection();
     //$this->outbox= new \Doctrine\Common\Collections\ArrayCollection();
-    $this->user_roles = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->user_roles = new ArrayCollection();
     $this->roles = $this->user_roles;
     $this->setRoles($this->user_roles->toArray());
     $this->addCreated();

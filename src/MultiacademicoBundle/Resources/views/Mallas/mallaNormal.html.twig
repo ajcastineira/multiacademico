@@ -27,7 +27,7 @@ table { page : rotated!important }
        <div id="imprimir" class="form-group">
            
                             {%verbatim%}
-                                <div class="ckbox ckbox-primary" data-ng-repeat="distributivo in aula.distributivos" style="display:inline-flex;">
+                                <div class="ckbox ckbox-primary" data-ng-repeat="distributivo in aula.distributivos" style="display:none;">
                                 
                                 <input id="M{{distributivo.distributivocodmateria.id}}" type="checkbox" data-ng-model="Materias[distributivo.distributivocodmateria.id]"  ng-init="Materias[distributivo.distributivocodmateria.id]=true" title="{{distributivo.distributivocodmateria.materia}}"  />
                                 <label for="M{{distributivo.distributivocodmateria.id}}">{{distributivo.distributivocodmateria.materia}}</label>
@@ -65,11 +65,11 @@ table { page : rotated!important }
                                 <th colspan="{{encabezado.materiacolspan()}}" data-ng-repeat="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]">
                                  {{distributivo.distributivocodmateria.materia}} </th> 
                              {%endverbatim%}
-             <th  ng-if="q<3&&aula.recibeProyectoEscolar()" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROYECTO ESCOLAR</div></th>   
-             <th  ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>
-             <th  ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO PARCIAL</div></th>
-             <th  ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">SUMA</div></th>
-             <th ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO</div></th>
+             <th class="finales" ng-if="q<3&&aula.recibeProyectoEscolar()" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROYECTO ESCOLAR</div></th>   
+             <th class="finales" ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>
+             <th class="finales" ng-if="q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO PARCIAL</div></th>
+             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">SUMA</div></th>
+             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO</div></th>
              <!--
             <th rowspan="2" style="background-color: orange;vertical-align:bottom;">CLUBES: CAMPO&nbsp;DE&nbsp;ACCION</th>
             <th rowspan="2" style="background-color: orange;vertical-align:bottom;">NOTA</th>-->

@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
 <link rel="stylesheet" href="{{asset('css/certificados.css')}}">
 <link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
+<style>
+    .dataTable thead tr th:first-child {
+        min-width: 20px;
+    }
+</style>    
 <style media="print" type="text/css">
 @page rotated { size : landscape!important }
 table { page : rotated!important }
@@ -50,11 +55,11 @@ table { page : rotated!important }
 
          </p>
      </div>
-      <table class="letraprint1" border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF" style="text-align:center">
+      <table id="malla-normal" class="letraprint1" border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF" style="text-align:center">
           <thead>
              <tr> 
-                 <th></th>    
-          <th></th>
+                 <th>&nbsp;</th>    
+          <th>&nbsp;</th>
           {#<th rowspan="2" style="height: 140px;vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>#}
                              {%verbatim%}
                                 <th colspan="{{encabezado.materiacolspan()}}" data-ng-repeat="distributivo in aula.distributivos" ng-if="Materias[distributivo.distributivocodmateria.id]">
@@ -71,7 +76,7 @@ table { page : rotated!important }
                 
              </tr>
              <tr> 
-                 <th></th>
+                 <th>&nbsp;</th>
                   
           <th style="width: 600px">
              <div style="display:inline-block;vertical-align:-webkit-baseline-middle;width:250px;height:15px;font-size:8.0pt;font-family:Tahoma;color:#000000">

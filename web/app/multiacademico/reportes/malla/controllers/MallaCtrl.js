@@ -4,7 +4,7 @@
    'use strict';
     
     angular.module('multiacademico.malla')
-        .controller('MallaCtrl', function ($scope,$state,$stateParams, aula, Calificaciones) {
+        .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones) {
                             $scope.aula = aula;
                             $scope.aula.recibeProyectoEscolar=function(){
                                 if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
@@ -165,6 +165,24 @@
                                 if (typeof calificacionparcialcomportamiento==='undefined') calificacionparcialcomportamiento='N/A';
                                 return calificacionparcialcomportamiento;
                             };
+                            
+                            
+                             angular.element('#malla-normal').ready(function () {
+                                 $timeout(function () {
+                                jQuery('#malla-normal').DataTable( {
+                                    dom: 'B',
+                                    paging: false,
+                                    order: [1,'asc'],
+                                    buttons: [
+                                        { extend: 'copy', className: 'btn-primary' },
+                                        { extend: 'excel', className: 'btn-success' }
+                                        
+                                    ]
+                                } );
+                                jQuery('#malla-normal_wrapper').addClass("noprint");
+                                });
+                            });
+                            
                            });
 
 

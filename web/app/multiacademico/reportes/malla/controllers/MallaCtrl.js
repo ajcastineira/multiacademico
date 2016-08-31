@@ -170,12 +170,50 @@
                                 return calificacionparcialcomportamiento;
                             };
                             
+                            var buttonToggleMateria= function(text,columns){
+                                  return {
+                                    extend: 'columnToggle',
+                                    text: text,
+                                    columns: columns
+                                   };
+                            };
+                            var getButtonsMaterias = function(){
+                                
+                                var fieldInicial=2;
+                                var fields=$scope.encabezado.materiacolspan();
+                                var i,c=0;
+                                var resultButtons=[];
+                                resultButtons.push(new buttonToggleMateria('Todas las Materias','.malla-field'));
+                                for (i=0;i<$scope.aula.distributivos.length;i++){
+                                    c++;
+                                    var materia=$scope.aula.distributivos[i].distributivocodmateria.materia;
+                                    var columns=(function(i,fieldInicial,fields){
+                                        var a=[];
+                                        var j;
+                                        var colIni=(i*fields)+fieldInicial;
+                                        var colFin=colIni+fields;
+                                        for (j=colIni;j<colFin;j++)
+                                        {   
+                                            a.push(j);
+                                        }
+                                        return a;
+                                    }(i,fieldInicial,fields));
+                                    resultButtons.push(new buttonToggleMateria(materia,columns));
+                                }
+                                return resultButtons;
+                            };
                             var crearDataTable=function(){
                                     var dTable= jQuery('#malla-normal').DataTable( {
                                         dom: 'B',
                                         paging: false,
                                         order: [1,'asc'],
                                         buttons: [
+                                            {
+                                                extend: 'collection',
+                                                text: 'Seleccionar Materias',
+                                                className: 'btn-primary',
+                                                buttons: getButtonsMaterias()
+                                            },
                                             { extend: 'copy', className: 'btn-primary' },
                                             { extend: 'excel', className: 'btn-success' }
                                         ]

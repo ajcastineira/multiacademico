@@ -144,7 +144,11 @@
                                     
                                     $scope.encabezado.titulo="CUADRO DE CALIFICACIONES DEL QUIMESTRE "+$scope.q;
                                     }
-                                
+                                    $scope.dataTable.destroy();
+                                    $timeout(function () {
+                                        $scope.dataTable=crearDataTable();
+                                    });
+                                    
                                 };
                             
                             $scope.proyectoparcial=function(i,q,p)
@@ -166,23 +170,25 @@
                                 return calificacionparcialcomportamiento;
                             };
                             
-                            
-                             angular.element('#malla-normal').ready(function () {
-                                 $timeout(function () {
-                                jQuery('#malla-normal').DataTable( {
-                                    dom: 'B',
-                                    paging: false,
-                                    order: [1,'asc'],
-                                    buttons: [
-                                        { extend: 'copy', className: 'btn-primary' },
-                                        { extend: 'excel', className: 'btn-success' }
-                                        
-                                    ]
-                                } );
-                                jQuery('#malla-normal_wrapper').addClass("noprint");
+                            var crearDataTable=function(){
+                                    var dTable= jQuery('#malla-normal').DataTable( {
+                                        dom: 'B',
+                                        paging: false,
+                                        order: [1,'asc'],
+                                        buttons: [
+                                            { extend: 'copy', className: 'btn-primary' },
+                                            { extend: 'excel', className: 'btn-success' }
+                                        ]
+                                        });
+                                      jQuery('#malla-normal_wrapper').addClass("noprint");  
+                                      return dTable;
+                                    }
+                            angular.element('#malla-normal').ready(function () {
+                                     $timeout(function () {
+                                     $scope.dataTable=crearDataTable();
+                                    });
                                 });
-                            });
-                            
+                             
                            });
 
 

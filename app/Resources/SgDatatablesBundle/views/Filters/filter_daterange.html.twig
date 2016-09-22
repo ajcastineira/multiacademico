@@ -35,9 +35,15 @@
                    'Hoy': [moment(), moment()],
                    'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                    'Ultimos 7 Dias': [moment().subtract(6, 'days'), moment()],
-                   'Ultimos 30 Dias': [moment().subtract(29, 'days'), moment()],
+                   'Q1 Parcial 1': [moment('{{entidad.configAnioLectivo.quimestre1.fecha_inicio_parcial1}}'),moment('{{entidad.configAnioLectivo.quimestre1.fecha_fin_parcial1}}')],
+                   'Q1 Parcial 2': [moment('{{entidad.configAnioLectivo.quimestre1.fecha_inicio_parcial2}}'),moment('{{entidad.configAnioLectivo.quimestre1.fecha_fin_parcial2}}')],
+                   'Q1 Parcial 3': [moment('{{entidad.configAnioLectivo.quimestre1.fecha_inicio_parcial3}}'),moment('{{entidad.configAnioLectivo.quimestre1.fecha_fin_parcial3}}')],
+                   'Q2 Parcial 1': [moment('{{entidad.configAnioLectivo.quimestre2.fecha_inicio_parcial1}}'),moment('{{entidad.configAnioLectivo.quimestre2.fecha_fin_parcial1}}')],
+                   'Q2 Parcial 2': [moment('{{entidad.configAnioLectivo.quimestre2.fecha_inicio_parcial2}}'),moment('{{entidad.configAnioLectivo.quimestre2.fecha_fin_parcial2}}')],
+                   'Q2 Parcial 3': [moment('{{entidad.configAnioLectivo.quimestre2.fecha_inicio_parcial3}}'),moment('{{entidad.configAnioLectivo.quimestre2.fecha_fin_parcial3}}')],
                    'Este Mes': [moment().startOf('month'), moment().endOf('month')],
-                   'Mes Pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                   'Mes Pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                   'Ultimos 30 Dias': [moment().subtract(29, 'days'), moment()]
                 }
             }).on('cancel.daterangepicker', function(ev, picker) {
                         $(this).val('');

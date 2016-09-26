@@ -22,7 +22,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     firebase_host: multiacademico.firebaseio.com
     firebase_service_json: %kernel.root_dir%/Resources/FireBase/Multiacademico-fcbcd0bb4d08.json
-    oauth_client: ~
-    oauth_secret: ~
-    website_back_base_url: ~
+    oauth_client: 1_2e3tv6ivw0sgkok8so8wsow8k48ooggs8kk88s8cows8koo4kc
+    oauth_secret: 5n6nc9q4l84cs484wsossk0w0g8ooksgs0kogw8084w00wswc8
+    website_back_base_url: 'https://multiacademico.com/'
     locale: es

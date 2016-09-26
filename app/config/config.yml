@@ -271,8 +271,8 @@ knp_snappy:
     temporary_folder: %kernel.cache_dir%/snappy
     pdf:
         enabled:    true
-        #binary:     %kernel.root_dir%/../vendor/bin/wkhtmltopdf64
-        binary:     "%pdf_generator%"
+        binary:     %kernel.root_dir%/../vendor/bin/wkhtmltopdf64
+        #binary:     "%pdf_generator%"
         options:    []
     #image:
         #enabled:    true
@@ -352,6 +352,8 @@ kreait_firebase:
   connections:
     main:
       scheme: https
-      host: %firebase_host%
-      service_account: %firebase_service_json%
+      #host: %firebase_host%
+      #service_account: %firebase_service_json%
+      host: multiacademico-test.firebaseio.com
+      service_account: %kernel.root_dir%/Resources/FireBase/MultiacademicoTest-3fe0ede53e47.json
       

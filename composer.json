@@ -101,6 +101,7 @@
                 "database_name": "DATABASE_NAME",
                 "database_user": "DATABASE_USER",
                 "database_password": "DATABASE_PASS",
+                "secret": "SECRET",
                 "oauth_client": "OAUTH_CLIENT",
                 "oauth_secret": "OAUTH_SECRET",
                 "website_back_base_url": "WEBSITE_BACK_URL"

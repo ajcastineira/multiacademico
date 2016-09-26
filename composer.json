@@ -101,8 +101,6 @@
                 "database_name": "DATABASE_NAME",
                 "database_user": "DATABASE_USER",
                 "database_password": "DATABASE_PASS",
-                "firebase_host": "multiacademico-test.firebaseio.com",
-                "firebase_service_json": "%kernel.root_dir%/Resources/FireBase/MultiacademicoTest-3fe0ede53e47.json",
                 "oauth_client": "OAUTH_CLIENT",
                 "oauth_secret": "OAUTH_SECRET",
                 "website_back_base_url": "WEBSITE_BACK_URL"

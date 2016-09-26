@@ -103,10 +103,10 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../web/app/styles/angular-custom.css    
             output: css/compiled/angular-custom.css
-        dropzone_css:
-            inputs:
-                - %kernel.root_dir%/../web/vendor/dropzone/dist/min/dropzone.min.css 
-            output: vendor/dropzone/dist/min/dropzone.min.css  
+        #dropzone_css:
+        #    inputs:
+        #        - %kernel.root_dir%/../web/vendor/dropzone/dist/min/dropzone.min.css 
+        #    output: vendor/dropzone/dist/min/dropzone.min.css  
         griter_img:
             inputs:
                 - %kernel.root_dir%/../web/plugin/jquery.gritter/images/gritter.png

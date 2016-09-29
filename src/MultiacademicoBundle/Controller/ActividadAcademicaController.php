@@ -3,6 +3,7 @@
 namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -103,7 +104,11 @@ class ActividadAcademicaController extends FOSRestController
             $em->persist($actividadAcademica);
             $em->flush();
 
-            return $this->redirectToRoute('show_actividadacademica', array('actividadAcademica' => $actividadAcademica->getId()));
+            //return $this->redirectToRoute('show_actividadacademica', array('actividadAcademica' => $actividadAcademica->getId()));
+             $response_redir=new JsonResponse();
+             $response_redir->setData(array('id'=>$actividadAcademica->getId()));
+             $response_redir->setStatusCode(201);
+             return $response_redir;
         }
 
         return $this->render('MultiacademicoBundle:ActividadAcademica:new.html.twig', array(

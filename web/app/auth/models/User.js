@@ -19,7 +19,8 @@ angular.module('app.auth').factory('User', function ($http, $q, $browser, APP_CO
               
               base=base.replace("app_dev.php/","");
               
-             UserModel.picture= base+response.data.picture;
+             //UserModel.picture= base+response.data.picture;
+             UserModel.picture= response.data.picture;  //con AWS S3
              UserModel.cargo= response.data.cargo;
              UserModel.fToken= response.data.fToken;
          dfd.resolve(UserModel);

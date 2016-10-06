@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use AppBundle\Lib\AWSS3Helper;
 
 /**
  * Entidad
@@ -122,7 +123,10 @@ class Entidad
      */
     private $configAnioLectivo;
     
-
+    
+    
+    
+    public $logoUrl=AWSS3Helper::AWS_URL.'/escudo.png';
 
 
     /**

@@ -5,7 +5,7 @@
              <img src="{{asset(entidad.data.logoiz|default("bundles/multiacademico/img/ministerio.png"))}}" height=50  border=0>
              <img src={{asset(entidad.data.logocenter|default("bundles/multiacademico/img/logodefault.png"))}} height=50  border=0>
              <!--<div style='width:60%;height:50;display:-webkit-inline-box'></div>-->
-               <img src="{{asset(entidad.data.logoder|default("escudo.png"))}}" height=50  border=0><br/>
+               <img src="{{asset(entidad.data.logoder|default(entidad.logoUrl))}}" height=50  border=0><br/>
 
              <span class='entidad' style="line-height:50px;font-family:'Arial'"><b>{{entidad.entidad}} {{entidad.titulo}}</b></span><br>
             <span class='subt2'>AMIE {{entidad.data.codamie|default('')}}</span><br>

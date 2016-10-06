@@ -5,6 +5,7 @@ use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Lib\AWSS3Helper;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -355,7 +356,7 @@ class ActividadAcademicaDetalle
         return null === $this->archivo
             //? null
             ? null
-            : $this->getUploadDir().'/'.$this->archivo;
+            : AWSS3Helper::AWS_URL.'/'.$this->getUploadDir().'/'.$this->archivo;
     }
 
     protected function getUploadRootDir()
@@ -435,6 +436,12 @@ class ActividadAcademicaDetalle
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
         $this->getFile()->move($this->getUploadRootDir(), $this->archivo);
+        
+        $s3 = new AWSS3Helper();
+        try {
+            // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
+            $upload = $s3->upLoadFile($this->getUploadDir().'/'.$this->path, $this->getUploadRootDir().'/'.$this->temp);
+         }catch(Exception $e) {}
 
         // check if we have an old image
         if (isset($this->temp)) {

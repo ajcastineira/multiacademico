@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FOS\UserBundle\Model\User as BaseUser;
 use AppBundle\Lib\FireBaseUtil;
 use Doctrine\Common\Collections\ArrayCollection;
+use Aws\S3\S3Client;
 
 /**
 * @ORM\Entity
@@ -675,10 +676,11 @@ class Usuario extends BaseUser
      */
     public function getWebPath()
     {
+        $aws_url="https://s3-us-west-2.amazonaws.com/multiacademicoaustriaco"; // temporlar parche
         return null === $this->path
             //? null
             ? $this->getUploadDir().'/male.png'
-            : $this->getUploadDir().'/'.$this->path;
+            : $aws_url.'/'.$this->getUploadDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
@@ -757,6 +759,27 @@ class Usuario extends BaseUser
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
         $this->getFile()->move($this->getUploadRootDir(), $this->path);
+        
+        $AWS_ACCESS_KEY_ID="AKIAJALXN45BGZRAUFZA";
+        $AWS_SECRET_ACCESS_KEY="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";
+        $S3_BUCKET="multiacademicoaustriaco";
+        
+        //$s3 = S3Client::factory();
+        $s3 = new S3Client([
+            'version' => 'latest',
+            'region'  => 'us-west-2',
+            'credentials' => [
+                'key'    => $AWS_ACCESS_KEY_ID,
+                'secret' => $AWS_SECRET_ACCESS_KEY,
+            ],
+        ]);
+        $bucket = "multiacademicoaustriaco";
+         try {
+            // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
+            $upload = $s3->upload($bucket, $this->getUploadDir().'/'.$this->path, fopen($this->getUploadRootDir().'/'.$this->temp, 'rb'), 'public-read');
+            //$upload = $s3->upload($bucket, $this->path, fopen($this->getUploadRootDir().'/'.$this->path, 'rb'), 'public-read');
+            }catch(Exception $e) {}
+        
 
         // check if we have an old image
         if (isset($this->temp)) {

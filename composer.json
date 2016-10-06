@@ -36,7 +36,7 @@
         "friendsofsymfony/oauth-server-bundle": "dev-master",
         
         "fresh/doctrine-enum-bundle": "~4.1",
-        "google/apiclient":"2.0",
+        "google/apiclient":"2.0.3",
         "knplabs/knp-snappy-bundle": "dev-master",        
         
         
@@ -59,7 +59,9 @@
         "snc/redis-bundle": "2.x-dev",
         "hwi/oauth-bundle": "dev-master",
         "kreait/firebase-php": "1.0",
-        "firebase/token-generator": "^3.0"
+        "firebase/token-generator": "^3.0",
+        "aws/aws-sdk-php-symfony": "^1.2",
+        "aws/aws-sdk-php": "^3.19"
 
     },
     "require-dev": {

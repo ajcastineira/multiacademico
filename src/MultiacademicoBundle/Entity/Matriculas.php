@@ -227,7 +227,7 @@ class Matriculas
      * Serializer\Expose
      * Serializer\Accessor(getter="indexCalificaciones")
      * Serializer\Groups({"detail"})
-     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Calificaciones>")
+     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\ActividadAcademica>")
      */
     private $actividadesAcademicas;
     

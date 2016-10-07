@@ -45,60 +45,70 @@
                                 }
                             };
                             $scope.Calificaciones=Calificaciones;
+                            
+                             var findByMateriaId = function(id){
+                                return function(calificacion){
+                                  return calificacion.calificacioncodmateria.id === id;
+                                };
+                            };
+                            $scope.findCalificacion = function(alumno, idmateria){
+                                return alumno.calificaciones.filter(findByMateriaId(idmateria))[0];
+                            };
+                            
                             $scope.Materias={};
                             $scope.prparcial=function(i,m,q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioParcial(q,p,calificacion);
                             };
                             
                             $scope.prparciales=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioParciales(q,calificacion);
                             };
                             
                             $scope.prparciales80=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioParciales80(q,calificacion);
                             };
                             $scope.ex20=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getExamen20(q,calificacion);
                             };
                             
                             $scope.prq=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
                             };
                             
                             $scope.pra=function(i,m)
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioAnual(calificacion);
                             };
                             
                             $scope.prf=function(i,m)
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioFinal(calificacion);
                             };
                             
                             $scope.prf=function(i,m)
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
-                                var calificacion=$scope.aula.matriculados[i].calificaciones[m];
+                                var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioFinal(calificacion);
                             };
                             $scope.sumf=function(i)
@@ -220,7 +230,7 @@
                                         });
                                       jQuery('#malla-normal_wrapper').addClass("noprint");  
                                       return dTable;
-                                    }
+                                    };
                             angular.element('#malla-normal').ready(function () {
                                      $timeout(function () {
                                      $scope.dataTable=crearDataTable();

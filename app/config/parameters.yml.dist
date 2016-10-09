@@ -25,4 +25,8 @@ parameters:
     oauth_client: 1_2e3tv6ivw0sgkok8so8wsow8k48ooggs8kk88s8cows8koo4kc
     oauth_secret: 5n6nc9q4l84cs484wsossk0w0g8ooksgs0kogw8084w00wswc8
     website_back_base_url: 'https://multiacademico.com/'
+    aws_access_key_id: ~
+    aws_secret_access_key: ~
+    s3_bucket: ~
+    aws_url: ~
     locale: es

@@ -107,7 +107,11 @@
                 "secret": "SECRET",
                 "oauth_client": "OAUTH_CLIENT",
                 "oauth_secret": "OAUTH_SECRET",
-                "website_back_base_url": "WEBSITE_BACK_URL"
+                "website_back_base_url": "WEBSITE_BACK_URL",
+                "aws_access_key_id": "AWS_ACCESS_KEY_ID",
+                "aws_secret_access_key": "AWS_SECRET_ACCESS_KEY",
+                "s3_bucket": "S3_BUCKET",
+                "aws_url": "AWS_URL"
             }
         }
     }

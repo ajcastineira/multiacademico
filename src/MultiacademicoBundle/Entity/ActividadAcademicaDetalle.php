@@ -348,14 +348,6 @@ class ActividadAcademicaDetalle extends UploadFileEntity
         return 'uploads/documents/actividades/recibidas';
     }
     
-    public function preUpload()
-    {
-        if (null !== $this->getFile()) {
-            // do whatever you want to generate a unique name
-            $filename = sha1(uniqid(mt_rand(), true));
-            $this->archivo = $filename.'.'.$this->getFile()->guessExtension();
-        }
-    }
     /**
      * @Assert\File(maxSize="6000000",
                    mimeTypes = {"image/*",

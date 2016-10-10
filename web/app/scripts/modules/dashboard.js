@@ -80,19 +80,19 @@
                 }
             }*/
                 
-               var base=$browser.baseHref();
+               //var base=$browser.baseHref();
               
-                base=base.replace("app_dev.php/","");
+                //base=base.replace("app_dev.php/","");
                
                 $scope.resumen=ResumenInicio;
                 if (ResumenInicio.mejoresparcial.length>0)
                 {
                     $scope.mejorestudianteparcial=ResumenInicio.mejoresparcial[0];
-                    $scope.mejorestudianteparcialfoto=base+$scope.mejorestudianteparcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                    $scope.mejorestudianteparcialfoto=$scope.mejorestudianteparcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
                     $scope.mejorestudiante2parcial=ResumenInicio.mejoresparcial[1];
-                    $scope.mejorestudiante2parcialfoto=base+$scope.mejorestudiante2parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                    $scope.mejorestudiante2parcialfoto=$scope.mejorestudiante2parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
                     $scope.mejorestudiante3parcial=ResumenInicio.mejoresparcial[2];
-                    $scope.mejorestudiante3parcialfoto=base+$scope.mejorestudiante3parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                    $scope.mejorestudiante3parcialfoto=$scope.mejorestudiante3parcial.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
                 }else
                 {
                     $scope.mejorestudianteparcial=null;
@@ -105,7 +105,7 @@
                 if (ResumenInicio.mejoresquimestre.length>0)
                 {
                 $scope.mejorestudiantequimestre=ResumenInicio.mejoresquimestre[0];
-                $scope.mejorestudiantequimestrefoto=base+$scope.mejorestudiantequimestre.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
+                $scope.mejorestudiantequimestrefoto=$scope.mejorestudiantequimestre.calificaciones.calificacionnummatricula.matriculacodestudiante.usuario.picture;
                 }
                 else
                 {

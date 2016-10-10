@@ -24,14 +24,7 @@
                                                   
                                                     if(response.status===202){
                                                       
-                                                      var base=$browser.baseHref();
-                                                      var avatarpath=response.data.path;
-                                                      if(base.substr(-12)=="app_dev.php/")
-                                                      {
-                                                          base=base.substr(0,base.length-12);
-                                                      }
-                                                    
-                                                      User.picture=base+avatarpath;
+                                                      User.picture=response.data.path;
                                                       $('.fileinput').fileinput('clear');
                                                       //return response.data;  
                                                     }

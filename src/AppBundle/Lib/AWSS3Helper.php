@@ -102,7 +102,7 @@ class AWSS3Helper {
         
         return null === $path
             //? null
-            ? $uploadDir.'/male.png'
+            ? null
             : self::$AWS_URL.'/'.$uploadDir.'/'.$path;
     
     }

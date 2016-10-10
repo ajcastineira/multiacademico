@@ -50,7 +50,8 @@ class ActividadAcademicaListener  {
             $actividadAcademica->setSendBy($docente);
             $actividadAcademica->setFechaEnvio(new \Datetime());
             $actividadAcademica->setEstado(EstadoActividadAcademicaType::ENVIADA);
-            $actividadAcademica->preUpload();
+            $this->preUpload($actividadAcademica);
+           // var_dump("en prepersits",$actividadAcademica);
             $this->preEnviarActvidadAEstudiantes($actividadAcademica);
             $this->preNotificar($actividadAcademica);
             
@@ -65,19 +66,29 @@ class ActividadAcademicaListener  {
     }
     public function preUpdate(ActividadAcademica $actividadAcademica, PreUpdateEventArgs $args)
     {
-        $actividadAcademica->preUpload($actividadAcademica);    
+        $change=$args->getEntityChangeSet();
+        $this->preUpload($actividadAcademica);
         $this->preNotificar($actividadAcademica);
     }
     public function postUpdate(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
     {
+        
         $this->s3->uploadFileFromEntity($actividadAcademica);
     }
     public function postRemove(ActividadAcademica $actividadAcademica, LifecycleEventArgs $args)
     {
-        $actividadAcademica->removeUpload();
+        $this->s3->removeFileFromEntity($actividadAcademica);
+        //$actividadAcademica->removeUpload();
     }
 
-
+    private function preUpload($actividadAcademica)
+    {
+        if (null !== $actividadAcademica->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $actividadAcademica->setArchivo($filename.'.'.$actividadAcademica->getFile()->guessExtension());
+        }
+    }
    
     
     public function postFlush(PostFlushEventArgs $args)

@@ -52,7 +52,7 @@ class ActividadAcademicaDetalleListener  {
     }
     public function postPersist(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
-            //$actividadAcademica->upload();
+            //$this->preUpload($actividadAcademica);
     }
     public function postLoad(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
@@ -73,7 +73,9 @@ class ActividadAcademicaDetalleListener  {
                 $actividadAcademica->setEntregada(true);
                 $actividadAcademica->setFechaEntregada(new \DateTime());
             }
-            $actividadAcademica->preUpload();
+            //$actividadAcademica->preUpload();
+            //$change=$args->getEntityChangeSet();
+            $this->preUpload($actividadAcademica);
            
     }
     public function postUpdate(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
@@ -82,7 +84,16 @@ class ActividadAcademicaDetalleListener  {
     }
     public function postRemove(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
-            $actividadAcademica->removeUpload();
+           // $actividadAcademica->removeUpload();
+    }
+    
+     private function preUpload($actividadAcademica)
+    {
+        if (null !== $actividadAcademica->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $actividadAcademica->setArchivo($filename.'.'.$actividadAcademica->getFile()->guessExtension());
+        }
     }
     
     public function postFlush(PostFlushEventArgs $args)

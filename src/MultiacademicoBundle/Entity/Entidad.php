@@ -126,7 +126,7 @@ class Entidad
     
     
     
-    public $logoUrl=AWSS3Helper::AWS_URL.'/escudo.png';
+    public $logoUrl=AWSS3Helper::AWS_URL_TMP.'/escudo.png';
 
 
     /**

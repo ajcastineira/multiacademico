@@ -679,7 +679,7 @@ class Usuario extends BaseUser implements UploadFileInterface
      */
     public function getWebPath()
     {
-        return $this->webPath;
+        return null === $this->webPath?$this->getUploadDir().'/male.png':$this->webPath;
     }    
     
     /** 

@@ -20,20 +20,6 @@ abstract class UploadFileEntity implements UploadFileInterface{
 
     private $temp;
     
-    public function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-    
-    public function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents/files';
-    }
-    
     public function getWebPath()
     {
         return $this->webPath;
@@ -107,8 +93,71 @@ abstract class UploadFileEntity implements UploadFileInterface{
     */
     public function getPath()
     {
-    return $this->archivo;
+    return $this->getArchivo();
     }
     
+    /**
+     * Get archivo
+     *
+     * @return string
+     */
+    public function getArchivo()
+    {
+        return $this->archivo;
+    }
+    
+        /**
+     * Set archivo
+     *
+     * @param string $archivo
+     *
+     * @return UploadFileEntity
+     */
+    public function setArchivo($archivo)
+    {
+        $this->archivo = $archivo;
+
+        return $this;
+    }
+    
+     public function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    public function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/documents/files';
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->archivo
+            ? null
+            : $this->getUploadRootDir().'/'.$this->archivo;
+    }
+    
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->archivo = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
+    
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            try{
+            unlink($file);
+            }catch(\Exception $e)
+            {}
+        }
+    }
     
 }

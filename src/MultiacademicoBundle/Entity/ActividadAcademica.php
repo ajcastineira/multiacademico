@@ -8,7 +8,7 @@ use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use MultiacademicoBundle\DBAL\Types\EstadoActividadAcademicaType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use AppBundle\Lib\AWSS3Helper;
+use AppBundle\Model\UploadFileEntity;
 
 /**
  * ActividadAcademica
@@ -18,7 +18,7 @@ use AppBundle\Lib\AWSS3Helper;
  * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaListener"}) 
  * @ORM\HasLifecycleCallbacks()
  */
-class ActividadAcademica
+class ActividadAcademica extends UploadFileEntity
 {
     /**
      * @var int
@@ -372,33 +372,7 @@ class ActividadAcademica
         return $this->detalle;
     }
     
-     public function getAbsolutePath()
-    {
-        return null === $this->archivo
-            ? null
-            : $this->getUploadRootDir().'/'.$this->archivo;
-    }
-    /**
-     * Serializer\VirtualProperty
-     * Serializer\SerializedName("picture")
-     * Serializer\Groups({"estadisticas","activities"})
-     */
-    public function getWebPath()
-    {
-        return null === $this->archivo
-            //? null
-            ? null
-            : AWSS3Helper::AWS_URL.'/'.$this->getUploadDir().'/'.$this->archivo;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
+    public function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
@@ -419,84 +393,6 @@ class ActividadAcademica
      */
     private $file;
 
-    private $temp;
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-        // check if we have an old image path
-        if (isset($this->archivo)) {
-            // store the old name to delete after the update
-            $this->temp = $this->archivo;
-            $this->archivo= null;
-        } else {
-            $this->archivo = 'initial';
-        }
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    public function preUpload()
-    {
-        if (null !== $this->getFile()) {
-            // do whatever you want to generate a unique name
-            $filename = sha1(uniqid(mt_rand(), true));
-            $this->archivo = $filename.'.'.$this->getFile()->guessExtension();
-        }
-    }
-
-
-    public function upload()
-    {
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->getFile()->move($this->getUploadRootDir(), $this->archivo);
-        
-        $s3 = new AWSS3Helper();
-        try {
-            // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
-            $upload = $s3->upLoadFile($this->getUploadDir().'/'.$this->path, $this->getUploadRootDir().'/'.$this->temp);
-         }catch(Exception $e) {}
-
-        // check if we have an old image
-        if (isset($this->temp)) {
-            // delete the old image
-            
-            unlink($this->getUploadRootDir().'/'.$this->temp);
-            
-            // clear the temp image path
-            $this->temp = null;
-        }
-        $this->file = null;
-    }
- 
-    public function removeUpload()
-    {
-        if ($file = $this->getAbsolutePath()) {
-            try{
-            unlink($file);
-            }catch(\Exception $e)
-            {}
-        }
-    }
-    
     public function __toString(){
        return $this->titulo;
 

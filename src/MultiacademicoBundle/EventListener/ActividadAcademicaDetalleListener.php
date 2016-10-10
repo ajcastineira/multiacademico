@@ -26,6 +26,7 @@ class ActividadAcademicaDetalleListener  {
    
     protected $container;
     protected $tokenStorage;
+    protected $s3;
     private $actividadesPorEnviar = [];
     private $tareasPorNotificar = [];
 
@@ -37,6 +38,7 @@ class ActividadAcademicaDetalleListener  {
     {
         $this->tokenStorage = $tokenStorage;
         $this->container=$container;
+        $this->s3=$this->container->get('aws_s3_helper');
   
     }
     public function prePersist(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
@@ -51,6 +53,10 @@ class ActividadAcademicaDetalleListener  {
     public function postPersist(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
             //$actividadAcademica->upload();
+    }
+    public function postLoad(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
+    {
+        $actividadAcademica->setWebPath($this->s3->getWebPath($actividadAcademica->getPath(),$actividadAcademica->getUploadDir()));
     }
     public function preUpdate(ActividadAcademicaDetalle $actividadAcademica, PreUpdateEventArgs $args)
     {
@@ -72,7 +78,7 @@ class ActividadAcademicaDetalleListener  {
     }
     public function postUpdate(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {
-            $actividadAcademica->upload();
+            $this->s3->uploadFileFromEntity($actividadAcademica);
     }
     public function postRemove(ActividadAcademicaDetalle $actividadAcademica, LifecycleEventArgs $args)
     {

@@ -37,5 +37,10 @@ services:
         arguments:
             entityManager: "@doctrine.orm.entity_manager"
         tags:
-            - { name: validator.constraint_validator, alias: email.validator }        
+            - { name: validator.constraint_validator, alias: email.validator }
+    multiservices_usuario.listener:
+        class: Multiservices\ArxisBundle\EventListener\UsuarioListener
+        arguments: ['@security.token_storage','@service_container']
+        tags:
+            - { name: doctrine.orm.entity_listener }
   

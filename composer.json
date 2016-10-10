@@ -71,7 +71,8 @@
     },
      "scripts": {
         "compile": [
-            "bin/console assetic:dump"
+            "bin/console assetic:dump",
+            "bin/console doctrine:schema:update --dump-sql --force"
         ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

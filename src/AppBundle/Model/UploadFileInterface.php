@@ -8,7 +8,8 @@ namespace AppBundle\Model;
  */
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-interface UploadFileInterface {
+interface UploadFileInterface
+{
     public function getPath();
     public function setPath($path);
     public function getFile();

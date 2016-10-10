@@ -68,8 +68,15 @@ class AWSS3Helper {
         return self::$s3Client->upload(self::$S3_BUCKET, $key, fopen($fileIn, 'rb'), 'public-read');
     }
     
+    public function deleteFile($key){
+        return self::$s3Client->deleteObject(array(
+                                                    'Bucket' => self::$S3_BUCKET,
+                                                    'Key'    => $key
+                                                )); 
+    }
     
     public function uploadFileFromEntity(UploadFileInterface $entity){
+        
         
         if (null === $entity->getFile()) {
             return;
@@ -77,13 +84,12 @@ class AWSS3Helper {
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
+        //var_dump($entity->getUploadDir(),$entity->getPath());
          try {
             // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
             $upload = $this->upLoadFile($entity->getUploadDir().'/'.$entity->getPath(), $entity->getFile()->getPathName());
             $entity->setWebPath($this->getWebPath($entity->getPath(),$entity->getUploadDir()));
-            }catch(Exception $e) {
-                
-            }             
+            }catch(\Exception $e) {}             
         // check if we have an old image
         if (null!==$entity->getTemp()) {
             // delete the old image
@@ -99,11 +105,11 @@ class AWSS3Helper {
     
     
     public function getWebPath($path,$uploadDir){
-        
+                
         return null === $path
             //? null
             ? null
             : self::$AWS_URL.'/'.$uploadDir.'/'.$path;
     
+            } 
     }
-}

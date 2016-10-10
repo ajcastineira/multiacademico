@@ -50,7 +50,6 @@ class UsuarioListener  {
     }
     public function postLoad(Usuario $usuario, LifecycleEventArgs $args)
     {
-        
         $usuario->setWebPath($this->s3->getWebPath($usuario->getPath(),$usuario->getUploadDir()));
     }
     public function preUpdate(Usuario $usuario, PreUpdateEventArgs $args)

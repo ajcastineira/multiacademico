@@ -8,17 +8,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FOS\UserBundle\Model\User as BaseUser;
-use AppBundle\Lib\FireBaseUtil;
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Lib\FireBaseUtil;
 use AppBundle\Lib\AWSS3Helper;
+use AppBundle\Model\UploadFileInterface;
 
 /**
 * @ORM\Entity
-* @ORM\HasLifecycleCallbacks
 * @ORM\Table(name="usuarios")
+* @ORM\EntityListeners({"Multiservices\ArxisBundle\EventListener\UsuarioListener"})
+* @ORM\HasLifecycleCallbacks()
 * @Serializer\ExclusionPolicy("all")
 */
-class Usuario extends BaseUser
+class Usuario extends BaseUser implements UploadFileInterface
 {
     /**
     * @var integer $id
@@ -211,6 +213,8 @@ class Usuario extends BaseUser
      * 
      */
     private $notificaciones;
+    
+    private $webPath;
     
    public function getFirebaseToken(){
        return FireBaseUtil::create_custom_token($this->username, $this->email);
@@ -676,24 +680,30 @@ class Usuario extends BaseUser
      */
     public function getWebPath()
     {
-        return null === $this->path
-            //? null
-            ? $this->getUploadDir().'/male.png'
-            : AWSS3Helper::AWS_URL.'/'.$this->getUploadDir().'/'.$this->path;
+        return $this->webPath;
+    }    
+    
+    /** 
+     * ORM\PostLoad
+     */
+    public function setWebPath($webPath)
+    {
+        $this->webPath = $webPath;
+        return $this;
     }
 
-    protected function getUploadRootDir()
+    public function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
-
-    protected function getUploadDir()
+    
+    public function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents/images/profile';
+        return 'uploads/documents/images/profiletest';
     }
     
     /**
@@ -704,6 +714,17 @@ class Usuario extends BaseUser
     private $file;
 
     private $temp;
+    
+    public function getTemp()
+    {
+      return $this->temp;
+    }
+    
+    public function setTemp($temp)
+    {
+      $this->temp=$temp;
+      return $this;
+    }
     /**
      * Sets file.
      *
@@ -732,8 +753,8 @@ class Usuario extends BaseUser
         return $this->file;
     }
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * ORM\PrePersist()
+     * ORM\PreUpdate()
      */
     public function preUpload()
     {
@@ -745,44 +766,7 @@ class Usuario extends BaseUser
     }
 
     /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->getFile()->move($this->getUploadRootDir(), $this->path);
-        
-        
-        //$s3 = S3Client::factory();
-        $s3 = new AWSS3Helper();
-        
-         try {
-            // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
-            $upload = $s3->upLoadFile($this->getUploadDir().'/'.$this->path, $this->getUploadRootDir().'/'.$this->temp);
-            }catch(Exception $e) {}
-        
-
-        // check if we have an old image
-        if (isset($this->temp)) {
-            // delete the old image
-            try{
-            unlink($this->getUploadRootDir().'/'.$this->temp);
-            }catch(\Exception $e)
-            {}
-            // clear the temp image path
-            $this->temp = null;
-        }
-        $this->file = null;
-    }
-    /**
-     * @ORM\PostRemove()
+     * ORM\PostRemove()
      */
     public function removeUpload()
     {

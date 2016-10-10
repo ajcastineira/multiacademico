@@ -11,6 +11,7 @@ namespace AppBundle\Lib;
 use Aws\S3\S3Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use AppBundle\Model\UploadFileInterface;
 
 /**
  * Description of AWSS3Helper
@@ -65,7 +66,38 @@ class AWSS3Helper {
     
     public function upLoadFile($key,$fileIn){
         return self::$s3Client->upload(self::$S3_BUCKET, $key, fopen($fileIn, 'rb'), 'public-read');
-    }    
+    }
+    
+    
+    public function uploadFileFromEntity(UploadFileInterface $entity){
+        
+        if (null === $entity->getFile()) {
+            return;
+        }
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+         try {
+            // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
+            $upload = $this->upLoadFile($entity->getUploadDir().'/'.$entity->getPath(), $entity->getFile()->getPathName());
+            $entity->setWebPath($this->getWebPath($entity->getPath(),$entity->getUploadDir()));
+            }catch(Exception $e) {
+                
+            }             
+        // check if we have an old image
+        if (null!==$entity->getTemp()) {
+            // delete the old image
+            try{
+            unlink($entity->getUploadRootDir().'/'.$entity->getTemp());
+            }catch(\Exception $e)
+            {}
+            // clear the temp image path
+            $entity->setTemp(null);
+        }
+        $entity->setFile();
+    }
+    
+    
     public function getWebPath($path,$uploadDir){
         
         return null === $path

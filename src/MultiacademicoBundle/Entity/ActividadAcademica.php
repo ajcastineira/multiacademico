@@ -16,7 +16,7 @@ use AppBundle\Model\UploadFileEntity;
  * @ORM\Table(name="actividad_academica")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\ActividadAcademicaRepository")
  * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaListener"}) 
- * @ORM\HasLifecycleCallbacks()
+ * ORM\HasLifecycleCallbacks()
  */
 class ActividadAcademica extends UploadFileEntity
 {
@@ -204,7 +204,6 @@ class ActividadAcademica extends UploadFileEntity
     public function setArchivo($archivo)
     {
         $this->archivo = $archivo;
-
         return $this;
     }
 
@@ -392,7 +391,38 @@ class ActividadAcademica extends UploadFileEntity
                    mimeTypesMessage = "Por favor suba un archivo valido o permitido")
      */
     private $file;
-
+    
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        if (isset($file))
+        {    
+            $this->file = $file;
+            // check if we have an old image path
+            if (isset($this->archivo)) {
+                // store the old name to delete after the update
+                $this->temp = $this->archivo;
+                $this->archivo= null;
+            } else {
+                $this->archivo = 'initial';
+            }
+        }
+    }
+    
     public function __toString(){
        return $this->titulo;
 

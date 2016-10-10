@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="actividad_academica_detalle")
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Repository\ActividadAcademicaDetalleRepository")
  * @ORM\EntityListeners({"MultiacademicoBundle\EventListener\ActividadAcademicaDetalleListener"}) 
- * @ORM\HasLifecycleCallbacks()
+ * ORM\HasLifecycleCallbacks()
  */
 class ActividadAcademicaDetalle extends UploadFileEntity
 {
@@ -246,6 +246,30 @@ class ActividadAcademicaDetalle extends UploadFileEntity
     }
 
     /**
+     * Set archivo
+     *
+     * @param string $archivo
+     *
+     * @return ActividadAcademica
+     */
+    public function setArchivo($archivo)
+    {
+        $this->archivo = $archivo;
+
+        return $this;
+    }
+
+    /**
+     * Get archivo
+     *
+     * @return string
+     */
+    public function getArchivo()
+    {
+        return $this->archivo;
+    }
+    
+    /**
      * Set estado
      *
      * @param boolean $estado
@@ -324,6 +348,14 @@ class ActividadAcademicaDetalle extends UploadFileEntity
         return 'uploads/documents/actividades/recibidas';
     }
     
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->archivo = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
     /**
      * @Assert\File(maxSize="6000000",
                    mimeTypes = {"image/*",
@@ -337,6 +369,37 @@ class ActividadAcademicaDetalle extends UploadFileEntity
                    mimeTypesMessage = "Por favor suba un archivo valido o permitido")
      */
     private $file;
+    
+     /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        if (isset($file))
+        {    
+            $this->file = $file;
+            // check if we have an old image path
+            if (isset($this->archivo)) {
+                // store the old name to delete after the update
+                $this->temp = $this->archivo;
+                $this->archivo= null;
+            } else {
+                $this->archivo = 'initial';
+            }
+        }
+    }
 
     /**
      * Set descripcion

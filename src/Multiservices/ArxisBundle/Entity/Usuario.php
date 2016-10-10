@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Lib\FireBaseUtil;
-use AppBundle\Lib\AWSS3Helper;
 use AppBundle\Model\UploadFileInterface;
 
 /**

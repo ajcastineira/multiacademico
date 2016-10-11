@@ -122,7 +122,16 @@
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
                                 var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                
                                 return Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
+                            };
+                            
+                            $scope.prgq=function(i,q)
+                            {
+                                //if (typeof q==='undefined') q=$scope.q;
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                
+                                return Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
                             };
                             
                             $scope.prg=function(i)

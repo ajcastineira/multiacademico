@@ -29,7 +29,42 @@
                                     <td>{{aula.aula}}</td>
                                     <td>{{aula.tutor}}</td>
                                     <td>{{aula.totalalumnos}}</td>
-                                    <td class="text-center"><a class="btn btn-info" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:1,p:1})" role="button">Seleccionar</a></td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-app btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                                            <i class="fa fa-view"></i> Seleccionar <span class="caret"></span>
+                                             </button> 
+                                            <ul class="dropdown-menu" role="menu">
+
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:1,p:1})" role="button">Q1 Parcial 1</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:1,p:2})" role="button">Q1 Parcial 2</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:1,p:3})" role="button">Q1 Parcial 3</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:1,p:4})" role="button">Q1 Resumen</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:2,p:1})" role="button">Q2 Parcial 1</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:2,p:2})" role="button">Q2 Parcial 2</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:2,p:3})" role="button">Q2 Parcial 3</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.malla-normal.aula({aula: aula.id,q:2,p:4})" role="button">Q2 Resumen</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        
+                                    </td>
                             </tr>
                         </tbody >
                     </table>

@@ -29,4 +29,3 @@ parameters:
     aws_secret_access_key: ~
     s3_bucket: ~
     aws_url: ~
-    locale: es

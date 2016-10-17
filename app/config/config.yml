@@ -62,47 +62,47 @@ assetic:
     assets:
         vendor-ui:
             inputs: 
-                - %kernel.root_dir%/../web/build/vendor.ui.js
+                - '%kernel.root_dir%/../web/build/vendor.ui.js'
             output: build/vendor.ui.js
         vendor-datatables:
             inputs: 
-                - %kernel.root_dir%/../web/build/vendor.datatables.js
+                - '%kernel.root_dir%/../web/build/vendor.datatables.js'
             output: build/vendor.datatables.js
         blankon_css:
             inputs:
-                - %kernel.root_dir%/../web/app/styles/reset.css
-                - %kernel.root_dir%/../web/app/styles/layout.css
-                - %kernel.root_dir%/../web/app/styles/components.css
-                - %kernel.root_dir%/../web/app/styles/plugins.css
-                - %kernel.root_dir%/../web/app/styles/custom.css
+                - '%kernel.root_dir%/../web/app/styles/reset.css'
+                - '%kernel.root_dir%/../web/app/styles/layout.css'
+                - '%kernel.root_dir%/../web/app/styles/components.css'
+                - '%kernel.root_dir%/../web/app/styles/plugins.css'
+                - '%kernel.root_dir%/../web/app/styles/custom.css'
             output: css/compiled/rlcpc.css
         error404_css:
             inputs:
-                - %kernel.root_dir%/../web/app/styles/pages/error-page.css
+                - '%kernel.root_dir%/../web/app/styles/pages/error-page.css'
             output: app/styles/pages/error-page.css
         xeditable_css:
             inputs:
-                - %kernel.root_dir%/../web/plugin/angular-xeditable/dist/css/xeditable.css
+                - '%kernel.root_dir%/../web/plugin/angular-xeditable/dist/css/xeditable.css'
             output: plugin/angular-xeditable/dist/css/xeditable.css  
         bootstrapinputcss:
             inputs:
-            - %kernel.root_dir%/../web/plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
+            - '%kernel.root_dir%/../web/plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'
             output: plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.css
         jasny-bootstrapcss:
             inputs:
-            - %kernel.root_dir%/../web/plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
+            - '%kernel.root_dir%/../web/plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css'
             output: plugin/jasny-bootstrap-fileinput/css/jasny-bootstrap-fileinput.min.css
         chosen120css:
             inputs:
-            - %kernel.root_dir%/../web/plugin/chosen_v1.2.0/chosen.min.css
+            - '%kernel.root_dir%/../web/plugin/chosen_v1.2.0/chosen.min.css'
             output: plugin/chosen_v1.2.0/chosen.min.css
         theme_blue_css:
             inputs:
-                - %kernel.root_dir%/../web/app/styles/themes/blue.theme.css
+                - '%kernel.root_dir%/../web/app/styles/themes/blue.theme.css'
             output: css/compiled/blue.theme.css
         angular_custom_css:
             inputs:
-                - %kernel.root_dir%/../web/app/styles/angular-custom.css    
+                - '%kernel.root_dir%/../web/app/styles/angular-custom.css'
             output: css/compiled/angular-custom.css
         #dropzone_css:
         #    inputs:
@@ -110,102 +110,102 @@ assetic:
         #    output: vendor/dropzone/dist/min/dropzone.min.css  
         griter_img:
             inputs:
-                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/gritter.png
+                - '%kernel.root_dir%/../web/plugin/jquery.gritter/images/gritter.png'
             output: plugin/jquery.gritter/images/gritter.png 
         griter_img1:
             inputs:
-                - %kernel.root_dir%/../web/plugin/jquery.gritter/images/ie-spacer.gif
+                - '%kernel.root_dir%/../web/plugin/jquery.gritter/images/ie-spacer.gif'
             output: plugin/jquery.gritter/images/ie-spacer.gif
         griter_css:
             inputs:
-                - %kernel.root_dir%/../web/plugin/jquery.gritter/css/jquery.gritter.css 
+                - '%kernel.root_dir%/../web/plugin/jquery.gritter/css/jquery.gritter.css'
             output: plugin/jquery.gritter/css/jquery.gritter.css     
         
         chosen_css:
             inputs:
-                - %kernel.root_dir%/../web/plugin/chosen/chosen.min.css 
+                - '%kernel.root_dir%/../web/plugin/chosen/chosen.min.css'
             output: plugin/chosen/chosen.min.css    
         chosen_sprite_png:
             inputs:
-                - %kernel.root_dir%/../web/plugin/chosen/chosen-sprite.png 
+                - '%kernel.root_dir%/../web/plugin/chosen/chosen-sprite.png'
             output: plugin/chosen/chosen-sprite.png     
         sign_css:
             inputs:
-                - %kernel.root_dir%/../web/app/styles/pages/sign.css    
+                - '%kernel.root_dir%/../web/app/styles/pages/sign.css'
             output: css/compiled/pages/sign.css
         beer_can_opening_mp3:
             inputs:
-                - %kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/beer_can_opening.mp3
+                - '%kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/beer_can_opening.mp3'
             output: sounds/beer_can_opening.mp3
         bell_ring_mp3:
             inputs:
-                - %kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/bell_ring.mp3
+                - '%kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/bell_ring.mp3'
             output: sounds/bell_ring.mp3
         button_click_mp3:
             inputs:
-                - %kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/button_click.mp3
+                - '%kernel.root_dir%/../web/assets/global/plugins/bower_components/ionsound/sounds/button_click.mp3'
             output: sounds/button_click.mp3    
         notifications_json:
             inputs:
-                - %kernel.root_dir%/../web/data/partials/header/navbar-notifications.json
+                - '%kernel.root_dir%/../web/data/partials/header/navbar-notifications.json'
             output: data/partials/header/navbar-notifications.json
         messajes_json:
             inputs:
-                - %kernel.root_dir%/../web/data/partials/header/navbar-messages.json 
+                - '%kernel.root_dir%/../web/data/partials/header/navbar-messages.json'
             output: data/partials/header/navbar-messages.json 
         color_json:
             inputs:
-                - %kernel.root_dir%/../web/data/views/tables/color.json 
+                - '%kernel.root_dir%/../web/data/views/tables/color.json'
             output: data/views/tables/color.json 
         chat_json:
             inputs:
-                - %kernel.root_dir%/../web/data/partials/sidebar-right/chat.json
+                - '%kernel.root_dir%/../web/data/partials/sidebar-right/chat.json'
             output: data/partials/sidebar-right/chat.json    
         profile_json:    
             inputs:
-                - %kernel.root_dir%/../web/data/partials/sidebar-right/profile.json
+                - '%kernel.root_dir%/../web/data/partials/sidebar-right/profile.json'
             output: data/partials/sidebar-right/profile.json
         dashboardhtml:    
             inputs:
-                - %kernel.root_dir%/../web/views/dashboard.html
+                - '%kernel.root_dir%/../web/views/dashboard.html'
             output: /views/dashboard.html
         matriculashtml:    
             inputs:
-                - %kernel.root_dir%/../web/views/matriculas.html
+                - '%kernel.root_dir%/../web/views/matriculas.html'
             output: /views/matriculas.html
         seleccionaraulamallasnormalhtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html'
             output: /views/multiacademico/malla/seleccionar-aula-malla-normal.html 
         seleccionaraulainformeshtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html'
             output: /views/multiacademico/informes/seleccionar-aula-informes.html
         seleccionaraulacertificadomatriculahtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/certificados/seleccionar-aula-certificado-matricula.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/certificados/seleccionar-aula-certificado-matricula.html'
             output: /views/multiacademico/certificados/seleccionar-aula-certificado-matricula.html
         seleccionaraulacertificadopromocionhtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/certificados/seleccionar-aula-certificado-promocion.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/certificados/seleccionar-aula-certificado-promocion.html'
             output: /views/multiacademico/certificados/seleccionar-aula-certificado-promocion.html    
         menucalificacionesedtudianteshtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/estudiantes/menu-calificaciones.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/estudiantes/menu-calificaciones.html'
             output: /views/multiacademico/estudiantes/menu-calificaciones.html
         
         comportamientohtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/comportamiento.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/malla/comportamiento.html'
             output: /views/multiacademico/malla/comportamiento.html
         
         dosquimestrehtml:
             inputs:
-                -  %kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html
+                -  '%kernel.root_dir%/../web/views/multiacademico/malla/dos-quimestre.html'
             output: /views/multiacademico/malla/dos-quimestre.html
         error404_html:
             inputs:
-                - %kernel.root_dir%/../web/views/pages/page-error-404.html
+                - '%kernel.root_dir%/../web/views/pages/page-error-404.html'
             output: views/pages/page-error-404.html
 
             
@@ -262,8 +262,9 @@ swiftmailer:
             host:      "%mailer_host%"
             username:  "%mailer_user%"
             password:  "%mailer_password%"
-            port: %mailer_port%
-            encryption: %mailer_encryption%
+            port: "%mailer_port%"
+            encryption: "%mailer_encryption%"
+            auth_mode:	login
             spool:     { type: memory }
         mailgun_mailer:
             transport: mailgun
@@ -280,10 +281,10 @@ nelmio_cors:
         '^/': ~    
     
 knp_snappy:
-    temporary_folder: %kernel.cache_dir%/snappy
+    temporary_folder: '%kernel.cache_dir%/snappy'
     pdf:
         enabled:    true
-        binary:     %kernel.root_dir%/../vendor/bin/wkhtmltopdf64
+        binary:     '%kernel.root_dir%/../vendor/bin/wkhtmltopdf64'
         #binary:     "%pdf_generator%"
         options:    []
     #image:
@@ -346,11 +347,11 @@ hwi_oauth:
     resource_owners:
         multiacademico:
             type:                oauth2
-            client_id:           %oauth_client%
-            client_secret:       %oauth_secret%
-            access_token_url:    %website_back_base_url%/oauth/v2/token
-            authorization_url:   %website_back_base_url%/oauth/v2/auth
-            infos_url:           %website_back_base_url%/me
+            client_id:           '%oauth_client%'
+            client_secret:       '%oauth_secret%'
+            access_token_url:    '%website_back_base_url%/oauth/v2/token'
+            authorization_url:   '%website_back_base_url%/oauth/v2/auth'
+            infos_url:           '%website_back_base_url%/me'
             #scope:               "read"
             user_response_class: HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse
             options:
@@ -367,5 +368,5 @@ kreait_firebase:
       #host: %firebase_host%
       #service_account: %firebase_service_json%
       host: multiacademico-test.firebaseio.com
-      service_account: %kernel.root_dir%/Resources/FireBase/MultiacademicoTest-3fe0ede53e47.json
+      service_account: '%kernel.root_dir%/Resources/FireBase/MultiacademicoTest-3fe0ede53e47.json'
       

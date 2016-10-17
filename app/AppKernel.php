@@ -33,6 +33,8 @@ class AppKernel extends Kernel
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FirebaseBundle\KreaitFirebaseBundle(),
+            new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
          //   new Snc\RedisBundle\SncRedisBundle(),
             //probado commit
             new AppBundle\AppBundle(),

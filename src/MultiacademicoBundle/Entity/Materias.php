@@ -42,7 +42,7 @@ class Materias
     /**
      * @var \AreaAcademica
      
-     * @ORM\ManyToOne(targetEntity="AreaAcademica")
+     * @ORM\ManyToOne(targetEntity="AreaAcademica", inversedBy="materias")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="area", referencedColumnName="id", nullable=true)
      * })

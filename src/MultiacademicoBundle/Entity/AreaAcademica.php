@@ -71,7 +71,7 @@ class AreaAcademica
     
 
     /**
-     * @ORM\OneToMany(targetEntity="Materias", mappedBy="areaAcademica")
+     * @ORM\OneToMany(targetEntity="Materias", mappedBy="area")
      * Serializer\Expose
      * Serializer\Groups({"detail"})
      * Serializer\Accessor(getter="getMatriculados")

@@ -14,8 +14,16 @@
                 <td>{{ areaAcademica.nombre }}</td>
             </tr>
             <tr>
-                <th>Estado</th>
-                <td>{{ areaAcademica.estado }}</td>
+                <th>Director</th>
+                <td>{{ areaAcademica.director }}</td>
+            </tr>
+            <tr>
+                <th>Materias</th>
+                <td>
+                    {% for materia in areaAcademica.materias %}
+                        {{materia}}, 
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>

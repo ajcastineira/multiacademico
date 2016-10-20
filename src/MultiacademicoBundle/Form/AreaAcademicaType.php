@@ -13,7 +13,10 @@ class AreaAcademicaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('estado')->add('director')->add('subdirector')        ;
+        $builder->add('nombre')
+                ->add('director')
+                //->add('subdirector')
+                ;
     }
     
     /**
@@ -23,7 +26,7 @@ class AreaAcademicaType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'MultiacademicoBundle\Entity\AreaAcademica',
-            'attr' => array('ng-submit'=>"processForm(\$event,'areaacademica')")
+            'attr' => array('ng-submit'=>"processForm(\$event,'multiacademicobundle_areaacademica')")
         ));
     }
 

@@ -3,7 +3,9 @@
 namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
@@ -12,8 +14,8 @@ use MultiacademicoBundle\Form\AreaAcademicaType;
 
 /**
  * AreaAcademica controller.
- *
-* @Rest\RouteResource("Areaacademica")
+ * @Route("areaacademicas")
+ * @Rest\RouteResource("Areaacademica")
  */
 class AreaAcademicaController extends FOSRestController
 {
@@ -30,7 +32,7 @@ class AreaAcademicaController extends FOSRestController
         $areaAcademicas_datatable = $this->get("multiacademicobundle_datatable.areaAcademicas");
         $areaAcademicas_datatable->buildDatatable();
 
-        return $this->render('areaacademica/index.html.twig', array(
+        return $this->render('MultiacademicoBundle:AreaAcademica:index.html.twig', array(
             //'areaAcademicas' => $areaAcademicas,
             'datatable'=>$areaAcademicas_datatable
         ));
@@ -54,7 +56,7 @@ class AreaAcademicaController extends FOSRestController
      * Creates a new AreaAcademica entity.
      *
      * @Rest\Post() 
-     * @Rest\Get("/areaacademica/new", name="new_areaAcademica") 
+     * @Rest\Get("/areaacademicas/new", name="new_areaAcademica") 
      */
     public function newAction(Request $request)
     {
@@ -67,10 +69,14 @@ class AreaAcademicaController extends FOSRestController
             $em->persist($areaAcademica);
             $em->flush();
 
-            return $this->redirectToRoute('show_areaacademica', array('areaAcademica' => $areaacademica->getId()));
+            //return $this->redirectToRoute('show_areaacademica', array('areaAcademica' => $areaacademica->getId()));
+            $response_redir=new JsonResponse();
+             $response_redir->setData(array('id'=>$areaAcademica->getId()));
+             $response_redir->setStatusCode(201);
+             return $response_redir;
         }
 
-        return $this->render('areaacademica/new.html.twig', array(
+        return $this->render('MultiacademicoBundle:AreaAcademica:new.html.twig', array(
             'areaAcademica' => $areaAcademica,
             'form' => $form->createView(),
         ));
@@ -85,7 +91,7 @@ class AreaAcademicaController extends FOSRestController
     {
         $deleteForm = $this->createDeleteForm($areaAcademica);
 
-        return $this->render('areaacademica/show.html.twig', array(
+        return $this->render('MultiacademicoBundle:AreaAcademica:show.html.twig', array(
             'areaAcademica' => $areaAcademica,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +101,7 @@ class AreaAcademicaController extends FOSRestController
      * Displays a form to edit an existing AreaAcademica entity.
      *
      * @Rest\Post() 
-     * @Rest\Get("/areaacademica/{areaAcademica}/edit", name="edit_areaAcademica") 
+     * @Rest\Get("/areaacademicas/{areaacademica}/edit", name="edit_areaAcademica") 
      */
     public function editAction(Request $request, AreaAcademica $areaAcademica)
     {
@@ -108,10 +114,10 @@ class AreaAcademicaController extends FOSRestController
             $em->persist($areaAcademica);
             $em->flush();
 
-            return $this->redirectToRoute('areaacademica', array('page' => $areaAcademica->getId().'/edit'));
+            return $this->redirectToRoute('show_areaacademica', array('areaAcademica' => $areaAcademica->getId()));
         }
 
-        return $this->render('areaacademica/edit.html.twig', array(
+        return $this->render('MultiacademicoBundle:AreaAcademica:edit.html.twig', array(
             'areaAcademica' => $areaAcademica,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -146,7 +152,7 @@ class AreaAcademicaController extends FOSRestController
     private function createDeleteForm(AreaAcademica $areaAcademica)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('delete_areaAcademica', array('areaAcademica' => $areaAcademica->getId())))
+            ->setAction($this->generateUrl('delete_areaacademica', array('areaAcademica' => $areaAcademica->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

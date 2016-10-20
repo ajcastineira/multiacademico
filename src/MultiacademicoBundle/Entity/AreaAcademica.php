@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="MultiacademicoBundle\Entity\AreaAcademicaRepository")
  * ORM\Cache(usage="READ_ONLY")
  * @Serializer\ExclusionPolicy("all")
- * @UniqueEntity({"curso","especializacion","paralelo","seccion","periodo"}, message="El AreaAcademica con esta combinacion ya existe")
+ * @UniqueEntity({"nombre"}, message="El Area Academica ya existe")
  */
 class AreaAcademica
 {
@@ -67,7 +67,7 @@ class AreaAcademica
      * @ORM\Column(name="estado", type="string", length=8, nullable=false)
      * 
      */
-    private $estado;
+    private $estado='ACTIVA';
     
 
     /**

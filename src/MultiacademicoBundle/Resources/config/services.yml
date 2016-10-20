@@ -54,6 +54,9 @@ services:
     multiacademicobundle_datatable.actividadacademicas:
         class: MultiacademicoBundle\Datatables\ActividadAcademicaDatatable
         parent: sg_datatables.datatable.abstract    
+    multiacademicobundle_datatable.areaacademicas:
+        class: MultiacademicoBundle\Datatables\AreaAcademicaDatatable
+        parent: sg_datatables.datatable.abstract    
     multiacademicobundle_datatable.actividadacademicadetalles:
         class: MultiacademicoBundle\Datatables\ActividadAcademicaDetalleDatatable
         parent: sg_datatables.datatable.abstract        

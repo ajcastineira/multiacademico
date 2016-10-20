@@ -18,6 +18,7 @@ class MateriasType extends AbstractType
             ->add('materia')
             ->add('materiatipo')
             ->add('materiaestado')
+            ->add('area')
             ->add('prioridad')
         ;
     }

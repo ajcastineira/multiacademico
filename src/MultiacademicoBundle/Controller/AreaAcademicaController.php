@@ -101,7 +101,7 @@ class AreaAcademicaController extends FOSRestController
      * Displays a form to edit an existing AreaAcademica entity.
      *
      * @Rest\Post() 
-     * @Rest\Get("/areaacademicas/{areaacademica}/edit", name="edit_areaAcademica") 
+     * @Rest\Get("/areaacademicas/{areaAcademica}/edit", name="edit_areaAcademica") 
      */
     public function editAction(Request $request, AreaAcademica $areaAcademica)
     {
@@ -139,7 +139,7 @@ class AreaAcademicaController extends FOSRestController
             $em->flush();
         }
 
-        return $this->redirectToRoute('areaacademica_index');
+        return $this->redirectToRoute('areaacademica');
     }
 
     /**

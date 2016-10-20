@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class AreaAcademicaType extends AbstractType
 {
@@ -14,7 +15,19 @@ class AreaAcademicaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombre')
-                ->add('director')
+                ->add('director',null,array('attr'=>array(
+                                                                'class'=>'chosen-select ',
+                                                                'data-chosen-select'=>null,
+                                                                'data-placeholder'=>'Seleccione Docente...'),
+                                                    'placeholder'=>''
+                                                    ))
+                ->add('materias',null,array('attr'=>array(
+                                                                'multiple'=>null,
+                                                                'class'=>'chosen-select',
+                                                                'data-chosen-select'=>null,
+                                                                'data-placeholder'=>'Seleccione Materias...'),
+                                                    'placeholder'=>''
+                                                    ))
                 //->add('subdirector')
                 ;
     }

@@ -38,6 +38,16 @@ class Materias
      * @ORM\Column(name="materiatipo", type="string", length=15, nullable=false)
      */
     private $materiatipo;
+    
+    /**
+     * @var \AreaAcademica
+     
+     * @ORM\ManyToOne(targetEntity="AreaAcademica")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="area", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $area;
 
     /**
      * @var string
@@ -166,5 +176,29 @@ class Materias
     
     public function __toString() {
         return $this->materia;
+    }
+
+    /**
+     * Set area
+     *
+     * @param \MultiacademicoBundle\Entity\AreaAcademica $area
+     *
+     * @return Materias
+     */
+    public function setArea(\MultiacademicoBundle\Entity\AreaAcademica $area = null)
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return \MultiacademicoBundle\Entity\AreaAcademica
+     */
+    public function getArea()
+    {
+        return $this->area;
     }
 }

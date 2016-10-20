@@ -34,3 +34,6 @@ multiacademico_actividadacademica:
     resource: "@MultiacademicoBundle/Resources/config/routing/actividadacademica.yml"
 multiacademico_actividadacademicadetalle:
     resource: "@MultiacademicoBundle/Resources/config/routing/actividadacademicadetalle.yml"
+multiacademico_areaacademica:
+    resource: "@MultiacademicoBundle/Resources/config/routing/areaacademica.yml"
+        

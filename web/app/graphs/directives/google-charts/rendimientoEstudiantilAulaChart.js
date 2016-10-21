@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', function (Calificaciones, CALIFICACION_META) {
+angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', function (Calificaciones, CALIFICACION_META, CALIFICACION_MINIMA) {
     return {
         restrict: 'A',
         scope: {
@@ -14,7 +14,6 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
             google.charts.load('current', {'packages':['corechart']});
             
             var aula=scope.aula;
-            var calificacionMeta=CALIFICACION_META;
             
             scope.promedioCurso=function(){
                 return 
@@ -27,11 +26,11 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                 google.charts.setOnLoadCallback(drawChart);
             });
             
-            var generarFila=function(nombreEstudiante,  calificacion, promedio, meta){
-                    return [nombreEstudiante,  calificacion, promedio, meta];
+            var generarFila=function(nombreEstudiante,  calificacion,minima, promedio, meta){
+                    return [nombreEstudiante,  calificacion, minima, promedio, meta];
                 };
             var generarTabla=function(){
-                var encabezado=['Estudiante', 'Calificacion', 'Media', 'Meta'];
+                var encabezado=['Estudiante', 'Calificacion', 'Minima','Media', 'Meta'];
                 var filas=[encabezado];
                 var sumPromedioCurso=0,promedioCurso=0;
                 aula.matriculados.forEach(function(element){
@@ -42,7 +41,7 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                 aula.matriculados.forEach(function(element){
                    var nomEstudiante=element.matriculacodestudiante.estudiante;
                    var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                   filas.push(generarFila(nomEstudiante,promedioParcial,promedioCurso,calificacionMeta));
+                   filas.push(generarFila(nomEstudiante,promedioParcial,CALIFICACION_MINIMA,promedioCurso,CALIFICACION_META));
                 });
                 return filas;
             }

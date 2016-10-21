@@ -16,9 +16,16 @@ class MateriasType extends AbstractType
     {
         $builder
             ->add('materia')
-            ->add('materiatipo')
-            ->add('materiaestado')
-            ->add('area')
+            ->add('materiatipo',null,['label'=>'Tipo'])
+            ->add('areas',null,array('attr'=>array(
+                                                                'multiple'=>null,
+                                                                'class'=>'chosen-select',
+                                                                'data-chosen-select'=>null,
+                                                                'data-placeholder'=>'Seleccione Area Academica...'),
+                                                    'multiple'=>true,
+                                                    'expanded'=>false,
+                                                    'placeholder'=>''
+                                                    ))
             ->add('prioridad')
         ;
     }

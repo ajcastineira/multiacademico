@@ -12,6 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MultiacademicoBundle\Entity\Materias;
 use MultiacademicoBundle\Form\MateriasType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Materias controller.
  *
@@ -47,36 +49,6 @@ class MateriasController extends Controller
 
         return array(
             'entities' => $entities,
-        );
-    }
-    /**
-     * Creates a new Materias entity.
-     *
-     * @Route("/", name="materias_create", options={"expose":true})
-     * @Method("POST")
-     * @Template("MultiacademicoBundle:Materias:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Materias();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            //return $this->redirect($this->generateUrl('materias_show', array('id' => $entity->getId())));
-                $response_redir=new JsonResponse();
-                $response_redir->setData(array('id'=>$entity->getId()));
-                $response_redir->setStatusCode(201);
-                return $response_redir;
-        }
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
         );
     }
 
@@ -115,13 +87,34 @@ class MateriasController extends Controller
      * Displays a form to create a new Materias entity.
      *
      * @Route("/api/new", name="materias_api_new", options={"expose":true})
-     * @Method("GET")
+     * @Route("/api/new", name="materias_create", options={"expose":true})
+     * @Method({"GET","POST"})
      * @Template("MultiacademicoBundle:Materias:new.html.twig")
      */
-    public function newApiAction()
+    public function newApiAction(Request $request)
     {
         $entity = new Materias();
         $form   = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+        
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            
+            foreach ($entity->getAreas() as $area)
+            {
+               $area->addMateria($entity);
+            }
+            
+            $em->persist($entity);
+            $em->flush();
+
+            //return $this->redirect($this->generateUrl('materias_show', array('id' => $entity->getId())));
+                $response_redir=new JsonResponse();
+                $response_redir->setData(array('id'=>$entity->getId()));
+                $response_redir->setStatusCode(201);
+                return $response_redir;
+        }
 
         return array(
             'entity' => $entity,
@@ -199,10 +192,11 @@ class MateriasController extends Controller
      * Displays a form to edit an existing Materias entity.
      *
      * @Route("/api/{id}/edit", name="materias_api_edit", requirements={"id":"\d+"}, options={"expose":true})
-     * @Method("GET")
+     * @Route("/api/{id}/edit", name="materias_update", requirements={"id":"\d+"}, options={"expose":true})
+     * @Method({"GET","PUT"})
      * @Template("MultiacademicoBundle:Materias:edit.html.twig")
      */
-    public function editApiAction($id)
+    public function editApiAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -211,39 +205,37 @@ class MateriasController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Materias entity.');
         }
+        $materia=$entity;
+        
+        $originalAreas = new ArrayCollection();
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }    /**
-     * Edits an existing Materias entity.
-     *
-     * @Route("/{id}", name="materias_update", options={"expose":true})
-     * @Method("PUT")
-     * @Template("MultiacademicoBundle:Materias:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MultiacademicoBundle:Materias')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Materias entity.');
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($materia->getAreas() as $area) {
+            $originalAreas->add($area);
         }
 
+        $editForm = $this->createEditForm($materia);
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
+        
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+                foreach ($materia->getAreas() as $area)
+                {
+                   $area->addMateria($materia);
+                }
+                // remove the relationship between the tag and the Task
+                foreach ($originalAreas as $area) {
+                    if (false === $materia->getAreas()->contains($area)) {
+                        // remove the Task from the Tag
+                        $area->getMaterias()->removeElement($materia);
+                        $em->persist($area);
+                        // if you wanted to delete the Tag entirely, you can also do that
+                        // $em->remove($tag);
+                    }
+                }
+            $em->persist($materia);
             $em->flush();
-
             return $this->redirect($this->generateUrl('materias_api_edit', array('id' => $id)));
         }
 

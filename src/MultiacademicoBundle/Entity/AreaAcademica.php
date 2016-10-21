@@ -71,7 +71,16 @@ class AreaAcademica
     
 
     /**
-     * @ORM\OneToMany(targetEntity="Materias", mappedBy="area")
+     * 
+     * @ORM\ManyToMany(targetEntity="Materias", inversedBy="areas")
+     * @ORM\JoinTable(name="area_academica_materias",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="area_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="materia_id", referencedColumnName="id")
+     *   }
+     * )
      * Serializer\Expose
      * Serializer\Groups({"detail"})
      * Serializer\Accessor(getter="getMatriculados")
@@ -196,6 +205,17 @@ class AreaAcademica
     }
 
     /**
+     * Get materias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMaterias()
+    {
+        
+        return $this->materias;
+    }
+
+    /**
      * Add materia
      *
      * @param \MultiacademicoBundle\Entity\Materias $materia
@@ -204,8 +224,12 @@ class AreaAcademica
      */
     public function addMateria(\MultiacademicoBundle\Entity\Materias $materia)
     {
-        $this->materias[] = $materia;
-
+        $materia->addArea($this);
+        //$this->materias[] = $materia;
+        if (!$this->materias->contains($materia)) {
+            $this->materias->add($materia);
+        }
+        
         return $this;
     }
 
@@ -218,14 +242,8 @@ class AreaAcademica
     {
         $this->materias->removeElement($materia);
     }
-
-    /**
-     * Get materias
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMaterias()
-    {
-        return $this->materias;
+    
+    public function __toString() {
+        return $this->nombre;
     }
 }

@@ -4,6 +4,7 @@ namespace MultiacademicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Materias
@@ -11,6 +12,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Table(name="materias")
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("none")
+ * @UniqueEntity({"materia"}, message="Materia con este nombre ya existe")
  */
 class Materias
 {
@@ -41,13 +43,9 @@ class Materias
     
     /**
      * @var \AreaAcademica
-     
-     * @ORM\ManyToOne(targetEntity="AreaAcademica", inversedBy="materias")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="area", referencedColumnName="id", nullable=true)
-     * })
+     * @ORM\ManyToMany(targetEntity="AreaAcademica", mappedBy="materias", cascade={"persist"})
      */
-    private $area;
+    private $areas;
 
     /**
      * @var string
@@ -55,7 +53,7 @@ class Materias
      * @ORM\Column(name="materiaestado", type="string", length=8, nullable=false)
      * 
      */
-    private $materiaestado;
+    private $materiaestado='ACTIVA';
 
     /**
      * @var integer
@@ -179,26 +177,48 @@ class Materias
     }
 
     /**
-     * Set area
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getAreas()
+    {
+        return $this->areas;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->areas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add area
      *
      * @param \MultiacademicoBundle\Entity\AreaAcademica $area
      *
      * @return Materias
      */
-    public function setArea(\MultiacademicoBundle\Entity\AreaAcademica $area = null)
+    public function addArea(\MultiacademicoBundle\Entity\AreaAcademica $area)
     {
-        $this->area = $area;
+        //$area->addMateria($this);
+        if (!$this->areas->contains($area)) {
+            //$this->areas[] = $area;
+            $this->areas->add($area);
+        }
+       
 
         return $this;
     }
 
     /**
-     * Get area
+     * Remove area
      *
-     * @return \MultiacademicoBundle\Entity\AreaAcademica
+     * @param \MultiacademicoBundle\Entity\AreaAcademica $area
      */
-    public function getArea()
+    public function removeArea(\MultiacademicoBundle\Entity\AreaAcademica $area)
     {
-        return $this->area;
+        $this->areas->removeElement($area);
     }
 }

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AreaAcademicaType extends AbstractType
 {
@@ -26,6 +27,8 @@ class AreaAcademicaType extends AbstractType
                                                                 'class'=>'chosen-select',
                                                                 'data-chosen-select'=>null,
                                                                 'data-placeholder'=>'Seleccione Materias...'),
+                                                    'multiple'=>true,
+                                                    'expanded'=>false,
                                                     'placeholder'=>''
                                                     ))
                 //->add('subdirector')

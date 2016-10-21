@@ -96,6 +96,14 @@
                     quimestres:quimestres, 
                     parciales:parciales,
                     parcialesnotas:parcialesnotas,
+                    findOnCalificacionesByMateriaId : function(id){
+                                return function(calificacion){
+                                  return calificacion.calificacioncodmateria.id === id;
+                                };
+                            },
+                    findCalificacionOnAlumno : function(alumno, idmateria){
+                                return alumno.calificaciones.filter(this.findOnCalificacionesByMateriaId(idmateria))[0];
+                            },
                     getPromedioParcial:function (q,p,calificacion)
                           {
                            

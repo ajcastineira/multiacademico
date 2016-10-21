@@ -57,6 +57,7 @@ angular.module('app', [
     'multiacademico.aulas',
     'multiacademico.actividadacademica',
     'multiacademico.actividadacademicadetalle',
+    'multiacademico.areaacademica',
     'multiacademico.cursos',
         
     //'multiacademico.comportamiento', // no esta completado

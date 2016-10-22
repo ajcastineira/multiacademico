@@ -173,10 +173,10 @@ assetic:
             inputs:
                 - '%kernel.root_dir%/../web/views/matriculas.html'
             output: /views/matriculas.html
-        seleccionaraulamallasnormalhtml:
+        seleccionadorAulaHtml:
             inputs:
-                -  '%kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla-normal.html'
-            output: /views/multiacademico/malla/seleccionar-aula-malla-normal.html 
+                -  '%kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla.html'
+            output: /views/multiacademico/malla/seleccionar-aula-malla.html
         seleccionaraulainformeshtml:
             inputs:
                 -  '%kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html'

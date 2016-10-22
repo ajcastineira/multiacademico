@@ -77,14 +77,16 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart', 
                 var options = {
                   title: scope.titulo,
                   colors: ["#dc3912","#ff9900","#109618"],
-                  vAxis: {title: 'Numero de Alumnos'},
+                  vAxis: {title: 'Numero de Alumnos' },
                   hAxis: {title: 'Materias',
+                          
                           showTextEvery: 1,
                           maxTextLines: 5,
                           textStyle: {
                              fontSize: 8
                          }
                         },
+                  isStacked: 'percent',      
                   seriesType: 'bars',
                   
                  // series: {5: {type: 'line'}}

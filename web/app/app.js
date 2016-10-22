@@ -129,9 +129,6 @@ angular.module('app', [
 
 })
 .constant('APP_CONFIG', window.appConfig)
-.constant('CALIFICACION_META',8.5)
-.constant('CALIFICACION_MAXIMA',10)
-.constant('CALIFICACION_MINIMA',7.5)
 .run(function ($rootScope
     , $state, $stateParams
     ) {

@@ -35,7 +35,7 @@
      return (letra);
     }
 
-     angular.module('multiacademico.docentes').controller('CalificarCtrl', function ($scope,$uibModal,$log,$http,$state,$stateParams,Calificaciones) {
+     angular.module('multiacademico.docentes').controller('CalificarCtrl', function ($scope,$uibModal,$log,$http,$state,$stateParams,Calificaciones, LETRAS) {
                             
                             $scope.state=$stateParams;
                           
@@ -51,15 +51,7 @@
                                   //  {id:4,label:"Total Parciales"},
                                  //   {id:5,label:"Total Quimestre"}
                             ];
-                            $scope.letras={
-                                            'A':10,
-                                            'B':9,
-                                            'C':8,
-                                            'D':6,
-                                            'E':4,
-                                            'F':3,
-                                            '':0
-                                          };   
+                            $scope.letras=LETRAS; 
                             
                             $scope.promedioletras=function(a,b,c){
                                 var promedio=(($scope.letras[a]+$scope.letras[b]+$scope.letras[c])/3)

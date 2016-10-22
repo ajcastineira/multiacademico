@@ -4,16 +4,9 @@
 
     "use strict";
     
-    angular.module('multiacademico').service('Calificaciones', function()
+    angular.module('multiacademico').service('Calificaciones', function(LETRAS)
     {
-        var letras={    'A':10,
-                        'B':9,
-                        'C':8,
-                        'D':6,
-                        'E':4,
-                        'F':3,
-                        '':0
-                      }; 
+        var letras=LETRAS; 
                       
         var quimestres=[
                                     {id:1,label:"PRIMER QUIMESTRE"},

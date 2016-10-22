@@ -4,7 +4,7 @@
    'use strict';
     
     angular.module('multiacademico.malla')
-        .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones) {
+        .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones, QUIMESTRES, PARCIALES) {
                             $scope.aula = aula;
                             $scope.aula.recibeProyectoEscolar=function(){
                                 if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
@@ -21,8 +21,8 @@
                             {
                                 return !parseInt($scope.tam); 
                             };
-                            $scope.qop=Calificaciones.quimestres;
-                            $scope.pop=Calificaciones.parciales;
+                            $scope.qop=QUIMESTRES;
+                            $scope.pop=PARCIALES;
                             $scope.q = $stateParams.q;
                             $scope.p = $stateParams.p;
                             $scope.encabezado={

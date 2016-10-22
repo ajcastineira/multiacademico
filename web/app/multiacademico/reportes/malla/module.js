@@ -12,46 +12,56 @@
     .config(function ($stateProvider)
     {
         $stateProvider
-    
-
- 
-              .state('multiacademico.malla-normal', {
-                    url: '/malla-normal',
-                    data: {
-                        pageTitle: 'malla-normal',
-                        pageHeader: {
-                            icon: 'fa fa-pencil',
-                            title: 'Cuadro de calificaiones',
-                            subtitle: 'Lista'
+            .state('multiacademico.malla', {
+                        url: '/malla/{tipo}',
+                        params:{
+                          title: 'Seleccionar Aula'
                         },
-                        breadcrumbs: [
-                            {title: 'Malla'},{title: 'Malla Normal'}
-                        ]
-                    },
-                    
-                    views:{
-                        'content@multiacademico':{
-                            templateUrl: 'views/multiacademico/malla/seleccionar-aula-malla-normal.html',
-                            controller: function ($scope, aulas) {
-                            $scope.aulas = aulas;
-                           },
-                           resolve:{
-                               aulas: function ($http) {
-                                 return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
-                                         .then(function successCallback(response)
-                                         {
-                                             return response.data;
-                                         });
+                        data: {
+                            pageTitle: 'Malla Normal',
+                            pageHeader: {
+                                icon: 'fa fa-pencil',
+                                title: 'Malla Normal',
+                                subtitle: 'Lista'
+                            },
+                            breadcrumbs: [
+                                {title: 'Malla'},{title: 'Seleccionar Aula'}
+                            ]
+                            
+                        },
+                        views:{
+                            'content@multiacademico':{
+                                templateUrl: 'views/multiacademico/malla/seleccionar-aula-malla.html',
+                                controller: function ($scope, aulas, $stateParams) {
+                                $scope.aulas = aulas;
+                                switch($stateParams.tipo)
+                                {
+                                    case 'normal':{
+                                            $scope.toRoute= 'multiacademico.malla.normal';
+                                            break;
+                                            
+                                    }
+                                    case 'estadistica':{
+                                            $scope.toRoute= 'multiacademico.malla.estadistica';
+                                            break;    
+                                        }
+                                    default:
+                                        $scope.toRoute= 'multiacademico.malla.normal';
+                                }
+                               },
+                               resolve:{
+                                   aulas: function ($http) {
+                                     return $http.get(Routing.generate('get_aulas_all',{'_format':'json'}))
+                                             .then(function successCallback(response)
+                                             {
+                                                 return response.data;
+                                             });
+                                             }
                                          }
-                                     }
-                           }
+                               }
                         }
-                        
-
                 })
-                
-                
-                .state('multiacademico.malla-normal.aula', {
+            .state('multiacademico.malla.normal', {
                     url: '/aula/{aula}/{q}/{p}',
                     reloadOnSearch: false,
                     data: {
@@ -82,9 +92,40 @@
                         }
                     }
                 })
+            .state('multiacademico.malla.estadistica', {
+                    //parent:'multiacademico.malla',
+                    url: '/aula/{aula}/{q}/{p}',
+                    reloadOnSearch: false,
+                    data: {
+                        pageTitle: 'Cuadro de Calificaciones Estadistico',
+                        pageHeader: {
+                            icon: 'fa flaticon-tactil1',
+                            title: 'Malla',
+                            subtitle: 'Cuadro de Calificaciones'
+                        },
+                        breadcrumbs: [
+                            {title: 'Malla'},{title: 'Cuadro de Calificaciones Estadisitico'}
+                        ]
+                    },
+                    views:{
+                        'content@multiacademico':{
+                            templateUrl: Routing.generate('malla-estadistica-api'),
+                            controller: 'MallaCtrl',
+                           resolve:{
+                               
+                               aula: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('get_aula',{aula: $stateParams.aula,'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data;
+                                         });
+                                         }
+                                     }
+                        }
+                    }
+                })
 
-
-              .state('cuadro-de-calificaciones', {
+            .state('cuadro-de-calificaciones', {
                     url: '/cuadro-de-calificaciones',
                     templateUrl: 'views/multiacademico/malla/cuadro-de-calificaciones.html',
                     data: {
@@ -102,7 +143,7 @@
 
 
 
-              .state('comportamiento', {
+            .state('comportamiento', {
                     url: '/comportamiento',
                     templateUrl: 'views/multiacademico/malla/comportamiento.html',
 

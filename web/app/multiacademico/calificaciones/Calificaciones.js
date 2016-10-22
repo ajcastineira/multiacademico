@@ -4,22 +4,8 @@
 
     "use strict";
     
-    angular.module('multiacademico').service('Calificaciones', function(LETRAS)
+    angular.module('multiacademico').service('Calificaciones', function(qualitativeScores, LETRAS,QUIMESTRES,PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META)
     {
-        var letras=LETRAS; 
-                      
-        var quimestres=[
-                                    {id:1,label:"PRIMER QUIMESTRE"},
-                                    {id:2,label:"SEGUNDO QUIMESTRE"},
-                                    {id:3,label:"ANUAL"}
-                            ];
-        var parciales=[
-                               {id:1,label:"Primer Parcial",labelabrv:"1er Parcial"},
-                               {id:2,label:"Segundo Parcial",labelabrv:"2do Parcial"},
-                                {id:3,label:"Tercer Parcial",labelabrv:"3er Parcial"},
-                                {id:4,label:"Resumen Parciales",labelabrv:"Total Parciales"}
-                                //   {id:5,label:"Total Quimestre"}
-                            ]; 
         var parcialesnotas={
                                1:{label:"Primera Nota Parcial"},
                                2:{label:"Segunda Nota Parcial"},
@@ -32,62 +18,20 @@
              return ((value+'e'+decimals)%0.5 === 0) ? Number(Math.floor(value+'e'+decimals)+'e-'+decimals) : Number(Math.round(value+'e'+decimals)+'e-'+decimals); //HALF_DOWN
         };
         
-        function retornasiglascualidad(cantidad){
-
-             var letra="";
-             if (cantidad  < 4 ){
-                 letra="NAR";
-             }
-
-             if ((cantidad >= 4 )&&(cantidad < 7 )){
-               letra="PAAR";
-             }
-
-             if ((cantidad >= 7 )&&(cantidad < 9)){
-                  letra="AAR";
-             }
-
-
-             if ((cantidad >= 9 )&&(cantidad < 10)){
-                 letra="DAR";
-             }
-
-             if (cantidad == 10 ){
-                 letra="DAR";
-             }
-
-
-             return (letra);
-         }
-                    
-        function retornacualidad(cantidad){
-
-             var letra="";
-             if (cantidad  < 4 ){
-                 letra="No alcanza los aprendizajes requeridos";
-             }
-
-             if ((cantidad >= 4 )&&(cantidad < 7 )){
-               letra="Esta proximo a alcanzar los aprendizajes requeridos";
-             }
-
-             if ((cantidad >= 7 )&&(cantidad < 9)){
-                  letra="Alcanza los aprendizajes requeridos";
-             }
-
-
-             if ((cantidad >= 9 )&&(cantidad < 10)){
-                 letra="Domina los aprendizajes requeridos";
-             }
-
-             if (cantidad == 10 ){
-                 letra="Domina los aprendizajes requeridos";
-             }
-             return (letra);
-         }
+        function alturaNota(nota){
+            if (nota<CALIFICACION_MINIMA){
+                   return 'baja';
+               }else if(nota>=CALIFICACION_MINIMA&&nota<CALIFICACION_META){
+                   return 'media';
+               }else if(nota>CALIFICACION_META){
+                   return 'alta';
+               };
+            return null;   
+        }               
+        
         return {
-                    quimestres:quimestres, 
-                    parciales:parciales,
+                    quimestres:QUIMESTRES,
+                    parciales:PARCIALES,
                     parcialesnotas:parcialesnotas,
                     findOnCalificacionesByMateriaId : function(id){
                                 return function(calificacion){
@@ -303,14 +247,10 @@
                             
                                 return true;
                         },
-                    getNotaCualitativa:function(nota)
-                    {
-                       return retornasiglascualidad(nota);
-                    },
-                    getCualitativa:function(nota)
-                    {
-                       return retornacualidad(nota);
-                    }
+                    getAlturaNota: alturaNota,
+                    getNotaCualitativa: qualitativeScores.getNotaCualitativa,
+                    getCualitativa: qualitativeScores.getCualitativa
+                    
                };
             }
         );

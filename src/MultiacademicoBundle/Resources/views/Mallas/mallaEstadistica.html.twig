@@ -86,12 +86,7 @@ table { page : rotated!important }
               Apellidos y nombres
              </div></th>
                     
-                   <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" class="malla-field" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">Tareas Investigaciones</div></td> 
-                   <td ng-if="p<=3&&q<3" class="malla-field" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }"  >Actividades Individuales</div></td> 
-                   <td ng-if="p<=3&&q<3" class="malla-field" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }" >Actividades Grupales</div></td> 
-                   <td ng-if="p<=3&&q<3" class="malla-field" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }" >Lecciones</div></td> 
-                   <td ng-if="p<=3&&q<3" class="malla-field" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }" >E.&nbsp;SUMATIVA</div></td> 
-                   <td ng-if="p<=3&&q<3" class="malla-field" style="background-color: gainsboro;" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">PROMEDIO</div></td>
+                   <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" class="malla-field" style="background-color: gainsboro;" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">PROMEDIO</div></td>
                    <td data-ng-repeat-end ng-if="p<=3&&q<3" class="malla-field" style="background-color: gainsboro;" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">E.&nbsp;Cualitativa</div></td> 
                 <!-- Quimestrales -->   
                 <td  data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">I&nbsp;PARCIAL</div></td>
@@ -123,12 +118,7 @@ table { page : rotated!important }
                    </td>
                                       
                    <!--<td>E</td>-->
-                               <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3">{{findCalificacion(alumno,distributivo.distributivocodmateria.id)['q'+q+'_p'+p+'_n1']}}</td> 
-                               <td ng-if="p<=3&&q<3">{{findCalificacion(alumno,distributivo.distributivocodmateria.id)['q'+q+'_p'+p+'_n2']}}</td> 
-                               <td ng-if="p<=3&&q<3">{{findCalificacion(alumno,distributivo.distributivocodmateria.id)['q'+q+'_p'+p+'_n3']}}</td> 
-                               <td ng-if="p<=3&&q<3">{{findCalificacion(alumno,distributivo.distributivocodmateria.id)['q'+q+'_p'+p+'_n4']}}</td> 
-                               <td ng-if="p<=3&&q<3">{{findCalificacion(alumno,distributivo.distributivocodmateria.id)['q'+q+'_p'+p+'_n5']}}</td> 
-                               <td ng-if="p<=3&&q<3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;" >{{prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id)}}</td> 
+                               <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" nota-p="p" nota-q="q" nota-color-active nota-value="prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id)" style=" -webkit-print-color-adjust:exact;" ></td>
                                <td data-ng-repeat-end ng-if="p<=3&&q<3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{cualitativa(prparcial($parent.$parent.$index,distributivo.distributivocodmateria.id))}}</td> 
                                                           
                             
@@ -190,6 +180,6 @@ table { page : rotated!important }
 </div>
      {%verbatim%}              
          <div rendimiento-estudiantil-aula-chart aula="aula" titulo="Grafico de Malla" p="p" q="q"`></div>
-         <div rendimiento-estudiantil-pareto-aula-chart aula="aula" titulo="Desempeño colectivo de las asignaturas todas las materias" p="p" q="q"`></div>
+         <div rendimiento-estudiantil-pareto-aula-chart aula="aula" titulo="Desempeño colectivo de las asignaturas todas las materias" p="p" q="q"></div>
      {%endverbatim%}
 </page>

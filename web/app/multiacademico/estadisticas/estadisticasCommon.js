@@ -8,6 +8,14 @@
                 notasAltas: altos
             };
          }
+     function resultCountCualidadNotas(nNAR, nPAAR, nAAR, nDAR){
+            return {
+                nNAR: nNAR,
+                nPAAR: nPAAR,
+                nAAR: nAAR,
+                nDAR: nDAR
+            };
+         }    
      
      var resumenDeNotasPorAltura= function(array){
          
@@ -25,34 +33,29 @@
         
         var result = new resultCountAlturaNotas(nB, nM, nA);
         return result;
+     }
+     
+     var resumenDeNotasPorCualidad= function(array){
          
-         
-         
-         
-         /*aula.distributivos.forEach(function(distributivo){
-                   //var nomEstudiante=element.matriculacodestudiante.estudiante;
-                   //var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                   distributivo.promediosBajos=0;
-                   distributivo.promediosMedios=0;
-                   distributivo.promediosAltos=0;
-                   aula.matriculados.forEach(function(e){
-                       var calificacion=Calificaciones.findCalificacionOnAlumno(e,distributivo.distributivocodmateria.id);
-                       var promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
-                       if (promedio<CALIFICACION_MINIMA){
-                           distributivo.promediosBajos++;
-                       }else if(promedio>=CALIFICACION_MINIMA&&promedio<CALIFICACION_META){
-                           distributivo.promediosMedios++;
-                       }else if(promedio>CALIFICACION_META){
-                           distributivo.promediosAltos++;
+        var nNAR=0, nPAAR=0, nAAR=0, nDAR=0;
+        array.forEach(function(e){
+                       if (e==='NAR'){
+                           nNAR++;
+                       }else if (e==='PAAR'){
+                           nPAAR++;
+                       }else if (e==='AAR'){
+                           nAAR++;
+                       }else if (e==='DAR'){
+                           nDAR++;
                        }
-                   });
-                   var materia=distributivo.distributivocodmateria.materia
-                   filas.push(generarFila(materia,  distributivo.promediosBajos, distributivo.promediosMedios, distributivo.promediosAltos));
-                });*/
-         
+        });
+        
+        var result = new resultCountCualidadNotas(nNAR, nPAAR, nAAR, nDAR);
+        return result;
      }
      
      return {
-         resumenDeNotasPorAltura:resumenDeNotasPorAltura
+         resumenDeNotasPorAltura:resumenDeNotasPorAltura,
+         resumenDeNotasPorCualidad:resumenDeNotasPorCualidad
      }
  });

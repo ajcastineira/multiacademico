@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
+angular.module('app.graphs').directive('todasMateriasAulaCualitativaChart',
     function (Calificaciones, estadisticasCommon, CALIFICACION_MINIMA, CALIFICACION_META) {
             return {
                 restrict: 'A',
@@ -24,15 +24,15 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
                     var listenQ = scope.$watch(attributes.q, function(value) {
                         google.charts.setOnLoadCallback(drawChart);
                     });
-                    var listenP = scope.$watch(attributes.p, function(value) {
+                    var listenP =scope.$watch(attributes.p, function(value) {
                         google.charts.setOnLoadCallback(drawChart);
                     });
 
-                    var generarFila=function(materia,  bajo, medio, alto){
-                            return [materia,  bajo, medio, alto];
+                    var generarFila=function(materia,  nNAR, nPAAR, nAAR, nDAR){
+                            return [materia,  nNAR, nPAAR, nAAR, nDAR];
                         };
                     var generarTabla=function(){
-                        var encabezado=['Materia', 'Menor a 7.5', '7.5 a 8.5', 'mas de 8.5'];
+                        var encabezado=['Materia', 'NAR', 'PAAR', 'AAR','DAR'];
                         var filas=[encabezado];
                         var sumPromedioCurso=0,promedioCurso=0;
 
@@ -43,19 +43,16 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
                         aula.distributivos.forEach(function(distributivo){
                            //var nomEstudiante=element.matriculacodestudiante.estudiante;
                            //var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                           distributivo.promediosBajos=0;
-                           distributivo.promediosMedios=0;
-                           distributivo.promediosAltos=0;
-                           var promediosDelPrimerParcial=[];
+                           var promediosCualitativosDelPrimerParcial=[];
                            
                            aula.matriculados.forEach(function(e){
                                var calificacion=Calificaciones.findCalificacionOnAlumno(e,distributivo.distributivocodmateria.id);
                                var promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
-                               promediosDelPrimerParcial.push(promedio);
+                               promediosCualitativosDelPrimerParcial.push(Calificaciones.getNotaCualitativa(promedio));
                            });
-                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorAltura(promediosDelPrimerParcial);
+                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorCualidad(promediosCualitativosDelPrimerParcial);
                            var materia=distributivo.distributivocodmateria.materia
-                           filas.push(generarFila(materia,  estadisticaPromedios.notasBajas, estadisticaPromedios.notasMedias, estadisticaPromedios.notasAltas));
+                           filas.push(generarFila(materia,  estadisticaPromedios.nNAR, estadisticaPromedios.nPAAR, estadisticaPromedios.nAAR, estadisticaPromedios.nDAR));
                         });
 
 
@@ -66,7 +63,7 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
                         var data = google.visualization.arrayToDataTable(generarTabla());
                         var options = {
                           title: scope.titulo,
-                          colors: ["#dc3912","#ff9900","#109618"],
+                          colors: ["#dc3912","#ff9900","#109618","#990099"],
                           vAxis: {title: 'Porcentaje Alumnos' },
                           hAxis: {title: 'Materias',
 
@@ -88,13 +85,11 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
 
                         chart.draw(data, options);
                       }
-                      
+
                     scope.$on('destroy', function(){
                         listenQ();
                         listenP();
                     });
-
-
                 }
             };
 });

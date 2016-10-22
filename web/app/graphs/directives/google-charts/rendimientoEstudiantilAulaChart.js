@@ -19,10 +19,10 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                 return 
             }
            
-            scope.$watch(attributes.q, function(value) {
+            var listenQ = scope.$watch(attributes.q, function(value) {
                 google.charts.setOnLoadCallback(drawChart);
             });
-            scope.$watch(attributes.p, function(value) {
+            var listenP =scope.$watch(attributes.p, function(value) {
                 google.charts.setOnLoadCallback(drawChart);
             });
             
@@ -60,7 +60,10 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                 chart.draw(data, options);
               }
             
-
+            scope.$on('destroy', function(){
+                        listenQ();
+                        listenP();
+                    });
         }
     };
 });

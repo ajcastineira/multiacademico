@@ -331,13 +331,13 @@
                                 }
                             ]);
                         }],
-                        ResumenInicio:['$http',function($http){
+                        /*ResumenInicio:['$http',function($http){
                                 return $http.get(Routing.generate('get_estadisticas_all',{'_format':'json'}))
                                 .then(function(response){
                        
                                 return response.data;
                             });
-                            }],
+                            }],*/
                         activities:['$http',function($http){
                                 return $http.get(Routing.generate('get_activities_all',{'_format':'json'}))
                                 .then(function(response){

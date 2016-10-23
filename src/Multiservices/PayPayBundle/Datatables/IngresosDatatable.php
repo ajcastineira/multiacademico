@@ -193,10 +193,10 @@ class IngresosDatatable extends AbstractDatatableView
                 'title' => 'Forma de Pago',
                 'width'=>'5em'
             ))    
-            /*->add('collectedby.name', 'column', array(
+            ->add('collectedby.name', 'column', array(
                 'title' => 'Cobrado por',
                 'width'=>'6em'
-            )) */
+            ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(

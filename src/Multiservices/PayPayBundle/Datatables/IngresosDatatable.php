@@ -18,7 +18,7 @@ class IngresosDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $exporOptions=[
-                       'columns'=> [0,1,2,4,5,6,7,8,9,10,11]
+                       'columns'=> [0,1,2,4,5,6,7,8,9,10,11,12,13]
                        ];
         $this->callbacks->set(array(
             'footer_callback' => "PayPayBundle:Ingresos:footercallback.js.twig"
@@ -155,6 +155,7 @@ class IngresosDatatable extends AbstractDatatableView
             ))
                 
              ->add('facturas.pension.info', 'array', array(
+                'title' => 'Info',
                 'data' => 'facturas[, ].pension.info',
                  'visible'=>false
             ))    

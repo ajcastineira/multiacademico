@@ -5,6 +5,7 @@
     
     angular.module('multiacademico.malla')
         .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones, QUIMESTRES, PARCIALES) {
+                            
                             $scope.aula = aula;
                             $scope.aula.recibeProyectoEscolar=function(){
                                 if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
@@ -25,13 +26,18 @@
                             $scope.pop=PARCIALES;
                             $scope.q = $stateParams.q;
                             $scope.p = $stateParams.p;
+                            $scope.tipo = $stateParams.tipo;
                             $scope.encabezado={
                                 titulo:"CUADRO DE CALIFICACIONES DEL PARCIAL"+$scope.p,
                                 materiacolspan:function()
                                 {
+                                    var colspan=5;
+                                    if ($scope.tipo="estadistica"){
+                                        var colspan=0;
+                                    }
                                     if ($scope.p<=3&& $scope.q<3)
                                     {    
-                                        return 7;
+                                        return colspan+2;
                                     }
                                     if ($scope.p===4&& $scope.q<3)
                                     {    

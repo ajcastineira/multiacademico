@@ -36,17 +36,17 @@
                                 $scope.aulas = aulas;
                                 switch($stateParams.tipo)
                                 {
-                                    case 'normal':{
+                                    case 'normal': {
                                             $scope.toRoute= 'multiacademico.malla.normal';
                                             break;
-                                            
                                     }
-                                    case 'estadistica':{
+                                    case 'estadistica': {
                                             $scope.toRoute= 'multiacademico.malla.estadistica';
                                             break;    
                                         }
-                                    default:
+                                    default: {
                                         $scope.toRoute= 'multiacademico.malla.normal';
+                                    }
                                 }
                                },
                                resolve:{
@@ -62,7 +62,7 @@
                         }
                 })
             .state('multiacademico.malla.normal', {
-                    url: '/aula/{aula}/{q}/{p}',
+                    url: '/n/aula/{aula}/{q}/{p}',
                     reloadOnSearch: false,
                     data: {
                         pageTitle: 'Cuadro de Calificaciones',
@@ -94,7 +94,7 @@
                 })
             .state('multiacademico.malla.estadistica', {
                     //parent:'multiacademico.malla',
-                    url: '/aula/{aula}/{q}/{p}',
+                    url: '/e/aula/{aula}/{q}/{p}',
                     reloadOnSearch: false,
                     data: {
                         pageTitle: 'Cuadro de Calificaciones Estadistico',

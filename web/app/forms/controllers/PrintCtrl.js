@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.forms').controller('PrintCtrl', function ($scope,$uibModal,$log,$http,$state,$stateParams) {
-
+                        
                         $scope.urlPrint=function(route,object)
                         {
                             return Routing.generate(route,object);

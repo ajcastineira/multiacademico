@@ -18,7 +18,7 @@ class IngresosDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $exporOptions=[
-                       'columns'=> [0,1,2,4,5,7,8,9]
+                       'columns'=> [0,1,2,4,5,6,7,8,9]
                        ];
         $this->callbacks->set(array(
             'footer_callback' => "PayPayBundle:Ingresos:footercallback.js.twig"
@@ -163,14 +163,29 @@ class IngresosDatatable extends AbstractDatatableView
                'data' => 'facturas[, ].id',
                 'width'=>'6em'
             ))
-            ->add('collectedby.name', 'column', array(
-                'title' => 'Cobrado por',
+            ->add('facturas.legal', 'array', array(
+                'title' => 'Facturas Numero Legal',
+               'data' => 'facturas[, ].legal',
                 'width'=>'6em'
-            )) 
+            ))
+            ->add('facturas.descuento', 'array', array(
+                'title' => 'Facturas Descuento',
+               'data' => 'facturas[, ].descuento',
+                'width'=>'6em'
+            ))    
+            ->add('facturas.total', 'array', array(
+                'title' => 'Facturas Total',
+               'data' => 'facturas[, ].total',
+                'width'=>'6em'
+            ))
             ->add('formaPago.formaPago', 'column', array(
                 'title' => 'Forma de Pago',
                 'width'=>'5em'
             ))    
+            /*->add('collectedby.name', 'column', array(
+                'title' => 'Cobrado por',
+                'width'=>'6em'
+            )) */
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
@@ -220,8 +235,11 @@ class IngresosDatatable extends AbstractDatatableView
                
             foreach ($line["facturas"] as &$factura)
             {
-                $estudianteroute = $router->generate('estudiantes_show', array('id' => $factura["pension"]["estudiante"]["id"]));
-                $factura["pension"]["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$factura["pension"]["estudiante"]["estudiante"].'</a>';
+                if (isset($factura["pension"]["estudiante"]))
+                    {
+                        $estudianteroute = $router->generate('estudiantes_show', array('id' => $factura["pension"]["estudiante"]["id"]));
+                        $factura["pension"]["estudiante"]["estudiante"] = '<a href="'.$estudianteroute.'">'.$factura["pension"]["estudiante"]["estudiante"].'</a>';
+                    }
                 $facturaroute = $router->generate('pension', array('page' => $factura["pension"]["id"]));
                 $factura["id"] = '<a rel="tooltip" title="'.$factura["pension"]["info"].'" href="'.$facturaroute.'">'.$factura["id"].'</a>';
             }

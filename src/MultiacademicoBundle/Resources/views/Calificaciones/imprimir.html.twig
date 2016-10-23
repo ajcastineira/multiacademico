@@ -1,4 +1,8 @@
+{% extends app.request.isXmlHttpRequest ? '::basesimple.html.twig' : '::base.html.twig' %}
 {% block body -%}
+<script>
+    var promediosDeEsteCurso=[];
+</script>
 <div class="modal-header noprint">
 	<button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">
 		&times;
@@ -130,6 +134,9 @@
                                           <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N4')}}</span></td>
                                           <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{attribute(estudiante,'q'~qactivo~'P'~pactivo~'N5')}}</span></td>
                                          {% set pp=estudiante.getPromedioParcial(qactivo,pactivo) %}
+                                          <script>
+                                                promediosDeEsteCurso.push({{pp}});
+                                          </script>
                                          {% set sumpp=(sumpp+pp) %}
                                           {%set promediocurso=(sumpp/c)%}
                                          <td style="text-align: center"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{pp}}</span></td>
@@ -148,7 +155,9 @@
                                         
                                         <td style="text-align: center"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{estudiante.getSiglasEquivalencia(pq)}}</span></td>
                                         
-                                        
+                                        <script>
+                                                promediosDeEsteCurso.push({{pq}});
+                                          </script>
                                          {% set sumpq=(sumpq+pq) %}
                                           {%set promediocurso=(sumpq/c)%}
                                          {%elseif qactivo==3 %}
@@ -164,7 +173,9 @@
                                             {% set pf=estudiante.getPromedioFinal() %}
                                             <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{pf}}</span></td>
                                             <td style="text-align: center" width=35><span style='font-size:8.0pt;font-family:Tahoma;color:{{estudiante.apruebaMateria()?'#000000':'#FF0000'}}'>{{estudiante.apruebaMateria()?'APRUEBA':'REPRUEBA'}}</span></td>
-                                            
+                                             <script>
+                                                promediosDeEsteCurso.push({{pf}});
+                                            </script>
                                              {% set sumpf=(sumpf+pf) %}
                                              {%set promediocurso=(sumpf/c)%}
                                          {%endif%}
@@ -172,22 +183,63 @@
                                      {%endfor%}
                                     
                 </tbody>
+                <tfoot>
+                    <tr>
+                    <td bgcolor="FFFFFF" colspan="3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Promedio del Curso:</b></span></td>
+                    <td style="text-align: center" bgcolor=FFFFFF colspan="9"><span style='font-size:8.0pt;font-family:Tahoma;color:#000000'>{{promediocurso|round(2)}}</span></td>
+                    </tr>
+                </tfoot>    
             </table>
-                
-                    <table border="0" width="630" cellpadding="2" cellspacing="0" bgcolor="FFFFFF">
+                    
+                    <br/>
+                   <table border="1" cellpadding="1" cellspacing="0" style="width:100%;font-size: 8.0pt;font-family: Tahoma;color: #000000;">
+                       <thead>
+                           <tr>
+                              <th style="width:55%">RESUMEN DE CALIFICACIONES</th>
+                              <th style="width:2em;text-align:center">#</th>
+                              <th style="width:2em;text-align:center">%</th>
+                              <th style="text-align:center">Grafico</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr>
+                              <td>Domina los aprendizajes requeridos (DAR) [10 - 9]</td>
+                              <td id="dar-value" style="width:2em;text-align:center"></td>
+                              <td id="dar-percent" style="width:2em;text-align:center"></td>
+                              <td rowspan="4">
+                                  <div materia-aula-cualitativo-chart promediosAula="promediosDeEsteCurso"></div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Alcanza los aprendizajes requeridos (AAR) [7 - 8]</td>
+                              <td id="aar-value" style="width:2em;text-align:center"></td>
+                              <td id="aar-percent" style="width:2em;text-align:center"></td>
+                              
+                           </tr>
+                           <tr>
+                              <td>Esta próximo a alcanzar los aprendizajes requeridos (PAAR) [4 - 6]</td>
+                              <td id="paar-value" style="width:2em;text-align:center"></td>
+                              <td id="paar-percent" style="width:2em;text-align:center"></td>
+                              
+                           </tr>
+                           <tr>
+                              <td>No alcanza los aprendizajes requeridos (NAR) [ <4 ]</td>
+                              <td id="nar-value" style="width:2em;text-align:center"></td>
+                              <td id="nar-percent" style="width:2em;text-align:center"></td>
+                              
+                           </tr>
+                       </tbody>
+                   </table>    
+                   {% block firmas -%}
+                    <table border="0" style="width:100%" cellpadding="2" cellspacing="0" bgcolor="FFFFFF">
                         <tbody>
-                            <tr>
-                                <td width="20"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">1/1</span></td>
-                            </tr>
-                            <tr height="25">
-                                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Promedio del Curso:</b> {{promediocurso|round(2)}}</span></td>
-                            </tr>
                             <tr height="25" style="text-align: center;">
                                 <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><u>________________________________</u></span></td></tr>
                             <tr style="text-align: center;">
                                 <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{docente.docentetrato}} {{docente}}</span></td></tr>
                         </tbody>
                     </table>
+                   {%endblock firmas%}     
                         
            </td></tr></tbody></table>
 </div>                          

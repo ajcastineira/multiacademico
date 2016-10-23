@@ -31,7 +31,7 @@ class FacturasType extends AbstractType
             //->add('statevencido')
             //->add('credito')
             
-            ->add('sub_total',HiddenType::class,array('label'=>'Sub Total',
+            ->add('subTotal',HiddenType::class,array('label'=>'Sub Total',
                                              'attr'=>array('ng-value'=>'facturaSubTotal()')))
             ->add('iva_igv',HiddenType::class,array('label'=>'Iva',
                                              'attr'=>array( 'ng-value'=>'calculateTax()')))

@@ -129,7 +129,7 @@ class Facturas
      *
      * @ORM\Column(name="sub_total", type="decimal", precision=10, scale=2, nullable=false)
      */
-    private $sub_total;
+    private $subTotal;
     
      /**
      * @var decimal
@@ -515,26 +515,26 @@ class Facturas
     }
 
     /**
-     * Set sub_total
+     * Set subTotal
      *
      * @param string $subTotal
      * @return Facturas
      */
     public function setSubTotal($subTotal)
     {
-        $this->sub_total = $subTotal;
+        $this->subTotal = $subTotal;
 
         return $this;
     }
 
     /**
-     * Get sub_total
+     * Get subTotal
      *
      * @return string 
      */
     public function getSubTotal()
     {
-        return $this->sub_total;
+        return $this->subTotal;
     }
     /**
      * Add items
@@ -587,9 +587,9 @@ class Facturas
             $sumdesc+=($item->getValorDescuento());
             //$iva=$item->getIdproducto()->getImpuesto();
         }
-        $this->sub_total=$sum;
+        $this->subTotal=$sum;
         $this->descuento=$sumdesc;
-        $subTdescuento=$this->sub_total-$this->descuento;
+        $subTdescuento=$this->subTotal-$this->descuento;
         $this->iva_igv=$subTdescuento*($iva/100);
         $this->total=$subTdescuento+$this->iva_igv;
         return true;

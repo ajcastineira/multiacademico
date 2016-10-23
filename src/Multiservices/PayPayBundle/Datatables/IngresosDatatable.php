@@ -18,7 +18,7 @@ class IngresosDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $exporOptions=[
-                       'columns'=> [0,1,2,4,5,6,7,8,9]
+                       'columns'=> [0,1,2,4,5,6,7,8,9,10,11]
                        ];
         $this->callbacks->set(array(
             'footer_callback' => "PayPayBundle:Ingresos:footercallback.js.twig"
@@ -166,6 +166,16 @@ class IngresosDatatable extends AbstractDatatableView
             ->add('facturas.legal', 'array', array(
                 'title' => 'Facturas Numero Legal',
                'data' => 'facturas[, ].legal',
+                'width'=>'6em'
+            ))
+            ->add('facturas.cobrado', 'array', array(
+                'title' => 'Facturas Cobrado',
+                'data' => 'facturas[, ].cobrado',
+                'width'=>'6em'
+            ))    
+            ->add('facturas.subTotal', 'array', array(
+                'title' => 'Facturas SubTotal',
+                'data' => 'facturas[, ].subTotal',
                 'width'=>'6em'
             ))
             ->add('facturas.descuento', 'array', array(

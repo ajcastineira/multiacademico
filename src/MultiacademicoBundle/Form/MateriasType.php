@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class MateriasType extends AbstractType
 {
@@ -16,7 +17,10 @@ class MateriasType extends AbstractType
     {
         $builder
             ->add('materia')
-            ->add('materiatipo',null,['label'=>'Tipo'])
+            ->add('materiatipo',ChoiceType::class,['label'=>'Tipo',
+                                                   'choices'=>['Básica'=>'BASICA',
+                                                               'Oferta Institucional'=>'OFERTAINST'
+                                                   ]])
             ->add('areas',null,array('attr'=>array(
                                                                 'multiple'=>null,
                                                                 'class'=>'chosen-select',

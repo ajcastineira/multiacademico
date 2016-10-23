@@ -229,17 +229,8 @@
                               
                            </tr>
                        </tbody>
-                   </table>    
-                   {% block firmas -%}
-                    <table border="0" style="width:100%" cellpadding="2" cellspacing="0" bgcolor="FFFFFF">
-                        <tbody>
-                            <tr height="25" style="text-align: center;">
-                                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><u>________________________________</u></span></td></tr>
-                            <tr style="text-align: center;">
-                                <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{docente.docentetrato}} {{docente}}</span></td></tr>
-                        </tbody>
-                    </table>
-                   {%endblock firmas%}     
+                   </table>
+                    {{include('MultiacademicoBundle:Reportes:firmasX5.html.twig')}}    
                         
            </td></tr></tbody></table>
 </div>                          

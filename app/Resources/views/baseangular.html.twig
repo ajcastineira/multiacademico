@@ -109,7 +109,7 @@
   -->
 
   <body data-ng-controller="BlankonCtrl" class="page-session page-header-fixed page-sidebar-fixed">
-    
+    {%block body%} 
     <!-- ui-view container -->
     <div data-ui-view="root"  data-autoscroll="false">
 
@@ -181,6 +181,7 @@
     <!--/ END BACK TOP -->
 
     </div>
+        {%endblock body%} 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>

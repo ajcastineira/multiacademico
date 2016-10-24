@@ -79,7 +79,7 @@
     "autosize": "jquery-autosize#^3.0.17",
     "daterangepicker": "^1.5.2",
     "handlebars": "^4.0.5",
-    "iscroll": "^5.2.0"
+    "jquery-slimscroll": "^1.3.8"
   },
   "resolutions": {
     "moment": "~2.10.3",

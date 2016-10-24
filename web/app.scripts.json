@@ -28,7 +28,7 @@
       "jquery-jvectormap-world-mill-en",
       "jquery.cookie",
       "jquery.nicescroll",
-      "iscroll",
+      "jquery-slimscroll",
       "typeahead.js",
       "flot",
       "flot-resize",
@@ -171,7 +171,7 @@
     "jquery-form": "bower_components/jquery-form/jquery.form",
     "jquery.cookie": "bower_components/jquery.cookie/jquery.cookie.js",
     "jquery.nicescroll":"bower_components/jquery.nicescroll/dist/jquery.nicescroll.min.js",
-    "iscroll":"bower_components/iscroll/build/iscroll.js",
+    "jquery-slimscroll":"bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
     
     "typeahead.js":"bower_components/typeahead.js/dist/typeahead.bundle.min.js",
     "bootstrap-validator": "bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js",

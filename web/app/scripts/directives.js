@@ -554,25 +554,19 @@ angular.module('blankonDirective', [])
                         var heightSidebarLeft       = $(window).outerHeight() - $('#header').outerHeight() - $('.sidebar-footer').outerHeight() - $('.sidebar-content').outerHeight(),
                             heightSidebarRight      = $(window).outerHeight() - $('#sidebar-right .panel-heading').outerHeight(),
                             heightSidebarRightChat  = $(window).outerHeight() - $('#sidebar-right .panel-heading').outerHeight() - $('#sidebar-chat .form-horizontal').outerHeight();
-                        /*$('#sidebar-left .sidebar-menu').height(heightSidebarLeft)
+                       /* $('#sidebar-left .sidebar-menu').height(heightSidebarLeft)
                             .niceScroll({
                                 cursorwidth: '9px',
                                 cursorborder: '0px',
                                 railalign: 'left',
                             });*/
                              
-                            
-                             $('#sidebar-menu-container').height(heightSidebarLeft-1);
-                            var myScroll = new IScroll('#sidebar-menu-container',{
-                              mouseWheel: true,
-                              //scrollbars: true,
-                              fadeScrollbars: true,
-                              tap:true,
-                             click: true
-                          });
-                            
-                           //  $('#sidebar-menu-container').height(heightSidebarLeft);
-                          //$('#sidebar-left .sidebar-menu').height(heightSidebarLeft);
+                             $('#sidebar-left .sidebar-menu').slimScroll({
+                                    height: heightSidebarLeft+'px',
+                                    position: 'left',
+                                    color: '#00b1e1',
+                                    railVisible: false                                    
+                                });
 
                         // =========================================================================
                         // SIDEBAR RIGHT PROFILE

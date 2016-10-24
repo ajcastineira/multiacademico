@@ -19936,10 +19936,7 @@ body.page-footer-fixed #page-content .footer-content {
   #sidebar-right .panel-tab .panel-heading ul li {
     width: inherit;
   }
-  #sidebar-menu-container {
-    overflow: auto;
   }
-}
 /* ========================================================================
  * SIDEBAR CONTENT
  * ======================================================================== */
@@ -19949,8 +19946,6 @@ body.page-footer-fixed #page-content .footer-content {
   padding: 15px 10px;
   border-bottom: 2px solid #373737;
   min-height: 81px;
-  background: white;
-  z-index: 1;
 }
 /* line 241, ../../app/styles/layout/_sidebar.scss */
 .sidebar-content .media-heading {

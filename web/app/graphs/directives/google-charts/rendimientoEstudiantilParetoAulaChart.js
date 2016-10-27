@@ -46,14 +46,21 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
                            distributivo.promediosBajos=0;
                            distributivo.promediosMedios=0;
                            distributivo.promediosAltos=0;
-                           var promediosDelPrimerParcial=[];
+                           var promedios=[];
                            
                            aula.matriculados.forEach(function(e){
                                var calificacion=Calificaciones.findCalificacionOnAlumno(e,distributivo.distributivocodmateria.id);
-                               var promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
-                               promediosDelPrimerParcial.push(promedio);
+                               var promedio;
+                               if (scope.p<=3)
+                               {
+                                    promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
+                                }else
+                                {
+                                    promedio=Calificaciones.getPromedioQuimestre(scope.q,calificacion);
+                                }    
+                               promedios.push(promedio);
                            });
-                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorAltura(promediosDelPrimerParcial);
+                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorAltura(promedios);
                            var materia=distributivo.distributivocodmateria.materia
                            filas.push(generarFila(materia,  estadisticaPromedios.notasBajas, estadisticaPromedios.notasMedias, estadisticaPromedios.notasAltas));
                         });

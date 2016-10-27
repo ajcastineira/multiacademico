@@ -43,14 +43,19 @@ angular.module('app.graphs').directive('todasMateriasAulaCualitativaChart',
                         aula.distributivos.forEach(function(distributivo){
                            //var nomEstudiante=element.matriculacodestudiante.estudiante;
                            //var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                           var promediosCualitativosDelPrimerParcial=[];
+                           var promediosCualitativos=[];
                            
                            aula.matriculados.forEach(function(e){
                                var calificacion=Calificaciones.findCalificacionOnAlumno(e,distributivo.distributivocodmateria.id);
-                               var promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
-                               promediosCualitativosDelPrimerParcial.push(Calificaciones.getNotaCualitativa(promedio));
+                                if (scope.p<=3)
+                                {
+                                var promedio=Calificaciones.getPromedioParcial(scope.q,scope.p,calificacion);
+                                }else{
+                                  var promedio=Calificaciones.getPromedioQuimestre(scope.q,calificacion);  
+                                }
+                               promediosCualitativos.push(Calificaciones.getNotaCualitativa(promedio));
                            });
-                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorCualidad(promediosCualitativosDelPrimerParcial);
+                           var estadisticaPromedios= estadisticasCommon.resumenDeNotasPorCualidad(promediosCualitativos);
                            var materia=distributivo.distributivocodmateria.materia
                            filas.push(generarFila(materia,  estadisticaPromedios.nNAR, estadisticaPromedios.nPAAR, estadisticaPromedios.nAAR, estadisticaPromedios.nDAR));
                         });

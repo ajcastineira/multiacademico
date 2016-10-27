@@ -34,14 +34,27 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                 var filas=[encabezado];
                 var sumPromedioCurso=0,promedioCurso=0;
                 aula.matriculados.forEach(function(element){
-                    var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                    sumPromedioCurso+=promedioParcial;
+                    var promedio
+                    if (scope.p<=3)
+                   {
+                     promedio=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
+                    }else{
+                      promedio=Calificaciones.getPromedioTotalQuimestre(scope.q,element.calificaciones);  
+                    }
+                    
+                    sumPromedioCurso+=promedio;
                 });
                 promedioCurso=sumPromedioCurso/aula.matriculados.length;
                 aula.matriculados.forEach(function(element){
                    var nomEstudiante=element.matriculacodestudiante.estudiante;
-                   var promedioParcial=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
-                   filas.push(generarFila(nomEstudiante,promedioParcial,CALIFICACION_MINIMA,promedioCurso,CALIFICACION_META));
+                   var promedio;
+                   if (scope.p<=3)
+                   {
+                        promedio=Calificaciones.getPromedioTotalParcial(scope.q,scope.p,element.calificaciones);
+                    }else{
+                      promedio=Calificaciones.getPromedioTotalQuimestre(scope.q,element.calificaciones);  
+                    }
+                   filas.push(generarFila(nomEstudiante,promedio,CALIFICACION_MINIMA,promedioCurso,CALIFICACION_META));
                 });
                 return filas;
             }
@@ -53,6 +66,8 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                   title: scope.titulo,
                   curveType: 'function',
                   legend: { position: 'bottom' },
+                  vAxis: { title: 'Valor',
+                           maxValue:10},
                   pointSize: 5
                 };
                 var chart = new google.visualization.LineChart(element[0]);

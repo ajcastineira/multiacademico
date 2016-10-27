@@ -67,6 +67,10 @@ angular.module('app.graphs').directive('rendimientoEstudiantilAulaChart', functi
                   curveType: 'function',
                   legend: { position: 'bottom' },
                   vAxis: { title: 'Valor',
+                            viewWindow: {
+                                min: 0,
+                                max: 10
+                            },
                            maxValue:10},
                   pointSize: 5
                 };

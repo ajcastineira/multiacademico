@@ -32,7 +32,7 @@
                                 materiacolspan:function()
                                 {
                                     var colspan=5;
-                                    if ($scope.tipo="estadistica"){
+                                    if ($scope.tipo=="estadistica"){
                                         var colspan=0;
                                     }
                                     if ($scope.p<=3&& $scope.q<3)

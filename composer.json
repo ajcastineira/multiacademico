@@ -72,7 +72,7 @@
          "heroku/heroku-buildpack-php": "*",
          "symfony/phpunit-bridge": "^2.7"
     },
-     "scripts": {
+    "scripts": {
         "compile": [
             "bin/console assetic:dump",
             "bin/console doctrine:schema:update --dump-sql --force"

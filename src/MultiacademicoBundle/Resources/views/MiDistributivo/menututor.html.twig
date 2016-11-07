@@ -26,9 +26,15 @@
         </thead>
         <tbody>
             <tr>
-                <td>Malla de Calificaciones</td>
+                <td>Malla de Calificaciones Normal</td>
                 <td>
-                        <a class="btn btn-primary" data-ui-sref="multiacademico.malla-normal.aula({aula:$stateParams.id,q:1,p:1})">Seleccionar <i class="fa fa-arrow-right icon-on-right"></i></a>
+                        <a class="btn btn-primary" data-ui-sref="multiacademico.malla.normal({tipo:'normal',aula:$stateParams.id,q:1,p:1})">Seleccionar <i class="fa fa-arrow-right icon-on-right"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>Malla de Calificaciones Estadistica</td>
+                <td>
+                        <a class="btn btn-primary" data-ui-sref="multiacademico.malla.estadistica({tipo:'estadistica',aula:$stateParams.id,q:1,p:1})">Seleccionar <i class="fa fa-arrow-right icon-on-right"></i></a>
                 </td>
             </tr>
             <tr>

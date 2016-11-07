@@ -30,9 +30,10 @@
         }               
         
         return {
-                    quimestres:QUIMESTRES,
-                    parciales:PARCIALES,
-                    parcialesnotas:parcialesnotas,
+                    quimestres: QUIMESTRES,
+                    parciales: PARCIALES,
+                    parcialesnotas: parcialesnotas,
+                    redondear: redondear,
                     findOnCalificacionesByMateriaId : function(id){
                                 return function(calificacion){
                                   return calificacion.calificacioncodmateria.id === id;

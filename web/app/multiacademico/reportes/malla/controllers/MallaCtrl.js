@@ -62,12 +62,28 @@
                             };
                             
                             $scope.Materias={};
+                            
                             $scope.prparcial=function(i,m,q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
                                 var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioParcial(q,p,calificacion);
+                            };
+                            
+                            $scope.prparcialMateria=function(m,q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
+                                    sum += Calificaciones.getPromedioParcial(q,p,calificacion);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
                             };
                             
                             $scope.prparciales=function(i,m,q)
@@ -77,12 +93,55 @@
                                 return Calificaciones.getPromedioParciales(q,calificacion);
                             };
                             
+                            
+                            $scope.prparcialesMateria=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
+                                    sum += Calificaciones.getPromedioParciales(q,calificacion);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
+                            };
+                            
                             $scope.prparciales80=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioParciales80(q,calificacion);
                             };
+                            
+                            $scope.prparciales80Materia=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
+                                    sum += Calificaciones.getPromedioParciales80(q,calificacion);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
+                            };
+                            
+                            $scope.prExamenMateria=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    sum += $scope.findCalificacion($scope.aula.matriculados[i],m)['q'+q+'_ex'];
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
+                            };
+                            
                             $scope.ex20=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
@@ -90,11 +149,39 @@
                                 return Calificaciones.getExamen20(q,calificacion);
                             };
                             
+                            $scope.ex20Materia=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
+                                    sum += Calificaciones.getExamen20(q,calificacion);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
+                            };
+                            
                             $scope.prq=function(i,m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
+                            };
+                            
+                            $scope.prqMateria=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
+                                    sum += Calificaciones.getPromedioQuimestre(q,calificacion);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
                             };
                             
                             $scope.pra=function(i,m)
@@ -132,12 +219,41 @@
                                 return Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
                             };
                             
+                            $scope.prgpMateria=function(q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                    sum += Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
+                            };
+                            
                             $scope.prgq=function(i,q)
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
                                 var calificaciones=$scope.aula.matriculados[i].calificaciones;
                                 
                                 return Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
+                            };
+                            
+                            $scope.prgqMateria=function(q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var sum=0,i;
+                                var totalAlumnos=$scope.aula.matriculados.length;
+                                for (i=0;i<totalAlumnos;i++)
+                                {
+                                    var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                    sum += Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
+                                }
+                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                
                             };
                             
                             $scope.prg=function(i)

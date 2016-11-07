@@ -158,11 +158,34 @@ table { page : rotated!important }
                            
                     </tbody>
           <tfoot>
-              <tr style="height: 2cm;vertical-align: bottom;">
+              {%verbatim%}
+              <tr style="vertical-align: bottom;">
+                  <th colspan="2" style='text-align: center;'>
+                      R E S U M E N &nbsp;&nbsp; C U R S O
+                  </th>
+                  <th data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" nota-p="p" nota-q="q" nota-color-active nota-value="prparcialMateria(distributivo.distributivocodmateria.id)" style="text-align: center;-webkit-print-color-adjust:exact;" ></th>
+                  <th data-ng-repeat-end ng-if="p<=3&&q<3" style="text-align: center;-webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{cualitativa(prparcialMateria(distributivo.distributivocodmateria.id))}}</th>
+                  
+                  
+                  <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" >{{prparcialMateria(distributivo.distributivocodmateria.id,q,1)}}</td>
+                  <td ng-if="p==4&&q<3"  >{{prparcialMateria(distributivo.distributivocodmateria.id,q,2)}}</td>
+                  <td ng-if="p==4&&q<3" >{{prparcialMateria(distributivo.distributivocodmateria.id,q,3)}}</td>
+                  <td ng-if="p==4&&q<3" >{{prparcialesMateria(distributivo.distributivocodmateria.id,q)}}</td>
+                  <td ng-if="p==4&&q<3" >{{prparciales80Materia(distributivo.distributivocodmateria.id,q)}}</td>
+                  <td ng-if="p==4&&q<3">{{prExamenMateria(distributivo.distributivocodmateria.id)}}</td>
+                  <td ng-if="p==4&&q<3" >{{ex20Materia(distributivo.distributivocodmateria.id,q)}}</td>
+                  <th data-ng-repeat-end ng-if="p==4&&q<3" style=" -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{prqMateria(distributivo.distributivocodmateria.id,q)}}</th>
+                  
+                  <th colspan="3" ng-if="p<=3&&q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgpMateria(q,p)}}</th>
+                  <th ng-if="p==4&&q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgqMateria(q)}}</th> 
+                  
+              </tr>
+              {%endverbatim%}
+              {#<tr style="height: 2cm;vertical-align: bottom;">
                   <td colspan="2">
                       DIRECTOR / RECTOR     (firma y sello)
                   </td>    
-              </tr>
+              </tr>#}
           </tfoot>
           </table>
       <!--malla-->

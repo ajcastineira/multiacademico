@@ -63,6 +63,7 @@ angular.module('app', [
     //'multiacademico.comportamiento', // no esta completado
     'multiacademico.distributivos',
     'multiacademico.malla',
+    'multiacademico.juntadearea',
     'multiacademico.especializaciones',
     'multiacademico.certificados',
     'multiacademico.informes',

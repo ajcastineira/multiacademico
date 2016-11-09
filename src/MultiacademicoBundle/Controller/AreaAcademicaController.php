@@ -4,10 +4,10 @@ namespace MultiacademicoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use JMS\Serializer\SerializationContext;
 
 use MultiacademicoBundle\Entity\AreaAcademica;
 use MultiacademicoBundle\Form\AreaAcademicaType;
@@ -19,25 +19,54 @@ use MultiacademicoBundle\Form\AreaAcademicaType;
  */
 class AreaAcademicaController extends FOSRestController
 {
+    
+    
+    
     /**
-     * Lists all AreaAcademica entities.
-     *
+     * List all AreaAcademica
+     * @param Request $request
+     * @return type
      */
-    public function indexAction()
+    public function cgetAllAction(Request $request)
     {
-        //$em = $this->getDoctrine()->getManager();
-
-        //$areaAcademicas = $em->getRepository('MultiacademicoBundle:AreaAcademica')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SECRETARIA')||$this->get('security.authorization_checker')->isGranted('ROLE_INSPECTOR'))
+        {
+          $areas=$em->getRepository('MultiacademicoBundle:AreaAcademica')->findAll();
+        }else
+        {
+           $areas=$em->getRepository('MultiacademicoBundle:AreaAcademica')->findAll();
+           //$areas=$em->getRepository('MultiacademicoBundle:AreaAcademica')->misAreasByUser($user);  
+        }
+        
         $areaAcademicas_datatable = $this->get("multiacademicobundle_datatable.areaAcademicas");
         $areaAcademicas_datatable->buildDatatable();
-
-        return $this->render('MultiacademicoBundle:AreaAcademica:index.html.twig', array(
-            //'areaAcademicas' => $areaAcademicas,
+        
+         $context=new SerializationContext();
+         $context->setGroups("list");
+         $templateData= array(
+            'areas' => $areas,
             'datatable'=>$areaAcademicas_datatable
-        ));
+           
+        );
+         $view = $this->view($areas, 200)
+            ->setTemplate("MultiacademicoBundle:AreaAcademica:index.html.twig")
+            ->setTemplateVar('areas')
+            ->setTemplateData($templateData)
+            ->setSerializationContext($context);
+         
+                 
+        return $this->handleView($view);
+        //return $templateData;
     }
-
+    
+    
+    
+    
+    
     /**
      * Get results from AreaAcademica entity.
      *
@@ -87,14 +116,27 @@ class AreaAcademicaController extends FOSRestController
      *
      * @Rest\Get() 
      */
-    public function showAction(AreaAcademica $areaAcademica)
+    public function getAction(AreaAcademica $areaAcademica)
     {
-        $deleteForm = $this->createDeleteForm($areaAcademica);
-
-        return $this->render('MultiacademicoBundle:AreaAcademica:show.html.twig', array(
+       $deleteForm = $this->createDeleteForm($areaAcademica);
+       $context=new SerializationContext();
+        $context->setGroups("detail");
+         $templateData= array(
             'areaAcademica' => $areaAcademica,
             'delete_form' => $deleteForm->createView(),
-        ));
+           
+        );
+         $view = $this->view($areaAcademica, 200)
+            ->setTemplate('MultiacademicoBundle:AreaAcademica:show.html.twig')
+            ->setTemplateVar('aula')
+            ->setTemplateData($templateData)
+            ->setSerializationContext($context);
+         
+                 
+        return $this->handleView($view);
+        
+
+
     }
 
     /**

@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Multiservices\ArxisBundle\Validator\Constraints as ArxisAssert;
 use MultiacademicoBundle\Validator\Constraints\DocenteEmail;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Docentes
@@ -17,6 +18,7 @@ use MultiacademicoBundle\Validator\Constraints\DocenteEmail;
  * @UniqueEntity({"docenteemail"}, message="Este email ya existe en el sistema")
  * @UniqueEntity({"docente"}, message="Este nombre ya existe en el sistema")
  * @DocenteEmail
+ * @Serializer\ExclusionPolicy("all")
  */
 class Docentes
 {
@@ -26,6 +28,8 @@ class Docentes
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $id;
 
@@ -48,6 +52,8 @@ class Docentes
      * @var string
      *
      * @ORM\Column(name="docente", type="string", length=50, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $docente;
 

@@ -36,6 +36,8 @@ class AreaAcademica
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=80, nullable=false)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      * 
      */
     private $nombre;
@@ -47,6 +49,8 @@ class AreaAcademica
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="director", referencedColumnName="id", nullable=true)
      * })
+     * @Serializer\Expose
+     * @Serializer\Groups({"list","detail"})
      */
     private $director;
     

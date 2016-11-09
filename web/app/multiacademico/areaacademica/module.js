@@ -9,8 +9,8 @@
                     edit:'edit_areaacademica',
                     calificar:'show_areaacademica',
                     update:'edit_areaacademica',
-                    show:'show_areaacademica',
-                    list:'index_areaacademica',
+                    show:'get_areaacademicas',
+                    list:'get_areaacademicas_all',
                     state_created:'multiacademico.areaacademica.show',
                     state_updated:'multiacademico.areaacademica.show'
                      };

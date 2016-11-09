@@ -177,6 +177,10 @@ assetic:
             inputs:
                 -  '%kernel.root_dir%/../web/views/multiacademico/malla/seleccionar-aula-malla.html'
             output: /views/multiacademico/malla/seleccionar-aula-malla.html
+        seleccionadorAreaHtml:
+            inputs:
+                -  '%kernel.root_dir%/../web/views/multiacademico/juntadearea/seleccionar-area-academica.html'
+            output: /views/multiacademico/juntadearea/seleccionar-area-academica.html  
         seleccionaraulainformeshtml:
             inputs:
                 -  '%kernel.root_dir%/../web/views/multiacademico/informes/seleccionar-aula-informes.html'

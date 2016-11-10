@@ -8,7 +8,7 @@
                             
                             $scope.aula = aula;
                             $scope.aula.recibeProyectoEscolar=function(){
-                                if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo=='EBI'&&this.curso.nivel==1))
+                                if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo==='EBI'&&this.curso.tipo==='EBM'&&this.curso.nivel===1))
                                 {return true;}
                                 else
                                 {return false;}

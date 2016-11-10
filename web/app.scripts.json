@@ -193,7 +193,7 @@
     "superbox": "smartadmin-plugin/legacy/superbox/superbox.min.js",
     "jquery-jvectormap": "bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.min.js",
     "jquery-jvectormap-world-mill-en": "bower_components/bower-jvectormap/jquery-jvectormap-world-mill-en.js",
-    "lodash": "bower_components/lodash/lodash.min.js",
+    "lodash": "bower_components/lodash/dist/lodash.min.js",
     "magnific-popup": "bower_components/magnific-popup/dist/jquery.magnific-popup.js",
     "fullcalendar": "smartadmin-plugin/fullcalendar/jquery.fullcalendar.min.js",
     "smartwidgets": "smartadmin-plugin/smartwidgets/jarvis.widget.min.js",

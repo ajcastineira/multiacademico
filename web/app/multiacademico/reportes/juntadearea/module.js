@@ -62,7 +62,7 @@
                            resolve:{
                                
                                area: function ($http,$stateParams) {
-                                 return $http.get(Routing.generate('get_areaacademica',{areaAcademica: $stateParams.area,'_format':'json'}))
+                                 return $http.get(Routing.generate('junta_areaacademica',{areaAcademica: $stateParams.area,quimestre:$stateParams.q,parcial:$stateParams.p,'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
                                              return response.data;

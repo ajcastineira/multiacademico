@@ -58,11 +58,17 @@
                     views:{
                         'content@multiacademico':{
                             templateUrl: Routing.generate('junta-de-area-api'),
-                           // controller: 'MallaCtrl',
+                           controller: 'JuntaDeAreaCtrl',
                            resolve:{
-                               
-                               area: function ($http,$stateParams) {
-                                 return $http.get(Routing.generate('junta_areaacademica',{areaAcademica: $stateParams.area,quimestre:$stateParams.q,parcial:$stateParams.p,'_format':'json'}))
+                               areaAcademica: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('get_areaacademica',{areaAcademica: $stateParams.area,'_format':'json'}))
+                                         .then(function successCallback(response)
+                                         {
+                                             return response.data;
+                                         });
+                                         },
+                               resumenJuntaDeArea: function ($http,$stateParams) {
+                                 return $http.get(Routing.generate('junta_areaacademica_j_parcial',{areaAcademica: $stateParams.area,q:$stateParams.q,p:$stateParams.p,'_format':'json'}))
                                          .then(function successCallback(response)
                                          {
                                              return response.data;

@@ -199,4 +199,36 @@ class AreaAcademicaController extends FOSRestController
             ->getForm()
         ;
     }
+    
+    /**
+     * Finds and displays a AreaAcademica entity.
+     * @Rest\Patch() 
+     * @Rest\Get("/areaacademicas/{areaAcademica}/junta/{quimestre}/{parcial}", name="junta_areaacademica") 
+     */
+    public function juntaAction(AreaAcademica $areaAcademica,$quimestre,$parcial)
+    {
+               
+        $em = $this->getDoctrine()->getManager();
+        $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(22);
+        $materia=$em->getRepository('MultiacademicoBundle:Materias')->find(25);
+        $juntaDeArea=$em->getRepository('MultiacademicoBundle:Calificaciones')
+                ->promediosParcialesDeJuntaDeArea($areaAcademica,$quimestre,$parcial);
+        //var_dump($juntaDeArea);
+       $context=new SerializationContext();
+        $context->setGroups("informejunta");
+         $templateData= array(
+            'juntaDeArea' => $juntaDeArea
+        );
+         $view = $this->view($juntaDeArea, 200)
+            ->setTemplate('::basesimple.html.twig')
+            ->setTemplateVar('junta')
+            ->setTemplateData($templateData)
+            ->setSerializationContext($context);
+         
+                 
+        return $this->handleView($view);
+        
+
+
+    }
 }

@@ -222,8 +222,13 @@ class CalificacionesRepository extends EntityRepository
         foreach ($results as $calificacion){
            $sum+=$calificacion->getPromedioParcial($quimestre,$parcial);
         }
-        $promedio=$sum/count($results);
+        if (count($results)>0)
+        {
+        $promedio=($sum/count($results));
         return Calificaciones::redondear_dos_decimal($promedio);
+        }else{
+         return 0;
+        }
     }
     
     public function promedioQuimestreDeMateriaenAula(Aula $aula, Materias $materia,$quimestre){
@@ -233,8 +238,13 @@ class CalificacionesRepository extends EntityRepository
         foreach ($results as $calificacion){
            $sum+=$calificacion->getPromedioQuimestre($quimestre);
         }
-        $promedio=$sum/count($results);
+        if (count($results)>0)
+        {
+        $promedio=($sum/count($results));
         return Calificaciones::redondear_dos_decimal($promedio);
+        }else{
+         return 0;
+        }
     }
     
     
@@ -261,6 +271,21 @@ class CalificacionesRepository extends EntityRepository
         }
         $promedio=$sum/count($materiasDeAreaEnAula);
         return Calificaciones::redondear_dos_decimal($promedio);
+    }
+    
+    
+    public function promediosParcialesDeJuntaDeArea(AreaAcademica $areaAcademica,$quimestre,$parcial){
+        
+        $em=$this->getEntityManager();
+        $aulasDeAreaAcademica=$em->getRepository('MultiacademicoBundle:AreaAcademica')->aulasDeAreaAcademica($areaAcademica);
+        $result=[];
+        foreach ($aulasDeAreaAcademica as $aula){
+            $result[]=['aula'=>$aula,
+                       'promedio'=>$this->promedioParcialDeAreaenAula($aula,$areaAcademica,$quimestre,$parcial)
+                      ];
+        }
+        
+        return $result;
     }
     
 }

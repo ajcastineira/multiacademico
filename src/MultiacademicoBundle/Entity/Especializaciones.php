@@ -21,7 +21,7 @@ class Especializaciones
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Especializaciones
      *
      * @ORM\Column(name="especializacion", type="string", length=50, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $especializacion;
 
@@ -38,6 +38,7 @@ class Especializaciones
      * @var string
      *
      * @ORM\Column(name="tipotitulo", type="string", length=50, nullable=true)
+     * @Serializer\Groups({"informejunta"})
      */
     private $tipotitulo;
     

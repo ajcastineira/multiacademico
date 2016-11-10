@@ -21,7 +21,7 @@ class Periodos
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Periodos
      *
      * @ORM\Column(name="periodo", type="string", length=15, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $periodo;
 

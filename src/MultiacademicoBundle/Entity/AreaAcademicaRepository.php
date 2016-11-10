@@ -23,5 +23,20 @@ class AreaAcademicaRepository extends \Doctrine\ORM\EntityRepository
                 ])
                 ->getQuery()
                 ->getResult();
-    }   
+    }
+    
+    
+    public function aulasDeAreaAcademica(AreaAcademica $areaAcademica) {
+        return $this->getEntityManager()->createQueryBuilder()
+                ->select('aula')
+                ->from('MultiacademicoBundle:Aula','aula')
+                ->join('aula.distributivos','distributivos')
+                ->join('distributivos.distributivocodmateria','materia')
+                ->where(':areaAcademica MEMBER OF materia.areas')
+                ->setParameters([
+                    'areaAcademica'=>$areaAcademica,
+                ])
+                ->getQuery()
+                ->getResult();
+    }
 }

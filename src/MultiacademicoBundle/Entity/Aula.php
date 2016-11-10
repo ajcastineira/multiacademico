@@ -53,7 +53,7 @@ class Aula
      *   @ORM\JoinColumn(name="codespecializacion", referencedColumnName="id", nullable=false)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $especializacion;
     
@@ -63,7 +63,7 @@ class Aula
      * 
      * @ORM\Column(name="paralelo", type="string", length=1, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $paralelo;
 
@@ -72,7 +72,7 @@ class Aula
      * 
      * @ORM\Column(name="seccion", type="string", length=20, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $seccion;
     
@@ -84,7 +84,7 @@ class Aula
      *   @ORM\JoinColumn(name="codperiodo", referencedColumnName="id", nullable=false)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $periodo;
     

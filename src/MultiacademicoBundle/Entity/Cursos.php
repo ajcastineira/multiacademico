@@ -21,7 +21,7 @@ class Cursos
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
 
@@ -29,6 +29,7 @@ class Cursos
      * @var string
      *
      * @ORM\Column(name="cursoabreviatura", type="string", length=5, nullable=false)
+     * @Serializer\Groups({"informejunta"})
      */
     private $cursoabreviatura;
 
@@ -37,7 +38,7 @@ class Cursos
      *
      * @ORM\Column(name="curso", type="string", length=30, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $curso;
     
@@ -46,7 +47,7 @@ class Cursos
      *
      * @ORM\Column(name="tipo", type="string", length=10, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $tipo;
     
@@ -55,7 +56,7 @@ class Cursos
      *
      * @ORM\Column(name="nivel", type="integer", length=2, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $nivel;
     
@@ -64,7 +65,7 @@ class Cursos
      *
      * @ORM\Column(name="grado", type="integer", length=2, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $grado;
 

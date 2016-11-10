@@ -1,0 +1,75 @@
+<div class="panel rounded shadow">
+    <div class="panel-heading">
+        <div class="pull-left">
+            <h3 class="panel-title"><i class="flaticon-book11"></i> Areas Académicas</h3>
+        </div>
+        <div class="pull-right">
+            <button data-tooltip="" data-collapse-panel="" class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse" data-original-title="" title=""><i class="fa fa-angle-up"></i></button>
+            <button data-tooltip="" data-remove-panel="" class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove" data-original-title="" title=""><i class="fa fa-times"></i></button>
+        </div>
+        <div class="clearfix"></div>
+    </div><!-- /.panel-heading -->
+    <div class="panel-body ">
+        <div data-ui-view="content">
+        <div class="table-responsive"> 
+                <div class="col-sm-12">   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Area</th>
+                                <!--<th>Tutor</th>
+                                <th>Nº</th>-->
+                                <th class="text-center">Opción</th>
+                            </tr>
+                        </thead>
+                        <tbody >                            
+                            <tr data-ng-repeat="area in areas">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{area.nombre}}</td>
+                                    <!--<td>{{area.tutor}}</td>
+                                    <td>{{area.totalalumnos}}</td>-->
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-app btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                                            <i class="fa fa-view"></i> Seleccionar <span class="caret"></span>
+                                             </button> 
+                                            <ul class="dropdown-menu" role="menu">
+                                                
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:1,p:1})" role="button">Q1 Parcial 1</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:1,p:2})" role="button">Q1 Parcial 2</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:1,p:3})" role="button">Q1 Parcial 3</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:1,p:4})" role="button">Q1 Resumen</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:2,p:1})" role="button">Q2 Parcial 1</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:2,p:2})" role="button">Q2 Parcial 2</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:2,p:3})" role="button">Q2 Parcial 3</a>
+                                                </li>
+                                                <li>
+                                                    <a class="" ui-sref="multiacademico.juntadearea.estadistica({area: area.id,q:2,p:4})" role="button">Q2 Resumen</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        
+                                    </td>
+                            </tr>
+                        </tbody >
+                    </table>
+                </div>
+        </div> 
+        </div>      
+    </div>   
+    </div>

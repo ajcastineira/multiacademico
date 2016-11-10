@@ -28,7 +28,7 @@ class AreaAcademica
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
     
@@ -37,7 +37,7 @@ class AreaAcademica
      *
      * @ORM\Column(name="nombre", type="string", length=80, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      * 
      */
     private $nombre;
@@ -50,7 +50,7 @@ class AreaAcademica
      *   @ORM\JoinColumn(name="director", referencedColumnName="id", nullable=true)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $director;
     
@@ -85,10 +85,10 @@ class AreaAcademica
      *     @ORM\JoinColumn(name="materia_id", referencedColumnName="id")
      *   }
      * )
-     * Serializer\Expose
-     * Serializer\Groups({"detail"})
+     * @Serializer\Expose
+     * @Serializer\Groups({"detail","informejunta"})
      * Serializer\Accessor(getter="getMatriculados")
-     * Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Materias>")
+     * @Serializer\Type("ArrayCollection<MultiacademicoBundle\Entity\Materias>")
      */
     private $materias;
     

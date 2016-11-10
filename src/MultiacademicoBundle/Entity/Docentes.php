@@ -29,7 +29,7 @@ class Docentes
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
 
@@ -53,7 +53,7 @@ class Docentes
      *
      * @ORM\Column(name="docente", type="string", length=50, nullable=false)
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $docente;
 

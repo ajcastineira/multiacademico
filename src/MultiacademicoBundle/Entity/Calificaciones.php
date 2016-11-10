@@ -33,7 +33,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p1_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1N1=0;
 
@@ -41,7 +41,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p1_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1N2=0;
 
@@ -49,7 +49,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p1_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1N3=0;
 
@@ -57,7 +57,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p1_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1N4=0;
 
@@ -65,7 +65,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p1_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1N5=0;
 
@@ -73,7 +73,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p1_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1Recomendacion="";
 
@@ -81,7 +81,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p1_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1Planmejora="";
 
@@ -89,7 +89,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p1_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P1Co="";
 
@@ -97,7 +97,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p2_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2N1=0;
 
@@ -105,7 +105,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p2_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2N2=0;
 
@@ -113,7 +113,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p2_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2N3=0;
 
@@ -121,7 +121,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p2_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2N4=0;
 
@@ -129,7 +129,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p2_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2N5=0;
 
@@ -137,7 +137,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p2_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2Recomendacion="";
 
@@ -145,7 +145,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p2_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2Planmejora="";
 
@@ -153,7 +153,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p2_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P2Co="";
 
@@ -161,7 +161,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p3_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3N1=0;
 
@@ -169,7 +169,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p3_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3N2=0;
 
@@ -177,7 +177,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p3_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3N3=0;
 
@@ -185,7 +185,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p3_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3N4=0;
 
@@ -193,7 +193,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_p3_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3N5=0;
 
@@ -201,7 +201,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p3_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3Recomendacion="";
 
@@ -209,7 +209,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p3_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3Planmejora="";
 
@@ -217,7 +217,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_p3_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1P3Co="";
 
@@ -225,7 +225,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q1_ex", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1Ex=0;
 
@@ -233,7 +233,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1Recomendacion="";
 
@@ -241,7 +241,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q1_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q1Planmejora="";
 
@@ -249,7 +249,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1N1=0;
 
@@ -257,7 +257,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1N2=0;
 
@@ -265,7 +265,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1N3=0;
 
@@ -273,7 +273,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1N4=0;
 
@@ -281,7 +281,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p1_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1N5=0;
 
@@ -289,7 +289,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p1_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1Recomendacion="";
 
@@ -297,7 +297,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p1_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1Planmejora="";
 
@@ -305,7 +305,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p1_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P1Co="";
 
@@ -313,7 +313,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p2_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2N1=0;
 
@@ -321,7 +321,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p2_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2N2=0;
 
@@ -329,7 +329,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p2_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2N3=0;
 
@@ -337,7 +337,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p2_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2N4=0;
 
@@ -345,7 +345,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p2_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2N5=0;
 
@@ -353,7 +353,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p2_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2Recomendacion="";
 
@@ -361,7 +361,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p2_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2Planmejora="";
 
@@ -369,7 +369,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p2_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P2Co="";
 
@@ -377,7 +377,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p3_n1", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3N1=0;
 
@@ -385,7 +385,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p3_n2", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3N2=0;
 
@@ -393,7 +393,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p3_n3", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3N3=0;
 
@@ -401,7 +401,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p3_n4", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3N4=0;
 
@@ -409,7 +409,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_p3_n5", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3N5=0;
 
@@ -417,7 +417,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p3_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3Recomendacion="";
 
@@ -425,7 +425,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p3_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3Planmejora="";
 
@@ -433,7 +433,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_p3_co", type="string", length=1, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2P3Co="";
 
@@ -441,7 +441,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="q2_ex", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2Ex=0;
 
@@ -449,7 +449,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_recomendacion", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2Recomendacion="";
 
@@ -457,7 +457,7 @@ class Calificaciones
      * @var string
      *
      * @ORM\Column(name="q2_planmejora", type="string", length=500, nullable=true)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $q2Planmejora="";
 
@@ -465,7 +465,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="mejoramiento", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $mejoramiento=0;
 
@@ -473,7 +473,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="supletorio", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $supletorio=0;
 
@@ -481,7 +481,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="remedial", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $remedial=0;
 
@@ -489,7 +489,7 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="gracia", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $gracia=0;
 
@@ -497,14 +497,14 @@ class Calificaciones
      * @var float
      *
      * @ORM\Column(name="grado", type="float", precision=10, scale=2, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $grado=0;
 
     /**
      * @var \Materias
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Materias")
+     * @ORM\ManyToOne(targetEntity="Materias", inversedBy="calificaciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="calificacioncodmateria", referencedColumnName="id", nullable=false)
      * })
@@ -2006,7 +2006,7 @@ class Calificaciones
     
     
             
-    function redondear_dos_decimal($valor) { 
+    public static function redondear_dos_decimal($valor) { 
         //$float_redondeado=floor($valor * 100) / 100;
         $float_redondeado=round($valor,2,PHP_ROUND_HALF_DOWN);
     return $float_redondeado; 
@@ -2021,7 +2021,7 @@ class Calificaciones
                                ${"$nvar"}=$this->$nvar;
                                $sumpar+=${"$nvar"};
                        }
-          return $this->redondear_dos_decimal($sumpar/5);
+          return self::redondear_dos_decimal($sumpar/5);
     }
     public function getPromedioParciales($q)
     {
@@ -2032,15 +2032,15 @@ class Calificaciones
                     $sumpar+=$promedio_p;
                  }
                        
-          return $this->redondear_dos_decimal($sumpar/3);
+          return self::redondear_dos_decimal($sumpar/3);
     }
     public function getPromedioQuimestre($q)
     {
                 $promedio_parciales=$this->getPromedioParciales( $q);
 
-             $promedio_q_80=$this->redondear_dos_decimal($promedio_parciales*0.8);
-             $promedio_q_ex_20=$this->redondear_dos_decimal($this->{'q'.$q.'Ex'}*0.2);
-             $promedio_q=$this->redondear_dos_decimal(($promedio_q_80+$promedio_q_ex_20));
+             $promedio_q_80=self::redondear_dos_decimal($promedio_parciales*0.8);
+             $promedio_q_ex_20=self::redondear_dos_decimal($this->{'q'.$q.'Ex'}*0.2);
+             $promedio_q=self::redondear_dos_decimal(($promedio_q_80+$promedio_q_ex_20));
                        
           return $promedio_q;
     }
@@ -2052,7 +2052,7 @@ class Calificaciones
             $promq=$this->getPromedioQuimestre($q);
             $sumq+=$promq;
         }
-        $promedio_a=$this->redondear_dos_decimal($sumq/2);
+        $promedio_a=self::redondear_dos_decimal($sumq/2);
         return $promedio_a;
     }
     
@@ -2085,7 +2085,7 @@ class Calificaciones
                 $quimestre_mejorado=$quimestre_menor;
               }
 
-              $promedio_mejorado=$this->redondear_dos_decimal(($quimestre_mayor+$quimestre_mejorado)/2);
+              $promedio_mejorado=self::redondear_dos_decimal(($quimestre_mayor+$quimestre_mejorado)/2);
 
               if($promedio_quimestres>=7)
               {

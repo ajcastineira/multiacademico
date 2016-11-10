@@ -24,7 +24,7 @@ class Distributivos
      * @ORM\Column(name="id", type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Serializer\Groups({"detail"})
+     * @Serializer\Groups({"detail","informejunta"})
      */
     private $id;
 
@@ -93,7 +93,7 @@ class Distributivos
     /**
      * @var \Materias
      *
-     * @ORM\ManyToOne(targetEntity="Materias")
+     * @ORM\ManyToOne(targetEntity="Materias", inversedBy="distributivos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="distributivocodmateria", referencedColumnName="id", nullable=false)
      * })
@@ -127,6 +127,7 @@ class Distributivos
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="aula_id", referencedColumnName="id", nullable=false)
      * })
+     * @Serializer\Groups({"informejunta"})
      */
     private $aula;
 

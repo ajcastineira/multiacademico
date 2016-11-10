@@ -28,7 +28,7 @@ class Aula
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
     
@@ -40,7 +40,7 @@ class Aula
      *   @ORM\JoinColumn(name="codcurso", referencedColumnName="id", nullable=false)
      * })
      * @Serializer\Expose
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      * @Serializer\Type("MultiacademicoBundle\Entity\Cursos")
      */
     private $curso;
@@ -431,7 +431,7 @@ class Aula
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("aula")
     
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      * @return string
      */
     public function getAulaName()

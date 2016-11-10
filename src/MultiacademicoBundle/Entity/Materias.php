@@ -22,7 +22,7 @@ class Materias
      * @ORM\Column(name="id",length=10, type="integer", nullable=false, options={"unsigned":true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Materias
      * @var string
      *
      * @ORM\Column(name="materia", type="string", length=40, nullable=false)
-     * @Serializer\Groups({"list","detail"})
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $materia;
 
@@ -63,7 +63,23 @@ class Materias
      * 
      */
     private $prioridad = 20;
-
+    
+    /**
+     * @var Distributivos
+     *
+     * @ORM\OneToMany(targetEntity="Distributivos", mappedBy="distributivocodmateria")
+     * @Serializer\Groups({"informejunta"})
+     */
+    private $distributivos;
+    
+    
+    /**
+     * @var Calificaciones
+     *
+     * @ORM\OneToMany(targetEntity="Calificaciones", mappedBy="calificacioncodmateria")
+     * @Serializer\Groups({"informejunta"})
+     */
+    private $calificaciones;
 
 
     /**
@@ -220,5 +236,39 @@ class Materias
     public function removeArea(\MultiacademicoBundle\Entity\AreaAcademica $area)
     {
         $this->areas->removeElement($area);
+    }
+
+    /**
+     * Add distributivo
+     *
+     * @param \MultiacademicoBundle\Entity\Distributivos $distributivo
+     *
+     * @return Materias
+     */
+    public function addDistributivo(\MultiacademicoBundle\Entity\Distributivos $distributivo)
+    {
+        $this->distributivos[] = $distributivo;
+
+        return $this;
+    }
+
+    /**
+     * Remove distributivo
+     *
+     * @param \MultiacademicoBundle\Entity\Distributivos $distributivo
+     */
+    public function removeDistributivo(\MultiacademicoBundle\Entity\Distributivos $distributivo)
+    {
+        $this->distributivos->removeElement($distributivo);
+    }
+
+    /**
+     * Get distributivos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDistributivos()
+    {
+        return $this->distributivos;
     }
 }

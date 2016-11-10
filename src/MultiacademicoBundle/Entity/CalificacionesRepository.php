@@ -201,4 +201,66 @@ class CalificacionesRepository extends EntityRepository
            ->setMaxResults(5)
            ->getResult();
     }
+    public function calificacionesDeMateriaEnAula(Aula $aula, Materias $materia) {
+        return $this->getEntityManager()->createQueryBuilder()
+                ->select('calificaciones')
+                ->from('MultiacademicoBundle:Calificaciones','calificaciones')
+                ->join('calificaciones.calificacionnummatricula','matricula')
+                ->join('matricula.aula','aula')
+                ->where('calificaciones.calificacioncodmateria=:materia and aula=:aula')
+                ->setParameters([
+                    'materia'=>$materia,
+                    'aula'=>$aula
+                ])
+                ->getQuery()
+                ->getResult();
+    }
+    
+    public function promedioParcialDeMateriaenAula(Aula $aula, Materias $materia,$quimestre,$parcial){
+        $results= $this->calificacionesDeMateriaEnAula($aula, $materia);
+        $sum=0;
+        foreach ($results as $calificacion){
+           $sum+=$calificacion->getPromedioParcial($quimestre,$parcial);
+        }
+        $promedio=$sum/count($results);
+        return Calificaciones::redondear_dos_decimal($promedio);
+    }
+    
+    public function promedioQuimestreDeMateriaenAula(Aula $aula, Materias $materia,$quimestre){
+
+        $results= $this->calificacionesDeMateriaEnAula($aula, $materia);
+        $sum=0;
+        foreach ($results as $calificacion){
+           $sum+=$calificacion->getPromedioQuimestre($quimestre);
+        }
+        $promedio=$sum/count($results);
+        return Calificaciones::redondear_dos_decimal($promedio);
+    }
+    
+    
+    public function promedioParcialDeAreaenAula(Aula $aula, AreaAcademica $areaAcademica,$quimestre,$parcial){
+        
+        $em=$this->getEntityManager();
+        $materiasDeAreaEnAula=$em->getRepository('MultiacademicoBundle:AreaAcademica')->materiasDeAreaAcademicaEnAula($aula,$areaAcademica);
+        $sum=0;
+        foreach ($materiasDeAreaEnAula as $materia){
+            $sum+=$this->promedioParcialDeMateriaenAula($aula,$materia,$quimestre,$parcial);
+        }
+        $promedio=$sum/count($materiasDeAreaEnAula);
+        return Calificaciones::redondear_dos_decimal($promedio);
+    }
+    
+    
+    public function promedioQuimestreDeAreaenAula(Aula $aula, AreaAcademica $areaAcademica,$quimestre){
+        
+        $em=$this->getEntityManager();
+        $materiasDeAreaEnAula=$em->getRepository('MultiacademicoBundle:AreaAcademica')->materiasDeAreaAcademicaEnAula($aula,$areaAcademica);
+        $sum=0;
+        foreach ($materiasDeAreaEnAula as $materia){
+            $sum+=$this->promedioQuimestreDeMateriaenAula($aula,$materia,$quimestre);
+        }
+        $promedio=$sum/count($materiasDeAreaEnAula);
+        return Calificaciones::redondear_dos_decimal($promedio);
+    }
+    
 }

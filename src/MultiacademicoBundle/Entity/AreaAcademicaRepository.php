@@ -10,4 +10,18 @@ namespace MultiacademicoBundle\Entity;
  */
 class AreaAcademicaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function materiasDeAreaAcademicaEnAula(Aula $aula, AreaAcademica $areaAcademica) {
+        return $this->getEntityManager()->createQueryBuilder()
+                ->select('materias')
+                ->from('MultiacademicoBundle:Materias','materias')
+                ->join('materias.distributivos','distributivos')
+                ->join('distributivos.aula','aula')
+                ->where(':areaAcademica MEMBER OF materias.areas AND aula=:aula')
+                ->setParameters([
+                    'areaAcademica'=>$areaAcademica,
+                    'aula'=>$aula
+                ])
+                ->getQuery()
+                ->getResult();
+    }   
 }

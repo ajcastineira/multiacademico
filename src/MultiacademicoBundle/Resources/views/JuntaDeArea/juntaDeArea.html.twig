@@ -12,8 +12,46 @@ table { page : rotated!important }
 </style>
 <page>
   <div class="paginah">
-     {{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
-       
+      {#{{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
+       #}
+      {%verbatim%}
+     <div class="info-aula">
+         <strong>{{areaAcademica.nombre}}</strong>
+     </div>
+     {%endverbatim%}
+     <div id="imprimir" class="form-group">
+           
+
+            {#<b>Quimestre Activo: {{'{{q}}'}} </b>
+       <select data-ng-model="q" data-ng-init="q=qop[q-1].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
+       </select> 
+
+
+            <b>Parcial Activo:{{'{{p}}'}} </b>
+                <select data-ng-model="p" data-ng-init="p=pop[p-1].id" data-ng-options="p.id as p.label for p in pop" data-ng-change="changeq()" >
+                </select>#}
+           <button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button>
+       </div>
+     <table class="" border="1">
+         <thead>
+             <tr>
+                <th>Aula</th>
+                <th>Promedio Area</th>
+                <th>Promedio Año</th>
+                <th>Promedio Nivel</th>
+                <th>Promedio Esperado</th>
+                <th>Meta</th>
+             </tr>   
+         </thead>    
+         <tbody>
+             {%verbatim%}
+             <tr ng-repeat="aula in resumenJuntaDeArea">
+                <td>{{aula.aula.aula}}</td>
+                <td>{{aula.promedio}}</td>
+             </tr>   
+             {%endverbatim%}
+         </tbody>
+     </table>    
       {#<div class="info-aula">
               {%verbatim%}
               <div class="curso"><b>{{aula.curso.curso}} {{aula.especializacion.especializacion}}</b></div>

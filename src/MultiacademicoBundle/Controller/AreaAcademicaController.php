@@ -202,17 +202,17 @@ class AreaAcademicaController extends FOSRestController
     
     /**
      * Finds and displays a AreaAcademica entity.
-     * @Rest\Patch() 
-     * @Rest\Get("/areaacademicas/{areaAcademica}/junta/{quimestre}/{parcial}", name="junta_areaacademica") 
+     * Rest\Patch() 
+     * @Rest\Get("/areaacademicas/{areaAcademica}/junta/{q}/{p}", name="_j_parcial") 
      */
-    public function juntaAction(AreaAcademica $areaAcademica,$quimestre,$parcial)
+    public function juntaAction(AreaAcademica $areaAcademica,$q,$p)
     {
                
         $em = $this->getDoctrine()->getManager();
         $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(22);
         $materia=$em->getRepository('MultiacademicoBundle:Materias')->find(25);
         $juntaDeArea=$em->getRepository('MultiacademicoBundle:Calificaciones')
-                ->promediosParcialesDeJuntaDeArea($areaAcademica,$quimestre,$parcial);
+                ->promediosParcialesDeJuntaDeArea($areaAcademica,$q,$p);
         //var_dump($juntaDeArea);
        $context=new SerializationContext();
         $context->setGroups("informejunta");

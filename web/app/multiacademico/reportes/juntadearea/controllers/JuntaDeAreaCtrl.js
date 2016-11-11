@@ -34,6 +34,16 @@
                                 return Calificaciones.redondear(sum/count,2);
                             };
                             
+                            
+                            var encabezadoTable=['Aula','Promedio Area','Promedio Año','Promedio Nivel','Promedio Esperado','Meta'];
+                            $scope.resumenJuntaTable=[encabezadoTable];
+                            _.forIn(resumenJuntaDeArea, function(value, key) {
+                                var aulaname=value.aula.aula;
+                                var aulaNameAbreviat=value.aula.curso.cursoabreviatura+'/'+value.aula.paralelo+'/'+value.aula.curso.tipo;
+                                $scope.resumenJuntaTable.push([aulaNameAbreviat,value.promedio,$scope.promedioAnio(value.aula.curso.tipo,value.aula.curso.nivel),$scope.promedioNivel(value.aula.curso.tipo),CALIFICACION_META,$scope.meta(value.promedio)]);
+                            });
+                            
+                            
                             /*var crearDataTable=function(){
                                     var dTable= jQuery('#juntadearea-normal').DataTable( {
                                         dom: 'B',

@@ -31,8 +31,9 @@ class AreaAcademicaRepository extends \Doctrine\ORM\EntityRepository
                 ->select('aula')
                 ->from('MultiacademicoBundle:Aula','aula')
                 ->join('aula.distributivos','distributivos')
+                ->join('aula.curso','curso')
                 ->join('distributivos.distributivocodmateria','materia')
-                ->where(':areaAcademica MEMBER OF materia.areas')
+                ->where(':areaAcademica MEMBER OF materia.areas AND curso.nivel>1')
                 ->setParameters([
                     'areaAcademica'=>$areaAcademica,
                 ])

@@ -207,6 +207,7 @@ class CalificacionesRepository extends EntityRepository
                 ->from('MultiacademicoBundle:Calificaciones','calificaciones')
                 ->join('calificaciones.calificacionnummatricula','matricula')
                 ->join('matricula.aula','aula')
+                //->join('aula.curso','curso')
                 ->where('calificaciones.calificacioncodmateria=:materia and aula=:aula')
                 ->setParameters([
                     'materia'=>$materia,

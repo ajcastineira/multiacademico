@@ -29,6 +29,7 @@ class Cursos
      * @var string
      *
      * @ORM\Column(name="cursoabreviatura", type="string", length=5, nullable=false)
+     * @Serializer\Expose
      * @Serializer\Groups({"informejunta"})
      */
     private $cursoabreviatura;

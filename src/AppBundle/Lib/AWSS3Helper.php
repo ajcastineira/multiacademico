@@ -103,7 +103,17 @@ class AWSS3Helper {
         $entity->setFile();
     }
     
+    public function removeFileFromEntity(UploadFileInterface $entity){
+        //pendiente de implementar
+        return;
+    }
     
+    /**
+     * 
+     * @param type $path
+     * @param type $uploadDir
+     * @return type
+     */
     public function getWebPath($path,$uploadDir){
                 
         return null === $path

@@ -50,16 +50,30 @@
                                     return 7;
                                 }
                             };
-                            $scope.Calificaciones=Calificaciones;
+                           
+                            var getPromediosFromFunction=function(callBackFn)
+                            {
+                                return _.map($scope.aula.matriculados, callBackFn);
+                            };
                             
-                             var findByMateriaId = function(id){
-                                return function(calificacion){
-                                  return calificacion.calificacioncodmateria.id === id;
-                                };
+                            var getPromediosFromFunctionParcialesMateria=function(q,p,m,callBackFn){
+                                return getPromediosFromFunction(function(matriculado){
+                                    return callBackFn(q,p,$scope.findCalificacion(matriculado,m));
+                                });
                             };
+                            
+                            var getPromediosFromFunctionQuimestralesMateria = function(q,m,callBackFn){
+                                return getPromediosFromFunction(function(matriculado){
+                                    return callBackFn(q,$scope.findCalificacion(matriculado,m));
+                                });
+                            };
+                            
+                            
                             $scope.findCalificacion = function(alumno, idmateria){
-                                return alumno.calificaciones.filter(findByMateriaId(idmateria))[0];
+                                return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});
                             };
+                            
+                            
                             
                             $scope.Materias={};
                             
@@ -75,14 +89,9 @@
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
-                                    sum += Calificaciones.getPromedioParcial(q,p,calificacion);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
+
+                                var promediosArray=getPromediosFromFunctionParcialesMateria(q,p,m,Calificaciones.getPromedioParcial);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                                 
                             };
                             
@@ -97,15 +106,9 @@
                             $scope.prparcialesMateria=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
-                                    sum += Calificaciones.getPromedioParciales(q,calificacion);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
                                 
+                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getPromedioParciales);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                             };
                             
                             $scope.prparciales80=function(i,m,q)
@@ -118,28 +121,16 @@
                             $scope.prparciales80Materia=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
-                                    sum += Calificaciones.getPromedioParciales80(q,calificacion);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
-                                
+                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getPromedioParciales80);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                             };
                             
                             $scope.prExamenMateria=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    sum += $scope.findCalificacion($scope.aula.matriculados[i],m)['q'+q+'_ex'];
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
                                 
+                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getExamen);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                             };
                             
                             $scope.ex20=function(i,m,q)
@@ -152,14 +143,8 @@
                             $scope.ex20Materia=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
-                                    sum += Calificaciones.getExamen20(q,calificacion);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getExamen20);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                                 
                             };
                             
@@ -173,14 +158,8 @@
                             $scope.prqMateria=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificacion=$scope.findCalificacion($scope.aula.matriculados[i],m);
-                                    sum += Calificaciones.getPromedioQuimestre(q,calificacion);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getPromedioQuimestre);
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                                 
                             };
                             
@@ -223,15 +202,11 @@
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificaciones=$scope.aula.matriculados[i].calificaciones;
-                                    sum += Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
                                 
+                                var promediosArray=getPromediosFromFunction(function(matriculado){
+                                                return Calificaciones.getPromedioTotalParcial(q,p,matriculado.calificaciones);
+                                            });
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                             };
                             
                             $scope.prgq=function(i,q)
@@ -245,14 +220,10 @@
                             $scope.prgqMateria=function(q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var sum=0,i;
-                                var totalAlumnos=$scope.aula.matriculados.length;
-                                for (i=0;i<totalAlumnos;i++)
-                                {
-                                    var calificaciones=$scope.aula.matriculados[i].calificaciones;
-                                    sum += Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
-                                }
-                                return Calificaciones.redondear(sum/totalAlumnos,2);
+                                var promediosArray=getPromediosFromFunction(function(matriculado){
+                                                return Calificaciones.getPromedioTotalQuimestre(q,matriculado.calificaciones);
+                                            });
+                                return Calificaciones.redondear(_.mean(promediosArray),2);
                                 
                             };
                             

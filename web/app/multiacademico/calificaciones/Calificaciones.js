@@ -27,22 +27,9 @@
                    return 'alta';
                };
             return null;   
-        }               
+        }
         
-        return {
-                    quimestres: QUIMESTRES,
-                    parciales: PARCIALES,
-                    parcialesnotas: parcialesnotas,
-                    redondear: redondear,
-                    findOnCalificacionesByMateriaId : function(id){
-                                return function(calificacion){
-                                  return calificacion.calificacioncodmateria.id === id;
-                                };
-                            },
-                    findCalificacionOnAlumno : function(alumno, idmateria){
-                                return alumno.calificaciones.filter(this.findOnCalificacionesByMateriaId(idmateria))[0];
-                            },
-                    getPromedioParcial:function (q,p,calificacion)
+        var getPromedioParcial = function (q,p,calificacion)
                           {
                            
                             if(typeof calificacion === 'undefined')
@@ -56,88 +43,82 @@
                                       calificacion['q'+q+'_p'+p+'_n5'];
                               
                                 return redondear(sum/5,2);
-                                },
-                    getPromedioParciales:function (q,calificacion)
+                                };
+        var getPromedioParciales = function (q,calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}
-                              var sum=this.getPromedioParcial(q,1,calificacion)+
-                                      this.getPromedioParcial(q,2,calificacion)+
-                                      this.getPromedioParcial(q,3,calificacion);
+                              var sum=getPromedioParcial(q,1,calificacion)+
+                                      getPromedioParcial(q,2,calificacion)+
+                                      getPromedioParcial(q,3,calificacion);
                                 return redondear(sum/3,2);
-                                },
-                    getPromedioTotalParcial:function (q,p,calificaciones) //total de quimestres unicamente
+                                };
+        var getPromedioTotalParcial = function (q,p,calificaciones) //total de quimestres unicamente
                           {
                                var s=0,i=0;
                                for (var index in calificaciones)
                                {
                                     i++;
                                     var calificacion = calificaciones[index]; 
-                                    s+=this.getPromedioParcial(q,p,calificacion);
+                                    s+=getPromedioParcial(q,p,calificacion);
                                 };
                             var r=(s/i);
                                 return redondear(r,2);
-                           },
-                    getPromedioTotalQuimestre:function (q,calificaciones) //total de quimestres unicamente
-                          {
-                               var s=0,i=0;
-                               for (var index in calificaciones)
-                               {
-                                    i++;
-                                    var calificacion = calificaciones[index]; 
-                                    s+=this.getPromedioQuimestre(q,calificacion);
-                                };
-                            var r=(s/i);
-                                return redondear(r,2);
-                           },       
-                    getPromedioParciales80:function (q,calificacion)
+                           };
+        var getPromedioParciales80 = function (q,calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}
-                              var r=this.getPromedioParciales(q,calificacion)*0.8;
+                              var r=getPromedioParciales(q,calificacion)*0.8;
                                 return redondear(r,2);
-                                },  
-                    getExamen20:function (q,calificacion)
+                                };
+        var getExamen = function (q,calificacion)
                           {
                             if(typeof calificacion === 'undefined'){return('N/A');}
-                            var r=calificacion['q'+q+'_ex']*0.20
+                            var r=calificacion['q'+q+'_ex'];
                                 return redondear(r,2);
-                                },
-                    getPromedioQuimestre:function (q,calificacion)
+                            };
+        var getExamen20 = function (q,calificacion)
+                          {
+                            if(typeof calificacion === 'undefined'){return('N/A');}
+                            var r=getExamen(q,calificacion)*0.20;
+                                return redondear(r,2);
+                            };
+        var getPromedioQuimestre=function (q,calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}
-                              var r=this.getPromedioParciales80(q,calificacion)+this.getExamen20(q,calificacion);
+                              var r=getPromedioParciales80(q,calificacion)+getExamen20(q,calificacion);
                                 return redondear(r,2);
-                                },
-                    getPromedioTotalQuimestre:function (q,calificaciones) //total de quimestres unicamente
+                                };
+        var getPromedioTotalQuimestre=function (q,calificaciones) //total de quimestres unicamente
                           {
                                var s=0,i=0;
                                for (var index in calificaciones)
                                {
                                     i++;
                                     var calificacion = calificaciones[index]; 
-                                    s+=this.getPromedioQuimestre(q,calificacion);
+                                    s+=getPromedioQuimestre(q,calificacion);
                             };
                             var r=(s/i);
                                 return redondear(r,2);
-                           },            
-                    getPromedioAnual:function (calificacion)
+                           };
+        var getPromedioAnual=function (calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}
-                              var r=this.getPromedioQuimestre(1,calificacion)+this.getPromedioQuimestre(2,calificacion)
+                              var r=getPromedioQuimestre(1,calificacion)+getPromedioQuimestre(2,calificacion);
                                 return redondear(r/2,2);
-                                },            
-                     getPromedioFinal:function (calificacion)
+                                };          
+        var getPromedioFinal = function (calificacion)
                      {
                         if(typeof calificacion === 'undefined'){return('N/A');}
                         
-                        var quimestre1=this.getPromedioQuimestre(1,calificacion);
-                        var quimestre2=this.getPromedioQuimestre(2,calificacion);
+                        var quimestre1=getPromedioQuimestre(1,calificacion);
+                        var quimestre2=getPromedioQuimestre(2,calificacion);
                         var mejoramiento=calificacion['mejoramiento'];
                         var supletorio=calificacion['supletorio'];
                         var remedial=calificacion['remedial'];
                         var gracia=calificacion['gracia'];
-                        return this.calcularPromedioFinal(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
-                     },
-                     calcularPromedioFinal: function(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
+                        return calcularPromedioFinal(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia);
+                     };
+        var calcularPromedioFinal = function(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
                      {
                       
                         
@@ -202,52 +183,79 @@
                                 return promedio_mejorado;
                               }
 
-                     },
-                     apruebaMateria:function (calificacion)
+                     };
+                   var apruebaMateria = function (calificacion)
                      {
-                       if (this.getPromedioFinal(calificacion)>=7)
+                       if (getPromedioFinal(calificacion)>=7)
                         return true;
                         else 
                         return false;
-                     },
-                     getSumaFinal:function (calificaciones) //total de quimestres unicamente
+                     };
+                    var getSumaFinal = function (calificaciones) //total de quimestres unicamente
                           {
                                var s=0;
                                for (var index in calificaciones)
                                {
                                     var calificacion = calificaciones[index]; 
-                                    s+=this.getPromedioFinal(calificacion);
+                                    s+=getPromedioFinal(calificacion);
                             };
                             
-                                return redondear(s,2)
-                           },  
-                    getPromedioGeneral:function (calificaciones) //total de quimestres unicamente
+                                return redondear(s,2);
+                           };  
+                   var getPromedioGeneral = function (calificaciones) //total de quimestres unicamente
                           {
                                var s=0,i=0;
                                for (var index in calificaciones)
                                {
                                     i++;
                                     var calificacion = calificaciones[index]; 
-                                    s+=this.getPromedioFinal(calificacion);
+                                    s+=getPromedioFinal(calificacion);
                             };
                             var r=(s/i);
                                 return redondear(r,2);
-                           },    
+                           };   
                     
-                    apruebaAnio:function (calificaciones)
+                    var apruebaAnio = function (calificaciones)
                         {
                             for (var index in calificaciones)
                                {
                                     
                                     var calificacion = calificaciones[index]; 
-                                    if (!this.apruebaMateria(calificacion))
+                                    if (!apruebaMateria(calificacion))
                                     {
                                         return false;
                                     }
                                 };
                             
                                 return true;
-                        },
+                        };             
+                     
+                     
+                     
+        
+        return {
+                    quimestres: QUIMESTRES,
+                    parciales: PARCIALES,
+                    parcialesnotas: parcialesnotas,
+                    redondear: redondear,
+                    findCalificacionOnAlumno : function(alumno, idmateria){
+                                return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});
+                            },
+                    getPromedioParcial:getPromedioParcial,
+                    getPromedioParciales:getPromedioParciales,
+                    getPromedioTotalParcial:getPromedioTotalParcial,
+                    getPromedioTotalQuimestre:getPromedioTotalQuimestre,       
+                    getPromedioParciales80:getPromedioParciales80,  
+                    getExamen:getExamen,
+                    getExamen20:getExamen20,
+                    getPromedioQuimestre:getPromedioQuimestre,
+                    getPromedioAnual:getPromedioAnual,            
+                    getPromedioFinal:getPromedioFinal,
+                    calcularPromedioFinal:calcularPromedioFinal,
+                    apruebaMateria:apruebaMateria,
+                    getSumaFinal:getSumaFinal,  
+                    getPromedioGeneral:getPromedioGeneral,    
+                    apruebaAnio:apruebaAnio,
                     getAlturaNota: alturaNota,
                     getNotaCualitativa: qualitativeScores.getNotaCualitativa,
                     getCualitativa: qualitativeScores.getCualitativa

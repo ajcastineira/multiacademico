@@ -2,10 +2,14 @@
  angular.module('multiacademico.estadisticas').service('estadisticasCommon', function(Calificaciones, CALIFICACION_MINIMA, CALIFICACION_META){
      
      function resultCountAlturaNotas(bajos, medios, altos){
+            var total=bajos+medios+altos;
             return {
                 notasBajas: bajos,
+                porcentajeNotasBajas: Calificaciones.redondear((bajos/total)*100,2),
                 notasMedias: medios,
-                notasAltas: altos
+                porcentajeNotasMedias: Calificaciones.redondear((medios/total)*100,2),
+                notasAltas: altos,
+                porcentajeNotasAltas: Calificaciones.redondear((altos/total)*100,2)
             };
          }
      function resultCountCualidadNotas(nNAR, nPAAR, nAAR, nDAR){

@@ -4,9 +4,12 @@
    'use strict';
     
     angular.module('multiacademico.malla')
-        .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones, QUIMESTRES, PARCIALES) {
+        .controller('MallaCtrl', function ($scope, $timeout, $state,$stateParams, aula, Calificaciones,estadisticasCommon,QUIMESTRES, PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META) {
+                            
                             
                             $scope.aula = aula;
+                            $scope.calificacionminima=CALIFICACION_MINIMA;
+                            $scope.calificacionmeta=CALIFICACION_META;
                             $scope.aula.recibeProyectoEscolar=function(){
                                 if (this.curso.tipo!=='BACH'&&this.curso.tipo!=='INICIAL'&&!(this.curso.tipo==='EBI'&&this.curso.tipo==='EBM'&&this.curso.nivel===1))
                                 {return true;}
@@ -51,18 +54,18 @@
                                 }
                             };
                            
-                            var getPromediosFromFunction=function(callBackFn)
+                            var getPromediosFromFunction = $scope.getPromediosFromFunction = function(callBackFn)
                             {
                                 return _.map($scope.aula.matriculados, callBackFn);
                             };
                             
-                            var getPromediosFromFunctionParcialesMateria=function(q,p,m,callBackFn){
+                            var getPromediosFromFunctionParcialesMateria=$scope.getPromediosFromFunctionParcialesMateria = function(q,p,m,callBackFn){
                                 return getPromediosFromFunction(function(matriculado){
                                     return callBackFn(q,p,$scope.findCalificacion(matriculado,m));
                                 });
                             };
                             
-                            var getPromediosFromFunctionQuimestralesMateria = function(q,m,callBackFn){
+                            var getPromediosFromFunctionQuimestralesMateria = $scope.getPromediosFromFunctionQuimestralesMateria = function(q,m,callBackFn){
                                 return getPromediosFromFunction(function(matriculado){
                                     return callBackFn(q,$scope.findCalificacion(matriculado,m));
                                 });
@@ -73,6 +76,9 @@
                                 return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});
                             };
                             
+                            $scope.clasificarPromediosPorAltura=function(array){
+                                return estadisticasCommon.resumenDeNotasPorAltura(array);
+                            }
                             
                             
                             $scope.Materias={};
@@ -85,13 +91,19 @@
                                 return Calificaciones.getPromedioParcial(q,p,calificacion);
                             };
                             
+                            $scope.promediosParcialMateria=function(m,q,p)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                return getPromediosFromFunctionParcialesMateria(q,p,m,Calificaciones.getPromedioParcial);
+                            };
+                            
                             $scope.prparcialMateria=function(m,q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
 
-                                var promediosArray=getPromediosFromFunctionParcialesMateria(q,p,m,Calificaciones.getPromedioParcial);
-                                return Calificaciones.redondear(_.mean(promediosArray),2);
+                                return Calificaciones.redondear(_.mean($scope.promediosParcialMateria(m,q,p)),2);
                                 
                             };
                             
@@ -155,11 +167,16 @@
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
                             };
                             
+                            $scope.promediosQuimestreMateria=function(m,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                return getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getPromedioQuimestre);
+                            };
+                            
                             $scope.prqMateria=function(m,q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var promediosArray=getPromediosFromFunctionQuimestralesMateria(q,m,Calificaciones.getPromedioQuimestre);
-                                return Calificaciones.redondear(_.mean(promediosArray),2);
+                                return Calificaciones.redondear(_.mean($scope.promediosQuimestreMateria(m,q)),2);
                                 
                             };
                             
@@ -216,14 +233,15 @@
                                 
                                 return Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
                             };
-                            
+                            $scope.promediosGeneralesQuimestreMateria=function(q){
+                                return getPromediosFromFunction(function(matriculado){
+                                                return Calificaciones.getPromedioTotalQuimestre(q,matriculado.calificaciones);
+                                            });
+                            }
                             $scope.prgqMateria=function(q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
-                                var promediosArray=getPromediosFromFunction(function(matriculado){
-                                                return Calificaciones.getPromedioTotalQuimestre(q,matriculado.calificaciones);
-                                            });
-                                return Calificaciones.redondear(_.mean(promediosArray),2);
+                                return Calificaciones.redondear(_.mean($scope.promediosGeneralesQuimestreMateria(q)),2);
                                 
                             };
                             

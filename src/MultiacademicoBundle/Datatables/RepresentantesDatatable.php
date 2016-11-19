@@ -50,7 +50,19 @@ class RepresentantesDatatable extends AbstractDatatableView
             'server_side' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array()
+            'extensions' => array(
+                'buttons' =>
+                    array(
+                        ['extend'=> 'copy',
+                         'text'=> 'Copiar'],
+                        'excel',
+                        'pdf',
+                        ['extend'=> 'print',
+                         'text'=> 'Imprimir'],
+                       
+                   ),
+                'responsive' => true
+            )
         ));
 
         $this->ajax->set(array(

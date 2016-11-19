@@ -18,7 +18,7 @@ class DistributivosDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-3">',
+            'start_html' => '<div class="row"><div class="col-sm-6">',
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
@@ -101,15 +101,19 @@ class DistributivosDatatable extends AbstractDatatableView
             ))
             ->add('distributivocoddocente.docente', 'column', array(
                 'title' => 'Docente',
+                'width' => '10em'
             ))    
             ->add('distributivocodmateria.materia', 'column', array(
                 'title' => 'Materia',
+                'width' => '10em'
             ))
             ->add('distributivocodcurso.curso', 'column', array(
                 'title' => 'Curso',
+                'width' => '5em'
             ))            
             ->add('distributivocodespecializacion.especializacion', 'column', array(
                 'title' => 'Especializacion',
+                'width' => '5em'
             ))
             ->add('distributivoparalelo', 'column', array(
                 'title' => 'Paralelo',
@@ -117,6 +121,7 @@ class DistributivosDatatable extends AbstractDatatableView
             ))
             ->add('distributivoseccion', 'column', array(
                 'title' => 'Seccion',
+                'width' => '5em'
             ))    
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

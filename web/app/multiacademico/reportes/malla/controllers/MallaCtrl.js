@@ -341,6 +341,7 @@
                                         dom: 'B',
                                         paging: false,
                                         order: [1,'asc'],
+                                       // responsive: true,
                                         buttons: [
                                             {
                                                 extend: 'collection',

@@ -214,16 +214,20 @@
                                 
                                 return Calificaciones.getPromedioTotalParcial(q,p,calificaciones);
                             };
-                            
+                            $scope.promediosGeneralesParcialMateria=function(q,p){
+                               if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                
+                                return getPromediosFromFunction(function(matriculado){
+                                                return Calificaciones.getPromedioTotalParcial(q,p,matriculado.calificaciones);
+                                            });
+                            };
                             $scope.prgpMateria=function(q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 if (typeof p==='undefined') p=$scope.p;
                                 
-                                var promediosArray=getPromediosFromFunction(function(matriculado){
-                                                return Calificaciones.getPromedioTotalParcial(q,p,matriculado.calificaciones);
-                                            });
-                                return Calificaciones.redondear(_.mean(promediosArray),2);
+                                return Calificaciones.redondear(_.mean($scope.promediosGeneralesParcialMateria(q,p)),2);
                             };
                             
                             $scope.prgq=function(i,q)

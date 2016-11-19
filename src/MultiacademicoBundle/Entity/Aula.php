@@ -130,6 +130,7 @@ class Aula
      * @var string
      *
      * @ORM\Column(name="alias", type="string", length=50, nullable=true)
+     * @Serializer\Expose
      * @Serializer\Groups({"informejunta"})
      * 
      */

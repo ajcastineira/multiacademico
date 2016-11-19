@@ -211,8 +211,14 @@ class AreaAcademicaController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $aula=$em->getRepository('MultiacademicoBundle:Aula')->find(22);
         $materia=$em->getRepository('MultiacademicoBundle:Materias')->find(25);
+        if ($q<=2&&$p<4)
+        {
         $juntaDeArea=$em->getRepository('MultiacademicoBundle:Calificaciones')
                 ->promediosParcialesDeJuntaDeArea($areaAcademica,$q,$p);
+        }elseif($q<=2&&$p==4){
+            $juntaDeArea=$em->getRepository('MultiacademicoBundle:Calificaciones')
+                ->promediosQuimestralesDeJuntaDeArea($areaAcademica,$q);
+        }
         //var_dump($juntaDeArea);
        $context=new SerializationContext();
         $context->setGroups("informejunta");

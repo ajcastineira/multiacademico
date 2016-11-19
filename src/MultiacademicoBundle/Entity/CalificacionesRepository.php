@@ -289,4 +289,18 @@ class CalificacionesRepository extends EntityRepository
         return $result;
     }
     
+    public function promediosQuimestralesDeJuntaDeArea(AreaAcademica $areaAcademica,$quimestre){
+        
+        $em=$this->getEntityManager();
+        $aulasDeAreaAcademica=$em->getRepository('MultiacademicoBundle:AreaAcademica')->aulasDeAreaAcademica($areaAcademica);
+        $result=[];
+        foreach ($aulasDeAreaAcademica as $aula){
+            $result[]=['aula'=>$aula,
+                       'promedio'=>$this->promedioQuimestreDeAreaenAula($aula,$areaAcademica,$quimestre)
+                      ];
+        }
+        
+        return $result;
+    }
+    
 }

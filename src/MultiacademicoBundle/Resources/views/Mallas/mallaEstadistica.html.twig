@@ -161,7 +161,7 @@ table { page : rotated!important }
               {%verbatim%}
               <tr style="vertical-align: bottom;">
                   <th colspan="2" style='text-align: center;'>
-                      R E S U M E N &nbsp;&nbsp; C U R S O
+                      PROMEDIO &nbsp;&nbsp; ASIGNATURA
                   </th>
                   <th data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" nota-p="p" nota-q="q" nota-color-active nota-value="prparcialMateria(distributivo.distributivocodmateria.id)" style="text-align: center;-webkit-print-color-adjust:exact;" ></th>
                   <th data-ng-repeat-end ng-if="p<=3&&q<3" style="text-align: center;-webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{cualitativa(prparcialMateria(distributivo.distributivocodmateria.id))}}</th>
@@ -176,7 +176,7 @@ table { page : rotated!important }
                   <td ng-if="p==4&&q<3" >{{ex20Materia(distributivo.distributivocodmateria.id,q)}}</td>
                   <th data-ng-repeat-end ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{prqMateria(distributivo.distributivocodmateria.id,q)}}</th>
                   
-                  <th colspan="3" ng-if="p<=3&&q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgpMateria(q,p)}}</th>
+                  <th colspan="3" ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{prgpMateria(q,p)}}</th>
                   <th ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{prgqMateria(q)}}</th> 
                   
               </tr>
@@ -184,16 +184,28 @@ table { page : rotated!important }
                   <th rowspan=3 colspan="2" style='text-align: center;'>
                         INDICADORES &nbsp;&nbsp; CALIDAD
                   </th>
+                  <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" >&lt;{{calificacionminima}}:</td>
+                  <th data-ng-repeat-end ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosParcialMateria(distributivo.distributivocodmateria.id,q,p)).porcentajeNotasBajas}}%</th>
+                  <th colspan="3" ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesParcialMateria(q,p)).porcentajeNotasBajas}}%</th>
+                  
                   <td colspan="7" data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" >&lt;{{calificacionminima}}:</td>
                   <th data-ng-repeat-end ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosQuimestreMateria(distributivo.distributivocodmateria.id,q)).porcentajeNotasBajas}}%</th>
                   <th ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesQuimestreMateria(q)).porcentajeNotasBajas}}%</th> 
               </tr>
               <tr>
+                  <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" >&lt;{{calificacionmeta}}:</td>
+                  <th data-ng-repeat-end ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosParcialMateria(distributivo.distributivocodmateria.id,q,p)).porcentajeNotasMedias}}%</th>
+                  <th colspan="3" ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesParcialMateria(q,p)).porcentajeNotasMedias}}%</th>
+                  
                   <td colspan="7" data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" >&lt;{{calificacionmeta}}:</td>
                   <th data-ng-repeat-end ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosQuimestreMateria(distributivo.distributivocodmateria.id,q)).porcentajeNotasMedias}}%</th>
                   <th ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesQuimestreMateria(q)).porcentajeNotasMedias}}%</th> 
               </tr>    
               <tr>
+                  <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p<=3&&q<3" >&gt;{{calificacionmeta}}:</td>
+                  <th data-ng-repeat-end ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosParcialMateria(distributivo.distributivocodmateria.id,q,p)).porcentajeNotasAltas}}%</th>
+                  <th colspan="3" ng-if="p<=3&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesParcialMateria(q,p)).porcentajeNotasAltas}}%</th>
+                  
                   <td colspan="7" data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" >&gt;{{calificacionmeta}}:</td>
                   <th data-ng-repeat-end ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color: gainsboro;"  >{{clasificarPromediosPorAltura(promediosQuimestreMateria(distributivo.distributivocodmateria.id,q)).porcentajeNotasAltas}}%</th>
                   <th ng-if="p==4&&q<3" style="text-align: center; -webkit-print-color-adjust:exact;background-color:yellow;">{{clasificarPromediosPorAltura(promediosGeneralesQuimestreMateria(q)).porcentajeNotasAltas}}%</th> 

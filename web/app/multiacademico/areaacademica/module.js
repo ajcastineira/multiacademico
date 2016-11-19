@@ -7,7 +7,7 @@
         var rutas={create:'new_areaacademica',
                     new:'new_areaacademica',
                     edit:'edit_areaacademica',
-                    calificar:'show_areaacademica',
+                    //calificar:'show_areaacademica',
                     update:'edit_areaacademica',
                     show:'get_areaacademicas',
                     list:'get_areaacademicas_all',
@@ -60,15 +60,7 @@
                     },
                  views: {
                     "content@multiacademico": {
-                        templateUrl: Routing.generate(rutas.list,{'_format':'html'}),
-                        /*controller: function ($scope)
-                                    {
-                                        $scope.Pagar=function(e){
-                                            e.preventDefault();
-                                            alert("Hola");
-                                        }
-                                    },*/
-                       
+                        templateUrl: Routing.generate(rutas.list,{'_format':'html'})
                     }
                 }    
                 

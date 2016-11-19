@@ -53,7 +53,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
 
 
             var destroyForStart = $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                var isAnimRequired = _.any(viewsToMatch, function(view){
+                var isAnimRequired = _.some(viewsToMatch, function(view){
                    return _.has(toState.views, view) || _.has(fromState.views, view);
                 });
                 if(isAnimRequired){

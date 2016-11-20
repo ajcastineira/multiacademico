@@ -234,15 +234,31 @@
                             {
                                 //if (typeof q==='undefined') q=$scope.q;
                                 var calificaciones=$scope.aula.matriculados[i].calificaciones;
-                                
                                 return Calificaciones.getPromedioTotalQuimestre(q,calificaciones);
+                            };
+                            $scope.prgqMateriasBasicas=function(i,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                var calificaciones=$scope.aula.matriculados[i].calificaciones;
+                                return Calificaciones.getPromedioTotalQuimestreMateriasBasicas(q,calificaciones);
                             };
                             $scope.promediosGeneralesQuimestreMateria=function(q){
                                 return getPromediosFromFunction(function(matriculado){
                                                 return Calificaciones.getPromedioTotalQuimestre(q,matriculado.calificaciones);
                                             });
-                            }
-                            $scope.prgqMateria=function(q)
+                            };
+                            $scope.promediosGeneralesQuimestreMateriasBasicas=function(q){
+                                return getPromediosFromFunction(function(matriculado){
+                                                return Calificaciones.getPromedioTotalQuimestreMateriasBasicas(q,matriculado.calificaciones);
+                                            });
+                            };
+                            $scope.prgqAulaMateriasBasicas=function(q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                return Calificaciones.redondear(_.mean($scope.promediosGeneralesQuimestreMateriasBasicas(q)),2);
+                                
+                            };
+                            $scope.prgqAula=function(q)
                             {
                                 if (typeof q==='undefined') q=$scope.q;
                                 return Calificaciones.redondear(_.mean($scope.promediosGeneralesQuimestreMateria(q)),2);

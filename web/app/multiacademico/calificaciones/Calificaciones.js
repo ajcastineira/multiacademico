@@ -28,7 +28,11 @@
                };
             return null;   
         }
-        
+        var filterMateriasBasicas = function (calificaciones){
+            return _.filter(calificaciones,function(calificacion) {
+                                                  return calificacion.calificacioncodmateria.materiatipo !== 'OFERTAINST'; 
+                                                    });
+        };
         var getPromedioParcial = function (q,p,calificacion)
                           {
                            
@@ -88,17 +92,21 @@
                               var r=getPromedioParciales80(q,calificacion)+getExamen20(q,calificacion);
                                 return redondear(r,2);
                                 };
-        var getPromedioTotalQuimestre=function (q,calificaciones) //total de quimestres unicamente
+        var getPromedioTotalQuimestreMateriasBasicas=function (q,calificaciones) //total de quimestres unicamente
                           {
                                var s=0,i=0;
-                               for (var index in calificaciones)
-                               {
-                                    i++;
-                                    var calificacion = calificaciones[index]; 
-                                    s+=getPromedioQuimestre(q,calificacion);
-                            };
-                            var r=(s/i);
-                                return redondear(r,2);
+                               var calificacionesDeMateriasBasicas = filterMateriasBasicas(calificaciones);
+                               var promedios=_.map(calificacionesDeMateriasBasicas,function(calificacion){
+                                   return getPromedioQuimestre(q,calificacion);
+                               });
+                                return redondear(_.mean(promedios),2);
+                           };                        
+        var getPromedioTotalQuimestre=function (q,calificaciones) //total de quimestres unicamente
+                          {
+                               var promedios=_.map(calificaciones,function(calificacion){
+                                   return getPromedioQuimestre(q,calificacion);
+                               });
+                                return redondear(_.mean(promedios),2);
                            };
         var getPromedioAnual=function (calificacion)
                           {
@@ -245,6 +253,7 @@
                     getPromedioParciales:getPromedioParciales,
                     getPromedioTotalParcial:getPromedioTotalParcial,
                     getPromedioTotalQuimestre:getPromedioTotalQuimestre,       
+                    getPromedioTotalQuimestreMateriasBasicas:getPromedioTotalQuimestreMateriasBasicas,
                     getPromedioParciales80:getPromedioParciales80,  
                     getExamen:getExamen,
                     getExamen20:getExamen20,

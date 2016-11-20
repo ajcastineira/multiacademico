@@ -25,6 +25,11 @@ th.rotar-texto{width:45px;height:140px;vertical-align:bottom;}
     font-family:Tahoma;
     color:#000000
 }
+.malla-table{
+    border-top-style: none;
+    border-left-style: none;
+    text-align:center
+}
 .malla-field{
     line-height: 10px;
     height:100px;
@@ -36,3 +41,11 @@ th.rotar-texto{width:45px;height:140px;vertical-align:bottom;}
 .malla-field-rotate-min{
     width:15px;
 }
+.no-border{
+    border:none;
+}
+.border-top-solid{
+   border-top-style: solid; 
+}
+
+    

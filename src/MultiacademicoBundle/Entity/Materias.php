@@ -38,6 +38,7 @@ class Materias
      * @var string
      *
      * @ORM\Column(name="materiatipo", type="string", length=15, nullable=false)
+     * @Serializer\Groups({"list","detail","informejunta"})
      */
     private $materiatipo;
     

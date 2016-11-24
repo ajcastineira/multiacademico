@@ -18,11 +18,11 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
-        /*$this->topActions->set(array(
+        $this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
-            'end_html' => '<hr></div></div>',
+            'end_html' => '<hr></div><div id="multiacademico_datatable_filters" class="col-sm-6">Filtrar: </div></div>',
             'actions' => array(
-                array(
+                /*array(
                     'route' => $this->router->generate('misactividadesacademicas',['page'=>'new']),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
@@ -32,9 +32,9 @@ class ActividadAcademicaDetalleDatatable extends AbstractDatatableView
                         'class' => 'btn btn-primary',
                         'role' => 'button'
                     ),
-                )
+                )*/
             )
-        )); */
+        )); 
 
         $this->features->set(array(
             'auto_width' => true,

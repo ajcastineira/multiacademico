@@ -21,7 +21,7 @@ class ActividadAcademicaDatatable extends AbstractDatatableView
     {
         $this->topActions->set(array(
             'start_html' => '<div class="row"><div class="col-sm-3">',
-            'end_html' => '<hr></div></div>',
+            'end_html' => '<hr></div><div id="multiacademico_datatable_filters" class="col-sm-6">Filtrar: </div></div>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('actividadacademica',['page'=>'new']),

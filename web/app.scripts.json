@@ -89,8 +89,9 @@
       "datatables.net-select",
       "datatables.net-responsive",
       "datatables.net-responsive-bs",
-      "datatables.net-colreorder"
-
+      "datatables.net-colreorder",
+      "lodash"
+            
     ],
     "vendor.graphs": [
       "raphael",

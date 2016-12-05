@@ -18,10 +18,6 @@
         text-align: center;
     }
 </style>    
-<style media="print" type="text/css">
-@page rotated { size : landscape!important }
-table { page : rotated!important }
-</style>
 <page>
   <div class="paginah">
       {#{{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
@@ -65,8 +61,19 @@ table { page : rotated!important }
                 <td>{{CALIFICACION_META}}</td>
                 <td ng-class="{'nota-roja':meta(aula.promedio)<0}">{{meta(aula.promedio)}}</td>
              </tr>   
-             {%endverbatim%}
+         
          </tbody>
+         <tfoot>
+             <tr >
+                <th>PROMEDIO GLOBAL AREA</th>
+                <td>{{promedioGlobalArea()}}</td>
+                <td>{{promedioGlobalArea()}}</td>
+                <td>{{promedioGlobalArea()}}</td>
+                <td>{{CALIFICACION_META}}</td>
+                <td ng-class="{'nota-roja':meta(promedioGlobalArea())<0}">{{meta(promedioGlobalArea())}}</td>
+             </tr>
+         </tfoot>
+             {%endverbatim%}
      </table>    
          
       <br/>

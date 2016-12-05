@@ -12,8 +12,7 @@
                               resumenJuntaDeAreaAgrupado[key]=_.groupBy(value,'aula.curso.nivel');
                             });
                             
-                            window.resumenJuntaDeAreaAgrupado=resumenJuntaDeAreaAgrupado;
-                            $scope.resumenJuntaDeArea = resumenJuntaDeArea;
+                            window.resumenJuntaDeArea= $scope.resumenJuntaDeArea = resumenJuntaDeArea;
                             $scope.areaAcademica=areaAcademica;
                             $scope.CALIFICACION_META=CALIFICACION_META;
                             $scope.CALIFICACION_MINIMA=CALIFICACION_MINIMA;
@@ -32,6 +31,10 @@
                                     count++;
                                  });
                                 return Calificaciones.redondear(sum/count,2);
+                            };
+                            
+                            $scope.promedioGlobalArea= function(){
+                                return Calificaciones.redondear(_.meanBy(resumenJuntaDeArea,'promedio'),2);
                             };
                             
                             

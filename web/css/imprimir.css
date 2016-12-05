@@ -42,6 +42,7 @@
      margin-left: auto;
      margin-right: auto;
      line-height: 15px;
+    -webkit-transform: rotate(90deg);
 }
 .paginah2 {
      width:100%;

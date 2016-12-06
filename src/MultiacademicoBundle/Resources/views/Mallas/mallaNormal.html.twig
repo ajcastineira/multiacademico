@@ -10,7 +10,7 @@
 @page rotated { size : landscape!important }
 table { page : rotated!important }
 </style>
-<page>
+<div class="noprint">
   <div class="paginah">
      {{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
        
@@ -48,13 +48,14 @@ table { page : rotated!important }
                     <option value="1" >normal</option>
                     <option value="0">reducido</option>
                 </select>
-           <button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button>
+                {{include('MultiacademicoBundle:Reportes:botonimprimirMalla.html.twig')}}
        </div>
           <div class="detalle">
          <p class="textodetalle">
 
          </p>
      </div>
+     <div class="malla-container">           
       <table id="malla-normal" class="letraprint1" border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF" style="text-align:center">
           <thead>
              <tr> 
@@ -65,14 +66,14 @@ table { page : rotated!important }
                                 <th colspan="{{encabezado.materiacolspan()}}" data-ng-repeat="distributivo in aula.distributivos">
                                  {{distributivo.distributivocodmateria.materia}} </th> 
                              {%endverbatim%}
-             <th class="finales" ng-if="p<=3&&q<3&&aula.recibeProyectoEscolar()" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROYECTO ESCOLAR</div></th>   
-             <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>
-             <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO PARCIAL</div></th>
+             <th class="finales" ng-if="p<=3&&q<3&&aula.recibeProyectoEscolar()" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title">PROYECTO ESCOLAR</div></th>   
+             <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >COMPORTAMIENTO</div></th>
+             <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >PROMEDIO PARCIAL</div></th>
              
-             <th class="finales" ng-if="p==4&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO QUIMESTRE</div></th>
+             <th class="finales" ng-if="p==4&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title">PROMEDIO QUIMESTRE</div></th>
              
-             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">SUMA</div></th>
-             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">PROMEDIO</div></th>
+             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >SUMA</div></th>
+             <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >PROMEDIO</div></th>
              <!--
             <th rowspan="2" style="background-color: orange;vertical-align:bottom;">CLUBES: CAMPO&nbsp;DE&nbsp;ACCION</th>
             <th rowspan="2" style="background-color: orange;vertical-align:bottom;">NOTA</th>-->
@@ -81,7 +82,7 @@ table { page : rotated!important }
              <tr> 
                  <th>&nbsp;</th>
                   
-          <th style="width: 600px">
+          <th style="width: 600px" class="name-row">
              <div style="display:inline-block;vertical-align:-webkit-baseline-middle;width:250px;height:15px;font-size:8.0pt;font-family:Tahoma;color:#000000">
               Apellidos y nombres
              </div></th>
@@ -94,21 +95,21 @@ table { page : rotated!important }
                    <td ng-if="p<=3&&q<3" class="malla-field" style="background-color: gainsboro;" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">PROMEDIO</div></td>
                    <td data-ng-repeat-end ng-if="p<=3&&q<3" class="malla-field" style="background-color: gainsboro;" ><div class="solo-rotar" ng-class="{'malla-field-rotate': !estaReducido(),'malla-field-rotate-min': estaReducido() }">E.&nbsp;Cualitativa</div></td> 
                 <!-- Quimestrales -->   
-                <td  data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">I&nbsp;PARCIAL</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">II&nbsp;PARCIAL</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">III&nbsp;PARCIAL</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">PROMEDIO PARCIAL</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">80%&nbsp;DE&nbsp;LOS PARCIALES</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">EXAMEN</div></td>
-                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">20%&nbsp;DEL EXAMEN</div></td>
-                <td data-ng-repeat-end ng-if="p==4&&q<3"  style="background-color: gainsboro;height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;">N&nbsp;O&nbsp;T&nbsp;A QUIMESTRAL</div></td>
+                <td  data-ng-repeat-start="distributivo in aula.distributivos" ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title" >I&nbsp;PARCIAL</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title" >II&nbsp;PARCIAL</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title" >III&nbsp;PARCIAL</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title" >PROMEDIO PARCIAL</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title" >80%&nbsp;DE&nbsp;LOS PARCIALES</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title">EXAMEN</div></td>
+                <td ng-if="p==4&&q<3" style="background-color: white;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title">20%&nbsp;DEL EXAMEN</div></td>
+                <td data-ng-repeat-end ng-if="p==4&&q<3"  style="background-color: gainsboro;height:90px;vertical-align:bottom;"><div class="solo-rotar malla-sub-title">N&nbsp;O&nbsp;T&nbsp;A QUIMESTRAL</div></td>
 
                  
-                   <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar" style="width: 30px">PROMEDIO ANUAL</div></td> 
-                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar" style="width: 30px">EXAMEN RECUPERAC</div></td> 
-                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar" style="width: 30px">EXAMEN SUPLETORIO</div></td> 
-                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar" style="width: 30px">EXAMEN REMEDIAL</div></td> 
-                   <td data-ng-repeat-end ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar" style="width: 30px">PROMEDIO FINAL</div></td> 
+                   <td data-ng-repeat-start="distributivo in aula.distributivos" ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar malla-title">PROMEDIO ANUAL</div></td> 
+                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar malla-title" >EXAMEN RECUPERAC</div></td> 
+                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar malla-title" >EXAMEN SUPLETORIO</div></td> 
+                   <td ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar malla-title" >EXAMEN REMEDIAL</div></td> 
+                   <td data-ng-repeat-end ng-if="q==3" class="malla-field" style="background-color: gainsboro;"><div class="solo-rotar malla-title">PROMEDIO FINAL</div></td> 
                                       
             </tr>
           </thead>
@@ -118,7 +119,7 @@ table { page : rotated!important }
                   
                    <tr data-ng-repeat="alumno in aula.matriculados">
                    <td>{{alumno.id}}</td>   
-                   <td>
+                   <td class="name-row">
                         <div class="letraprint1" style="text-align: left;display:inline-block;width:250px;height:15px;">{{alumno.matriculacodestudiante.estudiante}}</div>
                    </td>
                                       
@@ -175,6 +176,7 @@ table { page : rotated!important }
               </tr>
           </tfoot>
           </table>
+     </div>              
       <!--malla-->
  <!--<div style="page-break-after: always;"></div>
 <!-- </div>
@@ -188,4 +190,6 @@ table { page : rotated!important }
   
 
 </div>
-</page>
+</div>
+ <div class="printable"></div>
+	

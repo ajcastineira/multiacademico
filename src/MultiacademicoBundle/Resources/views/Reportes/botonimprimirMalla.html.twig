@@ -1,0 +1,35 @@
+<button id="imprimirBoton" class="btn btn-warning" ><i class="fa fa-print"></i>Imprimir</button>
+<script>
+               
+               $(function() {
+			$("#imprimirBoton").on("click", function() { 
+    
+                                var table = $(".paginah"),
+                                        tableWidth = $(".paginah table").outerWidth(),
+                                        pageWidth = 720,
+                                        pageCount = Math.ceil(tableWidth / pageWidth),
+                                        printWrap = $(".printable"),
+                                        i,
+                                        printPage;
+                                var containerMalla=$(".paginah .malla-container");
+                                containerMalla.css({
+                                                    "overflow": 'visible'
+                                                   });
+                                for (i = 0; i < pageCount; i++) {
+                                        printPage = $("<div></div>").css({
+                                                "overflow": "hidden",
+                                                "width": pageWidth,
+                                                "page-break-before": i === 0 ? "auto" : "always"
+                                        }).appendTo(printWrap);
+                                        table.clone().removeAttr("id").appendTo(printPage).css({
+                                                "position": "relative",
+                                                "left": -i * pageWidth
+                                        });
+                                }
+                                containerMalla.css({
+                                                    "overflow": 'auto'
+                                                   });
+                                window.print();
+                        });
+                });
+</script>

@@ -10,7 +10,8 @@
 @page rotated { size : landscape!important }
 table { page : rotated!important }
 </style>
-<page>
+
+<div class="noprint">
   <div class="paginah">
      {{include('MultiacademicoBundle:Reportes:encabezado.html.twig')}}
        
@@ -48,13 +49,14 @@ table { page : rotated!important }
                     <option value="1" >normal</option>
                     <option value="0">reducido</option>
                 </select>
-           <button class="btn btn-warning" onclick="window.print();"><i class="fa fa-print"></i>Imprimir</button>
+           {{include('MultiacademicoBundle:Reportes:botonimprimirMalla.html.twig')}}
        </div>
           <div class="detalle">
          <p class="textodetalle">
 
          </p>
      </div>
+     <div class="malla-container">  
       <table id="malla-normal" class="malla-table letraprint1" border="1" width="100%" cellpadding="1" cellspacing="0" bgcolor="FFFFFF">
           <thead>
               <tr style="border-top:none">
@@ -233,6 +235,7 @@ table { page : rotated!important }
               </tr>#}
           </tfoot>
           </table>
+     </div>     
       <!--malla-->
  <!--<div style="page-break-after: always;"></div>
 <!-- </div>
@@ -246,9 +249,9 @@ table { page : rotated!important }
   
 
 </div>
+          </div>
      {%verbatim%}              
          <div rendimiento-estudiantil-aula-chart aula="aula" titulo="Grafico de Malla" p="p" q="q"></div>
          <div rendimiento-estudiantil-pareto-aula-chart aula="aula" titulo="Desempeño colectivo de las asignaturas todas las materias" p="p" q="q"></div>
          <div todas-materias-aula-cualitativa-chart aula="aula" titulo="Desempeño colectivo de las asignaturas todas las materias (Cualitativa)" p="p" q="q"></div>
      {%endverbatim%}
-</page>

@@ -25,6 +25,13 @@ th.rotar-texto{width:45px;height:140px;vertical-align:bottom;}
     font-family:Tahoma;
     color:#000000
 }
+.name-row{
+  /*  position:absolute;*/
+}
+.malla-container{
+    width: 100%;
+    overflow:auto;
+}
 .malla-table{
     border-top-style: none;
     border-left-style: none;
@@ -40,6 +47,13 @@ th.rotar-texto{width:45px;height:140px;vertical-align:bottom;}
 }
 .malla-field-rotate-min{
     width:15px;
+}
+.malla-title{
+   width:30px;     
+}
+.malla-sub-title{
+    width: 20px;
+    line-height: 1em;
 }
 .no-border{
     border:none;

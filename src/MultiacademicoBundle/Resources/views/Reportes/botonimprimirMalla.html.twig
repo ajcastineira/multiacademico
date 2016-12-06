@@ -4,24 +4,25 @@
                $(function() {
 			$("#imprimirBoton").on("click", function() { 
     
-                                var table = $(".paginah"),
-                                        tableWidth = $(".paginah table").outerWidth(),
+                                var table = $(".malla-pagina"),
+                                        tableWidth = $(".malla-pagina table").outerWidth(),
                                         pageWidth = 720,
                                         pageCount = Math.ceil(tableWidth / pageWidth),
                                         printWrap = $(".printable"),
                                         i,
                                         printPage;
-                                var containerMalla=$(".paginah .malla-container");
+                                var containerMalla=$(".malla-pagina .malla-container");
                                 containerMalla.css({
                                                     "overflow": 'visible'
                                                    });
+                                printWrap.html('');
                                 for (i = 0; i < pageCount; i++) {
                                         printPage = $("<div></div>").css({
                                                 "overflow": "hidden",
                                                 "width": pageWidth,
                                                 "page-break-before": i === 0 ? "auto" : "always"
                                         }).appendTo(printWrap);
-                                        table.clone().removeAttr("id").appendTo(printPage).css({
+                                        table.clone().removeClass("malla-pagina").appendTo(printPage).css({
                                                 "position": "relative",
                                                 "left": -i * pageWidth
                                         });

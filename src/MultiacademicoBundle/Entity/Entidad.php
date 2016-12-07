@@ -124,11 +124,20 @@ class Entidad
     private $configAnioLectivo;
     
     
+    /**
+     * @var \Periodos
+     *
+     * @ORM\ManyToOne(targetEntity="Periodos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="periodo_activo", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $periodoActivo;
     
     
     public $logoUrl=AWSS3Helper::AWS_URL_TMP.'/escudo.png';
 
-
+    
     /**
      * Get id
      *
@@ -469,5 +478,29 @@ class Entidad
     public function getConfigAnioLectivo()
     {
         return $this->configAnioLectivo;
+    }
+
+    /**
+     * Set periodoActivo
+     *
+     * @param \MultiacademicoBundle\Entity\Periodos $periodoActivo
+     *
+     * @return Entidad
+     */
+    public function setPeriodoActivo(\MultiacademicoBundle\Entity\Periodos $periodoActivo)
+    {
+        $this->periodoActivo = $periodoActivo;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoActivo
+     *
+     * @return \MultiacademicoBundle\Entity\Periodos
+     */
+    public function getPeriodoActivo()
+    {
+        return $this->periodoActivo;
     }
 }

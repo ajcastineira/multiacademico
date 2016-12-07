@@ -66,6 +66,18 @@
                                     return calificacionComportamiento;
                                         });
                             };
+                            
+                            
+                            var getPromediosComportamientoQuimestre = $scope.getPromediosComportamientoQuimestre = function(q)
+                            {
+                                 if (typeof q==='undefined') q=$scope.q;
+                                
+                                return getPromediosFromFunction(function(matriculado){
+                                    if (typeof matriculado.comportamiento==='undefined') return 'S.C.';
+                                    return Calificaciones.getPromedioComportamientoQuimestre(matriculado.comportamiento,q);
+                                        });
+                            };
+                            
                             var getPromediosFromFunction = $scope.getPromediosFromFunction = function(callBackFn)
                             {
                                 return _.map($scope.aula.matriculados, callBackFn);
@@ -331,6 +343,14 @@
                                 return calificacionparcialcomportamiento;
                             };
                             
+                            $scope.comportamientoQuimestre=function(i,q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof $scope.aula.matriculados[i].comportamiento==='undefined') return 'S.C.';
+                                return Calificaciones.getPromedioComportamientoQuimestre($scope.aula.matriculados[i].comportamiento,q);
+                                
+                            };
+                            
                             var buttonToggleMateria= function(text,columns){
                                   return {
                                     extend: 'columnToggle',
@@ -365,8 +385,12 @@
                             };
                             
                             var encabezadoTable=['Comportamiento','Valor'];
-                            $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
                             
+                            if ($scope.p<=3&&$scope.q<3){
+                                $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
+                            }else if ($scope.p==4&&$scope.q<3){
+                                $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoQuimestre($scope.q))));
+                            }
                             var crearDataTable=function(){
                                     var dTable= jQuery('#malla-normal').DataTable( {
                                         dom: 'B',

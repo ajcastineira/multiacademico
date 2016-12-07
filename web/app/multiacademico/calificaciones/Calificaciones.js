@@ -4,7 +4,7 @@
 
     "use strict";
     
-    angular.module('multiacademico').service('Calificaciones', function(qualitativeScores, LETRAS,QUIMESTRES,PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META)
+    angular.module('multiacademico').service('Calificaciones', function(qualitativeScores, LETRAS, A_LETRAS,QUIMESTRES,PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META)
     {
         var parcialesnotas={
                                1:{label:"Primera Nota Parcial"},
@@ -192,54 +192,59 @@
                               }
 
                      };
-                   var apruebaMateria = function (calificacion)
-                     {
-                       if (getPromedioFinal(calificacion)>=7)
-                        return true;
-                        else 
-                        return false;
-                     };
-                    var getSumaFinal = function (calificaciones) //total de quimestres unicamente
-                          {
-                               var s=0;
-                               for (var index in calificaciones)
-                               {
-                                    var calificacion = calificaciones[index]; 
-                                    s+=getPromedioFinal(calificacion);
-                            };
-                            
-                                return redondear(s,2);
-                           };  
-                   var getPromedioGeneral = function (calificaciones) //total de quimestres unicamente
-                          {
-                               var s=0,i=0;
-                               for (var index in calificaciones)
-                               {
-                                    i++;
-                                    var calificacion = calificaciones[index]; 
-                                    s+=getPromedioFinal(calificacion);
-                            };
-                            var r=(s/i);
-                                return redondear(r,2);
-                           };   
-                    
-                    var apruebaAnio = function (calificaciones)
+        var apruebaMateria = function (calificacion)
+         {
+           if (getPromedioFinal(calificacion)>=7)
+            return true;
+            else 
+            return false;
+         };
+        var getSumaFinal = function (calificaciones) //total de quimestres unicamente
+              {
+                   var s=0;
+                   for (var index in calificaciones)
+                   {
+                        var calificacion = calificaciones[index]; 
+                        s+=getPromedioFinal(calificacion);
+                };
+
+                    return redondear(s,2);
+               };  
+        var getPromedioGeneral = function (calificaciones) //total de quimestres unicamente
+              {
+                   var s=0,i=0;
+                   for (var index in calificaciones)
+                   {
+                        i++;
+                        var calificacion = calificaciones[index]; 
+                        s+=getPromedioFinal(calificacion);
+                };
+                var r=(s/i);
+                    return redondear(r,2);
+               };   
+
+        var apruebaAnio = function (calificaciones)
+            {
+                for (var index in calificaciones)
+                   {
+
+                        var calificacion = calificaciones[index]; 
+                        if (!apruebaMateria(calificacion))
                         {
-                            for (var index in calificaciones)
-                               {
-                                    
-                                    var calificacion = calificaciones[index]; 
-                                    if (!apruebaMateria(calificacion))
-                                    {
-                                        return false;
-                                    }
-                                };
-                            
-                                return true;
-                        };             
-                     
-                     
-                     
+                            return false;
+                        }
+                    };
+
+                    return true;
+            };             
+
+
+        var getPromedioComportamientoQuimestre=function(comportamiento,q){
+                return A_LETRAS[Math.floor((LETRAS[comportamiento['agdc_q'+q+'_p1']]+
+                       LETRAS[comportamiento['agdc_q'+q+'_p2']]+
+                       LETRAS[comportamiento['agdc_q'+q+'_p3']])/3)];
+
+        }
         
         return {
                     quimestres: QUIMESTRES,
@@ -267,7 +272,8 @@
                     apruebaAnio:apruebaAnio,
                     getAlturaNota: alturaNota,
                     getNotaCualitativa: qualitativeScores.getNotaCualitativa,
-                    getCualitativa: qualitativeScores.getCualitativa
+                    getCualitativa: qualitativeScores.getCualitativa,
+                    getPromedioComportamientoQuimestre:getPromedioComportamientoQuimestre
                     
                };
             }

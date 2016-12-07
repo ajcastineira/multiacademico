@@ -8,7 +8,8 @@ angular.module('multiacademico')
        .constant('CALIFICACION_META',8.5)
        .constant('CALIFICACION_MAXIMA',10)
        .constant('CALIFICACION_MINIMA',7.5)
-       .constant('LETRAS', { 'A':10,'B':9,'C':8,'D':6,'E':4,'F':3,'':0})
+       .constant('LETRAS', { 'A':10,'B':9,'C':8,'D':6,'E':4,'F':3,'':0,'N/A':0,'S/C':0})
+       .constant('A_LETRAS', { '10':'A','9':'B','8':'C','7':'C','6':'D','5':'E','4':'E','3':'F','2':'F','0':'N/A'})
        .constant('QUIMESTRES',[
                                     {id:1,label:"PRIMER QUIMESTRE"},
                                     {id:2,label:"SEGUNDO QUIMESTRE"},

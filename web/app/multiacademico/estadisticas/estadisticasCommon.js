@@ -19,7 +19,7 @@
                 nAAR: nAAR,
                 nDAR: nDAR
             };
-         }    
+         }
      
      var resumenDeNotasPorAltura= function(array){
          
@@ -58,8 +58,25 @@
         return result;
      }
      
+     var resumenDeNotasPorLetra= function(array){
+         
+         var resumen=_.countBy(array);
+         var result={
+             A:resumen.A||0,
+             B:resumen.B||0,
+             C:resumen.C||0,
+             D:resumen.D||0,
+             E:resumen.E||0,
+            'SinNota':resumen['N/A']||0,
+            'SinComportamiento':resumen['S.C']||0
+         };
+        
+        return result;
+     };
+     
      return {
          resumenDeNotasPorAltura:resumenDeNotasPorAltura,
-         resumenDeNotasPorCualidad:resumenDeNotasPorCualidad
-     }
+         resumenDeNotasPorCualidad:resumenDeNotasPorCualidad,
+         resumenDeNotasPorLetra: resumenDeNotasPorLetra
+     };
  });

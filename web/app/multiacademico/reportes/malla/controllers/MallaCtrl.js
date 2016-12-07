@@ -53,12 +53,23 @@
                                     return 7;
                                 }
                             };
-                           
+                            
+                            var getPromediosComportamientoParcial = $scope.getPromediosComportamientoParcial = function(q,p)
+                            {
+                                 if (typeof q==='undefined') q=$scope.q;
+                                if (typeof p==='undefined') p=$scope.p;
+                                
+                                return getPromediosFromFunction(function(matriculado){
+                                    if (typeof matriculado.comportamiento==='undefined') return 'S.C.';
+                                    var calificacionComportamiento=matriculado.comportamiento['agdc_q'+q+'_p'+p];
+                                    if (typeof calificacionComportamiento==='undefined') calificacionComportamiento='N/A';
+                                    return calificacionComportamiento;
+                                        });
+                            };
                             var getPromediosFromFunction = $scope.getPromediosFromFunction = function(callBackFn)
                             {
                                 return _.map($scope.aula.matriculados, callBackFn);
                             };
-                            
                             var getPromediosFromFunctionParcialesMateria=$scope.getPromediosFromFunctionParcialesMateria = function(q,p,m,callBackFn){
                                 return getPromediosFromFunction(function(matriculado){
                                     return callBackFn(q,p,$scope.findCalificacion(matriculado,m));
@@ -352,6 +363,10 @@
                                 }
                                 return resultButtons;
                             };
+                            
+                            var encabezadoTable=['Comportamiento','Valor'];
+                            $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
+                            
                             var crearDataTable=function(){
                                     var dTable= jQuery('#malla-normal').DataTable( {
                                         dom: 'B',

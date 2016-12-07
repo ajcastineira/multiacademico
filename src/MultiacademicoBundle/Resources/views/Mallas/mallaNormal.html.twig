@@ -70,6 +70,7 @@ table { page : rotated!important }
              <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >COMPORTAMIENTO</div></th>
              <th class="finales" ng-if="p<=3&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >PROMEDIO PARCIAL</div></th>
              
+             <th class="finales" ng-if="p==4&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar" style="width: 30px;">COMPORTAMIENTO</div></th>
              <th class="finales" ng-if="p==4&&q<3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title">PROMEDIO QUIMESTRE</div></th>
              
              <th class="finales" ng-if="q==3" rowspan="2" style="vertical-align:bottom;"><div class="solo-rotar malla-title" >SUMA</div></th>
@@ -151,6 +152,7 @@ table { page : rotated!important }
                             <td ng-if="p<=3&&q<3" ng-class="{'btn-danger':comportamientoparcial($index,q,p)=='S.C.','btn-warning':comportamientoparcial($index,q,p)=='N/A'}">{{comportamientoparcial($index,q,p)}}</td> 
                             <td ng-if="p<=3&&q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgp($index,q,p)}}</td>
                             
+                            <td ng-if="p==4&&q<3" ng-class="{'btn-danger':comportamientoparcial($index,q,p)=='S.C.','btn-warning':comportamientoQuimestre($index,q)=='N/A'}">{{comportamientoQuimestre($index,q)}}</td>
                             <td ng-if="p==4&&q<3" style=" -webkit-print-color-adjust:exact;background-color:yellow;">{{prgq($index,q)}}</td> 
                             
                            <td ng-if="q==3">{{sumf($index)}}</td> 

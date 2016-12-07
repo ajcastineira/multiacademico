@@ -142,13 +142,22 @@
                     <tbody><tr bgcolor="FFFFFF" height="20">
                             <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>APRECIACION GENERAL DEL COMPORTAMIENTO (A,B,C,D,E)</b></span></td>
                             <td ng-if="p<=3" style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{comportamientoParcial(q,p)}}</b></span></td>
+                            <td ng-if="p==4" style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{comportamientoQuimestre(q)}}</b></span></td>
                             </tr>
-                        <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE ESTÁ BIEN</b></span></td>
-                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoEstaBienParcial(q,p)}}</span></td></tr>
+                        <tr bgcolor="FFFFFF" height="20">
+                            <td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE ESTÁ BIEN</b></span></td>
+                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoEstaBienParcial(q,p)}}</span></td>
+                            <td ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoEstaBienParcial(q,3)}}</span></td>
+                        </tr>
+                        
                         <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>LO QUE HAY QUE MEJORAR)</b></span></td>
                             <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoMejorarParcial(q,p)}}</span></td></tr>
+                        <td ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoMejorarParcial(q,3)}}</span></td>
+                        </tr>
                         <tr bgcolor="FFFFFF" height="20"><td width="300"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>RECOMENDACIONES PARA LO QUE HAY QUE MEJORAR </b></span></td>
-                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoRecomendacionParcial(q,p)}}</span></td></tr>
+                            <td ng-if="p<=3"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoRecomendacionParcial(q,p)}}</span></td>
+                            <td ng-if="p==4"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{comportamientoRecomendacionParcial(q,3)}}</span></td>
+                        </tr>
                     </tbody>
                 </table><br>
                 {%endverbatim%}

@@ -125,6 +125,14 @@
                                 if (typeof calificacionparcialcomportamiento==='undefined') calificacionparcialcomportamiento='Sin Nota';
                                 return calificacionparcialcomportamiento;
                             };
+                            
+                            $scope.comportamientoQuimestre=function(q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof $scope.estudiante.comportamiento==='undefined') return 'S.C.';
+                                return Calificaciones.getPromedioComportamientoQuimestre($scope.estudiante.comportamiento,q);
+                            };
+                            
                            $scope.comportamientoRecomendacionParcial=function(q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;

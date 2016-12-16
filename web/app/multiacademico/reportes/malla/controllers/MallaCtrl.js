@@ -35,7 +35,7 @@
                                 materiacolspan:function()
                                 {
                                     var colspan=5;
-                                    if ($scope.tipo=="estadistica"){
+                                    if ($scope.tipo==="estadistica"){
                                         var colspan=0;
                                     }
                                     if ($scope.p<=3&& $scope.q<3)
@@ -101,7 +101,7 @@
                             
                             $scope.clasificarPromediosPorAltura=function(array){
                                 return estadisticasCommon.resumenDeNotasPorAltura(array);
-                            }
+                            };
                             
                             
                             $scope.Materias={};
@@ -391,13 +391,14 @@
                                         if ($scope.p<=3&&$scope.q<3){
                                             $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
                                             $scope.listadoAlumnosPromedioGeneral=_.map($scope.aula.matriculados,
-                                                                                            (matriculado)=>{
+                                                                                            function(matriculado){
                                                                                                 return [matriculado.matriculacodestudiante.estudiante,Calificaciones.getPromedioTotalParcial($scope.q,$scope.p,matriculado.calificaciones)];
                                                                                                 });
-                                        }else if ($scope.p==4&&$scope.q<3){
+                                        }
+                                        else if ($scope.p==4&&$scope.q<3){
                                             $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoQuimestre($scope.q))));
                                             $scope.listadoAlumnosPromedioGeneral=_.map($scope.aula.matriculados,
-                                                                                            (matriculado)=>{
+                                                                                            function(matriculado){
                                                                                                 return [matriculado.matriculacodestudiante.estudiante,Calificaciones.getPromedioTotalQuimestre($scope.q,matriculado.calificaciones)];
                                                                                                 });
                                         }

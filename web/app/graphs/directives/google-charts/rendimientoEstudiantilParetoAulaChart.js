@@ -96,7 +96,7 @@ angular.module('app.graphs').directive('rendimientoEstudiantilParetoAulaChart',
                         chart.draw(data, options);
                       }
                       
-                    scope.$on('destroy', function(){
+                    scope.$on('$destroy', function(){
                         listenQ();
                         listenP();
                     });

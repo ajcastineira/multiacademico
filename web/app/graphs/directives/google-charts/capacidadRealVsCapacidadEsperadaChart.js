@@ -95,7 +95,7 @@ angular.module('app.graphs').directive('capacidadRealVsCapacidadEsperadaChart',
                         
                       }
 
-                    scope.$on('destroy', function(){
+                    scope.$on('$destroy', function(){
                         listenQ();
                         listenP();
                     });

@@ -93,7 +93,7 @@ angular.module('app.graphs').directive('comportamientoAulaChart',
                         
                       }
 
-                    scope.$on('destroy', function(){
+                    scope.$on('$destroy', function(){
                         listenQ();
                         listenP();
                     });

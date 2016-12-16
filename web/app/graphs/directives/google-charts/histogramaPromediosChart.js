@@ -84,8 +84,7 @@ angular.module('app.graphs').directive('histogramaPromediosChart',
                         
                       }
 
-                    scope.$on('destroy', function(){
-                        console.log('se destruyo el grafico');
+                    scope.$on('$destroy', function(){
                         listenQ();
                         listenP();
                     });

@@ -97,7 +97,7 @@ angular.module('app.graphs').directive('materiaAulaCualitativoChart',
                     
                       
                       
-                    scope.$on('destroy', function(){
+                    scope.$on('$destroy', function(){
                         
                     });
                 }

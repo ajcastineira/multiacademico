@@ -5,6 +5,7 @@ namespace MultiacademicoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use AppBundle\Lib\AWSS3Helper;
+use MultiacademicoBundle\Entity\Periodos;
 
 /**
  * Entidad
@@ -487,7 +488,7 @@ class Entidad
      *
      * @return Entidad
      */
-    public function setPeriodoActivo(\MultiacademicoBundle\Entity\Periodos $periodoActivo)
+    public function setPeriodoActivo(Periodos $periodoActivo)
     {
         $this->periodoActivo = $periodoActivo;
 

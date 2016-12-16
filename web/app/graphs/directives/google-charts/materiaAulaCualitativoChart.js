@@ -9,7 +9,9 @@ angular.module('app.graphs').directive('materiaAulaCualitativoChart',
                   return {
                      pre: function preLink(scope, iElement, iAttrs, controller) {
                         
-                         
+                         /**
+                          * promediosDeEsteCurso se lo obtiene del window por ahora para que no afecte al modal
+                          */
                          scope.promediosAula=promediosDeEsteCurso;
                     google.charts.load('current', {'packages':['corechart']});
                     var promediosAulaCualitativos=[];

@@ -129,7 +129,13 @@
             <tbody><tr height="25" bgcolor="FFFFFF"><td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Proyectos Escolares ({{estudiante.proyectoescolar.codclub.club}})</b></span></td></tr></tbody>
         </table>
             <table border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
-                <tbody><tr bgcolor="FFFFFF" height="20"><td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nota del Proyecto</b></span></td><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{proyectoparcial(q,p)}}</b></span></td></tr></tbody>
+                <tbody>
+                    <tr bgcolor="FFFFFF" height="20">
+                        <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Nota del Proyecto</b></span></td>
+                        <td ng-if="p<=3" style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{proyectoparcial(q,p)}}</b></span></td>
+                        <td ng-if="p==4" style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{proyectoQuimestre(q)}}</b></span></td>
+                    </tr>
+                </tbody>
             </table><br>
                 <table border="1" width="630" cellpadding="2" cellspacing="1" bgcolor="000000" style="margin: auto;">
                     <tbody><tr height="25" bgcolor="FFFFFF">

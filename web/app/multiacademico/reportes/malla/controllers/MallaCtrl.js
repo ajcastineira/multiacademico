@@ -317,6 +317,7 @@
                                     
                                     $scope.encabezado.titulo="CUADRO DE CALIFICACIONES DEL QUIMESTRE "+$scope.q;
                                     }
+                                    calcularTablasGraficos();
                                     $scope.dataTable.destroy();
                                     $timeout(function () {
                                         $scope.dataTable=crearDataTable();
@@ -386,11 +387,26 @@
                             
                             var encabezadoTable=['Comportamiento','Valor'];
                             
-                            if ($scope.p<=3&&$scope.q<3){
-                                $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
-                            }else if ($scope.p==4&&$scope.q<3){
-                                $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoQuimestre($scope.q))));
-                            }
+                            var calcularTablasGraficos= function(){
+                                        if ($scope.p<=3&&$scope.q<3){
+                                            $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoParcial($scope.q,$scope.p))));
+                                            $scope.listadoAlumnosPromedioGeneral=_.map($scope.aula.matriculados,
+                                                                                            (matriculado)=>{
+                                                                                                return [matriculado.matriculacodestudiante.estudiante,Calificaciones.getPromedioTotalParcial($scope.q,$scope.p,matriculado.calificaciones)];
+                                                                                                });
+                                        }else if ($scope.p==4&&$scope.q<3){
+                                            $scope.resumenComportamientoTable=_.union([encabezadoTable],_.toPairs(estadisticasCommon.resumenDeNotasPorLetra(getPromediosComportamientoQuimestre($scope.q))));
+                                            $scope.listadoAlumnosPromedioGeneral=_.map($scope.aula.matriculados,
+                                                                                            (matriculado)=>{
+                                                                                                return [matriculado.matriculacodestudiante.estudiante,Calificaciones.getPromedioTotalQuimestre($scope.q,matriculado.calificaciones)];
+                                                                                                });
+                                        }
+                                        $scope.histograma= _.union([['Alumno', 'Nota']], $scope.listadoAlumnosPromedioGeneral);
+                                    };
+                             calcularTablasGraficos();
+                            
+                            
+                             
                             var crearDataTable=function(){
                                     var dTable= jQuery('#malla-normal').DataTable( {
                                         dom: 'B',

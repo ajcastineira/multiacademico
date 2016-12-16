@@ -4,7 +4,7 @@
 
     "use strict";
     
-    angular.module('multiacademico').service('Calificaciones', function(qualitativeScores, LETRAS, A_LETRAS,QUIMESTRES,PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META)
+    angular.module('multiacademico').service('Calificaciones', function(qualitativeScores, LETRAS,LETRAS_PROYECTOS, A_LETRAS,A_LETRAS_PROYECTOS, QUIMESTRES,PARCIALES,CALIFICACION_MINIMA,CALIFICACION_META)
     {
         var parcialesnotas={
                                1:{label:"Primera Nota Parcial"},
@@ -244,7 +244,12 @@
                        LETRAS[comportamiento['agdc_q'+q+'_p2']]+
                        LETRAS[comportamiento['agdc_q'+q+'_p3']])/3)];
 
-        }
+        };
+        var getPromedioProyectoEscolarQuimestre=function(proyecto,q){
+                return A_LETRAS_PROYECTOS[Math.floor((LETRAS_PROYECTOS[proyecto['nota_q'+q+'_p1']]+
+                       LETRAS_PROYECTOS[proyecto['nota_q'+q+'_p2']]+
+                       LETRAS_PROYECTOS[proyecto['nota_q'+q+'_p3']])/3)];
+        };
         
         return {
                     quimestres: QUIMESTRES,
@@ -273,7 +278,8 @@
                     getAlturaNota: alturaNota,
                     getNotaCualitativa: qualitativeScores.getNotaCualitativa,
                     getCualitativa: qualitativeScores.getCualitativa,
-                    getPromedioComportamientoQuimestre:getPromedioComportamientoQuimestre
+                    getPromedioComportamientoQuimestre:getPromedioComportamientoQuimestre,
+                    getPromedioProyectoEscolarQuimestre:getPromedioProyectoEscolarQuimestre
                     
                };
             }

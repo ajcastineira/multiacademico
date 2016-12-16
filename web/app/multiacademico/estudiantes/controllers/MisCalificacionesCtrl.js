@@ -116,6 +116,14 @@
                                 if (typeof calificacionparcialproyecto==='undefined') calificacionparcialproyecto='Sin Nota';
                                 return calificacionparcialproyecto;
                             };
+                            
+                            $scope.proyectoQuimestre=function(q)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                if (typeof $scope.estudiante.proyectoescolar==='undefined') return 'Sin Proyecto';
+                                return Calificaciones.getPromedioProyectoEscolarQuimestre($scope.estudiante.proyectoescolar,q);
+                            };
+                            
                             $scope.comportamientoParcial=function(q,p)
                             {
                                 if (typeof q==='undefined') q=$scope.q;

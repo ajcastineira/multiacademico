@@ -9,7 +9,9 @@ angular.module('multiacademico')
        .constant('CALIFICACION_MAXIMA',10)
        .constant('CALIFICACION_MINIMA',7.5)
        .constant('LETRAS', { 'A':10,'B':9,'C':8,'D':6,'E':4,'F':3,'':0,'N/A':0,'S/C':0})
-       .constant('A_LETRAS', { '10':'A','9':'B','8':'C','7':'C','6':'D','5':'E','4':'E','3':'F','2':'F','0':'N/A'})
+       .constant('LETRAS_PROYECTOS', { 'EX':10,'MB':9,'B':8,'R':6,'I':4,'N/A':0,'S/P':0,'Sin Nota':0,'Sin Proyecto':0})
+       .constant('A_LETRAS', { '10':'A','9':'B','8':'C','7':'C','6':'D','5':'E','4':'E','3':'F','2':'F','0':'Sin Nota'})
+       .constant('A_LETRAS_PROYECTOS', { '10':'EX','9':'MB','8':'B','7':'B','6':'R','5':'R','4':'I','3':'I','2':'I','0':'N/A'})
        .constant('QUIMESTRES',[
                                     {id:1,label:"PRIMER QUIMESTRE"},
                                     {id:2,label:"SEGUNDO QUIMESTRE"},

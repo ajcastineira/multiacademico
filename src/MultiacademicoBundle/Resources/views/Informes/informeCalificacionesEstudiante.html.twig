@@ -118,10 +118,19 @@
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Justificadas</b></span></td>
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Injustificadas</b></span></td>
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Total Faltas</b></span></td>
-                </tr><tr bgcolor="FFFFFF" height="20"><td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosParcial(q,p)}}</b></span></td>
+                </tr>
+                <tr ng-if="p<=3" bgcolor="FFFFFF" height="20">
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosParcial(q,p)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasParcial(q,p)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasParcial(q,p)}}</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasParcial(q,p)}}</b></span></td></tr>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasParcial(q,p)}}</b></span></td>
+                </tr>
+                <tr ng-if="p==4" bgcolor="FFFFFF" height="20">
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasQuimestre(q)}}</b></span></td>
+                </tr>
                 <tr></tr>
             </tbody></table>
     <br>

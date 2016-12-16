@@ -56,7 +56,7 @@ class Post implements PostInterface
 
     protected $tags;
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     protected $comments;
 

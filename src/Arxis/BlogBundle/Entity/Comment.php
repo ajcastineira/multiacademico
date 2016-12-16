@@ -94,7 +94,7 @@ class Comment implements CommentInterface
      * Post for which the comment is related to.
      *
      * @var \Arxis\BlogBundle\Entity\PostInterface
-     * @ORM\ManyToOne(targetEntity="Post")
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="post", referencedColumnName="id", nullable=false)
      * })

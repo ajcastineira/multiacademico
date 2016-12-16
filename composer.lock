@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc23d7ae4ad658012b52efd56d6fd897",
-    "content-hash": "fd4a486aa7f54be62f28033b2ce376e3",
+    "hash": "720bdfe2d2e675c5d0e78979917553b9",
+    "content-hash": "75000bcfd4722eb3c75a187ec770f1c2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5419,16 +5419,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.1.8",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ae37418e617a6e063482d931d22b1f67b23785f9"
+                "reference": "5824d423678a0cc44f3eb46efc246aecd1836dd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ae37418e617a6e063482d931d22b1f67b23785f9",
-                "reference": "ae37418e617a6e063482d931d22b1f67b23785f9",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5824d423678a0cc44f3eb46efc246aecd1836dd7",
+                "reference": "5824d423678a0cc44f3eb46efc246aecd1836dd7",
                 "shasum": ""
             },
             "require": {
@@ -5496,6 +5496,7 @@
                 "symfony/validator": "self.version",
                 "symfony/var-dumper": "self.version",
                 "symfony/web-profiler-bundle": "self.version",
+                "symfony/workflow": "self.version",
                 "symfony/yaml": "self.version"
             },
             "require-dev": {
@@ -5505,7 +5506,7 @@
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.4",
                 "doctrine/orm": "~2.4,>=2.4.5",
-                "egulias/email-validator": "~1.2,>=1.2.1",
+                "egulias/email-validator": "~1.2,>=1.2.8|~2.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection-docblock": "^3.0",
@@ -5517,7 +5518,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -5556,7 +5557,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-12-13 12:52:30"
+            "time": "2016-12-13 13:20:15"
         },
         {
             "name": "twig/extensions",

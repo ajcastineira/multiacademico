@@ -49,6 +49,12 @@ table { page : rotated!important }
                     <option value="1" >normal</option>
                     <option value="0">reducido</option>
                 </select>
+
+                <label>
+                <input id="mostrar_estudiante" type="checkbox" data-toggle="toggle" data-ng-model="staticStudents" data-ng-change="changeStaticStudents()">
+                Resaltar estudiante
+                </label>
+
            {{include('MultiacademicoBundle:Reportes:botonimprimirMalla.html.twig')}}
        </div>
           <div class="detalle">
@@ -94,7 +100,7 @@ table { page : rotated!important }
              <tr> 
                  <th>&nbsp;</th>
                   
-          <th style="width: 600px">
+          <th style="width: 600px" class="name-row">
              <div style="display:inline-block;vertical-align:-webkit-baseline-middle;width:250px;height:15px;font-size:8.0pt;font-family:Tahoma;color:#000000">
               Apellidos y nombres
              </div></th>
@@ -126,7 +132,7 @@ table { page : rotated!important }
                   
                    <tr data-ng-repeat="alumno in aula.matriculados">
                    <td>{{alumno.id}}</td>   
-                   <td>
+                   <td data-ng-style="estilo" class="name-row">
                         <div class="letraprint1" style="text-align: left;display:inline-block;width:250px;height:15px;">{{alumno.matriculacodestudiante.estudiante}}</div>
                    </td>
                                       

@@ -94,6 +94,17 @@
                                 });
                             };
                             
+                            $scope.changeStaticStudents=function(){
+                               if (!$scope.staticStudents){
+                                $scope.estilo={
+                                            position: 'relative'
+                                        };
+                                    }else{
+                                        $scope.estilo={
+                                            position: 'absolute'
+                                        };
+                                    }
+                            };
                             
                             $scope.findCalificacion = function(alumno, idmateria){
                                 return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});

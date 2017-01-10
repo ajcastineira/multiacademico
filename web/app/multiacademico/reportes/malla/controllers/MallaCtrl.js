@@ -109,6 +109,7 @@
                                         $scope.estilo={
 
                                         position: 'absolute',
+                                        "background-color": '#ffffff',
 
                                         }
                                     }

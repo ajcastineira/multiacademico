@@ -48,6 +48,12 @@ table { page : rotated!important }
                     <option value="1" >normal</option>
                     <option value="0">reducido</option>
                 </select>
+
+                <label>
+                <input id="mostrar_estudiante" type="checkbox" data-toggle="toggle" data-ng-model="staticStudents" data-ng-change="changeStaticStudents()">
+                Resaltar estudiante
+                </label>
+
                 {{include('MultiacademicoBundle:Reportes:botonimprimirMalla.html.twig')}}
        </div>
           <div class="detalle">
@@ -120,7 +126,7 @@ table { page : rotated!important }
                   
                    <tr data-ng-repeat="alumno in aula.matriculados">
                    <td>{{alumno.id}}</td>   
-                   <td class="name-row">
+                   <td data-ng-style="estilo" class="name-row">
                         <div class="letraprint1" style="text-align: left;display:inline-block;width:250px;height:15px;">{{alumno.matriculacodestudiante.estudiante}}</div>
                    </td>
                                       

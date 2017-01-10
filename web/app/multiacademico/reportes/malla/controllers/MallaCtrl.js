@@ -101,7 +101,8 @@
                                         };
                                     }else{
                                         $scope.estilo={
-                                            position: 'absolute'
+                                            'position': 'absolute',
+                                            'background-color': '#ffffff'
                                         };
                                     }
                             };

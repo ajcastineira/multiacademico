@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="{{asset('css/multiacademico.css')}}">
 <link rel="stylesheet" href="{{asset('css/certificados.css')}}">
-<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">
-<script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
-<link rel="stylesheet" href="{{asset('bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">  
+<link rel="stylesheet" href="{{asset('css/imprimir.css')}}">  
 <style>
     .dataTable thead tr th:first-child {
         min-width: 20px;
@@ -42,21 +40,15 @@ table { page : rotated!important }
             <b>Quimestre Activo: {{'{{q}}'}} </b>
        <select data-ng-model="q" data-ng-init="q=qop[q-1].id" data-ng-options="q.id as q.label for q in qop" data-ng-change="changeq()" >
        </select> 
-
-
             <b>Parcial Activo:{{'{{p}}'}} </b>
                 <select data-ng-model="p" data-ng-init="p=pop[p-1].id" data-ng-options="p.id as p.label for p in pop" data-ng-change="changeq()" >
                 </select>
                 <select data-ng-init="tam='1'" data-ng-model="tam">
                     <option value="1" >normal</option>
                     <option value="0">reducido</option>
-                </select>
-
-                <label>
-                <input id="mostrar_estudiante" type="checkbox" data-toggle="toggle" data-ng-model="staticStudents" data-ng-change="changeStaticStudents()">
-                Resaltar estudiante
-                </label>
-
+                </select>               
+<label class="checkbox-inline"><input class="checkbox" type="checkbox" data-toggle="toggle" data-ng-model="staticStudents"
+data-ng-change="changeStaticStudents()"><b>Resaltar estudiantes</b></label>
            {{include('MultiacademicoBundle:Reportes:botonimprimirMalla.html.twig')}}
        </div>
           <div class="detalle">

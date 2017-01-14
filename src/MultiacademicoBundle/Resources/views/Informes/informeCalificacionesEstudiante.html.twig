@@ -62,22 +62,28 @@
             <td ng-if="q<3&&p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_ex_20.png')}}" border="0"></td>
             <td ng-if="q<3&&p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_pr_100.png')}}" border="0"></td>
             <td ng-if="q<3&&p>3" width="35" bgcolor="FFFFFF"><img src="{{asset('bundles/multiacademico/img/text_cu.png')}}" border="0"></td>
+
+                        <!--Anual -->
+                        
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Q1</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Q2</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Promedio Anual</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Mejoramiento</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Supletorio</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Remedial</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Gracia</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Promedio final</td>
+                        <td ng-if="q==3" width="35" bgcolor="FFFFFF">Estado (Aprueba o no aprueba)</td>
+                        
+                        <!--Anual-->
             
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Q1</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Q2</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Promedio Anual</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Mejoramiento</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Supletorio</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Remedial</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Gracia</td>
-            <td ng-if="q==3" width="35" bgcolor="FFFFFF">Estado (Aprueba o no aprueba)</td>
             <!--<td width="35"  style="height:90px;vertical-align:bottom;"><div class="solo-rotar" style="width: 20px;line-height: 1em;font-size:8.0pt;font-family:Tahoma;color:#000000">Comportamiento</div></td>-->
             </tr>
             </tbody></table>
             
             <table class="table-striped" border="1" width="630" cellpadding="1" cellspacing="1" bgcolor="000000" style="margin: auto;">
                 <tbody>
-                    <tr bgcolor="FFFFFF" height="20" data-ng-repeat="calificacion in estudiante.calificaciones">
+                    <tr bgcolor="000000" height="20" data-ng-repeat="calificacion in estudiante.calificaciones">
                         {%verbatim%}
                         <td>
                             <span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion.calificacioncodmateria.materia}}</span>
@@ -98,6 +104,19 @@
                         <td ng-if="q<3&&p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{ex20(q,calificacion)}}</span></td>
                         <td ng-if="q<3&&p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(q,calificacion)}}</span></td>
                         <td ng-if="q<3&&p>3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{cualitativasiglas(prq(q,calificacion))}}</span></td>
+                        
+                        <!-- Inicio Anual -->
+                       <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(1,calificacion)}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{prq(2,calificacion)}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{pranual(calificacion)}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['mejoramiento']}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['supletorio']}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['remedial']}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{calificacion['gracia']}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{pranualTotal(calificacion)}}</span></td>
+                        <td ng-if="q==3" width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">{{aprobarMateria(calificacion)}}</span></td>
+
+                        <!-- Final anual -->
                         <!--<td width="37"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000">E</span></td>-->
                         {%endverbatim%}
                     </tr>
@@ -110,6 +129,7 @@
             {%verbatim%}
             <td ng-if="p<=3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
             <td ng-if="p>3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td>
+            <td ng-if="q==3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
             </tr></tbody></table>
   
                             
@@ -135,6 +155,13 @@
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasParcial(q,p)}}</b></span></td>
                 </tr>
                 <tr ng-if="p==4" bgcolor="FFFFFF" height="20">
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasQuimestre(q)}}</b></span></td>
+                </tr>
+
+                 <tr ng-if="q==3" bgcolor="FFFFFF" height="20">
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosQuimestre(q)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasQuimestre(q)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasQuimestre(q)}}</b></span></td>

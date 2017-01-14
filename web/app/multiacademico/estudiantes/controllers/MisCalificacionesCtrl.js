@@ -80,7 +80,41 @@
                                 if (typeof q==='undefined') q=$scope.q;
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
                             };
+                            /*Promedio anual Q1+Q2/2*/
+                            $scope.pranual=function(calificacion)
+                            {
+                                return Calificaciones.getPromedioAnual(calificacion);
+                            };
+
+                            /* Promedio anual final por materia luego de remediales y gracia*/
+                            $scope.pranualTotal = function(calificacion){
+
+                                return Calificaciones.getPromedioFinal(calificacion);
+                            }
                             
+                            $scope.aprobarMateria = function(calificacion){
+
+                                if (Calificaciones.apruebaMateria(calificacion))
+
+                                      return "Aprueba";
+                                  else
+                                       return "No aprueba";
+                            }
+
+
+                            /*Promedio de todos los promedios de todas las materias*/
+                            $scope.pranualGeneral=function(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia)
+                            {
+                                if (quimestre1=='undefined' && quimestre2=='undefined') {
+                                    quimestre1=$scope.quimestre1;
+                                    quimestre2=$scope.quimestre2;
+                                    mejoramiento=$scope.mejoramiento;
+                                    supletorio=$scope.supletorio;
+                                    remedial=$scope.remedial;
+                                    gracia=$scope.gracia;
+                                }
+                                return Calificaciones.calcularPromedioFinal(quimestre1,quimestre2,mejoramiento,supletorio,remedial,gracia);
+                            };
                             
                             $scope.prtq=function(q,calificaciones)
                             {

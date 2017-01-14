@@ -95,25 +95,20 @@
                             };
                             
                             $scope.changeStaticStudents=function(){
-
                                if (!$scope.staticStudents){
-                                
                                 $scope.estilo={
-                                           
-                                        position: 'relative',
-
-                                        }
-
+                                            position: 'relative'
+                                        };
                                     }else{
-
                                         $scope.estilo={
+
 
                                         position: 'absolute',
                                         "background-color": '#ffffff',
 
-                                        }
+                                        };
                                     }
-                            };
+                                }
                             
                             $scope.findCalificacion = function(alumno, idmateria){
                                 return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});

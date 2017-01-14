@@ -5504,14 +5504,14 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
 
 !function(a){"use strict";function b(a,b){return Math.round(a/b)*b}function c(a){return"number"==typeof a&&!isNaN(a)&&isFinite(a)}function d(a){var b=Math.pow(10,7);return Number((Math.round(a*b)/b).toFixed(7))}function e(a,b,c){a.addClass(b),setTimeout(function(){a.removeClass(b)},c)}function f(a){return Math.max(Math.min(a,100),0)}function g(b){return a.isArray(b)?b:[b]}function h(a){var b=a.split(".");return b.length>1?b[1].length:0}function i(a,b){return 100/(b-a)}function j(a,b){return 100*b/(a[1]-a[0])}function k(a,b){return j(a,a[0]<0?b+Math.abs(a[0]):b-a[0])}function l(a,b){return b*(a[1]-a[0])/100+a[0]}function m(a,b){for(var c=1;a>=b[c];)c+=1;return c}function n(a,b,c){if(c>=a.slice(-1)[0])return 100;var d,e,f,g,h=m(c,a);return d=a[h-1],e=a[h],f=b[h-1],g=b[h],f+k([d,e],c)/i(f,g)}function o(a,b,c){if(c>=100)return a.slice(-1)[0];var d,e,f,g,h=m(c,b);return d=a[h-1],e=a[h],f=b[h-1],g=b[h],l([d,e],(c-f)*i(f,g))}function p(a,c,d,e){if(100===e)return e;var f,g,h=m(e,a);return d?(f=a[h-1],g=a[h],e-f>(g-f)/2?g:f):c[h-1]?a[h-1]+b(e-a[h-1],c[h-1]):e}function q(a,b,d){var e;if("number"==typeof b&&(b=[b]),"[object Array]"!==Object.prototype.toString.call(b))throw new Error("noUiSlider: 'range' contains invalid value.");if(e="min"===a?0:"max"===a?100:parseFloat(a),!c(e)||!c(b[0]))throw new Error("noUiSlider: 'range' value isn't numeric.");d.xPct.push(e),d.xVal.push(b[0]),e?d.xSteps.push(isNaN(b[1])?!1:b[1]):isNaN(b[1])||(d.xSteps[0]=b[1])}function r(a,b,c){return b?void(c.xSteps[a]=j([c.xVal[a],c.xVal[a+1]],b)/i(c.xPct[a],c.xPct[a+1])):!0}function s(a,b,c,d){this.xPct=[],this.xVal=[],this.xSteps=[d||!1],this.xNumSteps=[!1],this.snap=b,this.direction=c;var e,f=[];for(e in a)a.hasOwnProperty(e)&&f.push([a[e],e]);for(f.sort(function(a,b){return a[0]-b[0]}),e=0;e<f.length;e++)q(f[e][1],f[e][0],this);for(this.xNumSteps=this.xSteps.slice(0),e=0;e<this.xNumSteps.length;e++)r(e,this.xNumSteps[e],this)}function t(a,b){if(!c(b))throw new Error("noUiSlider: 'step' is not numeric.");a.singleStep=b}function u(b,c){if("object"!=typeof c||a.isArray(c))throw new Error("noUiSlider: 'range' is not an object.");if(void 0===c.min||void 0===c.max)throw new Error("noUiSlider: Missing 'min' or 'max' in 'range'.");b.spectrum=new s(c,b.snap,b.dir,b.singleStep)}function v(b,c){if(c=g(c),!a.isArray(c)||!c.length||c.length>2)throw new Error("noUiSlider: 'start' option is incorrect.");b.handles=c.length,b.start=c}function w(a,b){if(a.snap=b,"boolean"!=typeof b)throw new Error("noUiSlider: 'snap' option must be a boolean.")}function x(a,b){if(a.animate=b,"boolean"!=typeof b)throw new Error("noUiSlider: 'animate' option must be a boolean.")}function y(a,b){if("lower"===b&&1===a.handles)a.connect=1;else if("upper"===b&&1===a.handles)a.connect=2;else if(b===!0&&2===a.handles)a.connect=3;else{if(b!==!1)throw new Error("noUiSlider: 'connect' option doesn't match handle count.");a.connect=0}}function z(a,b){switch(b){case"horizontal":a.ort=0;break;case"vertical":a.ort=1;break;default:throw new Error("noUiSlider: 'orientation' option is invalid.")}}function A(a,b){if(!c(b))throw new Error("noUiSlider: 'margin' option must be numeric.");if(a.margin=a.spectrum.getMargin(b),!a.margin)throw new Error("noUiSlider: 'margin' option is only supported on linear sliders.")}function B(a,b){if(!c(b))throw new Error("noUiSlider: 'limit' option must be numeric.");if(a.limit=a.spectrum.getMargin(b),!a.limit)throw new Error("noUiSlider: 'limit' option is only supported on linear sliders.")}function C(a,b){switch(b){case"ltr":a.dir=0;break;case"rtl":a.dir=1,a.connect=[0,2,1,3][a.connect];break;default:throw new Error("noUiSlider: 'direction' option was not recognized.")}}function D(a,b){if("string"!=typeof b)throw new Error("noUiSlider: 'behaviour' must be a string containing options.");var c=b.indexOf("tap")>=0,d=b.indexOf("drag")>=0,e=b.indexOf("fixed")>=0,f=b.indexOf("snap")>=0;a.events={tap:c||f,drag:d,fixed:e,snap:f}}function E(a,b){if(a.format=b,"function"==typeof b.to&&"function"==typeof b.from)return!0;throw new Error("noUiSlider: 'format' requires 'to' and 'from' methods.")}function F(b){var c,d={margin:0,limit:0,animate:!0,format:V};return c={step:{r:!1,t:t},start:{r:!0,t:v},connect:{r:!0,t:y},direction:{r:!0,t:C},snap:{r:!1,t:w},animate:{r:!1,t:x},range:{r:!0,t:u},orientation:{r:!1,t:z},margin:{r:!1,t:A},limit:{r:!1,t:B},behaviour:{r:!0,t:D},format:{r:!1,t:E}},b=a.extend({connect:!1,direction:"ltr",behaviour:"tap",orientation:"horizontal"},b),a.each(c,function(a,c){if(void 0===b[a]){if(c.r)throw new Error("noUiSlider: '"+a+"' is required.");return!0}c.t(d,b[a])}),d.style=d.ort?"top":"left",d}function G(a,b,c){var d=a+b[0],e=a+b[1];return c?(0>d&&(e+=Math.abs(d)),e>100&&(d-=e-100),[f(d),f(e)]):[d,e]}function H(a){a.preventDefault();var b,c,d=0===a.type.indexOf("touch"),e=0===a.type.indexOf("mouse"),f=0===a.type.indexOf("pointer"),g=a;return 0===a.type.indexOf("MSPointer")&&(f=!0),a.originalEvent&&(a=a.originalEvent),d&&(b=a.changedTouches[0].pageX,c=a.changedTouches[0].pageY),(e||f)&&(f||void 0!==window.pageXOffset||(window.pageXOffset=document.documentElement.scrollLeft,window.pageYOffset=document.documentElement.scrollTop),b=a.clientX+window.pageXOffset,c=a.clientY+window.pageYOffset),g.points=[b,c],g.cursor=e,g}function I(b,c){var d=a("<div><div/></div>").addClass(U[2]),e=["-lower","-upper"];return b&&e.reverse(),d.children().addClass(U[3]+" "+U[3]+e[c]),d}function J(a,b,c){switch(a){case 1:b.addClass(U[7]),c[0].addClass(U[6]);break;case 3:c[1].addClass(U[6]);case 2:c[0].addClass(U[7]);case 0:b.addClass(U[6])}}function K(a,b,c){var d,e=[];for(d=0;a>d;d+=1)e.push(I(b,d).appendTo(c));return e}function L(b,c,d){return d.addClass([U[0],U[8+b],U[4+c]].join(" ")),a("<div/>").appendTo(d).addClass(U[1])}function M(b,c,d){function i(){return C[["width","height"][c.ort]]()}function j(a){var b,c=[E.val()];for(b=0;b<a.length;b+=1)E.trigger(a[b],c)}function k(a){return 1===a.length?a[0]:c.dir?a.reverse():a}function l(a){return function(b,c){E.val([a?null:c,a?c:null],!0)}}function m(b){var c=a.inArray(b,N);E[0].linkAPI&&E[0].linkAPI[b]&&E[0].linkAPI[b].change(M[c],D[c].children(),E)}function n(b,d){var e=a.inArray(b,N);return d&&d.appendTo(D[e].children()),c.dir&&c.handles>1&&(e=1===e?0:1),l(e)}function o(){var a,b;for(a=0;a<N.length;a+=1)this.linkAPI&&this.linkAPI[b=N[a]]&&this.linkAPI[b].reconfirm(b)}function p(a,b,d,e){return a=a.replace(/\s/g,S+" ")+S,b.on(a,function(a){return E.attr("disabled")?!1:E.hasClass(U[14])?!1:(a=H(a),a.calcPoint=a.points[c.ort],void d(a,e))})}function q(a,b){var c,d=b.handles||D,e=!1,f=100*(a.calcPoint-b.start)/i(),g=d[0][0]!==D[0][0]?1:0;c=G(f,b.positions,d.length>1),e=v(d[0],c[g],1===d.length),d.length>1&&(e=v(d[1],c[g?0:1],!1)||e),e&&j(["slide"])}function r(b){a("."+U[15]).removeClass(U[15]),b.cursor&&a("body").css("cursor","").off(S),Q.off(S),E.removeClass(U[12]),j(["set","change"])}function s(b,c){1===c.handles.length&&c.handles[0].children().addClass(U[15]),b.stopPropagation(),p(T.move,Q,q,{start:b.calcPoint,handles:c.handles,positions:[F[0],F[D.length-1]]}),p(T.end,Q,r,null),b.cursor&&(a("body").css("cursor",a(b.target).css("cursor")),D.length>1&&E.addClass(U[12]),a("body").on("selectstart"+S,!1))}function t(b){var d,f=b.calcPoint,g=0;b.stopPropagation(),a.each(D,function(){g+=this.offset()[c.style]}),g=g/2>f||1===D.length?0:1,f-=C.offset()[c.style],d=100*f/i(),c.events.snap||e(E,U[14],300),v(D[g],d),j(["slide","set","change"]),c.events.snap&&s(b,{handles:[D[g]]})}function u(a){var b,c;if(!a.fixed)for(b=0;b<D.length;b+=1)p(T.start,D[b].children(),s,{handles:[D[b]]});a.tap&&p(T.start,C,t,{handles:D}),a.drag&&(c=C.find("."+U[7]).addClass(U[10]),a.fixed&&(c=c.add(C.children().not(c).children())),p(T.start,c,s,{handles:D}))}function v(a,b,d){var e=a[0]!==D[0][0]?1:0,g=F[0]+c.margin,h=F[1]-c.margin,i=F[0]+c.limit,j=F[1]-c.limit;return D.length>1&&(b=e?Math.max(b,g):Math.min(b,h)),d!==!1&&c.limit&&D.length>1&&(b=e?Math.min(b,i):Math.max(b,j)),b=I.getStep(b),b=f(parseFloat(b.toFixed(7))),b===F[e]?!1:(a.css(c.style,b+"%"),a.is(":first-child")&&a.toggleClass(U[17],b>50),F[e]=b,M[e]=I.fromStepping(b),m(N[e]),!0)}function w(a,b){var d,e,f;for(c.limit&&(a+=1),d=0;a>d;d+=1)e=d%2,f=b[e],null!==f&&f!==!1&&("number"==typeof f&&(f=String(f)),f=c.format.from(f),(f===!1||isNaN(f)||v(D[e],I.toStepping(f),d===3-c.dir)===!1)&&m(N[e]))}function x(a){if(E[0].LinkIsEmitting)return this;var b,d=g(a);return c.dir&&c.handles>1&&d.reverse(),c.animate&&-1!==F[0]&&e(E,U[14],300),b=D.length>1?3:1,1===d.length&&(b=1),w(b,d),j(["set"]),this}function y(){var a,b=[];for(a=0;a<c.handles;a+=1)b[a]=c.format.to(M[a]);return k(b)}function z(){return a(this).off(S).removeClass(U.join(" ")).empty(),delete this.LinkUpdate,delete this.LinkConfirm,delete this.LinkDefaultFormatter,delete this.LinkDefaultFlag,delete this.reappend,delete this.vGet,delete this.vSet,delete this.getCurrentStep,delete this.getInfo,delete this.destroy,d}function A(){var b=a.map(F,function(a,b){var c=I.getApplicableStep(a),d=h(String(c[2])),e=M[b],f=100===a?null:c[2],g=Number((e-c[2]).toFixed(d)),i=0===a?null:g>=c[1]?c[2]:c[0]||!1;return[[i,f]]});return k(b)}function B(){return d}var C,D,E=a(b),F=[-1,-1],I=c.spectrum,M=[],N=["lower","upper"].slice(0,c.handles);if(c.dir&&N.reverse(),b.LinkUpdate=m,b.LinkConfirm=n,b.LinkDefaultFormatter=c.format,b.LinkDefaultFlag="lower",b.reappend=o,E.hasClass(U[0]))throw new Error("Slider was already initialized.");C=L(c.dir,c.ort,E),D=K(c.handles,c.dir,C),J(c.connect,E,D),u(c.events),b.vSet=x,b.vGet=y,b.destroy=z,b.getCurrentStep=A,b.getOriginalOptions=B,b.getInfo=function(){return[I,c.style,c.ort]},E.val(c.start)}function N(a){var b=F(a,this);return this.each(function(){M(this,b,a)})}function O(b){return this.each(function(){if(!this.destroy)return void a(this).noUiSlider(b);var c=a(this).val(),d=this.destroy(),e=a.extend({},d,b);a(this).noUiSlider(e),this.reappend(),d.start===e.start&&a(this).val(c)})}function P(){return this[0][arguments.length?"vSet":"vGet"].apply(this[0],arguments)}var Q=a(document),R=a.fn.val,S=".nui",T=window.navigator.pointerEnabled?{start:"pointerdown",move:"pointermove",end:"pointerup"}:window.navigator.msPointerEnabled?{start:"MSPointerDown",move:"MSPointerMove",end:"MSPointerUp"}:{start:"mousedown touchstart",move:"mousemove touchmove",end:"mouseup touchend"},U=["noUi-target","noUi-base","noUi-origin","noUi-handle","noUi-horizontal","noUi-vertical","noUi-background","noUi-connect","noUi-ltr","noUi-rtl","noUi-dragable","","noUi-state-drag","","noUi-state-tap","noUi-active","","noUi-stacking"];s.prototype.getMargin=function(a){return 2===this.xPct.length?j(this.xVal,a):!1},s.prototype.toStepping=function(a){return a=n(this.xVal,this.xPct,a),this.direction&&(a=100-a),a},s.prototype.fromStepping=function(a){return this.direction&&(a=100-a),d(o(this.xVal,this.xPct,a))},s.prototype.getStep=function(a){return this.direction&&(a=100-a),a=p(this.xPct,this.xSteps,this.snap,a),this.direction&&(a=100-a),a},s.prototype.getApplicableStep=function(a){var b=m(a,this.xPct),c=100===a?2:1;return[this.xNumSteps[b-2],this.xVal[b-c],this.xNumSteps[b-c]]},s.prototype.convert=function(a){return this.getStep(this.toStepping(a))};var V={to:function(a){return a.toFixed(2)},from:Number};a.fn.val=function(b){function c(a){return a.hasClass(U[0])?P:R}if(!arguments.length){var d=a(this[0]);return c(d).call(d)}var e=a.isFunction(b);return this.each(function(d){var f=b,g=a(this);e&&(f=b.call(this,d,g.val())),c(g).call(g,f)})},a.fn.noUiSlider=function(a,b){switch(a){case"step":return this[0].getCurrentStep();case"options":return this[0].getOriginalOptions()}return(b?O:N).call(this,a)}}(window.jQuery||window.Zepto);
 /*
- *  Bootstrap Duallistbox - v3.0.6
+ *  Bootstrap Duallistbox - v3.0.5
  *  A responsive dual listbox widget optimized for Twitter Bootstrap. It works on all modern browsers and on touch devices.
  *  http://www.virtuosoft.eu/code/bootstrap-duallistbox/
  *
  *  Made by István Ujj-Mészáros
  *  Under Apache License v2.0 License
  */
-!function(a,b,c,d){function e(b,c){this.element=a(b),this.settings=a.extend({},w,c),this._defaults=w,this._name=v,this.init()}function f(a){a.element.trigger("change")}function g(b){b.element.find("option").each(function(c,d){var e=a(d);"undefined"==typeof e.data("original-index")&&e.data("original-index",b.elementCount++),"undefined"==typeof e.data("_selected")&&e.data("_selected",!1)})}function h(b,c,d){b.element.find("option").each(function(e,f){var g=a(f);g.data("original-index")===c&&(g.prop("selected",d),d?(g.attr("data-sortindex",b.sortIndex),b.sortIndex++):g.removeAttr("data-sortindex"))})}function i(a,b){return a.replace(/\{(\d+)\}/g,function(a,c){return"undefined"!=typeof b[c]?b[c]:a})}function j(a){if(a.settings.infoText){var b=a.elements.select1.find("option").length,c=a.elements.select2.find("option").length,d=a.element.find("option").length-a.selectedElements,e=a.selectedElements,f="";f=0===d?a.settings.infoTextEmpty:b===d?i(a.settings.infoText,[b,d]):i(a.settings.infoTextFiltered,[b,d]),a.elements.info1.html(f),a.elements.box1.toggleClass("filtered",!(b===d||0===d)),f=0===e?a.settings.infoTextEmpty:c===e?i(a.settings.infoText,[c,e]):i(a.settings.infoTextFiltered,[c,e]),a.elements.info2.html(f),a.elements.box2.toggleClass("filtered",!(c===e||0===e))}}function k(b){b.selectedElements=0,b.elements.select1.empty(),b.elements.select2.empty(),b.element.find("option").each(function(c,d){var e=a(d);e.prop("selected")?(b.selectedElements++,b.elements.select2.append(e.clone(!0).prop("selected",e.data("_selected")))):b.elements.select1.append(e.clone(!0).prop("selected",e.data("_selected")))}),b.settings.showFilterInputs&&(l(b,1),l(b,2)),j(b)}function l(b,c){if(b.settings.showFilterInputs){m(b,c),b.elements["select"+c].empty().scrollTop(0);var d=new RegExp(a.trim(b.elements["filterInput"+c].val()),"gi"),e=b.element.find("option"),f=b.element;f=1===c?e.not(":selected"):f.find("option:selected"),f.each(function(f,g){var h=a(g),i=!0;(g.text.match(d)||b.settings.filterOnValues&&h.attr("value").match(d))&&(i=!1,b.elements["select"+c].append(h.clone(!0).prop("selected",h.data("_selected")))),e.eq(h.data("original-index")).data("filtered"+c,i)}),j(b)}}function m(b,c){var d=b.element.find("option");b.elements["select"+c].find("option").each(function(b,c){var e=a(c);d.eq(e.data("original-index")).data("_selected",e.prop("selected"))})}function n(a){var b=a.children("option");b.sort(function(a,b){var c=parseInt(a.getAttribute("data-sortindex")),d=parseInt(b.getAttribute("data-sortindex"));return c>d?1:d>c?-1:0}),b.detach().appendTo(a)}function o(b){b.find("option").sort(function(b,c){return a(b).data("original-index")>a(c).data("original-index")?1:-1}).appendTo(b)}function p(a){a.elements.select1.find("option").each(function(){a.element.find("option").data("_selected",!1)})}function q(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,1):(m(b,1),m(b,2)),b.elements.select1.find("option:selected").each(function(c,d){var e=a(d);e.data("filtered1")||h(b,e.data("original-index"),!0)}),k(b),f(b),b.settings.sortByInputOrder?n(b.elements.select2):o(b.elements.select2)}function r(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,2):(m(b,1),m(b,2)),b.elements.select2.find("option:selected").each(function(c,d){var e=a(d);e.data("filtered2")||h(b,e.data("original-index"),!1)}),k(b),f(b),o(b.elements.select1),b.settings.sortByInputOrder&&n(b.elements.select2)}function s(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,1):(m(b,1),m(b,2)),b.element.find("option").each(function(c,d){var e=a(d);e.data("filtered1")||(e.prop("selected",!0),e.attr("data-sortindex",b.sortIndex),b.sortIndex++)}),k(b),f(b)}function t(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,2):(m(b,1),m(b,2)),b.element.find("option").each(function(b,c){var d=a(c);d.data("filtered2")||(d.prop("selected",!1),d.removeAttr("data-sortindex"))}),k(b),f(b)}function u(a){a.elements.form.submit(function(b){a.elements.filterInput1.is(":focus")?(b.preventDefault(),a.elements.filterInput1.focusout()):a.elements.filterInput2.is(":focus")&&(b.preventDefault(),a.elements.filterInput2.focusout())}),a.element.on("bootstrapDualListbox.refresh",function(b,c){a.refresh(c)}),a.elements.filterClear1.on("click",function(){a.setNonSelectedFilter("",!0)}),a.elements.filterClear2.on("click",function(){a.setSelectedFilter("",!0)}),a.settings.eventMoveOverride===!1&&a.elements.moveButton.on("click",function(){q(a)}),a.settings.eventMoveAllOverride===!1&&a.elements.moveAllButton.on("click",function(){s(a)}),a.settings.eventRemoveOverride===!1&&a.elements.removeButton.on("click",function(){r(a)}),a.settings.eventRemoveAllOverride===!1&&a.elements.removeAllButton.on("click",function(){t(a)}),a.elements.filterInput1.on("change keyup",function(){l(a,1)}),a.elements.filterInput2.on("change keyup",function(){l(a,2)})}var v="bootstrapDualListbox",w={bootstrap2Compatible:!1,filterTextClear:"show all",filterPlaceHolder:"Filter",moveSelectedLabel:"Move selected",moveAllLabel:"Move all",removeSelectedLabel:"Remove selected",removeAllLabel:"Remove all",moveOnSelect:!0,preserveSelectionOnMove:!1,selectedListLabel:!1,nonSelectedListLabel:!1,helperSelectNamePostfix:"_helper",selectorMinimalHeight:100,showFilterInputs:!0,nonSelectedFilter:"",selectedFilter:"",infoText:"Showing all {0}",infoTextFiltered:'<span class="label label-warning">Filtered</span> {0} from {1}',infoTextEmpty:"Empty list",filterOnValues:!1,sortByInputOrder:!1,eventMoveOverride:!1,eventMoveAllOverride:!1,eventRemoveOverride:!1,eventRemoveAllOverride:!1},x=/android/i.test(navigator.userAgent.toLowerCase());e.prototype={init:function(){this.container=a('<div class="bootstrap-duallistbox-container"> <div class="box1">   <label></label>   <span class="info-container">     <span class="info"></span>     <button type="button" class="btn clear1 pull-right"></button>   </span>   <input class="filter" type="text">   <div class="btn-group buttons">     <button type="button" class="btn moveall">       <i></i>       <i></i>     </button>     <button type="button" class="btn move">       <i></i>     </button>   </div>   <select multiple="multiple"></select> </div> <div class="box2">   <label></label>   <span class="info-container">     <span class="info"></span>     <button type="button" class="btn clear2 pull-right"></button>   </span>   <input class="filter" type="text">   <div class="btn-group buttons">     <button type="button" class="btn remove">       <i></i>     </button>     <button type="button" class="btn removeall">       <i></i>       <i></i>     </button>   </div>   <select multiple="multiple"></select> </div></div>').insertBefore(this.element),this.elements={originalSelect:this.element,box1:a(".box1",this.container),box2:a(".box2",this.container),filterInput1:a(".box1 .filter",this.container),filterInput2:a(".box2 .filter",this.container),filterClear1:a(".box1 .clear1",this.container),filterClear2:a(".box2 .clear2",this.container),label1:a(".box1 > label",this.container),label2:a(".box2 > label",this.container),info1:a(".box1 .info",this.container),info2:a(".box2 .info",this.container),select1:a(".box1 select",this.container),select2:a(".box2 select",this.container),moveButton:a(".box1 .move",this.container),removeButton:a(".box2 .remove",this.container),moveAllButton:a(".box1 .moveall",this.container),removeAllButton:a(".box2 .removeall",this.container),form:a(a(".box1 .filter",this.container)[0].form)},this.originalSelectName=this.element.attr("name")||"";var b="bootstrap-duallistbox-nonselected-list_"+this.originalSelectName,c="bootstrap-duallistbox-selected-list_"+this.originalSelectName;return this.elements.select1.attr("id",b),this.elements.select2.attr("id",c),this.elements.label1.attr("for",b),this.elements.label2.attr("for",c),this.selectedElements=0,this.sortIndex=0,this.elementCount=0,this.setBootstrap2Compatible(this.settings.bootstrap2Compatible),this.setFilterTextClear(this.settings.filterTextClear),this.setFilterPlaceHolder(this.settings.filterPlaceHolder),this.setMoveSelectedLabel(this.settings.moveSelectedLabel),this.setMoveAllLabel(this.settings.moveAllLabel),this.setRemoveSelectedLabel(this.settings.removeSelectedLabel),this.setRemoveAllLabel(this.settings.removeAllLabel),this.setMoveOnSelect(this.settings.moveOnSelect),this.setPreserveSelectionOnMove(this.settings.preserveSelectionOnMove),this.setSelectedListLabel(this.settings.selectedListLabel),this.setNonSelectedListLabel(this.settings.nonSelectedListLabel),this.setHelperSelectNamePostfix(this.settings.helperSelectNamePostfix),this.setSelectOrMinimalHeight(this.settings.selectorMinimalHeight),g(this),this.setShowFilterInputs(this.settings.showFilterInputs),this.setNonSelectedFilter(this.settings.nonSelectedFilter),this.setSelectedFilter(this.settings.selectedFilter),this.setInfoText(this.settings.infoText),this.setInfoTextFiltered(this.settings.infoTextFiltered),this.setInfoTextEmpty(this.settings.infoTextEmpty),this.setFilterOnValues(this.settings.filterOnValues),this.setSortByInputOrder(this.settings.sortByInputOrder),this.setEventMoveOverride(this.settings.eventMoveOverride),this.setEventMoveAllOverride(this.settings.eventMoveAllOverride),this.setEventRemoveOverride(this.settings.eventRemoveOverride),this.setEventRemoveAllOverride(this.settings.eventRemoveAllOverride),this.element.hide(),u(this),k(this),this.element},setBootstrap2Compatible:function(a,b){return this.settings.bootstrap2Compatible=a,a?(this.container.removeClass("row").addClass("row-fluid bs2compatible"),this.container.find(".box1, .box2").removeClass("col-md-6").addClass("span6"),this.container.find(".clear1, .clear2").removeClass("btn-default btn-xs").addClass("btn-mini"),this.container.find("input, select").removeClass("form-control"),this.container.find(".btn").removeClass("btn-default"),this.container.find(".moveall > i, .move > i").removeClass("glyphicon glyphicon-arrow-right").addClass("icon-arrow-right"),this.container.find(".removeall > i, .remove > i").removeClass("glyphicon glyphicon-arrow-left").addClass("icon-arrow-left")):(this.container.removeClass("row-fluid bs2compatible").addClass("row"),this.container.find(".box1, .box2").removeClass("span6").addClass("col-md-6"),this.container.find(".clear1, .clear2").removeClass("btn-mini").addClass("btn-default btn-xs"),this.container.find("input, select").addClass("form-control"),this.container.find(".btn").addClass("btn-default"),this.container.find(".moveall > i, .move > i").removeClass("icon-arrow-right").addClass("glyphicon glyphicon-arrow-right"),this.container.find(".removeall > i, .remove > i").removeClass("icon-arrow-left").addClass("glyphicon glyphicon-arrow-left")),b&&k(this),this.element},setFilterTextClear:function(a,b){return this.settings.filterTextClear=a,this.elements.filterClear1.html(a),this.elements.filterClear2.html(a),b&&k(this),this.element},setFilterPlaceHolder:function(a,b){return this.settings.filterPlaceHolder=a,this.elements.filterInput1.attr("placeholder",a),this.elements.filterInput2.attr("placeholder",a),b&&k(this),this.element},setMoveSelectedLabel:function(a,b){return this.settings.moveSelectedLabel=a,this.elements.moveButton.attr("title",a),b&&k(this),this.element},setMoveAllLabel:function(a,b){return this.settings.moveAllLabel=a,this.elements.moveAllButton.attr("title",a),b&&k(this),this.element},setRemoveSelectedLabel:function(a,b){return this.settings.removeSelectedLabel=a,this.elements.removeButton.attr("title",a),b&&k(this),this.element},setRemoveAllLabel:function(a,b){return this.settings.removeAllLabel=a,this.elements.removeAllButton.attr("title",a),b&&k(this),this.element},setMoveOnSelect:function(a,b){if(x&&(a=!0),this.settings.moveOnSelect=a,this.settings.moveOnSelect){this.container.addClass("moveonselect");var c=this;this.elements.select1.on("change",function(){q(c)}),this.elements.select2.on("change",function(){r(c)})}else this.container.removeClass("moveonselect"),this.elements.select1.off("change"),this.elements.select2.off("change");return b&&k(this),this.element},setPreserveSelectionOnMove:function(a,b){return x&&(a=!1),this.settings.preserveSelectionOnMove=a,b&&k(this),this.element},setSelectedListLabel:function(a,b){return this.settings.selectedListLabel=a,a?this.elements.label2.show().html(a):this.elements.label2.hide().html(a),b&&k(this),this.element},setNonSelectedListLabel:function(a,b){return this.settings.nonSelectedListLabel=a,a?this.elements.label1.show().html(a):this.elements.label1.hide().html(a),b&&k(this),this.element},setHelperSelectNamePostfix:function(a,b){return this.settings.helperSelectNamePostfix=a,a?(this.elements.select1.attr("name",this.originalSelectName+a+"1"),this.elements.select2.attr("name",this.originalSelectName+a+"2")):(this.elements.select1.removeAttr("name"),this.elements.select2.removeAttr("name")),b&&k(this),this.element},setSelectOrMinimalHeight:function(a,b){this.settings.selectorMinimalHeight=a;var c=this.element.height();return this.element.height()<a&&(c=a),this.elements.select1.height(c),this.elements.select2.height(c),b&&k(this),this.element},setShowFilterInputs:function(a,b){return a?(this.elements.filterInput1.show(),this.elements.filterInput2.show()):(this.setNonSelectedFilter(""),this.setSelectedFilter(""),k(this),this.elements.filterInput1.hide(),this.elements.filterInput2.hide()),this.settings.showFilterInputs=a,b&&k(this),this.element},setNonSelectedFilter:function(a,b){return this.settings.showFilterInputs?(this.settings.nonSelectedFilter=a,this.elements.filterInput1.val(a),b&&k(this),this.element):void 0},setSelectedFilter:function(a,b){return this.settings.showFilterInputs?(this.settings.selectedFilter=a,this.elements.filterInput2.val(a),b&&k(this),this.element):void 0},setInfoText:function(a,b){return this.settings.infoText=a,b&&k(this),this.element},setInfoTextFiltered:function(a,b){return this.settings.infoTextFiltered=a,b&&k(this),this.element},setInfoTextEmpty:function(a,b){return this.settings.infoTextEmpty=a,b&&k(this),this.element},setFilterOnValues:function(a,b){return this.settings.filterOnValues=a,b&&k(this),this.element},setSortByInputOrder:function(a,b){return this.settings.sortByInputOrder=a,b&&k(this),this.element},setEventMoveOverride:function(a,b){return this.settings.eventMoveOverride=a,b&&k(this),this.element},setEventMoveAllOverride:function(a,b){return this.settings.eventMoveAllOverride=a,b&&k(this),this.element},setEventRemoveOverride:function(a,b){return this.settings.eventRemoveOverride=a,b&&k(this),this.element},setEventRemoveAllOverride:function(a,b){return this.settings.eventRemoveAllOverride=a,b&&k(this),this.element},getContainer:function(){return this.container},refresh:function(a){g(this),a?p(this):(m(this,1),m(this,2)),k(this)},destroy:function(){return this.container.remove(),this.element.show(),a.data(this,"plugin_"+v,null),this.element}},a.fn[v]=function(b){var c=arguments;if(b===d||"object"==typeof b)return this.each(function(){a(this).is("select")?a.data(this,"plugin_"+v)||a.data(this,"plugin_"+v,new e(this,b)):a(this).find("select").each(function(c,d){a(d).bootstrapDualListbox(b)})});if("string"==typeof b&&"_"!==b[0]&&"init"!==b){var f;return this.each(function(){var d=a.data(this,"plugin_"+v);d instanceof e&&"function"==typeof d[b]&&(f=d[b].apply(d,Array.prototype.slice.call(c,1)))}),f!==d?f:this}}}(jQuery,window,document);
+!function(a,b,c,d){function e(b,c){this.element=a(b),this.settings=a.extend({},v,c),this._defaults=v,this._name=u,this.init()}function f(a){a.element.trigger("change")}function g(b){b.element.find("option").each(function(c,d){var e=a(d);"undefined"==typeof e.data("original-index")&&e.data("original-index",b.elementCount++),"undefined"==typeof e.data("_selected")&&e.data("_selected",!1)})}function h(b,c,d){b.element.find("option").each(function(b,e){var f=a(e);f.data("original-index")===c&&f.prop("selected",d)})}function i(a,b){return a.replace(/\{(\d+)\}/g,function(a,c){return"undefined"!=typeof b[c]?b[c]:a})}function j(a){if(a.settings.infoText){var b=a.elements.select1.find("option").length,c=a.elements.select2.find("option").length,d=a.element.find("option").length-a.selectedElements,e=a.selectedElements,f="";f=0===d?a.settings.infoTextEmpty:b===d?i(a.settings.infoText,[b,d]):i(a.settings.infoTextFiltered,[b,d]),a.elements.info1.html(f),a.elements.box1.toggleClass("filtered",!(b===d||0===d)),f=0===e?a.settings.infoTextEmpty:c===e?i(a.settings.infoText,[c,e]):i(a.settings.infoTextFiltered,[c,e]),a.elements.info2.html(f),a.elements.box2.toggleClass("filtered",!(c===e||0===e))}}function k(b){b.selectedElements=0,b.elements.select1.empty(),b.elements.select2.empty(),b.element.find("option").each(function(c,d){var e=a(d);e.prop("selected")?(b.selectedElements++,b.elements.select2.append(e.clone(!0).prop("selected",e.data("_selected")))):b.elements.select1.append(e.clone(!0).prop("selected",e.data("_selected")))}),b.settings.showFilterInputs&&(l(b,1),l(b,2)),j(b)}function l(b,c){if(b.settings.showFilterInputs){m(b,c),b.elements["select"+c].empty().scrollTop(0);var d=new RegExp(a.trim(b.elements["filterInput"+c].val()),"gi"),e=b.element.find("option"),f=b.element;f=1===c?e.not(":selected"):f.find("option:selected"),f.each(function(f,g){var h=a(g),i=!0;(g.text.match(d)||b.settings.filterOnValues&&h.attr("value").match(d))&&(i=!1,b.elements["select"+c].append(h.clone(!0).prop("selected",h.data("_selected")))),e.eq(h.data("original-index")).data("filtered"+c,i)}),j(b)}}function m(b,c){var d=b.element.find("option");b.elements["select"+c].find("option").each(function(b,c){var e=a(c);d.eq(e.data("original-index")).data("_selected",e.prop("selected"))})}function n(b){b.find("option").sort(function(b,c){return a(b).data("original-index")>a(c).data("original-index")?1:-1}).appendTo(b)}function o(a){a.elements.select1.find("option").each(function(){a.element.find("option").data("_selected",!1)})}function p(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,1):(m(b,1),m(b,2)),b.elements.select1.find("option:selected").each(function(c,d){var e=a(d);e.data("filtered1")||h(b,e.data("original-index"),!0)}),k(b),f(b),n(b.elements.select2)}function q(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,2):(m(b,1),m(b,2)),b.elements.select2.find("option:selected").each(function(c,d){var e=a(d);e.data("filtered2")||h(b,e.data("original-index"),!1)}),k(b),f(b),n(b.elements.select1)}function r(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,1):(m(b,1),m(b,2)),b.element.find("option").each(function(b,c){var d=a(c);d.data("filtered1")||d.prop("selected",!0)}),k(b),f(b)}function s(b){"all"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect?"moved"!==b.settings.preserveSelectionOnMove||b.settings.moveOnSelect||m(b,2):(m(b,1),m(b,2)),b.element.find("option").each(function(b,c){var d=a(c);d.data("filtered2")||d.prop("selected",!1)}),k(b),f(b)}function t(a){a.elements.form.submit(function(b){a.elements.filterInput1.is(":focus")?(b.preventDefault(),a.elements.filterInput1.focusout()):a.elements.filterInput2.is(":focus")&&(b.preventDefault(),a.elements.filterInput2.focusout())}),a.element.on("bootstrapDualListbox.refresh",function(b,c){a.refresh(c)}),a.elements.filterClear1.on("click",function(){a.setNonSelectedFilter("",!0)}),a.elements.filterClear2.on("click",function(){a.setSelectedFilter("",!0)}),a.elements.moveButton.on("click",function(){p(a)}),a.elements.moveAllButton.on("click",function(){r(a)}),a.elements.removeButton.on("click",function(){q(a)}),a.elements.removeAllButton.on("click",function(){s(a)}),a.elements.filterInput1.on("change keyup",function(){l(a,1)}),a.elements.filterInput2.on("change keyup",function(){l(a,2)})}var u="bootstrapDualListbox",v={bootstrap2Compatible:!1,filterTextClear:"show all",filterPlaceHolder:"Filter",moveSelectedLabel:"Move selected",moveAllLabel:"Move all",removeSelectedLabel:"Remove selected",removeAllLabel:"Remove all",moveOnSelect:!0,preserveSelectionOnMove:!1,selectedListLabel:!1,nonSelectedListLabel:!1,helperSelectNamePostfix:"_helper",selectorMinimalHeight:100,showFilterInputs:!0,nonSelectedFilter:"",selectedFilter:"",infoText:"Showing all {0}",infoTextFiltered:'<span class="label label-warning">Filtered</span> {0} from {1}',infoTextEmpty:"Empty list",filterOnValues:!1},w=/android/i.test(navigator.userAgent.toLowerCase());e.prototype={init:function(){this.container=a('<div class="bootstrap-duallistbox-container"> <div class="box1">   <label></label>   <span class="info-container">     <span class="info"></span>     <button type="button" class="btn clear1 pull-right"></button>   </span>   <input class="filter" type="text">   <div class="btn-group buttons">     <button type="button" class="btn moveall">       <i></i>       <i></i>     </button>     <button type="button" class="btn move">       <i></i>     </button>   </div>   <select multiple="multiple"></select> </div> <div class="box2">   <label></label>   <span class="info-container">     <span class="info"></span>     <button type="button" class="btn clear2 pull-right"></button>   </span>   <input class="filter" type="text">   <div class="btn-group buttons">     <button type="button" class="btn remove">       <i></i>     </button>     <button type="button" class="btn removeall">       <i></i>       <i></i>     </button>   </div>   <select multiple="multiple"></select> </div></div>').insertBefore(this.element),this.elements={originalSelect:this.element,box1:a(".box1",this.container),box2:a(".box2",this.container),filterInput1:a(".box1 .filter",this.container),filterInput2:a(".box2 .filter",this.container),filterClear1:a(".box1 .clear1",this.container),filterClear2:a(".box2 .clear2",this.container),label1:a(".box1 > label",this.container),label2:a(".box2 > label",this.container),info1:a(".box1 .info",this.container),info2:a(".box2 .info",this.container),select1:a(".box1 select",this.container),select2:a(".box2 select",this.container),moveButton:a(".box1 .move",this.container),removeButton:a(".box2 .remove",this.container),moveAllButton:a(".box1 .moveall",this.container),removeAllButton:a(".box2 .removeall",this.container),form:a(a(".box1 .filter",this.container)[0].form)},this.originalSelectName=this.element.attr("name")||"";var b="bootstrap-duallistbox-nonselected-list_"+this.originalSelectName,c="bootstrap-duallistbox-selected-list_"+this.originalSelectName;return this.elements.select1.attr("id",b),this.elements.select2.attr("id",c),this.elements.label1.attr("for",b),this.elements.label2.attr("for",c),this.selectedElements=0,this.elementCount=0,this.setBootstrap2Compatible(this.settings.bootstrap2Compatible),this.setFilterTextClear(this.settings.filterTextClear),this.setFilterPlaceHolder(this.settings.filterPlaceHolder),this.setMoveSelectedLabel(this.settings.moveSelectedLabel),this.setMoveAllLabel(this.settings.moveAllLabel),this.setRemoveSelectedLabel(this.settings.removeSelectedLabel),this.setRemoveAllLabel(this.settings.removeAllLabel),this.setMoveOnSelect(this.settings.moveOnSelect),this.setPreserveSelectionOnMove(this.settings.preserveSelectionOnMove),this.setSelectedListLabel(this.settings.selectedListLabel),this.setNonSelectedListLabel(this.settings.nonSelectedListLabel),this.setHelperSelectNamePostfix(this.settings.helperSelectNamePostfix),this.setSelectOrMinimalHeight(this.settings.selectorMinimalHeight),g(this),this.setShowFilterInputs(this.settings.showFilterInputs),this.setNonSelectedFilter(this.settings.nonSelectedFilter),this.setSelectedFilter(this.settings.selectedFilter),this.setInfoText(this.settings.infoText),this.setInfoTextFiltered(this.settings.infoTextFiltered),this.setInfoTextEmpty(this.settings.infoTextEmpty),this.setFilterOnValues(this.settings.filterOnValues),this.element.hide(),t(this),k(this),this.element},setBootstrap2Compatible:function(a,b){return this.settings.bootstrap2Compatible=a,a?(this.container.removeClass("row").addClass("row-fluid bs2compatible"),this.container.find(".box1, .box2").removeClass("col-md-6").addClass("span6"),this.container.find(".clear1, .clear2").removeClass("btn-default btn-xs").addClass("btn-mini"),this.container.find("input, select").removeClass("form-control"),this.container.find(".btn").removeClass("btn-default"),this.container.find(".moveall > i, .move > i").removeClass("glyphicon glyphicon-arrow-right").addClass("icon-arrow-right"),this.container.find(".removeall > i, .remove > i").removeClass("glyphicon glyphicon-arrow-left").addClass("icon-arrow-left")):(this.container.removeClass("row-fluid bs2compatible").addClass("row"),this.container.find(".box1, .box2").removeClass("span6").addClass("col-md-6"),this.container.find(".clear1, .clear2").removeClass("btn-mini").addClass("btn-default btn-xs"),this.container.find("input, select").addClass("form-control"),this.container.find(".btn").addClass("btn-default"),this.container.find(".moveall > i, .move > i").removeClass("icon-arrow-right").addClass("glyphicon glyphicon-arrow-right"),this.container.find(".removeall > i, .remove > i").removeClass("icon-arrow-left").addClass("glyphicon glyphicon-arrow-left")),b&&k(this),this.element},setFilterTextClear:function(a,b){return this.settings.filterTextClear=a,this.elements.filterClear1.html(a),this.elements.filterClear2.html(a),b&&k(this),this.element},setFilterPlaceHolder:function(a,b){return this.settings.filterPlaceHolder=a,this.elements.filterInput1.attr("placeholder",a),this.elements.filterInput2.attr("placeholder",a),b&&k(this),this.element},setMoveSelectedLabel:function(a,b){return this.settings.moveSelectedLabel=a,this.elements.moveButton.attr("title",a),b&&k(this),this.element},setMoveAllLabel:function(a,b){return this.settings.moveAllLabel=a,this.elements.moveAllButton.attr("title",a),b&&k(this),this.element},setRemoveSelectedLabel:function(a,b){return this.settings.removeSelectedLabel=a,this.elements.removeButton.attr("title",a),b&&k(this),this.element},setRemoveAllLabel:function(a,b){return this.settings.removeAllLabel=a,this.elements.removeAllButton.attr("title",a),b&&k(this),this.element},setMoveOnSelect:function(a,b){if(w&&(a=!0),this.settings.moveOnSelect=a,this.settings.moveOnSelect){this.container.addClass("moveonselect");var c=this;this.elements.select1.on("change",function(){p(c)}),this.elements.select2.on("change",function(){q(c)})}else this.container.removeClass("moveonselect"),this.elements.select1.off("change"),this.elements.select2.off("change");return b&&k(this),this.element},setPreserveSelectionOnMove:function(a,b){return w&&(a=!1),this.settings.preserveSelectionOnMove=a,b&&k(this),this.element},setSelectedListLabel:function(a,b){return this.settings.selectedListLabel=a,a?this.elements.label2.show().html(a):this.elements.label2.hide().html(a),b&&k(this),this.element},setNonSelectedListLabel:function(a,b){return this.settings.nonSelectedListLabel=a,a?this.elements.label1.show().html(a):this.elements.label1.hide().html(a),b&&k(this),this.element},setHelperSelectNamePostfix:function(a,b){return this.settings.helperSelectNamePostfix=a,a?(this.elements.select1.attr("name",this.originalSelectName+a+"1"),this.elements.select2.attr("name",this.originalSelectName+a+"2")):(this.elements.select1.removeAttr("name"),this.elements.select2.removeAttr("name")),b&&k(this),this.element},setSelectOrMinimalHeight:function(a,b){this.settings.selectorMinimalHeight=a;var c=this.element.height();return this.element.height()<a&&(c=a),this.elements.select1.height(c),this.elements.select2.height(c),b&&k(this),this.element},setShowFilterInputs:function(a,b){return a?(this.elements.filterInput1.show(),this.elements.filterInput2.show()):(this.setNonSelectedFilter(""),this.setSelectedFilter(""),k(this),this.elements.filterInput1.hide(),this.elements.filterInput2.hide()),this.settings.showFilterInputs=a,b&&k(this),this.element},setNonSelectedFilter:function(a,b){return this.settings.showFilterInputs?(this.settings.nonSelectedFilter=a,this.elements.filterInput1.val(a),b&&k(this),this.element):void 0},setSelectedFilter:function(a,b){return this.settings.showFilterInputs?(this.settings.selectedFilter=a,this.elements.filterInput2.val(a),b&&k(this),this.element):void 0},setInfoText:function(a,b){return this.settings.infoText=a,b&&k(this),this.element},setInfoTextFiltered:function(a,b){return this.settings.infoTextFiltered=a,b&&k(this),this.element},setInfoTextEmpty:function(a,b){return this.settings.infoTextEmpty=a,b&&k(this),this.element},setFilterOnValues:function(a,b){return this.settings.filterOnValues=a,b&&k(this),this.element},getContainer:function(){return this.container},refresh:function(a){g(this),a?o(this):(m(this,1),m(this,2)),k(this)},destroy:function(){return this.container.remove(),this.element.show(),a.data(this,"plugin_"+u,null),this.element}},a.fn[u]=function(b){var c=arguments;if(b===d||"object"==typeof b)return this.each(function(){a(this).is("select")?a.data(this,"plugin_"+u)||a.data(this,"plugin_"+u,new e(this,b)):a(this).find("select").each(function(c,d){a(d).bootstrapDualListbox(b)})});if("string"==typeof b&&"_"!==b[0]&&"init"!==b){var f;return this.each(function(){var d=a.data(this,"plugin_"+u);d instanceof e&&"function"==typeof d[b]&&(f=d[b].apply(d,Array.prototype.slice.call(c,1)))}),f!==d?f:this}}}(jQuery,window,document);
 /*! bootstrap-timepicker v0.2.6 
 * http://jdewit.github.com/bootstrap-timepicker 
 * Copyright (c) 2014 Joris de Wit 
@@ -5524,8 +5524,8 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
  */
 !function(){function t(t){return document.createElementNS(a,t)}function i(t){return(10>t?"0":"")+t}function e(t){var i=++v+"";return t?t+i:i}function s(s,n){function a(t,i){var e=h.offset(),s=/^touch/.test(t.type),c=e.left+m,a=e.top+m,l=(s?t.originalEvent.touches[0]:t).pageX-c,u=(s?t.originalEvent.touches[0]:t).pageY-a,f=Math.sqrt(l*l+u*u),v=!1;if(!i||!(g-w>f||f>g+w)){t.preventDefault();var b=setTimeout(function(){o.addClass("clockpicker-moving")},200);p&&h.append(H.canvas),H.setHand(l,u,!i,!0),r.off(k).on(k,function(t){t.preventDefault();var i=/^touch/.test(t.type),e=(i?t.originalEvent.touches[0]:t).pageX-c,s=(i?t.originalEvent.touches[0]:t).pageY-a;(v||e!==l||s!==u)&&(v=!0,H.setHand(e,s,!1,!0))}),r.off(d).on(d,function(t){r.off(d),t.preventDefault();var e=/^touch/.test(t.type),s=(e?t.originalEvent.changedTouches[0]:t).pageX-c,p=(e?t.originalEvent.changedTouches[0]:t).pageY-a;(i||v)&&s===l&&p===u&&H.setHand(s,p),"hours"===H.currentView?H.toggleView("minutes",M/2):n.autoclose&&(H.minutesView.addClass("clockpicker-dial-out"),setTimeout(function(){H.done()},M/2)),h.prepend(O),clearTimeout(b),o.removeClass("clockpicker-moving"),r.off(k)})}}var l=c(A),h=l.find(".clockpicker-plate"),f=l.find(".clockpicker-hours"),v=l.find(".clockpicker-minutes"),T=l.find(".clockpicker-am-pm-block"),V="INPUT"===s.prop("tagName"),C=V?s:s.find("input"),P=s.find(".input-group-addon"),H=this;if(this.id=e("cp"),this.element=s,this.options=n,this.isAppended=!1,this.isShown=!1,this.currentView="hours",this.isInput=V,this.input=C,this.addon=P,this.popover=l,this.plate=h,this.hoursView=f,this.minutesView=v,this.amPmBlock=T,this.spanHours=l.find(".clockpicker-span-hours"),this.spanMinutes=l.find(".clockpicker-span-minutes"),this.spanAmPm=l.find(".clockpicker-span-am-pm"),this.amOrPm="PM",n.twelvehour){{var x=['<div class="clockpicker-am-pm-block">','<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-am-button">',"AM</button>",'<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-pm-button">',"PM</button>","</div>"].join("");c(x)}c('<button type="button" class="btn btn-sm btn-default clockpicker-button am-button">AM</button>').on("click",function(){H.amOrPm="AM",c(".clockpicker-span-am-pm").empty().append("AM")}).appendTo(this.amPmBlock),c('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button">PM</button>').on("click",function(){H.amOrPm="PM",c(".clockpicker-span-am-pm").empty().append("PM")}).appendTo(this.amPmBlock)}n.autoclose||c('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">'+n.donetext+"</button>").click(c.proxy(this.done,this)).appendTo(l),"top"!==n.placement&&"bottom"!==n.placement||"top"!==n.align&&"bottom"!==n.align||(n.align="left"),"left"!==n.placement&&"right"!==n.placement||"left"!==n.align&&"right"!==n.align||(n.align="top"),l.addClass(n.placement),l.addClass("clockpicker-align-"+n.align),this.spanHours.click(c.proxy(this.toggleView,this,"hours")),this.spanMinutes.click(c.proxy(this.toggleView,this,"minutes")),C.on("focus.clockpicker click.clockpicker",c.proxy(this.show,this)),P.on("click.clockpicker",c.proxy(this.toggle,this));var E,S,I,D=c('<div class="clockpicker-tick"></div>');if(n.twelvehour)for(E=1;13>E;E+=1){S=D.clone(),I=E/6*Math.PI;var B=g;S.css("font-size","120%"),S.css({left:m+Math.sin(I)*B-w,top:m-Math.cos(I)*B-w}),S.html(0===E?"00":E),f.append(S),S.on(u,a)}else for(E=0;24>E;E+=1){S=D.clone(),I=E/6*Math.PI;var z=E>0&&13>E,B=z?b:g;S.css({left:m+Math.sin(I)*B-w,top:m-Math.cos(I)*B-w}),z&&S.css("font-size","120%"),S.html(0===E?"00":E),f.append(S),S.on(u,a)}for(E=0;60>E;E+=5)S=D.clone(),I=E/30*Math.PI,S.css({left:m+Math.sin(I)*g-w,top:m-Math.cos(I)*g-w}),S.css("font-size","120%"),S.html(i(E)),v.append(S),S.on(u,a);if(h.on(u,function(t){0===c(t.target).closest(".clockpicker-tick").length&&a(t,!0)}),p){var O=l.find(".clockpicker-canvas"),j=t("svg");j.setAttribute("class","clockpicker-svg"),j.setAttribute("width",y),j.setAttribute("height",y);var L=t("g");L.setAttribute("transform","translate("+m+","+m+")");var U=t("circle");U.setAttribute("class","clockpicker-canvas-bearing"),U.setAttribute("cx",0),U.setAttribute("cy",0),U.setAttribute("r",2);var W=t("line");W.setAttribute("x1",0),W.setAttribute("y1",0);var N=t("circle");N.setAttribute("class","clockpicker-canvas-bg"),N.setAttribute("r",w);var X=t("circle");X.setAttribute("class","clockpicker-canvas-fg"),X.setAttribute("r",3.5),L.appendChild(W),L.appendChild(N),L.appendChild(X),L.appendChild(U),j.appendChild(L),O.append(j),this.hand=W,this.bg=N,this.fg=X,this.bearing=U,this.g=L,this.canvas=O}}var o,c=window.jQuery,n=c(window),r=c(document),a="http://www.w3.org/2000/svg",p="SVGAngle"in window&&function(){var t,i=document.createElement("div");return i.innerHTML="<svg/>",t=(i.firstChild&&i.firstChild.namespaceURI)==a,i.innerHTML="",t}(),l=function(){var t=document.createElement("div").style;return"transition"in t||"WebkitTransition"in t||"MozTransition"in t||"msTransition"in t||"OTransition"in t}(),h="ontouchstart"in window,u="mousedown"+(h?" touchstart":""),k="mousemove.clockpicker"+(h?" touchmove.clockpicker":""),d="mouseup.clockpicker"+(h?" touchend.clockpicker":""),f=navigator.vibrate?"vibrate":navigator.webkitVibrate?"webkitVibrate":null,v=0,m=100,g=80,b=54,w=13,y=2*m,M=l?350:1,A=['<div class="popover clockpicker-popover">','<div class="arrow"></div>','<div class="popover-title">','<span class="clockpicker-span-hours text-primary"></span>'," : ",'<span class="clockpicker-span-minutes"></span>','<span class="clockpicker-span-am-pm"></span>',"</div>",'<div class="popover-content">','<div class="clockpicker-plate">','<div class="clockpicker-canvas"></div>','<div class="clockpicker-dial clockpicker-hours"></div>','<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',"</div>",'<span class="clockpicker-am-pm-block">',"</span>","</div>","</div>"].join("");s.DEFAULTS={"default":"",fromnow:0,placement:"bottom",align:"left",donetext:"完成",autoclose:!1,twelvehour:!1,vibrate:!0},s.prototype.toggle=function(){this[this.isShown?"hide":"show"]()},s.prototype.locate=function(){var t=this.element,i=this.popover,e=t.offset(),s=t.outerWidth(),o=t.outerHeight(),c=this.options.placement,n=this.options.align,r={};switch(i.show(),c){case"bottom":r.top=e.top+o;break;case"right":r.left=e.left+s;break;case"top":r.top=e.top-i.outerHeight();break;case"left":r.left=e.left-i.outerWidth()}switch(n){case"left":r.left=e.left;break;case"right":r.left=e.left+s-i.outerWidth();break;case"top":r.top=e.top;break;case"bottom":r.top=e.top+o-i.outerHeight()}i.css(r)},s.prototype.show=function(){if(!this.isShown){var t=this;this.isAppended||(o=c(document.body).append(this.popover),n.on("resize.clockpicker"+this.id,function(){t.isShown&&t.locate()}),this.isAppended=!0);var e=((this.input.prop("value")||this.options["default"]||"")+"").split(":");if("now"===e[0]){var s=new Date(+new Date+this.options.fromnow);e=[s.getHours(),s.getMinutes()]}this.hours=+e[0]||0,this.minutes=+e[1]||0,this.spanHours.html(i(this.hours)),this.spanMinutes.html(i(this.minutes)),this.toggleView("hours"),this.locate(),this.isShown=!0,r.on("click.clockpicker."+this.id+" focusin.clockpicker."+this.id,function(i){var e=c(i.target);0===e.closest(t.popover).length&&0===e.closest(t.addon).length&&0===e.closest(t.input).length&&t.hide()}),r.on("keyup.clockpicker."+this.id,function(i){27===i.keyCode&&t.hide()})}},s.prototype.hide=function(){this.isShown=!1,r.off("click.clockpicker."+this.id+" focusin.clockpicker."+this.id),r.off("keyup.clockpicker."+this.id),this.popover.hide()},s.prototype.toggleView=function(t,i){var e="hours"===t,s=e?this.hoursView:this.minutesView,o=e?this.minutesView:this.hoursView;this.currentView=t,this.spanHours.toggleClass("text-primary",e),this.spanMinutes.toggleClass("text-primary",!e),o.addClass("clockpicker-dial-out"),s.css("visibility","visible").removeClass("clockpicker-dial-out"),this.resetClock(i),clearTimeout(this.toggleViewTimer),this.toggleViewTimer=setTimeout(function(){o.css("visibility","hidden")},M)},s.prototype.resetClock=function(t){var i=this.currentView,e=this[i],s="hours"===i,o=Math.PI/(s?6:30),c=e*o,n=s&&e>0&&13>e?b:g,r=Math.sin(c)*n,a=-Math.cos(c)*n,l=this;p&&t?(l.canvas.addClass("clockpicker-canvas-out"),setTimeout(function(){l.canvas.removeClass("clockpicker-canvas-out"),l.setHand(r,a)},t)):this.setHand(r,a)},s.prototype.setHand=function(t,e,s,o){var n,r=Math.atan2(t,-e),a="hours"===this.currentView,l=Math.PI/(a||s?6:30),h=Math.sqrt(t*t+e*e),u=this.options,k=a&&(g+b)/2>h,d=k?b:g;if(u.twelvehour&&(d=g),0>r&&(r=2*Math.PI+r),n=Math.round(r/l),r=n*l,u.twelvehour?a?0===n&&(n=12):(s&&(n*=5),60===n&&(n=0)):a?(12===n&&(n=0),n=k?0===n?12:n:0===n?0:n+12):(s&&(n*=5),60===n&&(n=0)),this[this.currentView]!==n&&f&&this.options.vibrate&&(this.vibrateTimer||(navigator[f](10),this.vibrateTimer=setTimeout(c.proxy(function(){this.vibrateTimer=null},this),100))),this[this.currentView]=n,this[a?"spanHours":"spanMinutes"].html(i(n)),!p)return void this[a?"hoursView":"minutesView"].find(".clockpicker-tick").each(function(){var t=c(this);t.toggleClass("active",n===+t.html())});o||!a&&n%5?(this.g.insertBefore(this.hand,this.bearing),this.g.insertBefore(this.bg,this.fg),this.bg.setAttribute("class","clockpicker-canvas-bg clockpicker-canvas-bg-trans")):(this.g.insertBefore(this.hand,this.bg),this.g.insertBefore(this.fg,this.bg),this.bg.setAttribute("class","clockpicker-canvas-bg"));var v=Math.sin(r)*d,m=-Math.cos(r)*d;this.hand.setAttribute("x2",v),this.hand.setAttribute("y2",m),this.bg.setAttribute("cx",v),this.bg.setAttribute("cy",m),this.fg.setAttribute("cx",v),this.fg.setAttribute("cy",m)},s.prototype.done=function(){this.hide();var t=this.input.prop("value"),e=i(this.hours)+":"+i(this.minutes);this.options.twelvehour&&(e+=this.amOrPm),this.input.prop("value",e),e!==t&&(this.input.triggerHandler("change"),this.isInput||this.element.trigger("change")),this.options.autoclose&&this.input.trigger("blur")},s.prototype.remove=function(){this.element.removeData("clockpicker"),this.input.off("focus.clockpicker click.clockpicker"),this.addon.off("click.clockpicker"),this.isShown&&this.hide(),this.isAppended&&(n.off("resize.clockpicker"+this.id),this.popover.remove())},c.fn.clockpicker=function(t){var i=Array.prototype.slice.call(arguments,1);return this.each(function(){var e=c(this),o=e.data("clockpicker");if(o)"function"==typeof o[t]&&o[t].apply(o,i);else{var n=c.extend({},s.DEFAULTS,e.data(),"object"==typeof t&&t);e.data("clockpicker",new s(e,n))}})}}();
 /*!
- * Bootstrap Colorpicker v2.4.0
- * https://itsjavi.com/bootstrap-colorpicker/
+ * Bootstrap Colorpicker v2.3.3
+ * http://mjolnic.github.io/bootstrap-colorpicker/
  *
  * Originally written by (c) 2012 Stefan Petre
  * Licensed under the Apache License v2.0
@@ -5534,234 +5534,191 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
  */
 
 (function(factory) {
-  var global = (typeof window === 'undefined') ? this : window;
-
+  "use strict";
   if (typeof exports === 'object') {
-    module.exports = factory(global.jQuery, global);
+    module.exports = factory(window.jQuery);
   } else if (typeof define === 'function' && define.amd) {
-    define(['jquery'], function(jq) {
-      return factory(jq, global);
-    });
-  } else if (global.jQuery && !global.jQuery.fn.colorpicker) {
-    factory(global.jQuery, global);
+    define(['jquery'], factory);
+  } else if (window.jQuery && !window.jQuery.fn.colorpicker) {
+    factory(window.jQuery);
   }
-}(function(jQuery, window) {
+}(function($) {
   'use strict';
-
-  var $ = jQuery;
 
   /**
    * Color manipulation helper class
    *
-   * @param {Object|String} [val]
-   * @param {Object} [predefinedColors]
-   * @param {String|null} [fallbackColor]
-   * @param {String|null} [fallbackFormat]
+   * @param {Object|String} val
+   * @param {Object} predefinedColors
    * @constructor
    */
-  var Color = function(val, predefinedColors, fallbackColor, fallbackFormat) {
-    this.fallbackValue = fallbackColor ?
-      (
-        fallbackColor && (typeof fallbackColor.h !== 'undefined') ?
-        fallbackColor :
-        this.value = {
-          h: 0,
-          s: 0,
-          b: 0,
-          a: 1
-        }
-      ) :
-      null;
-
-    this.fallbackFormat = fallbackFormat ? fallbackFormat : 'rgba';
-
-    this.value = this.fallbackValue;
-
+  var Color = function(val, predefinedColors) {
+    this.value = {
+      h: 0,
+      s: 0,
+      b: 0,
+      a: 1
+    };
     this.origFormat = null; // original string format
-
-    this.predefinedColors = predefinedColors ? predefinedColors : {};
-
-    // We don't want to share aliases across instances so we extend new object
-    this.colors = $.extend({}, Color.webColors, this.predefinedColors);
-
+    if (predefinedColors) {
+      $.extend(this.colors, predefinedColors);
+    }
     if (val) {
-      if (typeof val.h !== 'undefined') {
+      if (val.toLowerCase !== undefined) {
+        // cast to string
+        val = val + '';
+        this.setColor(val);
+      } else if (val.h !== undefined) {
         this.value = val;
-      } else {
-        this.setColor(String(val));
       }
     }
-
-    if (!this.value) {
-      // Initial value is always black if no arguments are passed or val is empty
-      this.value = {
-        h: 0,
-        s: 0,
-        b: 0,
-        a: 1
-      };
-    }
-  };
-
-  Color.webColors = { // 140 predefined colors from the HTML Colors spec
-    "aliceblue": "#f0f8ff",
-    "antiquewhite": "#faebd7",
-    "aqua": "#00ffff",
-    "aquamarine": "#7fffd4",
-    "azure": "#f0ffff",
-    "beige": "#f5f5dc",
-    "bisque": "#ffe4c4",
-    "black": "#000000",
-    "blanchedalmond": "#ffebcd",
-    "blue": "#0000ff",
-    "blueviolet": "#8a2be2",
-    "brown": "#a52a2a",
-    "burlywood": "#deb887",
-    "cadetblue": "#5f9ea0",
-    "chartreuse": "#7fff00",
-    "chocolate": "#d2691e",
-    "coral": "#ff7f50",
-    "cornflowerblue": "#6495ed",
-    "cornsilk": "#fff8dc",
-    "crimson": "#dc143c",
-    "cyan": "#00ffff",
-    "darkblue": "#00008b",
-    "darkcyan": "#008b8b",
-    "darkgoldenrod": "#b8860b",
-    "darkgray": "#a9a9a9",
-    "darkgreen": "#006400",
-    "darkkhaki": "#bdb76b",
-    "darkmagenta": "#8b008b",
-    "darkolivegreen": "#556b2f",
-    "darkorange": "#ff8c00",
-    "darkorchid": "#9932cc",
-    "darkred": "#8b0000",
-    "darksalmon": "#e9967a",
-    "darkseagreen": "#8fbc8f",
-    "darkslateblue": "#483d8b",
-    "darkslategray": "#2f4f4f",
-    "darkturquoise": "#00ced1",
-    "darkviolet": "#9400d3",
-    "deeppink": "#ff1493",
-    "deepskyblue": "#00bfff",
-    "dimgray": "#696969",
-    "dodgerblue": "#1e90ff",
-    "firebrick": "#b22222",
-    "floralwhite": "#fffaf0",
-    "forestgreen": "#228b22",
-    "fuchsia": "#ff00ff",
-    "gainsboro": "#dcdcdc",
-    "ghostwhite": "#f8f8ff",
-    "gold": "#ffd700",
-    "goldenrod": "#daa520",
-    "gray": "#808080",
-    "green": "#008000",
-    "greenyellow": "#adff2f",
-    "honeydew": "#f0fff0",
-    "hotpink": "#ff69b4",
-    "indianred": "#cd5c5c",
-    "indigo": "#4b0082",
-    "ivory": "#fffff0",
-    "khaki": "#f0e68c",
-    "lavender": "#e6e6fa",
-    "lavenderblush": "#fff0f5",
-    "lawngreen": "#7cfc00",
-    "lemonchiffon": "#fffacd",
-    "lightblue": "#add8e6",
-    "lightcoral": "#f08080",
-    "lightcyan": "#e0ffff",
-    "lightgoldenrodyellow": "#fafad2",
-    "lightgrey": "#d3d3d3",
-    "lightgreen": "#90ee90",
-    "lightpink": "#ffb6c1",
-    "lightsalmon": "#ffa07a",
-    "lightseagreen": "#20b2aa",
-    "lightskyblue": "#87cefa",
-    "lightslategray": "#778899",
-    "lightsteelblue": "#b0c4de",
-    "lightyellow": "#ffffe0",
-    "lime": "#00ff00",
-    "limegreen": "#32cd32",
-    "linen": "#faf0e6",
-    "magenta": "#ff00ff",
-    "maroon": "#800000",
-    "mediumaquamarine": "#66cdaa",
-    "mediumblue": "#0000cd",
-    "mediumorchid": "#ba55d3",
-    "mediumpurple": "#9370d8",
-    "mediumseagreen": "#3cb371",
-    "mediumslateblue": "#7b68ee",
-    "mediumspringgreen": "#00fa9a",
-    "mediumturquoise": "#48d1cc",
-    "mediumvioletred": "#c71585",
-    "midnightblue": "#191970",
-    "mintcream": "#f5fffa",
-    "mistyrose": "#ffe4e1",
-    "moccasin": "#ffe4b5",
-    "navajowhite": "#ffdead",
-    "navy": "#000080",
-    "oldlace": "#fdf5e6",
-    "olive": "#808000",
-    "olivedrab": "#6b8e23",
-    "orange": "#ffa500",
-    "orangered": "#ff4500",
-    "orchid": "#da70d6",
-    "palegoldenrod": "#eee8aa",
-    "palegreen": "#98fb98",
-    "paleturquoise": "#afeeee",
-    "palevioletred": "#d87093",
-    "papayawhip": "#ffefd5",
-    "peachpuff": "#ffdab9",
-    "peru": "#cd853f",
-    "pink": "#ffc0cb",
-    "plum": "#dda0dd",
-    "powderblue": "#b0e0e6",
-    "purple": "#800080",
-    "red": "#ff0000",
-    "rosybrown": "#bc8f8f",
-    "royalblue": "#4169e1",
-    "saddlebrown": "#8b4513",
-    "salmon": "#fa8072",
-    "sandybrown": "#f4a460",
-    "seagreen": "#2e8b57",
-    "seashell": "#fff5ee",
-    "sienna": "#a0522d",
-    "silver": "#c0c0c0",
-    "skyblue": "#87ceeb",
-    "slateblue": "#6a5acd",
-    "slategray": "#708090",
-    "snow": "#fffafa",
-    "springgreen": "#00ff7f",
-    "steelblue": "#4682b4",
-    "tan": "#d2b48c",
-    "teal": "#008080",
-    "thistle": "#d8bfd8",
-    "tomato": "#ff6347",
-    "turquoise": "#40e0d0",
-    "violet": "#ee82ee",
-    "wheat": "#f5deb3",
-    "white": "#ffffff",
-    "whitesmoke": "#f5f5f5",
-    "yellow": "#ffff00",
-    "yellowgreen": "#9acd32",
-    "transparent": "transparent"
   };
 
   Color.prototype = {
     constructor: Color,
-    colors: {}, // merged web and predefined colors
-    predefinedColors: {},
-    /**
-     * @return {Object}
-     */
-    getValue: function() {
-      return this.value;
-    },
-    /**
-     * @param {Object} val
-     */
-    setValue: function(val) {
-      this.value = val;
+    // 140 predefined colors from the HTML Colors spec
+    colors: {
+      "aliceblue": "#f0f8ff",
+      "antiquewhite": "#faebd7",
+      "aqua": "#00ffff",
+      "aquamarine": "#7fffd4",
+      "azure": "#f0ffff",
+      "beige": "#f5f5dc",
+      "bisque": "#ffe4c4",
+      "black": "#000000",
+      "blanchedalmond": "#ffebcd",
+      "blue": "#0000ff",
+      "blueviolet": "#8a2be2",
+      "brown": "#a52a2a",
+      "burlywood": "#deb887",
+      "cadetblue": "#5f9ea0",
+      "chartreuse": "#7fff00",
+      "chocolate": "#d2691e",
+      "coral": "#ff7f50",
+      "cornflowerblue": "#6495ed",
+      "cornsilk": "#fff8dc",
+      "crimson": "#dc143c",
+      "cyan": "#00ffff",
+      "darkblue": "#00008b",
+      "darkcyan": "#008b8b",
+      "darkgoldenrod": "#b8860b",
+      "darkgray": "#a9a9a9",
+      "darkgreen": "#006400",
+      "darkkhaki": "#bdb76b",
+      "darkmagenta": "#8b008b",
+      "darkolivegreen": "#556b2f",
+      "darkorange": "#ff8c00",
+      "darkorchid": "#9932cc",
+      "darkred": "#8b0000",
+      "darksalmon": "#e9967a",
+      "darkseagreen": "#8fbc8f",
+      "darkslateblue": "#483d8b",
+      "darkslategray": "#2f4f4f",
+      "darkturquoise": "#00ced1",
+      "darkviolet": "#9400d3",
+      "deeppink": "#ff1493",
+      "deepskyblue": "#00bfff",
+      "dimgray": "#696969",
+      "dodgerblue": "#1e90ff",
+      "firebrick": "#b22222",
+      "floralwhite": "#fffaf0",
+      "forestgreen": "#228b22",
+      "fuchsia": "#ff00ff",
+      "gainsboro": "#dcdcdc",
+      "ghostwhite": "#f8f8ff",
+      "gold": "#ffd700",
+      "goldenrod": "#daa520",
+      "gray": "#808080",
+      "green": "#008000",
+      "greenyellow": "#adff2f",
+      "honeydew": "#f0fff0",
+      "hotpink": "#ff69b4",
+      "indianred": "#cd5c5c",
+      "indigo": "#4b0082",
+      "ivory": "#fffff0",
+      "khaki": "#f0e68c",
+      "lavender": "#e6e6fa",
+      "lavenderblush": "#fff0f5",
+      "lawngreen": "#7cfc00",
+      "lemonchiffon": "#fffacd",
+      "lightblue": "#add8e6",
+      "lightcoral": "#f08080",
+      "lightcyan": "#e0ffff",
+      "lightgoldenrodyellow": "#fafad2",
+      "lightgrey": "#d3d3d3",
+      "lightgreen": "#90ee90",
+      "lightpink": "#ffb6c1",
+      "lightsalmon": "#ffa07a",
+      "lightseagreen": "#20b2aa",
+      "lightskyblue": "#87cefa",
+      "lightslategray": "#778899",
+      "lightsteelblue": "#b0c4de",
+      "lightyellow": "#ffffe0",
+      "lime": "#00ff00",
+      "limegreen": "#32cd32",
+      "linen": "#faf0e6",
+      "magenta": "#ff00ff",
+      "maroon": "#800000",
+      "mediumaquamarine": "#66cdaa",
+      "mediumblue": "#0000cd",
+      "mediumorchid": "#ba55d3",
+      "mediumpurple": "#9370d8",
+      "mediumseagreen": "#3cb371",
+      "mediumslateblue": "#7b68ee",
+      "mediumspringgreen": "#00fa9a",
+      "mediumturquoise": "#48d1cc",
+      "mediumvioletred": "#c71585",
+      "midnightblue": "#191970",
+      "mintcream": "#f5fffa",
+      "mistyrose": "#ffe4e1",
+      "moccasin": "#ffe4b5",
+      "navajowhite": "#ffdead",
+      "navy": "#000080",
+      "oldlace": "#fdf5e6",
+      "olive": "#808000",
+      "olivedrab": "#6b8e23",
+      "orange": "#ffa500",
+      "orangered": "#ff4500",
+      "orchid": "#da70d6",
+      "palegoldenrod": "#eee8aa",
+      "palegreen": "#98fb98",
+      "paleturquoise": "#afeeee",
+      "palevioletred": "#d87093",
+      "papayawhip": "#ffefd5",
+      "peachpuff": "#ffdab9",
+      "peru": "#cd853f",
+      "pink": "#ffc0cb",
+      "plum": "#dda0dd",
+      "powderblue": "#b0e0e6",
+      "purple": "#800080",
+      "red": "#ff0000",
+      "rosybrown": "#bc8f8f",
+      "royalblue": "#4169e1",
+      "saddlebrown": "#8b4513",
+      "salmon": "#fa8072",
+      "sandybrown": "#f4a460",
+      "seagreen": "#2e8b57",
+      "seashell": "#fff5ee",
+      "sienna": "#a0522d",
+      "silver": "#c0c0c0",
+      "skyblue": "#87ceeb",
+      "slateblue": "#6a5acd",
+      "slategray": "#708090",
+      "snow": "#fffafa",
+      "springgreen": "#00ff7f",
+      "steelblue": "#4682b4",
+      "tan": "#d2b48c",
+      "teal": "#008080",
+      "thistle": "#d8bfd8",
+      "tomato": "#ff6347",
+      "turquoise": "#40e0d0",
+      "violet": "#ee82ee",
+      "wheat": "#f5deb3",
+      "white": "#ffffff",
+      "whitesmoke": "#f5f5f5",
+      "yellow": "#ffff00",
+      "yellowgreen": "#9acd32",
+      "transparent": "transparent"
     },
     _sanitizeNumber: function(val) {
       if (typeof val === 'number') {
@@ -5773,7 +5730,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       if (val === '') {
         return 0;
       }
-      if (typeof val.toLowerCase !== 'undefined') {
+      if (val.toLowerCase !== undefined) {
         if (val.match(/^\./)) {
           val = "0" + val;
         }
@@ -5782,7 +5739,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       return 1;
     },
     isTransparent: function(strVal) {
-      if (!strVal || !(typeof strVal === 'string' || strVal instanceof String)) {
+      if (!strVal) {
         return false;
       }
       strVal = strVal.toLowerCase().trim();
@@ -5791,12 +5748,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
     rgbaIsTransparent: function(rgba) {
       return ((rgba.r === 0) && (rgba.g === 0) && (rgba.b === 0) && (rgba.a === 0));
     },
-    // parse a string to HSB
-    /**
-     * @protected
-     * @param {String} strVal
-     * @returns {boolean} Returns true if it could be parsed, false otherwise
-     */
+    //parse a string to HSB
     setColor: function(strVal) {
       strVal = strVal.toLowerCase().trim();
       if (strVal) {
@@ -5807,26 +5759,41 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
             b: 0,
             a: 0
           };
-          return true;
         } else {
-          var parsedColor = this.parse(strVal);
-          if (parsedColor) {
-            this.value = this.value = {
-              h: parsedColor.h,
-              s: parsedColor.s,
-              b: parsedColor.b,
-              a: parsedColor.a
-            };
-            if (!this.origFormat) {
-              this.origFormat = parsedColor.format;
-            }
-          } else if (this.fallbackValue) {
-            // if parser fails, defaults to fallbackValue if defined, otherwise the value won't be changed
-            this.value = this.fallbackValue;
-          }
+          this.value = this.stringToHSB(strVal) || {
+            h: 0,
+            s: 0,
+            b: 0,
+            a: 1
+          }; // if parser fails, defaults to black
         }
       }
-      return false;
+    },
+    stringToHSB: function(strVal) {
+      strVal = strVal.toLowerCase();
+      var alias;
+      if (typeof this.colors[strVal] !== 'undefined') {
+        strVal = this.colors[strVal];
+        alias = 'alias';
+      }
+      var that = this,
+        result = false;
+      $.each(this.stringParsers, function(i, parser) {
+        var match = parser.re.exec(strVal),
+          values = match && parser.parse.apply(that, [match]),
+          format = alias || parser.format || 'rgba';
+        if (values) {
+          if (format.match(/hsla?/)) {
+            result = that.RGBtoHSB.apply(that, that.HSLtoRGB.apply(that, values));
+          } else {
+            result = that.RGBtoHSB.apply(that, values);
+          }
+          that.origFormat = format;
+          return false;
+        }
+        return true;
+      });
+      return result;
     },
     setHue: function(h) {
       this.value.h = 1 - h;
@@ -5841,13 +5808,11 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       this.value.a = Math.round((parseInt((1 - a) * 100, 10) / 100) * 100) / 100;
     },
     toRGB: function(h, s, b, a) {
-      if (arguments.length === 0) {
+      if (!h) {
         h = this.value.h;
         s = this.value.s;
         b = this.value.b;
-        a = this.value.a;
       }
-
       h *= 360;
       var R, G, B, X, C;
       h = (h % 360) / 60;
@@ -5859,37 +5824,25 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       R += [C, X, 0, 0, X, C][h];
       G += [X, C, C, X, 0, 0][h];
       B += [0, 0, X, C, C, X][h];
-
       return {
         r: Math.round(R * 255),
         g: Math.round(G * 255),
         b: Math.round(B * 255),
-        a: a
+        a: a || this.value.a
       };
     },
     toHex: function(h, s, b, a) {
-      if (arguments.length === 0) {
-        h = this.value.h;
-        s = this.value.s;
-        b = this.value.b;
-        a = this.value.a;
-      }
-
       var rgb = this.toRGB(h, s, b, a);
-
       if (this.rgbaIsTransparent(rgb)) {
         return 'transparent';
       }
-
-      return "#" + ((1 << 24) + (parseInt(rgb.r) << 16) + (parseInt(rgb.g) << 8) + parseInt(rgb.b)).toString(16).slice(1);
+      return '#' + ((1 << 24) | (parseInt(rgb.r) << 16) | (parseInt(rgb.g) << 8) | parseInt(rgb.b)).toString(16).substr(1);
     },
     toHSL: function(h, s, b, a) {
-      if (arguments.length === 0) {
-        h = this.value.h;
-        s = this.value.s;
-        b = this.value.b;
-        a = this.value.a;
-      }
+      h = h || this.value.h;
+      s = s || this.value.s;
+      b = b || this.value.b;
+      a = a || this.value.a;
 
       var H = h,
         L = (2 - s) * b,
@@ -5911,14 +5864,9 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       };
     },
     toAlias: function(r, g, b, a) {
-      var c, rgb = (arguments.length === 0) ? this.toHex() : this.toHex(r, g, b, a);
-
-      // support predef. colors in non-hex format too, as defined in the alias itself
-      var original = this.origFormat === 'alias' ? rgb : this.toString(this.origFormat, false);
-
+      var rgb = this.toHex(r, g, b, a);
       for (var alias in this.colors) {
-        c = this.colors[alias].toLowerCase().trim();
-        if ((c === rgb) || (c === original)) {
+        if (this.colors[alias] === rgb) {
           return alias;
         }
       }
@@ -5984,69 +5932,9 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       var b = Math.round(this.HueToRGB(p, q, tb) * 255);
       return [r, g, b, this._sanitizeNumber(a)];
     },
-    /**
-     * @param {String} strVal
-     * @returns {Object} Object containing h,s,b,a,format properties or FALSE if failed to parse
-     */
-    parse: function(strVal) {
-      if (arguments.length === 0) {
-        return false;
-      }
-
-      var that = this,
-        result = false,
-        isAlias = (typeof this.colors[strVal] !== 'undefined'),
-        values, format;
-
-      if (isAlias) {
-        strVal = this.colors[strVal].toLowerCase().trim();
-      }
-
-      $.each(this.stringParsers, function(i, parser) {
-        var match = parser.re.exec(strVal);
-        values = match && parser.parse.apply(that, [match]);
-        if (values) {
-          result = {};
-          format = (isAlias ? 'alias' : (parser.format ? parser.format : that.getValidFallbackFormat()));
-          if (format.match(/hsla?/)) {
-            result = that.RGBtoHSB.apply(that, that.HSLtoRGB.apply(that, values));
-          } else {
-            result = that.RGBtoHSB.apply(that, values);
-          }
-          if (result instanceof Object) {
-            result.format = format;
-          }
-          return false; // stop iterating
-        }
-        return true;
-      });
-      return result;
-    },
-    getValidFallbackFormat: function() {
-      var formats = [
-        'rgba', 'rgb', 'hex', 'hsla', 'hsl'
-      ];
-      if (this.origFormat && (formats.indexOf(this.origFormat) !== -1)) {
-        return this.origFormat;
-      }
-      if (this.fallbackFormat && (formats.indexOf(this.fallbackFormat) !== -1)) {
-        return this.fallbackFormat;
-      }
-
-      return 'rgba'; // By default, return a format that will not lose the alpha info
-    },
-    /**
-     *
-     * @param {string} [format] (default: rgba)
-     * @param {boolean} [translateAlias] Return real color for pre-defined (non-standard) aliases (default: false)
-     * @returns {String}
-     */
-    toString: function(format, translateAlias) {
-      format = format || this.origFormat || this.fallbackFormat;
-      translateAlias = translateAlias || false;
-
+    toString: function(format) {
+      format = format || 'rgba';
       var c = false;
-
       switch (format) {
         case 'rgb':
           {
@@ -6081,19 +5969,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
           }
           break;
         case 'alias':
-          {
-            c = this.toAlias();
-
-            if (c === false) {
-              return this.toString(this.getValidFallbackFormat());
-            }
-
-            if (translateAlias && !(c in Color.webColors) && (c in this.predefinedColors)) {
-              return this.predefinedColors[c];
-            }
-
-            return c;
-          }
+          return this.toAlias() || this.toHex();
         default:
           {
             return c;
@@ -6212,8 +6088,6 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
     input: 'input', // children input selector
     container: false, // container selector
     component: '.add-on, .input-group-addon', // children component selector
-    fallbackColor: false, // fallback color value. null = keeps current color.
-    fallbackFormat: 'hex', // fallback color format
     sliders: {
       saturation: {
         maxLeft: 100,
@@ -6262,8 +6136,8 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       '<div class="colorpicker-selectors"></div>' +
       '</div>',
     align: 'right',
-    customClass: null, // custom class added to the colorpicker element
-    colorSelectors: null // custom color aliases
+    customClass: null,
+    colorSelectors: null
   };
 
   /**
@@ -6291,8 +6165,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       this.input = false;
     }
     // Set HSB color
-    this.color = this.createColor(this.options.color !== false ? this.options.color : this.getValue());
-
+    this.color = new Color(this.options.color !== false ? this.options.color : this.getValue(), this.options.colorSelectors);
     this.format = this.options.format !== false ? this.options.format : this.color.origFormat;
 
     if (this.options.color !== false) {
@@ -6301,67 +6174,42 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
     }
 
     // Setup picker
-    var $picker = this.picker = $(this.options.template);
+    this.picker = $(this.options.template);
     if (this.options.customClass) {
-      $picker.addClass(this.options.customClass);
+      this.picker.addClass(this.options.customClass);
     }
     if (this.options.inline) {
-      $picker.addClass('colorpicker-inline colorpicker-visible');
+      this.picker.addClass('colorpicker-inline colorpicker-visible');
     } else {
-      $picker.addClass('colorpicker-hidden');
+      this.picker.addClass('colorpicker-hidden');
     }
     if (this.options.horizontal) {
-      $picker.addClass('colorpicker-horizontal');
+      this.picker.addClass('colorpicker-horizontal');
     }
-    if (
-      (['rgba', 'hsla', 'alias'].indexOf(this.format) !== -1) ||
-      this.options.format === false ||
-      this.getValue() === 'transparent'
-    ) {
-      $picker.addClass('colorpicker-with-alpha');
+    if (this.format === 'rgba' || this.format === 'hsla' || this.options.format === false) {
+      this.picker.addClass('colorpicker-with-alpha');
     }
     if (this.options.align === 'right') {
-      $picker.addClass('colorpicker-right');
+      this.picker.addClass('colorpicker-right');
     }
     if (this.options.inline === true) {
-      $picker.addClass('colorpicker-no-arrow');
+      this.picker.addClass('colorpicker-no-arrow');
     }
     if (this.options.colorSelectors) {
-      var colorpicker = this,
-        selectorsContainer = colorpicker.picker.find('.colorpicker-selectors');
-
-      if (selectorsContainer.length > 0) {
-        $.each(this.options.colorSelectors, function(name, color) {
-          var $btn = $('<i />')
-            .addClass('colorpicker-selectors-color')
-            .css('background-color', color)
-            .data('class', name).data('alias', name);
-
-          $btn.on('click.colorpicker touchend.colorpicker', function() {
-            colorpicker.setValue(
-              colorpicker.format === 'alias' ? $(this).data('alias') : $(this).css('background-color')
-            );
-          });
-          selectorsContainer.append($btn);
+      var colorpicker = this;
+      $.each(this.options.colorSelectors, function(name, color) {
+        var $btn = $('<i />').css('background-color', color).data('class', name);
+        $btn.click(function() {
+          colorpicker.setValue($(this).css('background-color'));
         });
-        selectorsContainer.show().addClass('colorpicker-visible');
-      }
+        colorpicker.picker.find('.colorpicker-selectors').append($btn);
+      });
+      this.picker.find('.colorpicker-selectors').show();
     }
+    this.picker.on('mousedown.colorpicker touchstart.colorpicker', $.proxy(this.mousedown, this));
+    this.picker.appendTo(this.container ? this.container : $('body'));
 
-    // Prevent closing the colorpicker when clicking on itself
-    $picker.on('mousedown.colorpicker touchstart.colorpicker', $.proxy(function(e) {
-      if (e.target === e.currentTarget) {
-        e.preventDefault();
-      }
-    }, this));
-
-    // Bind click/tap events on the sliders
-    $picker.find('.colorpicker-saturation, .colorpicker-hue, .colorpicker-alpha')
-      .on('mousedown.colorpicker touchstart.colorpicker', $.proxy(this.mousedown, this));
-
-    $picker.appendTo(this.container ? this.container : $('body'));
-
-    // Bind other events
+    // Bind events
     if (this.input !== false) {
       this.input.on({
         'keyup.colorpicker': $.proxy(this.keyup, this)
@@ -6430,7 +6278,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       if (this.options.inline !== false || this.options.container) {
         return false;
       }
-      var type = this.container && this.container[0] !== window.document.body ? 'position' : 'offset';
+      var type = this.container && this.container[0] !== document.body ? 'position' : 'offset';
       var element = this.component || this.element;
       var offset = element[type]();
       if (this.options.align === 'right') {
@@ -6443,8 +6291,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
     },
     show: function(e) {
       if (this.isDisabled()) {
-        // Don't show the widget if it's disabled (the input)
-        return;
+        return false;
       }
       this.picker.addClass('colorpicker-visible').removeClass('colorpicker-hidden');
       this.reposition();
@@ -6465,19 +6312,10 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
         color: this.color
       });
     },
-    hide: function(e) {
-      if ((typeof e !== 'undefined') && e.target) {
-        // Prevent hide if triggered by an event and an element inside the colorpicker has been clicked/touched
-        if (
-          $(e.currentTarget).parents('.colorpicker').length > 0 ||
-          $(e.target).parents('.colorpicker').length > 0
-        ) {
-          return false;
-        }
-      }
+    hide: function() {
       this.picker.addClass('colorpicker-hidden').removeClass('colorpicker-visible');
       $(window).off('resize.colorpicker', this.reposition);
-      $(window.document).off({
+      $(document).off({
         'mousedown.colorpicker': this.hide
       });
       this.update();
@@ -6487,20 +6325,27 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       });
     },
     updateData: function(val) {
-      val = val || this.color.toString(this.format, false);
+      val = val || this.color.toString(this.format);
       this.element.data('color', val);
       return val;
     },
     updateInput: function(val) {
-      val = val || this.color.toString(this.format, false);
+      val = val || this.color.toString(this.format);
       if (this.input !== false) {
+        if (this.options.colorSelectors) {
+          var color = new Color(val, this.options.colorSelectors);
+          var alias = color.toAlias();
+          if (typeof this.options.colorSelectors[alias] !== 'undefined') {
+            val = alias;
+          }
+        }
         this.input.prop('value', val);
       }
       return val;
     },
     updatePicker: function(val) {
-      if (typeof val !== 'undefined') {
-        this.color = this.createColor(val);
+      if (val !== undefined) {
+        this.color = new Color(val, this.options.colorSelectors);
       }
       var sl = (this.options.horizontal === false) ? this.options.sliders : this.options.slidersHorz;
       var icns = this.picker.find('i');
@@ -6520,41 +6365,26 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
         'top': sl.saturation.maxTop - this.color.value.b * sl.saturation.maxTop,
         'left': this.color.value.s * sl.saturation.maxLeft
       });
-
-      this.picker.find('.colorpicker-saturation')
-        .css('backgroundColor', this.color.toHex(this.color.value.h, 1, 1, 1));
-
-      this.picker.find('.colorpicker-alpha')
-        .css('backgroundColor', this.color.toHex());
-
-      this.picker.find('.colorpicker-color, .colorpicker-color div')
-        .css('backgroundColor', this.color.toString(this.format, true));
-
+      this.picker.find('.colorpicker-saturation').css('backgroundColor', this.color.toHex(this.color.value.h, 1, 1, 1));
+      this.picker.find('.colorpicker-alpha').css('backgroundColor', this.color.toHex());
+      this.picker.find('.colorpicker-color, .colorpicker-color div').css('backgroundColor', this.color.toString(this.format));
       return val;
     },
     updateComponent: function(val) {
-      var color;
-
-      if (typeof val !== 'undefined') {
-        color = this.createColor(val);
-      } else {
-        color = this.color;
-      }
-
+      val = val || this.color.toString(this.format);
       if (this.component !== false) {
         var icn = this.component.find('i').eq(0);
         if (icn.length > 0) {
           icn.css({
-            'backgroundColor': color.toString(this.format, true)
+            'backgroundColor': val
           });
         } else {
           this.component.css({
-            'backgroundColor': color.toString(this.format, true)
+            'backgroundColor': val
           });
         }
       }
-
-      return color.toString(this.format, false);
+      return val;
     },
     update: function(force) {
       var val;
@@ -6569,7 +6399,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
 
     },
     setValue: function(val) { // set color manually
-      this.color = this.createColor(val);
+      this.color = new Color(val, this.options.colorSelectors);
       this.update(true);
       this.element.trigger({
         type: 'changeColor',
@@ -6577,22 +6407,8 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
         value: val
       });
     },
-    /**
-     * Creates a new color using the instance options
-     * @protected
-     * @param {String} val
-     * @returns {Color}
-     */
-    createColor: function(val) {
-      return new Color(
-        val ? val : null,
-        this.options.colorSelectors,
-        this.options.fallbackColor ? this.options.fallbackColor : this.color,
-        this.options.fallbackFormat
-      );
-    },
     getValue: function(defaultValue) {
-      defaultValue = (typeof defaultValue === 'undefined') ? this.options.fallbackColor : defaultValue;
+      defaultValue = (defaultValue === undefined) ? '#000000' : defaultValue;
       var val;
       if (this.hasInput()) {
         val = this.input.val();
@@ -6676,7 +6492,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
           top: e.pageY
         };
         //trigger mousemove to move the guide to the current position
-        $(window.document).on({
+        $(document).on({
           'mousemove.colorpicker': $.proxy(this.mousemove, this),
           'touchmove.colorpicker': $.proxy(this.mousemove, this),
           'mouseup.colorpicker': $.proxy(this.mouseup, this),
@@ -6717,11 +6533,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
       // Change format dynamically
       // Only occurs if user choose the dynamic format by
       // setting option format to false
-      if (
-        this.options.format === false &&
-        (this.currentSlider.callTop === 'setAlpha' ||
-          this.currentSlider.callLeft === 'setAlpha')
-      ) {
+      if (this.currentSlider.callTop === 'setAlpha' && this.options.format === false) {
 
         // Converting from hex / rgb to rgba
         if (this.color.value.a !== 1) {
@@ -6746,7 +6558,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
     mouseup: function(e) {
       e.stopPropagation();
       e.preventDefault();
-      $(window.document).off({
+      $(document).off({
         'mousemove.colorpicker': this.mousemove,
         'touchmove.colorpicker': this.mousemove,
         'mouseup.colorpicker': this.mouseup,
@@ -6769,7 +6581,7 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
         }
         this.update(true);
       } else {
-        this.color = this.createColor(this.input.val());
+        this.color = new Color(this.input.val(), this.options.colorSelectors);
         // Change format dynamically
         // Only occurs if user choose the dynamic format by
         // setting option format to false
@@ -6793,35 +6605,25 @@ remove:function(){return this.each(function(){this.removeSlider()})}};c.fn.ionRa
   $.colorpicker = Colorpicker;
 
   $.fn.colorpicker = function(option) {
-    var apiArgs = Array.prototype.slice.call(arguments, 1),
-      isSingleElement = (this.length === 1),
-      returnValue = null;
+    var pickerArgs = arguments,
+      rv = null;
 
-    var $jq = this.each(function() {
+    var $returnValue = this.each(function() {
       var $this = $(this),
         inst = $this.data('colorpicker'),
         options = ((typeof option === 'object') ? option : {});
-
-      if (!inst) {
-        inst = new Colorpicker(this, options);
-        $this.data('colorpicker', inst);
-      }
-
-      if (typeof option === 'string') {
-        if ($.isFunction(inst[option])) {
-          returnValue = inst[option].apply(inst, apiArgs);
-        } else { // its a property ?
-          if (apiArgs.length) {
-            // set property
-            inst[option] = apiArgs[0];
-          }
-          returnValue = inst[option];
-        }
+      if ((!inst) && (typeof option !== 'string')) {
+        $this.data('colorpicker', new Colorpicker(this, options));
       } else {
-        returnValue = $this;
+        if (typeof option === 'string') {
+          rv = inst[option].apply(inst, Array.prototype.slice.call(pickerArgs, 1));
+        }
       }
     });
-    return isSingleElement ? returnValue : $jq;
+    if (option === 'getValue') {
+      return rv;
+    }
+    return $returnValue;
   };
 
   $.fn.colorpicker.constructor = Colorpicker;

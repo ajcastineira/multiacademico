@@ -101,11 +101,14 @@
                                         };
                                     }else{
                                         $scope.estilo={
-                                            'position': 'absolute',
-                                            'background-color': '#ffffff'
+
+
+                                        position: 'absolute',
+                                        "background-color": '#ffffff',
+
                                         };
                                     }
-                            };
+                                }
                             
                             $scope.findCalificacion = function(alumno, idmateria){
                                 return _.find(alumno.calificaciones, {'calificacioncodmateria':{'id':idmateria}});

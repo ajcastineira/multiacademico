@@ -71,6 +71,12 @@
                                 if (typeof q==='undefined') q=$scope.q;
                                 return Calificaciones.getPromedioQuimestre(q,calificacion);
                             };
+
+                            $scope.pranual=function(calificacion)
+                            {
+                                if (typeof q==='undefined') q=$scope.q;
+                                return Calificaciones.getPromedioAnual(calificacion);
+                            };
                             
                             $scope.cualitativa=function(nota)
                             {

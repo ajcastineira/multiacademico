@@ -108,6 +108,14 @@
                                });
                                 return redondear(_.mean(promedios),2);
                            };
+        //Promedio total anual final
+        var getPromedioTotalAnual=function (calificaciones) 
+                          {
+                               var promedios=_.map(calificaciones,function(calificacion){
+                                   return getPromedioFinal(calificacion);
+                               });
+                                return redondear(_.mean(promedios),2);
+                           };                  
         var getPromedioAnual=function (calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}

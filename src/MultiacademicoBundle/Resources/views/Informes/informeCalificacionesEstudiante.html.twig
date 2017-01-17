@@ -127,9 +127,9 @@
                     <tr height="25" bgcolor="FFFFFF">
             <td><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>NOTA PROMEDIAL</b></span></td>
             {%verbatim%}
-            <td ng-if="p<=3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
-            <td ng-if="p>3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td>
-            <td ng-if="q==3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
+            <td ng-if="p<=3&&q<3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtp(q,p,estudiante.calificaciones)}} ( {{notaEnLetras(prtp(q,p,estudiante.calificaciones))}}  )</b></span></td>
+            <td ng-if="p>3&&q<3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prtq(q,estudiante.calificaciones)}} ( {{notaEnLetras(prtq(q,estudiante.calificaciones))}}  )</b></span></td>
+            <td ng-if="q==3" width="395"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{prFinal(estudiante.calificaciones)}} ( {{notaEnLetras(prFinal(estudiante.calificaciones))}}  )</b></span></td>
             </tr></tbody></table>
   
                             
@@ -148,13 +148,13 @@
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Faltas Injustificadas</b></span></td>
                     <td width="350"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>Total Faltas</b></span></td>
                 </tr>
-                <tr ng-if="p<=3" bgcolor="FFFFFF" height="20">
+                <tr ng-if="p<=3&&q<3" bgcolor="FFFFFF" height="20">
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosParcial(q,p)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasParcial(q,p)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasParcial(q,p)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasParcial(q,p)}}</b></span></td>
                 </tr>
-                <tr ng-if="p==4" bgcolor="FFFFFF" height="20">
+                <tr ng-if="p==4&&q<3" bgcolor="FFFFFF" height="20">
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosQuimestre(q)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasQuimestre(q)}}</b></span></td>
                     <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasQuimestre(q)}}</b></span></td>
@@ -162,10 +162,10 @@
                 </tr>
 
                  <tr ng-if="q==3" bgcolor="FFFFFF" height="20">
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosQuimestre(q)}}</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasQuimestre(q)}}</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasQuimestre(q)}}</b></span></td>
-                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasQuimestre(q)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{atrasosAnual(1,2)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasJustificadasAnual(1,2)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{faltasInjustificadasAnual(1,2)}}</b></span></td>
+                    <td style="text-align: -webkit-center;"><span style="font-size:8.0pt;font-family:Tahoma;color:#000000"><b>{{totalFaltasAnual(1,2)}}</b></span></td>
                 </tr>
                 <tr></tr>
             </tbody></table>

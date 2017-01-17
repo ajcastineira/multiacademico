@@ -115,7 +115,16 @@
                                    return getPromedioFinal(calificacion);
                                });
                                 return redondear(_.mean(promedios),2);
-                           };                  
+                           };   
+        //Promedio total anual final
+        var getPromedioTotalAnualMateriasBasicas=function (calificaciones) 
+                          {
+                                var calificacionesDeMateriasBasicas = filterMateriasBasicas(calificaciones);
+                                var promedios=_.map(calificacionesDeMateriasBasicas,function(calificacion){
+                                   return getPromedioFinal(calificacion);
+                               });
+                                return redondear(_.mean(promedios),2);
+                           };                     
         var getPromedioAnual=function (calificacion)
                           {
                              if(typeof calificacion === 'undefined'){return('N/A');}

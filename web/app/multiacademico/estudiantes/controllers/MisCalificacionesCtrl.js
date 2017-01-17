@@ -243,12 +243,9 @@
                                 if (isNaN(atrasos)) atrasos=0;
                                 return atrasos;
                             };
-                            $scope.atrasosAnual=function(q1, q2)
+                            $scope.atrasosAnual=function()
                             {   
-                                if (typeof q1==='undefined')q1=$scope.q1;
-                                if (typeof q2==='undefined')q2=$scope.q2;
-                                }
-                                return $scope.atrasosQuimestre(q1) + $scope.atrasosQuimestre(q2);
+                                return $scope.atrasosQuimestre(1) + $scope.atrasosQuimestre(2);
                             };
                             $scope.faltasInjustificadasQuimestre=function(q)
                             {
@@ -258,11 +255,8 @@
                                 if (isNaN(faltas)) faltas=0;
                                 return faltas;
                             };
-                            $scope.faltasInjustificadasAnual=function(q1, q2){
-                                if (typeof q1==='undefined')q1=$scope.q1;
-                                if (typeof q2==='undefined')q2=$scope.q2;
-                                
-                                return $scope.faltasInjustificadasQuimestre(q1) + $scope.faltasInjustificadasQuimestre(q2);
+                            $scope.faltasInjustificadasAnual=function(){
+                                return $scope.faltasInjustificadasQuimestre(1) + $scope.faltasInjustificadasQuimestre(2);
                             };
                             $scope.faltasJustificadasQuimestre=function(q)
                             {
@@ -272,11 +266,8 @@
                                 return faltas;
                             };
 
-                            $scope.faltasJustificadasAnual=function(q1, q2){
-                                if (typeof q1==='undefined')q1=$scope.q1;
-                                if (typeof q2==='undefined')q2=$scope.q2;
-
-                                return $scope.faltasJustificadasQuimestre(q1) + $scope.faltasJustificadasQuimestre(q2);
+                            $scope.faltasJustificadasAnual=function(){
+                                return $scope.faltasJustificadasQuimestre(1) + $scope.faltasJustificadasQuimestre(2);
                             }
                             
                             $scope.totalFaltasQuimestre=function(q)
@@ -286,11 +277,8 @@
                                 return faltas;
                             };
 
-                            $scope.totalFaltasAnual=function(q1, q2){
-                                if (typeof q1==='undefined')q1=$scope.q1;
-                                if (typeof q2==='undefined')q2=$scope.q2;
-
-                                return $scope.totalFaltasQuimestre(q1) + $scope.totalFaltasQuimestre(q2);
+                            $scope.totalFaltasAnual=function(){
+                                return $scope.totalFaltasQuimestre(1) + $scope.totalFaltasQuimestre(2);
                             }
                             
                            });

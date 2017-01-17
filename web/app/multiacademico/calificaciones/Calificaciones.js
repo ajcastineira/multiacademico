@@ -287,6 +287,7 @@
                     getPromedioQuimestre:getPromedioQuimestre,
                     getPromedioAnual:getPromedioAnual,            
                     getPromedioFinal:getPromedioFinal,
+                    getPromedioTotalAnual: getPromedioTotalAnual,
                     calcularPromedioFinal:calcularPromedioFinal,
                     apruebaMateria:apruebaMateria,
                     getSumaFinal:getSumaFinal,  
